@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "584197013310",
+    "project_id": "homi-pro",
+    "storage_bucket": "homi-pro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584197013310:android:45f53925e1632c0805b66f",
+        "android_client_info": {
+          "package_name": "com.dev.homi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584197013310-nj6s6qm2kjnoob6i985l39rc0oid8a5k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.homi",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "584197013310-6brfedlo64nn4pgfajjvt8aggrvv2nin.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs0p9EflmXTJu7LWavEmpmaOpmhY3HLFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584197013310-6brfedlo64nn4pgfajjvt8aggrvv2nin.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "584197013310-1b9pof05589q6rgmo7ji91pan661g34h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dev.homi"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
