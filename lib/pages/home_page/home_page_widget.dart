@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -394,7 +395,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .titleMedium,
+                                                                .labelMedium,
                                                         keyboardType:
                                                             TextInputType
                                                                 .emailAddress,
@@ -507,7 +508,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .titleMedium,
+                                                                .labelMedium,
                                                         keyboardType:
                                                             TextInputType
                                                                 .emailAddress,
@@ -644,7 +645,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .titleMedium,
+                                                                .labelMedium,
                                                         validator: _model
                                                             .passwordController1Validator
                                                             .asValidator(
@@ -779,7 +780,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .titleMedium,
+                                                                .labelMedium,
                                                         validator: _model
                                                             .reEnterControllerValidator
                                                             .asValidator(
@@ -826,7 +827,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .createAccountWithEmail(
                                                             context,
                                                             _model
-                                                                .nameController
+                                                                .emailAddressController1
                                                                 .text,
                                                             _model
                                                                 .passwordController1
@@ -835,6 +836,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           if (user == null) {
                                                             return;
                                                           }
+
+                                                          await UsersRecord
+                                                              .collection
+                                                              .doc(user.uid)
+                                                              .update(
+                                                                  createUsersRecordData(
+                                                                email: _model
+                                                                    .emailAddressController1
+                                                                    .text,
+                                                                displayName: _model
+                                                                    .nameController
+                                                                    .text,
+                                                                createdTime:
+                                                                    getCurrentTimestamp,
+                                                              ));
 
                                                           context.goNamedAuth(
                                                               'FamilyProfile',
@@ -1034,7 +1050,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge,
+                                                                .labelMedium,
                                                         keyboardType:
                                                             TextInputType
                                                                 .emailAddress,
@@ -1162,7 +1178,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyLarge,
+                                                                .labelMedium,
                                                         validator: _model
                                                             .passwordController2Validator
                                                             .asValidator(
@@ -1266,28 +1282,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   16.0),
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          if (_model
-                                                              .emailAddressController1
-                                                              .text
-                                                              .isEmpty) {
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  'Email required!',
-                                                                ),
-                                                              ),
-                                                            );
-                                                            return;
-                                                          }
-                                                          await authManager
-                                                              .resetPassword(
-                                                            email: _model
-                                                                .emailAddressController1
-                                                                .text,
-                                                            context: context,
-                                                          );
+                                                          Navigator.pop(
+                                                              context);
                                                         },
                                                         text:
                                                             'Forgot Password?',
