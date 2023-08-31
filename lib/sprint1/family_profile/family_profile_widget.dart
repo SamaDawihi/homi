@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/intive_by_email_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -774,8 +775,23 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 20.0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) {
+                                  return GestureDetector(
+                                    onTap: () => FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: IntiveByEmailWidget(),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
                             },
                             text: 'Invite a Member',
                             options: FFButtonOptions(
@@ -784,7 +800,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   24.0, 0.0, 24.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).success,
+                              color: Color(0xFF555EBE),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(

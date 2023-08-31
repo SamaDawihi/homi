@@ -1208,10 +1208,10 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   .signInWithEmail(
                                                             context,
                                                             _model
-                                                                .emailAddressController
+                                                                .loginEmailAddressController
                                                                 .text,
                                                             _model
-                                                                .passwordController
+                                                                .loginPasswordController
                                                                 .text,
                                                           );
                                                           if (user == null) {
