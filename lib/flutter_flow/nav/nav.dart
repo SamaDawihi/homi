@@ -77,17 +77,51 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn ? () : (),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? NavBarPage() : HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => appStateNotifier.loggedIn ? () : (),
+          builder: (context, _) =>
+              appStateNotifier.loggedIn ? NavBarPage() : HomePageWidget(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
           builder: (context, params) => HomePageWidget(),
+        ),
+        FFRoute(
+          name: 'initPage',
+          path: '/initPage',
+          builder: (context, params) => InitPageWidget(),
+        ),
+        FFRoute(
+          name: 'FamilyProfile',
+          path: '/familyProfile',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'FamilyProfile')
+              : FamilyProfileWidget(),
+        ),
+        FFRoute(
+          name: 'Calendar',
+          path: '/calendar',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Calendar')
+              : CalendarWidget(),
+        ),
+        FFRoute(
+          name: 'Lists',
+          path: '/lists',
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'Lists') : ListsWidget(),
+        ),
+        FFRoute(
+          name: 'Announcments',
+          path: '/announcments',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Announcments')
+              : AnnouncmentsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -254,7 +288,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/';
+            return '/homePage';
           }
           return null;
         },
