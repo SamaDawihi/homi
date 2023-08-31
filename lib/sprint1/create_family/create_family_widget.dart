@@ -194,13 +194,13 @@ class _CreateFamilyWidgetState extends State<CreateFamilyWidget> {
                                   FamilyRecord.collection.doc();
                               await familyRecordReference
                                   .set(createFamilyRecordData(
-                                name: '\"MyFamily\"',
+                                name: 'MyFamily',
                                 adminId: currentUserReference,
                               ));
                               _model.familyId =
                                   FamilyRecord.getDocumentFromData(
                                       createFamilyRecordData(
-                                        name: '\"MyFamily\"',
+                                        name: 'MyFamily',
                                         adminId: currentUserReference,
                                       ),
                                       familyRecordReference);
