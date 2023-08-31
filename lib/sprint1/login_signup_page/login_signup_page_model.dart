@@ -10,7 +10,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class HomePageModel extends FlutterFlowModel {
+class LoginSignupPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -23,41 +23,41 @@ class HomePageModel extends FlutterFlowModel {
   TextEditingController? nameController;
   String? Function(BuildContext, String?)? nameControllerValidator;
   // State field(s) for emailAddress widget.
-  TextEditingController? emailAddressController1;
-  String? Function(BuildContext, String?)? emailAddressController1Validator;
+  TextEditingController? emailAddressController;
+  String? Function(BuildContext, String?)? emailAddressControllerValidator;
   // State field(s) for password widget.
-  TextEditingController? passwordController1;
-  late bool passwordVisibility1;
-  String? Function(BuildContext, String?)? passwordController1Validator;
+  TextEditingController? passwordController;
+  late bool passwordVisibility;
+  String? Function(BuildContext, String?)? passwordControllerValidator;
   // State field(s) for re-enter widget.
   TextEditingController? reEnterController;
   late bool reEnterVisibility;
   String? Function(BuildContext, String?)? reEnterControllerValidator;
-  // State field(s) for emailAddress widget.
-  TextEditingController? emailAddressController2;
-  String? Function(BuildContext, String?)? emailAddressController2Validator;
-  // State field(s) for password widget.
-  TextEditingController? passwordController2;
-  late bool passwordVisibility2;
-  String? Function(BuildContext, String?)? passwordController2Validator;
+  // State field(s) for loginEmailAddress widget.
+  TextEditingController? loginEmailAddressController;
+  String? Function(BuildContext, String?)? loginEmailAddressControllerValidator;
+  // State field(s) for loginPassword widget.
+  TextEditingController? loginPasswordController;
+  late bool loginPasswordVisibility;
+  String? Function(BuildContext, String?)? loginPasswordControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    passwordVisibility1 = false;
+    passwordVisibility = false;
     reEnterVisibility = false;
-    passwordVisibility2 = false;
+    loginPasswordVisibility = false;
   }
 
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();
     nameController?.dispose();
-    emailAddressController1?.dispose();
-    passwordController1?.dispose();
+    emailAddressController?.dispose();
+    passwordController?.dispose();
     reEnterController?.dispose();
-    emailAddressController2?.dispose();
-    passwordController2?.dispose();
+    loginEmailAddressController?.dispose();
+    loginPasswordController?.dispose();
   }
 
   /// Action blocks are added here.

@@ -9,19 +9,19 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'login_signup_page_model.dart';
+export 'login_signup_page_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
+class LoginSignupPageWidget extends StatefulWidget {
+  const LoginSignupPageWidget({Key? key}) : super(key: key);
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  _LoginSignupPageWidgetState createState() => _LoginSignupPageWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget>
+class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
     with TickerProviderStateMixin {
-  late HomePageModel _model;
+  late LoginSignupPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -98,7 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => LoginSignupPageModel());
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -106,11 +106,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
       initialIndex: 0,
     );
     _model.nameController ??= TextEditingController();
-    _model.emailAddressController1 ??= TextEditingController();
-    _model.passwordController1 ??= TextEditingController();
+    _model.emailAddressController ??= TextEditingController();
+    _model.passwordController ??= TextEditingController();
     _model.reEnterController ??= TextEditingController();
-    _model.emailAddressController2 ??= TextEditingController();
-    _model.passwordController2 ??= TextEditingController();
+    _model.loginEmailAddressController ??= TextEditingController();
+    _model.loginPasswordController ??= TextEditingController();
   }
 
   @override
@@ -415,7 +415,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .emailAddressController1,
+                                                            .emailAddressController,
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.email
@@ -513,7 +513,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             TextInputType
                                                                 .emailAddress,
                                                         validator: _model
-                                                            .emailAddressController1Validator
+                                                            .emailAddressControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -528,13 +528,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .passwordController1,
+                                                            .passwordController,
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.password
                                                         ],
                                                         obscureText: !_model
-                                                            .passwordVisibility1,
+                                                            .passwordVisibility,
                                                         decoration:
                                                             InputDecoration(
                                                           labelText: 'Password',
@@ -622,15 +622,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             onTap: () =>
                                                                 setState(
                                                               () => _model
-                                                                      .passwordVisibility1 =
+                                                                      .passwordVisibility =
                                                                   !_model
-                                                                      .passwordVisibility1,
+                                                                      .passwordVisibility,
                                                             ),
                                                             focusNode: FocusNode(
                                                                 skipTraversal:
                                                                     true),
                                                             child: Icon(
-                                                              _model.passwordVisibility1
+                                                              _model.passwordVisibility
                                                                   ? Icons
                                                                       .visibility_outlined
                                                                   : Icons
@@ -647,7 +647,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     context)
                                                                 .labelMedium,
                                                         validator: _model
-                                                            .passwordController1Validator
+                                                            .passwordControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -805,7 +805,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           GoRouter.of(context)
                                                               .prepareAuthEvent();
                                                           if (_model
-                                                                  .passwordController1
+                                                                  .passwordController
                                                                   .text !=
                                                               _model
                                                                   .reEnterController
@@ -827,10 +827,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .createAccountWithEmail(
                                                             context,
                                                             _model
-                                                                .emailAddressController1
+                                                                .emailAddressController
                                                                 .text,
                                                             _model
-                                                                .passwordController1
+                                                                .passwordController
                                                                 .text,
                                                           );
                                                           if (user == null) {
@@ -843,7 +843,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               .update(
                                                                   createUsersRecordData(
                                                                 email: _model
-                                                                    .emailAddressController1
+                                                                    .emailAddressController
                                                                     .text,
                                                                 displayName: _model
                                                                     .nameController
@@ -853,7 +853,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               ));
 
                                                           context.goNamedAuth(
-                                                              'createFamily',
+                                                              'CreateFamily',
                                                               context.mounted);
                                                         },
                                                         text: 'Get Started',
@@ -966,7 +966,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .emailAddressController2,
+                                                            .loginEmailAddressController,
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.email
@@ -1055,7 +1055,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             TextInputType
                                                                 .emailAddress,
                                                         validator: _model
-                                                            .emailAddressController2Validator
+                                                            .loginEmailAddressControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -1070,13 +1070,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                       width: double.infinity,
                                                       child: TextFormField(
                                                         controller: _model
-                                                            .passwordController2,
+                                                            .loginPasswordController,
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.password
                                                         ],
                                                         obscureText: !_model
-                                                            .passwordVisibility2,
+                                                            .loginPasswordVisibility,
                                                         decoration:
                                                             InputDecoration(
                                                           labelText: 'Password',
@@ -1155,15 +1155,15 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                             onTap: () =>
                                                                 setState(
                                                               () => _model
-                                                                      .passwordVisibility2 =
+                                                                      .loginPasswordVisibility =
                                                                   !_model
-                                                                      .passwordVisibility2,
+                                                                      .loginPasswordVisibility,
                                                             ),
                                                             focusNode: FocusNode(
                                                                 skipTraversal:
                                                                     true),
                                                             child: Icon(
-                                                              _model.passwordVisibility2
+                                                              _model.loginPasswordVisibility
                                                                   ? Icons
                                                                       .visibility_outlined
                                                                   : Icons
@@ -1180,7 +1180,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                     context)
                                                                 .labelMedium,
                                                         validator: _model
-                                                            .passwordController2Validator
+                                                            .loginPasswordControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -1208,10 +1208,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   .signInWithEmail(
                                                             context,
                                                             _model
-                                                                .emailAddressController1
+                                                                .emailAddressController
                                                                 .text,
                                                             _model
-                                                                .passwordController1
+                                                                .passwordController
                                                                 .text,
                                                           );
                                                           if (user == null) {
@@ -1219,7 +1219,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           }
 
                                                           context.goNamedAuth(
-                                                              'createFamily',
+                                                              'CreateFamily',
                                                               context.mounted);
                                                         },
                                                         text: 'Sign In',

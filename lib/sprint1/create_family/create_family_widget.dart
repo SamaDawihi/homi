@@ -117,7 +117,7 @@ class _CreateFamilyWidgetState extends State<CreateFamilyWidget> {
                                 GoRouter.of(context).clearRedirectLocation();
 
                                 context.goNamedAuth(
-                                    'HomePage', context.mounted);
+                                    'LoginSignupPage', context.mounted);
                               },
                             ),
                           ),

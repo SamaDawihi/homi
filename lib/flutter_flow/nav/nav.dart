@@ -79,18 +79,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : HomePageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : LoginSignupPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : HomePageWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? NavBarPage()
+              : LoginSignupPageWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
+          name: 'LoginSignupPage',
+          path: '/loginSignupPage',
+          builder: (context, params) => LoginSignupPageWidget(),
         ),
         FFRoute(
           name: 'initPage',
@@ -128,10 +129,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : AnnouncmentsWidget(),
         ),
         FFRoute(
-          name: 'createFamily',
+          name: 'CreateFamily',
           path: '/createFamily',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'createFamily')
+              ? NavBarPage(initialPage: 'CreateFamily')
               : CreateFamilyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -299,7 +300,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/homePage';
+            return '/loginSignupPage';
           }
           return null;
         },
