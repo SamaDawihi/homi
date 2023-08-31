@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 
 import '../../auth/base_auth_user_provider.dart';
 
@@ -101,7 +102,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/familyProfile',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'FamilyProfile')
-              : FamilyProfileWidget(),
+              : FamilyProfileWidget(
+                  familyId: params.getParam('familyId',
+                      ParamType.DocumentReference, false, ['Family']),
+                ),
         ),
         FFRoute(
           name: 'Calendar',
@@ -122,6 +126,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Announcments')
               : AnnouncmentsWidget(),
+        ),
+        FFRoute(
+          name: 'createFamily',
+          path: '/createFamily',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'createFamily')
+              : CreateFamilyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

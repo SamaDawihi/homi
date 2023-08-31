@@ -853,7 +853,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                               ));
 
                                                           context.goNamedAuth(
-                                                              'FamilyProfile',
+                                                              'createFamily',
                                                               context.mounted);
                                                         },
                                                         text: 'Get Started',
@@ -1219,7 +1219,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                           }
 
                                                           context.goNamedAuth(
-                                                              'FamilyProfile',
+                                                              'createFamily',
                                                               context.mounted);
                                                         },
                                                         text: 'Sign In',

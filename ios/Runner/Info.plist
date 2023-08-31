@@ -54,7 +54,10 @@
 	<true/>
 
 
-
+	<key>PermissionGroupNotification</key>
+    <string>Please Allow</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Please Allow</string>
 
 
 	<key>UILaunchStoryboardName</key>
