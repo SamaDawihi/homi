@@ -129,11 +129,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : AnnouncmentsWidget(),
         ),
         FFRoute(
-          name: 'CreateFamily',
-          path: '/createFamily',
+          name: 'FamiliesManagement',
+          path: '/familiesManagement',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'CreateFamily')
-              : CreateFamilyWidget(),
+              ? NavBarPage(initialPage: 'FamiliesManagement')
+              : FamiliesManagementWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

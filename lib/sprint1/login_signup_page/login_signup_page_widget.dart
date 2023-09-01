@@ -853,7 +853,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               ));
 
                                                           context.goNamedAuth(
-                                                              'CreateFamily',
+                                                              'FamiliesManagement',
                                                               context.mounted);
                                                         },
                                                         text: 'Get Started',
@@ -1219,7 +1219,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           }
 
                                                           context.goNamedAuth(
-                                                              'CreateFamily',
+                                                              'FamiliesManagement',
                                                               context.mounted);
                                                         },
                                                         text: 'Sign In',

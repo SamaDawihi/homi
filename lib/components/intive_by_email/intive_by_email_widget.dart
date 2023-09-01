@@ -1,10 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'intive_by_email_model.dart';
@@ -22,8 +25,25 @@ class IntiveByEmailWidget extends StatefulWidget {
   _IntiveByEmailWidgetState createState() => _IntiveByEmailWidgetState();
 }
 
-class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget> {
+class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
+    with TickerProviderStateMixin {
   late IntiveByEmailModel _model;
+
+  final animationsMap = {
+    'columnOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: true,
+      effects: [
+        MoveEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, 0.0),
+          end: Offset(0.0, 300.0),
+        ),
+      ],
+    ),
+  };
 
   @override
   void setState(VoidCallback callback) {
@@ -37,6 +57,12 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget> {
     _model = createModel(context, () => IntiveByEmailModel());
 
     _model.emailAddressController ??= TextEditingController();
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -82,12 +108,29 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 60.0,
-                        height: 3.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          borderRadius: BorderRadius.circular(4.0),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          if (animationsMap['columnOnActionTriggerAnimation'] !=
+                              null) {
+                            await animationsMap[
+                                    'columnOnActionTriggerAnimation']!
+                                .controller
+                                .forward(from: 0.0);
+                          }
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 490),
+                          curve: Curves.easeInOut,
+                          width: 60.0,
+                          height: 3.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).alternate,
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
                         ),
                       ),
                     ],
@@ -216,6 +259,8 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget> {
             ),
           ),
         ],
+      ).animateOnActionTrigger(
+        animationsMap['columnOnActionTriggerAnimation']!,
       ),
     );
   }
