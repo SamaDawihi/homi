@@ -13,11 +13,13 @@ class FamilyStruct extends FFFirebaseStruct {
     DocumentReference? adminId,
     String? photo,
     Color? color,
+    DateTime? createdTime,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _adminId = adminId,
         _photo = photo,
         _color = color,
+        _createdTime = createdTime,
         super(firestoreUtilData);
 
   // "name" field.
@@ -44,11 +46,18 @@ class FamilyStruct extends FFFirebaseStruct {
   set color(Color? val) => _color = val;
   bool hasColor() => _color != null;
 
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  set createdTime(DateTime? val) => _createdTime = val;
+  bool hasCreatedTime() => _createdTime != null;
+
   static FamilyStruct fromMap(Map<String, dynamic> data) => FamilyStruct(
         name: data['name'] as String?,
         adminId: data['adminId'] as DocumentReference?,
         photo: data['photo'] as String?,
         color: getSchemaColor(data['color']),
+        createdTime: data['created_time'] as DateTime?,
       );
 
   static FamilyStruct? maybeFromMap(dynamic data) =>
@@ -59,6 +68,7 @@ class FamilyStruct extends FFFirebaseStruct {
         'adminId': _adminId,
         'photo': _photo,
         'color': _color,
+        'created_time': _createdTime,
       }.withoutNulls;
 
   @override
@@ -78,6 +88,10 @@ class FamilyStruct extends FFFirebaseStruct {
         'color': serializeParam(
           _color,
           ParamType.Color,
+        ),
+        'created_time': serializeParam(
+          _createdTime,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -104,6 +118,11 @@ class FamilyStruct extends FFFirebaseStruct {
           ParamType.Color,
           false,
         ),
+        createdTime: deserializeParam(
+          data['created_time'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -115,11 +134,13 @@ class FamilyStruct extends FFFirebaseStruct {
         name == other.name &&
         adminId == other.adminId &&
         photo == other.photo &&
-        color == other.color;
+        color == other.color &&
+        createdTime == other.createdTime;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([name, adminId, photo, color]);
+  int get hashCode =>
+      const ListEquality().hash([name, adminId, photo, color, createdTime]);
 }
 
 FamilyStruct createFamilyStruct({
@@ -127,6 +148,7 @@ FamilyStruct createFamilyStruct({
   DocumentReference? adminId,
   String? photo,
   Color? color,
+  DateTime? createdTime,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -137,6 +159,7 @@ FamilyStruct createFamilyStruct({
       adminId: adminId,
       photo: photo,
       color: color,
+      createdTime: createdTime,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

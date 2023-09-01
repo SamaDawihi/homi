@@ -1,11 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/recieved_invitation_container_widget.dart';
 import '/components_of_families_management_page/my_family_container/my_family_container_widget.dart';
+import '/components_of_families_management_page/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,6 +42,8 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -196,16 +199,37 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                                   FamilyRecord.collection.doc();
                               await familyRecordReference
                                   .set(createFamilyRecordData(
-                                name: '\"MyFamily\"',
+                                name: 'Family ${random_data.randomString(
+                                  4,
+                                  4,
+                                  true,
+                                  true,
+                                  true,
+                                )}',
                                 adminId: currentUserReference,
                               ));
                               _model.familyId =
                                   FamilyRecord.getDocumentFromData(
                                       createFamilyRecordData(
-                                        name: '\"MyFamily\"',
+                                        name:
+                                            'Family ${random_data.randomString(
+                                          4,
+                                          4,
+                                          true,
+                                          true,
+                                          true,
+                                        )}',
                                         adminId: currentUserReference,
                                       ),
                                       familyRecordReference);
+
+                              await MemberRecord.collection
+                                  .doc()
+                                  .set(createMemberRecordData(
+                                    memberId: currentUserReference,
+                                    familyId: _model.familyId?.reference,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ));
 
                               context.pushNamed(
                                 'FamilyProfile',

@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
 import '/components/intive_by_email/intive_by_email_widget.dart';
+import '/components_of_families_management_page/family_member_container/family_member_container_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -20,13 +20,20 @@ class FamilyProfileModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Models for FamilyMemberContainer dynamic component.
+  late FlutterFlowDynamicModels<FamilyMemberContainerModel>
+      familyMemberContainerModels;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    familyMemberContainerModels =
+        FlutterFlowDynamicModels(() => FamilyMemberContainerModel());
+  }
 
   void dispose() {
     unfocusNode.dispose();
+    familyMemberContainerModels.dispose();
   }
 
   /// Action blocks are added here.

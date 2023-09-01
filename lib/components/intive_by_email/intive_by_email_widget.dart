@@ -74,6 +74,8 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: AlignmentDirectional(1.0, -1.0),
       child: Column(
@@ -121,6 +123,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                                 .controller
                                 .forward(from: 0.0);
                           }
+                          context.safePop();
                         },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 490),

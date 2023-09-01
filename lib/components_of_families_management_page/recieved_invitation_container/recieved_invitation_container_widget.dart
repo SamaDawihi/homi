@@ -49,6 +49,8 @@ class _RecievedInvitationContainerWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 8.0),
       child: StreamBuilder<InvitationRecord>(
@@ -159,23 +161,24 @@ class _RecievedInvitationContainerWidgetState
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(60.0, 0.0, 0.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 2.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 10.0, 2.0),
                         child: FlutterFlowIconButton(
-                          borderColor: Color(0xFF029083),
-                          borderRadius: 16.0,
-                          borderWidth: 1.0,
-                          buttonSize: 35.0,
-                          fillColor: FlutterFlowTheme.of(context).alternate,
+                          borderColor: Color(0x00029083),
+                          borderRadius: 20.0,
+                          borderWidth: 0.0,
+                          buttonSize: 38.0,
+                          fillColor: Color(0x00E0E3E7),
+                          hoverColor: Color(0xFF03ED58),
+                          hoverIconColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
                           icon: Icon(
                             Icons.check,
-                            color: Color(0xFF029083),
+                            color: Color(0xFF03ED58),
                             size: 20.0,
                           ),
                           onPressed: () async {
@@ -183,9 +186,9 @@ class _RecievedInvitationContainerWidgetState
                               context: context,
                               builder: (alertDialogContext) {
                                 return AlertDialog(
-                                  title: Text('Welcome to the Family'),
+                                  title: Text('welcome to the family'),
                                   content: Text(
-                                      'choose a color that will appear to your family'),
+                                      'choose the color that will represent you in this family'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
@@ -252,18 +255,24 @@ class _RecievedInvitationContainerWidgetState
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                         child: FlutterFlowIconButton(
-                          borderColor: Color(0xFFD50000),
+                          borderColor: Color(0x00029083),
                           borderRadius: 16.0,
                           borderWidth: 1.0,
                           buttonSize: 35.0,
-                          fillColor: FlutterFlowTheme.of(context).alternate,
+                          fillColor: Color(0x00029083),
+                          hoverColor: Color(0xFFD50000),
+                          hoverIconColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
                           icon: Icon(
                             Icons.close,
                             color: Color(0xFFD50000),
                             size: 20.0,
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
+                          onPressed: () async {
+                            await widget.invitationId!
+                                .update(createInvitationRecordData(
+                              status: 'Rejected',
+                            ));
                           },
                         ),
                       ),

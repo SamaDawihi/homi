@@ -36,11 +36,17 @@ class FamilyRecord extends FirestoreRecord {
   Color? get color => _color;
   bool hasColor() => _color != null;
 
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _adminId = snapshotData['adminId'] as DocumentReference?;
     _photoUrl = snapshotData['photo-url'] as String?;
     _color = getSchemaColor(snapshotData['color']);
+    _createdTime = snapshotData['created_time'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -81,6 +87,7 @@ Map<String, dynamic> createFamilyRecordData({
   DocumentReference? adminId,
   String? photoUrl,
   Color? color,
+  DateTime? createdTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -88,6 +95,7 @@ Map<String, dynamic> createFamilyRecordData({
       'adminId': adminId,
       'photo-url': photoUrl,
       'color': color,
+      'created_time': createdTime,
     }.withoutNulls,
   );
 
@@ -102,12 +110,13 @@ class FamilyRecordDocumentEquality implements Equality<FamilyRecord> {
     return e1?.name == e2?.name &&
         e1?.adminId == e2?.adminId &&
         e1?.photoUrl == e2?.photoUrl &&
-        e1?.color == e2?.color;
+        e1?.color == e2?.color &&
+        e1?.createdTime == e2?.createdTime;
   }
 
   @override
-  int hash(FamilyRecord? e) =>
-      const ListEquality().hash([e?.name, e?.adminId, e?.photoUrl, e?.color]);
+  int hash(FamilyRecord? e) => const ListEquality()
+      .hash([e?.name, e?.adminId, e?.photoUrl, e?.color, e?.createdTime]);
 
   @override
   bool isValidKey(Object? o) => o is FamilyRecord;

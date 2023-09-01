@@ -12,10 +12,12 @@ class InvitationStruct extends FFFirebaseStruct {
     String? invitedEmail,
     DocumentReference? familiyId,
     String? status,
+    DateTime? createdTime,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _invitedEmail = invitedEmail,
         _familiyId = familiyId,
         _status = status,
+        _createdTime = createdTime,
         super(firestoreUtilData);
 
   // "invitedEmail" field.
@@ -36,11 +38,18 @@ class InvitationStruct extends FFFirebaseStruct {
   set status(String? val) => _status = val;
   bool hasStatus() => _status != null;
 
+  // "created_time" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  set createdTime(DateTime? val) => _createdTime = val;
+  bool hasCreatedTime() => _createdTime != null;
+
   static InvitationStruct fromMap(Map<String, dynamic> data) =>
       InvitationStruct(
         invitedEmail: data['invitedEmail'] as String?,
         familiyId: data['familiyId'] as DocumentReference?,
         status: data['status'] as String?,
+        createdTime: data['created_time'] as DateTime?,
       );
 
   static InvitationStruct? maybeFromMap(dynamic data) =>
@@ -50,6 +59,7 @@ class InvitationStruct extends FFFirebaseStruct {
         'invitedEmail': _invitedEmail,
         'familiyId': _familiyId,
         'status': _status,
+        'created_time': _createdTime,
       }.withoutNulls;
 
   @override
@@ -65,6 +75,10 @@ class InvitationStruct extends FFFirebaseStruct {
         'status': serializeParam(
           _status,
           ParamType.String,
+        ),
+        'created_time': serializeParam(
+          _createdTime,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -86,6 +100,11 @@ class InvitationStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        createdTime: deserializeParam(
+          data['created_time'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -96,18 +115,20 @@ class InvitationStruct extends FFFirebaseStruct {
     return other is InvitationStruct &&
         invitedEmail == other.invitedEmail &&
         familiyId == other.familiyId &&
-        status == other.status;
+        status == other.status &&
+        createdTime == other.createdTime;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([invitedEmail, familiyId, status]);
+      const ListEquality().hash([invitedEmail, familiyId, status, createdTime]);
 }
 
 InvitationStruct createInvitationStruct({
   String? invitedEmail,
   DocumentReference? familiyId,
   String? status,
+  DateTime? createdTime,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -117,6 +138,7 @@ InvitationStruct createInvitationStruct({
       invitedEmail: invitedEmail,
       familiyId: familiyId,
       status: status,
+      createdTime: createdTime,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
