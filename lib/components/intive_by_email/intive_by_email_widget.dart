@@ -4,10 +4,10 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -208,10 +208,6 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                       cursorColor: FlutterFlowTheme.of(context).primary,
                       validator: _model.emailAddressControllerValidator
                           .asValidator(context),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.allow(
-                            RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$'))
-                      ],
                     ),
                   ),
                   Padding(
@@ -219,6 +215,30 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        var _shouldSetState = false;
+                        if (!functions.checkIfTextMatchRegExp(
+                            _model.emailAddressController.text,
+                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('EmailFormat'),
+                                content: Text('Email Format Isn\'t Supported'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          if (_shouldSetState) setState(() {});
+                          return;
+                        }
+
                         var invitationRecordReference =
                             InvitationRecord.collection.doc();
                         await invitationRecordReference
@@ -236,6 +256,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                                   status: 'Pending',
                                 ),
                                 invitationRecordReference);
+                        _shouldSetState = true;
                         await showDialog(
                           context: context,
                           builder: (alertDialogContext) {
@@ -253,8 +274,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                           },
                         );
                         context.safePop();
-
-                        setState(() {});
+                        if (_shouldSetState) setState(() {});
                       },
                       text: 'Invite',
                       options: FFButtonOptions(
