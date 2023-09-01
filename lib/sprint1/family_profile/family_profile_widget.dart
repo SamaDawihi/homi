@@ -376,44 +376,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   );
                                 },
                               ).then((value) => setState(() {}));
-
-                              if (true) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('added'),
-                                      content: Text('added'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              } else {
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('not added'),
-                                      content: Text('not added'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-
-                              context.safePop();
                             },
                             text: 'Invite a Member',
                             options: FFButtonOptions(

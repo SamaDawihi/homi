@@ -231,6 +231,23 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                                   status: 'Pending',
                                 ),
                                 invitationRecordReference);
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('Added'),
+                              content: Text('Added'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                        context.safePop();
 
                         setState(() {});
                       },
