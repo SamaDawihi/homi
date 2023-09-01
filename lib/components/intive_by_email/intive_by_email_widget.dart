@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -216,9 +217,40 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                     child: FFButtonWidget(
                       onPressed: () async {
                         var _shouldSetState = false;
-                        if (!functions.checkIfTextMatchRegExp(
+                        if (functions.checkIfTextMatchRegExp(
                             _model.emailAddressController.text,
                             '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                          _model.numberOfInvitations =
+                              await queryInvitationRecordCount(
+                            queryBuilder: (invitationRecord) => invitationRecord
+                                .where('invitedEmail',
+                                    isEqualTo:
+                                        _model.emailAddressController.text)
+                                .where('familyId', isEqualTo: widget.familyId),
+                          );
+                          _shouldSetState = true;
+                          if (_model.numberOfInvitations != 0) {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Already Invited'),
+                                  content: Text(
+                                      'The user with the email address is already invited to your family.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          }
+                        } else {
                           await showDialog(
                             context: context,
                             builder: (alertDialogContext) {
