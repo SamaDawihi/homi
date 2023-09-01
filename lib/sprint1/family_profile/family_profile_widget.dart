@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -35,40 +34,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FamilyProfileModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget.familyId?.id ==
-          valueOrDefault<String>(
-            '',
-            '\"\"',
-          )) {
-        var confirmDialogResponse = await showDialog<bool>(
-              context: context,
-              builder: (alertDialogContext) {
-                return AlertDialog(
-                  title: Text('Choose Family First'),
-                  content: Text('Choose Family First'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                      child: Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                      child: Text('Confirm'),
-                    ),
-                  ],
-                );
-              },
-            ) ??
-            false;
-        context.safePop();
-        return;
-      } else {
-        return;
-      }
-    });
   }
 
   @override

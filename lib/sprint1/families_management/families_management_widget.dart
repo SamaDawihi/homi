@@ -1,5 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/emptyfamilies_widget.dart';
+import '/components/emptyinvitations_widget.dart';
 import '/components_of_families_management_page/my_family_container/my_family_container_widget.dart';
 import '/components_of_families_management_page/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -309,6 +311,17 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       }
                       List<MemberRecord> listViewMemberRecordList =
                           snapshot.data!;
+                      if (listViewMemberRecordList.isEmpty) {
+                        return Center(
+                          child: Container(
+                            width: 500.0,
+                            height: 200.0,
+                            child: EmptyfamiliesWidget(
+                              familyId: null!,
+                            ),
+                          ),
+                        );
+                      }
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         primary: false,
@@ -372,6 +385,13 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       }
                       List<InvitationRecord> listViewInvitationRecordList =
                           snapshot.data!;
+                      if (listViewInvitationRecordList.isEmpty) {
+                        return Container(
+                          width: 500.0,
+                          height: 200.0,
+                          child: EmptyinvitationsWidget(),
+                        );
+                      }
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         primary: false,
