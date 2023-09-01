@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'create_family_model.dart';
@@ -194,13 +195,13 @@ class _CreateFamilyWidgetState extends State<CreateFamilyWidget> {
                                   FamilyRecord.collection.doc();
                               await familyRecordReference
                                   .set(createFamilyRecordData(
-                                name: 'MyFamily',
+                                name: '\"MyFamily\"',
                                 adminId: currentUserReference,
                               ));
                               _model.familyId =
                                   FamilyRecord.getDocumentFromData(
                                       createFamilyRecordData(
-                                        name: 'MyFamily',
+                                        name: '\"MyFamily\"',
                                         adminId: currentUserReference,
                                       ),
                                       familyRecordReference);
@@ -610,8 +611,58 @@ class _CreateFamilyWidgetState extends State<CreateFamilyWidget> {
                                           color: Color(0xFF029083),
                                           size: 20.0,
                                         ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
+                                        onPressed: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    'Welcome to the Family'),
+                                                content: Text(
+                                                    'choose a color that will appear to your family'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('pick a color'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          final _colorPickedColor =
+                                              await showFFColorPicker(
+                                            context,
+                                            currentColor: _model.colorPicked ??=
+                                                Color(0xFFFFCF2E),
+                                            showRecentColors: true,
+                                            allowOpacity: false,
+                                            textColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            secondaryTextColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryText,
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                            primaryButtonBackgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            primaryButtonTextColor:
+                                                Colors.white,
+                                            primaryButtonBorderColor:
+                                                Colors.transparent,
+                                            displayAsBottomSheet:
+                                                isMobileWidth(context),
+                                          );
+
+                                          if (_colorPickedColor != null) {
+                                            setState(() => _model.colorPicked =
+                                                _colorPickedColor
+                                                    .withOpacity(1.0));
+                                          }
                                         },
                                       ),
                                     ),

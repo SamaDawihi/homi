@@ -11,11 +11,13 @@ class FamilyStruct extends FFFirebaseStruct {
   FamilyStruct({
     String? name,
     DocumentReference? adminId,
-    String? photot,
+    String? photo,
+    Color? color,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _adminId = adminId,
-        _photot = photot,
+        _photo = photo,
+        _color = color,
         super(firestoreUtilData);
 
   // "name" field.
@@ -30,16 +32,23 @@ class FamilyStruct extends FFFirebaseStruct {
   set adminId(DocumentReference? val) => _adminId = val;
   bool hasAdminId() => _adminId != null;
 
-  // "photot" field.
-  String? _photot;
-  String get photot => _photot ?? '';
-  set photot(String? val) => _photot = val;
-  bool hasPhotot() => _photot != null;
+  // "photo" field.
+  String? _photo;
+  String get photo => _photo ?? '';
+  set photo(String? val) => _photo = val;
+  bool hasPhoto() => _photo != null;
+
+  // "color" field.
+  Color? _color;
+  Color? get color => _color;
+  set color(Color? val) => _color = val;
+  bool hasColor() => _color != null;
 
   static FamilyStruct fromMap(Map<String, dynamic> data) => FamilyStruct(
         name: data['name'] as String?,
         adminId: data['adminId'] as DocumentReference?,
-        photot: data['photot'] as String?,
+        photo: data['photo'] as String?,
+        color: getSchemaColor(data['color']),
       );
 
   static FamilyStruct? maybeFromMap(dynamic data) =>
@@ -48,7 +57,8 @@ class FamilyStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'name': _name,
         'adminId': _adminId,
-        'photot': _photot,
+        'photo': _photo,
+        'color': _color,
       }.withoutNulls;
 
   @override
@@ -61,9 +71,13 @@ class FamilyStruct extends FFFirebaseStruct {
           _adminId,
           ParamType.DocumentReference,
         ),
-        'photot': serializeParam(
-          _photot,
+        'photo': serializeParam(
+          _photo,
           ParamType.String,
+        ),
+        'color': serializeParam(
+          _color,
+          ParamType.Color,
         ),
       }.withoutNulls;
 
@@ -80,9 +94,14 @@ class FamilyStruct extends FFFirebaseStruct {
           false,
           collectionNamePath: ['users'],
         ),
-        photot: deserializeParam(
-          data['photot'],
+        photo: deserializeParam(
+          data['photo'],
           ParamType.String,
+          false,
+        ),
+        color: deserializeParam(
+          data['color'],
+          ParamType.Color,
           false,
         ),
       );
@@ -95,17 +114,19 @@ class FamilyStruct extends FFFirebaseStruct {
     return other is FamilyStruct &&
         name == other.name &&
         adminId == other.adminId &&
-        photot == other.photot;
+        photo == other.photo &&
+        color == other.color;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([name, adminId, photot]);
+  int get hashCode => const ListEquality().hash([name, adminId, photo, color]);
 }
 
 FamilyStruct createFamilyStruct({
   String? name,
   DocumentReference? adminId,
-  String? photot,
+  String? photo,
+  Color? color,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -114,7 +135,8 @@ FamilyStruct createFamilyStruct({
     FamilyStruct(
       name: name,
       adminId: adminId,
-      photot: photot,
+      photo: photo,
+      color: color,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

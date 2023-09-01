@@ -7,8 +7,8 @@ import 'schema/util/firestore_util.dart';
 
 import 'schema/users_record.dart';
 import 'schema/family_record.dart';
-import 'schema/invite_record.dart';
 import 'schema/member_record.dart';
+import 'schema/invitation_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,8 +18,8 @@ export 'schema/util/schema_util.dart';
 
 export 'schema/users_record.dart';
 export 'schema/family_record.dart';
-export 'schema/invite_record.dart';
 export 'schema/member_record.dart';
+export 'schema/invitation_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -95,43 +95,6 @@ Future<List<FamilyRecord>> queryFamilyRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query InviteRecords (as a Stream and as a Future).
-Future<int> queryInviteRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      InviteRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<InviteRecord>> queryInviteRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      InviteRecord.collection,
-      InviteRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<InviteRecord>> queryInviteRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      InviteRecord.collection,
-      InviteRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
 /// Functions to query MemberRecords (as a Stream and as a Future).
 Future<int> queryMemberRecordCount({
   Query Function(Query)? queryBuilder,
@@ -164,6 +127,43 @@ Future<List<MemberRecord>> queryMemberRecordOnce({
     queryCollectionOnce(
       MemberRecord.collection,
       MemberRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query InvitationRecords (as a Stream and as a Future).
+Future<int> queryInvitationRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      InvitationRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<InvitationRecord>> queryInvitationRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      InvitationRecord.collection,
+      InvitationRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<InvitationRecord>> queryInvitationRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      InvitationRecord.collection,
+      InvitationRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

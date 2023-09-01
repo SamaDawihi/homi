@@ -31,10 +31,16 @@ class FamilyRecord extends FirestoreRecord {
   String get photoUrl => _photoUrl ?? '';
   bool hasPhotoUrl() => _photoUrl != null;
 
+  // "color" field.
+  Color? _color;
+  Color? get color => _color;
+  bool hasColor() => _color != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _adminId = snapshotData['adminId'] as DocumentReference?;
     _photoUrl = snapshotData['photo-url'] as String?;
+    _color = getSchemaColor(snapshotData['color']);
   }
 
   static CollectionReference get collection =>
@@ -74,12 +80,14 @@ Map<String, dynamic> createFamilyRecordData({
   String? name,
   DocumentReference? adminId,
   String? photoUrl,
+  Color? color,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'adminId': adminId,
       'photo-url': photoUrl,
+      'color': color,
     }.withoutNulls,
   );
 
@@ -93,12 +101,13 @@ class FamilyRecordDocumentEquality implements Equality<FamilyRecord> {
   bool equals(FamilyRecord? e1, FamilyRecord? e2) {
     return e1?.name == e2?.name &&
         e1?.adminId == e2?.adminId &&
-        e1?.photoUrl == e2?.photoUrl;
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.color == e2?.color;
   }
 
   @override
   int hash(FamilyRecord? e) =>
-      const ListEquality().hash([e?.name, e?.adminId, e?.photoUrl]);
+      const ListEquality().hash([e?.name, e?.adminId, e?.photoUrl, e?.color]);
 
   @override
   bool isValidKey(Object? o) => o is FamilyRecord;

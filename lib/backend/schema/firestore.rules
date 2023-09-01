@@ -15,14 +15,14 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /Invite/{document} {
+    match /Member/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if false;
       allow delete: if false;
     }
 
-    match /Member/{document} {
+    match /Invitation/{document} {
       allow create: if true;
       allow read: if true;
       allow write: if false;

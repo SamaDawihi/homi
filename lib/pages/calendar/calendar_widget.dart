@@ -1,35 +1,29 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'announcments_model.dart';
-export 'announcments_model.dart';
+import 'calendar_model.dart';
+export 'calendar_model.dart';
 
-class AnnouncmentsWidget extends StatefulWidget {
-  const AnnouncmentsWidget({
-    Key? key,
-    this.familyId,
-  }) : super(key: key);
-
-  final DocumentReference? familyId;
+class CalendarWidget extends StatefulWidget {
+  const CalendarWidget({Key? key}) : super(key: key);
 
   @override
-  _AnnouncmentsWidgetState createState() => _AnnouncmentsWidgetState();
+  _CalendarWidgetState createState() => _CalendarWidgetState();
 }
 
-class _AnnouncmentsWidgetState extends State<AnnouncmentsWidget> {
-  late AnnouncmentsModel _model;
+class _CalendarWidgetState extends State<CalendarWidget> {
+  late CalendarModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AnnouncmentsModel());
+    _model = createModel(context, () => CalendarModel());
   }
 
   @override
@@ -111,6 +105,13 @@ class _AnnouncmentsWidgetState extends State<AnnouncmentsWidget> {
               expandedTitleScale: 1.0,
             ),
             elevation: 0.0,
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [],
           ),
         ),
       ),

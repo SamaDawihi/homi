@@ -113,30 +113,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/calendar',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Calendar')
-              : CalendarWidget(
-                  familyId: params.getParam('familyId',
-                      ParamType.DocumentReference, false, ['Family']),
-                ),
+              : CalendarWidget(),
         ),
         FFRoute(
           name: 'Lists',
           path: '/lists',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Lists')
-              : ListsWidget(
-                  familyId: params.getParam('familyId',
-                      ParamType.DocumentReference, false, ['Family']),
-                ),
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'Lists') : ListsWidget(),
         ),
         FFRoute(
           name: 'Announcments',
           path: '/announcments',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Announcments')
-              : AnnouncmentsWidget(
-                  familyId: params.getParam('familyId',
-                      ParamType.DocumentReference, false, ['Family']),
-                ),
+              : AnnouncmentsWidget(),
         ),
         FFRoute(
           name: 'CreateFamily',

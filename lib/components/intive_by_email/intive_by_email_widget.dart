@@ -1,6 +1,9 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +11,12 @@ import 'intive_by_email_model.dart';
 export 'intive_by_email_model.dart';
 
 class IntiveByEmailWidget extends StatefulWidget {
-  const IntiveByEmailWidget({Key? key}) : super(key: key);
+  const IntiveByEmailWidget({
+    Key? key,
+    this.familyId,
+  }) : super(key: key);
+
+  final DocumentReference? familyId;
 
   @override
   _IntiveByEmailWidgetState createState() => _IntiveByEmailWidgetState();
@@ -159,8 +167,26 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        var invitationRecordReference =
+                            InvitationRecord.collection.doc();
+                        await invitationRecordReference
+                            .set(createInvitationRecordData(
+                          invitedEmail: _model.emailAddressController.text,
+                          familyId: widget.familyId,
+                          status: 'Pending',
+                        ));
+                        _model.invitationId =
+                            InvitationRecord.getDocumentFromData(
+                                createInvitationRecordData(
+                                  invitedEmail:
+                                      _model.emailAddressController.text,
+                                  familyId: widget.familyId,
+                                  status: 'Pending',
+                                ),
+                                invitationRecordReference);
+
+                        setState(() {});
                       },
                       text: 'Invite',
                       options: FFButtonOptions(
