@@ -134,6 +134,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'FamiliesManagement')
               : FamiliesManagementWidget(),
+        ),
+        FFRoute(
+          name: 'InvitationsStatus',
+          path: '/invitationsStatus',
+          builder: (context, params) => InvitationsStatusWidget(
+            familyId: params.getParam(
+                'familyId', ParamType.DocumentReference, false, ['Family']),
+          ),
+        ),
+        FFRoute(
+          name: 'Tasks',
+          path: '/tasks',
+          builder: (context, params) => TasksWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

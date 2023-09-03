@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/sprint1/side_menu/side_menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'lists_model.dart';
@@ -80,14 +80,29 @@ class _ListsWidgetState extends State<ListsWidget>
                               buttonSize: 50.0,
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              icon: FaIcon(
-                                FontAwesomeIcons.alignLeft,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                              icon: Icon(
+                                Icons.menu,
+                                color: Color(0xFF57636C),
                                 size: 25.0,
                               ),
                               onPressed: () async {
-                                context.pop();
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => FocusScope.of(context)
+                                          .requestFocus(_model.unfocusNode),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: SideMenuWidget(),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
                               },
                             ),
                           ),
@@ -137,10 +152,14 @@ class _ListsWidgetState extends State<ListsWidget>
                             EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
                         tabs: [
                           Tab(
-                            text: 'Lhopping Lists',
+                            text: FFLocalizations.of(context).getText(
+                              '1l1gb7jl' /* Shopping Lists */,
+                            ),
                           ),
                           Tab(
-                            text: 'To-Do Lists',
+                            text: FFLocalizations.of(context).getText(
+                              'kl32kkn2' /* To-Do Lists */,
+                            ),
                           ),
                         ],
                         controller: _model.tabBarController,
@@ -172,7 +191,9 @@ class _ListsWidgetState extends State<ListsWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            'Shopping Lists',
+                                            FFLocalizations.of(context).getText(
+                                              'v654olpt' /* Shopping Lists */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineLarge
                                                 .override(
@@ -273,7 +294,11 @@ class _ListsWidgetState extends State<ListsWidget>
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Groceries',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '2v8rtj14' /* Groceries */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -338,7 +363,11 @@ class _ListsWidgetState extends State<ListsWidget>
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Pharmicy',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'h2za0ceb' /* Pharmicy */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -403,7 +432,11 @@ class _ListsWidgetState extends State<ListsWidget>
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Huda\'s engagement',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'suyuz7iw' /* Huda's engagement */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -450,7 +483,9 @@ class _ListsWidgetState extends State<ListsWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            'To-Do  Lists',
+                                            FFLocalizations.of(context).getText(
+                                              'y24kmz4g' /* To-Do  Lists */,
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineLarge
                                                 .override(
@@ -551,7 +586,11 @@ class _ListsWidgetState extends State<ListsWidget>
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Shared family Tasks',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        't7exjkmi' /* Shared family Tasks */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -616,7 +655,11 @@ class _ListsWidgetState extends State<ListsWidget>
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Nora',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'ncplf7h3' /* Nora */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -681,7 +724,11 @@ class _ListsWidgetState extends State<ListsWidget>
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Fahad',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'oo8q6r83' /* Fahad */,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)

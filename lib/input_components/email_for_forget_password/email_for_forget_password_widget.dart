@@ -1,35 +1,26 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'intive_by_email_model.dart';
-export 'intive_by_email_model.dart';
+import 'email_for_forget_password_model.dart';
+export 'email_for_forget_password_model.dart';
 
-class IntiveByEmailWidget extends StatefulWidget {
-  const IntiveByEmailWidget({
-    Key? key,
-    this.familyId,
-  }) : super(key: key);
-
-  final DocumentReference? familyId;
+class EmailForForgetPasswordWidget extends StatefulWidget {
+  const EmailForForgetPasswordWidget({Key? key}) : super(key: key);
 
   @override
-  _IntiveByEmailWidgetState createState() => _IntiveByEmailWidgetState();
+  _EmailForForgetPasswordWidgetState createState() =>
+      _EmailForForgetPasswordWidgetState();
 }
 
-class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
-    with TickerProviderStateMixin {
-  late IntiveByEmailModel _model;
+class _EmailForForgetPasswordWidgetState
+    extends State<EmailForForgetPasswordWidget> with TickerProviderStateMixin {
+  late EmailForForgetPasswordModel _model;
 
   final animationsMap = {
     'columnOnActionTriggerAnimation': AnimationInfo(
@@ -45,6 +36,19 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
         ),
       ],
     ),
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      applyInitialState: true,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, 0.0),
+          end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
   };
 
   @override
@@ -56,7 +60,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => IntiveByEmailModel());
+    _model = createModel(context, () => EmailForForgetPasswordModel());
 
     _model.emailAddressController ??= TextEditingController();
     setupAnimations(
@@ -144,7 +148,9 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
                     child: Text(
-                      'Invite a member',
+                      FFLocalizations.of(context).getText(
+                        'nfyx73db' /* Reset Password */,
+                      ),
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
                   ),
@@ -152,7 +158,9 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
                     child: Text(
-                      'enter the familys\' member email  to send an invitation',
+                      FFLocalizations.of(context).getText(
+                        'p3vg5lpv' /* enter your email to reset your... */,
+                      ),
                       style: FlutterFlowTheme.of(context).labelMedium,
                     ),
                   ),
@@ -168,7 +176,9 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                       obscureText: false,
                       decoration: InputDecoration(
                         labelStyle: FlutterFlowTheme.of(context).bodyLarge,
-                        hintText: 'Enter email',
+                        hintText: FFLocalizations.of(context).getText(
+                          'ihsg1d8k' /* Enter email */,
+                        ),
                         hintStyle: FlutterFlowTheme.of(context).labelLarge,
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -215,100 +225,12 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
                     child: FFButtonWidget(
-                      onPressed: () async {
-                        var _shouldSetState = false;
-                        if (functions.checkIfTextMatchRegExp(
-                            _model.emailAddressController.text,
-                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                          _model.numberOfInvitations =
-                              await queryInvitationRecordCount(
-                            queryBuilder: (invitationRecord) => invitationRecord
-                                .where('invitedEmail',
-                                    isEqualTo:
-                                        _model.emailAddressController.text)
-                                .where('familyId', isEqualTo: widget.familyId),
-                          );
-                          _shouldSetState = true;
-                          if (_model.numberOfInvitations != 0) {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Already Invited'),
-                                  content: Text(
-                                      'The user with the email address is already invited to your family.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('EmailFormat'),
-                                content: Text('Email Format Isn\'t Supported'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          if (_shouldSetState) setState(() {});
-                          return;
-                        }
-
-                        var invitationRecordReference =
-                            InvitationRecord.collection.doc();
-                        await invitationRecordReference
-                            .set(createInvitationRecordData(
-                          invitedEmail: _model.emailAddressController.text,
-                          familyId: widget.familyId,
-                          status: 'Pending',
-                        ));
-                        _model.invitationId =
-                            InvitationRecord.getDocumentFromData(
-                                createInvitationRecordData(
-                                  invitedEmail:
-                                      _model.emailAddressController.text,
-                                  familyId: widget.familyId,
-                                  status: 'Pending',
-                                ),
-                                invitationRecordReference);
-                        _shouldSetState = true;
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('Added'),
-                              content: Text('Added'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                        context.safePop();
-                        if (_shouldSetState) setState(() {});
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
-                      text: 'Invite',
+                      text: FFLocalizations.of(context).getText(
+                        'wfanplzm' /* Reset */,
+                      ),
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 50.0,
@@ -336,9 +258,11 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
             ),
           ),
         ],
-      ).animateOnActionTrigger(
-        animationsMap['columnOnActionTriggerAnimation']!,
-      ),
+      )
+          .animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!)
+          .animateOnActionTrigger(
+            animationsMap['columnOnActionTriggerAnimation']!,
+          ),
     );
   }
 }

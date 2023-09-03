@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/sprint1/side_menu/side_menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'calendar_model.dart';
@@ -73,14 +73,29 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                               buttonSize: 50.0,
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              icon: FaIcon(
-                                FontAwesomeIcons.alignLeft,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                              icon: Icon(
+                                Icons.menu,
+                                color: Color(0xFF57636C),
                                 size: 25.0,
                               ),
                               onPressed: () async {
-                                context.pop();
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => FocusScope.of(context)
+                                          .requestFocus(_model.unfocusNode),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: SideMenuWidget(),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
                               },
                             ),
                           ),

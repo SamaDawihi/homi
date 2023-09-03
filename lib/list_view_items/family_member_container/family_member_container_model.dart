@@ -1,23 +1,20 @@
-import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/confiramtion_components/confirm_admin_change/confirm_admin_change_widget.dart';
+import '/confiramtion_components/confirm_remove_member/confirm_remove_member_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/sprint1/side_menu/side_menu_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class CalendarModel extends FlutterFlowModel {
-  ///  State fields for stateful widgets in this page.
-
-  final unfocusNode = FocusNode();
-
+class FamilyMemberContainerModel extends FlutterFlowModel {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 

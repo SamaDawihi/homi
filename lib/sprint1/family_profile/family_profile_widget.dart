@@ -1,11 +1,10 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/intive_by_email/intive_by_email_widget.dart';
-import '/components_of_families_management_page/family_member_container/family_member_container_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/list_view_items/family_member_container/family_member_container_widget.dart';
+import '/sprint1/side_menu/side_menu_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -113,7 +112,23 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                     size: 25.0,
                                   ),
                                   onPressed: () async {
-                                    context.pop();
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      enableDrag: false,
+                                      context: context,
+                                      builder: (context) {
+                                        return GestureDetector(
+                                          onTap: () => FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode),
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: SideMenuWidget(),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => setState(() {}));
                                   },
                                 ),
                               ),
@@ -209,7 +224,9 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 0.0),
                                       child: Text(
-                                        'The Jones',
+                                        FFLocalizations.of(context).getText(
+                                          'v5jc555w' /* The Jones */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -219,21 +236,27 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               ),
                             ),
                           ),
-                          Column(
+                        ],
+                      ),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              if (familyProfileFamilyRecord.adminId ==
-                                  currentUserReference)
-                                Icon(
-                                  Icons.edit_outlined,
-                                  color: Color(0xFF433EA3),
-                                  size: 30.0,
-                                ),
+                              Icon(
+                                Icons.settings_outlined,
+                                color: Color(0xFF555EBE),
+                                size: 24.0,
+                              ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
@@ -241,7 +264,9 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          'My Family Members',
+                          FFLocalizations.of(context).getText(
+                            '6ibsn7kw' /* My Family Members */,
+                          ),
                           style: FlutterFlowTheme.of(context).labelMedium,
                         ),
                       ),
@@ -304,140 +329,209 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                         },
                       ),
                     ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
-                                enableDrag: false,
-                                context: context,
-                                builder: (context) {
-                                  return GestureDetector(
-                                    onTap: () => FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode),
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: IntiveByEmailWidget(
-                                        familyId: widget.familyId,
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 20.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'g30gpykm' /* Invite a Member */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .success,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
                                       ),
                                     ),
-                                  );
-                                },
-                              ).then((value) => setState(() {}));
-                            },
-                            text: 'Invite a Member',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFF555EBE),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Delete the Family'),
-                                            content: Text(
-                                                'by continuing all family data will be lost'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('Confirm'),
-                                              ),
-                                            ],
-                                          );
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 10.0, 10.0, 10.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context
+                                              .pushNamed('InvitationsStatus');
                                         },
-                                      ) ??
-                                      false;
-                            },
-                            text: 'Delete Family',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFFDE1B27),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'n7mptuv2' /* view status */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 20.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'Delete the Family'),
+                                                        content: Text(
+                                                            'by continuing all family data will be lost'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child:
+                                                                Text('Cancel'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child:
+                                                                Text('Confirm'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'uy8eb4xa' /* Delete Family */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFFDE1B27),
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 20.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          'eew001d9' /* Leave Family */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFFDE1B27),
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Readex Pro',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
-                          child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
-                            },
-                            text: 'Leave Family',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFFDE1B27),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

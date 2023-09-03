@@ -1,21 +1,20 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'emptyfamilies_model.dart';
-export 'emptyfamilies_model.dart';
+import 'emptyinvitations_model.dart';
+export 'emptyinvitations_model.dart';
 
-class EmptyfamiliesWidget extends StatefulWidget {
-  const EmptyfamiliesWidget({Key? key}) : super(key: key);
+class EmptyinvitationsWidget extends StatefulWidget {
+  const EmptyinvitationsWidget({Key? key}) : super(key: key);
 
   @override
-  _EmptyfamiliesWidgetState createState() => _EmptyfamiliesWidgetState();
+  _EmptyinvitationsWidgetState createState() => _EmptyinvitationsWidgetState();
 }
 
-class _EmptyfamiliesWidgetState extends State<EmptyfamiliesWidget> {
-  late EmptyfamiliesModel _model;
+class _EmptyinvitationsWidgetState extends State<EmptyinvitationsWidget> {
+  late EmptyinvitationsModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -26,7 +25,7 @@ class _EmptyfamiliesWidgetState extends State<EmptyfamiliesWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EmptyfamiliesModel());
+    _model = createModel(context, () => EmptyinvitationsModel());
   }
 
   @override
@@ -57,8 +56,8 @@ class _EmptyfamiliesWidgetState extends State<EmptyfamiliesWidget> {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                child: FaIcon(
-                  FontAwesomeIcons.houseDamage,
+                child: Icon(
+                  Icons.people,
                   color: Color(0xFF8086CE),
                   size: 30.0,
                 ),
@@ -66,16 +65,23 @@ class _EmptyfamiliesWidgetState extends State<EmptyfamiliesWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                 child: Text(
-                  'seems that you don\'t have any family',
+                  FFLocalizations.of(context).getText(
+                    'drm1h3u0' /* seems that you don't have any ... */,
+                  ),
                   style: FlutterFlowTheme.of(context).bodyLarge,
                 ),
               ),
-              Text(
-                'create a new family or join an existing one',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                    ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    '0nvpgu2z' /* if you want to join a specific... */,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                      ),
+                ),
               ),
             ],
           ),

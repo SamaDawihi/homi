@@ -1,14 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/emptyfamilies_widget.dart';
-import '/components/emptyinvitations_widget.dart';
-import '/components/logout_dialog_widget.dart';
-import '/components_of_families_management_page/my_family_container/my_family_container_widget.dart';
-import '/components_of_families_management_page/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/list_view_items/emptyfamilies/emptyfamilies_widget.dart';
+import '/list_view_items/emptyinvitations/emptyinvitations_widget.dart';
+import '/list_view_items/my_family_container/my_family_container_widget.dart';
+import '/list_view_items/recieved_invitation_container/recieved_invitation_container_widget.dart';
+import '/sprint1/side_menu/side_menu_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +79,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                           fillColor:
                               FlutterFlowTheme.of(context).primaryBackground,
                           icon: Icon(
-                            Icons.logout,
+                            Icons.menu,
                             color: Color(0xFF57636C),
                             size: 25.0,
                           ),
@@ -95,7 +95,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                                       .requestFocus(_model.unfocusNode),
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
-                                    child: LogoutDialogWidget(),
+                                    child: SideMenuWidget(),
                                   ),
                                 );
                               },
@@ -107,7 +107,9 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          'Homi',
+                          FFLocalizations.of(context).getText(
+                            's3d9qvh1' /* Homi */,
+                          ),
                           style: GoogleFonts.getFont(
                             'Open Sans',
                             color: Color(0xFF555EBE),
@@ -150,7 +152,9 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                   padding:
                       EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
                   child: Text(
-                    'welcome to homi, choose whether you want to create a new family, join your old families, or accept an invitation to be a member of new family....',
+                    FFLocalizations.of(context).getText(
+                      '9ukj6vmr' /* welcome to homi, choose whethe... */,
+                    ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -214,7 +218,9 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
 
                             setState(() {});
                           },
-                          text: 'Create a family',
+                          text: FFLocalizations.of(context).getText(
+                            'wb1iebtz' /* Create a family */,
+                          ),
                           options: FFButtonOptions(
                             height: 40.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -243,7 +249,9 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                   child: Text(
-                    'My Families',
+                    FFLocalizations.of(context).getText(
+                      '5dfbp8ya' /* My Families */,
+                    ),
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Readex Pro',
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -318,7 +326,9 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 7.0, 0.0, 0.0),
                   child: Text(
-                    'List of invitations',
+                    FFLocalizations.of(context).getText(
+                      'r2qmfx8y' /* List of invitations */,
+                    ),
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Readex Pro',
                           color: FlutterFlowTheme.of(context).primaryText,

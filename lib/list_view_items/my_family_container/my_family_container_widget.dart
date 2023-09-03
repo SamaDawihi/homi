@@ -118,7 +118,9 @@ class _MyFamilyContainerWidgetState extends State<MyFamilyContainerWidget> {
                     }.withoutNulls,
                   );
                 },
-                text: 'Join',
+                text: FFLocalizations.of(context).getText(
+                  '4t0j9wzp' /* Join */,
+                ),
                 options: FFButtonOptions(
                   height: 20.0,
                   padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),

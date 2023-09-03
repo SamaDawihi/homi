@@ -4,18 +4,19 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'remove_member_model.dart';
-export 'remove_member_model.dart';
+import 'confirm_admin_change_model.dart';
+export 'confirm_admin_change_model.dart';
 
-class RemoveMemberWidget extends StatefulWidget {
-  const RemoveMemberWidget({Key? key}) : super(key: key);
+class ConfirmAdminChangeWidget extends StatefulWidget {
+  const ConfirmAdminChangeWidget({Key? key}) : super(key: key);
 
   @override
-  _RemoveMemberWidgetState createState() => _RemoveMemberWidgetState();
+  _ConfirmAdminChangeWidgetState createState() =>
+      _ConfirmAdminChangeWidgetState();
 }
 
-class _RemoveMemberWidgetState extends State<RemoveMemberWidget> {
-  late RemoveMemberModel _model;
+class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
+  late ConfirmAdminChangeModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -26,7 +27,7 @@ class _RemoveMemberWidgetState extends State<RemoveMemberWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RemoveMemberModel());
+    _model = createModel(context, () => ConfirmAdminChangeModel());
   }
 
   @override
@@ -76,7 +77,9 @@ class _RemoveMemberWidgetState extends State<RemoveMemberWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Remove Member',
+                      FFLocalizations.of(context).getText(
+                        'eldfua3s' /* Make Admin */,
+                      ),
                       textAlign: TextAlign.start,
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
@@ -88,7 +91,9 @@ class _RemoveMemberWidgetState extends State<RemoveMemberWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
-                        'Are you sure you want to remove this family member?',
+                        FFLocalizations.of(context).getText(
+                          'wrtrso1u' /* Are you sure you want to pass ... */,
+                        ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Readex Pro',
@@ -112,7 +117,9 @@ class _RemoveMemberWidgetState extends State<RemoveMemberWidget> {
                         onPressed: () async {
                           context.safePop();
                         },
-                        text: 'Cancel',
+                        text: FFLocalizations.of(context).getText(
+                          'hoq483dp' /* Cancel */,
+                        ),
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -138,7 +145,9 @@ class _RemoveMemberWidgetState extends State<RemoveMemberWidget> {
                       onPressed: () {
                         print('Button pressed ...');
                       },
-                      text: 'OK',
+                      text: FFLocalizations.of(context).getText(
+                        '087ou14d' /* OK */,
+                      ),
                       options: FFButtonOptions(
                         height: 40.0,
                         padding: EdgeInsetsDirectional.fromSTEB(

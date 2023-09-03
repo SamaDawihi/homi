@@ -5,18 +5,18 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'logout_dialog_model.dart';
-export 'logout_dialog_model.dart';
+import 'confirm_logout_model.dart';
+export 'confirm_logout_model.dart';
 
-class LogoutDialogWidget extends StatefulWidget {
-  const LogoutDialogWidget({Key? key}) : super(key: key);
+class ConfirmLogoutWidget extends StatefulWidget {
+  const ConfirmLogoutWidget({Key? key}) : super(key: key);
 
   @override
-  _LogoutDialogWidgetState createState() => _LogoutDialogWidgetState();
+  _ConfirmLogoutWidgetState createState() => _ConfirmLogoutWidgetState();
 }
 
-class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
-  late LogoutDialogModel _model;
+class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
+  late ConfirmLogoutModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -27,7 +27,7 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LogoutDialogModel());
+    _model = createModel(context, () => ConfirmLogoutModel());
   }
 
   @override
@@ -77,7 +77,9 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Confirm Logout',
+                      FFLocalizations.of(context).getText(
+                        '65g34v9l' /* Confirm Logout */,
+                      ),
                       textAlign: TextAlign.start,
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
@@ -89,7 +91,9 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
-                        'Are you sure you want to logout from your account?',
+                        FFLocalizations.of(context).getText(
+                          'jtcq0s5r' /* Are you sure you want to logou... */,
+                        ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Readex Pro',
@@ -113,7 +117,9 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                         onPressed: () async {
                           context.safePop();
                         },
-                        text: 'Cancel',
+                        text: FFLocalizations.of(context).getText(
+                          'v0kxwgmn' /* Cancel */,
+                        ),
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -143,7 +149,9 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
 
                         context.goNamedAuth('LoginSignupPage', context.mounted);
                       },
-                      text: 'OK',
+                      text: FFLocalizations.of(context).getText(
+                        '47wt1j9k' /* OK */,
+                      ),
                       options: FFButtonOptions(
                         height: 40.0,
                         padding: EdgeInsetsDirectional.fromSTEB(

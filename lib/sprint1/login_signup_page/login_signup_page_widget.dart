@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/input_components/email_for_forget_password/email_for_forget_password_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -170,7 +171,9 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            'Homi',
+                            FFLocalizations.of(context).getText(
+                              'rd3y7s3g' /* Homi */,
+                            ),
                             style: GoogleFonts.getFont(
                               'Open Sans',
                               color: Color(0xFF555EBE),
@@ -232,10 +235,16 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                       indicatorWeight: 3.0,
                                       tabs: [
                                         Tab(
-                                          text: 'Create Account',
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'sdvz3hww' /* Create Account */,
+                                          ),
                                         ),
                                         Tab(
-                                          text: 'Log In',
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'r460rg34' /* Log In */,
+                                          ),
                                         ),
                                       ],
                                       controller: _model.tabBarController,
@@ -274,7 +283,10 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   Text(
-                                                    'Create Account',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '2opk03cs' /* Create Account */,
+                                                    ),
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -286,7 +298,11 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 24.0),
                                                     child: Text(
-                                                      'Let\'s get started by filling out the form below.',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'kuk2x6vy' /* Let's get started by filling o... */,
+                                                      ),
                                                       textAlign:
                                                           TextAlign.start,
                                                       style:
@@ -312,7 +328,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Name',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'tn82g2sg' /* Name */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -425,7 +446,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Email',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'v5nmx9mo' /* Email */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -539,7 +565,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             .passwordVisibility,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Password',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'k23j5lsk' /* Password */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -674,7 +705,11 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         decoration:
                                                             InputDecoration(
                                                           labelText:
-                                                              're-enter password',
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'mgqcd7uj' /* re-enter password */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -858,7 +893,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               'FamiliesManagement',
                                                               context.mounted);
                                                         },
-                                                        text: 'Get Started',
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'z14qfm03' /* Get Started */,
+                                                        ),
                                                         options:
                                                             FFButtonOptions(
                                                           width: 230.0,
@@ -938,7 +978,10 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   Text(
-                                                    'Welcome Back',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'oq2a3hh9' /* Welcome Back */,
+                                                    ),
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -950,7 +993,11 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 24.0),
                                                     child: Text(
-                                                      'Fill out the information below in order to access your account.',
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'tt4h00am' /* Fill out the information below... */,
+                                                      ),
                                                       textAlign:
                                                           TextAlign.start,
                                                       style:
@@ -976,7 +1023,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Email',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'fqu7zqlx' /* Email */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1081,7 +1133,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             .loginPasswordVisibility,
                                                         decoration:
                                                             InputDecoration(
-                                                          labelText: 'Password',
+                                                          labelText:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                            'pje2u461' /* Password */,
+                                                          ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1224,7 +1281,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               'FamiliesManagement',
                                                               context.mounted);
                                                         },
-                                                        text: 'Sign In',
+                                                        text:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          'tbi39cgz' /* Log In */,
+                                                        ),
                                                         options:
                                                             FFButtonOptions(
                                                           width: 230.0,
@@ -1284,6 +1346,33 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   16.0),
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
+                                                          await showModalBottomSheet(
+                                                            isScrollControlled:
+                                                                true,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            enableDrag: false,
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return GestureDetector(
+                                                                onTap: () => FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode),
+                                                                child: Padding(
+                                                                  padding: MediaQuery
+                                                                      .viewInsetsOf(
+                                                                          context),
+                                                                  child:
+                                                                      EmailForForgetPasswordWidget(),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              setState(() {}));
+
                                                           if (_model
                                                               .loginEmailAddressController
                                                               .text
@@ -1308,7 +1397,11 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           );
                                                         },
                                                         text:
-                                                            'Forgot Password?',
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getText(
+                                                          '7zdn48xn' /* Forgot Password? */,
+                                                        ),
                                                         options:
                                                             FFButtonOptions(
                                                           height: 44.0,

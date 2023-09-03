@@ -9,3 +9,6 @@ export '/pages/lists/lists_widget.dart' show ListsWidget;
 export '/pages/announcments/announcments_widget.dart' show AnnouncmentsWidget;
 export '/sprint1/families_management/families_management_widget.dart'
     show FamiliesManagementWidget;
+export '/sprint1/invitations_status/invitations_status_widget.dart'
+    show InvitationsStatusWidget;
+export '/pages/tasks/tasks_widget.dart' show TasksWidget;

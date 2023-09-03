@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/make_admin_widget.dart';
-import '/components/remove_member_widget.dart';
+import '/confiramtion_components/confirm_admin_change/confirm_admin_change_widget.dart';
+import '/confiramtion_components/confirm_remove_member/confirm_remove_member_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -169,7 +169,7 @@ class _FamilyMemberContainerWidgetState
                                   builder: (context) {
                                     return Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: MakeAdminWidget(),
+                                      child: ConfirmAdminChangeWidget(),
                                     );
                                   },
                                 ).then((value) => setState(() {}));
@@ -195,7 +195,7 @@ class _FamilyMemberContainerWidgetState
                                   builder: (context) {
                                     return Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: RemoveMemberWidget(),
+                                      child: ConfirmRemoveMemberWidget(),
                                     );
                                   },
                                 ).then((value) => setState(() {}));

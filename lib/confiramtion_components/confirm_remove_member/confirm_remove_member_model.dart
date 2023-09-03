@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class RemoveMemberModel extends FlutterFlowModel {
+class ConfirmRemoveMemberModel extends FlutterFlowModel {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

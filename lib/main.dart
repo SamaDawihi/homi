@@ -94,7 +94,10 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar'),
+      ],
       theme: ThemeData(
         brightness: Brightness.light,
         scrollbarTheme: ScrollbarThemeData(),
@@ -162,7 +165,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.family_restroom_sharp,
               size: 24.0,
             ),
-            label: 'Home',
+            label: FFLocalizations.of(context).getText(
+              'o09fvi6t' /* Home */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -170,7 +175,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.calendar_month,
               size: 24.0,
             ),
-            label: 'Home',
+            label: FFLocalizations.of(context).getText(
+              '2adgmlg5' /* Home */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -178,7 +185,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.checklist_sharp,
               size: 24.0,
             ),
-            label: 'Home',
+            label: FFLocalizations.of(context).getText(
+              'cjn0szm1' /* Home */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -186,7 +195,9 @@ class _NavBarPageState extends State<NavBarPage> {
               FontAwesomeIcons.users,
               size: 24.0,
             ),
-            label: 'Home',
+            label: FFLocalizations.of(context).getText(
+              'yzk7wcws' /* Home */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -194,7 +205,9 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home_outlined,
               size: 24.0,
             ),
-            label: 'Home',
+            label: FFLocalizations.of(context).getText(
+              'xa30v5q4' /* Home */,
+            ),
             tooltip: '',
           )
         ],

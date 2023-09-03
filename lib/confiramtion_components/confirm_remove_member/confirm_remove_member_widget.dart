@@ -4,18 +4,19 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'make_admin_model.dart';
-export 'make_admin_model.dart';
+import 'confirm_remove_member_model.dart';
+export 'confirm_remove_member_model.dart';
 
-class MakeAdminWidget extends StatefulWidget {
-  const MakeAdminWidget({Key? key}) : super(key: key);
+class ConfirmRemoveMemberWidget extends StatefulWidget {
+  const ConfirmRemoveMemberWidget({Key? key}) : super(key: key);
 
   @override
-  _MakeAdminWidgetState createState() => _MakeAdminWidgetState();
+  _ConfirmRemoveMemberWidgetState createState() =>
+      _ConfirmRemoveMemberWidgetState();
 }
 
-class _MakeAdminWidgetState extends State<MakeAdminWidget> {
-  late MakeAdminModel _model;
+class _ConfirmRemoveMemberWidgetState extends State<ConfirmRemoveMemberWidget> {
+  late ConfirmRemoveMemberModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -26,7 +27,7 @@ class _MakeAdminWidgetState extends State<MakeAdminWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MakeAdminModel());
+    _model = createModel(context, () => ConfirmRemoveMemberModel());
   }
 
   @override
@@ -76,7 +77,9 @@ class _MakeAdminWidgetState extends State<MakeAdminWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Make Admin',
+                      FFLocalizations.of(context).getText(
+                        'tuarrgzc' /* Remove Member */,
+                      ),
                       textAlign: TextAlign.start,
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
@@ -88,7 +91,9 @@ class _MakeAdminWidgetState extends State<MakeAdminWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
-                        'Are you sure you want to pass admin role to this family member?',
+                        FFLocalizations.of(context).getText(
+                          '3z7d1ao0' /* Are you sure you want to remov... */,
+                        ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Readex Pro',
@@ -112,7 +117,9 @@ class _MakeAdminWidgetState extends State<MakeAdminWidget> {
                         onPressed: () async {
                           context.safePop();
                         },
-                        text: 'Cancel',
+                        text: FFLocalizations.of(context).getText(
+                          'iy8xgukw' /* Cancel */,
+                        ),
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -138,7 +145,9 @@ class _MakeAdminWidgetState extends State<MakeAdminWidget> {
                       onPressed: () {
                         print('Button pressed ...');
                       },
-                      text: 'OK',
+                      text: FFLocalizations.of(context).getText(
+                        'rllwnm0e' /* OK */,
+                      ),
                       options: FFButtonOptions(
                         height: 40.0,
                         padding: EdgeInsetsDirectional.fromSTEB(
