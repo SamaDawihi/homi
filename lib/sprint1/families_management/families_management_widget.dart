@@ -64,75 +64,72 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
-                          child: FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 30.0,
-                            borderWidth: 1.0,
-                            buttonSize: 50.0,
-                            fillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            icon: Icon(
-                              Icons.logout,
-                              color: Color(0xFF57636C),
-                              size: 25.0,
-                            ),
-                            onPressed: () async {
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
-                                enableDrag: false,
-                                context: context,
-                                builder: (context) {
-                                  return GestureDetector(
-                                    onTap: () => FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode),
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: LogoutDialogWidget(),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => setState(() {}));
-                            },
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30.0,
+                          borderWidth: 1.0,
+                          buttonSize: 50.0,
+                          fillColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
+                          icon: Icon(
+                            Icons.logout,
+                            color: Color(0xFF57636C),
+                            size: 25.0,
+                          ),
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () => FocusScope.of(context)
+                                      .requestFocus(_model.unfocusNode),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: LogoutDialogWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          'Homi',
+                          style: GoogleFonts.getFont(
+                            'Open Sans',
+                            color: Color(0xFF555EBE),
+                            fontWeight: FontWeight.w800,
+                            fontSize: 26.0,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Homi',
-                            style: GoogleFonts.getFont(
-                              'Open Sans',
-                              color: Color(0xFF555EBE),
-                              fontWeight: FontWeight.w800,
-                              fontSize: 26.0,
-                            ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset(
+                            'assets/images/mainLogo.png',
+                            width: 80.0,
+                            height: 80.0,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 6.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              'assets/images/mainLogo.png',
-                              width: 80.0,
-                              height: 80.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -165,83 +162,78 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 15.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
                         alignment: AlignmentDirectional(-1.0, 1.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              90.0, 0.0, 90.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              var familyRecordReference =
-                                  FamilyRecord.collection.doc();
-                              await familyRecordReference
-                                  .set(createFamilyRecordData(
-                                name: 'Family ${random_data.randomString(
-                                  4,
-                                  4,
-                                  true,
-                                  true,
-                                  true,
-                                )}',
-                                adminId: currentUserReference,
-                              ));
-                              _model.familyId =
-                                  FamilyRecord.getDocumentFromData(
-                                      createFamilyRecordData(
-                                        name:
-                                            'Family ${random_data.randomString(
-                                          4,
-                                          4,
-                                          true,
-                                          true,
-                                          true,
-                                        )}',
-                                        adminId: currentUserReference,
-                                      ),
-                                      familyRecordReference);
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            var familyRecordReference =
+                                FamilyRecord.collection.doc();
+                            await familyRecordReference
+                                .set(createFamilyRecordData(
+                              name: 'Family ${random_data.randomString(
+                                4,
+                                4,
+                                true,
+                                true,
+                                true,
+                              )}',
+                              adminId: currentUserReference,
+                            ));
+                            _model.familyId = FamilyRecord.getDocumentFromData(
+                                createFamilyRecordData(
+                                  name: 'Family ${random_data.randomString(
+                                    4,
+                                    4,
+                                    true,
+                                    true,
+                                    true,
+                                  )}',
+                                  adminId: currentUserReference,
+                                ),
+                                familyRecordReference);
 
-                              await MemberRecord.collection
-                                  .doc()
-                                  .set(createMemberRecordData(
-                                    memberId: currentUserReference,
-                                    familyId: _model.familyId?.reference,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                  ));
+                            await MemberRecord.collection
+                                .doc()
+                                .set(createMemberRecordData(
+                                  memberId: currentUserReference,
+                                  familyId: _model.familyId?.reference,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                ));
 
-                              context.pushNamed(
-                                'FamilyProfile',
-                                queryParameters: {
-                                  'familyId': serializeParam(
-                                    _model.familyId?.reference,
-                                    ParamType.DocumentReference,
-                                  ),
-                                }.withoutNulls,
-                              );
+                            context.pushNamed(
+                              'FamilyProfile',
+                              queryParameters: {
+                                'familyId': serializeParam(
+                                  _model.familyId?.reference,
+                                  ParamType.DocumentReference,
+                                ),
+                              }.withoutNulls,
+                            );
 
-                              setState(() {});
-                            },
-                            text: 'Create a family',
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFF555EBE),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Colors.white,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
+                            setState(() {});
+                          },
+                          text: 'Create a family',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0xFF555EBE),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
                             ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                       ),
