@@ -51,8 +51,8 @@ class _MyFamilyContainerWidgetState extends State<MyFamilyContainerWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 12.0, 12.0),
       child: Container(
-        width: 160.0,
-        height: 100.0,
+        width: 140.0,
+        height: 140.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           boxShadow: [

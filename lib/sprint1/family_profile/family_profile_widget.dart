@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/intive_by_email/intive_by_email_widget.dart';
 import '/components_of_families_management_page/family_member_container/family_member_container_widget.dart';
@@ -237,11 +238,13 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                Icons.edit_outlined,
-                                color: Color(0xFF433EA3),
-                                size: 30.0,
-                              ),
+                              if (familyProfileFamilyRecord.adminId ==
+                                  currentUserReference)
+                                Icon(
+                                  Icons.edit_outlined,
+                                  color: Color(0xFF433EA3),
+                                  size: 30.0,
+                                ),
                             ],
                           ),
                         ],
@@ -308,6 +311,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   ),
                                   memberId: familyMembersListViewMemberRecord
                                       .memberId!,
+                                  familyId: widget.familyId!,
                                 ),
                               );
                             },

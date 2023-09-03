@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,9 +13,11 @@ class FamilyMemberContainerWidget extends StatefulWidget {
   const FamilyMemberContainerWidget({
     Key? key,
     required this.memberId,
+    required this.familyId,
   }) : super(key: key);
 
   final DocumentReference? memberId;
+  final DocumentReference? familyId;
 
   @override
   _FamilyMemberContainerWidgetState createState() =>
@@ -84,66 +87,135 @@ class _FamilyMemberContainerWidgetState
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(26.0),
-                    child: Image.network(
-                      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
-                      width: 36.0,
-                      height: 36.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            familYMemberContainerUsersRecord.displayName,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+              child: StreamBuilder<FamilyRecord>(
+                stream: FamilyRecord.getDocument(widget.familyId!),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).primary,
                           ),
-                          Row(
+                        ),
+                      ),
+                    );
+                  }
+                  final rowFamilyRecord = snapshot.data!;
+                  return Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(26.0),
+                        child: Image.network(
+                          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                          width: 36.0,
+                          height: 36.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 0.0, 0.0),
+                          child: Column(
                             mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Text(
-                                  familYMemberContainerUsersRecord.email,
-                                  style:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                ),
+                              Text(
+                                familYMemberContainerUsersRecord.displayName,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 4.0, 0.0, 0.0),
+                                    child: Text(
+                                      familYMemberContainerUsersRecord.email,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          if (rowFamilyRecord.adminId == currentUserReference)
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Are you Sure'),
+                                              content: Text(
+                                                  'Make ${familYMemberContainerUsersRecord.displayName} The Admin'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: Text('Confirm'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  await widget.familyId!
+                                      .update(createFamilyRecordData(
+                                    name: '',
+                                    adminId: familYMemberContainerUsersRecord
+                                        .reference,
+                                  ));
+                                  return;
+                                } else {
+                                  return;
+                                }
+                              },
+                              child: Icon(
+                                Icons.admin_panel_settings_rounded,
+                                color: Color(0xFF433EA3),
+                                size: 30.0,
+                              ),
+                            ),
+                          if (rowFamilyRecord.adminId == currentUserReference)
+                            Icon(
+                              Icons.delete_forever_sharp,
+                              color: Color(0xFFDE1B27),
+                              size: 30.0,
+                            ),
                         ],
                       ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Icon(
-                        Icons.admin_panel_settings_rounded,
-                        color: Color(0xFF433EA3),
-                        size: 30.0,
-                      ),
-                      Icon(
-                        Icons.delete_forever_sharp,
-                        color: Color(0xFFDE1B27),
-                        size: 30.0,
-                      ),
                     ],
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           );

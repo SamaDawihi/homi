@@ -1284,8 +1284,28 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   16.0),
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          Navigator.pop(
-                                                              context);
+                                                          if (_model
+                                                              .emailAddressController
+                                                              .text
+                                                              .isEmpty) {
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .showSnackBar(
+                                                              SnackBar(
+                                                                content: Text(
+                                                                  'Email required!',
+                                                                ),
+                                                              ),
+                                                            );
+                                                            return;
+                                                          }
+                                                          await authManager
+                                                              .resetPassword(
+                                                            email: _model
+                                                                .emailAddressController
+                                                                .text,
+                                                            context: context,
+                                                          );
                                                         },
                                                         text:
                                                             'Forgot Password?',
