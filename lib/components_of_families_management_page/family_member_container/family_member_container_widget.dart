@@ -1,5 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/make_admin_widget.dart';
+import '/components/remove_member_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -159,45 +161,18 @@ class _FamilyMemberContainerWidgetState
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                var confirmDialogResponse =
-                                    await showDialog<bool>(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Are you Sure'),
-                                              content: Text(
-                                                  'Make ${familYMemberContainerUsersRecord.displayName} The Admin'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('Cancel'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Confirm'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ) ??
-                                        false;
-                                if (confirmDialogResponse) {
-                                  await widget.familyId!
-                                      .update(createFamilyRecordData(
-                                    name: '',
-                                    adminId: familYMemberContainerUsersRecord
-                                        .reference,
-                                  ));
-                                  return;
-                                } else {
-                                  return;
-                                }
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: MakeAdminWidget(),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
                               },
                               child: Icon(
                                 Icons.admin_panel_settings_rounded,
@@ -206,10 +181,30 @@ class _FamilyMemberContainerWidgetState
                               ),
                             ),
                           if (rowFamilyRecord.adminId == currentUserReference)
-                            Icon(
-                              Icons.delete_forever_sharp,
-                              color: Color(0xFFDE1B27),
-                              size: 30.0,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: RemoveMemberWidget(),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+                              },
+                              child: Icon(
+                                Icons.delete_forever_sharp,
+                                color: Color(0xFFDE1B27),
+                                size: 30.0,
+                              ),
                             ),
                         ],
                       ),

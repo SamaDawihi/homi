@@ -1285,7 +1285,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
                                                           if (_model
-                                                              .emailAddressController
+                                                              .loginEmailAddressController
                                                               .text
                                                               .isEmpty) {
                                                             ScaffoldMessenger
@@ -1302,7 +1302,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           await authManager
                                                               .resetPassword(
                                                             email: _model
-                                                                .emailAddressController
+                                                                .loginEmailAddressController
                                                                 .text,
                                                             context: context,
                                                           );

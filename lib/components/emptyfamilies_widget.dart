@@ -1,6 +1,5 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,12 +8,7 @@ import 'emptyfamilies_model.dart';
 export 'emptyfamilies_model.dart';
 
 class EmptyfamiliesWidget extends StatefulWidget {
-  const EmptyfamiliesWidget({
-    Key? key,
-    required this.familyId,
-  }) : super(key: key);
-
-  final DocumentReference? familyId;
+  const EmptyfamiliesWidget({Key? key}) : super(key: key);
 
   @override
   _EmptyfamiliesWidgetState createState() => _EmptyfamiliesWidgetState();

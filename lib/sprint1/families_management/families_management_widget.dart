@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/emptyfamilies_widget.dart';
 import '/components/emptyinvitations_widget.dart';
+import '/components/logout_dialog_widget.dart';
 import '/components_of_families_management_page/my_family_container/my_family_container_widget.dart';
 import '/components_of_families_management_page/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -85,39 +86,22 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                               size: 25.0,
                             ),
                             onPressed: () async {
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Confirmation'),
-                                            content: Text(
-                                                'Are You Sure You Want To Log Out?'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('Confirm'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (!confirmDialogResponse) {
-                                return;
-                              }
-                              GoRouter.of(context).prepareAuthEvent();
-                              await authManager.signOut();
-                              GoRouter.of(context).clearRedirectLocation();
-
-                              context.goNamedAuth(
-                                  'LoginSignupPage', context.mounted);
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) {
+                                  return GestureDetector(
+                                    onTap: () => FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: LogoutDialogWidget(),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
                             },
                           ),
                         ),
@@ -308,9 +292,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                           child: Container(
                             width: 500.0,
                             height: 200.0,
-                            child: EmptyfamiliesWidget(
-                              familyId: null!,
-                            ),
+                            child: EmptyfamiliesWidget(),
                           ),
                         );
                       }
