@@ -694,6 +694,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إعادة ضبط',
     },
   },
+  // FamilyName
+  {
+    'skuj3o8o': {
+      'en': 'Write your family name...',
+      'ar': '',
+    },
+    'xloymerx': {
+      'en': 'Label here...',
+      'ar': '',
+    },
+    '6hvehvov': {
+      'en': 'Cancel',
+      'ar': '',
+    },
+    'mhxbih8n': {
+      'en': 'Create',
+      'ar': '',
+    },
+  },
   // Miscellaneous
   {
     'y9xb58yl': {
