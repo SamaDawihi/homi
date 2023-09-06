@@ -144,7 +144,7 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        setState(() {
+                        FFAppState().update(() {
                           FFAppState().familyId = null;
                         });
                         GoRouter.of(context).prepareAuthEvent();
