@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/list_view_items/emptyfamilies/emptyfamilies_widget.dart';
+import '/list_view_items/emptyinvitations/emptyinvitations_widget.dart';
 import '/list_view_items/my_family_container/my_family_container_widget.dart';
 import '/list_view_items/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
@@ -372,6 +373,13 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       }
                       List<InvitationRecord> listViewInvitationRecordList =
                           snapshot.data!;
+                      if (listViewInvitationRecordList.isEmpty) {
+                        return Container(
+                          width: 500.0,
+                          height: 200.0,
+                          child: EmptyinvitationsWidget(),
+                        );
+                      }
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         primary: false,
