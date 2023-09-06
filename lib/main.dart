@@ -12,6 +12,7 @@ import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
@@ -124,7 +125,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'FamiliesManagement';
+  String _currentPageName = 'FamilyProfile';
   late Widget? _currentPage;
 
   @override
@@ -140,8 +141,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'FamilyProfile': FamilyProfileWidget(),
       'Calendar': CalendarWidget(),
       'Lists': ListsWidget(),
-      'Announcments': AnnouncmentsWidget(),
-      'FamiliesManagement': FamiliesManagementWidget(),
+      'Announcements': AnnouncementsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -197,16 +197,6 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             label: FFLocalizations.of(context).getText(
               'yzk7wcws' /* Home */,
-            ),
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24.0,
-            ),
-            label: FFLocalizations.of(context).getText(
-              'xa30v5q4' /* Home */,
             ),
             tooltip: '',
           )

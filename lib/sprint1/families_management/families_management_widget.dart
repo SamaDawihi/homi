@@ -12,6 +12,7 @@ import '/sprint1/side_menu/side_menu_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'families_management_model.dart';
@@ -205,21 +206,18 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                                   familyId: _model.familyId?.reference,
                                   color: FlutterFlowTheme.of(context).primary,
                                 ));
+                            FFAppState().update(() {
+                              FFAppState().familyId =
+                                  _model.familyId?.reference;
+                            });
 
-                            context.pushNamed(
-                              'FamilyProfile',
-                              queryParameters: {
-                                'familyId': serializeParam(
-                                  _model.familyId?.reference,
-                                  ParamType.DocumentReference,
-                                ),
-                              }.withoutNulls,
-                            );
+                            context.pushNamed('FamilyProfile');
 
                             setState(() {});
                           },
-                          text: FFLocalizations.of(context).getText(
-                            'wb1iebtz' /* Create a family */,
+                          text: valueOrDefault<String>(
+                            FFAppState().familyId?.id,
+                            'not set',
                           ),
                           options: FFButtonOptions(
                             height: 40.0,
@@ -275,12 +273,11 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
+                            width: 25.0,
+                            height: 25.0,
+                            child: SpinKitRipple(
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 25.0,
                             ),
                           ),
                         );
@@ -349,12 +346,11 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
+                            width: 25.0,
+                            height: 25.0,
+                            child: SpinKitRipple(
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 25.0,
                             ),
                           ),
                         );

@@ -1,35 +1,27 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'intive_by_email_model.dart';
-export 'intive_by_email_model.dart';
+import 'reset_password_model.dart';
+export 'reset_password_model.dart';
 
-class IntiveByEmailWidget extends StatefulWidget {
-  const IntiveByEmailWidget({
-    Key? key,
-    this.familyId,
-  }) : super(key: key);
-
-  final DocumentReference? familyId;
+class ResetPasswordWidget extends StatefulWidget {
+  const ResetPasswordWidget({Key? key}) : super(key: key);
 
   @override
-  _IntiveByEmailWidgetState createState() => _IntiveByEmailWidgetState();
+  _ResetPasswordWidgetState createState() => _ResetPasswordWidgetState();
 }
 
-class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
+class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
     with TickerProviderStateMixin {
-  late IntiveByEmailModel _model;
+  late ResetPasswordModel _model;
 
   final animationsMap = {
     'columnOnActionTriggerAnimation': AnimationInfo(
@@ -45,6 +37,19 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
         ),
       ],
     ),
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      applyInitialState: true,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, 0.0),
+          end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
   };
 
   @override
@@ -56,7 +61,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => IntiveByEmailModel());
+    _model = createModel(context, () => ResetPasswordModel());
 
     _model.emailAddressController ??= TextEditingController();
     setupAnimations(
@@ -145,7 +150,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '48xbquf9' /* Invite a member */,
+                        'nfyx73db' /* Reset Password */,
                       ),
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
@@ -155,7 +160,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                         EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '6ma2tj06' /* enter the familys' member emai... */,
+                        'p3vg5lpv' /* Enter your email to reset your... */,
                       ),
                       style: FlutterFlowTheme.of(context).labelMedium,
                     ),
@@ -173,7 +178,7 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                       decoration: InputDecoration(
                         labelStyle: FlutterFlowTheme.of(context).bodyLarge,
                         hintText: FFLocalizations.of(context).getText(
-                          'oo8xo3t7' /* Enter email */,
+                          'ihsg1d8k' /* Enter email */,
                         ),
                         hintStyle: FlutterFlowTheme.of(context).labelLarge,
                         enabledBorder: OutlineInputBorder(
@@ -222,87 +227,28 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        var _shouldSetState = false;
-                        if (functions.checkIfTextMatchRegExp(
-                            _model.emailAddressController.text,
-                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                          _model.numberOfInvitations =
-                              await queryInvitationRecordCount(
-                            queryBuilder: (invitationRecord) => invitationRecord
-                                .where('invitedEmail',
-                                    isEqualTo:
-                                        _model.emailAddressController.text)
-                                .where('familyId', isEqualTo: widget.familyId),
+                        if (_model.emailAddressController.text.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Email required!',
+                              ),
+                            ),
                           );
-                          _shouldSetState = true;
-                          if (_model.numberOfInvitations != 0) {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Already Invited'),
-                                  content: Text(
-                                      'The user with the email address is already invited to your family.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
-                        } else {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('EmailFormat'),
-                                content: Text('Email Format Isn\'t Supported'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                          if (_shouldSetState) setState(() {});
                           return;
                         }
-
-                        var invitationRecordReference =
-                            InvitationRecord.collection.doc();
-                        await invitationRecordReference
-                            .set(createInvitationRecordData(
-                          invitedEmail: _model.emailAddressController.text,
-                          familyId: widget.familyId,
-                          status: 'Pending',
-                          createdTime: getCurrentTimestamp,
-                        ));
-                        _model.invitationId =
-                            InvitationRecord.getDocumentFromData(
-                                createInvitationRecordData(
-                                  invitedEmail:
-                                      _model.emailAddressController.text,
-                                  familyId: widget.familyId,
-                                  status: 'Pending',
-                                  createdTime: getCurrentTimestamp,
-                                ),
-                                invitationRecordReference);
-                        _shouldSetState = true;
+                        await authManager.resetPassword(
+                          email: _model.emailAddressController.text,
+                          context: context,
+                        );
                         await showDialog(
                           context: context,
                           builder: (alertDialogContext) {
                             return AlertDialog(
-                              title: Text('Added'),
-                              content: Text('Added'),
+                              title: Text(
+                                  'Reset Password Emai Sent Successfully!l'),
+                              content: Text(
+                                  'Please check your email to reset your password.'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
@@ -313,11 +259,9 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
                             );
                           },
                         );
-                        context.safePop();
-                        if (_shouldSetState) setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        'k9in9k2q' /* Invite */,
+                        'wfanplzm' /* Reset */,
                       ),
                       options: FFButtonOptions(
                         width: double.infinity,
@@ -346,9 +290,11 @@ class _IntiveByEmailWidgetState extends State<IntiveByEmailWidget>
             ),
           ),
         ],
-      ).animateOnActionTrigger(
-        animationsMap['columnOnActionTriggerAnimation']!,
-      ),
+      )
+          .animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!)
+          .animateOnActionTrigger(
+            animationsMap['columnOnActionTriggerAnimation']!,
+          ),
     );
   }
 }

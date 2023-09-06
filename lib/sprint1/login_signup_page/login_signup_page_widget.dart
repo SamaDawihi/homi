@@ -4,10 +4,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/input_components/email_for_forget_password/email_for_forget_password_widget.dart';
+import '/input_components/reset_password/reset_password_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'login_signup_page_model.dart';
@@ -890,7 +891,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               ));
 
                                                           context.goNamedAuth(
-                                                              'FamiliesManagement',
+                                                              'FamilyProfile',
                                                               context.mounted);
                                                         },
                                                         text:
@@ -1278,7 +1279,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           }
 
                                                           context.goNamedAuth(
-                                                              'FamiliesManagement',
+                                                              'FamilyProfile',
                                                               context.mounted);
                                                         },
                                                         text:
@@ -1366,7 +1367,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .viewInsetsOf(
                                                                           context),
                                                                   child:
-                                                                      EmailForForgetPasswordWidget(),
+                                                                      ResetPasswordWidget(),
                                                                 ),
                                                               );
                                                             },

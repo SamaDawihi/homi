@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/list_view_items/invitation_status/invitation_status_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -171,12 +172,11 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
-                                  ),
+                                width: 25.0,
+                                height: 25.0,
+                                child: SpinKitRipple(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 25.0,
                                 ),
                               ),
                             );
@@ -197,17 +197,22 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                             itemBuilder: (context, listViewIndex) {
                               final listViewInvitationRecord =
                                   listViewInvitationRecordList[listViewIndex];
-                              return wrapWithModel(
-                                model: _model.invitationStatusModels.getModel(
-                                  listViewIndex.toString(),
-                                  listViewIndex,
-                                ),
-                                updateCallback: () => setState(() {}),
-                                child: InvitationStatusWidget(
-                                  key: Key(
-                                    'Keyagu_${listViewIndex.toString()}',
+                              return Visibility(
+                                visible: widget.familyId ==
+                                    listViewInvitationRecord.familyId,
+                                child: wrapWithModel(
+                                  model: _model.invitationStatusModels.getModel(
+                                    listViewIndex.toString(),
+                                    listViewIndex,
                                   ),
-                                  inviteid: listViewInvitationRecord.reference,
+                                  updateCallback: () => setState(() {}),
+                                  child: InvitationStatusWidget(
+                                    key: Key(
+                                      'Keyagu_${listViewIndex.toString()}',
+                                    ),
+                                    inviteid:
+                                        listViewInvitationRecord.reference,
+                                  ),
                                 ),
                               );
                             },

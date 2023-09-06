@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'my_family_container_model.dart';
@@ -88,12 +89,11 @@ class _MyFamilyContainerWidgetState extends State<MyFamilyContainerWidget> {
                     if (!snapshot.hasData) {
                       return Center(
                         child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
+                          width: 25.0,
+                          height: 25.0,
+                          child: SpinKitRipple(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 25.0,
                           ),
                         ),
                       );
@@ -108,15 +108,11 @@ class _MyFamilyContainerWidgetState extends State<MyFamilyContainerWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed(
-                    'FamilyProfile',
-                    queryParameters: {
-                      'familyId': serializeParam(
-                        widget.familyId,
-                        ParamType.DocumentReference,
-                      ),
-                    }.withoutNulls,
-                  );
+                  setState(() {
+                    FFAppState().familyId = widget.familyId;
+                  });
+
+                  context.pushNamed('FamilyProfile');
                 },
                 text: FFLocalizations.of(context).getText(
                   '4t0j9wzp' /* Join */,

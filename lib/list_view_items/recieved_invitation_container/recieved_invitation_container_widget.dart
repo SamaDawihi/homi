@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -60,12 +61,11 @@ class _RecievedInvitationContainerWidgetState
           if (!snapshot.hasData) {
             return Center(
               child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+                width: 25.0,
+                height: 25.0,
+                child: SpinKitRipple(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 25.0,
                 ),
               ),
             );
@@ -121,14 +121,12 @@ class _RecievedInvitationContainerWidgetState
                                   if (!snapshot.hasData) {
                                     return Center(
                                       child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
+                                        width: 25.0,
+                                        height: 25.0,
+                                        child: SpinKitRipple(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 25.0,
                                         ),
                                       ),
                                     );
@@ -237,17 +235,13 @@ class _RecievedInvitationContainerWidgetState
                                 .update(createInvitationRecordData(
                               status: 'Accepted',
                             ));
-
-                            context.pushNamed(
-                              'FamilyProfile',
-                              queryParameters: {
-                                'familyId': serializeParam(
+                            setState(() {
+                              FFAppState().familyId =
                                   receivedInvitationContainerInvitationRecord
-                                      .familyId,
-                                  ParamType.DocumentReference,
-                                ),
-                              }.withoutNulls,
-                            );
+                                      .familyId;
+                            });
+
+                            context.pushNamed('FamilyProfile');
                           },
                         ),
                       ),

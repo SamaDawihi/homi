@@ -13,22 +13,19 @@ class FFAppState extends ChangeNotifier {
 
   FFAppState._internal();
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _familyId = prefs.getString('ff_familyId')?.ref ?? _familyId;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
 
-  FamilyStruct _currentFamily = FamilyStruct();
-  FamilyStruct get currentFamily => _currentFamily;
-  set currentFamily(FamilyStruct _value) {
-    _currentFamily = _value;
-  }
-
-  void updateCurrentFamilyStruct(Function(FamilyStruct) updateFn) {
-    updateFn(_currentFamily);
-  }
+  late SharedPreferences prefs;
 
   List<MemberStruct> _currentFamilyMembers = [];
   List<MemberStruct> get currentFamilyMembers => _currentFamilyMembers;
@@ -53,6 +50,15 @@ class FFAppState extends ChangeNotifier {
     MemberStruct Function(MemberStruct) updateFn,
   ) {
     _currentFamilyMembers[_index] = updateFn(_currentFamilyMembers[_index]);
+  }
+
+  DocumentReference? _familyId;
+  DocumentReference? get familyId => _familyId;
+  set familyId(DocumentReference? _value) {
+    _familyId = _value;
+    _value != null
+        ? prefs.setString('ff_familyId', _value.path)
+        : prefs.remove('ff_familyId');
   }
 }
 

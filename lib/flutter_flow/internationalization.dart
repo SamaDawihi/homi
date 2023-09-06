@@ -185,10 +185,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // FamilyProfile
   {
-    'v5jc555w': {
-      'en': 'The Jones',
-      'ar': 'جونز',
-    },
     '6ibsn7kw': {
       'en': 'My Family Members',
       'ar': 'أفراد أسرتي',
@@ -268,7 +264,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
-  // Announcments
+  // Announcements
   {
     'yzk7wcws': {
       'en': 'Home',
@@ -286,10 +282,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'welcome to homi, choose whether you want to create a new family, join your old families, or accept an invitation to be a member of new family....',
       'ar':
           'مرحبًا بك في هومي، اختر ما إذا كنت تريد إنشاء عائلة جديدة، أو الانضمام إلى عائلاتك القديمة، أو قبول دعوة لتصبح عضوًا في عائلة جديدة....',
-    },
-    'wb1iebtz': {
-      'en': 'Create a family',
-      'ar': 'إنشاء عائلة',
     },
     '5dfbp8ya': {
       'en': 'My Families',
@@ -538,14 +530,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
-  // IntiveByEmail
+  // InviteByEmail
   {
     '48xbquf9': {
       'en': 'Invite a member',
       'ar': 'دعوة عضو',
     },
     '6ma2tj06': {
-      'en': 'enter the familys\' member email  to send an invitation',
+      'en': 'Enter the family member\'s email  to send an invitation',
       'ar': 'أدخل البريد الإلكتروني لعضو العائلة لإرسال دعوة',
     },
     'oo8xo3t7': {
@@ -655,10 +647,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Head of Design',
       'ar': 'رئيس قسم التصميم',
     },
-    '2ygzd0rm': {
-      'en': 'Accepted',
-      'ar': 'قبلت',
-    },
   },
   // SideMenu
   {
@@ -683,14 +671,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تسجيل خروج',
     },
   },
-  // EmailForForgetPassword
+  // ResetPassword
   {
     'nfyx73db': {
       'en': 'Reset Password',
       'ar': 'إعادة تعيين كلمة المرور',
     },
     'p3vg5lpv': {
-      'en': 'enter your email to reset your password',
+      'en': 'Enter your email to reset your password',
       'ar': 'أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك',
     },
     'ihsg1d8k': {

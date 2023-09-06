@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '/backend/backend.dart';
@@ -103,10 +104,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/familyProfile',
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'FamilyProfile')
-              : FamilyProfileWidget(
-                  familyId: params.getParam('familyId',
-                      ParamType.DocumentReference, false, ['Family']),
-                ),
+              : FamilyProfileWidget(),
         ),
         FFRoute(
           name: 'Calendar',
@@ -122,18 +120,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               params.isEmpty ? NavBarPage(initialPage: 'Lists') : ListsWidget(),
         ),
         FFRoute(
-          name: 'Announcments',
-          path: '/announcments',
+          name: 'Announcements',
+          path: '/announcements',
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Announcments')
-              : AnnouncmentsWidget(),
+              ? NavBarPage(initialPage: 'Announcements')
+              : AnnouncementsWidget(),
         ),
         FFRoute(
           name: 'FamiliesManagement',
           path: '/familiesManagement',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'FamiliesManagement')
-              : FamiliesManagementWidget(),
+          builder: (context, params) => FamiliesManagementWidget(),
         ),
         FFRoute(
           name: 'InvitationsStatus',
@@ -328,12 +324,11 @@ class FFRoute {
           final child = appStateNotifier.loading
               ? Center(
                   child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+                    width: 25.0,
+                    height: 25.0,
+                    child: SpinKitRipple(
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 25.0,
                     ),
                   ),
                 )

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'invitation_status_model.dart';
@@ -55,12 +56,11 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
           if (!snapshot.hasData) {
             return Center(
               child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+                width: 25.0,
+                height: 25.0,
+                child: SpinKitRipple(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 25.0,
                 ),
               ),
             );
@@ -104,7 +104,7 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     color: FlutterFlowTheme.of(context).primary,
-                                    fontSize: 15.0,
+                                    fontSize: 14.0,
                                   ),
                             ),
                           ),
@@ -153,7 +153,20 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).success,
+                            color: valueOrDefault<Color>(
+                              () {
+                                if (containerInvitationRecord.status ==
+                                    'Accepted') {
+                                  return FlutterFlowTheme.of(context).success;
+                                } else if (containerInvitationRecord.status ==
+                                    'Rejected') {
+                                  return FlutterFlowTheme.of(context).error;
+                                } else {
+                                  return FlutterFlowTheme.of(context).alternate;
+                                }
+                              }(),
+                              FlutterFlowTheme.of(context).alternate,
+                            ),
                             borderRadius: BorderRadius.circular(8.0),
                             border: Border.all(
                               color: Color(0x0037D28A),
@@ -165,9 +178,7 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 4.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '2ygzd0rm' /* Accepted */,
-                                ),
+                                containerInvitationRecord.status,
                                 style: FlutterFlowTheme.of(context).bodySmall,
                               ),
                             ),
