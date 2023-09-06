@@ -194,7 +194,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'دعوة عضو',
     },
     'n7mptuv2': {
-      'en': 'view status',
+      'en': 'View Invitation Status',
       'ar': 'عرض الحالة',
     },
     'uy8eb4xa': {
@@ -282,6 +282,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'welcome to homi, choose whether you want to create a new family, join your old families, or accept an invitation to be a member of new family....',
       'ar':
           'مرحبًا بك في هومي، اختر ما إذا كنت تريد إنشاء عائلة جديدة، أو الانضمام إلى عائلاتك القديمة، أو قبول دعوة لتصبح عضوًا في عائلة جديدة....',
+    },
+    'wb1iebtz': {
+      'en': 'Create a family',
+      'ar': 'إنشاء عائلة',
     },
     '5dfbp8ya': {
       'en': 'My Families',

@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/list_view_items/emptyfamilies/emptyfamilies_widget.dart';
-import '/list_view_items/emptyinvitations/emptyinvitations_widget.dart';
 import '/list_view_items/my_family_container/my_family_container_widget.dart';
 import '/list_view_items/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
@@ -185,39 +184,56 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                                 true,
                               )}',
                               adminId: currentUserReference,
+                              color: FlutterFlowTheme.of(context).primary,
+                              createdTime: getCurrentTimestamp,
                             ));
-                            _model.familyId = FamilyRecord.getDocumentFromData(
-                                createFamilyRecordData(
-                                  name: 'Family ${random_data.randomString(
-                                    4,
-                                    4,
-                                    true,
-                                    true,
-                                    true,
-                                  )}',
-                                  adminId: currentUserReference,
-                                ),
-                                familyRecordReference);
+                            _model.createdFamily =
+                                FamilyRecord.getDocumentFromData(
+                                    createFamilyRecordData(
+                                      name: 'Family ${random_data.randomString(
+                                        4,
+                                        4,
+                                        true,
+                                        true,
+                                        true,
+                                      )}',
+                                      adminId: currentUserReference,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      createdTime: getCurrentTimestamp,
+                                    ),
+                                    familyRecordReference);
 
-                            await MemberRecord.collection
-                                .doc()
+                            var memberRecordReference =
+                                MemberRecord.collection.doc();
+                            await memberRecordReference
                                 .set(createMemberRecordData(
-                                  memberId: currentUserReference,
-                                  familyId: _model.familyId?.reference,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                ));
+                              memberId: currentUserReference,
+                              familyId: _model.createdFamily?.reference,
+                              color: FlutterFlowTheme.of(context).warning,
+                              createdTime: getCurrentTimestamp,
+                            ));
+                            _model.createdFamilyAdmin =
+                                MemberRecord.getDocumentFromData(
+                                    createMemberRecordData(
+                                      memberId: currentUserReference,
+                                      familyId: _model.createdFamily?.reference,
+                                      color:
+                                          FlutterFlowTheme.of(context).warning,
+                                      createdTime: getCurrentTimestamp,
+                                    ),
+                                    memberRecordReference);
                             FFAppState().update(() {
                               FFAppState().familyId =
-                                  _model.familyId?.reference;
+                                  _model.createdFamily?.reference;
                             });
 
-                            context.pushNamed('FamilyProfile');
+                            context.goNamed('FamilyProfile');
 
                             setState(() {});
                           },
-                          text: valueOrDefault<String>(
-                            FFAppState().familyId?.id,
-                            'not set',
+                          text: FFLocalizations.of(context).getText(
+                            'wb1iebtz' /* Create a family */,
                           ),
                           options: FFButtonOptions(
                             height: 40.0,
@@ -338,8 +354,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                   child: StreamBuilder<List<InvitationRecord>>(
                     stream: queryInvitationRecord(
                       queryBuilder: (invitationRecord) => invitationRecord
-                          .where('invitedEmail', isEqualTo: currentUserEmail)
-                          .where('status', isEqualTo: 'Pending'),
+                          .where('invitedEmail', isEqualTo: currentUserEmail),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -357,13 +372,6 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       }
                       List<InvitationRecord> listViewInvitationRecordList =
                           snapshot.data!;
-                      if (listViewInvitationRecordList.isEmpty) {
-                        return Container(
-                          width: 500.0,
-                          height: 200.0,
-                          child: EmptyinvitationsWidget(),
-                        );
-                      }
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         primary: false,

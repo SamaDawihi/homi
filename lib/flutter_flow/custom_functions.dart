@@ -20,3 +20,7 @@ bool checkIfTextMatchRegExp(
   RegExp reg = RegExp(regEx);
   return reg.hasMatch(text);
 }
+
+String toLowerCaseFunction(String inputString) {
+  return inputString.toLowerCase();
+}

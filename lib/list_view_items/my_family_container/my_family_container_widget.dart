@@ -51,94 +51,96 @@ class _MyFamilyContainerWidgetState extends State<MyFamilyContainerWidget> {
 
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 12.0, 12.0),
-      child: Container(
-        width: 140.0,
-        height: 140.0,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).secondaryBackground,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 4.0,
-              color: Color(0x34090F13),
-              offset: Offset(0.0, 2.0),
-            )
-          ],
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60',
-                  width: 60.0,
-                  height: 60.0,
-                  fit: BoxFit.cover,
+      child: StreamBuilder<FamilyRecord>(
+        stream: FamilyRecord.getDocument(widget.familyId!),
+        builder: (context, snapshot) {
+          // Customize what your widget looks like when it's loading.
+          if (!snapshot.hasData) {
+            return Center(
+              child: SizedBox(
+                width: 25.0,
+                height: 25.0,
+                child: SpinKitRipple(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 25.0,
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 9.0),
-                child: StreamBuilder<FamilyRecord>(
-                  stream: FamilyRecord.getDocument(widget.familyId!),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 25.0,
-                          height: 25.0,
-                          child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 25.0,
-                          ),
-                        ),
-                      );
-                    }
-                    final textFamilyRecord = snapshot.data!;
-                    return Text(
-                      textFamilyRecord.name,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    );
-                  },
-                ),
-              ),
-              FFButtonWidget(
-                onPressed: () async {
-                  setState(() {
-                    FFAppState().familyId = widget.familyId;
-                  });
-
-                  context.pushNamed('FamilyProfile');
-                },
-                text: FFLocalizations.of(context).getText(
-                  '4t0j9wzp' /* Join */,
-                ),
-                options: FFButtonOptions(
-                  height: 20.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: Color(0xFF555EBE),
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Readex Pro',
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.normal,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
+            );
+          }
+          final myFamilyContaionerFamilyRecord = snapshot.data!;
+          return Container(
+            width: 140.0,
+            height: 140.0,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 4.0,
+                  color: Color(0x34090F13),
+                  offset: Offset(0.0, 2.0),
+                )
+              ],
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50.0),
+                    child: Image.network(
+                      'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60',
+                      width: 60.0,
+                      height: 60.0,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 9.0),
+                    child: Text(
+                      myFamilyContaionerFamilyRecord.name,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      FFAppState().update(() {
+                        FFAppState().familyId = widget.familyId;
+                      });
+
+                      context.goNamed('FamilyProfile');
+                    },
+                    text: FFLocalizations.of(context).getText(
+                      '4t0j9wzp' /* Join */,
+                    ),
+                    options: FFButtonOptions(
+                      height: 20.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0xFF555EBE),
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Readex Pro',
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.normal,
+                              ),
+                      elevation: 3.0,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

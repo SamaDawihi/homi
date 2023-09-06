@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -227,12 +228,15 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                         if (functions.checkIfTextMatchRegExp(
                             _model.emailAddressController.text,
                             '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                          _model.emailToLow = await actions.toLowerCaseAction(
+                            _model.emailAddressController.text,
+                          );
+                          _shouldSetState = true;
                           _model.numberOfInvitations =
                               await queryInvitationRecordCount(
                             queryBuilder: (invitationRecord) => invitationRecord
                                 .where('invitedEmail',
-                                    isEqualTo:
-                                        _model.emailAddressController.text)
+                                    isEqualTo: _model.emailToLow)
                                 .where('familyId', isEqualTo: widget.familyId),
                           );
                           _shouldSetState = true;
@@ -282,7 +286,7 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                             InvitationRecord.collection.doc();
                         await invitationRecordReference
                             .set(createInvitationRecordData(
-                          invitedEmail: _model.emailAddressController.text,
+                          invitedEmail: _model.emailToLow,
                           familyId: widget.familyId,
                           status: 'Pending',
                           createdTime: getCurrentTimestamp,
@@ -290,8 +294,7 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                         _model.invitationId =
                             InvitationRecord.getDocumentFromData(
                                 createInvitationRecordData(
-                                  invitedEmail:
-                                      _model.emailAddressController.text,
+                                  invitedEmail: _model.emailToLow,
                                   familyId: widget.familyId,
                                   status: 'Pending',
                                   createdTime: getCurrentTimestamp,

@@ -90,71 +90,67 @@ class _RecievedInvitationContainerWidgetState
               children: [
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(26.0),
-                        child: Image.network(
-                          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
-                          width: 40.0,
-                          height: 40.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 0.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 9.0, 0.0, 0.0),
-                              child: StreamBuilder<FamilyRecord>(
-                                stream: FamilyRecord.getDocument(
-                                    receivedInvitationContainerInvitationRecord
-                                        .familyId!),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 25.0,
-                                        height: 25.0,
-                                        child: SpinKitRipple(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 25.0,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  final textFamilyRecord = snapshot.data!;
-                                  return Text(
-                                    valueOrDefault<String>(
-                                      textFamilyRecord.name,
-                                      'Family Name',
-                                    ),
+                  child: StreamBuilder<FamilyRecord>(
+                    stream: FamilyRecord.getDocument(
+                        receivedInvitationContainerInvitationRecord.familyId!),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 25.0,
+                            height: 25.0,
+                            child: SpinKitRipple(
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 25.0,
+                            ),
+                          ),
+                        );
+                      }
+                      final rowFamilyRecord = snapshot.data!;
+                      return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(26.0),
+                            child: Image.network(
+                              'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                              width: 40.0,
+                              height: 40.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 15.0, 0.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 9.0, 0.0, 0.0),
+                                  child: Text(
+                                    rowFamilyRecord.name,
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                  );
-                                },
-                              ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 6.0, 0.0, 0.0),
+                                  child: Text(
+                                    currentUserEmail,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 6.0, 0.0, 0.0),
-                              child: Text(
-                                currentUserEmail,
-                                style: FlutterFlowTheme.of(context).labelMedium,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
                 Padding(
@@ -235,13 +231,13 @@ class _RecievedInvitationContainerWidgetState
                                 .update(createInvitationRecordData(
                               status: 'Accepted',
                             ));
-                            setState(() {
+                            FFAppState().update(() {
                               FFAppState().familyId =
                                   receivedInvitationContainerInvitationRecord
                                       .familyId;
                             });
 
-                            context.pushNamed('FamilyProfile');
+                            context.goNamed('FamilyProfile');
                           },
                         ),
                       ),
