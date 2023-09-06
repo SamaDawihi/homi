@@ -16,10 +16,13 @@ class FamilyMemberContainerWidget extends StatefulWidget {
     Key? key,
     required this.memberId,
     required this.familyId,
-  }) : super(key: key);
+    Color? color,
+  })  : this.color = color ?? const Color(0xFF555EBE),
+        super(key: key);
 
   final DocumentReference? memberId;
   final DocumentReference? familyId;
+  final Color color;
 
   @override
   _FamilyMemberContainerWidgetState createState() =>
@@ -109,13 +112,15 @@ class _FamilyMemberContainerWidgetState
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(26.0),
-                        child: Image.network(
-                          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
-                          width: 36.0,
-                          height: 36.0,
-                          fit: BoxFit.cover,
+                      Container(
+                        width: 40.0,
+                        height: 40.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: widget.color,
+                            width: 4.0,
+                          ),
                         ),
                       ),
                       Expanded(

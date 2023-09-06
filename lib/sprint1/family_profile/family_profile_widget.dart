@@ -346,6 +346,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       .memberId!,
                                   familyId: familyMembersListViewMemberRecord
                                       .familyId!,
+                                  color:
+                                      familyMembersListViewMemberRecord.color!,
                                 ),
                               );
                             },

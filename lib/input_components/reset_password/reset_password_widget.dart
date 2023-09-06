@@ -246,7 +246,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           builder: (alertDialogContext) {
                             return AlertDialog(
                               title: Text(
-                                  'Reset Password Emai Sent Successfully!l'),
+                                  'Reset Password Email Sent Successfully!l'),
                               content: Text(
                                   'Please check your email to reset your password.'),
                               actions: [
