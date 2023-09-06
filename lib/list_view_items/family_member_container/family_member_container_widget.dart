@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/confiramtion_components/confirm_admin_change/confirm_admin_change_widget.dart';
 import '/confiramtion_components/confirm_remove_member/confirm_remove_member_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -159,20 +158,7 @@ class _FamilyMemberContainerWidgetState
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
-                              onTap: () async {
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  enableDrag: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: ConfirmAdminChangeWidget(),
-                                    );
-                                  },
-                                ).then((value) => setState(() {}));
-                              },
+                              onTap: () async {},
                               child: Icon(
                                 Icons.admin_panel_settings_rounded,
                                 color: Color(0xFF433EA3),

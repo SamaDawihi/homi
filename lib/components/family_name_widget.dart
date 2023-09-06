@@ -89,7 +89,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'skuj3o8o' /* Write your family name... */,
+                        'jss0gdih' /* Write your family name... */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -107,7 +107,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            'xloymerx' /* Label here... */,
+                            'ea94emzo' /* Label here... */,
                           ),
                           labelStyle: FlutterFlowTheme.of(context).labelMedium,
                           hintStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -162,7 +162,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                           context.safePop();
                         },
                         text: FFLocalizations.of(context).getText(
-                          '6hvehvov' /* Cancel */,
+                          'o8jz3tqm' /* Cancel */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
@@ -194,7 +194,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                         context.goNamedAuth('LoginSignupPage', context.mounted);
                       },
                       text: FFLocalizations.of(context).getText(
-                        'mhxbih8n' /* Create */,
+                        'oljsbdla' /* Create */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

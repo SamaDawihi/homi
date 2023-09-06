@@ -219,46 +219,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Lists
   {
-    '1l1gb7jl': {
-      'en': 'Shopping Lists',
-      'ar': 'قوائم التسوق',
-    },
-    'v654olpt': {
-      'en': 'Shopping Lists',
-      'ar': 'قوائم التسوق',
-    },
-    '2v8rtj14': {
-      'en': 'Groceries',
-      'ar': 'البقالة',
-    },
-    'h2za0ceb': {
-      'en': 'Pharmicy',
-      'ar': 'صيدلية',
-    },
-    'suyuz7iw': {
-      'en': 'Huda\'s engagement',
-      'ar': 'خطوبة هدى',
-    },
-    'kl32kkn2': {
-      'en': 'To-Do Lists',
-      'ar': 'قوائم المهام',
-    },
-    'y24kmz4g': {
-      'en': 'To-Do  Lists',
-      'ar': 'قوائم المهام',
-    },
-    't7exjkmi': {
-      'en': 'Shared family Tasks',
-      'ar': 'المهام العائلية المشتركة',
-    },
-    'ncplf7h3': {
-      'en': 'Nora',
-      'ar': 'نورا',
-    },
-    'oo8q6r83': {
-      'en': 'Fahad',
-      'ar': 'فهد',
-    },
     'cjn0szm1': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -353,182 +313,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Tasks
   {
-    '6va50liu': {
-      'en': 'check.io',
-      'ar': 'check.io',
-    },
-    '9pxxfsln': {
-      'en': 'Andrew D.',
-      'ar': 'أندرو د.',
-    },
-    'hejxr04l': {
-      'en': 'admin@gmail.com',
-      'ar': 'admin@gmail.com',
-    },
-    'gymhja6b': {
-      'en': 'Dashboard',
-      'ar': 'لوحة القيادة',
-    },
-    'qn4xbc5b': {
-      'en': 'Transactions',
-      'ar': 'المعاملات',
-    },
-    'mc2et7eo': {
-      'en': 'Projects',
-      'ar': 'المشاريع',
-    },
-    '3h0y5lxo': {
-      'en': 'Users',
-      'ar': 'المستخدمين',
-    },
-    'fej9mrhj': {
-      'en': 'Tasks',
-      'ar': 'مهام',
-    },
-    'jl937vye': {
-      'en': 'Create Task',
-      'ar': 'إنشاء مهمة',
-    },
-    'c27jk415': {
-      'en': 'My Tasks',
-      'ar': 'مهامي',
-    },
-    'jib1wq35': {
-      'en': 'Task Overview',
-      'ar': 'نظرة عامة على المهمة',
-    },
-    'j5ocvui2': {
-      'en': '12',
-      'ar': '12',
-    },
-    'zqshw7m3': {
-      'en': 'Update our command Palette to be more usable.',
-      'ar': 'قم بتحديث لوحة الأوامر الخاصة بنا لتكون أكثر قابلية للاستخدام.',
-    },
-    'aevic5vr': {
-      'en': '18 Jan, 2023',
-      'ar': '18 يناير 2023',
-    },
-    'jjgmre20': {
-      'en': 'Product',
-      'ar': 'منتج',
-    },
-    '8dxsql9o': {
-      'en': 'Build out a design system in FlutterFlow',
-      'ar': 'بناء نظام التصميم في FlutterFlow',
-    },
-    'tgy2562k': {
-      'en': '16 Jan, 2023',
-      'ar': '16 يناير 2023',
-    },
-    'uhvo5l58': {
-      'en': 'Design System',
-      'ar': 'نظام التصميم',
-    },
-    '2zh03vvp': {
-      'en': 'Complete 100 Templates',
-      'ar': 'أكمل 100 قالب',
-    },
-    'gn2qh4p8': {
-      'en': '15 Jan, 2023',
-      'ar': '15 يناير 2023',
-    },
-    'dwhx2fbz': {
-      'en': 'FF Development',
-      'ar': 'تطوير FF',
-    },
-    'affbra2e': {
-      'en': 'This Week',
-      'ar': 'هذا الاسبوع',
-    },
-    'urmrbjbl': {
-      'en': 'Due this week',
-      'ar': 'المقرر هذا الأسبوع',
-    },
-    'g14miope': {
-      'en': 'Update our command Palette to be more usable.',
-      'ar': 'قم بتحديث لوحة الأوامر الخاصة بنا لتكون أكثر قابلية للاستخدام.',
-    },
-    '6hv3ciyz': {
-      'en': '18 Jan, 2023',
-      'ar': '18 يناير 2023',
-    },
-    '6hy4xc0q': {
-      'en': 'Build out a design system in FlutterFlow',
-      'ar': 'بناء نظام التصميم في FlutterFlow',
-    },
-    'q2qnaewj': {
-      'en': '16 Jan, 2023',
-      'ar': '16 يناير 2023',
-    },
-    '8hwpw5ij': {
-      'en': 'Complete 100 Templates',
-      'ar': 'أكمل 100 قالب',
-    },
-    '4b2oihst': {
-      'en': '15 Jan, 2023',
-      'ar': '15 يناير 2023',
-    },
-    'szbczzpg': {
-      'en': 'Completed',
-      'ar': 'مكتمل',
-    },
-    '9fhpm7ce': {
-      'en': 'My Channels / Task / Task #4234',
-      'ar': 'قنواتي / المهمة / المهمة رقم 4234',
-    },
-    'b867r0o8': {
-      'en': 'Update our command Palette to be more usable.',
-      'ar': 'قم بتحديث لوحة الأوامر الخاصة بنا لتكون أكثر قابلية للاستخدام.',
-    },
-    'y55k26pr': {
-      'en': 'Subtasks',
-      'ar': 'المهام الفرعية',
-    },
-    't9h2yut4': {
-      'en': '0 tasks',
-      'ar': '0 المهام',
-    },
-    'kjqec9y9': {
-      'en': 'Created',
-      'ar': 'مخلوق',
-    },
-    'tynlv2pe': {
-      'en': 'Created',
-      'ar': 'مخلوق',
-    },
-    '2s44xnk1': {
-      'en': 'Due Date',
-      'ar': 'تاريخ الاستحقاق',
-    },
-    'xt6pbza9': {
-      'en': '10 Jan, 2023',
-      'ar': '10 يناير 2023',
-    },
-    'lgdty4oe': {
-      'en': 'Categories',
-      'ar': 'فئات',
-    },
-    'nv0vyqdu': {
-      'en': 'Design System',
-      'ar': 'نظام التصميم',
-    },
-    'yk6n35jc': {
-      'en': 'Product',
-      'ar': 'منتج',
-    },
-    '57tgy5hm': {
-      'en': 'Description',
-      'ar': 'وصف',
-    },
-    'vy66hgut': {
-      'en': 'Leave a note here...',
-      'ar': 'اترك ملاحظة هنا...',
-    },
-    'nzxzb1et': {
-      'en': 'Post Note',
-      'ar': 'نشر ملاحظة',
-    },
     'jo2qphs2': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -696,19 +480,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // FamilyName
   {
-    'skuj3o8o': {
+    'jss0gdih': {
       'en': 'Write your family name...',
       'ar': '',
     },
-    'xloymerx': {
+    'ea94emzo': {
       'en': 'Label here...',
       'ar': '',
     },
-    '6hvehvov': {
+    'o8jz3tqm': {
       'en': 'Cancel',
       'ar': '',
     },
-    'mhxbih8n': {
+    'oljsbdla': {
       'en': 'Create',
       'ar': '',
     },
