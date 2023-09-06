@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/reset_password/reset_password_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -283,16 +285,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             .secondaryBackground,
                                                       ),
                                                     ),
-                                                  Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '2opk03cs' /* Create Account */,
-                                                    ),
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineMedium,
-                                                  ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -430,6 +422,29 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   ),
+                                                  if (valueOrDefault<bool>(
+                                                    _model.regNameErr != null &&
+                                                        _model.regNameErr != '',
+                                                    false,
+                                                  ))
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        _model.regNameErr,
+                                                        'no Error',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                fontSize: 9.0,
+                                                              ),
+                                                    ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -440,6 +455,34 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       child: TextFormField(
                                                         controller: _model
                                                             .emailAddressController,
+                                                        onChanged: (_) =>
+                                                            EasyDebounce
+                                                                .debounce(
+                                                          '_model.emailAddressController',
+                                                          Duration(
+                                                              milliseconds:
+                                                                  2000),
+                                                          () async {
+                                                            if (functions
+                                                                .checkIfTextMatchRegExp(
+                                                                    _model
+                                                                        .emailAddressController
+                                                                        .text,
+                                                                    '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                              setState(() {
+                                                                _model.regEmailErr =
+                                                                    '';
+                                                              });
+                                                              return;
+                                                            } else {
+                                                              setState(() {
+                                                                _model.regEmailErr =
+                                                                    'The Email Format must be XXX@XXX.XX';
+                                                              });
+                                                              return;
+                                                            }
+                                                          },
+                                                        ),
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.email
@@ -548,6 +591,20 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   ),
+                                                  Text(
+                                                    _model.regEmailErr,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          fontSize: 9.0,
+                                                        ),
+                                                  ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -558,10 +615,40 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       child: TextFormField(
                                                         controller: _model
                                                             .passwordController,
+                                                        onChanged: (_) =>
+                                                            EasyDebounce
+                                                                .debounce(
+                                                          '_model.passwordController',
+                                                          Duration(
+                                                              milliseconds:
+                                                                  2000),
+                                                          () async {
+                                                            if (functions
+                                                                .checkPasswordFunction(
+                                                                    _model
+                                                                        .passwordController
+                                                                        .text)) {
+                                                              setState(() {
+                                                                _model.regPasswordErr =
+                                                                    '';
+                                                              });
+                                                              return;
+                                                            } else {
+                                                              setState(() {
+                                                                _model.regPasswordErr =
+                                                                    'Password Length Must Be Larger Than 6 Characters';
+                                                              });
+                                                              return;
+                                                            }
+                                                          },
+                                                        ),
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.password
                                                         ],
+                                                        textCapitalization:
+                                                            TextCapitalization
+                                                                .none,
                                                         obscureText: !_model
                                                             .passwordVisibility,
                                                         decoration:
@@ -687,6 +774,25 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   ),
+                                                  if (_model.regPasswordErr !=
+                                                          null &&
+                                                      _model.regPasswordErr !=
+                                                          '')
+                                                    Text(
+                                                      _model.regPasswordErr,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                fontSize: 9.0,
+                                                              ),
+                                                    ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -697,6 +803,37 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       child: TextFormField(
                                                         controller: _model
                                                             .reEnterController,
+                                                        onChanged: (_) =>
+                                                            EasyDebounce
+                                                                .debounce(
+                                                          '_model.reEnterController',
+                                                          Duration(
+                                                              milliseconds:
+                                                                  2000),
+                                                          () async {
+                                                            if (functions.checkPasswordFunction(
+                                                                    _model
+                                                                        .reEnterController
+                                                                        .text) &&
+                                                                (_model.reEnterController
+                                                                        .text ==
+                                                                    _model
+                                                                        .passwordController
+                                                                        .text)) {
+                                                              setState(() {
+                                                                _model.regPasswordErr =
+                                                                    '';
+                                                              });
+                                                              return;
+                                                            } else {
+                                                              setState(() {
+                                                                _model.regPasswordConfirmationErr =
+                                                                    'Password Must Be The Same And 6 Charachters Or More.';
+                                                              });
+                                                              return;
+                                                            }
+                                                          },
+                                                        ),
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.password
@@ -826,6 +963,26 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   ),
+                                                  if (_model.regPasswordConfirmationErr !=
+                                                          null &&
+                                                      _model.regPasswordConfirmationErr !=
+                                                          '')
+                                                    Text(
+                                                      _model
+                                                          .regPasswordConfirmationErr,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                fontSize: 9.0,
+                                                              ),
+                                                    ),
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
@@ -1017,6 +1174,55 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       child: TextFormField(
                                                         controller: _model
                                                             .loginEmailAddressController,
+                                                        onChanged: (_) =>
+                                                            EasyDebounce
+                                                                .debounce(
+                                                          '_model.loginEmailAddressController',
+                                                          Duration(
+                                                              milliseconds:
+                                                                  2000),
+                                                          () async {
+                                                            if (functions
+                                                                .checkIfTextMatchRegExp(
+                                                                    _model
+                                                                        .loginEmailAddressController
+                                                                        .text,
+                                                                    '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                              setState(() {
+                                                                _model.loginEmailErr =
+                                                                    '';
+                                                              });
+                                                              return;
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginEmailErr =
+                                                                    'The Email Format Must Be XX@XXX.XX';
+                                                              });
+                                                              return;
+                                                            }
+                                                          },
+                                                        ),
+                                                        onFieldSubmitted:
+                                                            (_) async {
+                                                          if (functions
+                                                              .checkIfTextMatchRegExp(
+                                                                  _model
+                                                                      .loginEmailAddressController
+                                                                      .text,
+                                                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                            setState(() {
+                                                              _model.loginEmailErr =
+                                                                  '';
+                                                            });
+                                                            return;
+                                                          } else {
+                                                            setState(() {
+                                                              _model.loginEmailErr =
+                                                                  'The Email Format Must Be XXX@XXX.XX';
+                                                            });
+                                                            return;
+                                                          }
+                                                        },
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.email
@@ -1116,6 +1322,20 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   ),
+                                                  Text(
+                                                    _model.loginEmailErr,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          fontSize: 9.0,
+                                                        ),
+                                                  ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -1126,6 +1346,33 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       child: TextFormField(
                                                         controller: _model
                                                             .loginPasswordController,
+                                                        onChanged: (_) =>
+                                                            EasyDebounce
+                                                                .debounce(
+                                                          '_model.loginPasswordController',
+                                                          Duration(
+                                                              milliseconds:
+                                                                  2000),
+                                                          () async {
+                                                            if (functions
+                                                                .checkPasswordFunction(
+                                                                    _model
+                                                                        .loginPasswordController
+                                                                        .text)) {
+                                                              setState(() {
+                                                                _model.loginPasswordErr =
+                                                                    '';
+                                                              });
+                                                              return;
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginPasswordErr =
+                                                                    'The Password Length Must Be 6  Characters Or More.';
+                                                              });
+                                                              return;
+                                                            }
+                                                          },
+                                                        ),
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.password
@@ -1245,6 +1492,20 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 context),
                                                       ),
                                                     ),
+                                                  ),
+                                                  Text(
+                                                    _model.loginPasswordErr,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          fontSize: 9.0,
+                                                        ),
                                                   ),
                                                   Align(
                                                     alignment:

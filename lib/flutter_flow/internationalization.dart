@@ -115,10 +115,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Create Account',
       'ar': 'إنشاء حساب',
     },
-    '2opk03cs': {
-      'en': 'Create Account',
-      'ar': 'إنشاء حساب',
-    },
     'kuk2x6vy': {
       'en': 'Let\'s get started by filling out the form below.',
       'ar': 'لنبدأ بملء النموذج أدناه.',

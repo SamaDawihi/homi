@@ -299,9 +299,11 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 44.0),
                       child: StreamBuilder<List<MemberRecord>>(
                         stream: queryMemberRecord(
-                          queryBuilder: (memberRecord) => memberRecord.where(
-                              'familyId',
-                              isEqualTo: familyProfileFamilyRecord.reference),
+                          queryBuilder: (memberRecord) => memberRecord
+                              .where('familyId',
+                                  isEqualTo:
+                                      familyProfileFamilyRecord.reference)
+                              .orderBy('created_time', descending: true),
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.

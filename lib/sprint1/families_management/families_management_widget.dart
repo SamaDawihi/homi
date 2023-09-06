@@ -283,7 +283,8 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                   child: StreamBuilder<List<MemberRecord>>(
                     stream: queryMemberRecord(
                       queryBuilder: (memberRecord) => memberRecord
-                          .where('memberId', isEqualTo: currentUserReference),
+                          .where('memberId', isEqualTo: currentUserReference)
+                          .orderBy('created_time'),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -355,7 +356,9 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                   child: StreamBuilder<List<InvitationRecord>>(
                     stream: queryInvitationRecord(
                       queryBuilder: (invitationRecord) => invitationRecord
-                          .where('invitedEmail', isEqualTo: currentUserEmail),
+                          .where('invitedEmail', isEqualTo: currentUserEmail)
+                          .where('status', isEqualTo: 'Pending')
+                          .orderBy('created_time', descending: true),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.

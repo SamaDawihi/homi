@@ -24,3 +24,7 @@ bool checkIfTextMatchRegExp(
 String toLowerCaseFunction(String inputString) {
   return inputString.toLowerCase();
 }
+
+bool checkPasswordFunction(String password) {
+  return password.length >= 6;
+}
