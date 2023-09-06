@@ -321,7 +321,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               ),
                               memberId:
                                   familyMembersListViewMemberRecord.memberId!,
-                              familyId: _model.familyDocument!.reference,
+                              familyId:
+                                  familyMembersListViewMemberRecord.familyId!,
                             ),
                           );
                         },
