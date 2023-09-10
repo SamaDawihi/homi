@@ -339,7 +339,7 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                           color: Color(0xFF555EBE),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Readex Pro',
+                                    fontFamily: 'Source Sans Pro',
                                     color: Colors.white,
                                   ),
                           elevation: 2.0,

@@ -79,7 +79,7 @@ class _EmptyinvitationsWidgetState extends State<EmptyinvitationsWidget> {
                     '0nvpgu2z' /* if you want to join a specific... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Readex Pro',
+                        fontFamily: 'Source Sans Pro',
                         color: FlutterFlowTheme.of(context).secondaryText,
                       ),
                 ),

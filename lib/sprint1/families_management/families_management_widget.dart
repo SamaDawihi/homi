@@ -4,12 +4,13 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/input_components/enter_family_name/enter_family_name_widget.dart';
 import '/list_view_items/emptyfamilies/emptyfamilies_widget.dart';
 import '/list_view_items/emptyinvitations/emptyinvitations_widget.dart';
 import '/list_view_items/my_family_container/my_family_container_widget.dart';
 import '/list_view_items/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -157,7 +158,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       '9ukj6vmr' /* welcome to homi, choose whethe... */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Readex Pro',
+                          fontFamily: 'Source Sans Pro',
                           color: FlutterFlowTheme.of(context).secondaryText,
                         ),
                   ),
@@ -171,90 +172,52 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     children: [
                       Align(
                         alignment: AlignmentDirectional(-1.00, 1.00),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            var familyRecordReference =
-                                FamilyRecord.collection.doc();
-                            await familyRecordReference
-                                .set(createFamilyRecordData(
-                              name: 'Family ${random_data.randomString(
-                                4,
-                                4,
-                                true,
-                                true,
-                                true,
-                              )}',
-                              adminId: currentUserReference,
-                              color: FlutterFlowTheme.of(context).primary,
-                              createdTime: getCurrentTimestamp,
-                            ));
-                            _model.createdFamily =
-                                FamilyRecord.getDocumentFromData(
-                                    createFamilyRecordData(
-                                      name: 'Family ${random_data.randomString(
-                                        4,
-                                        4,
-                                        true,
-                                        true,
-                                        true,
-                                      )}',
-                                      adminId: currentUserReference,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      createdTime: getCurrentTimestamp,
+                        child: Builder(
+                          builder: (context) => FFButtonWidget(
+                            onPressed: () async {
+                              await showAlignedDialog(
+                                context: context,
+                                isGlobal: true,
+                                avoidOverflow: false,
+                                targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                    .resolve(Directionality.of(context)),
+                                followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                    .resolve(Directionality.of(context)),
+                                builder: (dialogContext) {
+                                  return Material(
+                                    color: Colors.transparent,
+                                    child: GestureDetector(
+                                      onTap: () => FocusScope.of(context)
+                                          .requestFocus(_model.unfocusNode),
+                                      child: EnterFamilyNameWidget(),
                                     ),
-                                    familyRecordReference);
-
-                            var memberRecordReference =
-                                MemberRecord.collection.doc();
-                            await memberRecordReference
-                                .set(createMemberRecordData(
-                              memberId: currentUserReference,
-                              familyId: _model.createdFamily?.reference,
-                              color: FlutterFlowTheme.of(context).warning,
-                              createdTime: getCurrentTimestamp,
-                            ));
-                            _model.createdFamilyAdmin =
-                                MemberRecord.getDocumentFromData(
-                                    createMemberRecordData(
-                                      memberId: currentUserReference,
-                                      familyId: _model.createdFamily?.reference,
-                                      color:
-                                          FlutterFlowTheme.of(context).warning,
-                                      createdTime: getCurrentTimestamp,
-                                    ),
-                                    memberRecordReference);
-                            FFAppState().update(() {
-                              FFAppState().familyId =
-                                  _model.createdFamily?.reference;
-                            });
-
-                            context.goNamed('FamilyProfile');
-
-                            setState(() {});
-                          },
-                          text: FFLocalizations.of(context).getText(
-                            'wb1iebtz' /* Create a family */,
-                          ),
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF555EBE),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              'wb1iebtz' /* Create a family */,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFF555EBE),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Source Sans Pro',
+                                    color: Colors.white,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
                           ),
                         ),
                       ),
@@ -268,7 +231,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       '5dfbp8ya' /* My Families */,
                     ),
                     style: FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Readex Pro',
+                          fontFamily: 'Source Sans Pro',
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontWeight: FontWeight.w500,
                         ),
@@ -291,11 +254,11 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(
-                            width: 25.0,
-                            height: 25.0,
-                            child: SpinKitRipple(
+                            width: 10.0,
+                            height: 10.0,
+                            child: SpinKitDualRing(
                               color: FlutterFlowTheme.of(context).primary,
-                              size: 25.0,
+                              size: 10.0,
                             ),
                           ),
                         );
@@ -345,7 +308,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       'r2qmfx8y' /* List of invitations */,
                     ),
                     style: FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Readex Pro',
+                          fontFamily: 'Source Sans Pro',
                           color: FlutterFlowTheme.of(context).primaryText,
                           fontWeight: FontWeight.w500,
                         ),
@@ -365,11 +328,11 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(
-                            width: 25.0,
-                            height: 25.0,
-                            child: SpinKitRipple(
+                            width: 10.0,
+                            height: 10.0,
+                            child: SpinKitDualRing(
                               color: FlutterFlowTheme.of(context).primary,
-                              size: 25.0,
+                              size: 10.0,
                             ),
                           ),
                         );

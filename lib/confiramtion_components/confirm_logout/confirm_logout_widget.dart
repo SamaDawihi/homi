@@ -84,7 +84,7 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                       textAlign: TextAlign.start,
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Open Sans',
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                     ),
@@ -97,7 +97,7 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
+                                  fontFamily: 'Source Sans Pro',
                                   fontSize: 15.0,
                                 ),
                       ),
@@ -131,7 +131,7 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Readex Pro',
+                                    fontFamily: 'Source Sans Pro',
                                     color: Color(0xFF555EBE),
                                   ),
                           elevation: 0.0,

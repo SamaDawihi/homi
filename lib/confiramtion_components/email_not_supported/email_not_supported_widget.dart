@@ -84,7 +84,7 @@ class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
                       textAlign: TextAlign.start,
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Open Sans',
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                     ),
@@ -97,7 +97,7 @@ class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
+                                  fontFamily: 'Source Sans Pro',
                                   fontSize: 15.0,
                                 ),
                       ),

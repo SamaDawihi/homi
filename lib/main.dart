@@ -105,32 +105,32 @@ class _MyAppState extends State<MyApp> {
           thumbVisibility: MaterialStateProperty.all(true),
           trackVisibility: MaterialStateProperty.all(true),
           interactive: true,
-          thickness: MaterialStateProperty.all(20.0),
-          radius: Radius.circular(10.0),
+          thickness: MaterialStateProperty.all(10.0),
+          radius: Radius.circular(20.0),
           trackColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4293823328);
+              return Color(1279998447);
             }
-            return Color(4294046968);
+            return Color(4294243579);
           }),
           trackBorderColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4294561624);
+              return Color(4280587913);
             }
             return Color(4283917164);
           }),
           thumbColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.dragged)) {
-              return Color(4283120111);
+              return Color(4286613198);
             }
             if (states.contains(MaterialState.hovered)) {
-              return Color(4283917164);
+              return Color(4282597027);
             }
-            return Color(4294924643);
+            return Color(4283784894);
           }),
-          minThumbLength: 6.0,
-          crossAxisMargin: 4.0,
-          mainAxisMargin: 20.0,
+          minThumbLength: 5.0,
+          crossAxisMargin: 10.0,
+          mainAxisMargin: 10.0,
         ),
       ),
       darkTheme: ThemeData(
@@ -139,32 +139,32 @@ class _MyAppState extends State<MyApp> {
           thumbVisibility: MaterialStateProperty.all(true),
           trackVisibility: MaterialStateProperty.all(true),
           interactive: true,
-          thickness: MaterialStateProperty.all(20.0),
-          radius: Radius.circular(10.0),
+          thickness: MaterialStateProperty.all(10.0),
+          radius: Radius.circular(20.0),
           trackColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4293823328);
+              return Color(1279998447);
             }
             return Color(4280099880);
           }),
           trackBorderColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4294561624);
+              return Color(4280587913);
             }
             return Color(4287996332);
           }),
           thumbColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.dragged)) {
-              return Color(4283120111);
+              return Color(4285626832);
             }
             if (states.contains(MaterialState.hovered)) {
-              return Color(4287996332);
+              return Color(4282597027);
             }
-            return Color(4294924643);
+            return Color(4283120111);
           }),
-          minThumbLength: 6.0,
-          crossAxisMargin: 4.0,
-          mainAxisMargin: 20.0,
+          minThumbLength: 5.0,
+          crossAxisMargin: 10.0,
+          mainAxisMargin: 10.0,
         ),
       ),
       themeMode: _themeMode,

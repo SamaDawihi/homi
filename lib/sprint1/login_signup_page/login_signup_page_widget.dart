@@ -316,46 +316,19 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               .labelMedium,
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0),
-                                                        child: Container(
-                                                          width:
-                                                              double.infinity,
-                                                          child: TextFormField(
-                                                            controller: _model
-                                                                .nameController,
-                                                            onChanged: (_) =>
-                                                                EasyDebounce
-                                                                    .debounce(
-                                                              '_model.nameController',
-                                                              Duration(
-                                                                  milliseconds:
-                                                                      2000),
-                                                              () async {
-                                                                if (_model.nameController
-                                                                            .text ==
-                                                                        null ||
-                                                                    _model.nameController
-                                                                            .text ==
-                                                                        '') {
-                                                                  setState(() {
-                                                                    _model.regNameErr =
-                                                                        'Name must contain 1 to 20 characters';
-                                                                  });
-                                                                  return;
-                                                                } else {
-                                                                  return;
-                                                                }
-                                                              },
-                                                            ),
-                                                            onFieldSubmitted:
-                                                                (_) async {
+                                                      Container(
+                                                        width: double.infinity,
+                                                        child: TextFormField(
+                                                          controller: _model
+                                                              .nameController,
+                                                          onChanged: (_) =>
+                                                              EasyDebounce
+                                                                  .debounce(
+                                                            '_model.nameController',
+                                                            Duration(
+                                                                milliseconds:
+                                                                    2000),
+                                                            () async {
                                                               if (_model.nameController
                                                                           .text ==
                                                                       null ||
@@ -368,122 +341,139 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 });
                                                                 return;
                                                               } else {
-                                                                setState(() {
-                                                                  _model.regNameErr =
-                                                                      '';
-                                                                });
                                                                 return;
                                                               }
                                                             },
-                                                            autofocus: true,
-                                                            autofillHints: [
-                                                              AutofillHints
-                                                                  .email
-                                                            ],
-                                                            obscureText: false,
-                                                            decoration:
-                                                                InputDecoration(
-                                                              labelText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                'tn82g2sg' /* Name */,
-                                                              ),
-                                                              labelStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
-                                                                        fontSize:
-                                                                            16.0,
-                                                                      ),
-                                                              enabledBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20.0),
-                                                              ),
-                                                              focusedBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20.0),
-                                                              ),
-                                                              errorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20.0),
-                                                              ),
-                                                              focusedErrorBorder:
-                                                                  OutlineInputBorder(
-                                                                borderSide:
-                                                                    BorderSide(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  width: 2.0,
-                                                                ),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20.0),
-                                                              ),
-                                                              filled: true,
-                                                              fillColor: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              contentPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          24.0,
-                                                                          24.0,
-                                                                          24.0,
-                                                                          24.0),
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium,
-                                                            maxLength: 20,
-                                                            maxLengthEnforcement:
-                                                                MaxLengthEnforcement
-                                                                    .enforced,
-                                                            keyboardType:
-                                                                TextInputType
-                                                                    .emailAddress,
-                                                            validator: _model
-                                                                .nameControllerValidator
-                                                                .asValidator(
-                                                                    context),
                                                           ),
+                                                          onFieldSubmitted:
+                                                              (_) async {
+                                                            if (_model.nameController
+                                                                        .text ==
+                                                                    null ||
+                                                                _model.nameController
+                                                                        .text ==
+                                                                    '') {
+                                                              setState(() {
+                                                                _model.regNameErr =
+                                                                    'Name must contain 1 to 20 characters';
+                                                              });
+                                                              return;
+                                                            } else {
+                                                              setState(() {
+                                                                _model.regNameErr =
+                                                                    '';
+                                                              });
+                                                              return;
+                                                            }
+                                                          },
+                                                          autofocus: true,
+                                                          autofillHints: [
+                                                            AutofillHints.email
+                                                          ],
+                                                          obscureText: false,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            labelText:
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                              'tn82g2sg' /* Name */,
+                                                            ),
+                                                            labelStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Source Sans Pro',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                    ),
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
+                                                            errorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
+                                                            focusedErrorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 2.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
+                                                            filled: true,
+                                                            fillColor: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            contentPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        24.0,
+                                                                        24.0,
+                                                                        24.0),
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium,
+                                                          maxLength: 20,
+                                                          maxLengthEnforcement:
+                                                              MaxLengthEnforcement
+                                                                  .enforced,
+                                                          keyboardType:
+                                                              TextInputType
+                                                                  .emailAddress,
+                                                          validator: _model
+                                                              .nameControllerValidator
+                                                              .asValidator(
+                                                                  context),
                                                         ),
                                                       ),
                                                       if (valueOrDefault<bool>(
@@ -512,7 +502,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Readex Pro',
+                                                                      'Source Sans Pro',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .error,
@@ -602,7 +592,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Readex Pro',
+                                                                            'Source Sans Pro',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryText,
                                                                         fontSize:
@@ -704,7 +694,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Readex Pro',
+                                                                    'Source Sans Pro',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .error,
@@ -795,7 +785,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Readex Pro',
+                                                                            'Source Sans Pro',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryText,
                                                                         fontSize:
@@ -923,7 +913,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Readex Pro',
+                                                                      'Source Sans Pro',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .error,
@@ -1019,7 +1009,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .titleMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Readex Pro',
+                                                                            'Source Sans Pro',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryText,
                                                                         fontSize:
@@ -1147,7 +1137,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Readex Pro',
+                                                                      'Source Sans Pro',
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .error,
@@ -1344,7 +1334,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .titleSmall
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Readex Pro',
+                                                                            'Source Sans Pro',
                                                                         color: Colors
                                                                             .white,
                                                                       ),
@@ -1374,19 +1364,19 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                   -0.02, 0.92),
                                               child: Text(
                                                 _model.signUpErr!,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'Readex Pro',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
                                                               .error,
-                                                      fontSize: 12.0,
-                                                      fontWeight:
-                                                          FontWeight.w300,
-                                                    ),
+                                                          fontSize: 12.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
                                               ),
                                             ),
                                           ],
@@ -1451,7 +1441,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
-                                                                0.0, 16.0),
+                                                                0.0, 10.0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       child: TextFormField(
@@ -1605,25 +1595,32 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   ),
-                                                  Text(
-                                                    _model.loginEmailErr,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          fontSize: 9.0,
-                                                        ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 6.0),
+                                                    child: Text(
+                                                      _model.loginEmailErr,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Source Sans Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                fontSize: 9.0,
+                                                              ),
+                                                    ),
                                                   ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
-                                                                0.0, 16.0),
+                                                                0.0, 10.0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       child: TextFormField(
@@ -1796,19 +1793,26 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                     ),
                                                   ),
-                                                  Text(
-                                                    _model.loginPasswordErr,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                          fontSize: 9.0,
-                                                        ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 6.0),
+                                                    child: Text(
+                                                      _model.loginPasswordErr,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Source Sans Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                fontSize: 9.0,
+                                                              ),
+                                                    ),
                                                   ),
                                                   Align(
                                                     alignment:
@@ -1878,7 +1882,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   .titleSmall
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Readex Pro',
+                                                                        'Source Sans Pro',
                                                                     color: Colors
                                                                         .white,
                                                                   ),
@@ -1895,6 +1899,29 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       40.0),
                                                         ),
                                                       ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            -0.02, 0.92),
+                                                    child: Text(
+                                                      _model.loginErr!,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Source Sans Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
                                                     ),
                                                   ),
                                                   Align(
@@ -1993,7 +2020,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Readex Pro',
+                                                                        'Source Sans Pro',
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .bold,

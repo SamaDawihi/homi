@@ -74,11 +74,11 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             body: Center(
               child: SizedBox(
-                width: 25.0,
-                height: 25.0,
-                child: SpinKitRipple(
+                width: 10.0,
+                height: 10.0,
+                child: SpinKitDualRing(
                   color: FlutterFlowTheme.of(context).primary,
-                  size: 25.0,
+                  size: 10.0,
                 ),
               ),
             ),
@@ -191,7 +191,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                         ),
                         style:
                             FlutterFlowTheme.of(context).headlineLarge.override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Open Sans',
                                   fontWeight: FontWeight.w500,
                                 ),
                       ),
@@ -318,7 +318,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Readex Pro',
+                                            fontFamily: 'Source Sans Pro',
                                             color: Colors.white,
                                             fontSize: 14.0,
                                           ),
@@ -367,7 +367,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Readex Pro',
+                                          fontFamily: 'Source Sans Pro',
                                           fontSize: 14.0,
                                         ),
                                     elevation: 3.0,
@@ -412,11 +412,11 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 25.0,
-                                height: 25.0,
-                                child: SpinKitRipple(
+                                width: 10.0,
+                                height: 10.0,
+                                child: SpinKitDualRing(
                                   color: FlutterFlowTheme.of(context).primary,
-                                  size: 25.0,
+                                  size: 10.0,
                                 ),
                               ),
                             );
@@ -524,7 +524,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Readex Pro',
+                                              fontFamily: 'Source Sans Pro',
                                               color: Colors.white,
                                               fontSize: 14.0,
                                             ),
@@ -570,7 +570,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                       .titleSmall
                                                       .override(
                                                         fontFamily:
-                                                            'Readex Pro',
+                                                            'Source Sans Pro',
                                                         color: Colors.white,
                                                         fontSize: 14.0,
                                                       ),

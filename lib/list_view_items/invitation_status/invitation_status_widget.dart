@@ -56,11 +56,11 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
           if (!snapshot.hasData) {
             return Center(
               child: SizedBox(
-                width: 25.0,
-                height: 25.0,
-                child: SpinKitRipple(
+                width: 10.0,
+                height: 10.0,
+                child: SpinKitDualRing(
                   color: FlutterFlowTheme.of(context).primary,
-                  size: 25.0,
+                  size: 10.0,
                 ),
               ),
             );
@@ -102,7 +102,7 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .labelSmall
                                   .override(
-                                    fontFamily: 'Readex Pro',
+                                    fontFamily: 'Source Sans Pro',
                                     color: FlutterFlowTheme.of(context).primary,
                                     fontSize: 14.0,
                                   ),

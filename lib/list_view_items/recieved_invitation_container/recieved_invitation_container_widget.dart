@@ -61,11 +61,11 @@ class _RecievedInvitationContainerWidgetState
           if (!snapshot.hasData) {
             return Center(
               child: SizedBox(
-                width: 25.0,
-                height: 25.0,
-                child: SpinKitRipple(
+                width: 10.0,
+                height: 10.0,
+                child: SpinKitDualRing(
                   color: FlutterFlowTheme.of(context).primary,
-                  size: 25.0,
+                  size: 10.0,
                 ),
               ),
             );
@@ -98,11 +98,11 @@ class _RecievedInvitationContainerWidgetState
                       if (!snapshot.hasData) {
                         return Center(
                           child: SizedBox(
-                            width: 25.0,
-                            height: 25.0,
-                            child: SpinKitRipple(
+                            width: 10.0,
+                            height: 10.0,
+                            child: SpinKitDualRing(
                               color: FlutterFlowTheme.of(context).primary,
-                              size: 25.0,
+                              size: 10.0,
                             ),
                           ),
                         );
@@ -147,13 +147,13 @@ class _RecievedInvitationContainerWidgetState
                                       if (!snapshot.hasData) {
                                         return Center(
                                           child: SizedBox(
-                                            width: 25.0,
-                                            height: 25.0,
-                                            child: SpinKitRipple(
+                                            width: 10.0,
+                                            height: 10.0,
+                                            child: SpinKitDualRing(
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
-                                              size: 25.0,
+                                              size: 10.0,
                                             ),
                                           ),
                                         );

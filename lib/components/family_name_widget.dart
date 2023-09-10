@@ -94,7 +94,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                       textAlign: TextAlign.start,
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Open Sans',
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                     ),
@@ -174,7 +174,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Readex Pro',
+                                    fontFamily: 'Source Sans Pro',
                                     color: Color(0xFF555EBE),
                                   ),
                           elevation: 0.0,

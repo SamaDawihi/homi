@@ -85,7 +85,7 @@ class _MemberAlreadyInvitedWidgetState
                       textAlign: TextAlign.start,
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Open Sans',
                                 color: FlutterFlowTheme.of(context).primaryText,
                               ),
                     ),
@@ -98,7 +98,7 @@ class _MemberAlreadyInvitedWidgetState
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
+                                  fontFamily: 'Source Sans Pro',
                                   fontSize: 15.0,
                                 ),
                       ),

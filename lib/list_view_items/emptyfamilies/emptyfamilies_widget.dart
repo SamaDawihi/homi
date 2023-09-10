@@ -78,7 +78,7 @@ class _EmptyfamiliesWidgetState extends State<EmptyfamiliesWidget> {
                   'unepzpw3' /* create a new family or join an... */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
+                      fontFamily: 'Source Sans Pro',
                       color: FlutterFlowTheme.of(context).secondaryText,
                     ),
               ),
