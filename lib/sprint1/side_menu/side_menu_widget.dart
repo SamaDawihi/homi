@@ -147,6 +147,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                     FFAppState().update(() {
                       FFAppState().familyId = null;
                     });
+                    Navigator.pop(context);
 
                     context.pushNamed('FamiliesManagement');
                   },
@@ -236,6 +237,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    Navigator.pop(context);
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,

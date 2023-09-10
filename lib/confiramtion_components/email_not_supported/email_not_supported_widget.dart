@@ -5,19 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'confirm_admin_change_model.dart';
-export 'confirm_admin_change_model.dart';
+import 'email_not_supported_model.dart';
+export 'email_not_supported_model.dart';
 
-class ConfirmAdminChangeWidget extends StatefulWidget {
-  const ConfirmAdminChangeWidget({Key? key}) : super(key: key);
+class EmailNotSupportedWidget extends StatefulWidget {
+  const EmailNotSupportedWidget({Key? key}) : super(key: key);
 
   @override
-  _ConfirmAdminChangeWidgetState createState() =>
-      _ConfirmAdminChangeWidgetState();
+  _EmailNotSupportedWidgetState createState() =>
+      _EmailNotSupportedWidgetState();
 }
 
-class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
-  late ConfirmAdminChangeModel _model;
+class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
+  late EmailNotSupportedModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +28,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ConfirmAdminChangeModel());
+    _model = createModel(context, () => EmailNotSupportedModel());
   }
 
   @override
@@ -79,7 +79,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'eldfua3s' /* Make Admin */,
+                        '8parkzpd' /* Email Address is not valid */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -93,7 +93,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'wrtrso1u' /* Are you sure you want to pass ... */,
+                          'xpp7gczg' /* The entered email address is n... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -111,43 +111,12 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          context.safePop();
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'hoq483dp' /* Cancel */,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Readex Pro',
-                                    color: Color(0xFF555EBE),
-                                  ),
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: Color(0xFF555EBE),
-                          ),
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
-                      ),
-                    ),
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        context.safePop();
                       },
                       text: FFLocalizations.of(context).getText(
-                        '087ou14d' /* OK */,
+                        'd3n87pgf' /* Back */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

@@ -43,7 +43,7 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(
@@ -144,12 +144,13 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        FFAppState().update(() {
-                          FFAppState().familyId = null;
-                        });
                         GoRouter.of(context).prepareAuthEvent();
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();
+
+                        FFAppState().update(() {
+                          FFAppState().familyId = null;
+                        });
 
                         context.goNamedAuth('LoginSignupPage', context.mounted);
                       },

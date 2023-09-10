@@ -170,7 +170,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 1.0),
+                        alignment: AlignmentDirectional(-1.00, 1.00),
                         child: FFButtonWidget(
                           onPressed: () async {
                             var familyRecordReference =

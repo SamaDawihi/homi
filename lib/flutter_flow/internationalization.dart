@@ -139,6 +139,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Get Started',
       'ar': 'البدء',
     },
+    'c6tqmfch': {
+      'en': '[errorMessage]',
+      'ar': '',
+    },
     'r460rg34': {
       'en': 'Log In',
       'ar': 'تسجيل الدخول',
@@ -181,17 +185,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // FamilyProfile
   {
-    '6ibsn7kw': {
-      'en': 'My Family Members',
-      'ar': 'أفراد أسرتي',
-    },
     'g30gpykm': {
       'en': 'Invite a Member',
       'ar': 'دعوة عضو',
     },
     'n7mptuv2': {
-      'en': 'View Invitation Status',
+      'en': 'Invitation Status',
       'ar': 'عرض الحالة',
+    },
+    '6ibsn7kw': {
+      'en': 'My Family Members',
+      'ar': 'أفراد أسرتي',
     },
     'uy8eb4xa': {
       'en': 'Delete Family',
@@ -336,7 +340,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // MyFamilyContainer
   {
     '4t0j9wzp': {
-      'en': 'Join',
+      'en': 'Enter',
       'ar': 'ينضم',
     },
   },
@@ -491,6 +495,87 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'oljsbdla': {
       'en': 'Create',
       'ar': '',
+    },
+  },
+  // InviteSentSuccessfully
+  {
+    'fgegeusg': {
+      'en': 'Family Invite Sent Successfully!',
+      'ar': 'جعل المشرف',
+    },
+    'fs3r0n9v': {
+      'en': 'Your family invitation was sent to the member successfully.',
+      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+    },
+    'yh45peo9': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
+  // MemberAlreadyInvited
+  {
+    '1t8mr983': {
+      'en': 'Member already invited.',
+      'ar': 'جعل المشرف',
+    },
+    '6c70sjay': {
+      'en':
+          'The member you have tried to invite already has an invitation from you to join this family.',
+      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+    },
+    'mqc9tav5': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
+  // EmailNotSupported
+  {
+    '8parkzpd': {
+      'en': 'Email Address is not valid',
+      'ar': 'جعل المشرف',
+    },
+    'xpp7gczg': {
+      'en':
+          'The entered email address is not in a valid format. Please correct it and try again.',
+      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+    },
+    'd3n87pgf': {
+      'en': 'Back',
+      'ar': 'نعم',
+    },
+  },
+  // ForgetPasswordEmailSent
+  {
+    'q2envq8n': {
+      'en': 'Reset Email Sent Successfully!',
+      'ar': 'جعل المشرف',
+    },
+    'f3s29q9a': {
+      'en': 'Please check your email to reset your password.',
+      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+    },
+    'htdpx3ka': {
+      'en': 'Ok',
+      'ar': 'نعم',
+    },
+  },
+  // EnterFamilyName
+  {
+    '7wt8nq94': {
+      'en': 'Enter a Family Name',
+      'ar': 'دعوة عضو',
+    },
+    'q689li65': {
+      'en': 'Please enter a name for your family To create a new family.',
+      'ar': 'أدخل البريد الإلكتروني لعضو العائلة لإرسال دعوة',
+    },
+    '0ag0ttbi': {
+      'en': 'Enter the family name',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
+    'ogbc1zm7': {
+      'en': 'Create Family',
+      'ar': 'يدعو',
     },
   },
   // Miscellaneous

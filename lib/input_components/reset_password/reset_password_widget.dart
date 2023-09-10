@@ -1,8 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/confiramtion_components/forget_password_email_sent/forget_password_email_sent_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -84,7 +86,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(1.0, -1.0),
+      alignment: AlignmentDirectional(1.00, -1.00),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -222,66 +224,65 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           .asValidator(context),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        if (_model.emailAddressController.text.isEmpty) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Email required!',
+                  Builder(
+                    builder: (context) => Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 44.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          if (_model.emailAddressController.text.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Email required!',
+                                ),
                               ),
-                            ),
-                          );
-                          return;
-                        }
-                        await authManager.resetPassword(
-                          email: _model.emailAddressController.text,
-                          context: context,
-                        );
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text(
-                                  'Reset Password Email Sent Successfully!l'),
-                              content: Text(
-                                  'Please check your email to reset your password.'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
                             );
-                          },
-                        );
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'wfanplzm' /* Reset */,
-                      ),
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 50.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF555EBE),
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Readex Pro',
-                                  color: Colors.white,
-                                ),
-                        elevation: 2.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                            return;
+                          }
+                          await authManager.resetPassword(
+                            email: _model.emailAddressController.text,
+                            context: context,
+                          );
+                          await showAlignedDialog(
+                            context: context,
+                            isGlobal: true,
+                            avoidOverflow: false,
+                            targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                .resolve(Directionality.of(context)),
+                            followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                .resolve(Directionality.of(context)),
+                            builder: (dialogContext) {
+                              return Material(
+                                color: Colors.transparent,
+                                child: ForgetPasswordEmailSentWidget(),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'wfanplzm' /* Reset */,
                         ),
-                        borderRadius: BorderRadius.circular(12.0),
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 50.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0xFF555EBE),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Readex Pro',
+                                    color: Colors.white,
+                                  ),
+                          elevation: 2.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
                       ),
                     ),
                   ),

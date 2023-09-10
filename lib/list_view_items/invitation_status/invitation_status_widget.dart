@@ -137,7 +137,7 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
                     Expanded(
                       flex: 3,
                       child: Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.00, 0.00),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'wlgsxsq7' /* Head of Design */,
@@ -173,7 +173,7 @@ class _InvitationStatusWidgetState extends State<InvitationStatusWidget> {
                             ),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.00, 0.00),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 4.0),

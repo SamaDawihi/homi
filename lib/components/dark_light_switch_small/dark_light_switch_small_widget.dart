@@ -109,7 +109,7 @@ class _DarkLightSwitchSmallWidgetState extends State<DarkLightSwitchSmallWidget>
               alignment: AlignmentDirectional(0.0, 0.0),
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-0.9, 0.0),
+                  alignment: AlignmentDirectional(-0.90, 0.00),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
                     child: Icon(
@@ -120,7 +120,7 @@ class _DarkLightSwitchSmallWidgetState extends State<DarkLightSwitchSmallWidget>
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
+                  alignment: AlignmentDirectional(1.00, 0.00),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
                     child: Icon(
@@ -131,7 +131,7 @@ class _DarkLightSwitchSmallWidgetState extends State<DarkLightSwitchSmallWidget>
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
+                  alignment: AlignmentDirectional(1.00, 0.00),
                   child: Container(
                     width: 36.0,
                     height: 36.0,

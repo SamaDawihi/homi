@@ -57,6 +57,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = homiFirebaseUserStream()
@@ -101,11 +102,65 @@ class _MyAppState extends State<MyApp> {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
-        scrollbarTheme: ScrollbarThemeData(),
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: MaterialStateProperty.all(true),
+          trackVisibility: MaterialStateProperty.all(false),
+          interactive: true,
+          thickness: MaterialStateProperty.all(7.0),
+          radius: Radius.circular(10.0),
+          trackColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Color(4294046968);
+            }
+            return Color(4294046968);
+          }),
+          trackBorderColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Color(4283917164);
+            }
+            return Color(4283917164);
+          }),
+          thumbColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.dragged)) {
+              return Color(1307478880);
+            }
+            if (states.contains(MaterialState.hovered)) {
+              return Color(4292928487);
+            }
+            return Color(4294046968);
+          }),
+        ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        scrollbarTheme: ScrollbarThemeData(),
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: MaterialStateProperty.all(true),
+          trackVisibility: MaterialStateProperty.all(false),
+          interactive: true,
+          thickness: MaterialStateProperty.all(7.0),
+          radius: Radius.circular(10.0),
+          trackColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Color(4280099880);
+            }
+            return Color(4280099880);
+          }),
+          trackBorderColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Color(4287996332);
+            }
+            return Color(4287996332);
+          }),
+          thumbColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.dragged)) {
+              return Color(1307478880);
+            }
+            if (states.contains(MaterialState.hovered)) {
+              return Color(4280692020);
+            }
+            return Color(4280099880);
+          }),
+        ),
       ),
       themeMode: _themeMode,
       routerConfig: _router,
@@ -162,7 +217,7 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.family_restroom_sharp,
+              Icons.people_rounded,
               size: 24.0,
             ),
             label: FFLocalizations.of(context).getText(

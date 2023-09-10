@@ -113,7 +113,7 @@ class _MyFamilyContainerWidgetState extends State<MyFamilyContainerWidget> {
                       context.goNamed('FamilyProfile');
                     },
                     text: FFLocalizations.of(context).getText(
-                      '4t0j9wzp' /* Join */,
+                      '4t0j9wzp' /* Enter */,
                     ),
                     options: FFButtonOptions(
                       height: 20.0,
