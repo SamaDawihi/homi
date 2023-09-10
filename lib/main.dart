@@ -105,17 +105,17 @@ class _MyAppState extends State<MyApp> {
           thumbVisibility: MaterialStateProperty.all(true),
           trackVisibility: MaterialStateProperty.all(true),
           interactive: true,
-          thickness: MaterialStateProperty.all(7.0),
+          thickness: MaterialStateProperty.all(20.0),
           radius: Radius.circular(10.0),
           trackColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4294046968);
+              return Color(4293823328);
             }
             return Color(4294046968);
           }),
           trackBorderColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4283917164);
+              return Color(4294561624);
             }
             return Color(4283917164);
           }),
@@ -126,11 +126,11 @@ class _MyAppState extends State<MyApp> {
             if (states.contains(MaterialState.hovered)) {
               return Color(4283917164);
             }
-            return Color(4279506971);
+            return Color(4294924643);
           }),
           minThumbLength: 6.0,
-          crossAxisMargin: 2.0,
-          mainAxisMargin: 6.0,
+          crossAxisMargin: 4.0,
+          mainAxisMargin: 20.0,
         ),
       ),
       darkTheme: ThemeData(
@@ -139,17 +139,17 @@ class _MyAppState extends State<MyApp> {
           thumbVisibility: MaterialStateProperty.all(true),
           trackVisibility: MaterialStateProperty.all(true),
           interactive: true,
-          thickness: MaterialStateProperty.all(7.0),
+          thickness: MaterialStateProperty.all(20.0),
           radius: Radius.circular(10.0),
           trackColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4280099880);
+              return Color(4293823328);
             }
             return Color(4280099880);
           }),
           trackBorderColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
-              return Color(4287996332);
+              return Color(4294561624);
             }
             return Color(4287996332);
           }),
@@ -160,11 +160,11 @@ class _MyAppState extends State<MyApp> {
             if (states.contains(MaterialState.hovered)) {
               return Color(4287996332);
             }
-            return Color(4294967295);
+            return Color(4294924643);
           }),
           minThumbLength: 6.0,
-          crossAxisMargin: 2.0,
-          mainAxisMargin: 6.0,
+          crossAxisMargin: 4.0,
+          mainAxisMargin: 20.0,
         ),
       ),
       themeMode: _themeMode,
