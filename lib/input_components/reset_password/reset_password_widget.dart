@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/confiramtion_components/email_not_supported/email_not_supported_widget.dart';
 import '/confiramtion_components/forget_password_email_sent/forget_password_email_sent_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -230,20 +232,43 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           16.0, 16.0, 16.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          if (_model.emailAddressController.text.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Email required!',
+                          if (functions.checkIfTextMatchRegExp(
+                              _model.emailAddressController.text,
+                              '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                            if (_model.emailAddressController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Email required!',
+                                  ),
                                 ),
-                              ),
+                              );
+                              return;
+                            }
+                            await authManager.resetPassword(
+                              email: _model.emailAddressController.text,
+                              context: context,
                             );
+                          } else {
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: EmailNotSupportedWidget(),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+
                             return;
                           }
-                          await authManager.resetPassword(
-                            email: _model.emailAddressController.text,
-                            context: context,
-                          );
+
                           await showAlignedDialog(
                             context: context,
                             isGlobal: true,

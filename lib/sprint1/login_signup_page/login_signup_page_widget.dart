@@ -1170,59 +1170,143 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           child: FFButtonWidget(
                                                             onPressed:
                                                                 () async {
-                                                              GoRouter.of(
-                                                                      context)
-                                                                  .prepareAuthEvent();
-                                                              if (_model
+                                                              if (_model.nameController
+                                                                          .text ==
+                                                                      null ||
+                                                                  _model.nameController
+                                                                          .text ==
+                                                                      '') {
+                                                                setState(() {
+                                                                  _model.regNameErr =
+                                                                      'Name must contain 1 to 20 characters';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regNameErr =
+                                                                      '';
+                                                                });
+                                                              }
+
+                                                              if (functions
+                                                                  .checkIfTextMatchRegExp(
+                                                                      _model
+                                                                          .emailAddressController
+                                                                          .text,
+                                                                      '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                setState(() {
+                                                                  _model.regEmailErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regEmailErr =
+                                                                      'The Email Format must be XXX@XXX.XX';
+                                                                });
+                                                              }
+
+                                                              if (functions
+                                                                  .checkPasswordFunction(_model
                                                                       .passwordController
-                                                                      .text !=
-                                                                  _model
+                                                                      .text)) {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      'Password Length Must Be Larger Than 6 Characters';
+                                                                });
+                                                              }
+
+                                                              if (functions.checkPasswordFunction(_model
                                                                       .reEnterController
-                                                                      .text) {
-                                                                ScaffoldMessenger.of(
+                                                                      .text) &&
+                                                                  (_model.reEnterController
+                                                                          .text ==
+                                                                      _model
+                                                                          .passwordController
+                                                                          .text)) {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regPasswordConfirmationErr =
+                                                                      'Password Must Be The Same And 6 Charachters Or More.';
+                                                                });
+                                                              }
+
+                                                              if ((_model.regNameErr == null || _model.regNameErr == '') &&
+                                                                  (_model.regEmailErr ==
+                                                                          null ||
+                                                                      _model.regEmailErr ==
+                                                                          '') &&
+                                                                  (_model.regPasswordErr ==
+                                                                          null ||
+                                                                      _model.regPasswordErr ==
+                                                                          '') &&
+                                                                  (_model.regPasswordConfirmationErr ==
+                                                                          null ||
+                                                                      _model.regPasswordConfirmationErr ==
+                                                                          '')) {
+                                                                GoRouter.of(
                                                                         context)
-                                                                    .showSnackBar(
-                                                                  SnackBar(
-                                                                    content:
-                                                                        Text(
-                                                                      'Passwords don\'t match!',
+                                                                    .prepareAuthEvent();
+                                                                if (_model
+                                                                        .passwordController
+                                                                        .text !=
+                                                                    _model
+                                                                        .reEnterController
+                                                                        .text) {
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'Passwords don\'t match!',
+                                                                      ),
                                                                     ),
-                                                                  ),
+                                                                  );
+                                                                  return;
+                                                                }
+
+                                                                final user =
+                                                                    await authManager
+                                                                        .createAccountWithEmail(
+                                                                  context,
+                                                                  _model
+                                                                      .emailAddressController
+                                                                      .text,
+                                                                  _model
+                                                                      .passwordController
+                                                                      .text,
                                                                 );
+                                                                if (user ==
+                                                                    null) {
+                                                                  return;
+                                                                }
+
+                                                                await UsersRecord
+                                                                    .collection
+                                                                    .doc(user
+                                                                        .uid)
+                                                                    .update(
+                                                                        createUsersRecordData(
+                                                                      email: _model
+                                                                          .emailAddressController
+                                                                          .text,
+                                                                      displayName: _model
+                                                                          .nameController
+                                                                          .text,
+                                                                      createdTime:
+                                                                          getCurrentTimestamp,
+                                                                    ));
+                                                              } else {
                                                                 return;
                                                               }
-
-                                                              final user =
-                                                                  await authManager
-                                                                      .createAccountWithEmail(
-                                                                context,
-                                                                _model
-                                                                    .emailAddressController
-                                                                    .text,
-                                                                _model
-                                                                    .passwordController
-                                                                    .text,
-                                                              );
-                                                              if (user ==
-                                                                  null) {
-                                                                return;
-                                                              }
-
-                                                              await UsersRecord
-                                                                  .collection
-                                                                  .doc(user.uid)
-                                                                  .update(
-                                                                      createUsersRecordData(
-                                                                    email: _model
-                                                                        .emailAddressController
-                                                                        .text,
-                                                                    displayName:
-                                                                        _model
-                                                                            .nameController
-                                                                            .text,
-                                                                    createdTime:
-                                                                        getCurrentTimestamp,
-                                                                  ));
 
                                                               context.goNamedAuth(
                                                                   'FamilyProfile',
@@ -1287,7 +1371,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -0.04, 0.83),
+                                                  -0.02, 0.92),
                                               child: Text(
                                                 _model.signUpErr!,
                                                 style: FlutterFlowTheme.of(

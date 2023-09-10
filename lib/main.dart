@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.light,
         scrollbarTheme: ScrollbarThemeData(
           thumbVisibility: MaterialStateProperty.all(true),
-          trackVisibility: MaterialStateProperty.all(false),
+          trackVisibility: MaterialStateProperty.all(true),
           interactive: true,
           thickness: MaterialStateProperty.all(7.0),
           radius: Radius.circular(10.0),
@@ -121,20 +121,23 @@ class _MyAppState extends State<MyApp> {
           }),
           thumbColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.dragged)) {
-              return Color(1307478880);
+              return Color(4283120111);
             }
             if (states.contains(MaterialState.hovered)) {
-              return Color(4292928487);
+              return Color(4283917164);
             }
-            return Color(4294046968);
+            return Color(4279506971);
           }),
+          minThumbLength: 6.0,
+          crossAxisMargin: 2.0,
+          mainAxisMargin: 6.0,
         ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         scrollbarTheme: ScrollbarThemeData(
           thumbVisibility: MaterialStateProperty.all(true),
-          trackVisibility: MaterialStateProperty.all(false),
+          trackVisibility: MaterialStateProperty.all(true),
           interactive: true,
           thickness: MaterialStateProperty.all(7.0),
           radius: Radius.circular(10.0),
@@ -152,13 +155,16 @@ class _MyAppState extends State<MyApp> {
           }),
           thumbColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.dragged)) {
-              return Color(1307478880);
+              return Color(4283120111);
             }
             if (states.contains(MaterialState.hovered)) {
-              return Color(4280692020);
+              return Color(4287996332);
             }
-            return Color(4280099880);
+            return Color(4294967295);
           }),
+          minThumbLength: 6.0,
+          crossAxisMargin: 2.0,
+          mainAxisMargin: 6.0,
         ),
       ),
       themeMode: _themeMode,

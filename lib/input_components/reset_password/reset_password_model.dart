@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/confiramtion_components/email_not_supported/email_not_supported_widget.dart';
 import '/confiramtion_components/forget_password_email_sent/forget_password_email_sent_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
