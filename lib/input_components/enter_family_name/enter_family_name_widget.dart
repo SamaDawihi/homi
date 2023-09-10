@@ -242,7 +242,7 @@ class _EnterFamilyNameWidgetState extends State<EnterFamilyNameWidget>
                             MemberRecord.collection.doc();
                         await memberRecordReference.set(createMemberRecordData(
                           memberId: currentUserReference,
-                          familyId: FFAppState().familyId,
+                          familyId: _model.createdFamily?.reference,
                           color: FlutterFlowTheme.of(context).warning,
                           createdTime: getCurrentTimestamp,
                         ));
@@ -250,7 +250,7 @@ class _EnterFamilyNameWidgetState extends State<EnterFamilyNameWidget>
                             MemberRecord.getDocumentFromData(
                                 createMemberRecordData(
                                   memberId: currentUserReference,
-                                  familyId: FFAppState().familyId,
+                                  familyId: _model.createdFamily?.reference,
                                   color: FlutterFlowTheme.of(context).warning,
                                   createdTime: getCurrentTimestamp,
                                 ),

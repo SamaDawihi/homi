@@ -9,6 +9,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -329,6 +330,51 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           child: TextFormField(
                                                             controller: _model
                                                                 .nameController,
+                                                            onChanged: (_) =>
+                                                                EasyDebounce
+                                                                    .debounce(
+                                                              '_model.nameController',
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      2000),
+                                                              () async {
+                                                                if (_model.nameController
+                                                                            .text ==
+                                                                        null ||
+                                                                    _model.nameController
+                                                                            .text ==
+                                                                        '') {
+                                                                  setState(() {
+                                                                    _model.regNameErr =
+                                                                        'Name must contain 1 to 20 characters';
+                                                                  });
+                                                                  return;
+                                                                } else {
+                                                                  return;
+                                                                }
+                                                              },
+                                                            ),
+                                                            onFieldSubmitted:
+                                                                (_) async {
+                                                              if (_model.nameController
+                                                                          .text ==
+                                                                      null ||
+                                                                  _model.nameController
+                                                                          .text ==
+                                                                      '') {
+                                                                setState(() {
+                                                                  _model.regNameErr =
+                                                                      'Name must contain 1 to 20 characters';
+                                                                });
+                                                                return;
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regNameErr =
+                                                                      '';
+                                                                });
+                                                                return;
+                                                              }
+                                                            },
                                                             autofocus: true,
                                                             autofillHints: [
                                                               AutofillHints
@@ -426,6 +472,10 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .labelMedium,
+                                                            maxLength: 20,
+                                                            maxLengthEnforcement:
+                                                                MaxLengthEnforcement
+                                                                    .enforced,
                                                             keyboardType:
                                                                 TextInputType
                                                                     .emailAddress,
@@ -511,6 +561,27 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 }
                                                               },
                                                             ),
+                                                            onFieldSubmitted:
+                                                                (_) async {
+                                                              if (functions
+                                                                  .checkIfTextMatchRegExp(
+                                                                      _model
+                                                                          .emailAddressController
+                                                                          .text,
+                                                                      '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                setState(() {
+                                                                  _model.regEmailErr =
+                                                                      '';
+                                                                });
+                                                                return;
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regEmailErr =
+                                                                      'The Email Format must be XXX@XXX.XX';
+                                                                });
+                                                                return;
+                                                              }
+                                                            },
                                                             autofocus: true,
                                                             autofillHints: [
                                                               AutofillHints
@@ -681,6 +752,25 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 }
                                                               },
                                                             ),
+                                                            onFieldSubmitted:
+                                                                (_) async {
+                                                              if (functions
+                                                                  .checkPasswordFunction(_model
+                                                                      .passwordController
+                                                                      .text)) {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      '';
+                                                                });
+                                                                return;
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      'Password Length Must Be Larger Than 6 Characters';
+                                                                });
+                                                                return;
+                                                              }
+                                                            },
                                                             autofocus: true,
                                                             autofillHints: [
                                                               AutofillHints
@@ -885,6 +975,29 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 }
                                                               },
                                                             ),
+                                                            onFieldSubmitted:
+                                                                (_) async {
+                                                              if (functions.checkPasswordFunction(_model
+                                                                      .reEnterController
+                                                                      .text) &&
+                                                                  (_model.reEnterController
+                                                                          .text ==
+                                                                      _model
+                                                                          .passwordController
+                                                                          .text)) {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      '';
+                                                                });
+                                                                return;
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regPasswordConfirmationErr =
+                                                                      'Password Must Be The Same And 6 Charachters Or More.';
+                                                                });
+                                                                return;
+                                                              }
+                                                            },
                                                             autofocus: true,
                                                             autofillHints: [
                                                               AutofillHints
@@ -1176,10 +1289,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                               alignment: AlignmentDirectional(
                                                   -0.04, 0.83),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'c6tqmfch' /* [errorMessage] */,
-                                                ),
+                                                _model.signUpErr!,
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -1462,6 +1572,26 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             }
                                                           },
                                                         ),
+                                                        onFieldSubmitted:
+                                                            (_) async {
+                                                          if (functions
+                                                              .checkPasswordFunction(
+                                                                  _model
+                                                                      .loginPasswordController
+                                                                      .text)) {
+                                                            setState(() {
+                                                              _model.loginPasswordErr =
+                                                                  '';
+                                                            });
+                                                            return;
+                                                          } else {
+                                                            setState(() {
+                                                              _model.loginPasswordErr =
+                                                                  'The Password Length Must Be 6  Characters Or More.';
+                                                            });
+                                                            return;
+                                                          }
+                                                        },
                                                         autofocus: true,
                                                         autofillHints: [
                                                           AutofillHints.password

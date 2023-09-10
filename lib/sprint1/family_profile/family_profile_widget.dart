@@ -368,7 +368,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         .titleSmall
                                         .override(
                                           fontFamily: 'Readex Pro',
-                                          fontSize: 13.0,
+                                          fontSize: 14.0,
                                         ),
                                     elevation: 3.0,
                                     borderSide: BorderSide(
@@ -526,6 +526,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                             .override(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.white,
+                                              fontSize: 14.0,
                                             ),
                                         elevation: 3.0,
                                         borderSide: BorderSide(
@@ -571,6 +572,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                         fontFamily:
                                                             'Readex Pro',
                                                         color: Colors.white,
+                                                        fontSize: 14.0,
                                                       ),
                                               elevation: 3.0,
                                               borderSide: BorderSide(

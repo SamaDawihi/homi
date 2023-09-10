@@ -139,10 +139,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Get Started',
       'ar': 'البدء',
     },
-    'c6tqmfch': {
-      'en': '[errorMessage]',
-      'ar': '',
-    },
     'r460rg34': {
       'en': 'Log In',
       'ar': 'تسجيل الدخول',

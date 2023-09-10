@@ -139,10 +139,32 @@ class _RecievedInvitationContainerWidgetState
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
-                                  child: Text(
-                                    currentUserEmail,
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
+                                  child: FutureBuilder<UsersRecord>(
+                                    future: UsersRecord.getDocumentOnce(
+                                        rowFamilyRecord.adminId!),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 25.0,
+                                            height: 25.0,
+                                            child: SpinKitRipple(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 25.0,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      final textUsersRecord = snapshot.data!;
+                                      return Text(
+                                        'Invited By ${textUsersRecord.displayName}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                      );
+                                    },
                                   ),
                                 ),
                               ],
