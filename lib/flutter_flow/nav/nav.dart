@@ -322,13 +322,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 10.0,
-                    height: 10.0,
-                    child: SpinKitDualRing(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 10.0,
+              ? Container(
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/13.png',
+                      width: 400.0,
+                      height: 200.0,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 )
