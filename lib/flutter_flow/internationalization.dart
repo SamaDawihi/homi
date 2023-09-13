@@ -210,10 +210,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Leave Family',
       'ar': 'غادر العائلة',
     },
-    'xjn6k5wm': {
-      'en': 'Family Profile',
-      'ar': '',
-    },
     'o09fvi6t': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -221,10 +217,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Calendar
   {
-    'tv4gyk3a': {
-      'en': 'Calendar',
-      'ar': '',
-    },
     '2adgmlg5': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -232,10 +224,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Lists
   {
-    'iezhov3o': {
-      'en': 'Lists',
-      'ar': '',
-    },
     'cjn0szm1': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -243,10 +231,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Announcements
   {
-    'dkvpa0vb': {
-      'en': 'Annoucement',
-      'ar': '',
-    },
     'yzk7wcws': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -326,10 +310,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'o4ze7fw5': {
       'en': 'Rejected',
       'ar': 'مرفوض',
-    },
-    'tbx2wmzo': {
-      'en': 'Invitations Status',
-      'ar': '',
     },
     'u4fngcl6': {
       'en': 'Home',
@@ -635,6 +615,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4y6chyn2': {
       'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
+  // ColorAlrasyUsed
+  {
+    '9lmrn5qn': {
+      'en': 'Color Is Already Used',
+      'ar': 'جعل المشرف',
+    },
+    '2aljl8xz': {
+      'en':
+          'The color you selected is already used by another family member select another member.',
+      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+    },
+    'hwytjisg': {
+      'en': 'Select Color',
       'ar': 'نعم',
     },
   },

@@ -10,6 +10,7 @@ import '/sprint1/side_menu/side_menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'family_profile_model.dart';
@@ -121,10 +122,11 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   buttonSize: 50.0,
                                   fillColor: FlutterFlowTheme.of(context)
                                       .primaryBackground,
-                                  icon: Icon(
-                                    Icons.menu,
-                                    color: Color(0xFF57636C),
-                                    size: 30.0,
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.alignLeft,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 25.0,
                                   ),
                                   onPressed: () async {
                                     await showModalBottomSheet(
@@ -146,18 +148,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                     ).then((value) => setState(() {}));
                                   },
                                 ),
-                              ),
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'xjn6k5wm' /* Family Profile */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Source Sans Pro',
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.w900,
-                                    ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -192,6 +182,17 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Text(
+                        familyProfileFamilyRecord.name,
+                        style:
+                            FlutterFlowTheme.of(context).headlineLarge.override(
+                                  fontFamily: 'Open Sans',
+                                  fontWeight: FontWeight.w500,
+                                ),
+                      ),
+                    ),
                     Container(
                       width: double.infinity,
                       height: 190.0,
@@ -236,24 +237,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          familyProfileFamilyRecord.name,
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineLarge
-                                              .override(
-                                                fontFamily: 'Open Sans',
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
                                   ],
                                 ),
                               ),
@@ -271,7 +254,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
                           mainAxisSize: MainAxisSize.min,

@@ -7,6 +7,7 @@ import '/list_view_items/invitation_status/invitation_status_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'invitations_status_model.dart';
@@ -83,28 +84,16 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                               buttonSize: 50.0,
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              icon: Icon(
-                                Icons.arrow_back,
+                              icon: FaIcon(
+                                FontAwesomeIcons.alignLeft,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 30.0,
+                                size: 25.0,
                               ),
                               onPressed: () async {
                                 context.pop();
                               },
                             ),
-                          ),
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'tbx2wmzo' /* Invitations Status */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Source Sans Pro',
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w900,
-                                ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(

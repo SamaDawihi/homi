@@ -102,18 +102,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                               },
                             ),
                           ),
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'tv4gyk3a' /* Calendar */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Source Sans Pro',
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 6.0, 0.0),

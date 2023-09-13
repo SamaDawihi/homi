@@ -101,18 +101,6 @@ class _ListsWidgetState extends State<ListsWidget> {
                               },
                             ),
                           ),
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'iezhov3o' /* Lists */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Source Sans Pro',
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 6.0, 0.0),

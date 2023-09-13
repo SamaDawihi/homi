@@ -24,7 +24,7 @@
         },
         {
           "fieldPath": "created_time",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
         }
       ]
     },

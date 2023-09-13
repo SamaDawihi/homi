@@ -101,18 +101,6 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
                               },
                             ),
                           ),
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'dkvpa0vb' /* Annoucement */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Source Sans Pro',
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 6.0, 0.0),

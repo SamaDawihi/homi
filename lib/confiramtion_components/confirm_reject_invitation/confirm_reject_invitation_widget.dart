@@ -157,6 +157,7 @@ class _ConfirmRejectInvitationWidgetState
                             .update(createInvitationRecordData(
                           status: 'Rejected',
                         ));
+                        Navigator.pop(context);
                       },
                       text: FFLocalizations.of(context).getText(
                         '9w0k1a1w' /* Reject */,

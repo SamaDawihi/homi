@@ -5,19 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'email_not_supported_model.dart';
-export 'email_not_supported_model.dart';
+import 'color_alrasy_used_model.dart';
+export 'color_alrasy_used_model.dart';
 
-class EmailNotSupportedWidget extends StatefulWidget {
-  const EmailNotSupportedWidget({Key? key}) : super(key: key);
+class ColorAlrasyUsedWidget extends StatefulWidget {
+  const ColorAlrasyUsedWidget({Key? key}) : super(key: key);
 
   @override
-  _EmailNotSupportedWidgetState createState() =>
-      _EmailNotSupportedWidgetState();
+  _ColorAlrasyUsedWidgetState createState() => _ColorAlrasyUsedWidgetState();
 }
 
-class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
-  late EmailNotSupportedModel _model;
+class _ColorAlrasyUsedWidgetState extends State<ColorAlrasyUsedWidget> {
+  late ColorAlrasyUsedModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +27,7 @@ class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EmailNotSupportedModel());
+    _model = createModel(context, () => ColorAlrasyUsedModel());
   }
 
   @override
@@ -79,7 +78,7 @@ class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        '8parkzpd' /* Email Address is not valid */,
+                        '9lmrn5qn' /* Color Is Already Used */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -93,7 +92,7 @@ class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'xpp7gczg' /* The entered email address is n... */,
+                          '2aljl8xz' /* The color you selected is alre... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -112,11 +111,11 @@ class _EmailNotSupportedWidgetState extends State<EmailNotSupportedWidget> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FFButtonWidget(
-                      onPressed: () async {
-                        context.safePop();
+                      onPressed: () {
+                        print('Button pressed ...');
                       },
                       text: FFLocalizations.of(context).getText(
-                        'd3n87pgf' /* Back */,
+                        'hwytjisg' /* Select Color */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

@@ -1190,7 +1190,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         50.0, 0.0, 50.0, 0.0),
                                                 child: Text(
                                                   _model.signUpErr!,
-                                                  textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

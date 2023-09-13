@@ -83,7 +83,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                           icon: Icon(
                             Icons.menu,
                             color: Color(0xFF57636C),
-                            size: 30.0,
+                            size: 25.0,
                           ),
                           onPressed: () async {
                             await showModalBottomSheet(
@@ -247,7 +247,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     stream: queryMemberRecord(
                       queryBuilder: (memberRecord) => memberRecord
                           .where('memberId', isEqualTo: currentUserReference)
-                          .orderBy('created_time'),
+                          .orderBy('created_time', descending: true),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
