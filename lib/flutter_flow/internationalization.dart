@@ -618,6 +618,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
+  // ColorAlrasyUsed
+  {
+    '9lmrn5qn': {
+      'en': 'Color Is Already Used',
+      'ar': 'جعل المشرف',
+    },
+    '2aljl8xz': {
+      'en':
+          'The color you selected is already used by another family member select another member.',
+      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+    },
+    'hwytjisg': {
+      'en': 'Select Color',
+      'ar': 'نعم',
+    },
+  },
   // Miscellaneous
   {
     'y9xb58yl': {
