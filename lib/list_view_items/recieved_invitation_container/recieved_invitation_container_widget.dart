@@ -1,5 +1,5 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/confiramtion_components/confirm_accept_invitation/confirm_accept_invitation_widget.dart';
 import '/confiramtion_components/confirm_reject_invitation/confirm_reject_invitation_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'recieved_invitation_container_model.dart';
@@ -199,104 +198,21 @@ class _RecievedInvitationContainerWidgetState
                             size: 20.0,
                           ),
                           onPressed: () async {
-                            await showDialog(
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
                               context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('welcome to the family'),
-                                  content: Text(
-                                      'choose the color that will represent you in this family'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('pick a color'),
-                                    ),
-                                  ],
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: ConfirmAcceptInvitationWidget(
+                                    invitation:
+                                        receivedInvitationContainerInvitationRecord,
+                                  ),
                                 );
                               },
-                            );
-                            final _colorPickedColor = await showFFColorPicker(
-                              context,
-                              currentColor: _model.colorPicked ??=
-                                  FlutterFlowTheme.of(context).primary,
-                              showRecentColors: true,
-                              allowOpacity: true,
-                              textColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              secondaryTextColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              backgroundColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              primaryButtonBackgroundColor:
-                                  FlutterFlowTheme.of(context).primary,
-                              primaryButtonTextColor: Colors.white,
-                              primaryButtonBorderColor: Colors.transparent,
-                              displayAsBottomSheet: isMobileWidth(context),
-                            );
-
-                            if (_colorPickedColor != null) {
-                              setState(
-                                  () => _model.colorPicked = _colorPickedColor);
-                            }
-
-                            await MemberRecord.collection
-                                .doc()
-                                .set(createMemberRecordData(
-                                  memberId: currentUserReference,
-                                  familyId:
-                                      receivedInvitationContainerInvitationRecord
-                                          .familyId,
-                                  color: _model.colorPicked,
-                                  createdTime: getCurrentTimestamp,
-                                ));
-
-                            await widget.invitationId!
-                                .update(createInvitationRecordData(
-                              status: 'Accepted',
-                            ));
-                            FFAppState().update(() {
-                              FFAppState().familyId =
-                                  receivedInvitationContainerInvitationRecord
-                                      .familyId;
-                            });
-
-                            context.goNamed('FamilyProfile');
-
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Color Already Picked'),
-                                  content: Text(
-                                      'The Color You Have Selected Is Already Picked Try Again.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Color Already Picked'),
-                                  content: Text(
-                                      'The Color You Have Selected Is Already Picked Try Again.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
+                            ).then((value) => setState(() {}));
                           },
                         ),
                       ),

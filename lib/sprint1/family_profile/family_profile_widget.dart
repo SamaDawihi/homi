@@ -151,7 +151,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  '5dcbyzfj' /* Family Profile */,
+                                  'wj4kjtc4' /* Family Profile */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -250,7 +250,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
-                                              fontSize: 24.0,
+                                              fontSize: 14.0,
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),

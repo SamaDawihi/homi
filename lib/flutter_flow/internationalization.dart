@@ -210,7 +210,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Leave Family',
       'ar': 'غادر العائلة',
     },
-    '5dcbyzfj': {
+    'wj4kjtc4': {
       'en': 'Family Profile',
       'ar': '',
     },
@@ -315,7 +315,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Rejected',
       'ar': 'مرفوض',
     },
-    'toj3du9y': {
+    'pnhal6qv': {
       'en': 'Invitation Status',
       'ar': '',
     },
@@ -639,6 +639,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hwytjisg': {
       'en': 'Select Color',
+      'ar': 'نعم',
+    },
+  },
+  // ConfirmAcceptInvitation
+  {
+    '2lxkijss': {
+      'en': 'Confirm Acceptance',
+      'ar': 'تأكيد الخروج',
+    },
+    '1pv97tnx': {
+      'en': 'Are you sure you want to accept the invitation?',
+      'ar': 'هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟',
+    },
+    '4kd5va2x': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    '521dbf30': {
+      'en': 'Accept',
       'ar': 'نعم',
     },
   },
