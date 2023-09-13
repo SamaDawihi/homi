@@ -210,7 +210,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Leave Family',
       'ar': 'غادر العائلة',
     },
-    'o02lgez4': {
+    '5dcbyzfj': {
       'en': 'Family Profile',
       'ar': '',
     },
@@ -315,7 +315,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Rejected',
       'ar': 'مرفوض',
     },
-    '0bx4kt3z': {
+    'toj3du9y': {
       'en': 'Invitation Status',
       'ar': '',
     },

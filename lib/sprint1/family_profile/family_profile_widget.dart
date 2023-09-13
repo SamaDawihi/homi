@@ -151,7 +151,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'o02lgez4' /* Family Profile */,
+                                  '5dcbyzfj' /* Family Profile */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

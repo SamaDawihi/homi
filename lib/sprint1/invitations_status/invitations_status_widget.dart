@@ -97,7 +97,7 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              '0bx4kt3z' /* Invitation Status */,
+                              'toj3du9y' /* Invitation Status */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
