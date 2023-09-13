@@ -116,7 +116,7 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.safePop();
+                          Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(
                           'v0kxwgmn' /* Cancel */,
@@ -148,6 +148,8 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();
 
+                        await Future.delayed(
+                            const Duration(milliseconds: 1000));
                         FFAppState().update(() {
                           FFAppState().familyId = null;
                         });

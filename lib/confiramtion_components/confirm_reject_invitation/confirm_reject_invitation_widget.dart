@@ -125,7 +125,7 @@ class _ConfirmRejectInvitationWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.safePop();
+                          Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(
                           'no2ejqzl' /* Cancel */,

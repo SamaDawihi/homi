@@ -149,6 +149,18 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   },
                                 ),
                               ),
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'o02lgez4' /* Family Profile */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Source Sans Pro',
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 6.0, 0.0),
@@ -182,17 +194,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Text(
-                        familyProfileFamilyRecord.name,
-                        style:
-                            FlutterFlowTheme.of(context).headlineLarge.override(
-                                  fontFamily: 'Open Sans',
-                                  fontWeight: FontWeight.w500,
-                                ),
-                      ),
-                    ),
                     Container(
                       width: double.infinity,
                       height: 190.0,
@@ -235,6 +236,23 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         width: 90.0,
                                         height: 90.0,
                                         fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
+                                      child: Text(
+                                        familyProfileFamilyRecord.name,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily: 'Open Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              fontSize: 24.0,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                       ),
                                     ),
                                   ],
