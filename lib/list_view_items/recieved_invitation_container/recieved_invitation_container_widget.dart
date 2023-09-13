@@ -4,7 +4,9 @@ import '/confiramtion_components/confirm_reject_invitation/confirm_reject_invita
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
@@ -216,28 +218,56 @@ class _RecievedInvitationContainerWidgetState
                                 );
                               },
                             );
-                            final _colorPickedColor = await showFFColorPicker(
-                              context,
-                              currentColor: _model.colorPicked ??=
-                                  FlutterFlowTheme.of(context).primary,
-                              showRecentColors: true,
-                              allowOpacity: true,
-                              textColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              secondaryTextColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                              backgroundColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              primaryButtonBackgroundColor:
-                                  FlutterFlowTheme.of(context).primary,
-                              primaryButtonTextColor: Colors.white,
-                              primaryButtonBorderColor: Colors.transparent,
-                              displayAsBottomSheet: isMobileWidth(context),
+                            _model.familyMembers = await queryMemberRecordOnce(
+                              queryBuilder: (memberRecord) => memberRecord.where(
+                                  'familyId',
+                                  isEqualTo:
+                                      receivedInvitationContainerInvitationRecord
+                                          .familyId),
                             );
+                            while (functions.isColorUsedFunction(
+                                _model.familyMembers!.toList(),
+                                _model.colorPicked!)) {
+                              final _colorPickedColor = await showFFColorPicker(
+                                context,
+                                currentColor: _model.colorPicked ??=
+                                    FlutterFlowTheme.of(context).primary,
+                                showRecentColors: true,
+                                allowOpacity: true,
+                                textColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                secondaryTextColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                primaryButtonBackgroundColor:
+                                    FlutterFlowTheme.of(context).primary,
+                                primaryButtonTextColor: Colors.white,
+                                primaryButtonBorderColor: Colors.transparent,
+                                displayAsBottomSheet: isMobileWidth(context),
+                              );
 
-                            if (_colorPickedColor != null) {
-                              setState(
-                                  () => _model.colorPicked = _colorPickedColor);
+                              if (_colorPickedColor != null) {
+                                setState(() =>
+                                    _model.colorPicked = _colorPickedColor);
+                              }
+
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('color already picked'),
+                                    content: Text('color already picked'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             }
 
                             await MemberRecord.collection
@@ -297,6 +327,8 @@ class _RecievedInvitationContainerWidgetState
                                 );
                               },
                             );
+
+                            setState(() {});
                           },
                         ),
                       ),

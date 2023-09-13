@@ -83,7 +83,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                           icon: Icon(
                             Icons.menu,
                             color: Color(0xFF57636C),
-                            size: 25.0,
+                            size: 30.0,
                           ),
                           onPressed: () async {
                             await showModalBottomSheet(

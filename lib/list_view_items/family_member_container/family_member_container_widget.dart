@@ -179,7 +179,10 @@ class _FamilyMemberContainerWidgetState
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          if (rowFamilyRecord.adminId == currentUserReference)
+                          if ((rowFamilyRecord.adminId ==
+                                  currentUserReference) &&
+                              (rowFamilyRecord.adminId !=
+                                  familYMemberContainerUsersRecord.reference))
                             InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
