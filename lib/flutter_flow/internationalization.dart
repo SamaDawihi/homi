@@ -132,12 +132,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'كلمة المرور',
     },
     'mgqcd7uj': {
-      'en': 're-enter password',
+      'en': 'Re-enter Password',
       'ar': 'إعادة إدخال كلمة المرور',
     },
     'z14qfm03': {
       'en': 'Get Started',
       'ar': 'البدء',
+    },
+    '05f9nfea': {
+      'en':
+          '-Be greater than 6 characters.\n-Contain both letters and numbers.',
+      'ar': '',
+    },
+    '6t83f44z': {
+      'en': 'Password must:',
+      'ar': '',
     },
     'r460rg34': {
       'en': 'Log In',
@@ -235,7 +244,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9ukj6vmr': {
       'en':
-          'welcome to homi, choose whether you want to create a new family, join your old families, or accept an invitation to be a member of new family....',
+          'Welcome to Homi! Choose whether you want to create a new family, join one of your existing families, or accept an invitation to be a member of new family.',
       'ar':
           'مرحبًا بك في هومي، اختر ما إذا كنت تريد إنشاء عائلة جديدة، أو الانضمام إلى عائلاتك القديمة، أو قبول دعوة لتصبح عضوًا في عائلة جديدة....',
     },
@@ -572,6 +581,41 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ogbc1zm7': {
       'en': 'Create Family',
       'ar': 'يدعو',
+    },
+  },
+  // ConfirmRejectInvitation
+  {
+    '5o5x6s63': {
+      'en': 'Confirm Rejection',
+      'ar': 'تأكيد الخروج',
+    },
+    'ospbmsnf': {
+      'en': 'Are you sure you want to reject the invitation?',
+      'ar': 'هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟',
+    },
+    'no2ejqzl': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    '9w0k1a1w': {
+      'en': 'Reject',
+      'ar': 'نعم',
+    },
+  },
+  // MemberAlreadyMember
+  {
+    'wrfqpvmo': {
+      'en': 'Member is already in the Family',
+      'ar': 'جعل المشرف',
+    },
+    '0ta5tdxp': {
+      'en':
+          'The member you have tried to invite already is a member of this family.',
+      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+    },
+    '4y6chyn2': {
+      'en': 'OK',
+      'ar': 'نعم',
     },
   },
   // Miscellaneous

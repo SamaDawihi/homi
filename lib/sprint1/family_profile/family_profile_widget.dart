@@ -185,10 +185,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                     Align(
                       alignment: AlignmentDirectional(0.00, 0.00),
                       child: Text(
-                        valueOrDefault<String>(
-                          familyProfileFamilyRecord.name,
-                          'Return Home',
-                        ),
+                        familyProfileFamilyRecord.name,
                         style:
                             FlutterFlowTheme.of(context).headlineLarge.override(
                                   fontFamily: 'Open Sans',
@@ -238,18 +235,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         width: 90.0,
                                         height: 90.0,
                                         fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          FFAppState().familyId?.id,
-                                          'not set',
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
                                       ),
                                     ),
                                   ],

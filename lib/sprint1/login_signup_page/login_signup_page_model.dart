@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/reset_password/reset_password_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,8 @@ class LoginSignupPageModel extends FlutterFlowModel {
   TextEditingController? reEnterController;
   late bool reEnterVisibility;
   String? Function(BuildContext, String?)? reEnterControllerValidator;
+  // Stores action output result for [Custom Action - isEmailUnique] action in Button widget.
+  bool? emailExists;
   // State field(s) for loginEmailAddress widget.
   TextEditingController? loginEmailAddressController;
   String? Function(BuildContext, String?)? loginEmailAddressControllerValidator;

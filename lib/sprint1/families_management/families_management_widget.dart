@@ -155,7 +155,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                       EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      '9ukj6vmr' /* welcome to homi, choose whethe... */,
+                      '9ukj6vmr' /* Welcome to Homi! Choose whethe... */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Source Sans Pro',
@@ -320,7 +320,11 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     stream: queryInvitationRecord(
                       queryBuilder: (invitationRecord) => invitationRecord
                           .where('invitedEmail', isEqualTo: currentUserEmail)
-                          .where('status', isEqualTo: 'Pending')
+                          .where('status',
+                              isEqualTo: valueOrDefault<String>(
+                                'Pending',
+                                'Pending',
+                              ))
                           .orderBy('created_time', descending: true),
                     ),
                     builder: (context, snapshot) {

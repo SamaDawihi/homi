@@ -1,30 +1,32 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'family_name_model.dart';
-export 'family_name_model.dart';
+import 'confirm_reject_invitation_model.dart';
+export 'confirm_reject_invitation_model.dart';
 
-class FamilyNameWidget extends StatefulWidget {
-  const FamilyNameWidget({
+class ConfirmRejectInvitationWidget extends StatefulWidget {
+  const ConfirmRejectInvitationWidget({
     Key? key,
-    String? title,
-    required this.message,
-  })  : this.title = title ?? '',
-        super(key: key);
+    required this.invitationId,
+  }) : super(key: key);
 
-  final String title;
-  final String? message;
+  final DocumentReference? invitationId;
 
   @override
-  _FamilyNameWidgetState createState() => _FamilyNameWidgetState();
+  _ConfirmRejectInvitationWidgetState createState() =>
+      _ConfirmRejectInvitationWidgetState();
 }
 
-class _FamilyNameWidgetState extends State<FamilyNameWidget> {
-  late FamilyNameModel _model;
+class _ConfirmRejectInvitationWidgetState
+    extends State<ConfirmRejectInvitationWidget> {
+  late ConfirmRejectInvitationModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -35,9 +37,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => FamilyNameModel());
-
-    _model.textController ??= TextEditingController();
+    _model = createModel(context, () => ConfirmRejectInvitationModel());
   }
 
   @override
@@ -88,7 +88,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'jss0gdih' /* Write your family name... */,
+                        '5o5x6s63' /* Confirm Rejection */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -99,49 +99,16 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(8.0, 12.0, 8.0, 0.0),
-                      child: TextFormField(
-                        controller: _model.textController,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: FFLocalizations.of(context).getText(
-                            'ea94emzo' /* Label here... */,
-                          ),
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'ospbmsnf' /* Are you sure you want to rejec... */,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                        validator:
-                            _model.textControllerValidator.asValidator(context),
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 15.0,
+                                ),
                       ),
                     ),
                   ],
@@ -161,7 +128,7 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                           context.safePop();
                         },
                         text: FFLocalizations.of(context).getText(
-                          'o8jz3tqm' /* Cancel */,
+                          'no2ejqzl' /* Cancel */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
@@ -185,11 +152,14 @@ class _FamilyNameWidgetState extends State<FamilyNameWidget> {
                       ),
                     ),
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        await widget.invitationId!
+                            .update(createInvitationRecordData(
+                          status: 'Rejected',
+                        ));
                       },
                       text: FFLocalizations.of(context).getText(
-                        'oljsbdla' /* Create */,
+                        '9w0k1a1w' /* Reject */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

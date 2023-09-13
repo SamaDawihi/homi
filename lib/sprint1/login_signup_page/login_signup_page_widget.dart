@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/reset_password/reset_password_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -577,6 +578,9 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               AutofillHints
                                                                   .email
                                                             ],
+                                                            textCapitalization:
+                                                                TextCapitalization
+                                                                    .none,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(
@@ -725,9 +729,24 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       2000),
                                                               () async {
                                                                 if (functions
-                                                                    .checkPasswordFunction(_model
+                                                                    .checkPasswordLength(_model
                                                                         .passwordController
                                                                         .text)) {
+                                                                  setState(() {
+                                                                    _model.regPasswordErr =
+                                                                        '';
+                                                                  });
+                                                                } else {
+                                                                  setState(() {
+                                                                    _model.regPasswordErr =
+                                                                        'Password length must be larger than 6 characters.';
+                                                                  });
+                                                                }
+
+                                                                if (functions
+                                                                    .checkPasswordString(_model
+                                                                        .passwordController
+                                                                        .text)!) {
                                                                   setState(() {
                                                                     _model.regPasswordErr =
                                                                         '';
@@ -736,7 +755,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 } else {
                                                                   setState(() {
                                                                     _model.regPasswordErr =
-                                                                        'Password Length Must Be Larger Than 6 Characters';
+                                                                        'Password must contain both letters and numbers.';
                                                                   });
                                                                   return;
                                                                 }
@@ -745,9 +764,24 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             onFieldSubmitted:
                                                                 (_) async {
                                                               if (functions
-                                                                  .checkPasswordFunction(_model
+                                                                  .checkPasswordLength(_model
                                                                       .passwordController
                                                                       .text)) {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      'Password length must be larger than 6 characters.';
+                                                                });
+                                                              }
+
+                                                              if (functions
+                                                                  .checkPasswordString(_model
+                                                                      .passwordController
+                                                                      .text)!) {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
                                                                       '';
@@ -756,7 +790,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               } else {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
-                                                                      'Password Length Must Be Larger Than 6 Characters';
+                                                                      'Password must contain both letters and numbers.';
                                                                 });
                                                                 return;
                                                               }
@@ -943,14 +977,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   milliseconds:
                                                                       2000),
                                                               () async {
-                                                                if (functions.checkPasswordFunction(_model
+                                                                if (_model
+                                                                        .passwordController
+                                                                        .text ==
+                                                                    _model
                                                                         .reEnterController
-                                                                        .text) &&
-                                                                    (_model.reEnterController
-                                                                            .text ==
-                                                                        _model
-                                                                            .passwordController
-                                                                            .text)) {
+                                                                        .text) {
                                                                   setState(() {
                                                                     _model.regPasswordErr =
                                                                         '';
@@ -959,7 +991,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 } else {
                                                                   setState(() {
                                                                     _model.regPasswordConfirmationErr =
-                                                                        'Password Must Be The Same And 6 Charachters Or More.';
+                                                                        'Passwords must be the same.';
                                                                   });
                                                                   return;
                                                                 }
@@ -967,14 +999,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             ),
                                                             onFieldSubmitted:
                                                                 (_) async {
-                                                              if (functions.checkPasswordFunction(_model
+                                                              if (_model
+                                                                      .passwordController
+                                                                      .text ==
+                                                                  _model
                                                                       .reEnterController
-                                                                      .text) &&
-                                                                  (_model.reEnterController
-                                                                          .text ==
-                                                                      _model
-                                                                          .passwordController
-                                                                          .text)) {
+                                                                      .text) {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
                                                                       '';
@@ -983,7 +1013,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               } else {
                                                                 setState(() {
                                                                   _model.regPasswordConfirmationErr =
-                                                                      'Password Must Be The Same And 6 Charachters Or More.';
+                                                                      'Passwords must be the same.';
                                                                 });
                                                                 return;
                                                               }
@@ -1001,7 +1031,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'mgqcd7uj' /* re-enter password */,
+                                                                'mgqcd7uj' /* Re-enter Password */,
                                                               ),
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
@@ -1145,214 +1175,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 ),
                                                           ),
                                                         ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.00, 0.00),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      16.0),
-                                                          child: FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              if (_model.nameController
-                                                                          .text ==
-                                                                      null ||
-                                                                  _model.nameController
-                                                                          .text ==
-                                                                      '') {
-                                                                setState(() {
-                                                                  _model.regNameErr =
-                                                                      'Name must contain 1 to 20 characters';
-                                                                });
-                                                              } else {
-                                                                setState(() {
-                                                                  _model.regNameErr =
-                                                                      '';
-                                                                });
-                                                              }
-
-                                                              if (functions
-                                                                  .checkIfTextMatchRegExp(
-                                                                      _model
-                                                                          .emailAddressController
-                                                                          .text,
-                                                                      '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                                                                setState(() {
-                                                                  _model.regEmailErr =
-                                                                      '';
-                                                                });
-                                                              } else {
-                                                                setState(() {
-                                                                  _model.regEmailErr =
-                                                                      'The Email Format must be XXX@XXX.XX';
-                                                                });
-                                                              }
-
-                                                              if (functions
-                                                                  .checkPasswordFunction(_model
-                                                                      .passwordController
-                                                                      .text)) {
-                                                                setState(() {
-                                                                  _model.regPasswordErr =
-                                                                      '';
-                                                                });
-                                                              } else {
-                                                                setState(() {
-                                                                  _model.regPasswordErr =
-                                                                      'Password Length Must Be Larger Than 6 Characters';
-                                                                });
-                                                              }
-
-                                                              if (functions.checkPasswordFunction(_model
-                                                                      .reEnterController
-                                                                      .text) &&
-                                                                  (_model.reEnterController
-                                                                          .text ==
-                                                                      _model
-                                                                          .passwordController
-                                                                          .text)) {
-                                                                setState(() {
-                                                                  _model.regPasswordErr =
-                                                                      '';
-                                                                });
-                                                              } else {
-                                                                setState(() {
-                                                                  _model.regPasswordConfirmationErr =
-                                                                      'Password Must Be The Same And 6 Charachters Or More.';
-                                                                });
-                                                              }
-
-                                                              if ((_model.regNameErr == null || _model.regNameErr == '') &&
-                                                                  (_model.regEmailErr ==
-                                                                          null ||
-                                                                      _model.regEmailErr ==
-                                                                          '') &&
-                                                                  (_model.regPasswordErr ==
-                                                                          null ||
-                                                                      _model.regPasswordErr ==
-                                                                          '') &&
-                                                                  (_model.regPasswordConfirmationErr ==
-                                                                          null ||
-                                                                      _model.regPasswordConfirmationErr ==
-                                                                          '')) {
-                                                                GoRouter.of(
-                                                                        context)
-                                                                    .prepareAuthEvent();
-                                                                if (_model
-                                                                        .passwordController
-                                                                        .text !=
-                                                                    _model
-                                                                        .reEnterController
-                                                                        .text) {
-                                                                  ScaffoldMessenger.of(
-                                                                          context)
-                                                                      .showSnackBar(
-                                                                    SnackBar(
-                                                                      content:
-                                                                          Text(
-                                                                        'Passwords don\'t match!',
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                  return;
-                                                                }
-
-                                                                final user =
-                                                                    await authManager
-                                                                        .createAccountWithEmail(
-                                                                  context,
-                                                                  _model
-                                                                      .emailAddressController
-                                                                      .text,
-                                                                  _model
-                                                                      .passwordController
-                                                                      .text,
-                                                                );
-                                                                if (user ==
-                                                                    null) {
-                                                                  return;
-                                                                }
-
-                                                                await UsersRecord
-                                                                    .collection
-                                                                    .doc(user
-                                                                        .uid)
-                                                                    .update(
-                                                                        createUsersRecordData(
-                                                                      email: _model
-                                                                          .emailAddressController
-                                                                          .text,
-                                                                      displayName: _model
-                                                                          .nameController
-                                                                          .text,
-                                                                      createdTime:
-                                                                          getCurrentTimestamp,
-                                                                    ));
-                                                              } else {
-                                                                return;
-                                                              }
-
-                                                              context.goNamedAuth(
-                                                                  'FamilyProfile',
-                                                                  context
-                                                                      .mounted);
-                                                            },
-                                                            text: FFLocalizations
-                                                                    .of(context)
-                                                                .getText(
-                                                              'z14qfm03' /* Get Started */,
-                                                            ),
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: 230.0,
-                                                              height: 52.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: Color(
-                                                                  0xFF555EBE),
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Source Sans Pro',
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          20.0),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
                                                     ],
                                                   ),
                                                 ).animateOnPageLoad(animationsMap[
@@ -1361,9 +1183,264 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  -0.02, 0.92),
+                                                  -0.06, 0.93),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        50.0, 0.0, 50.0, 0.0),
+                                                child: Text(
+                                                  _model.signUpErr!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Source Sans Pro',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        fontSize: 10.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.03, 0.90),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 16.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    var _shouldSetState = false;
+                                                    if (_model.nameController
+                                                                .text ==
+                                                            null ||
+                                                        _model.nameController
+                                                                .text ==
+                                                            '') {
+                                                      setState(() {
+                                                        _model.regNameErr =
+                                                            'Name must contain 1 to 20 characters';
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _model.regNameErr = '';
+                                                      });
+                                                    }
+
+                                                    if (functions
+                                                        .checkIfTextMatchRegExp(
+                                                            _model
+                                                                .emailAddressController
+                                                                .text,
+                                                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                      setState(() {
+                                                        _model.regEmailErr = '';
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _model.regEmailErr =
+                                                            'The Email Format must be XXX@XXX.XX';
+                                                      });
+                                                    }
+
+                                                    if (functions
+                                                        .checkPasswordLength(_model
+                                                            .passwordController
+                                                            .text)) {
+                                                      setState(() {
+                                                        _model.regPasswordErr =
+                                                            '';
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _model.regPasswordErr =
+                                                            'Password length must be larger than 6 characters';
+                                                      });
+                                                    }
+
+                                                    if (_model
+                                                            .passwordController
+                                                            .text ==
+                                                        _model.reEnterController
+                                                            .text) {
+                                                      setState(() {
+                                                        _model.regPasswordErr =
+                                                            '';
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _model.regPasswordConfirmationErr =
+                                                            'Password must be the same. ';
+                                                      });
+                                                    }
+
+                                                    if (functions
+                                                        .checkPasswordString(_model
+                                                            .passwordController
+                                                            .text)!) {
+                                                      setState(() {
+                                                        _model.regPasswordErr =
+                                                            '';
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _model.regPasswordErr =
+                                                            'Password must contain both letters and numbers.';
+                                                      });
+                                                    }
+
+                                                    _model.emailExists =
+                                                        await actions
+                                                            .isEmailUnique(
+                                                      _model
+                                                          .emailAddressController
+                                                          .text,
+                                                    );
+                                                    _shouldSetState = true;
+                                                    if (_model.emailExists!) {
+                                                      setState(() {
+                                                        _model.signUpErr = '';
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        _model.signUpErr =
+                                                            'Email is already in use by another user. Please try a different email.';
+                                                      });
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
+
+                                                    if ((_model.regNameErr ==
+                                                                null ||
+                                                            _model.regNameErr ==
+                                                                '') &&
+                                                        (_model.regEmailErr ==
+                                                                null ||
+                                                            _model.regEmailErr ==
+                                                                '') &&
+                                                        (_model.regPasswordErr ==
+                                                                null ||
+                                                            _model.regPasswordErr ==
+                                                                '') &&
+                                                        (_model.regPasswordConfirmationErr ==
+                                                                null ||
+                                                            _model.regPasswordConfirmationErr ==
+                                                                '')) {
+                                                      GoRouter.of(context)
+                                                          .prepareAuthEvent();
+                                                      if (_model
+                                                              .passwordController
+                                                              .text !=
+                                                          _model
+                                                              .reEnterController
+                                                              .text) {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'Passwords don\'t match!',
+                                                            ),
+                                                          ),
+                                                        );
+                                                        return;
+                                                      }
+
+                                                      final user = await authManager
+                                                          .createAccountWithEmail(
+                                                        context,
+                                                        _model
+                                                            .emailAddressController
+                                                            .text,
+                                                        _model
+                                                            .passwordController
+                                                            .text,
+                                                      );
+                                                      if (user == null) {
+                                                        return;
+                                                      }
+
+                                                      await UsersRecord
+                                                          .collection
+                                                          .doc(user.uid)
+                                                          .update(
+                                                              createUsersRecordData(
+                                                            email: functions
+                                                                .toLowerCaseFunction(
+                                                                    _model
+                                                                        .emailAddressController
+                                                                        .text),
+                                                            displayName: _model
+                                                                .nameController
+                                                                .text,
+                                                            createdTime:
+                                                                getCurrentTimestamp,
+                                                          ));
+                                                    } else {
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
+
+                                                    context.goNamedAuth(
+                                                        'FamilyProfile',
+                                                        context.mounted);
+
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                  },
+                                                  text: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'z14qfm03' /* Get Started */,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 230.0,
+                                                    height: 52.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: Color(0xFF555EBE),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          color: Colors.white,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.0),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.68, 0.62),
                                               child: Text(
-                                                _model.signUpErr!,
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '05f9nfea' /* -Be greater than 6 characters.... */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1372,10 +1449,31 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               'Source Sans Pro',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .error,
-                                                          fontSize: 12.0,
+                                                              .secondaryText,
+                                                          fontSize: 10.0,
+                                                        ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  -0.80, 0.53),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '6t83f44z' /* Password must: */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          fontSize: 10.0,
                                                           fontWeight:
-                                                              FontWeight.w300,
+                                                              FontWeight.w600,
                                                         ),
                                               ),
                                             ),
@@ -1635,7 +1733,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   2000),
                                                           () async {
                                                             if (functions
-                                                                .checkPasswordFunction(
+                                                                .checkPasswordLength(
                                                                     _model
                                                                         .loginPasswordController
                                                                         .text)) {
@@ -1656,7 +1754,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         onFieldSubmitted:
                                                             (_) async {
                                                           if (functions
-                                                              .checkPasswordFunction(
+                                                              .checkPasswordLength(
                                                                   _model
                                                                       .loginPasswordController
                                                                       .text)) {

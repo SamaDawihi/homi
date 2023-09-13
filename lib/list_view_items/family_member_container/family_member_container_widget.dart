@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'family_member_container_model.dart';
@@ -133,9 +134,29 @@ class _FamilyMemberContainerWidgetState
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                familYMemberContainerUsersRecord.displayName,
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    familYMemberContainerUsersRecord
+                                        .displayName,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                  if (rowFamilyRecord.adminId ==
+                                      familYMemberContainerUsersRecord
+                                          .reference)
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          6.0, 0.0, 0.0, 0.0),
+                                      child: FaIcon(
+                                        FontAwesomeIcons.solidStar,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent3,
+                                        size: 15.0,
+                                      ),
+                                    ),
+                                ],
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.min,

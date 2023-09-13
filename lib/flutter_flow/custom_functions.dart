@@ -25,6 +25,33 @@ String toLowerCaseFunction(String inputString) {
   return inputString.toLowerCase();
 }
 
-bool checkPasswordFunction(String password) {
+bool checkPasswordLength(String password) {
   return password.length >= 6;
+}
+
+bool isColorUsedFunction(
+  List<MemberRecord> familyMember,
+  Color pickedColor,
+) {
+  for (int i = 0; i < familyMember.length; i++) {
+    if (pickedColor == familyMember[i].color) return true;
+  }
+  return false;
+}
+
+bool? checkPasswordString(String password) {
+  bool hasLetters = false;
+  bool hasNumbers = false;
+  for (var i = 0; i < password.length; i++) {
+    if (password[i].contains(RegExp(r'[a-zA-Z]'))) {
+      hasLetters = true;
+    }
+    if (password[i].contains(RegExp(r'[0-9]'))) {
+      hasNumbers = true;
+    }
+  }
+  if (hasLetters && hasNumbers) {
+    return true;
+  }
+  return false;
 }

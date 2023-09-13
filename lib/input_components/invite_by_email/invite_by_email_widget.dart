@@ -244,10 +244,30 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                                       .where('invitedEmail',
                                           isEqualTo: _model.emailToLow)
                                       .where('familyId',
-                                          isEqualTo: widget.familyId),
+                                          isEqualTo: widget.familyId)
+                                      .where('status', isEqualTo: 'Pending'),
                             );
                             _shouldSetState = true;
-                            if (_model.numberOfInvitations != 0) {
+                            if (_model.numberOfInvitations == 0) {
+                              _model.theUserWithTheSameEmail =
+                                  await queryUsersRecordOnce(
+                                queryBuilder: (usersRecord) =>
+                                    usersRecord.where('email',
+                                        isEqualTo: _model.emailToLow),
+                                singleRecord: true,
+                              ).then((s) => s.firstOrNull);
+                              _shouldSetState = true;
+                              _model.numberOfTheMembersInTheFamilyWithSameName =
+                                  await queryMemberRecordCount(
+                                queryBuilder: (memberRecord) => memberRecord
+                                    .where('memberId',
+                                        isEqualTo: _model
+                                            .theUserWithTheSameEmail?.reference)
+                                    .where('familyId',
+                                        isEqualTo: widget.familyId),
+                              );
+                              _shouldSetState = true;
+                            } else {
                               await showAlignedDialog(
                                 context: context,
                                 isGlobal: true,
@@ -264,6 +284,13 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                                 },
                               ).then((value) => setState(() {}));
 
+                              if (_shouldSetState) setState(() {});
+                              return;
+                            }
+
+                            if (_model
+                                    .numberOfTheMembersInTheFamilyWithSameName !=
+                                0) {
                               if (_shouldSetState) setState(() {});
                               return;
                             }

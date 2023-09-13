@@ -29,6 +29,10 @@ class InviteByEmailModel extends FlutterFlowModel {
   String? emailToLow;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   int? numberOfInvitations;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  UsersRecord? theUserWithTheSameEmail;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? numberOfTheMembersInTheFamilyWithSameName;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   InvitationRecord? invitationId;
 

@@ -15,12 +15,7 @@ import 'enter_family_name_model.dart';
 export 'enter_family_name_model.dart';
 
 class EnterFamilyNameWidget extends StatefulWidget {
-  const EnterFamilyNameWidget({
-    Key? key,
-    this.familyId,
-  }) : super(key: key);
-
-  final DocumentReference? familyId;
+  const EnterFamilyNameWidget({Key? key}) : super(key: key);
 
   @override
   _EnterFamilyNameWidgetState createState() => _EnterFamilyNameWidgetState();

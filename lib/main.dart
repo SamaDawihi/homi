@@ -103,9 +103,9 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.light,
         scrollbarTheme: ScrollbarThemeData(
           thumbVisibility: MaterialStateProperty.all(true),
-          trackVisibility: MaterialStateProperty.all(true),
+          trackVisibility: MaterialStateProperty.all(false),
           interactive: true,
-          thickness: MaterialStateProperty.all(10.0),
+          thickness: MaterialStateProperty.all(6.0),
           radius: Radius.circular(20.0),
           trackColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
@@ -124,22 +124,21 @@ class _MyAppState extends State<MyApp> {
               return Color(4286613198);
             }
             if (states.contains(MaterialState.hovered)) {
-              return Color(4282597027);
+              return Color(4283784894);
             }
-            return Color(4283784894);
+            return Color(4290428365);
           }),
-          minThumbLength: 5.0,
-          crossAxisMargin: 10.0,
-          mainAxisMargin: 10.0,
+          minThumbLength: 10.0,
+          crossAxisMargin: 3.0,
         ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         scrollbarTheme: ScrollbarThemeData(
           thumbVisibility: MaterialStateProperty.all(true),
-          trackVisibility: MaterialStateProperty.all(true),
+          trackVisibility: MaterialStateProperty.all(false),
           interactive: true,
-          thickness: MaterialStateProperty.all(10.0),
+          thickness: MaterialStateProperty.all(6.0),
           radius: Radius.circular(20.0),
           trackColor: MaterialStateProperty.resolveWith((states) {
             if (states.contains(MaterialState.hovered)) {
@@ -158,13 +157,12 @@ class _MyAppState extends State<MyApp> {
               return Color(4285626832);
             }
             if (states.contains(MaterialState.hovered)) {
-              return Color(4282597027);
+              return Color(4283120111);
             }
-            return Color(4283120111);
+            return Color(4290428365);
           }),
-          minThumbLength: 5.0,
-          crossAxisMargin: 10.0,
-          mainAxisMargin: 10.0,
+          minThumbLength: 10.0,
+          crossAxisMargin: 3.0,
         ),
       ),
       themeMode: _themeMode,
