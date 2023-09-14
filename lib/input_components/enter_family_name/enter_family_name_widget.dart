@@ -251,7 +251,8 @@ class _EnterFamilyNameWidgetState extends State<EnterFamilyNameWidget>
                                 ),
                                 memberRecordReference);
                         FFAppState().update(() {
-                          FFAppState().familyId = FFAppState().familyId;
+                          FFAppState().familyId =
+                              _model.createdFamily?.reference;
                         });
 
                         context.goNamed('FamilyProfile');

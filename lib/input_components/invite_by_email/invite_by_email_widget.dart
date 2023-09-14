@@ -3,11 +3,11 @@ import '/backend/backend.dart';
 import '/confiramtion_components/email_not_supported/email_not_supported_widget.dart';
 import '/confiramtion_components/invite_sent_successfully/invite_sent_successfully_widget.dart';
 import '/confiramtion_components/member_already_invited/member_already_invited_widget.dart';
+import '/confiramtion_components/member_already_member/member_already_member_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -233,40 +233,71 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                           if (functions.checkIfTextMatchRegExp(
                               _model.emailAddressController.text,
                               '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                            _model.emailToLow = await actions.toLowerCaseAction(
-                              _model.emailAddressController.text,
-                            );
-                            _shouldSetState = true;
                             _model.numberOfInvitations =
                                 await queryInvitationRecordCount(
                               queryBuilder: (invitationRecord) =>
                                   invitationRecord
                                       .where('invitedEmail',
-                                          isEqualTo: _model.emailToLow)
+                                          isEqualTo: functions
+                                              .toLowerCaseFunction(_model
+                                                  .emailAddressController.text))
                                       .where('familyId',
                                           isEqualTo: widget.familyId)
                                       .where('status', isEqualTo: 'Pending'),
                             );
                             _shouldSetState = true;
                             if (_model.numberOfInvitations == 0) {
-                              _model.theUserWithTheSameEmail =
-                                  await queryUsersRecordOnce(
+                              _model.noOfUsersWithTheSameEmail =
+                                  await queryUsersRecordCount(
                                 queryBuilder: (usersRecord) =>
                                     usersRecord.where('email',
-                                        isEqualTo: _model.emailToLow),
-                                singleRecord: true,
-                              ).then((s) => s.firstOrNull);
-                              _shouldSetState = true;
-                              _model.numberOfTheMembersInTheFamilyWithSameName =
-                                  await queryMemberRecordCount(
-                                queryBuilder: (memberRecord) => memberRecord
-                                    .where('memberId',
-                                        isEqualTo: _model
-                                            .theUserWithTheSameEmail?.reference)
-                                    .where('familyId',
-                                        isEqualTo: widget.familyId),
+                                        isEqualTo:
+                                            functions.toLowerCaseFunction(_model
+                                                .emailAddressController.text)),
                               );
                               _shouldSetState = true;
+                              if (_model.noOfUsersWithTheSameEmail != 0) {
+                                _model.theUserWithSameEmail =
+                                    await queryUsersRecordOnce(
+                                  queryBuilder: (usersRecord) =>
+                                      usersRecord.where('email',
+                                          isEqualTo: functions
+                                              .toLowerCaseFunction(_model
+                                                  .emailAddressController
+                                                  .text)),
+                                  singleRecord: true,
+                                ).then((s) => s.firstOrNull);
+                                _shouldSetState = true;
+                                _model.noOfUsersInFamilyWithSameEmail =
+                                    await queryMemberRecordCount(
+                                  queryBuilder: (memberRecord) => memberRecord
+                                      .where('memberId',
+                                          isEqualTo: _model
+                                              .theUserWithSameEmail?.reference)
+                                      .where('familyId',
+                                          isEqualTo: widget.familyId),
+                                );
+                                _shouldSetState = true;
+                                if (_model.noOfUsersInFamilyWithSameEmail !=
+                                    0) {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    enableDrag: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: MemberAlreadyMemberWidget(),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+
+                                  if (_shouldSetState) setState(() {});
+                                  return;
+                                }
+                              }
                             } else {
                               await showAlignedDialog(
                                 context: context,
@@ -284,13 +315,6 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                                 },
                               ).then((value) => setState(() {}));
 
-                              if (_shouldSetState) setState(() {});
-                              return;
-                            }
-
-                            if (_model
-                                    .numberOfTheMembersInTheFamilyWithSameName !=
-                                0) {
                               if (_shouldSetState) setState(() {});
                               return;
                             }
@@ -319,7 +343,8 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                               InvitationRecord.collection.doc();
                           await invitationRecordReference
                               .set(createInvitationRecordData(
-                            invitedEmail: _model.emailToLow,
+                            invitedEmail: functions.toLowerCaseFunction(
+                                _model.emailAddressController.text),
                             familyId: widget.familyId,
                             status: 'Pending',
                             createdTime: getCurrentTimestamp,
@@ -327,7 +352,8 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                           _model.invitationId =
                               InvitationRecord.getDocumentFromData(
                                   createInvitationRecordData(
-                                    invitedEmail: _model.emailToLow,
+                                    invitedEmail: functions.toLowerCaseFunction(
+                                        _model.emailAddressController.text),
                                     familyId: widget.familyId,
                                     status: 'Pending',
                                     createdTime: getCurrentTimestamp,
@@ -350,7 +376,7 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                             },
                           ).then((value) => setState(() {}));
 
-                          context.safePop();
+                          Navigator.pop(context);
                           if (_shouldSetState) setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(

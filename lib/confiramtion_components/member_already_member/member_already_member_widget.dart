@@ -113,7 +113,7 @@ class _MemberAlreadyMemberWidgetState extends State<MemberAlreadyMemberWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        context.goNamed('FamilyProfile');
+                        Navigator.pop(context);
                       },
                       text: FFLocalizations.of(context).getText(
                         '4y6chyn2' /* OK */,

@@ -114,7 +114,7 @@ class _MemberAlreadyInvitedWidgetState
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('FamilyProfile');
+                        Navigator.pop(context);
                       },
                       text: FFLocalizations.of(context).getText(
                         'mqc9tav5' /* OK */,

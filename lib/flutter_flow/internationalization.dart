@@ -221,6 +221,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Calendar
   {
+    '7dmf86h5': {
+      'en': 'Calendar',
+      'ar': '',
+    },
     '2adgmlg5': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -228,6 +232,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Lists
   {
+    'ukdoyt69': {
+      'en': 'Lists',
+      'ar': '',
+    },
     'cjn0szm1': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -235,6 +243,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Announcements
   {
+    'pezqh1x2': {
+      'en': 'Announcement',
+      'ar': '',
+    },
     'yzk7wcws': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -659,6 +671,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '521dbf30': {
       'en': 'Accept',
       'ar': 'نعم',
+    },
+  },
+  // emptyStatus
+  {
+    '4qyq0zn7': {
+      'en': 'seems that you haven\'t sent any invitation',
+      'ar': 'يبدو أنه ليس لديك أي دعوة',
+    },
+    'rs82kstz': {
+      'en':
+          'you can invite a member to your family by clicking \"invite a member\" button in the family profile page...',
+      'ar':
+          'إذا كنت ترغب في الانضمام إلى عائلة معينة، اطلب من مسؤولها أن يدعوك..',
     },
   },
   // Miscellaneous

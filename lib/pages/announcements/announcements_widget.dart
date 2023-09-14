@@ -52,16 +52,15 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
             automaticallyImplyLeading: false,
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
-              title: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
+              title: Align(
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    Align(
+                      alignment: AlignmentDirectional(0.00, -1.00),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,6 +100,18 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
                                 ).then((value) => setState(() {}));
                               },
                             ),
+                          ),
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'pezqh1x2' /* Announcement */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(

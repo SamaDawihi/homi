@@ -3,11 +3,11 @@ import '/backend/backend.dart';
 import '/confiramtion_components/email_not_supported/email_not_supported_widget.dart';
 import '/confiramtion_components/invite_sent_successfully/invite_sent_successfully_widget.dart';
 import '/confiramtion_components/member_already_invited/member_already_invited_widget.dart';
+import '/confiramtion_components/member_already_member/member_already_member_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,14 +25,14 @@ class InviteByEmailModel extends FlutterFlowModel {
   // State field(s) for emailAddress widget.
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
-  // Stores action output result for [Custom Action - toLowerCaseAction] action in Button widget.
-  String? emailToLow;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   int? numberOfInvitations;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  UsersRecord? theUserWithTheSameEmail;
+  int? noOfUsersWithTheSameEmail;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  int? numberOfTheMembersInTheFamilyWithSameName;
+  UsersRecord? theUserWithSameEmail;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? noOfUsersInFamilyWithSameEmail;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   InvitationRecord? invitationId;
 
