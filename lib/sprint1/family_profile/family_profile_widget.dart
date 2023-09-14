@@ -151,7 +151,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               ),
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'wj4kjtc4' /* Family Profile */,
+                                  't405vb32' /* Family Profile */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -231,8 +231,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(50.0),
-                                      child: Image.network(
-                                        'https://images.unsplash.com/photo-1611024847487-e26177381a3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxOHx8JTIwZmFtaWx5fGVufDB8fHx8MTY5MzQxOTU0N3ww&ixlib=rb-4.0.3&q=80&w=1080',
+                                      child: Image.asset(
+                                        'assets/images/houseIcon.png',
                                         width: 90.0,
                                         height: 90.0,
                                         fit: BoxFit.cover,

@@ -378,7 +378,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                              'tn82g2sg' /* Name */,
+                                                              'tn82g2sg' /* * Name */,
                                                             ),
                                                             labelStyle:
                                                                 FlutterFlowTheme.of(
@@ -588,7 +588,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'v5nmx9mo' /* Email */,
+                                                                'v5nmx9mo' /* * Email */,
                                                               ),
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
@@ -811,7 +811,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'k23j5lsk' /* Password */,
+                                                                'k23j5lsk' /* * Password */,
                                                               ),
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
@@ -1031,7 +1031,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                'mgqcd7uj' /* Re-enter Password */,
+                                                                'mgqcd7uj' /* * Re-enter Password */,
                                                               ),
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
@@ -1605,7 +1605,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                            'fqu7zqlx' /* Email */,
+                                                            'fqu7zqlx' /* * Email */,
                                                           ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(
@@ -1783,7 +1783,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               FFLocalizations.of(
                                                                       context)
                                                                   .getText(
-                                                            'pje2u461' /* Password */,
+                                                            'pje2u461' /* * Password */,
                                                           ),
                                                           labelStyle:
                                                               FlutterFlowTheme.of(

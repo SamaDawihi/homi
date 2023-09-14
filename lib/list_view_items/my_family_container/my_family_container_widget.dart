@@ -90,8 +90,8 @@ class _MyFamilyContainerWidgetState extends State<MyFamilyContainerWidget> {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(50.0),
-                    child: Image.network(
-                      'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60',
+                    child: Image.asset(
+                      'assets/images/houseIcon.png',
                       width: 60.0,
                       height: 60.0,
                       fit: BoxFit.cover,

@@ -120,19 +120,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'لنبدأ بملء النموذج أدناه.',
     },
     'tn82g2sg': {
-      'en': 'Name',
+      'en': '* Name',
       'ar': 'اسم',
     },
     'v5nmx9mo': {
-      'en': 'Email',
+      'en': '* Email',
       'ar': 'بريد إلكتروني',
     },
     'k23j5lsk': {
-      'en': 'Password',
+      'en': '* Password',
       'ar': 'كلمة المرور',
     },
     'mgqcd7uj': {
-      'en': 'Re-enter Password',
+      'en': '* Re-enter Password',
       'ar': 'إعادة إدخال كلمة المرور',
     },
     'z14qfm03': {
@@ -161,11 +161,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'قم بملء المعلومات أدناه من أجل الوصول إلى حسابك.',
     },
     'fqu7zqlx': {
-      'en': 'Email',
+      'en': '* Email',
       'ar': 'بريد إلكتروني',
     },
     'pje2u461': {
-      'en': 'Password',
+      'en': '* Password',
       'ar': 'كلمة المرور',
     },
     'tbi39cgz': {
@@ -210,7 +210,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Leave Family',
       'ar': 'غادر العائلة',
     },
-    'wj4kjtc4': {
+    't405vb32': {
       'en': 'Family Profile',
       'ar': '',
     },
@@ -271,6 +271,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // InvitationsStatus
   {
+    'fpijkt8v': {
+      'en': 'Invitation Status',
+      'ar': '',
+    },
     'fv3muwjj': {
       'en': 'Previous invitations status',
       'ar': 'حالة الدعوات السابقة',
@@ -314,10 +318,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'o4ze7fw5': {
       'en': 'Rejected',
       'ar': 'مرفوض',
-    },
-    'pnhal6qv': {
-      'en': 'Invitation Status',
-      'ar': '',
     },
     'u4fngcl6': {
       'en': 'Home',
