@@ -742,7 +742,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 } else {
                                                                   setState(() {
                                                                     _model.regPasswordErr =
-                                                                        'Password length must be longer than 6 characters And contain both letters and numbers.';
+                                                                        'Password length must be 6 character or more And contain both letters and numbers.';
                                                                   });
                                                                   return;
                                                                 }
@@ -764,7 +764,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               } else {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
-                                                                      'Password length must be longer than 6 characters And contain both letters and numbers.';
+                                                                      'Password length must be 6 character or more And contain both letters and numbers.';
                                                                 });
                                                                 return;
                                                               }
@@ -971,7 +971,9 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .getText(
-                                                              '05f9nfea' /* -Be greater than 5 characters.... */,
+                                                              '05f9nfea' /* -Be 6 character or more.
+-Cont... */
+                                                              ,
                                                             ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1017,7 +1019,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                         .reEnterController
                                                                         .text) {
                                                                   setState(() {
-                                                                    _model.regPasswordErr =
+                                                                    _model.regPasswordConfirmationErr =
                                                                         '';
                                                                   });
                                                                   return;
@@ -1039,7 +1041,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .reEnterController
                                                                       .text) {
                                                                 setState(() {
-                                                                  _model.regPasswordErr =
+                                                                  _model.regPasswordConfirmationErr =
                                                                       '';
                                                                 });
                                                                 return;
@@ -1275,7 +1277,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               } else {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
-                                                                      'Password length must be longer than 6 characters And contain both letters and numbers.';
+                                                                      'Password length must be 6 character or more And contain both letters and numbers.';
                                                                 });
                                                               }
 

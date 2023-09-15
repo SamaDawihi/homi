@@ -136,8 +136,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     '05f9nfea': {
-      'en':
-          '-Be greater than 5 characters.\n-Contain both letters and numbers.',
+      'en': '-Be 6 character or more.\n-Contain both letters and numbers.',
       'ar': '',
     },
     'mgqcd7uj': {
