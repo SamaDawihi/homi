@@ -131,6 +131,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '* Password',
       'ar': 'كلمة المرور',
     },
+    '6t83f44z': {
+      'en': 'Password must:',
+      'ar': '',
+    },
+    '05f9nfea': {
+      'en':
+          '-Be greater than 5 characters.\n-Contain both letters and numbers.',
+      'ar': '',
+    },
     'mgqcd7uj': {
       'en': '* Re-enter Password',
       'ar': 'إعادة إدخال كلمة المرور',
@@ -138,15 +147,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'z14qfm03': {
       'en': 'Get Started',
       'ar': 'البدء',
-    },
-    '05f9nfea': {
-      'en':
-          '-Be greater than 5 characters.\n-Contain both letters and numbers.',
-      'ar': '',
-    },
-    '6t83f44z': {
-      'en': 'Password must:',
-      'ar': '',
     },
     'r460rg34': {
       'en': 'Log In',

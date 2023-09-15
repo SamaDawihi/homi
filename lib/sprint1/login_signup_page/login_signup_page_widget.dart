@@ -477,6 +477,40 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   context),
                                                         ),
                                                       ),
+                                                      if (valueOrDefault<bool>(
+                                                        _model.regNameErr !=
+                                                                null &&
+                                                            _model.regNameErr !=
+                                                                '',
+                                                        false,
+                                                      ))
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      7.0),
+                                                          child: Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              _model.regNameErr,
+                                                              'no Error',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Source Sans Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error,
+                                                                  fontSize: 9.0,
+                                                                ),
+                                                          ),
+                                                        ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -649,40 +683,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           ),
                                                         ),
                                                       ),
-                                                      if (valueOrDefault<bool>(
-                                                        _model.regNameErr !=
-                                                                null &&
-                                                            _model.regNameErr !=
-                                                                '',
-                                                        false,
-                                                      ))
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      7.0),
-                                                          child: Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              _model.regNameErr,
-                                                              'no Error',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Source Sans Pro',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  fontSize: 9.0,
-                                                                ),
-                                                          ),
-                                                        ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -927,6 +927,55 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 ),
                                                           ),
                                                         ),
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '6t83f44z' /* Password must: */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Source Sans Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 10.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.00, 0.00),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '05f9nfea' /* -Be greater than 5 characters.... */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Source Sans Pro',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 10.0,
+                                                              ),
+                                                        ),
+                                                      ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -1250,28 +1299,13 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         _model.reEnterController
                                                             .text) {
                                                       setState(() {
-                                                        _model.regPasswordErr =
+                                                        _model.regPasswordConfirmationErr =
                                                             '';
                                                       });
                                                     } else {
                                                       setState(() {
                                                         _model.regPasswordConfirmationErr =
                                                             'Password must be the same. ';
-                                                      });
-                                                    }
-
-                                                    if (functions
-                                                        .checkPasswordString(_model
-                                                            .passwordController
-                                                            .text)!) {
-                                                      setState(() {
-                                                        _model.regPasswordErr =
-                                                            '';
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _model.regPasswordErr =
-                                                            'Password must contain both letters and numbers.';
                                                       });
                                                     }
 
@@ -1435,50 +1469,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             20.0),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.68, 0.62),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '05f9nfea' /* -Be greater than 5 characters.... */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Source Sans Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          fontSize: 10.0,
-                                                        ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.80, 0.53),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '6t83f44z' /* Password must: */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Source Sans Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: 10.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
                                               ),
                                             ),
                                           ],

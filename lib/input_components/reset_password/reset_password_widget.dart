@@ -310,57 +310,6 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(-0.02, 0.92),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 0.0),
-                      child: Text(
-                        _model.loginErr!,
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Source Sans Pro',
-                              color: FlutterFlowTheme.of(context).error,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(-0.02, 0.92),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 0.0),
-                      child: Text(
-                        _model.loginErr!,
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Source Sans Pro',
-                              color: FlutterFlowTheme.of(context).error,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(-0.02, 0.92),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 0.0),
-                      child: Text(
-                        _model.loginErr!,
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Source Sans Pro',
-                              color: FlutterFlowTheme.of(context).error,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),

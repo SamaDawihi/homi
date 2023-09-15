@@ -186,8 +186,7 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                                         .where('familyId',
                                             isEqualTo: widget.familyId)
                                         .orderBy('created_time',
-                                            descending: true)
-                                        .orderBy('status', descending: true),
+                                            descending: true),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.

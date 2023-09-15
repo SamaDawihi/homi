@@ -57,10 +57,6 @@
         {
           "fieldPath": "created_time",
           "order": "DESCENDING"
-        },
-        {
-          "fieldPath": "status",
-          "order": "DESCENDING"
         }
       ]
     }
