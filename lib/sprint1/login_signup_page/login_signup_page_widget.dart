@@ -742,7 +742,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 } else {
                                                                   setState(() {
                                                                     _model.regPasswordErr =
-                                                                        'Password length must be larger than 6 characters Andcontain both letters and numbers.';
+                                                                        'Password length must be longer than 6 characters And contain both letters and numbers.';
                                                                   });
                                                                   return;
                                                                 }
@@ -760,11 +760,13 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   _model.regPasswordErr =
                                                                       '';
                                                                 });
+                                                                return;
                                                               } else {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
-                                                                      'Password length must be larger than 6 characters Andcontain both letters and numbers.';
+                                                                      'Password length must be longer than 6 characters And contain both letters and numbers.';
                                                                 });
+                                                                return;
                                                               }
                                                             },
                                                             autofocus: true,
@@ -1273,7 +1275,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               } else {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
-                                                                      'Password length must be larger than 6 characters';
+                                                                      'Password length must be longer than 6 characters And contain both letters and numbers.';
                                                                 });
                                                               }
 
