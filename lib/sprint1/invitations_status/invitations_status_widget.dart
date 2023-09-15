@@ -138,128 +138,133 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 30.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(-1.00, -1.00),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'fv3muwjj' /* Previous invitations status */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineLarge
-                                          .override(
-                                            fontFamily: 'Open Sans',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 26.0,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 30.0, 0.0, 0.0),
-                            child: StreamBuilder<List<InvitationRecord>>(
-                              stream: queryInvitationRecord(
-                                queryBuilder: (invitationRecord) =>
-                                    invitationRecord
-                                        .where('familyId',
-                                            isEqualTo: widget.familyId)
-                                        .orderBy('created_time',
-                                            descending: true),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 10.0,
-                                      height: 10.0,
-                                      child: SpinKitDualRing(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 10.0,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<InvitationRecord>
-                                    listViewInvitationRecordList =
-                                    snapshot.data!;
-                                if (listViewInvitationRecordList.isEmpty) {
-                                  return Center(
-                                    child: Container(
-                                      width: 500.0,
-                                      height: 200.0,
-                                      child: EmptyStatusWidget(),
-                                    ),
-                                  );
-                                }
-                                return ListView.separated(
-                                  padding: EdgeInsets.fromLTRB(
-                                    0,
-                                    0,
-                                    0,
-                                    44.0,
-                                  ),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount:
-                                      listViewInvitationRecordList.length,
-                                  separatorBuilder: (_, __) =>
-                                      SizedBox(height: 1.0),
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewInvitationRecord =
-                                        listViewInvitationRecordList[
-                                            listViewIndex];
-                                    return Visibility(
-                                      visible: widget.familyId ==
-                                          listViewInvitationRecord.familyId,
-                                      child: wrapWithModel(
-                                        model: _model.invitationStatusModels
-                                            .getModel(
-                                          listViewIndex.toString(),
-                                          listViewIndex,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 30.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment:
+                                        AlignmentDirectional(-1.00, -1.00),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'fv3muwjj' /* Previous invitations status */,
                                         ),
-                                        updateCallback: () => setState(() {}),
-                                        child: InvitationStatusWidget(
-                                          key: Key(
-                                            'Keyagu_${listViewIndex.toString()}',
-                                          ),
-                                          inviteid: listViewInvitationRecord
-                                              .reference,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily: 'Open Sans',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              fontSize: 26.0,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 30.0, 0.0, 0.0),
+                              child: StreamBuilder<List<InvitationRecord>>(
+                                stream: queryInvitationRecord(
+                                  queryBuilder: (invitationRecord) =>
+                                      invitationRecord
+                                          .where('familyId',
+                                              isEqualTo: widget.familyId)
+                                          .orderBy('created_time',
+                                              descending: true),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 10.0,
+                                        height: 10.0,
+                                        child: SpinKitDualRing(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 10.0,
                                         ),
                                       ),
                                     );
-                                  },
-                                );
-                              },
+                                  }
+                                  List<InvitationRecord>
+                                      listViewInvitationRecordList =
+                                      snapshot.data!;
+                                  if (listViewInvitationRecordList.isEmpty) {
+                                    return Center(
+                                      child: Container(
+                                        width: 500.0,
+                                        height: 200.0,
+                                        child: EmptyStatusWidget(),
+                                      ),
+                                    );
+                                  }
+                                  return ListView.separated(
+                                    padding: EdgeInsets.fromLTRB(
+                                      0,
+                                      0,
+                                      0,
+                                      44.0,
+                                    ),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount:
+                                        listViewInvitationRecordList.length,
+                                    separatorBuilder: (_, __) =>
+                                        SizedBox(height: 1.0),
+                                    itemBuilder: (context, listViewIndex) {
+                                      final listViewInvitationRecord =
+                                          listViewInvitationRecordList[
+                                              listViewIndex];
+                                      return Visibility(
+                                        visible: widget.familyId ==
+                                            listViewInvitationRecord.familyId,
+                                        child: wrapWithModel(
+                                          model: _model.invitationStatusModels
+                                              .getModel(
+                                            listViewIndex.toString(),
+                                            listViewIndex,
+                                          ),
+                                          updateCallback: () => setState(() {}),
+                                          child: InvitationStatusWidget(
+                                            key: Key(
+                                              'Keyagu_${listViewIndex.toString()}',
+                                            ),
+                                            inviteid: listViewInvitationRecord
+                                                .reference,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Align(
