@@ -287,7 +287,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'fv3muwjj': {
-      'en': 'Previous invitations status',
+      'en': 'Previous invitations status:',
       'ar': 'حالة الدعوات السابقة',
     },
     'b3z6yo26': {
