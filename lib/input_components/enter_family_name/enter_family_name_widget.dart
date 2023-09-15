@@ -218,6 +218,7 @@ class _EnterFamilyNameWidgetState extends State<EnterFamilyNameWidget>
                             24.0, 24.0, 20.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
+                      maxLength: 20,
                       keyboardType: TextInputType.emailAddress,
                       cursorColor: FlutterFlowTheme.of(context).primary,
                       validator: _model.familynameControllerValidator
