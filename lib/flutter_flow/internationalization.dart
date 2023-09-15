@@ -342,6 +342,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
+  // invite
+  {
+    'vth00f40': {
+      'en': 'Page Title',
+      'ar': '',
+    },
+    'dytpm8yr': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // InviteByEmail
   {
     '48xbquf9': {

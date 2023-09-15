@@ -124,6 +124,15 @@ class _FamilyMemberContainerWidgetState
                             width: 4.0,
                           ),
                         ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50.0),
+                          child: Image.asset(
+                            'assets/images/userIcon.jpeg',
+                            width: 40.0,
+                            height: 40.0,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                       Expanded(
                         child: Padding(

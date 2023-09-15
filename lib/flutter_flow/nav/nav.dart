@@ -143,6 +143,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Tasks',
           path: '/tasks',
           builder: (context, params) => TasksWidget(),
+        ),
+        FFRoute(
+          name: 'invite',
+          path: '/invite',
+          builder: (context, params) => InviteWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
