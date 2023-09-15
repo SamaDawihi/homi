@@ -49,9 +49,10 @@ class _InviteSentSuccessfullyWidgetState
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
-          height: 200.0,
+          height: 260.0,
           constraints: BoxConstraints(
             maxWidth: 530.0,
+            maxHeight: 400.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -106,39 +107,43 @@ class _InviteSentSuccessfullyWidgetState
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 100.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed('FamilyProfile');
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'yh45peo9' /* OK */,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF555EBE),
-                          textStyle: FlutterFlowTheme.of(context).titleSmall,
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
+              Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 50.0, 10.0, 10.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            context.pushNamed('FamilyProfile');
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            'yh45peo9' /* OK */,
                           ),
-                          borderRadius: BorderRadius.circular(40.0),
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 20.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0xFF555EBE),
+                            textStyle: FlutterFlowTheme.of(context).titleSmall,
+                            elevation: 0.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                            ),
+                            borderRadius: BorderRadius.circular(40.0),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

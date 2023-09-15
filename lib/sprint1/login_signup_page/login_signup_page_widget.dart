@@ -477,40 +477,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   context),
                                                         ),
                                                       ),
-                                                      if (valueOrDefault<bool>(
-                                                        _model.regNameErr !=
-                                                                null &&
-                                                            _model.regNameErr !=
-                                                                '',
-                                                        false,
-                                                      ))
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      7.0),
-                                                          child: Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              _model.regNameErr,
-                                                              'no Error',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Source Sans Pro',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  fontSize: 9.0,
-                                                                ),
-                                                          ),
-                                                        ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
@@ -683,6 +649,40 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           ),
                                                         ),
                                                       ),
+                                                      if (valueOrDefault<bool>(
+                                                        _model.regNameErr !=
+                                                                null &&
+                                                            _model.regNameErr !=
+                                                                '',
+                                                        false,
+                                                      ))
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      7.0),
+                                                          child: Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              _model.regNameErr,
+                                                              'no Error',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Source Sans Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error,
+                                                                  fontSize: 9.0,
+                                                                ),
+                                                          ),
+                                                        ),
                                                       Padding(
                                                         padding:
                                                             EdgeInsetsDirectional

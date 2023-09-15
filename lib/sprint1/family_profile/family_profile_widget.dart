@@ -149,17 +149,21 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                     },
                                   ),
                                 ),
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    't405vb32' /* Family Profile */,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      't405vb32' /* Family Profile */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Source Sans Pro',
+                                          fontSize: 24.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Source Sans Pro',
-                                        fontSize: 24.0,
-                                        fontWeight: FontWeight.w900,
-                                      ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(

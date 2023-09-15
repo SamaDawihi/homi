@@ -44,7 +44,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 1.0, 0.0),
       child: Container(
-        width: 200.0,
+        width: 150.0,
         height: double.infinity,
         constraints: BoxConstraints(
           maxWidth: 300.0,
