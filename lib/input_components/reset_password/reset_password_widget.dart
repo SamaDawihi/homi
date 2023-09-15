@@ -1,10 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/confiramtion_components/email_not_supported/email_not_supported_widget.dart';
 import '/confiramtion_components/forget_password_email_sent/forget_password_email_sent_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
@@ -174,6 +174,22 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                     child: TextFormField(
                       controller: _model.emailAddressController,
+                      onFieldSubmitted: (_) async {
+                        if (functions.checkIfTextMatchRegExp(
+                            _model.emailAddressController.text,
+                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                          setState(() {
+                            _model.invalidEmailErr = '';
+                          });
+                          return;
+                        } else {
+                          setState(() {
+                            _model.invalidEmailErr =
+                                'Invalid email format. Please enter a correct email.';
+                          });
+                          return;
+                        }
+                      },
                       autofocus: true,
                       autofillHints: [AutofillHints.email],
                       textCapitalization: TextCapitalization.sentences,
@@ -226,15 +242,74 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           .asValidator(context),
                     ),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 7.0, 0.0, 7.0),
+                      child: Text(
+                        _model.invalidEmailErr!,
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Source Sans Pro',
+                              color: FlutterFlowTheme.of(context).error,
+                            ),
+                      ),
+                    ),
+                  ),
                   Builder(
                     builder: (context) => Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 16.0, 16.0, 44.0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 7.0, 16.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          var _shouldSetState = false;
                           if (functions.checkIfTextMatchRegExp(
                               _model.emailAddressController.text,
                               '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                            setState(() {
+                              _model.invalidEmailErr = '';
+                            });
+                          } else {
+                            setState(() {
+                              _model.invalidEmailErr =
+                                  'Invalid email format. Please enter a correct email.';
+                            });
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          }
+
+                          _model.emailValid = await actions.isEmailUnique(
+                            _model.emailAddressController.text,
+                          );
+                          _shouldSetState = true;
+                          if (_model.emailValid!) {
+                            setState(() {
+                              _model.invalidEmailErr =
+                                  'Email doesn\'t exist. Please enter a valid email.';
+                            });
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          } else {
+                            setState(() {
+                              _model.invalidEmailErr = '';
+                            });
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: ForgetPasswordEmailSentWidget(),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+
                             if (_model.emailAddressController.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
@@ -249,41 +324,11 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               email: _model.emailAddressController.text,
                               context: context,
                             );
-                          } else {
-                            await showAlignedDialog(
-                              context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
-                                  child: EmailNotSupportedWidget(),
-                                );
-                              },
-                            ).then((value) => setState(() {}));
-
+                            if (_shouldSetState) setState(() {});
                             return;
                           }
 
-                          await showAlignedDialog(
-                            context: context,
-                            isGlobal: true,
-                            avoidOverflow: false,
-                            targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            builder: (dialogContext) {
-                              return Material(
-                                color: Colors.transparent,
-                                child: ForgetPasswordEmailSentWidget(),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
+                          if (_shouldSetState) setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
                           'wfanplzm' /* Reset */,

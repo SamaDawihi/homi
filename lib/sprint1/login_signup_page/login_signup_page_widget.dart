@@ -268,7 +268,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -1.00),
+                                                  0.00, -1.46),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -2136,7 +2136,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
-                                                                  0.0,
+                                                                  10.0,
                                                                   0.0,
                                                                   16.0),
                                                       child: FFButtonWidget(
