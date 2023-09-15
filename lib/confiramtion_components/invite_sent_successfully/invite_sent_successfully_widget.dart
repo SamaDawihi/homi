@@ -52,7 +52,6 @@ class _InviteSentSuccessfullyWidgetState
           height: 200.0,
           constraints: BoxConstraints(
             maxWidth: 530.0,
-            maxHeight: 400.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -107,43 +106,35 @@ class _InviteSentSuccessfullyWidgetState
                   ],
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 5.0, 10.0, 10.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            context.pushNamed('FamilyProfile');
-                          },
-                          text: FFLocalizations.of(context).getText(
-                            'tji50dpq' /* OK */,
-                          ),
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF555EBE),
-                            textStyle: FlutterFlowTheme.of(context).titleSmall,
-                            elevation: 0.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
-                            borderRadius: BorderRadius.circular(40.0),
-                          ),
-                        ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FFButtonWidget(
+                      onPressed: () async {
+                        context.pushNamed('LoginSignupPage');
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        'm7nnuuyo' /* Ok */,
                       ),
-                    ],
-                  ),
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF555EBE),
+                        textStyle: FlutterFlowTheme.of(context).titleSmall,
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                        ),
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
