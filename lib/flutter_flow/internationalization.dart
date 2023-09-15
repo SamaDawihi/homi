@@ -141,7 +141,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '05f9nfea': {
       'en':
-          '-Be greater than 6 characters.\n-Contain both letters and numbers.',
+          '-Be greater than 5 characters.\n-Contain both letters and numbers.',
       'ar': '',
     },
     '6t83f44z': {
@@ -638,7 +638,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // ColorAlrasyUsed
+  // ColorAlreadyUsed
   {
     '9lmrn5qn': {
       'en': 'Color Is Already Used',

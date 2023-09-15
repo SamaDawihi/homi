@@ -1217,6 +1217,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
                                                     var _shouldSetState = false;
+                                                    Function() _navigate =
+                                                        () {};
                                                     if (_model.nameController
                                                                 .text ==
                                                             null ||
@@ -1383,16 +1385,40 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             createdTime:
                                                                 getCurrentTimestamp,
                                                           ));
+
+                                                      _navigate = () =>
+                                                          context.goNamedAuth(
+                                                              'FamilyProfile',
+                                                              context.mounted);
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'Registration Successful! Welcome to Homi.',
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                              fontSize: 14.0,
+                                                            ),
+                                                          ),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  4000),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .success,
+                                                        ),
+                                                      );
                                                     } else {
                                                       if (_shouldSetState)
                                                         setState(() {});
                                                       return;
                                                     }
 
-                                                    context.goNamedAuth(
-                                                        'FamilyProfile',
-                                                        context.mounted);
-
+                                                    _navigate();
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                   },
@@ -1439,7 +1465,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '05f9nfea' /* -Be greater than 6 characters.... */,
+                                                  '05f9nfea' /* -Be greater than 5 characters.... */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -1915,24 +1941,59 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
+                                                            -0.02, 0.92),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  7.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        _model.loginErr!,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Source Sans Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error,
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
                                                             0.00, 0.00),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
+                                                                  15.0,
                                                                   0.0,
-                                                                  0.0,
-                                                                  16.0),
+                                                                  0.0),
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          GoRouter.of(context)
-                                                              .prepareAuthEvent();
-
-                                                          final user =
-                                                              await authManager
-                                                                  .signInWithEmail(
-                                                            context,
+                                                          var _shouldSetState =
+                                                              false;
+                                                          Function() _navigate =
+                                                              () {};
+                                                          _model.validLogIn =
+                                                              await actions
+                                                                  .checkLogIn(
                                                             _model
                                                                 .loginEmailAddressController
                                                                 .text,
@@ -1940,13 +2001,49 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 .loginPasswordController
                                                                 .text,
                                                           );
-                                                          if (user == null) {
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (_model
+                                                              .validLogIn!) {
+                                                            GoRouter.of(context)
+                                                                .prepareAuthEvent();
+
+                                                            final user =
+                                                                await authManager
+                                                                    .signInWithEmail(
+                                                              context,
+                                                              _model
+                                                                  .loginEmailAddressController
+                                                                  .text,
+                                                              _model
+                                                                  .loginPasswordController
+                                                                  .text,
+                                                            );
+                                                            if (user == null) {
+                                                              return;
+                                                            }
+
+                                                            _navigate = () =>
+                                                                context.goNamedAuth(
+                                                                    'FamilyProfile',
+                                                                    context
+                                                                        .mounted);
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          } else {
+                                                            setState(() {
+                                                              _model.loginErr =
+                                                                  'Invalid Login attempt.';
+                                                            });
+                                                            if (_shouldSetState)
+                                                              setState(() {});
                                                             return;
                                                           }
 
-                                                          context.goNamedAuth(
-                                                              'FamilyProfile',
-                                                              context.mounted);
+                                                          _navigate();
+                                                          if (_shouldSetState)
+                                                            setState(() {});
                                                         },
                                                         text:
                                                             FFLocalizations.of(
@@ -1997,29 +2094,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       40.0),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            -0.02, 0.92),
-                                                    child: Text(
-                                                      _model.loginErr!,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Source Sans Pro',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                fontSize: 12.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              ),
                                                     ),
                                                   ),
                                                   Align(

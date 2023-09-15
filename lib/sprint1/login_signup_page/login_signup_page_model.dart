@@ -66,6 +66,8 @@ class LoginSignupPageModel extends FlutterFlowModel {
   TextEditingController? loginPasswordController;
   late bool loginPasswordVisibility;
   String? Function(BuildContext, String?)? loginPasswordControllerValidator;
+  // Stores action output result for [Custom Action - checkLogIn] action in Button widget.
+  bool? validLogIn;
 
   /// Initialization and disposal methods.
 

@@ -230,13 +230,28 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                      child: Image.asset(
-                                        'assets/images/houseIcon.png',
-                                        width: 90.0,
-                                        height: 90.0,
-                                        fit: BoxFit.cover,
+                                    Container(
+                                      width: 90.0,
+                                      height: 90.0,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color:
+                                              familyProfileFamilyRecord.color!,
+                                          width: 4.0,
+                                        ),
+                                      ),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                        child: Image.asset(
+                                          'assets/images/houseIcon.png',
+                                          width: 90.0,
+                                          height: 90.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                     Align(
@@ -244,6 +259,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                           AlignmentDirectional(0.00, 0.00),
                                       child: Text(
                                         familyProfileFamilyRecord.name,
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .headlineLarge
                                             .override(

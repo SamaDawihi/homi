@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'color_alrasy_used_model.dart';
-export 'color_alrasy_used_model.dart';
+import 'color_already_used_model.dart';
+export 'color_already_used_model.dart';
 
-class ColorAlrasyUsedWidget extends StatefulWidget {
-  const ColorAlrasyUsedWidget({Key? key}) : super(key: key);
+class ColorAlreadyUsedWidget extends StatefulWidget {
+  const ColorAlreadyUsedWidget({Key? key}) : super(key: key);
 
   @override
-  _ColorAlrasyUsedWidgetState createState() => _ColorAlrasyUsedWidgetState();
+  _ColorAlreadyUsedWidgetState createState() => _ColorAlreadyUsedWidgetState();
 }
 
-class _ColorAlrasyUsedWidgetState extends State<ColorAlrasyUsedWidget> {
-  late ColorAlrasyUsedModel _model;
+class _ColorAlreadyUsedWidgetState extends State<ColorAlreadyUsedWidget> {
+  late ColorAlreadyUsedModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -27,7 +27,7 @@ class _ColorAlrasyUsedWidgetState extends State<ColorAlrasyUsedWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ColorAlrasyUsedModel());
+    _model = createModel(context, () => ColorAlreadyUsedModel());
   }
 
   @override
@@ -47,7 +47,7 @@ class _ColorAlrasyUsedWidgetState extends State<ColorAlrasyUsedWidget> {
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
-          height: 170.0,
+          height: 200.0,
           constraints: BoxConstraints(
             maxWidth: 530.0,
           ),

@@ -240,6 +240,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Source Sans Pro',
                           color: FlutterFlowTheme.of(context).primaryText,
+                          fontSize: 16.0,
                           fontWeight: FontWeight.w500,
                         ),
                   ),
@@ -317,6 +318,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Source Sans Pro',
                           color: FlutterFlowTheme.of(context).primaryText,
+                          fontSize: 16.0,
                           fontWeight: FontWeight.w500,
                         ),
                   ),
