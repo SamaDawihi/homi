@@ -10,7 +10,6 @@ import '/list_view_items/emptyinvitations/emptyinvitations_widget.dart';
 import '/list_view_items/my_family_container/my_family_container_widget.dart';
 import '/list_view_items/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

@@ -10,7 +10,6 @@ import '/list_view_items/emptyinvitations/emptyinvitations_widget.dart';
 import '/list_view_items/my_family_container/my_family_container_widget.dart';
 import '/list_view_items/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -179,52 +178,47 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     children: [
                       Align(
                         alignment: AlignmentDirectional(-1.00, 1.00),
-                        child: Builder(
-                          builder: (context) => FFButtonWidget(
-                            onPressed: () async {
-                              await showAlignedDialog(
-                                context: context,
-                                isGlobal: true,
-                                avoidOverflow: false,
-                                targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                    .resolve(Directionality.of(context)),
-                                followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                    .resolve(Directionality.of(context)),
-                                builder: (dialogContext) {
-                                  return Material(
-                                    color: Colors.transparent,
-                                    child: GestureDetector(
-                                      onTap: () => FocusScope.of(context)
-                                          .requestFocus(_model.unfocusNode),
-                                      child: EnterFamilyNameWidget(),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => setState(() {}));
-                            },
-                            text: FFLocalizations.of(context).getText(
-                              'wb1iebtz' /* Create a family */,
-                            ),
-                            options: FFButtonOptions(
-                              height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFF555EBE),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Source Sans Pro',
-                                    color: Colors.white,
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () => FocusScope.of(context)
+                                      .requestFocus(_model.unfocusNode),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: EnterFamilyNameWidget(),
                                   ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+                          },
+                          text: FFLocalizations.of(context).getText(
+                            'wb1iebtz' /* Create a family */,
+                          ),
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: Color(0xFF555EBE),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Source Sans Pro',
+                                  color: Colors.white,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
                             ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                       ),

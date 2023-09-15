@@ -39,6 +39,19 @@ class _EnterFamilyNameWidgetState extends State<EnterFamilyNameWidget>
         ),
       ],
     ),
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      applyInitialState: true,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, 0.0),
+          end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
   };
 
   @override
@@ -289,9 +302,11 @@ class _EnterFamilyNameWidgetState extends State<EnterFamilyNameWidget>
             ),
           ),
         ],
-      ).animateOnActionTrigger(
-        animationsMap['columnOnActionTriggerAnimation']!,
-      ),
+      )
+          .animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!)
+          .animateOnActionTrigger(
+            animationsMap['columnOnActionTriggerAnimation']!,
+          ),
     );
   }
 }
