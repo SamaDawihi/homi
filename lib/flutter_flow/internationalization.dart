@@ -532,7 +532,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Your family invitation was successfully sent to the member.',
       'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
     },
-    'yh45peo9': {
+    'tji50dpq': {
       'en': 'OK',
       'ar': 'نعم',
     },
