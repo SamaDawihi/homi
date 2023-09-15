@@ -738,11 +738,13 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                     _model.regPasswordErr =
                                                                         '';
                                                                   });
+                                                                  return;
                                                                 } else {
                                                                   setState(() {
                                                                     _model.regPasswordErr =
                                                                         'Password length must be larger than 6 characters Andcontain both letters and numbers.';
                                                                   });
+                                                                  return;
                                                                 }
                                                               },
                                                             ),
@@ -1222,9 +1224,15 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                     }
 
                                                     if (functions
-                                                        .checkPasswordLength(_model
-                                                            .passwordController
-                                                            .text)) {
+                                                            .checkPasswordLength(
+                                                                _model
+                                                                    .passwordController
+                                                                    .text) &&
+                                                        functions
+                                                            .checkPasswordString(
+                                                                _model
+                                                                    .passwordController
+                                                                    .text)!) {
                                                       setState(() {
                                                         _model.regPasswordErr =
                                                             '';
@@ -1739,21 +1747,26 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 _model.regPasswordErr =
                                                                     '';
                                                               });
+                                                              return;
                                                             } else {
                                                               setState(() {
                                                                 _model.regPasswordErr =
                                                                     'Password length must be larger than 6 characters Andcontain both letters and numbers.';
                                                               });
+                                                              return;
                                                             }
                                                           },
                                                         ),
                                                         onFieldSubmitted:
                                                             (_) async {
-                                                          if (functions
-                                                              .checkPasswordLength(
+                                                          if (functions.checkPasswordLength(
                                                                   _model
                                                                       .loginPasswordController
-                                                                      .text)) {
+                                                                      .text) &&
+                                                              functions.checkPasswordString(
+                                                                  _model
+                                                                      .loginPasswordController
+                                                                      .text)!) {
                                                             setState(() {
                                                               _model.loginPasswordErr =
                                                                   '';
@@ -1961,6 +1974,54 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               false;
                                                           Function() _navigate =
                                                               () {};
+                                                          if (functions
+                                                              .checkIfTextMatchRegExp(
+                                                                  _model
+                                                                      .loginEmailAddressController
+                                                                      .text,
+                                                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                            setState(() {
+                                                              _model.loginEmailErr =
+                                                                  '';
+                                                            });
+                                                          } else {
+                                                            setState(() {
+                                                              _model.loginEmailErr =
+                                                                  'The Email Format Must Be XXX@XXX.XX';
+                                                            });
+                                                          }
+
+                                                          if (functions.checkPasswordLength(
+                                                                  _model
+                                                                      .loginPasswordController
+                                                                      .text) &&
+                                                              functions.checkPasswordString(
+                                                                  _model
+                                                                      .loginPasswordController
+                                                                      .text)!) {
+                                                            setState(() {
+                                                              _model.loginPasswordErr =
+                                                                  '';
+                                                            });
+                                                          } else {
+                                                            setState(() {
+                                                              _model.loginPasswordErr =
+                                                                  'The Password Length Must Be 6  Characters Or More.';
+                                                            });
+                                                          }
+
+                                                          if (!((_model.loginEmailErr ==
+                                                                      null ||
+                                                                  _model.loginEmailErr ==
+                                                                      '') &&
+                                                              (_model.loginPasswordErr ==
+                                                                      null ||
+                                                                  _model.loginPasswordErr ==
+                                                                      ''))) {
+                                                            if (_shouldSetState)
+                                                              setState(() {});
+                                                            return;
+                                                          }
                                                           _model.validLogIn =
                                                               await actions
                                                                   .checkLogIn(
