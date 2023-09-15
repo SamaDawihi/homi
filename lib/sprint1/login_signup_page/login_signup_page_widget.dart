@@ -301,9 +301,9 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
-                                                                    4.0,
+                                                                    10.0,
                                                                     0.0,
-                                                                    24.0),
+                                                                    20.0),
                                                         child: Text(
                                                           FFLocalizations.of(
                                                                   context)
@@ -1206,279 +1206,312 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 ),
                                                           ),
                                                         ),
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -0.03, 0.90),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      16.0),
+                                                          child: FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              var _shouldSetState =
+                                                                  false;
+                                                              Function()
+                                                                  _navigate =
+                                                                  () {};
+                                                              if (_model.nameController
+                                                                          .text ==
+                                                                      null ||
+                                                                  _model.nameController
+                                                                          .text ==
+                                                                      '') {
+                                                                setState(() {
+                                                                  _model.regNameErr =
+                                                                      'Name must contain 1 to 20 characters';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regNameErr =
+                                                                      '';
+                                                                });
+                                                              }
+
+                                                              if (functions
+                                                                  .checkIfTextMatchRegExp(
+                                                                      _model
+                                                                          .emailAddressController
+                                                                          .text,
+                                                                      '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                setState(() {
+                                                                  _model.regEmailErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regEmailErr =
+                                                                      'The Email Format must be XXX@XXX.XX';
+                                                                });
+                                                              }
+
+                                                              if (functions.checkPasswordLength(_model
+                                                                      .passwordController
+                                                                      .text) &&
+                                                                  functions.checkPasswordString(_model
+                                                                      .passwordController
+                                                                      .text)!) {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regPasswordErr =
+                                                                      'Password length must be larger than 6 characters';
+                                                                });
+                                                              }
+
+                                                              if (_model
+                                                                      .passwordController
+                                                                      .text ==
+                                                                  _model
+                                                                      .reEnterController
+                                                                      .text) {
+                                                                setState(() {
+                                                                  _model.regPasswordConfirmationErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.regPasswordConfirmationErr =
+                                                                      'Password must be the same. ';
+                                                                });
+                                                              }
+
+                                                              _model.emailExists =
+                                                                  await actions
+                                                                      .isEmailUnique(
+                                                                _model
+                                                                    .emailAddressController
+                                                                    .text,
+                                                              );
+                                                              _shouldSetState =
+                                                                  true;
+                                                              if (_model
+                                                                  .emailExists!) {
+                                                                setState(() {
+                                                                  _model.signUpErr =
+                                                                      '';
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.signUpErr =
+                                                                      'Email is already in use by another user. Please try a different email.';
+                                                                });
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              }
+
+                                                              if ((_model.regNameErr == null || _model.regNameErr == '') &&
+                                                                  (_model.regEmailErr ==
+                                                                          null ||
+                                                                      _model.regEmailErr ==
+                                                                          '') &&
+                                                                  (_model.regPasswordErr ==
+                                                                          null ||
+                                                                      _model.regPasswordErr ==
+                                                                          '') &&
+                                                                  (_model.regPasswordConfirmationErr ==
+                                                                          null ||
+                                                                      _model.regPasswordConfirmationErr ==
+                                                                          '')) {
+                                                                GoRouter.of(
+                                                                        context)
+                                                                    .prepareAuthEvent();
+                                                                if (_model
+                                                                        .passwordController
+                                                                        .text !=
+                                                                    _model
+                                                                        .reEnterController
+                                                                        .text) {
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'Passwords don\'t match!',
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                  return;
+                                                                }
+
+                                                                final user =
+                                                                    await authManager
+                                                                        .createAccountWithEmail(
+                                                                  context,
+                                                                  _model
+                                                                      .emailAddressController
+                                                                      .text,
+                                                                  _model
+                                                                      .passwordController
+                                                                      .text,
+                                                                );
+                                                                if (user ==
+                                                                    null) {
+                                                                  return;
+                                                                }
+
+                                                                await UsersRecord
+                                                                    .collection
+                                                                    .doc(user
+                                                                        .uid)
+                                                                    .update(
+                                                                        createUsersRecordData(
+                                                                      email: functions.toLowerCaseFunction(_model
+                                                                          .emailAddressController
+                                                                          .text),
+                                                                      displayName: _model
+                                                                          .nameController
+                                                                          .text,
+                                                                      createdTime:
+                                                                          getCurrentTimestamp,
+                                                                    ));
+
+                                                                _navigate = () =>
+                                                                    context.goNamedAuth(
+                                                                        'FamilyProfile',
+                                                                        context
+                                                                            .mounted);
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .showSnackBar(
+                                                                  SnackBar(
+                                                                    content:
+                                                                        Text(
+                                                                      'Registration Successful! Welcome to Homi.',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                      ),
+                                                                    ),
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            4000),
+                                                                    backgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .success,
+                                                                  ),
+                                                                );
+                                                              } else {
+                                                                if (_shouldSetState)
+                                                                  setState(
+                                                                      () {});
+                                                                return;
+                                                              }
+
+                                                              _navigate();
+                                                              if (_shouldSetState)
+                                                                setState(() {});
+                                                            },
+                                                            text: FFLocalizations
+                                                                    .of(context)
+                                                                .getText(
+                                                              'z14qfm03' /* Get Started */,
+                                                            ),
+                                                            options:
+                                                                FFButtonOptions(
+                                                              width: 230.0,
+                                                              height: 52.0,
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: Color(
+                                                                  0xFF555EBE),
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Source Sans Pro',
+                                                                        color: Colors
+                                                                            .white,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.00, 0.00),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child: Text(
+                                                            _model.signUpErr!,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Source Sans Pro',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error,
+                                                                  fontSize:
+                                                                      10.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
                                                     ],
                                                   ),
                                                 ).animateOnPageLoad(animationsMap[
                                                     'columnOnPageLoadAnimation1']!),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.06, 0.93),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        50.0, 0.0, 50.0, 0.0),
-                                                child: Text(
-                                                  _model.signUpErr!,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Source Sans Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        fontSize: 10.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.03, 0.90),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 16.0),
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    var _shouldSetState = false;
-                                                    Function() _navigate =
-                                                        () {};
-                                                    if (_model.nameController
-                                                                .text ==
-                                                            null ||
-                                                        _model.nameController
-                                                                .text ==
-                                                            '') {
-                                                      setState(() {
-                                                        _model.regNameErr =
-                                                            'Name must contain 1 to 20 characters';
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _model.regNameErr = '';
-                                                      });
-                                                    }
-
-                                                    if (functions
-                                                        .checkIfTextMatchRegExp(
-                                                            _model
-                                                                .emailAddressController
-                                                                .text,
-                                                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                                                      setState(() {
-                                                        _model.regEmailErr = '';
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _model.regEmailErr =
-                                                            'The Email Format must be XXX@XXX.XX';
-                                                      });
-                                                    }
-
-                                                    if (functions
-                                                            .checkPasswordLength(
-                                                                _model
-                                                                    .passwordController
-                                                                    .text) &&
-                                                        functions
-                                                            .checkPasswordString(
-                                                                _model
-                                                                    .passwordController
-                                                                    .text)!) {
-                                                      setState(() {
-                                                        _model.regPasswordErr =
-                                                            '';
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _model.regPasswordErr =
-                                                            'Password length must be larger than 6 characters';
-                                                      });
-                                                    }
-
-                                                    if (_model
-                                                            .passwordController
-                                                            .text ==
-                                                        _model.reEnterController
-                                                            .text) {
-                                                      setState(() {
-                                                        _model.regPasswordConfirmationErr =
-                                                            '';
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _model.regPasswordConfirmationErr =
-                                                            'Password must be the same. ';
-                                                      });
-                                                    }
-
-                                                    _model.emailExists =
-                                                        await actions
-                                                            .isEmailUnique(
-                                                      _model
-                                                          .emailAddressController
-                                                          .text,
-                                                    );
-                                                    _shouldSetState = true;
-                                                    if (_model.emailExists!) {
-                                                      setState(() {
-                                                        _model.signUpErr = '';
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        _model.signUpErr =
-                                                            'Email is already in use by another user. Please try a different email.';
-                                                      });
-                                                      if (_shouldSetState)
-                                                        setState(() {});
-                                                      return;
-                                                    }
-
-                                                    if ((_model.regNameErr ==
-                                                                null ||
-                                                            _model.regNameErr ==
-                                                                '') &&
-                                                        (_model.regEmailErr ==
-                                                                null ||
-                                                            _model.regEmailErr ==
-                                                                '') &&
-                                                        (_model.regPasswordErr ==
-                                                                null ||
-                                                            _model.regPasswordErr ==
-                                                                '') &&
-                                                        (_model.regPasswordConfirmationErr ==
-                                                                null ||
-                                                            _model.regPasswordConfirmationErr ==
-                                                                '')) {
-                                                      GoRouter.of(context)
-                                                          .prepareAuthEvent();
-                                                      if (_model
-                                                              .passwordController
-                                                              .text !=
-                                                          _model
-                                                              .reEnterController
-                                                              .text) {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Passwords don\'t match!',
-                                                            ),
-                                                          ),
-                                                        );
-                                                        return;
-                                                      }
-
-                                                      final user = await authManager
-                                                          .createAccountWithEmail(
-                                                        context,
-                                                        _model
-                                                            .emailAddressController
-                                                            .text,
-                                                        _model
-                                                            .passwordController
-                                                            .text,
-                                                      );
-                                                      if (user == null) {
-                                                        return;
-                                                      }
-
-                                                      await UsersRecord
-                                                          .collection
-                                                          .doc(user.uid)
-                                                          .update(
-                                                              createUsersRecordData(
-                                                            email: functions
-                                                                .toLowerCaseFunction(
-                                                                    _model
-                                                                        .emailAddressController
-                                                                        .text),
-                                                            displayName: _model
-                                                                .nameController
-                                                                .text,
-                                                            createdTime:
-                                                                getCurrentTimestamp,
-                                                          ));
-
-                                                      _navigate = () =>
-                                                          context.goNamedAuth(
-                                                              'FamilyProfile',
-                                                              context.mounted);
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                            'Registration Successful! Welcome to Homi.',
-                                                            style: TextStyle(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .info,
-                                                              fontSize: 14.0,
-                                                            ),
-                                                          ),
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                                  4000),
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .success,
-                                                        ),
-                                                      );
-                                                    } else {
-                                                      if (_shouldSetState)
-                                                        setState(() {});
-                                                      return;
-                                                    }
-
-                                                    _navigate();
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                  },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'z14qfm03' /* Get Started */,
-                                                  ),
-                                                  options: FFButtonOptions(
-                                                    width: 230.0,
-                                                    height: 52.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: Color(0xFF555EBE),
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Source Sans Pro',
-                                                          color: Colors.white,
-                                                        ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                  ),
-                                                ),
                                               ),
                                             ),
                                           ],
