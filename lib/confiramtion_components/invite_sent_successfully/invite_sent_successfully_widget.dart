@@ -80,7 +80,7 @@ class _InviteSentSuccessfullyWidgetState
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'fgegeusg' /* Invite Sent Successfully! */,
+                        'fom5m2cu' /* Invitation Sent Successfully */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -94,7 +94,7 @@ class _InviteSentSuccessfullyWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'fs3r0n9v' /* Your family invitation was suc... */,
+                          'lyx6ksss' /* The member you have tried to i... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -114,10 +114,10 @@ class _InviteSentSuccessfullyWidgetState
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('LoginSignupPage');
+                        Navigator.pop(context);
                       },
                       text: FFLocalizations.of(context).getText(
-                        'm7nnuuyo' /* Ok */,
+                        'qxfoiz9f' /* OK */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

@@ -524,16 +524,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // InviteSentSuccessfully
   {
-    'fgegeusg': {
-      'en': 'Invite Sent Successfully!',
+    'fom5m2cu': {
+      'en': 'Invitation Sent Successfully',
       'ar': 'جعل المشرف',
     },
-    'fs3r0n9v': {
-      'en': 'Your family invitation was successfully sent to the member.',
+    'lyx6ksss': {
+      'en': 'The member you have tried to invite will receive your invitation',
       'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
     },
-    'm7nnuuyo': {
-      'en': 'Ok',
+    'qxfoiz9f': {
+      'en': 'OK',
       'ar': 'نعم',
     },
   },
