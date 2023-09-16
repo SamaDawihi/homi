@@ -301,7 +301,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                 alignment: AlignmentDirectional(-1.00, 0.00),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 20.0, 0.0, 20.0),
+                                      40.0, 20.0, 0.0, 20.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       await showModalBottomSheet(
@@ -363,7 +363,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               alignment: AlignmentDirectional(1.00, 0.00),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 20.0, 10.0),
+                                    0.0, 10.0, 40.0, 10.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     context.pushNamed(
