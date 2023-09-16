@@ -141,12 +141,14 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Align(
                         alignment: AlignmentDirectional(-1.00, -1.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 0.0, 0.0),
+                              15.0, 5.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'fv3muwjj' /* Previous invitations status: */,
