@@ -11,15 +11,41 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<bool> checkLogIn(String emailAddress, String password) async {
-  bool valid = true;
+Future<String> authFlutterFire(
+  String emailAddress,
+  String password,
+  String messageInvalidEmail,
+  String messageWrongPassword,
+  String messageUserNotFound,
+) async {
+  String returnAuth = "valid";
   try {
-    UserCredential user = await FirebaseAuth.instance
+    await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: emailAddress, password: password);
   } on FirebaseAuthException catch (e) {
-    valid = false;
+    // POSSIBLE ERRORS
+    //
+    // invalid-email
+    // wrong-password
+    // user-not-found
+    //
+    switch (e.code) {
+      case 'invalid-email':
+        returnAuth = messageInvalidEmail;
+        break;
+      case 'wrong-password':
+        returnAuth = messageWrongPassword;
+        break;
+      case 'user-not-found':
+        returnAuth = messageUserNotFound;
+        break;
+    }
   }
-  return valid;
+  if (returnAuth == "valid") {
+    FirebaseAuth.instance.signOut();
+  }
+  return returnAuth;
 }
+
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the button on the right!

@@ -2005,161 +2005,164 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   15.0,
                                                                   0.0,
                                                                   0.0),
-                                                      child: FFButtonWidget(
-                                                        onPressed: () async {
-                                                          var _shouldSetState =
-                                                              false;
-                                                          Function() _navigate =
-                                                              () {};
-                                                          if (functions
-                                                              .checkIfTextMatchRegExp(
-                                                                  _model
-                                                                      .loginEmailAddressController
-                                                                      .text,
-                                                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                                                            setState(() {
-                                                              _model.loginEmailErr =
-                                                                  '';
-                                                            });
-                                                          } else {
-                                                            setState(() {
-                                                              _model.loginEmailErr =
-                                                                  'The Email Format Must Be XXX@XXX.XX';
-                                                            });
-                                                          }
-
-                                                          if (functions.checkPasswordLength(
-                                                                  _model
-                                                                      .loginPasswordController
-                                                                      .text) &&
-                                                              functions.checkPasswordString(
-                                                                  _model
-                                                                      .loginPasswordController
-                                                                      .text)!) {
-                                                            setState(() {
-                                                              _model.loginPasswordErr =
-                                                                  '';
-                                                            });
-                                                          } else {
-                                                            setState(() {
-                                                              _model.loginPasswordErr =
-                                                                  'The Password Length Must Be 6  Characters Or More.';
-                                                            });
-                                                          }
-
-                                                          if (!((_model.loginEmailErr ==
-                                                                      null ||
-                                                                  _model.loginEmailErr ==
-                                                                      '') &&
-                                                              (_model.loginPasswordErr ==
-                                                                      null ||
-                                                                  _model.loginPasswordErr ==
-                                                                      ''))) {
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
-                                                          }
-                                                          _model.validLogIn =
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onLongPress: () async {
+                                                          _model.valid =
                                                               await actions
-                                                                  .checkLogIn(
+                                                                  .authFlutterFire(
                                                             _model
                                                                 .loginEmailAddressController
                                                                 .text,
                                                             _model
                                                                 .loginPasswordController
                                                                 .text,
+                                                            'Invalid Email',
+                                                            'Incorrect Password',
+                                                            'User not found',
                                                           );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (_model
-                                                              .validLogIn!) {
-                                                            GoRouter.of(context)
-                                                                .prepareAuthEvent();
-
-                                                            final user =
-                                                                await authManager
-                                                                    .signInWithEmail(
-                                                              context,
-                                                              _model
-                                                                  .loginEmailAddressController
-                                                                  .text,
-                                                              _model
-                                                                  .loginPasswordController
-                                                                  .text,
-                                                            );
-                                                            if (user == null) {
-                                                              return;
-                                                            }
-
-                                                            _navigate = () =>
-                                                                context.goNamedAuth(
-                                                                    'FamilyProfile',
-                                                                    context
-                                                                        .mounted);
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
+                                                          if (_model.valid ==
+                                                              'valid') {
+                                                            setState(() {
+                                                              _model.loginErr =
+                                                                  '';
+                                                            });
                                                           } else {
                                                             setState(() {
                                                               _model.loginErr =
-                                                                  'Invalid Login attempt.';
+                                                                  'error:${_model.valid}';
                                                             });
-                                                            if (_shouldSetState)
-                                                              setState(() {});
-                                                            return;
                                                           }
 
-                                                          _navigate();
-                                                          if (_shouldSetState)
-                                                            setState(() {});
+                                                          setState(() {});
                                                         },
-                                                        text:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'tbi39cgz' /* Log In */,
-                                                        ),
-                                                        options:
-                                                            FFButtonOptions(
-                                                          width: 230.0,
-                                                          height: 52.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color:
-                                                              Color(0xFF555EBE),
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
+                                                        child: FFButtonWidget(
+                                                          onPressed: () async {
+                                                            if (functions
+                                                                .checkIfTextMatchRegExp(
+                                                                    _model
+                                                                        .loginEmailAddressController
+                                                                        .text,
+                                                                    '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                              setState(() {
+                                                                _model.loginEmailErr =
+                                                                    '';
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginEmailErr =
+                                                                    'The Email Format Must Be XXX@XXX.XX';
+                                                              });
+                                                            }
+
+                                                            if (functions.checkPasswordLength(
+                                                                    _model
+                                                                        .loginPasswordController
+                                                                        .text) &&
+                                                                functions.checkPasswordString(_model
+                                                                    .loginPasswordController
+                                                                    .text)!) {
+                                                              setState(() {
+                                                                _model.loginPasswordErr =
+                                                                    '';
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginPasswordErr =
+                                                                    'The Password Length Must Be 6  Characters Or More.';
+                                                              });
+                                                            }
+
+                                                            if ((_model.loginEmailErr ==
+                                                                        null ||
+                                                                    _model.loginEmailErr ==
+                                                                        '') &&
+                                                                (_model.loginPasswordErr ==
+                                                                        null ||
+                                                                    _model.loginPasswordErr ==
+                                                                        '')) {
+                                                              GoRouter.of(
                                                                       context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Source Sans Pro',
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
-                                                          elevation: 3.0,
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors
-                                                                .transparent,
-                                                            width: 1.0,
+                                                                  .prepareAuthEvent();
+
+                                                              final user =
+                                                                  await authManager
+                                                                      .signInWithEmail(
+                                                                context,
+                                                                _model
+                                                                    .loginEmailAddressController
+                                                                    .text,
+                                                                _model
+                                                                    .loginPasswordController
+                                                                    .text,
+                                                              );
+                                                              if (user ==
+                                                                  null) {
+                                                                return;
+                                                              }
+                                                            } else {
+                                                              return;
+                                                            }
+
+                                                            context.goNamedAuth(
+                                                                'FamilyProfile',
+                                                                context
+                                                                    .mounted);
+                                                          },
+                                                          text: FFLocalizations
+                                                                  .of(context)
+                                                              .getText(
+                                                            'tbi39cgz' /* Log In */,
                                                           ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      40.0),
+                                                          options:
+                                                              FFButtonOptions(
+                                                            width: 230.0,
+                                                            height: 52.0,
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: Color(
+                                                                0xFF555EBE),
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Source Sans Pro',
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        40.0),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -2204,29 +2207,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             },
                                                           ).then((value) =>
                                                               setState(() {}));
-
-                                                          if (_model
-                                                              .loginEmailAddressController
-                                                              .text
-                                                              .isEmpty) {
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  'Email required!',
-                                                                ),
-                                                              ),
-                                                            );
-                                                            return;
-                                                          }
-                                                          await authManager
-                                                              .resetPassword(
-                                                            email: _model
-                                                                .loginEmailAddressController
-                                                                .text,
-                                                            context: context,
-                                                          );
                                                         },
                                                         text:
                                                             FFLocalizations.of(

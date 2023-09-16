@@ -232,9 +232,41 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           16.0, 16.0, 16.0, 44.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          if (!functions.checkIfTextMatchRegExp(
+                          if (functions.checkIfTextMatchRegExp(
                               _model.emailAddressController.text,
                               '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                            if (_model.emailAddressController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Email required!',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+                            await authManager.resetPassword(
+                              email: _model.emailAddressController.text,
+                              context: context,
+                            );
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: ForgetPasswordEmailSentWidget(),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+
+                            return;
+                          } else {
                             await showAlignedDialog(
                               context: context,
                               isGlobal: true,
@@ -253,36 +285,6 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
 
                             return;
                           }
-                          await showAlignedDialog(
-                            context: context,
-                            isGlobal: true,
-                            avoidOverflow: false,
-                            targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            builder: (dialogContext) {
-                              return Material(
-                                color: Colors.transparent,
-                                child: ForgetPasswordEmailSentWidget(),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-
-                          if (_model.emailAddressController.text.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Email required!',
-                                ),
-                              ),
-                            );
-                            return;
-                          }
-                          await authManager.resetPassword(
-                            email: _model.emailAddressController.text,
-                            context: context,
-                          );
                         },
                         text: FFLocalizations.of(context).getText(
                           'wfanplzm' /* Reset */,
