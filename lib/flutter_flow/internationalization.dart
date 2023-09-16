@@ -290,46 +290,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Previous invitations status:',
       'ar': 'حالة الدعوات السابقة',
     },
-    'b3z6yo26': {
-      'en': 'Randy Rodriguez',
-      'ar': 'راندي رودريجيز',
-    },
-    'e2s5apsw': {
-      'en': 'randy@domainname.com',
-      'ar': 'Randy@domainname.com',
-    },
-    '1bhuqosj': {
-      'en': '5 mins ago',
-      'ar': 'منذ 5 دقائق',
-    },
-    'sl8i62em': {
-      'en': 'Head of Design',
-      'ar': 'رئيس قسم التصميم',
-    },
-    'oczsijjb': {
-      'en': 'Pending',
-      'ar': 'قيد الانتظار',
-    },
-    'bmlyn4pq': {
-      'en': 'Randy Rodriguez',
-      'ar': 'راندي رودريجيز',
-    },
-    'lcx6ulki': {
-      'en': 'randy@domainname.com',
-      'ar': 'Randy@domainname.com',
-    },
-    'yx815nyk': {
-      'en': '5 mins ago',
-      'ar': 'منذ 5 دقائق',
-    },
-    'v8n9vl27': {
-      'en': 'Head of Design',
-      'ar': 'رئيس قسم التصميم',
-    },
-    'o4ze7fw5': {
-      'en': 'Rejected',
-      'ar': 'مرفوض',
-    },
     'u4fngcl6': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
