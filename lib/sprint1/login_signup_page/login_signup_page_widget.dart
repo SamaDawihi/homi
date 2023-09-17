@@ -742,7 +742,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 } else {
                                                                   setState(() {
                                                                     _model.regPasswordErr =
-                                                                        'Password length must be 6 character or more And contain both letters and numbers.';
+                                                                        'Password length must be 6 character or more And Contain Both Letters And Numbers.';
                                                                   });
                                                                   return;
                                                                 }
@@ -1277,7 +1277,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               } else {
                                                                 setState(() {
                                                                   _model.regPasswordErr =
-                                                                      'Password length must be 6 character or more And contain both letters and numbers.';
+                                                                      'Password length must be 6 character or more And Contain Both Letters And Numbers.';
                                                                 });
                                                               }
 
@@ -1788,7 +1788,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             } else {
                                                               setState(() {
                                                                 _model.loginPasswordErr =
-                                                                    'The Password Length Must Be 6  Characters Or More and contains both letters and numbers.';
+                                                                    'The Password Length Must Be 6  Characters Or More And Contains Both Letters And Numbers.';
                                                               });
                                                               return;
                                                             }
@@ -2076,7 +2076,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             } else {
                                                               setState(() {
                                                                 _model.loginPasswordErr =
-                                                                    'The Password Length Must Be 6  Characters Or More.';
+                                                                    'Password length must be 6 character or more And Contain Both Letters And Numbers.';
                                                               });
                                                             }
 
