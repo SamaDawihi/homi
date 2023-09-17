@@ -289,19 +289,20 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                         ],
                       ),
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (familyProfileFamilyRecord.adminId ==
-                                currentUserReference)
-                              Align(
-                                alignment: AlignmentDirectional(-1.00, 0.00),
-                                child: Padding(
+                    Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              if (familyProfileFamilyRecord.adminId ==
+                                  currentUserReference)
+                                Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      40.0, 20.0, 0.0, 20.0),
+                                      0.0, 0.0, 0.0, 20.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       await showModalBottomSheet(
@@ -353,17 +354,14 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
-                          ],
-                        ),
-                        if (familyProfileFamilyRecord.adminId ==
-                            currentUserReference)
-                          Flexible(
-                            child: Align(
-                              alignment: AlignmentDirectional(1.00, 0.00),
+                            ],
+                          ),
+                          if (familyProfileFamilyRecord.adminId ==
+                              currentUserReference)
+                            Flexible(
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 40.0, 10.0),
+                                    0.0, 0.0, 0.0, 20.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     context.pushNamed(
@@ -402,8 +400,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                 ),
                               ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                     Align(
                       alignment: AlignmentDirectional(-1.00, 0.00),
