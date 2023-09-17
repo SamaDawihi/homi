@@ -1781,14 +1781,14 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                     .loginPasswordController
                                                                     .text)!) {
                                                               setState(() {
-                                                                _model.regPasswordErr =
+                                                                _model.loginPasswordErr =
                                                                     '';
                                                               });
                                                               return;
                                                             } else {
                                                               setState(() {
-                                                                _model.regPasswordErr =
-                                                                    'Password length must be larger than 6 characters Andcontain both letters and numbers.';
+                                                                _model.loginPasswordErr =
+                                                                    'The Password Length Must Be 6  Characters Or More and contains both letters and numbers.';
                                                               });
                                                               return;
                                                             }
@@ -1812,7 +1812,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           } else {
                                                             setState(() {
                                                               _model.loginPasswordErr =
-                                                                  'The Password Length Must Be 6  Characters Or More.';
+                                                                  'The Password Length Must Be 6  Characters Or More and contains both letters and numbers.';
                                                             });
                                                             return;
                                                           }
