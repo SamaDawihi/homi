@@ -125,7 +125,11 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                               eventDisplayEventRecord.startTime?.toString(),
                               'no start',
                             ),
-                            style: FlutterFlowTheme.of(context).bodyLarge,
+                            style:
+                                FlutterFlowTheme.of(context).bodyLarge.override(
+                                      fontFamily: 'Source Sans Pro',
+                                      fontSize: 11.0,
+                                    ),
                           ),
                         ),
                         Text(
@@ -133,7 +137,11 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                             eventDisplayEventRecord.endTime?.toString(),
                             'no End',
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 11.0,
+                                  ),
                         ),
                       ],
                     ),
