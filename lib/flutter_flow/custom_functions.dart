@@ -55,3 +55,21 @@ bool? checkPasswordString(String password) {
   }
   return false;
 }
+
+bool isDateInRange(
+  DateTime selectedDate,
+  DateTime startDate,
+  DateTime endDate,
+) {
+  if (endDate == null) {
+    return startDate.isAtSameMomentAs(selectedDate);
+  } else {
+    DateTime currentDate = startDate;
+    while (currentDate.isBefore(endDate) ||
+        currentDate.isAtSameMomentAs(endDate)) {
+      if (currentDate.isAtSameMomentAs(selectedDate)) return true;
+      currentDate = currentDate.add(Duration(days: 1));
+    }
+  }
+  return false;
+}

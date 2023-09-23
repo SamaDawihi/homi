@@ -81,6 +81,11 @@ class EventRecord extends FirestoreRecord {
   DateTime? get endDate => _endDate;
   bool hasEndDate() => _endDate != null;
 
+  // "dontShareThisEvent" field.
+  bool? _dontShareThisEvent;
+  bool get dontShareThisEvent => _dontShareThisEvent ?? false;
+  bool hasDontShareThisEvent() => _dontShareThisEvent != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -95,6 +100,7 @@ class EventRecord extends FirestoreRecord {
     _isGoogleEvent = snapshotData['isGoogleEvent'] as bool?;
     _startDate = snapshotData['startDate'] as DateTime?;
     _endDate = snapshotData['endDate'] as DateTime?;
+    _dontShareThisEvent = snapshotData['dontShareThisEvent'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -144,6 +150,7 @@ Map<String, dynamic> createEventRecordData({
   bool? isGoogleEvent,
   DateTime? startDate,
   DateTime? endDate,
+  bool? dontShareThisEvent,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -160,6 +167,7 @@ Map<String, dynamic> createEventRecordData({
       'isGoogleEvent': isGoogleEvent,
       'startDate': startDate,
       'endDate': endDate,
+      'dontShareThisEvent': dontShareThisEvent,
     }.withoutNulls,
   );
 
@@ -183,7 +191,8 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e1?.notifyBeforeUnit == e2?.notifyBeforeUnit &&
         e1?.isGoogleEvent == e2?.isGoogleEvent &&
         e1?.startDate == e2?.startDate &&
-        e1?.endDate == e2?.endDate;
+        e1?.endDate == e2?.endDate &&
+        e1?.dontShareThisEvent == e2?.dontShareThisEvent;
   }
 
   @override
@@ -200,7 +209,8 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e?.notifyBeforeUnit,
         e?.isGoogleEvent,
         e?.startDate,
-        e?.endDate
+        e?.endDate,
+        e?.dontShareThisEvent
       ]);
 
   @override

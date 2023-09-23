@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -98,17 +99,19 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
                             eventDisplayEventRecord.title,
                             style: FlutterFlowTheme.of(context).bodyLarge,
                           ),
                         ),
-                        Text(
-                          eventDisplayEventRecord.description,
-                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: Text(
+                            eventDisplayEventRecord.description,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
                         ),
                       ],
                     ),
@@ -117,12 +120,16 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
                             valueOrDefault<String>(
-                              eventDisplayEventRecord.startDate?.toString(),
+                              dateTimeFormat(
+                                'd/M h:mm a',
+                                eventDisplayEventRecord.startDate,
+                                locale:
+                                    FFLocalizations.of(context).languageCode,
+                              ),
                               'no start',
                             ),
                             style:
@@ -132,24 +139,120 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                                     ),
                           ),
                         ),
-                        Text(
-                          valueOrDefault<String>(
-                            eventDisplayEventRecord.endDate?.toString(),
-                            'no End',
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: Text(
+                            valueOrDefault<String>(
+                              dateTimeFormat(
+                                'd/M h:mm a',
+                                eventDisplayEventRecord.endDate,
+                                locale:
+                                    FFLocalizations.of(context).languageCode,
+                              ),
+                              'no End',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 11.0,
+                                ),
                           ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 11.0,
-                                  ),
                         ),
                       ],
                     ),
                   ),
-                  Icon(
-                    Icons.arrow_forward,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 24.0,
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.arrow_forward,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                      if ((eventDisplayEventRecord.createdBy ==
+                              currentUserReference) &&
+                          eventDisplayEventRecord.isGoogleEvent)
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            if (eventDisplayEventRecord.dontShareThisEvent) {
+                              var confirmDialogResponse =
+                                  await showDialog<bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Share Event'),
+                                            content: Text(
+                                                'Do You Want To Share This Event?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('Confirm'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+
+                              await widget.eventRef!
+                                  .update(createEventRecordData(
+                                dontShareThisEvent: false,
+                              ));
+                              return;
+                            } else {
+                              var confirmDialogResponse =
+                                  await showDialog<bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text(
+                                                'Cancel Sharing The Event'),
+                                            content: Text(
+                                                'Do You Want To Cancel Sharing This Event?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('Confirm'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+
+                              await widget.eventRef!
+                                  .update(createEventRecordData(
+                                dontShareThisEvent: true,
+                              ));
+                              return;
+                            }
+                          },
+                          child: Icon(
+                            Icons.remove_red_eye,
+                            color: eventDisplayEventRecord.dontShareThisEvent
+                                ? FlutterFlowTheme.of(context).error
+                                : FlutterFlowTheme.of(context).success,
+                            size: 24.0,
+                          ),
+                        ),
+                    ],
                   ),
                 ],
               ),

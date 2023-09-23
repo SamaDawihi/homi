@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
@@ -341,32 +342,73 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           ),
                         ),
                       ),
-                      FlutterFlowCalendar(
-                        color: FlutterFlowTheme.of(context).primary,
-                        iconColor: FlutterFlowTheme.of(context).secondaryText,
-                        weekFormat: false,
-                        weekStartsMonday: false,
-                        initialDate: getCurrentTimestamp,
-                        rowHeight: 64.0,
-                        onChange: (DateTimeRange? newSelectedDate) {
-                          setState(() =>
-                              _model.calendarSelectedDay = newSelectedDate);
+                      StreamBuilder<List<EventRecord>>(
+                        stream: queryEventRecord(
+                          singleRecord: true,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 10.0,
+                                height: 10.0,
+                                child: SpinKitDualRing(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 10.0,
+                                ),
+                              ),
+                            );
+                          }
+                          List<EventRecord> calendarEventRecordList =
+                              snapshot.data!;
+                          // Return an empty Container when the item does not exist.
+                          if (snapshot.data!.isEmpty) {
+                            return Container();
+                          }
+                          final calendarEventRecord =
+                              calendarEventRecordList.isNotEmpty
+                                  ? calendarEventRecordList.first
+                                  : null;
+                          return FlutterFlowCalendar(
+                            color: FlutterFlowTheme.of(context).primary,
+                            iconColor:
+                                FlutterFlowTheme.of(context).secondaryText,
+                            weekFormat: false,
+                            weekStartsMonday: false,
+                            initialDate: getCurrentTimestamp,
+                            rowHeight: 64.0,
+                            onChange: (DateTimeRange? newSelectedDate) async {
+                              _model.calendarSelectedDay = newSelectedDate;
+                              setState(() {
+                                _model.dateSelected =
+                                    _model.calendarSelectedDay?.start;
+                              });
+                              setState(() {});
+                            },
+                            titleStyle: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontSize: 26.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                            dayOfWeekStyle:
+                                FlutterFlowTheme.of(context).labelLarge,
+                            dateStyle: FlutterFlowTheme.of(context).bodyMedium,
+                            selectedDateStyle:
+                                FlutterFlowTheme.of(context).titleSmall,
+                            inactiveDateStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Source Sans Pro',
+                                  fontWeight: FontWeight.normal,
+                                ),
+                            locale: FFLocalizations.of(context).languageCode,
+                          );
                         },
-                        titleStyle: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: 'Open Sans',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 26.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                        dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
-                        dateStyle: FlutterFlowTheme.of(context).bodyMedium,
-                        selectedDateStyle:
-                            FlutterFlowTheme.of(context).titleSmall,
-                        inactiveDateStyle:
-                            FlutterFlowTheme.of(context).labelMedium,
-                        locale: FFLocalizations.of(context).languageCode,
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
@@ -375,9 +417,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 15.0, 0.0, 10.0),
                             child: Text(
-                              'This Day Event ${valueOrDefault<String>(
-                                _model.calendarSelectedDay?.start?.toString(),
-                                '[Selected Date]',
+                              'This Day Event ${dateTimeFormat(
+                                'd/M h:mm a',
+                                _model.dateSelected,
+                                locale:
+                                    FFLocalizations.of(context).languageCode,
                               )}',
                               style: FlutterFlowTheme.of(context).headlineSmall,
                             ),
@@ -413,17 +457,32 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                         itemBuilder: (context, listViewIndex) {
                           final listViewEventRecord =
                               listViewEventRecordList[listViewIndex];
-                          return wrapWithModel(
-                            model: _model.eventDisplayModels.getModel(
-                              listViewIndex.toString(),
-                              listViewIndex,
-                            ),
-                            updateCallback: () => setState(() {}),
-                            child: EventDisplayWidget(
-                              key: Key(
-                                'Keywpy_${listViewIndex.toString()}',
+                          return Visibility(
+                            visible: functions.isDateInRange(
+                                    _model.dateSelected!,
+                                    listViewEventRecord.startDate!,
+                                    listViewEventRecord.endDate!) &&
+                                ((currentUserReference ==
+                                        listViewEventRecord.createdBy) ||
+                                    !(listViewEventRecord.isGoogleEvent &&
+                                        listViewEventRecord
+                                            .dontShareThisEvent)),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  6.0, 0.0, 6.0, 10.0),
+                              child: wrapWithModel(
+                                model: _model.eventDisplayModels.getModel(
+                                  listViewIndex.toString(),
+                                  listViewIndex,
+                                ),
+                                updateCallback: () => setState(() {}),
+                                child: EventDisplayWidget(
+                                  key: Key(
+                                    'Keywpy_${listViewIndex.toString()}',
+                                  ),
+                                  eventRef: listViewEventRecord.reference,
+                                ),
                               ),
-                              eventRef: listViewEventRecord.reference,
                             ),
                           );
                         },

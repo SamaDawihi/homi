@@ -45,22 +45,22 @@ Future<List<EventStruct>> getGoogleEvents(
     final eventsList = await calendarApi.events.list('primary');
     if (eventsList.items != null) {
       for (final event in eventsList.items!) {
-        DateTime startD =
-            (event.start?.dateTime ?? event.start?.date).toLocal();
-        DateTime endD = (event.end?.dateTime ?? event.end?.date).toLocal();
+        DateTime? startD = event.start?.dateTime ?? event.start?.date;
+        DateTime? endD = event.end?.dateTime ?? event.end?.date;
         final eventStruct = EventStruct(
           createdBy: createdBy,
           familyId: familyId,
           title: event.summary ?? '',
           description: event.description ?? '',
           location: event.location ?? '',
-          startDate: DateTime(startD.year, startD.month, startD.day),
-          endDate: DateTime(endD.year, endD.month, endD.day),
+          startDate: DateTime(startD!.year, startD!.month, startD!.day),
+          endDate: DateTime(endD!.year, endD!.month, endD!.day),
           startTime: startD,
           endTime: endD,
           isAllDay: event.start?.dateTime ==
               null, // Assuming it's an all-day event if there's no specific dateTime set
           isGoogleEvent: true,
+          dontShareThisEvent: true,
           // Below are guessed fields, please adjust as needed:
           notifyBefore:
               15, // Example: Notify 15 minutes before, adjust this as you see fit.
