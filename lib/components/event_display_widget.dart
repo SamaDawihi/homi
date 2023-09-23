@@ -122,7 +122,7 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                               12.0, 0.0, 0.0, 0.0),
                           child: Text(
                             valueOrDefault<String>(
-                              eventDisplayEventRecord.startTime?.toString(),
+                              eventDisplayEventRecord.startDate?.toString(),
                               'no start',
                             ),
                             style:
@@ -134,7 +134,7 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                         ),
                         Text(
                           valueOrDefault<String>(
-                            eventDisplayEventRecord.endTime?.toString(),
+                            eventDisplayEventRecord.endDate?.toString(),
                             'no End',
                           ),
                           style:

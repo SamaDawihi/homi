@@ -375,9 +375,10 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 15.0, 0.0, 10.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'y8ecpcye' /* This Day Events  */,
-                              ),
+                              'This Day Event ${valueOrDefault<String>(
+                                _model.calendarSelectedDay?.start?.toString(),
+                                '[Selected Date]',
+                              )}',
                               style: FlutterFlowTheme.of(context).headlineSmall,
                             ),
                           ),
@@ -386,13 +387,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                     ],
                   ),
                   StreamBuilder<List<EventRecord>>(
-                    stream: queryEventRecord(
-                      queryBuilder: (eventRecord) => eventRecord
-                          .where('familyId', isEqualTo: FFAppState().familyId)
-                          .where('startDate',
-                              isEqualTo: _model.calendarSelectedDay?.start)
-                          .orderBy('startTime'),
-                    ),
+                    stream: queryEventRecord(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {

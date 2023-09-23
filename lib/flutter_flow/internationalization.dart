@@ -224,10 +224,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Calendar',
       'ar': '',
     },
-    'y8ecpcye': {
-      'en': 'This Day Events ',
-      'ar': '',
-    },
     '2adgmlg5': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
