@@ -348,13 +348,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                         weekStartsMonday: false,
                         initialDate: getCurrentTimestamp,
                         rowHeight: 64.0,
-                        onChange: (DateTimeRange? newSelectedDate) async {
-                          _model.calendarSelectedDay = newSelectedDate;
-                          setState(() {
-                            _model.dateSelected =
-                                _model.calendarSelectedDay?.start;
-                          });
-                          setState(() {});
+                        onChange: (DateTimeRange? newSelectedDate) {
+                          setState(() =>
+                              _model.calendarSelectedDay = newSelectedDate);
                         },
                         titleStyle: FlutterFlowTheme.of(context)
                             .headlineMedium
@@ -393,7 +389,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                     stream: queryEventRecord(
                       queryBuilder: (eventRecord) => eventRecord
                           .where('familyId', isEqualTo: FFAppState().familyId)
-                          .where('startDate', isEqualTo: _model.dateSelected)
+                          .where('startDate',
+                              isEqualTo: _model.calendarSelectedDay?.start)
                           .orderBy('startTime'),
                     ),
                     builder: (context, snapshot) {
