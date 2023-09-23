@@ -27,8 +27,10 @@ Future<List<EventStruct>> getGoogleEvents(
     SnackBar(content: Text("Start")),
   );
 
-  final googleSignIn =
-      GoogleSignIn(scopes: [CalendarApi.calendarEventsReadonlyScope]);
+  final googleSignIn = GoogleSignIn(
+      scopes: [CalendarApi.calendarEventsReadonlyScope],
+      clientId:
+          "584197013310-nj6s6qm2kjnoob6i985l39rc0oid8a5k.apps.googleusercontent.com");
   GoogleSignInAccount? _currentUser = await googleSignIn.signIn();
 
   ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -46,14 +48,22 @@ Future<List<EventStruct>> getGoogleEvents(
     if (eventsList.items != null) {
       for (final event in eventsList.items!) {
         final eventStruct = EventStruct(
-            createdBy: createdBy,
-            familyId: familyId,
-            title: event.summary,
-            //description: event.description,
-            location: event.location,
-            startTime: event.start?.dateTime ?? event.start?.date,
-            endTime: event.end?.dateTime ?? event.end?.date,
-            isGoogleEvent: true);
+          createdBy: createdBy,
+          familyId: familyId,
+          title: event.summary ?? '',
+          description: event.description ?? '',
+          location: event.location ?? '',
+          startTime: event.start?.dateTime ?? event.start?.date,
+          endTime: event.end?.dateTime ?? event.end?.date,
+          isAllDay: event.start?.dateTime ==
+              null, // Assuming it's an all-day event if there's no specific dateTime set
+          isGoogleEvent: true,
+          // Below are guessed fields, please adjust as needed:
+          notifyBefore:
+              15, // Example: Notify 15 minutes before, adjust this as you see fit.
+          notifyBeforeUnit: 'minutes', // Just as an example.
+        );
+
         events.add(eventStruct);
       }
     }

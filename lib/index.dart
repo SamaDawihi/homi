@@ -13,6 +13,4 @@ export '/sprint1/families_management/families_management_widget.dart'
 export '/sprint1/invitations_status/invitations_status_widget.dart'
     show InvitationsStatusWidget;
 export '/pages/tasks/tasks_widget.dart' show TasksWidget;
-export '/invite/invite_widget.dart' show InviteWidget;
-export '/the_calendar/the_calendar_widget.dart' show TheCalendarWidget;
 export '/pages/auth_page/auth_page_widget.dart' show AuthPageWidget;

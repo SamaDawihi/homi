@@ -220,16 +220,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Calendar
   {
-    'ftl3fd38': {
-      'en': 'Get Events From Google',
-      'ar': '',
-    },
-    '4d2eqt1e': {
-      'en': 'title',
-      'ar': '',
-    },
     '7dmf86h5': {
       'en': 'Calendar',
+      'ar': '',
+    },
+    'y8ecpcye': {
+      'en': 'This Day Events ',
       'ar': '',
     },
     '2adgmlg5': {
@@ -310,43 +306,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
-  // invite
-  {
-    'vth00f40': {
-      'en': 'Page Title',
-      'ar': '',
-    },
-    'dytpm8yr': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // theCalendar
-  {
-    'rpetolcb': {
-      'en': 'This Day Events ',
-      'ar': '',
-    },
-    '2z0v1gdh': {
-      'en': 'Event Name سويت لها كمبوننت اسمه ايفنت',
-      'ar': '',
-    },
-    'qaq22s6z': {
-      'en': 'Calendar',
-      'ar': '',
-    },
-    '1yxcp3yv': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // AuthPage
   {
-    'c9yuu82c': {
+    'jhv5byc6': {
       'en': 'AuthPage',
       'ar': '',
     },
-    'yptdsqkt': {
+    'gj6hshgi': {
       'en': 'Home',
       'ar': '',
     },

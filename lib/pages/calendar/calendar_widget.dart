@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/event_display_widget.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,6 +12,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'calendar_model.dart';
@@ -206,78 +208,187 @@ class _CalendarWidgetState extends State<CalendarWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  FFButtonWidget(
-                    onPressed: () async {
-                      _model.events = await actions.getGoogleEvents(
-                        context,
-                        currentUserReference!,
-                        FFAppState().familyId!,
-                      );
-                      if (_model.events?.length == 0) {
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('no events'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      } else {
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text(valueOrDefault<String>(
-                                'there are ${_model.events?.length?.toString()} events',
-                                'not 0',
-                              )),
-                              content: Text(_model.events!.first.title),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, -1.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 0.0, 30.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.00, 0.00),
+                                child: FlutterFlowIconButton(
+                                  borderColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  borderRadius: 20.0,
+                                  borderWidth: 1.0,
+                                  buttonSize: 40.0,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  hoverColor:
+                                      FlutterFlowTheme.of(context).tertiary,
+                                  hoverIconColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.google,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 35.0,
+                                  ),
+                                  showLoadingIndicator: true,
+                                  onPressed: () async {
+                                    var _shouldSetState = false;
+                                    _model.googleEvents =
+                                        await actions.getGoogleEvents(
+                                      context,
+                                      currentUserReference!,
+                                      FFAppState().familyId!,
+                                    );
+                                    _shouldSetState = true;
+                                    if (_model.googleEvents?.length == 0) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('no events'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text(valueOrDefault<String>(
+                                              'there are ${_model.googleEvents?.length?.toString()} events',
+                                              'not 0',
+                                            )),
+                                            content: Text(_model
+                                                .googleEvents!.first.title),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      await actions.addGoogleEvents(
+                                        _model.googleEvents!.toList(),
+                                      );
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Done adding'),
+                                            content: Text('done Adding'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
 
-                      setState(() {});
-                    },
-                    text: FFLocalizations.of(context).getText(
-                      'ftl3fd38' /* Get Events From Google */,
-                    ),
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Source Sans Pro',
-                                color: Colors.white,
+                                    if (_shouldSetState) setState(() {});
+                                  },
+                                ),
                               ),
-                      elevation: 3.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
+                              FlutterFlowIconButton(
+                                borderColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                borderRadius: 20.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                hoverColor:
+                                    FlutterFlowTheme.of(context).tertiary,
+                                hoverIconColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                icon: Icon(
+                                  Icons.add_outlined,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 35.0,
+                                ),
+                                showLoadingIndicator: true,
+                                onPressed: () {
+                                  print('AddIconButton pressed ...');
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
+                      FlutterFlowCalendar(
+                        color: FlutterFlowTheme.of(context).primary,
+                        iconColor: FlutterFlowTheme.of(context).secondaryText,
+                        weekFormat: false,
+                        weekStartsMonday: false,
+                        rowHeight: 64.0,
+                        onChange: (DateTimeRange? newSelectedDate) {
+                          setState(() =>
+                              _model.calendarSelectedDay = newSelectedDate);
+                        },
+                        titleStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: 'Open Sans',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 26.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                        dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
+                        dateStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        selectedDateStyle:
+                            FlutterFlowTheme.of(context).titleSmall,
+                        inactiveDateStyle:
+                            FlutterFlowTheme.of(context).labelMedium,
+                        locale: FFLocalizations.of(context).languageCode,
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 15.0, 0.0, 10.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'y8ecpcye' /* This Day Events  */,
+                              ),
+                              style: FlutterFlowTheme.of(context).headlineSmall,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   StreamBuilder<List<EventRecord>>(
-                    stream: queryEventRecord(),
+                    stream: queryEventRecord(
+                      queryBuilder: (eventRecord) => eventRecord
+                          .where('familyId', isEqualTo: FFAppState().familyId),
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -292,61 +403,32 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           ),
                         );
                       }
-                      List<EventRecord> calendarEventRecordList =
+                      List<EventRecord> listViewEventRecordList =
                           snapshot.data!;
-                      return FlutterFlowCalendar(
-                        color: FlutterFlowTheme.of(context).primary,
-                        iconColor: FlutterFlowTheme.of(context).secondaryText,
-                        weekFormat: false,
-                        weekStartsMonday: false,
-                        initialDate: getCurrentTimestamp,
-                        rowHeight: 64.0,
-                        onChange: (DateTimeRange? newSelectedDate) async {
-                          _model.calendarSelectedDay = newSelectedDate;
-                          setState(() {
-                            _model.dateSelected =
-                                _model.calendarSelectedDay?.start;
-                          });
-                          setState(() {});
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: listViewEventRecordList.length,
+                        itemBuilder: (context, listViewIndex) {
+                          final listViewEventRecord =
+                              listViewEventRecordList[listViewIndex];
+                          return wrapWithModel(
+                            model: _model.eventDisplayModels.getModel(
+                              listViewIndex.toString(),
+                              listViewIndex,
+                            ),
+                            updateCallback: () => setState(() {}),
+                            child: EventDisplayWidget(
+                              key: Key(
+                                'Keywpy_${listViewIndex.toString()}',
+                              ),
+                              eventRef: listViewEventRecord.reference,
+                            ),
+                          );
                         },
-                        titleStyle: FlutterFlowTheme.of(context).headlineSmall,
-                        dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
-                        dateStyle: FlutterFlowTheme.of(context).bodyMedium,
-                        selectedDateStyle:
-                            FlutterFlowTheme.of(context).titleSmall,
-                        inactiveDateStyle:
-                            FlutterFlowTheme.of(context).labelMedium,
-                        locale: FFLocalizations.of(context).languageCode,
                       );
                     },
-                  ),
-                  Text(
-                    valueOrDefault<String>(
-                      _model.dateSelected?.toString(),
-                      'today',
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyLarge,
-                  ),
-                  ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            '4d2eqt1e' /* title */,
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),

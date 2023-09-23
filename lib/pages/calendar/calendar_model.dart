@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/event_display_widget.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,6 +12,7 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -22,11 +24,13 @@ class CalendarModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Custom Action - getGoogleEvents] action in GoogleAuth widget.
-  List<EventStruct>? events;
+  Color? colorPicked;
+  // Stores action output result for [Custom Action - getGoogleEvents] action in LinkGoogleIconButton widget.
+  List<EventStruct>? googleEvents;
   // State field(s) for Calendar widget.
   DateTimeRange? calendarSelectedDay;
-  Color? colorPicked;
+  // Models for EventDisplay dynamic component.
+  late FlutterFlowDynamicModels<EventDisplayModel> eventDisplayModels;
 
   /// Initialization and disposal methods.
 
@@ -35,10 +39,12 @@ class CalendarModel extends FlutterFlowModel {
       start: DateTime.now().startOfDay,
       end: DateTime.now().endOfDay,
     );
+    eventDisplayModels = FlutterFlowDynamicModels(() => EventDisplayModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
+    eventDisplayModels.dispose();
   }
 
   /// Action blocks are added here.
