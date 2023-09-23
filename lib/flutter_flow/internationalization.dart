@@ -342,11 +342,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // AuthPage
   {
-    's1gduvwx': {
+    '7wj38lvq': {
       'en': 'AuthPage',
       'ar': '',
     },
-    'ryn1z1fm': {
+    '98b7gv6c': {
       'en': 'Home',
       'ar': '',
     },
