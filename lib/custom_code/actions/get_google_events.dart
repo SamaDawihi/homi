@@ -27,10 +27,8 @@ Future<List<EventStruct>> getGoogleEvents(
     SnackBar(content: Text("Start")),
   );
 
-  final googleSignIn = GoogleSignIn(
-      scopes: [CalendarApi.calendarEventsReadonlyScope],
-      clientId:
-          "584197013310-nj6s6qm2kjnoob6i985l39rc0oid8a5k.apps.googleusercontent.com");
+  final googleSignIn =
+      GoogleSignIn(scopes: [CalendarApi.calendarEventsReadonlyScope]);
   GoogleSignInAccount? _currentUser = await googleSignIn.signIn();
 
   ScaffoldMessenger.of(context).hideCurrentSnackBar();

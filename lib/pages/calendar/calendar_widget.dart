@@ -407,6 +407,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           snapshot.data!;
                       return ListView.builder(
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: listViewEventRecordList.length,
