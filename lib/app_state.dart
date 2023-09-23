@@ -68,6 +68,12 @@ class FFAppState extends ChangeNotifier {
         ? prefs.setString('ff_familyId', _value.path)
         : prefs.remove('ff_familyId');
   }
+
+  String _authToken = '';
+  String get authToken => _authToken;
+  set authToken(String _value) {
+    _authToken = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -249,7 +249,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                           child: ConfirmLogoutWidget(),
                         );
                       },
-                    ).then((value) => setState(() {}));
+                    ).then((value) => safeSetState(() {}));
                   },
                   child: Container(
                     width: double.infinity,

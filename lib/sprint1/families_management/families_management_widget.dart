@@ -105,7 +105,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                                       ),
                                     );
                                   },
-                                ).then((value) => setState(() {}));
+                                ).then((value) => safeSetState(() {}));
                               },
                             ),
                           ),
@@ -195,7 +195,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                                   ),
                                 );
                               },
-                            ).then((value) => setState(() {}));
+                            ).then((value) => safeSetState(() {}));
                           },
                           text: FFLocalizations.of(context).getText(
                             'wb1iebtz' /* Create a family */,

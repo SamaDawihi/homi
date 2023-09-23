@@ -97,7 +97,7 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
                                       ),
                                     );
                                   },
-                                ).then((value) => setState(() {}));
+                                ).then((value) => safeSetState(() {}));
                               },
                             ),
                           ),

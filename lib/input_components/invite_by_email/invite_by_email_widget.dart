@@ -292,7 +292,7 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                                         child: MemberAlreadyMemberWidget(),
                                       );
                                     },
-                                  ).then((value) => setState(() {}));
+                                  ).then((value) => safeSetState(() {}));
 
                                   if (_shouldSetState) setState(() {});
                                   return;

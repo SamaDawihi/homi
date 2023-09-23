@@ -220,6 +220,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Calendar
   {
+    'ftl3fd38': {
+      'en': 'Get Events From Google',
+      'ar': '',
+    },
+    '4d2eqt1e': {
+      'en': 'title',
+      'ar': '',
+    },
     '7dmf86h5': {
       'en': 'Calendar',
       'ar': '',
@@ -309,6 +317,36 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'dytpm8yr': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // theCalendar
+  {
+    'rpetolcb': {
+      'en': 'This Day Events ',
+      'ar': '',
+    },
+    '2z0v1gdh': {
+      'en': 'Event Name سويت لها كمبوننت اسمه ايفنت',
+      'ar': '',
+    },
+    'qaq22s6z': {
+      'en': 'Calendar',
+      'ar': '',
+    },
+    '1yxcp3yv': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // AuthPage
+  {
+    's1gduvwx': {
+      'en': 'AuthPage',
+      'ar': '',
+    },
+    'ryn1z1fm': {
       'en': 'Home',
       'ar': '',
     },
@@ -654,6 +692,84 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'you can invite a member to your family by clicking \"invite a member\" button in the family profile page...',
       'ar':
           'إذا كنت ترغب في الانضمام إلى عائلة معينة، اطلب من مسؤولها أن يدعوك..',
+    },
+  },
+  // FormPopUp
+  {
+    '7qr5ps8n': {
+      'en': 'Create Project',
+      'ar': '',
+    },
+    '87sy9gir': {
+      'en': 'Please enter the information below to add a project.',
+      'ar': '',
+    },
+    'aku2zode': {
+      'en': 'Showcase Project Name',
+      'ar': '',
+    },
+    'vnhsknjs': {
+      'en': 'Description here...',
+      'ar': '',
+    },
+    'qzmxnlpo': {
+      'en': 'URL of the project',
+      'ar': '',
+    },
+    'h3711ctb': {
+      'en': 'Clonable Link URL...',
+      'ar': '',
+    },
+    '4xmr55ax': {
+      'en': 'Create Showcase',
+      'ar': '',
+    },
+    '4ccaurip': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '6jslzpq9': {
+      'en': 'Please enter a real name',
+      'ar': '',
+    },
+    'nnnc2yjl': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'lvh78mib': {
+      'en': 'Please enter a short desription',
+      'ar': '',
+    },
+    '3ifxcowa': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '13hkrxaj': {
+      'en': 'We have to have a URL for the project.',
+      'ar': '',
+    },
+    '76q25y9h': {
+      'en': 'Please enter a valid URL...',
+      'ar': '',
+    },
+    'y0bjh8b1': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '9rer9l8m': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'jfyt3yyg': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+  },
+  // Event
+  {
+    'tbbpfiop': {
+      'en': 'Event Name ',
+      'ar': '',
     },
   },
   // Miscellaneous

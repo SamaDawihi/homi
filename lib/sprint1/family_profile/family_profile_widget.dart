@@ -143,7 +143,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                             ),
                                           );
                                         },
-                                      ).then((value) => setState(() {}));
+                                      ).then((value) => safeSetState(() {}));
                                     },
                                   ),
                                 ),
@@ -325,7 +325,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                             ),
                                           );
                                         },
-                                      ).then((value) => setState(() {}));
+                                      ).then((value) => safeSetState(() {}));
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       'g30gpykm' /* Invite a Member */,

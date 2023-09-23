@@ -148,6 +148,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'invite',
           path: '/invite',
           builder: (context, params) => InviteWidget(),
+        ),
+        FFRoute(
+          name: 'theCalendar',
+          path: '/theCalendar',
+          builder: (context, params) => TheCalendarWidget(),
+        ),
+        FFRoute(
+          name: 'AuthPage',
+          path: '/authPage',
+          builder: (context, params) => AuthPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

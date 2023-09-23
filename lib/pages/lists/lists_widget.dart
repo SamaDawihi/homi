@@ -96,7 +96,7 @@ class _ListsWidgetState extends State<ListsWidget> {
                                       ),
                                     );
                                   },
-                                ).then((value) => setState(() {}));
+                                ).then((value) => safeSetState(() {}));
                               },
                             ),
                           ),

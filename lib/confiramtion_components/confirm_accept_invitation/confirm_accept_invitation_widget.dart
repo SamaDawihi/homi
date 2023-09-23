@@ -190,7 +190,7 @@ class _ConfirmAcceptInvitationWidgetState
                         );
 
                         if (_colorPickedColor != null) {
-                          setState(
+                          safeSetState(
                               () => _model.colorPicked = _colorPickedColor);
                         }
 

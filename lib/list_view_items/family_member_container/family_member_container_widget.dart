@@ -209,7 +209,7 @@ class _FamilyMemberContainerWidgetState
                                       child: ConfirmAdminChangeWidget(),
                                     );
                                   },
-                                ).then((value) => setState(() {}));
+                                ).then((value) => safeSetState(() {}));
                               },
                               child: Icon(
                                 Icons.admin_panel_settings_rounded,
@@ -238,7 +238,7 @@ class _FamilyMemberContainerWidgetState
                                       child: ConfirmRemoveMemberWidget(),
                                     );
                                   },
-                                ).then((value) => setState(() {}));
+                                ).then((value) => safeSetState(() {}));
                               },
                               child: Icon(
                                 Icons.delete_forever_sharp,

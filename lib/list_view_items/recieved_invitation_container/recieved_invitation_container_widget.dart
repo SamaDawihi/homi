@@ -212,7 +212,7 @@ class _RecievedInvitationContainerWidgetState
                                   ),
                                 );
                               },
-                            ).then((value) => setState(() {}));
+                            ).then((value) => safeSetState(() {}));
                           },
                         ),
                       ),
@@ -247,7 +247,7 @@ class _RecievedInvitationContainerWidgetState
                                   ),
                                 );
                               },
-                            ).then((value) => setState(() {}));
+                            ).then((value) => safeSetState(() {}));
                           },
                         ),
                       ),

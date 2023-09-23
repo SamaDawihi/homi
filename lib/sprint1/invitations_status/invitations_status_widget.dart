@@ -205,6 +205,7 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                                 0,
                                 44.0,
                               ),
+                              primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: listViewInvitationRecordList.length,
