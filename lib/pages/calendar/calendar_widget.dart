@@ -342,73 +342,39 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           ),
                         ),
                       ),
-                      StreamBuilder<List<EventRecord>>(
-                        stream: queryEventRecord(
-                          singleRecord: true,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 10.0,
-                                height: 10.0,
-                                child: SpinKitDualRing(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 10.0,
-                                ),
-                              ),
-                            );
-                          }
-                          List<EventRecord> calendarEventRecordList =
-                              snapshot.data!;
-                          // Return an empty Container when the item does not exist.
-                          if (snapshot.data!.isEmpty) {
-                            return Container();
-                          }
-                          final calendarEventRecord =
-                              calendarEventRecordList.isNotEmpty
-                                  ? calendarEventRecordList.first
-                                  : null;
-                          return FlutterFlowCalendar(
-                            color: FlutterFlowTheme.of(context).primary,
-                            iconColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                            weekFormat: false,
-                            weekStartsMonday: false,
-                            initialDate: getCurrentTimestamp,
-                            rowHeight: 64.0,
-                            onChange: (DateTimeRange? newSelectedDate) async {
-                              _model.calendarSelectedDay = newSelectedDate;
-                              setState(() {
-                                _model.dateSelected =
-                                    _model.calendarSelectedDay?.start;
-                              });
-                              setState(() {});
-                            },
-                            titleStyle: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: 'Open Sans',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 26.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                            dayOfWeekStyle:
-                                FlutterFlowTheme.of(context).labelLarge,
-                            dateStyle: FlutterFlowTheme.of(context).bodyMedium,
-                            selectedDateStyle:
-                                FlutterFlowTheme.of(context).titleSmall,
-                            inactiveDateStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
+                      FlutterFlowCalendar(
+                        color: FlutterFlowTheme.of(context).primary,
+                        iconColor: FlutterFlowTheme.of(context).secondaryText,
+                        weekFormat: false,
+                        weekStartsMonday: false,
+                        initialDate: getCurrentTimestamp,
+                        rowHeight: 64.0,
+                        onChange: (DateTimeRange? newSelectedDate) async {
+                          _model.calendarSelectedDay = newSelectedDate;
+                          setState(() {
+                            _model.dateSelected =
+                                _model.calendarSelectedDay?.start;
+                          });
+                          setState(() {});
+                        },
+                        titleStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: 'Open Sans',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 26.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                        dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
+                        dateStyle: FlutterFlowTheme.of(context).bodyMedium,
+                        selectedDateStyle:
+                            FlutterFlowTheme.of(context).titleSmall,
+                        inactiveDateStyle:
+                            FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Source Sans Pro',
                                   fontWeight: FontWeight.normal,
                                 ),
-                            locale: FFLocalizations.of(context).languageCode,
-                          );
-                        },
+                        locale: FFLocalizations.of(context).languageCode,
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
