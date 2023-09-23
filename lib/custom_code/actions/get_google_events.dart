@@ -33,7 +33,9 @@ Future<List<EventStruct>> getGoogleEvents(
 
   ScaffoldMessenger.of(context).hideCurrentSnackBar();
   ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text("Done Sign In $_currentUser")),
+    SnackBar(
+        content: Text(
+            "Done Sign In ${_currentUser != null ? "not null ${_currentUser.email}" : "null"}")),
   );
 
   if (_currentUser != null) {
