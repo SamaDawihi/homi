@@ -15,18 +15,14 @@ Future<bool> addGoogleEvents(List<EventStruct> googleEvents) async {
 
   for (final googleEvent in googleEvents) {
     // Get references to createdBy and familyId
-    DocumentReference createdByRef =
-        firestore.collection('Users').doc(googleEvent.createdBy);
-    DocumentReference familyIdRef =
-        firestore.collection('Families').doc(googleEvent.familyId);
 
     // Query to check if the event exists
     final querySnapshot = await eventCollection
         .where('title', isEqualTo: googleEvent.title)
         .where('startTime', isEqualTo: googleEvent.startTime)
         .where('endTime', isEqualTo: googleEvent.endTime)
-        .where('createdBy', isEqualTo: createdByRef) // Using the user reference
-        .where('familyId', isEqualTo: familyIdRef) // Using the family reference
+        .where('createdBy', isEqualTo: googleEvent.createdBy)
+        .where('familyId', isEqualTo: googleEvent.familyId)
         .get();
 
     // If there are no matching documents, add the event
@@ -34,11 +30,11 @@ Future<bool> addGoogleEvents(List<EventStruct> googleEvents) async {
       Map<String, dynamic> eventData = {
         'title': googleEvent.title,
         'description': googleEvent.description,
-        'createdBy': createdByRef, // Storing the user reference
+        'createdBy': googleEvent.createdBy, // Storing the user reference
         'location': googleEvent.location,
         'startTime': googleEvent.startTime,
         'isAllDay': googleEvent.isAllDay,
-        'familyId': familyIdRef, // Storing the family reference
+        'familyId': googleEvent.familyId, // Storing the family reference
         'notifyBefore': googleEvent.notifyBefore,
         'notifyBeforeUnit': googleEvent.notifyBeforeUnit,
         'isGoogleEvent': googleEvent.isGoogleEvent,
