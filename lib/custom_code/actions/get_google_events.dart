@@ -9,9 +9,11 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:extension_google_sign_in_as_googleapis_auth/extension_google_sign_in_as_googleapis_auth.dart';
 import 'package:googleapis/calendar/v3.dart';
-import 'package:googleapis_auth/googleapis_auth.dart';
 
 Future<List<EventStruct>> getGoogleEvents(
   DocumentReference createdBy,
@@ -22,29 +24,30 @@ Future<List<EventStruct>> getGoogleEvents(
   final googleSignIn =
       GoogleSignIn(scopes: [CalendarApi.calendarEventsReadonlyScope]);
   GoogleSignInAccount? _currentUser;
-  googleSignIn.signIn();
+  _currentUser = await googleSignIn.signIn();
 
-  googleSignIn.onCurrentUserChanged.listen((account) {
-    _currentUser = account;
-    if (_currentUser != null) {
-      final authClient = await googleSignIn.authenticatedClient();
-      final calendarApi = CalendarApi(authClient!);
+  final info = EventStruct(title: "got into listener");
+  events.add(info);
 
-      final eventsList = await calendarApi.events.list('primary');
+  if (_currentUser != null) {
+    final authClient = await googleSignIn.authenticatedClient();
+    final calendarApi = CalendarApi(authClient!);
 
-      for (final event in eventsList.items) {
+    final eventsList = await calendarApi.events.list('primary');
+    if (eventsList.items != null) {
+      for (final event in eventsList.items!) {
         final eventStruct = EventStruct(
             createdBy: createdBy,
             familyId: familyId,
             title: event.summary,
             //description: event.description,
             location: event.location,
-            startTime: event.start.dateTime.toLocal(),
-            endTime: event.end.dateTime.toLocal(),
+            startTime: event.start?.dateTime ?? event.start?.date,
+            endTime: event.end?.dateTime ?? event.end?.date,
             isGoogleEvent: true);
         events.add(eventStruct);
       }
     }
-  });
+  }
   return events;
 }

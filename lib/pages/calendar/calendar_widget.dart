@@ -212,6 +212,25 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                         currentUserReference!,
                         FFAppState().familyId!,
                       );
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('done'),
+                            content: Text(valueOrDefault<String>(
+                              _model.events?.first?.title,
+                              'none',
+                            )),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                       if (_model.events?.length == 0) {
                         await showDialog(
                           context: context,
