@@ -51,8 +51,16 @@ Future<List<EventStruct>> getGoogleEvents(
           title: event.summary ?? '',
           description: event.description ?? '',
           location: event.location ?? '',
-          startTime: event.start?.dateTime ?? event.start?.date,
-          endTime: event.end?.dateTime ?? event.end?.date,
+          startDate: (event.start?.dateTime ?? event.start?.date)
+              ?.toLocal()
+              .toIso8601String()
+              .split('T')[0],
+          endDate: (event.end?.dateTime ?? event.end?.date)
+              ?.toLocal()
+              .toIso8601String()
+              .split('T')[0],
+          startTime: event.start?.dateTime?.toLocal(),
+          endTime: event.end?.dateTime?.toLocal(),
           isAllDay: event.start?.dateTime ==
               null, // Assuming it's an all-day event if there's no specific dateTime set
           isGoogleEvent: true,
@@ -61,7 +69,6 @@ Future<List<EventStruct>> getGoogleEvents(
               15, // Example: Notify 15 minutes before, adjust this as you see fit.
           notifyBeforeUnit: 'minutes', // Just as an example.
         );
-
         events.add(eventStruct);
       }
     }

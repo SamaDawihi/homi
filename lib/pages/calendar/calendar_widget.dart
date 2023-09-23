@@ -346,10 +346,15 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                         iconColor: FlutterFlowTheme.of(context).secondaryText,
                         weekFormat: false,
                         weekStartsMonday: false,
+                        initialDate: getCurrentTimestamp,
                         rowHeight: 64.0,
-                        onChange: (DateTimeRange? newSelectedDate) {
-                          setState(() =>
-                              _model.calendarSelectedDay = newSelectedDate);
+                        onChange: (DateTimeRange? newSelectedDate) async {
+                          _model.calendarSelectedDay = newSelectedDate;
+                          setState(() {
+                            _model.dateSelected =
+                                _model.calendarSelectedDay?.start;
+                          });
+                          setState(() {});
                         },
                         titleStyle: FlutterFlowTheme.of(context)
                             .headlineMedium
@@ -387,7 +392,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   StreamBuilder<List<EventRecord>>(
                     stream: queryEventRecord(
                       queryBuilder: (eventRecord) => eventRecord
-                          .where('familyId', isEqualTo: FFAppState().familyId),
+                          .where('familyId', isEqualTo: FFAppState().familyId)
+                          .where('startDate', isEqualTo: _model.dateSelected)
+                          .orderBy('startTime'),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.

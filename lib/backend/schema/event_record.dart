@@ -71,6 +71,16 @@ class EventRecord extends FirestoreRecord {
   bool get isGoogleEvent => _isGoogleEvent ?? false;
   bool hasIsGoogleEvent() => _isGoogleEvent != null;
 
+  // "startDate" field.
+  DateTime? _startDate;
+  DateTime? get startDate => _startDate;
+  bool hasStartDate() => _startDate != null;
+
+  // "endDate" field.
+  DateTime? _endDate;
+  DateTime? get endDate => _endDate;
+  bool hasEndDate() => _endDate != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -83,6 +93,8 @@ class EventRecord extends FirestoreRecord {
     _notifyBefore = castToType<int>(snapshotData['notifyBefore']);
     _notifyBeforeUnit = snapshotData['notifyBeforeUnit'] as String?;
     _isGoogleEvent = snapshotData['isGoogleEvent'] as bool?;
+    _startDate = snapshotData['startDate'] as DateTime?;
+    _endDate = snapshotData['endDate'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -130,6 +142,8 @@ Map<String, dynamic> createEventRecordData({
   int? notifyBefore,
   String? notifyBeforeUnit,
   bool? isGoogleEvent,
+  DateTime? startDate,
+  DateTime? endDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +158,8 @@ Map<String, dynamic> createEventRecordData({
       'notifyBefore': notifyBefore,
       'notifyBeforeUnit': notifyBeforeUnit,
       'isGoogleEvent': isGoogleEvent,
+      'startDate': startDate,
+      'endDate': endDate,
     }.withoutNulls,
   );
 
@@ -165,7 +181,9 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e1?.familyId == e2?.familyId &&
         e1?.notifyBefore == e2?.notifyBefore &&
         e1?.notifyBeforeUnit == e2?.notifyBeforeUnit &&
-        e1?.isGoogleEvent == e2?.isGoogleEvent;
+        e1?.isGoogleEvent == e2?.isGoogleEvent &&
+        e1?.startDate == e2?.startDate &&
+        e1?.endDate == e2?.endDate;
   }
 
   @override
@@ -180,7 +198,9 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e?.familyId,
         e?.notifyBefore,
         e?.notifyBeforeUnit,
-        e?.isGoogleEvent
+        e?.isGoogleEvent,
+        e?.startDate,
+        e?.endDate
       ]);
 
   @override
