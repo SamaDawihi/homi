@@ -58,7 +58,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                 alignment: AlignmentDirectional(0.00, -1.00),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'pad1v46r' /* AuthPage */,
+                    '5hxusxii' /* AuthPage */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 ),

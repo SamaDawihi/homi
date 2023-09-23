@@ -209,6 +209,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   FFButtonWidget(
                     onPressed: () async {
                       _model.events = await actions.getGoogleEvents(
+                        context,
                         currentUserReference!,
                         FFAppState().familyId!,
                       );

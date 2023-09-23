@@ -16,18 +16,25 @@ import 'package:extension_google_sign_in_as_googleapis_auth/extension_google_sig
 import 'package:googleapis/calendar/v3.dart';
 
 Future<List<EventStruct>> getGoogleEvents(
+  BuildContext context,
   DocumentReference createdBy,
   DocumentReference familyId,
 ) async {
   // create new instance of EventStruct Data Type
   List<EventStruct> events = [];
+  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text("Start")),
+  );
+
   final googleSignIn =
       GoogleSignIn(scopes: [CalendarApi.calendarEventsReadonlyScope]);
-  GoogleSignInAccount? _currentUser;
-  _currentUser = await googleSignIn.signIn();
+  GoogleSignInAccount? _currentUser = await googleSignIn.signIn();
 
-  final info = EventStruct(title: "got into listener");
-  events.add(info);
+  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text("Done Sign In $_currentUser")),
+  );
 
   if (_currentUser != null) {
     final authClient = await googleSignIn.authenticatedClient();
