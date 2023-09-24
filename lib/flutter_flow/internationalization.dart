@@ -754,6 +754,77 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
+  // addEvent
+  {
+    '8jlum6qm': {
+      'en': 'Add Event',
+      'ar': '',
+    },
+    'd32t7r41': {
+      'en': 'Please enter the information below to add an event.',
+      'ar': '',
+    },
+    'q2kg7rp1': {
+      'en': 'Event Title',
+      'ar': '',
+    },
+    'hz7n67da': {
+      'en': 'Location',
+      'ar': '',
+    },
+    'mdev68p3': {
+      'en': 'Description here...',
+      'ar': '',
+    },
+    'pxo17xzz': {
+      'en': 'when do you like to get notified?',
+      'ar': '',
+    },
+    'nkhppqqd': {
+      'en': 'Add',
+      'ar': '',
+    },
+    'jiifmviv': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'jhkuromx': {
+      'en': 'Please enter a real name',
+      'ar': '',
+    },
+    '06npb1rc': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '20xk12gb': {
+      'en': 'Please enter a short desription',
+      'ar': '',
+    },
+    '6enjg8oi': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'y2867bnh': {
+      'en': 'We have to have a URL for the project.',
+      'ar': '',
+    },
+    '2ggs1k7p': {
+      'en': 'Please enter a valid URL...',
+      'ar': '',
+    },
+    'a63737cl': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'l4occt9h': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'qhw9ih5g': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+  },
   // Miscellaneous
   {
     'y9xb58yl': {
