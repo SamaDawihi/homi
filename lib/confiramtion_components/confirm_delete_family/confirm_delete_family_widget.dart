@@ -172,16 +172,15 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                           queryBuilder: (invitationRecord) => invitationRecord
                               .where('familyId', isEqualTo: widget.familyID),
                         );
-                        while (
-                            _model.loopIteration2! < _model.invites!.length) {
+                        while (_model.loopIteration < _model.invites!.length) {
                           await _model.invites![_model.loopIteration].reference
                               .delete();
                           setState(() {
-                            _model.loopIteration2 = _model.loopIteration2! + 1;
+                            _model.loopIteration = _model.loopIteration + 1;
                           });
                         }
                         setState(() {
-                          _model.loopIteration2 = 0;
+                          _model.loopIteration = 0;
                         });
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
