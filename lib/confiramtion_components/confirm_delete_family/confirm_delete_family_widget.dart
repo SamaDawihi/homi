@@ -4,30 +4,29 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'confirm_admin_change_model.dart';
-export 'confirm_admin_change_model.dart';
+import 'confirm_delete_family_model.dart';
+export 'confirm_delete_family_model.dart';
 
-class ConfirmAdminChangeWidget extends StatefulWidget {
-  const ConfirmAdminChangeWidget({
+class ConfirmDeleteFamilyWidget extends StatefulWidget {
+  const ConfirmDeleteFamilyWidget({
     Key? key,
     required this.familyID,
-    required this.userID,
   }) : super(key: key);
 
   final DocumentReference? familyID;
-  final DocumentReference? userID;
 
   @override
-  _ConfirmAdminChangeWidgetState createState() =>
-      _ConfirmAdminChangeWidgetState();
+  _ConfirmDeleteFamilyWidgetState createState() =>
+      _ConfirmDeleteFamilyWidgetState();
 }
 
-class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
-  late ConfirmAdminChangeModel _model;
+class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
+  late ConfirmDeleteFamilyModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -38,7 +37,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ConfirmAdminChangeModel());
+    _model = createModel(context, () => ConfirmDeleteFamilyModel());
   }
 
   @override
@@ -89,7 +88,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'eldfua3s' /* Make Admin */,
+                        'b9i6l4nb' /* Delete Family? */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -103,7 +102,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'wrtrso1u' /* Are you sure you want to pass ... */,
+                          'x5w3r1st' /* Are you sure you want to delet... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -129,7 +128,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                           context.safePop();
                         },
                         text: FFLocalizations.of(context).getText(
-                          'hoq483dp' /* Cancel */,
+                          'j7lp4ydv' /* Cancel */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
@@ -154,13 +153,40 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await widget.familyID!.update(createFamilyRecordData(
-                          adminId: widget.userID,
-                        ));
+                        await widget.familyID!.delete();
+                        _model.members = await queryMemberRecordOnce(
+                          queryBuilder: (memberRecord) => memberRecord
+                              .where('familyId', isEqualTo: widget.familyID),
+                        );
+                        while (_model.loopIteration < _model.members!.length) {
+                          await _model.members![_model.loopIteration].reference
+                              .delete();
+                          setState(() {
+                            _model.loopIteration = _model.loopIteration + 1;
+                          });
+                        }
+                        setState(() {
+                          _model.loopIteration = 0;
+                        });
+                        _model.invites = await queryInvitationRecordOnce(
+                          queryBuilder: (invitationRecord) => invitationRecord
+                              .where('familyId', isEqualTo: widget.familyID),
+                        );
+                        while (
+                            _model.loopIteration2! < _model.invites!.length) {
+                          await _model.invites![_model.loopIteration].reference
+                              .delete();
+                          setState(() {
+                            _model.loopIteration2 = _model.loopIteration2! + 1;
+                          });
+                        }
+                        setState(() {
+                          _model.loopIteration2 = 0;
+                        });
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Admin changed successfully!',
+                              'Family deleted successfully!',
                               style: TextStyle(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -171,10 +197,13 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                                 FlutterFlowTheme.of(context).success,
                           ),
                         );
-                        context.safePop();
+
+                        context.pushNamed('FamiliesManagement');
+
+                        setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        '087ou14d' /* OK */,
+                        'fxzpg0fz' /* OK */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

@@ -734,6 +734,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // ConfirmDeleteFamily
+  {
+    'b9i6l4nb': {
+      'en': 'Delete Family?',
+      'ar': 'إزالة العضو',
+    },
+    'x5w3r1st': {
+      'en':
+          'Are you sure you want to delete this family? You will not be able to undo this action.',
+      'ar': 'هل أنت متأكد أنك تريد إزالة فرد العائلة هذا؟',
+    },
+    'j7lp4ydv': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    'fxzpg0fz': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
   // Miscellaneous
   {
     'y9xb58yl': {

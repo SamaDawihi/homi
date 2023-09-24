@@ -87,13 +87,48 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 4.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primary,
-                      borderRadius: BorderRadius.circular(0.0),
+                  StreamBuilder<List<MemberRecord>>(
+                    stream: queryMemberRecord(
+                      queryBuilder: (memberRecord) => memberRecord
+                          .where('memberId',
+                              isEqualTo: eventDisplayEventRecord.createdBy)
+                          .where('familyId',
+                              isEqualTo: eventDisplayEventRecord.familyId),
+                      singleRecord: true,
                     ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 10.0,
+                            height: 10.0,
+                            child: SpinKitDualRing(
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 10.0,
+                            ),
+                          ),
+                        );
+                      }
+                      List<MemberRecord> indicatorMemberRecordList =
+                          snapshot.data!;
+                      // Return an empty Container when the item does not exist.
+                      if (snapshot.data!.isEmpty) {
+                        return Container();
+                      }
+                      final indicatorMemberRecord =
+                          indicatorMemberRecordList.isNotEmpty
+                              ? indicatorMemberRecordList.first
+                              : null;
+                      return Container(
+                        width: 4.0,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primary,
+                          borderRadius: BorderRadius.circular(0.0),
+                        ),
+                      );
+                    },
                   ),
                   Expanded(
                     child: Column(

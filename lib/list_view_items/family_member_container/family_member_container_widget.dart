@@ -206,7 +206,11 @@ class _FamilyMemberContainerWidgetState
                                   builder: (context) {
                                     return Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: ConfirmAdminChangeWidget(),
+                                      child: ConfirmAdminChangeWidget(
+                                        familyID: widget.familyId!,
+                                        userID: familYMemberContainerUsersRecord
+                                            .reference,
+                                      ),
                                     );
                                   },
                                 ).then((value) => safeSetState(() {}));
@@ -235,7 +239,9 @@ class _FamilyMemberContainerWidgetState
                                   builder: (context) {
                                     return Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: ConfirmRemoveMemberWidget(),
+                                      child: ConfirmRemoveMemberWidget(
+                                        memberID: widget.memberId!,
+                                      ),
                                     );
                                   },
                                 ).then((value) => safeSetState(() {}));

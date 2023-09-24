@@ -1,6 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +13,12 @@ import 'confirm_remove_member_model.dart';
 export 'confirm_remove_member_model.dart';
 
 class ConfirmRemoveMemberWidget extends StatefulWidget {
-  const ConfirmRemoveMemberWidget({Key? key}) : super(key: key);
+  const ConfirmRemoveMemberWidget({
+    Key? key,
+    required this.memberID,
+  }) : super(key: key);
+
+  final DocumentReference? memberID;
 
   @override
   _ConfirmRemoveMemberWidgetState createState() =>
@@ -143,8 +152,30 @@ class _ConfirmRemoveMemberWidgetState extends State<ConfirmRemoveMemberWidget> {
                       ),
                     ),
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        _model.member = await queryMemberRecordOnce(
+                          queryBuilder: (memberRecord) => memberRecord
+                              .where('memberId', isEqualTo: widget.memberID),
+                          singleRecord: true,
+                        ).then((s) => s.firstOrNull);
+                        await _model.member!.reference.delete();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Member successfully removed from family!',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).success,
+                          ),
+                        );
+                        context.safePop();
+
+                        setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         'rllwnm0e' /* OK */,
