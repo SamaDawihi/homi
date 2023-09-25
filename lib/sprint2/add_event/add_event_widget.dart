@@ -160,7 +160,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '8jlum6qm' /* Add Event */,
+                                                'pn2cv36t' /* Add Event */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -174,7 +174,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'd32t7r41' /* Please enter the information b... */,
+                                                'd5uptbfc' /* Please enter the information b... */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -220,7 +220,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'q2kg7rp1' /* Event Title */,
+                                      '80uqi9t7' /* Event Title */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -286,7 +286,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'hz7n67da' /* Location */,
+                                      'w1vrri6s' /* Location */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -568,7 +568,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'mdev68p3' /* Description here... */,
+                                      'lkkavjos' /* Description here... */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -629,7 +629,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'pxo17xzz' /* when do you like to get notifi... */,
+                                      'p3y9s5ql' /* when do you like to get notifi... */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -728,7 +728,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          'nkhppqqd' /* Add */,
+                                          'xm15iai0' /* Add */,
                                         ),
                                         options: FFButtonOptions(
                                           height: 50.0,
