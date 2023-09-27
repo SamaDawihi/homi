@@ -21,6 +21,8 @@ class ConfirmDeleteFamilyModel extends FlutterFlowModel {
   List<MemberRecord>? members;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<InvitationRecord>? invites;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<EventRecord>? events;
 
   /// Initialization and disposal methods.
 

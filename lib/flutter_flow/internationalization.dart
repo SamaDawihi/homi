@@ -313,6 +313,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // CalendarCopy
+  {
+    '35mpfj4p': {
+      'en': 'Calendar',
+      'ar': '',
+    },
+    'md3se1k7': {
+      'en': 'Home',
+      'ar': 'الصفحة الرئيسية',
+    },
+  },
   // InviteByEmail
   {
     '48xbquf9': {

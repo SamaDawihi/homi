@@ -153,7 +153,8 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await widget.familyID!.delete();
+                        context.goNamed('FamiliesManagement');
+
                         _model.members = await queryMemberRecordOnce(
                           queryBuilder: (memberRecord) => memberRecord
                               .where('familyId', isEqualTo: widget.familyID),
@@ -182,6 +183,21 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                         setState(() {
                           _model.loopIteration = 0;
                         });
+                        _model.events = await queryEventRecordOnce(
+                          queryBuilder: (eventRecord) => eventRecord
+                              .where('familyId', isEqualTo: widget.familyID),
+                        );
+                        while (_model.loopIteration < _model.events!.length) {
+                          await _model.events![_model.loopIteration].reference
+                              .delete();
+                          setState(() {
+                            _model.loopIteration = _model.loopIteration + 1;
+                          });
+                        }
+                        setState(() {
+                          _model.loopIteration = 0;
+                        });
+                        await widget.familyID!.delete();
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -196,6 +212,9 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                                 FlutterFlowTheme.of(context).success,
                           ),
                         );
+                        FFAppState().update(() {
+                          FFAppState().familyId = null;
+                        });
 
                         context.pushNamed('FamiliesManagement');
 

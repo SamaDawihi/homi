@@ -148,6 +148,8 @@ class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        context.goNamed('FamiliesManagement');
+
                         _model.member = await queryMemberRecordOnce(
                           queryBuilder: (memberRecord) => memberRecord.where(
                               'memberId',
@@ -155,6 +157,9 @@ class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
                           singleRecord: true,
                         ).then((s) => s.firstOrNull);
                         await _model.member!.reference.delete();
+                        FFAppState().update(() {
+                          FFAppState().familyId = null;
+                        });
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -169,7 +174,6 @@ class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
                                 FlutterFlowTheme.of(context).success,
                           ),
                         );
-                        context.safePop();
 
                         setState(() {});
                       },
