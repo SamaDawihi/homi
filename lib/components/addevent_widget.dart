@@ -1,32 +1,35 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_event_model.dart';
-export 'add_event_model.dart';
+import 'addevent_model.dart';
+export 'addevent_model.dart';
 
-class AddEventWidget extends StatefulWidget {
-  const AddEventWidget({Key? key}) : super(key: key);
+class AddeventWidget extends StatefulWidget {
+  const AddeventWidget({Key? key}) : super(key: key);
 
   @override
-  _AddEventWidgetState createState() => _AddEventWidgetState();
+  _AddeventWidgetState createState() => _AddeventWidgetState();
 }
 
-class _AddEventWidgetState extends State<AddEventWidget>
+class _AddeventWidgetState extends State<AddeventWidget>
     with TickerProviderStateMixin {
-  late AddEventModel _model;
+  late AddeventModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation1': AnimationInfo(
@@ -66,11 +69,12 @@ class _AddEventWidgetState extends State<AddEventWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddEventModel());
+    _model = createModel(context, () => AddeventModel());
 
     _model.titleController ??= TextEditingController();
     _model.locationController ??= TextEditingController();
     _model.descriptionController ??= TextEditingController();
+    _model.textController4 ??= TextEditingController();
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -137,7 +141,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                         autovalidateMode: AutovalidateMode.always,
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 24.0, 24.0, 24.0),
+                              14.0, 14.0, 14.0, 14.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,7 +167,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'mgv31hho' /* Add Event */,
+                                                'qsdkhdfm' /* Add Event */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -177,7 +181,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '8bsmyasa' /* Please enter the information b... */,
+                                                '8os1qv80' /* Please enter the information b... */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -216,6 +220,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
                                   controller: _model.titleController,
+                                  onFieldSubmitted: (_) async {},
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -223,7 +228,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'i992g2zt' /* Event Title */,
+                                      'w2mpzji7' /* Event Title */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -282,6 +287,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
                                   controller: _model.locationController,
+                                  onFieldSubmitted: (_) async {},
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -289,7 +295,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'uldfpkm4' /* Location */,
+                                      'lp0rlmo1' /* Location */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -347,7 +353,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Container(
-                                    width: 190.0,
+                                    width: 130.0,
                                     height: 60.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
@@ -359,11 +365,11 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                                  6.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
                                               _model.datePicked1?.toString(),
-                                              'event date',
+                                              'Event Date',
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -372,14 +378,14 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
-                                                  fontSize: 16.0,
+                                                  fontSize: 14.0,
                                                 ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
+                                                  2.0, 0.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -416,7 +422,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                     ),
                                   ),
                                   Container(
-                                    width: 190.0,
+                                    width: 140.0,
                                     height: 60.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
@@ -428,11 +434,11 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
+                                                  6.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
                                               _model.datePicked2?.toString(),
-                                              'start time',
+                                              'Event Time',
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -448,7 +454,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
+                                                  2.0, 0.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -502,7 +508,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'tpz6s6c4' /* Description here... */,
+                                      'nwnx2xr6' /* Description here... */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -558,12 +564,13 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                       .asValidator(context),
                                 ),
                               ),
-                              Row(
+                              Column(
                                 mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      '0866xvs1' /* when do you like to get notifi... */,
+                                      'uz4kklrd' /* Hello World */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -574,75 +581,127 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                           fontSize: 16.0,
                                         ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        100.0, 0.0, 0.0, 0.0),
-                                    child: Container(
-                                      width: 190.0,
-                                      height: 60.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            valueOrDefault<String>(
-                                              _model.datePicked3?.toString(),
-                                              'select time',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Source Sans Pro',
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 22.0, 8.0, 0.0),
+                                          child: TextFormField(
+                                            controller: _model.textController4,
+                                            autofocus: true,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                '41pirgda' /* Before... */,
+                                              ),
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium,
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
-                                                  fontSize: 16.0,
+                                                      .alternate,
+                                                  width: 2.0,
                                                 ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 0.0, 0.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                final _datePicked3Time =
-                                                    await showTimePicker(
-                                                  context: context,
-                                                  initialTime:
-                                                      TimeOfDay.fromDateTime(
-                                                          getCurrentTimestamp),
-                                                );
-                                                if (_datePicked3Time != null) {
-                                                  safeSetState(() {
-                                                    _model.datePicked3 =
-                                                        DateTime(
-                                                      getCurrentTimestamp.year,
-                                                      getCurrentTimestamp.month,
-                                                      getCurrentTimestamp.day,
-                                                      _datePicked3Time.hour,
-                                                      _datePicked3Time.minute,
-                                                    );
-                                                  });
-                                                }
-                                              },
-                                              child: Icon(
-                                                Icons.access_time,
-                                                color: Color(0xFF555EBE),
-                                                size: 28.0,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
                                             ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                            maxLength: 2,
+                                            maxLengthEnforcement:
+                                                MaxLengthEnforcement.enforced,
+                                            keyboardType: TextInputType.number,
+                                            validator: _model
+                                                .textController4Validator
+                                                .asValidator(context),
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
+                                      FlutterFlowDropDown<String>(
+                                        controller: _model
+                                                .dropDownValueController ??=
+                                            FormFieldController<String>(null),
+                                        options: [
+                                          FFLocalizations.of(context).getText(
+                                            '2mo6z7lo' /* Minutes */,
+                                          ),
+                                          FFLocalizations.of(context).getText(
+                                            '8vp11js9' /* Hours */,
+                                          )
+                                        ],
+                                        onChanged: (val) => setState(
+                                            () => _model.dropDownValue = val),
+                                        width: 145.0,
+                                        height: 50.0,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'nstszi9w' /* Min/hour */,
+                                        ),
+                                        icon: Icon(
+                                          Icons.keyboard_arrow_down_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
+                                        ),
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        elevation: 2.0,
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                        borderWidth: 2.0,
+                                        borderRadius: 8.0,
+                                        margin: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 4.0, 16.0, 4.0),
+                                        hidesUnderline: true,
+                                        isSearchable: false,
+                                        isMultiSelect: false,
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -661,12 +720,29 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                           await EventRecord.collection
                                               .doc()
                                               .set(createEventRecordData(
+                                                title:
+                                                    _model.titleController.text,
+                                                description: _model
+                                                    .descriptionController.text,
+                                                createdBy: currentUserReference,
+                                                location: _model
+                                                    .locationController.text,
+                                                startTime: _model.datePicked2,
                                                 familyId: FFAppState().familyId,
+                                                notifyBefore: int.tryParse(
+                                                    _model
+                                                        .textController4.text),
+                                                notifyBeforeUnit:
+                                                    _model.dropDownValue,
+                                                isGoogleEvent: false,
+                                                startDate: _model.datePicked1,
+                                                dontShareThisEvent: false,
+                                                isAllDay: false,
                                               ));
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          '3jmnxkal' /* Add */,
+                                          '2a6dvxxr' /* Add */,
                                         ),
                                         options: FFButtonOptions(
                                           height: 50.0,
