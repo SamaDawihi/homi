@@ -397,7 +397,10 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                     ],
                   ),
                   StreamBuilder<List<EventRecord>>(
-                    stream: queryEventRecord(),
+                    stream: queryEventRecord(
+                      queryBuilder: (eventRecord) => eventRecord
+                          .where('familyId', isEqualTo: FFAppState().familyId),
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {

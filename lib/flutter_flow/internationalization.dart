@@ -737,7 +737,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ConfirmDeleteFamily
   {
     'b9i6l4nb': {
-      'en': 'Delete Family?',
+      'en': 'Delete Family',
       'ar': 'إزالة العضو',
     },
     'x5w3r1st': {
@@ -756,71 +756,161 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // addEvent
   {
-    'pn2cv36t': {
+    'mgv31hho': {
       'en': 'Add Event',
       'ar': '',
     },
-    'd5uptbfc': {
+    '8bsmyasa': {
       'en': 'Please enter the information below to add an event.',
       'ar': '',
     },
-    '80uqi9t7': {
+    'i992g2zt': {
       'en': 'Event Title',
       'ar': '',
     },
-    'w1vrri6s': {
+    'uldfpkm4': {
       'en': 'Location',
       'ar': '',
     },
-    'lkkavjos': {
+    'tpz6s6c4': {
       'en': 'Description here...',
       'ar': '',
     },
-    'p3y9s5ql': {
+    '0866xvs1': {
       'en': 'when do you like to get notified?',
       'ar': '',
     },
-    'xm15iai0': {
+    '3jmnxkal': {
       'en': 'Add',
       'ar': '',
     },
-    'okl5bpwq': {
+    'bov9cyv6': {
       'en': 'Field is required',
       'ar': '',
     },
-    'gk0r90wk': {
+    '93iipxcs': {
       'en': 'Please enter a real name',
       'ar': '',
     },
-    'izwmonsq': {
+    'sshrrzpa': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'msedt11f': {
+    'ry81o2dn': {
       'en': 'Please enter a short desription',
       'ar': '',
     },
-    '9d6oky2o': {
+    'm7zijsf9': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'rz1xpjrd': {
+    'lrn33upo': {
       'en': 'We have to have a URL for the project.',
       'ar': '',
     },
-    'a1av24ux': {
+    '0vhw8c12': {
       'en': 'Please enter a valid URL...',
       'ar': '',
     },
-    '5ooqh703': {
+    'kesofhp6': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'm62fe5ce': {
+    '75jfy7xk': {
       'en': 'Field is required',
       'ar': '',
     },
-    'lhd4oqwa': {
+    'u6oso3g5': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+  },
+  // ConfirmLeaveFamily
+  {
+    '59vg2zq7': {
+      'en': 'Leave Family',
+      'ar': 'إزالة العضو',
+    },
+    'c42cg8ir': {
+      'en': 'Are you sure you want to leave this family?',
+      'ar': 'هل أنت متأكد أنك تريد إزالة فرد العائلة هذا؟',
+    },
+    'y52lftsh': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    'bp0vfn4l': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
+  // editEvent
+  {
+    '9mr3s5kb': {
+      'en': 'Edit Event Information',
+      'ar': '',
+    },
+    'zw3wr96m': {
+      'en': '',
+      'ar': '',
+    },
+    'ui1g3t1d': {
+      'en': 'Event Title',
+      'ar': '',
+    },
+    '3zs347lu': {
+      'en': 'Location',
+      'ar': '',
+    },
+    'e6qh90h0': {
+      'en': 'Description here...',
+      'ar': '',
+    },
+    'jjgtziup': {
+      'en': 'when do you like to get notified?',
+      'ar': '',
+    },
+    '470kl5e0': {
+      'en': 'Edit',
+      'ar': '',
+    },
+    'lxr1tmkr': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'qibcyf4s': {
+      'en': 'Please enter a real name',
+      'ar': '',
+    },
+    'e45enh51': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '3gsxise9': {
+      'en': 'Please enter a short desription',
+      'ar': '',
+    },
+    'ucs66lhn': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '6p2hc0wj': {
+      'en': 'We have to have a URL for the project.',
+      'ar': '',
+    },
+    '9nk7r0or': {
+      'en': 'Please enter a valid URL...',
+      'ar': '',
+    },
+    'sh6u97bk': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'osy6rly5': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'cpeda4bp': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },

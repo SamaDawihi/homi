@@ -1,12 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -14,19 +11,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_event_model.dart';
-export 'add_event_model.dart';
+import 'edit_event_model.dart';
+export 'edit_event_model.dart';
 
-class AddEventWidget extends StatefulWidget {
-  const AddEventWidget({Key? key}) : super(key: key);
+class EditEventWidget extends StatefulWidget {
+  const EditEventWidget({Key? key}) : super(key: key);
 
   @override
-  _AddEventWidgetState createState() => _AddEventWidgetState();
+  _EditEventWidgetState createState() => _EditEventWidgetState();
 }
 
-class _AddEventWidgetState extends State<AddEventWidget>
+class _EditEventWidgetState extends State<EditEventWidget>
     with TickerProviderStateMixin {
-  late AddEventModel _model;
+  late EditEventModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation1': AnimationInfo(
@@ -66,7 +63,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddEventModel());
+    _model = createModel(context, () => EditEventModel());
 
     _model.titleController ??= TextEditingController();
     _model.locationController ??= TextEditingController();
@@ -163,7 +160,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'mgv31hho' /* Add Event */,
+                                                '9mr3s5kb' /* Edit Event Information */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -177,7 +174,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '8bsmyasa' /* Please enter the information b... */,
+                                                'zw3wr96m' /*  */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -223,7 +220,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'i992g2zt' /* Event Title */,
+                                      'ui1g3t1d' /* Event Title */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -289,7 +286,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'uldfpkm4' /* Location */,
+                                      '3zs347lu' /* Location */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -484,6 +481,75 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                       ],
                                     ),
                                   ),
+                                  Container(
+                                    width: 190.0,
+                                    height: 60.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              _model.datePicked3?.toString(),
+                                              'end time',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Source Sans Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 16.0,
+                                                ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              final _datePicked3Time =
+                                                  await showTimePicker(
+                                                context: context,
+                                                initialTime:
+                                                    TimeOfDay.fromDateTime(
+                                                        getCurrentTimestamp),
+                                              );
+                                              if (_datePicked3Time != null) {
+                                                safeSetState(() {
+                                                  _model.datePicked3 = DateTime(
+                                                    getCurrentTimestamp.year,
+                                                    getCurrentTimestamp.month,
+                                                    getCurrentTimestamp.day,
+                                                    _datePicked3Time.hour,
+                                                    _datePicked3Time.minute,
+                                                  );
+                                                });
+                                              }
+                                            },
+                                            child: Icon(
+                                              Icons.access_time,
+                                              color: Color(0xFF555EBE),
+                                              size: 28.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ].divide(SizedBox(width: 26.0)),
                               ),
                               Divider(
@@ -502,7 +568,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         FlutterFlowTheme.of(context).labelLarge,
                                     hintText:
                                         FFLocalizations.of(context).getText(
-                                      'tpz6s6c4' /* Description here... */,
+                                      'e6qh90h0' /* Description here... */,
                                     ),
                                     hintStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -563,7 +629,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      '0866xvs1' /* when do you like to get notifi... */,
+                                      'jjgtziup' /* when do you like to get notifi... */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -589,7 +655,7 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                         children: [
                                           Text(
                                             valueOrDefault<String>(
-                                              _model.datePicked3?.toString(),
+                                              _model.datePicked4?.toString(),
                                               'select time',
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -613,22 +679,22 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                final _datePicked3Time =
+                                                final _datePicked4Time =
                                                     await showTimePicker(
                                                   context: context,
                                                   initialTime:
                                                       TimeOfDay.fromDateTime(
                                                           getCurrentTimestamp),
                                                 );
-                                                if (_datePicked3Time != null) {
+                                                if (_datePicked4Time != null) {
                                                   safeSetState(() {
-                                                    _model.datePicked3 =
+                                                    _model.datePicked4 =
                                                         DateTime(
                                                       getCurrentTimestamp.year,
                                                       getCurrentTimestamp.month,
                                                       getCurrentTimestamp.day,
-                                                      _datePicked3Time.hour,
-                                                      _datePicked3Time.minute,
+                                                      _datePicked4Time.hour,
+                                                      _datePicked4Time.minute,
                                                     );
                                                   });
                                                 }
@@ -657,16 +723,12 @@ class _AddEventWidgetState extends State<AddEventWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 4.0, 0.0),
                                       child: FFButtonWidget(
-                                        onPressed: () async {
-                                          await EventRecord.collection
-                                              .doc()
-                                              .set(createEventRecordData(
-                                                familyId: FFAppState().familyId,
-                                              ));
+                                        onPressed: () {
+                                          print('Button pressed ...');
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          '3jmnxkal' /* Add */,
+                                          '470kl5e0' /* Edit */,
                                         ),
                                         options: FFButtonOptions(
                                           height: 50.0,

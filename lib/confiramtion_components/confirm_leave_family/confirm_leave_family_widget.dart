@@ -9,24 +9,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'confirm_delete_family_model.dart';
-export 'confirm_delete_family_model.dart';
+import 'confirm_leave_family_model.dart';
+export 'confirm_leave_family_model.dart';
 
-class ConfirmDeleteFamilyWidget extends StatefulWidget {
-  const ConfirmDeleteFamilyWidget({
-    Key? key,
-    required this.familyID,
-  }) : super(key: key);
-
-  final DocumentReference? familyID;
+class ConfirmLeaveFamilyWidget extends StatefulWidget {
+  const ConfirmLeaveFamilyWidget({Key? key}) : super(key: key);
 
   @override
-  _ConfirmDeleteFamilyWidgetState createState() =>
-      _ConfirmDeleteFamilyWidgetState();
+  _ConfirmLeaveFamilyWidgetState createState() =>
+      _ConfirmLeaveFamilyWidgetState();
 }
 
-class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
-  late ConfirmDeleteFamilyModel _model;
+class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
+  late ConfirmLeaveFamilyModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -37,7 +32,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ConfirmDeleteFamilyModel());
+    _model = createModel(context, () => ConfirmLeaveFamilyModel());
   }
 
   @override
@@ -88,7 +83,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'b9i6l4nb' /* Delete Family */,
+                        '59vg2zq7' /* Leave Family */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -102,7 +97,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'x5w3r1st' /* Are you sure you want to delet... */,
+                          'c42cg8ir' /* Are you sure you want to leave... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -128,7 +123,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                           context.safePop();
                         },
                         text: FFLocalizations.of(context).getText(
-                          'j7lp4ydv' /* Cancel */,
+                          'y52lftsh' /* Cancel */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
@@ -153,39 +148,17 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await widget.familyID!.delete();
-                        _model.members = await queryMemberRecordOnce(
-                          queryBuilder: (memberRecord) => memberRecord
-                              .where('familyId', isEqualTo: widget.familyID),
-                        );
-                        while (_model.loopIteration < _model.members!.length) {
-                          await _model.members![_model.loopIteration].reference
-                              .delete();
-                          setState(() {
-                            _model.loopIteration = _model.loopIteration + 1;
-                          });
-                        }
-                        setState(() {
-                          _model.loopIteration = 0;
-                        });
-                        _model.invites = await queryInvitationRecordOnce(
-                          queryBuilder: (invitationRecord) => invitationRecord
-                              .where('familyId', isEqualTo: widget.familyID),
-                        );
-                        while (_model.loopIteration < _model.invites!.length) {
-                          await _model.invites![_model.loopIteration].reference
-                              .delete();
-                          setState(() {
-                            _model.loopIteration = _model.loopIteration + 1;
-                          });
-                        }
-                        setState(() {
-                          _model.loopIteration = 0;
-                        });
+                        _model.member = await queryMemberRecordOnce(
+                          queryBuilder: (memberRecord) => memberRecord.where(
+                              'memberId',
+                              isEqualTo: currentUserReference),
+                          singleRecord: true,
+                        ).then((s) => s.firstOrNull);
+                        await _model.member!.reference.delete();
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Family deleted successfully!',
+                              'You have successfully left the family!',
                               style: TextStyle(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -196,13 +169,12 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                                 FlutterFlowTheme.of(context).success,
                           ),
                         );
-
-                        context.pushNamed('FamiliesManagement');
+                        context.safePop();
 
                         setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        'fxzpg0fz' /* OK */,
+                        'bp0vfn4l' /* OK */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,
