@@ -357,7 +357,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             child: Text(
                                               valueOrDefault<String>(
                                                 dateTimeFormat(
-                                                  'd/M h:mm a',
+                                                  'd/M/y',
                                                   _model.datePicked1,
                                                   locale: FFLocalizations.of(
                                                           context)
@@ -438,7 +438,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             child: Text(
                                               valueOrDefault<String>(
                                                 dateTimeFormat(
-                                                  'd/M h:mm a',
+                                                  'jm',
                                                   _model.datePicked2,
                                                   locale: FFLocalizations.of(
                                                           context)
