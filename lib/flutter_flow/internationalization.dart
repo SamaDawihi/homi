@@ -910,35 +910,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
       'ar': 'يضيف',
     },
-    'tfotwbst': {
+    '1uzdil6j': {
       'en': 'Field is required',
       'ar': '',
     },
-    'u4u05lvj': {
+    'z2r1sx61': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'c9j2awy5': {
+    '4wkkq6qm': {
       'en': 'Field is required',
       'ar': '',
     },
-    'ug45l8w4': {
+    'ftmw08gp': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'cfvkti9o': {
+    'cdarpkzk': {
       'en': 'Field is required',
       'ar': '',
     },
-    'svf9vzoc': {
+    '278akss4': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'opfutg3h': {
+    '105f4s34': {
       'en': 'Field is required',
       'ar': '',
     },
-    'cql9ti6j': {
+    'fslli8gr': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },

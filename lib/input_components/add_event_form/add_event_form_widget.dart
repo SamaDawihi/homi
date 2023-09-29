@@ -741,31 +741,82 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            await EventRecord.collection
-                                                .doc()
+                                            var eventRecordReference =
+                                                EventRecord.collection.doc();
+                                            await eventRecordReference
                                                 .set(createEventRecordData(
-                                                  title: _model
-                                                      .titleController.text,
-                                                  description: _model
-                                                      .descriptionController
-                                                      .text,
-                                                  createdBy:
-                                                      currentUserReference,
-                                                  location: _model
-                                                      .locationController.text,
-                                                  startTime: _model.datePicked2,
-                                                  familyId:
-                                                      FFAppState().familyId,
-                                                  notifyBefore: int.tryParse(
-                                                      _model.textController4
-                                                          .text),
-                                                  notifyBeforeUnit:
-                                                      _model.dropDownValue,
-                                                  isGoogleEvent: false,
-                                                  startDate: _model.datePicked1,
-                                                  dontShareThisEvent: false,
-                                                  isAllDay: false,
-                                                ));
+                                              title:
+                                                  _model.titleController.text,
+                                              description: _model
+                                                  .descriptionController.text,
+                                              createdBy: currentUserReference,
+                                              location: _model
+                                                  .locationController.text,
+                                              startTime: _model.datePicked2,
+                                              familyId: FFAppState().familyId,
+                                              notifyBefore: int.tryParse(
+                                                  _model.textController4.text),
+                                              notifyBeforeUnit:
+                                                  _model.dropDownValue,
+                                              isGoogleEvent: false,
+                                              startDate: _model.datePicked1,
+                                              dontShareThisEvent: false,
+                                              isAllDay: false,
+                                            ));
+                                            _model.addedEvent =
+                                                EventRecord.getDocumentFromData(
+                                                    createEventRecordData(
+                                                      title: _model
+                                                          .titleController.text,
+                                                      description: _model
+                                                          .descriptionController
+                                                          .text,
+                                                      createdBy:
+                                                          currentUserReference,
+                                                      location: _model
+                                                          .locationController
+                                                          .text,
+                                                      startTime:
+                                                          _model.datePicked2,
+                                                      familyId:
+                                                          FFAppState().familyId,
+                                                      notifyBefore:
+                                                          int.tryParse(_model
+                                                              .textController4
+                                                              .text),
+                                                      notifyBeforeUnit:
+                                                          _model.dropDownValue,
+                                                      isGoogleEvent: false,
+                                                      startDate:
+                                                          _model.datePicked1,
+                                                      dontShareThisEvent: false,
+                                                      isAllDay: false,
+                                                    ),
+                                                    eventRecordReference);
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Added'),
+                                                  content: Text(
+                                                      valueOrDefault<String>(
+                                                    'Event ${_model.addedEvent?.title}has been added Successfully',
+                                                    'Error',
+                                                  )),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            Navigator.pop(context);
+
+                                            setState(() {});
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(

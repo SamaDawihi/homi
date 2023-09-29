@@ -40,6 +40,8 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  EventRecord? addedEvent;
 
   /// Initialization and disposal methods.
 
