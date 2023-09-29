@@ -356,7 +356,13 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                     6.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
-                                                _model.datePicked1?.toString(),
+                                                dateTimeFormat(
+                                                  'd/M h:mm a',
+                                                  _model.datePicked1,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 'Event Date',
                                               ),
                                               style:
@@ -431,7 +437,13 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                     6.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
-                                                _model.datePicked2?.toString(),
+                                                dateTimeFormat(
+                                                  'd/M h:mm a',
+                                                  _model.datePicked2,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ),
                                                 'Event Time',
                                               ),
                                               style:
