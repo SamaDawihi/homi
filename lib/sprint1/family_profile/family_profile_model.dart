@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/invite_by_email/invite_by_email_widget.dart';
 import '/list_view_items/family_member_container/family_member_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
+import 'family_profile_widget.dart' show FamilyProfileWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -16,7 +17,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class FamilyProfileModel extends FlutterFlowModel {
+class FamilyProfileModel extends FlutterFlowModel<FamilyProfileWidget> {
   ///  Local state fields for this page.
 
   String familyName = '\"\"';

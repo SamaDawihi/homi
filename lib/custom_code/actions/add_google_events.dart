@@ -18,9 +18,7 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
     final querySnapshot = await eventCollection
         .where('title', isEqualTo: googleEvent.title)
         .where('startDate', isEqualTo: googleEvent.startDate)
-        .where('endDate', isEqualTo: googleEvent.endDate)
         .where('startTime', isEqualTo: googleEvent.startTime)
-        .where('endTime', isEqualTo: googleEvent.endTime)
         .where('createdBy', isEqualTo: googleEvent.createdBy)
         .where('familyId', isEqualTo: googleEvent.familyId)
         .get();
@@ -33,9 +31,7 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
         'createdBy': googleEvent.createdBy, // Storing the user reference
         'location': googleEvent.location,
         'startDate': googleEvent.startDate,
-        'endDate': googleEvent.endDate,
         'startTime': googleEvent.startTime,
-        'endTime': googleEvent.endTime,
         'isAllDay': googleEvent.isAllDay,
         'familyId': googleEvent.familyId, // Storing the family reference
         'notifyBefore': googleEvent.notifyBefore,

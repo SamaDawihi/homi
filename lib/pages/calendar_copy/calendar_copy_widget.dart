@@ -1,15 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/event_display_widget.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/list_view_items/event_display/event_display_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
@@ -49,7 +48,9 @@ class _CalendarCopyWidgetState extends State<CalendarCopyWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -96,8 +97,11 @@ class _CalendarCopyWidgetState extends State<CalendarCopyWidget> {
                                   context: context,
                                   builder: (context) {
                                     return GestureDetector(
-                                      onTap: () => FocusScope.of(context)
-                                          .requestFocus(_model.unfocusNode),
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
@@ -398,8 +402,10 @@ class _CalendarCopyWidgetState extends State<CalendarCopyWidget> {
                   ),
                   StreamBuilder<List<EventRecord>>(
                     stream: queryEventRecord(
-                      queryBuilder: (eventRecord) => eventRecord
-                          .where('familyId', isEqualTo: FFAppState().familyId),
+                      queryBuilder: (eventRecord) => eventRecord.where(
+                        'familyId',
+                        isEqualTo: FFAppState().familyId,
+                      ),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -427,10 +433,8 @@ class _CalendarCopyWidgetState extends State<CalendarCopyWidget> {
                           final listViewEventRecord =
                               listViewEventRecordList[listViewIndex];
                           return Visibility(
-                            visible: functions.isDateInRange(
-                                    _model.dateSelected!,
-                                    listViewEventRecord.startDate!,
-                                    listViewEventRecord.endDate!) &&
+                            visible: (listViewEventRecord.startDate ==
+                                    _model.dateSelected) &&
                                 ((currentUserReference ==
                                         listViewEventRecord.createdBy) ||
                                     !(listViewEventRecord.isGoogleEvent &&

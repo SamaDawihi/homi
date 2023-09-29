@@ -156,8 +156,10 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                         context.goNamed('FamiliesManagement');
 
                         _model.members = await queryMemberRecordOnce(
-                          queryBuilder: (memberRecord) => memberRecord
-                              .where('familyId', isEqualTo: widget.familyID),
+                          queryBuilder: (memberRecord) => memberRecord.where(
+                            'familyId',
+                            isEqualTo: widget.familyID,
+                          ),
                         );
                         while (_model.loopIteration < _model.members!.length) {
                           await _model.members![_model.loopIteration].reference
@@ -170,8 +172,11 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                           _model.loopIteration = 0;
                         });
                         _model.invites = await queryInvitationRecordOnce(
-                          queryBuilder: (invitationRecord) => invitationRecord
-                              .where('familyId', isEqualTo: widget.familyID),
+                          queryBuilder: (invitationRecord) =>
+                              invitationRecord.where(
+                            'familyId',
+                            isEqualTo: widget.familyID,
+                          ),
                         );
                         while (_model.loopIteration < _model.invites!.length) {
                           await _model.invites![_model.loopIteration].reference
@@ -184,8 +189,10 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                           _model.loopIteration = 0;
                         });
                         _model.events = await queryEventRecordOnce(
-                          queryBuilder: (eventRecord) => eventRecord
-                              .where('familyId', isEqualTo: widget.familyID),
+                          queryBuilder: (eventRecord) => eventRecord.where(
+                            'familyId',
+                            isEqualTo: widget.familyID,
+                          ),
                         );
                         while (_model.loopIteration < _model.events!.length) {
                           await _model.events![_model.loopIteration].reference

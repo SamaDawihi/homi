@@ -50,7 +50,9 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -170,7 +172,10 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                         child: StreamBuilder<List<InvitationRecord>>(
                           stream: queryInvitationRecord(
                             queryBuilder: (invitationRecord) => invitationRecord
-                                .where('familyId', isEqualTo: widget.familyId)
+                                .where(
+                                  'familyId',
+                                  isEqualTo: widget.familyId,
+                                )
                                 .orderBy('created_time', descending: true),
                           ),
                           builder: (context, snapshot) {

@@ -88,7 +88,9 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
         }
         final familyProfileFamilyRecord = snapshot.data!;
         return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -136,9 +138,13 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         context: context,
                                         builder: (context) {
                                           return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode),
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
                                             child: Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
@@ -314,9 +320,13 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         context: context,
                                         builder: (context) {
                                           return GestureDetector(
-                                            onTap: () => FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode),
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
                                             child: Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
@@ -425,9 +435,10 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                       child: StreamBuilder<List<MemberRecord>>(
                         stream: queryMemberRecord(
                           queryBuilder: (memberRecord) => memberRecord
-                              .where('familyId',
-                                  isEqualTo:
-                                      familyProfileFamilyRecord.reference)
+                              .where(
+                                'familyId',
+                                isEqualTo: familyProfileFamilyRecord.reference,
+                              )
                               .orderBy('created_time', descending: true),
                         ),
                         builder: (context, snapshot) {
@@ -518,10 +529,14 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                               return Material(
                                                 color: Colors.transparent,
                                                 child: GestureDetector(
-                                                  onTap: () => FocusScope.of(
-                                                          context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode),
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
                                                   child:
                                                       ConfirmDeleteFamilyWidget(
                                                     familyID:
@@ -592,10 +607,14 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                               return Material(
                                                 color: Colors.transparent,
                                                 child: GestureDetector(
-                                                  onTap: () => FocusScope.of(
-                                                          context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode),
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
                                                   child:
                                                       ConfirmDeleteFamilyWidget(
                                                     familyID:
@@ -639,10 +658,17 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                               .transparent,
                                                           child:
                                                               GestureDetector(
-                                                            onTap: () => FocusScope
-                                                                    .of(context)
-                                                                .requestFocus(_model
-                                                                    .unfocusNode),
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
                                                             child:
                                                                 ConfirmLeaveFamilyWidget(),
                                                           ),

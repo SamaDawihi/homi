@@ -152,8 +152,9 @@ class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
 
                         _model.member = await queryMemberRecordOnce(
                           queryBuilder: (memberRecord) => memberRecord.where(
-                              'memberId',
-                              isEqualTo: currentUserReference),
+                            'memberId',
+                            isEqualTo: currentUserReference,
+                          ),
                           singleRecord: true,
                         ).then((s) => s.firstOrNull);
                         await _model.member!.reference.delete();

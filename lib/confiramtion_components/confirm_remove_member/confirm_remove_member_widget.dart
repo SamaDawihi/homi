@@ -154,8 +154,10 @@ class _ConfirmRemoveMemberWidgetState extends State<ConfirmRemoveMemberWidget> {
                     FFButtonWidget(
                       onPressed: () async {
                         _model.member = await queryMemberRecordOnce(
-                          queryBuilder: (memberRecord) => memberRecord
-                              .where('memberId', isEqualTo: widget.memberID),
+                          queryBuilder: (memberRecord) => memberRecord.where(
+                            'memberId',
+                            isEqualTo: widget.memberID,
+                          ),
                           singleRecord: true,
                         ).then((s) => s.firstOrNull);
                         await _model.member!.reference.delete();

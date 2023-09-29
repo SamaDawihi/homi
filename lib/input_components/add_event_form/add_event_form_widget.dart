@@ -17,19 +17,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'addevent_model.dart';
-export 'addevent_model.dart';
+import 'add_event_form_model.dart';
+export 'add_event_form_model.dart';
 
-class AddeventWidget extends StatefulWidget {
-  const AddeventWidget({Key? key}) : super(key: key);
+class AddEventFormWidget extends StatefulWidget {
+  const AddEventFormWidget({Key? key}) : super(key: key);
 
   @override
-  _AddeventWidgetState createState() => _AddeventWidgetState();
+  _AddEventFormWidgetState createState() => _AddEventFormWidgetState();
 }
 
-class _AddeventWidgetState extends State<AddeventWidget>
+class _AddEventFormWidgetState extends State<AddEventFormWidget>
     with TickerProviderStateMixin {
-  late AddeventModel _model;
+  late AddEventFormModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation1': AnimationInfo(
@@ -69,7 +69,7 @@ class _AddeventWidgetState extends State<AddeventWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddeventModel());
+    _model = createModel(context, () => AddEventFormModel());
 
     _model.titleController ??= TextEditingController();
     _model.locationController ??= TextEditingController();
@@ -174,20 +174,6 @@ class _AddeventWidgetState extends State<AddeventWidget>
                                                       .headlineMedium,
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 8.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '8os1qv80' /* Please enter the information b... */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                            ),
-                                          ),
                                           Divider(
                                             height: 24.0,
                                             thickness: 2.0,
@@ -220,7 +206,6 @@ class _AddeventWidgetState extends State<AddeventWidget>
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
                                   controller: _model.titleController,
-                                  onFieldSubmitted: (_) async {},
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -287,7 +272,6 @@ class _AddeventWidgetState extends State<AddeventWidget>
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
                                   controller: _model.locationController,
-                                  onFieldSubmitted: (_) async {},
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -570,7 +554,7 @@ class _AddeventWidgetState extends State<AddeventWidget>
                                 children: [
                                   Text(
                                     FFLocalizations.of(context).getText(
-                                      'uz4kklrd' /* Hello World */,
+                                      'upd78bv9' /* Hello World */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -597,7 +581,7 @@ class _AddeventWidgetState extends State<AddeventWidget>
                                               labelText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '41pirgda' /* Before... */,
+                                                'xhvahadc' /* Before... */,
                                               ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
@@ -665,10 +649,10 @@ class _AddeventWidgetState extends State<AddeventWidget>
                                             FormFieldController<String>(null),
                                         options: [
                                           FFLocalizations.of(context).getText(
-                                            '2mo6z7lo' /* Minutes */,
+                                            'd9g8wnj1' /* Minutes */,
                                           ),
                                           FFLocalizations.of(context).getText(
-                                            '8vp11js9' /* Hours */,
+                                            '5fnl4ev5' /* Hours */,
                                           )
                                         ],
                                         onChanged: (val) => setState(
@@ -679,7 +663,7 @@ class _AddeventWidgetState extends State<AddeventWidget>
                                             .bodyMedium,
                                         hintText:
                                             FFLocalizations.of(context).getText(
-                                          'nstszi9w' /* Min/hour */,
+                                          '3gcddrri' /* Min/hour */,
                                         ),
                                         icon: Icon(
                                           Icons.keyboard_arrow_down_rounded,

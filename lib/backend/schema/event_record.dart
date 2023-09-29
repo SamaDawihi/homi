@@ -41,11 +41,6 @@ class EventRecord extends FirestoreRecord {
   DateTime? get startTime => _startTime;
   bool hasStartTime() => _startTime != null;
 
-  // "endTime" field.
-  DateTime? _endTime;
-  DateTime? get endTime => _endTime;
-  bool hasEndTime() => _endTime != null;
-
   // "isAllDay" field.
   bool? _isAllDay;
   bool get isAllDay => _isAllDay ?? false;
@@ -76,11 +71,6 @@ class EventRecord extends FirestoreRecord {
   DateTime? get startDate => _startDate;
   bool hasStartDate() => _startDate != null;
 
-  // "endDate" field.
-  DateTime? _endDate;
-  DateTime? get endDate => _endDate;
-  bool hasEndDate() => _endDate != null;
-
   // "dontShareThisEvent" field.
   bool? _dontShareThisEvent;
   bool get dontShareThisEvent => _dontShareThisEvent ?? false;
@@ -92,14 +82,12 @@ class EventRecord extends FirestoreRecord {
     _createdBy = snapshotData['createdBy'] as DocumentReference?;
     _location = snapshotData['location'] as String?;
     _startTime = snapshotData['startTime'] as DateTime?;
-    _endTime = snapshotData['endTime'] as DateTime?;
     _isAllDay = snapshotData['isAllDay'] as bool?;
     _familyId = snapshotData['familyId'] as DocumentReference?;
     _notifyBefore = castToType<int>(snapshotData['notifyBefore']);
     _notifyBeforeUnit = snapshotData['notifyBeforeUnit'] as String?;
     _isGoogleEvent = snapshotData['isGoogleEvent'] as bool?;
     _startDate = snapshotData['startDate'] as DateTime?;
-    _endDate = snapshotData['endDate'] as DateTime?;
     _dontShareThisEvent = snapshotData['dontShareThisEvent'] as bool?;
   }
 
@@ -142,14 +130,12 @@ Map<String, dynamic> createEventRecordData({
   DocumentReference? createdBy,
   String? location,
   DateTime? startTime,
-  DateTime? endTime,
   bool? isAllDay,
   DocumentReference? familyId,
   int? notifyBefore,
   String? notifyBeforeUnit,
   bool? isGoogleEvent,
   DateTime? startDate,
-  DateTime? endDate,
   bool? dontShareThisEvent,
 }) {
   final firestoreData = mapToFirestore(
@@ -159,14 +145,12 @@ Map<String, dynamic> createEventRecordData({
       'createdBy': createdBy,
       'location': location,
       'startTime': startTime,
-      'endTime': endTime,
       'isAllDay': isAllDay,
       'familyId': familyId,
       'notifyBefore': notifyBefore,
       'notifyBeforeUnit': notifyBeforeUnit,
       'isGoogleEvent': isGoogleEvent,
       'startDate': startDate,
-      'endDate': endDate,
       'dontShareThisEvent': dontShareThisEvent,
     }.withoutNulls,
   );
@@ -184,14 +168,12 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e1?.createdBy == e2?.createdBy &&
         e1?.location == e2?.location &&
         e1?.startTime == e2?.startTime &&
-        e1?.endTime == e2?.endTime &&
         e1?.isAllDay == e2?.isAllDay &&
         e1?.familyId == e2?.familyId &&
         e1?.notifyBefore == e2?.notifyBefore &&
         e1?.notifyBeforeUnit == e2?.notifyBeforeUnit &&
         e1?.isGoogleEvent == e2?.isGoogleEvent &&
         e1?.startDate == e2?.startDate &&
-        e1?.endDate == e2?.endDate &&
         e1?.dontShareThisEvent == e2?.dontShareThisEvent;
   }
 
@@ -202,14 +184,12 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e?.createdBy,
         e?.location,
         e?.startTime,
-        e?.endTime,
         e?.isAllDay,
         e?.familyId,
         e?.notifyBefore,
         e?.notifyBeforeUnit,
         e?.isGoogleEvent,
         e?.startDate,
-        e?.endDate,
         e?.dontShareThisEvent
       ]);
 

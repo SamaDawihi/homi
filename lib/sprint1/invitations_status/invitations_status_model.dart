@@ -6,13 +6,14 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/list_view_items/empty_status/empty_status_widget.dart';
 import '/list_view_items/invitation_status/invitation_status_widget.dart';
+import 'invitations_status_widget.dart' show InvitationsStatusWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class InvitationsStatusModel extends FlutterFlowModel {
+class InvitationsStatusModel extends FlutterFlowModel<InvitationsStatusWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -1,12 +1,14 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'member_already_member_widget.dart' show MemberAlreadyMemberWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MemberAlreadyMemberModel extends FlutterFlowModel {
+class MemberAlreadyMemberModel
+    extends FlutterFlowModel<MemberAlreadyMemberWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

@@ -49,7 +49,9 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -96,8 +98,11 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                                   context: context,
                                   builder: (context) {
                                     return GestureDetector(
-                                      onTap: () => FocusScope.of(context)
-                                          .requestFocus(_model.unfocusNode),
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
@@ -187,8 +192,11 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                               context: context,
                               builder: (context) {
                                 return GestureDetector(
-                                  onTap: () => FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode),
+                                  onTap: () =>
+                                      _model.unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
                                     child: EnterFamilyNameWidget(),
@@ -248,7 +256,10 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                   child: StreamBuilder<List<MemberRecord>>(
                     stream: queryMemberRecord(
                       queryBuilder: (memberRecord) => memberRecord
-                          .where('memberId', isEqualTo: currentUserReference)
+                          .where(
+                            'memberId',
+                            isEqualTo: currentUserReference,
+                          )
                           .orderBy('created_time', descending: true),
                     ),
                     builder: (context, snapshot) {
@@ -322,12 +333,17 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                   child: StreamBuilder<List<InvitationRecord>>(
                     stream: queryInvitationRecord(
                       queryBuilder: (invitationRecord) => invitationRecord
-                          .where('invitedEmail', isEqualTo: currentUserEmail)
-                          .where('status',
-                              isEqualTo: valueOrDefault<String>(
-                                'Pending',
-                                'Pending',
-                              ))
+                          .where(
+                            'invitedEmail',
+                            isEqualTo: currentUserEmail,
+                          )
+                          .where(
+                            'status',
+                            isEqualTo: valueOrDefault<String>(
+                              'Pending',
+                              'Pending',
+                            ),
+                          )
                           .orderBy('created_time', descending: true),
                     ),
                     builder: (context, snapshot) {

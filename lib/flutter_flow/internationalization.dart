@@ -121,27 +121,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'tn82g2sg': {
       'en': '* Name',
-      'ar': 'اسم',
+      'ar': '* اسم',
     },
     'v5nmx9mo': {
       'en': '* Email',
-      'ar': 'بريد إلكتروني',
+      'ar': '* بريد إلكتروني',
     },
     'k23j5lsk': {
       'en': '* Password',
-      'ar': 'كلمة المرور',
+      'ar': '* كلمة المرور',
     },
     '6t83f44z': {
       'en': 'Password must:',
-      'ar': '',
+      'ar': 'يجب أن تكون  كلمة المرور:',
     },
     '05f9nfea': {
       'en': '-Be 6 character or more.\n-Contain both letters and numbers.',
-      'ar': '',
+      'ar': '-متكونة من 6 حروف أو أكثر.\n- تحتوي على حروف وأرقام.',
     },
     'mgqcd7uj': {
       'en': '* Re-enter Password',
-      'ar': 'إعادة إدخال كلمة المرور',
+      'ar': '* إعادة إدخال كلمة المرور',
     },
     'z14qfm03': {
       'en': 'Get Started',
@@ -161,11 +161,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fqu7zqlx': {
       'en': '* Email',
-      'ar': 'بريد إلكتروني',
+      'ar': '* بريد إلكتروني',
     },
     'pje2u461': {
       'en': '* Password',
-      'ar': 'كلمة المرور',
+      'ar': '* كلمة المرور',
     },
     'tbi39cgz': {
       'en': 'Log In',
@@ -195,7 +195,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n7mptuv2': {
       'en': 'Invitation Status',
-      'ar': 'عرض الحالة',
+      'ar': 'حالة الدعوة',
     },
     '6ibsn7kw': {
       'en': 'My Family Members',
@@ -207,11 +207,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'eew001d9': {
       'en': 'Leave Family',
-      'ar': 'غادر العائلة',
+      'ar': 'اترك العائلة',
     },
     't405vb32': {
       'en': 'Family Profile',
-      'ar': '',
+      'ar': 'الملف الشخصي للعائلة',
     },
     'o09fvi6t': {
       'en': 'Home',
@@ -222,7 +222,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '7dmf86h5': {
       'en': 'Calendar',
-      'ar': '',
+      'ar': 'التقويم',
     },
     '2adgmlg5': {
       'en': 'Home',
@@ -233,7 +233,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ukdoyt69': {
       'en': 'Lists',
-      'ar': '',
+      'ar': 'القوائم',
     },
     'cjn0szm1': {
       'en': 'Home',
@@ -244,7 +244,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'pezqh1x2': {
       'en': 'Announcement',
-      'ar': '',
+      'ar': 'إعلان',
     },
     'yzk7wcws': {
       'en': 'Home',
@@ -261,7 +261,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en':
           'Welcome to Homi! Choose whether you want to create a new family, join one of your existing families, or accept an invitation to be a member of new family.',
       'ar':
-          'مرحبًا بك في هومي، اختر ما إذا كنت تريد إنشاء عائلة جديدة، أو الانضمام إلى عائلاتك القديمة، أو قبول دعوة لتصبح عضوًا في عائلة جديدة....',
+          'مرحبا بكم في هومي! اختر ما إذا كنت تريد إنشاء عائلة جديدة، أو الانضمام إلى إحدى عائلاتك الحالية، أو قبول دعوة لتصبح عضوًا في عائلة جديدة.',
     },
     'wb1iebtz': {
       'en': 'Create a family',
@@ -284,11 +284,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'fpijkt8v': {
       'en': 'Invitation Status',
-      'ar': '',
+      'ar': 'حالة الدعوة',
     },
     'fv3muwjj': {
       'en': 'Previous invitations status:',
-      'ar': 'حالة الدعوات السابقة',
+      'ar': 'حالة الدعوات السابقة:',
     },
     'u4fngcl6': {
       'en': 'Home',
@@ -306,18 +306,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'jhv5byc6': {
       'en': 'AuthPage',
-      'ar': '',
+      'ar': 'AuthPage',
     },
     'gj6hshgi': {
       'en': 'Home',
-      'ar': '',
+      'ar': 'الصفحة الرئيسية',
     },
   },
   // CalendarCopy
   {
     '35mpfj4p': {
       'en': 'Calendar',
-      'ar': '',
+      'ar': 'التقويم',
     },
     'md3se1k7': {
       'en': 'Home',
@@ -332,7 +332,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6ma2tj06': {
       'en': 'Enter the family member\'s email  to send an invitation',
-      'ar': 'أدخل البريد الإلكتروني لعضو العائلة لإرسال دعوة',
+      'ar': 'أدخل البريد الإلكتروني لفرد العائلة لإرسال دعوة',
     },
     'oo8xo3t7': {
       'en': 'Enter email',
@@ -347,7 +347,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '4t0j9wzp': {
       'en': 'Enter',
-      'ar': 'ينضم',
+      'ar': 'يدخل',
     },
   },
   // emptyfamilies
@@ -454,7 +454,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gm9au358': {
       'en': 'Home',
-      'ar': 'الصفحة الرئيسية',
+      'ar': 'بيت',
     },
     'ggt2kn8t': {
       'en': 'Profile',
@@ -488,30 +488,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'jss0gdih': {
       'en': 'Write your family name...',
-      'ar': '',
+      'ar': 'أكتب اسم عائلتك...',
     },
     'ea94emzo': {
       'en': 'Label here...',
-      'ar': '',
+      'ar': 'التسمية هنا...',
     },
     'o8jz3tqm': {
       'en': 'Cancel',
-      'ar': '',
+      'ar': 'يلغي',
     },
     'oljsbdla': {
       'en': 'Create',
-      'ar': '',
+      'ar': 'يخلق',
     },
   },
   // InviteSentSuccessfully
   {
     'fom5m2cu': {
       'en': 'Invitation Sent Successfully',
-      'ar': 'جعل المشرف',
+      'ar': 'تم إرسال الدعوة بنجاح',
     },
     'lyx6ksss': {
       'en': 'The member you have tried to invite will receive your invitation',
-      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+      'ar': 'العضو الذي حاولت دعوته سوف يتلقى دعوتك',
     },
     'qxfoiz9f': {
       'en': 'OK',
@@ -522,12 +522,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '1t8mr983': {
       'en': 'Member already invited.',
-      'ar': 'جعل المشرف',
+      'ar': 'تمت دعوة العضو بالفعل.',
     },
     '6c70sjay': {
       'en':
           'The member you have tried to invite already has an invitation from you to join this family.',
-      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+      'ar':
+          'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
     },
     'mqc9tav5': {
       'en': 'OK',
@@ -538,27 +539,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '8parkzpd': {
       'en': 'Email Address is not valid',
-      'ar': 'جعل المشرف',
+      'ar': 'عنوان البريد الإلكتروني غير صالح',
     },
     'xpp7gczg': {
       'en':
           'The entered email address is not in a valid format. Please correct it and try again.',
-      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+      'ar':
+          'عنوان البريد الإلكتروني الذي تم إدخاله ليس بتنسيق صالح. يرجى تصحيحه والمحاولة مرة أخرى.',
     },
     'd3n87pgf': {
       'en': 'Back',
-      'ar': 'نعم',
+      'ar': 'خلف',
     },
   },
   // ForgetPasswordEmailSent
   {
     'q2envq8n': {
       'en': 'Reset Email Sent Successfully!',
-      'ar': 'جعل المشرف',
+      'ar': 'إعادة تعيين البريد الإلكتروني المرسل بنجاح!',
     },
     'f3s29q9a': {
       'en': 'Please check your email to reset your password.',
-      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+      'ar':
+          'يرجى التحقق من بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.',
     },
     'htdpx3ka': {
       'en': 'Ok',
@@ -569,30 +572,30 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '7wt8nq94': {
       'en': 'Enter a Family Name',
-      'ar': 'دعوة عضو',
+      'ar': 'أدخل اسم العائلة',
     },
     'q689li65': {
       'en': 'Please enter a name for your family To create a new family.',
-      'ar': 'أدخل البريد الإلكتروني لعضو العائلة لإرسال دعوة',
+      'ar': 'الرجاء إدخال اسم لعائلتك لإنشاء عائلة جديدة.',
     },
     '0ag0ttbi': {
       'en': 'Enter the family name',
-      'ar': 'أدخل البريد الإلكتروني',
+      'ar': 'أدخل اسم العائلة',
     },
     'ogbc1zm7': {
       'en': 'Create Family',
-      'ar': 'يدعو',
+      'ar': 'إنشاء عائلة',
     },
   },
   // ConfirmRejectInvitation
   {
     '5o5x6s63': {
       'en': 'Confirm Rejection',
-      'ar': 'تأكيد الخروج',
+      'ar': 'تأكيد الرفض',
     },
     'ospbmsnf': {
       'en': 'Are you sure you want to reject the invitation?',
-      'ar': 'هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟',
+      'ar': 'هل أنت متأكد أنك تريد رفض الدعوة؟',
     },
     'no2ejqzl': {
       'en': 'Cancel',
@@ -600,19 +603,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9w0k1a1w': {
       'en': 'Reject',
-      'ar': 'نعم',
+      'ar': 'يرفض',
     },
   },
   // MemberAlreadyMember
   {
     'wrfqpvmo': {
       'en': 'Member is already in the Family',
-      'ar': 'جعل المشرف',
+      'ar': 'العضو موجود بالفعل في العائلة',
     },
     '0ta5tdxp': {
       'en':
           'The member you have tried to invite already is a member of this family.',
-      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+      'ar': 'العضو الذي حاولت دعوته بالفعل هو عضو في هذه العائلة.',
     },
     '4y6chyn2': {
       'en': 'OK',
@@ -623,27 +626,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '9lmrn5qn': {
       'en': 'Color Is Already Used',
-      'ar': 'جعل المشرف',
+      'ar': 'اللون مستخدم بالفعل',
     },
     '2aljl8xz': {
       'en':
           'The color you selected is already used by another family member select another member.',
-      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
+      'ar':
+          'اللون الذي حددته مستخدم بالفعل من قبل فرد آخر من العائلة، حدد فردًا آخر.',
     },
     'hwytjisg': {
       'en': 'Select Color',
-      'ar': 'نعم',
+      'ar': 'إختر لون',
     },
   },
   // ConfirmAcceptInvitation
   {
     '2lxkijss': {
       'en': 'Confirm Acceptance',
-      'ar': 'تأكيد الخروج',
+      'ar': 'تأكيد القبول',
     },
     '1pv97tnx': {
       'en': 'Are you sure you want to accept the invitation?',
-      'ar': 'هل أنت متأكد أنك تريد تسجيل الخروج من حسابك؟',
+      'ar': 'هل أنت متأكد أنك تريد قبول الدعوة؟',
     },
     '4kd5va2x': {
       'en': 'Cancel',
@@ -651,110 +655,111 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '521dbf30': {
       'en': 'Accept',
-      'ar': 'نعم',
+      'ar': 'يقبل',
     },
   },
   // emptyStatus
   {
     '4qyq0zn7': {
       'en': 'seems that you haven\'t sent any invitation',
-      'ar': 'يبدو أنه ليس لديك أي دعوة',
+      'ar': 'يبدو أنك لم ترسل أي دعوة',
     },
     'rs82kstz': {
       'en':
           'you can invite a member to your family by clicking \"invite a member\" button in the family profile page...',
       'ar':
-          'إذا كنت ترغب في الانضمام إلى عائلة معينة، اطلب من مسؤولها أن يدعوك..',
+          'يمكنك دعوة أحد أفراد عائلتك من خلال النقر على زر \"دعوة عضو\" في صفحة الملف الشخصي للعائلة...',
     },
   },
   // FormPopUp
   {
     '7qr5ps8n': {
       'en': 'Create Project',
-      'ar': '',
+      'ar': 'إنشاء مشروع',
     },
     '87sy9gir': {
       'en': 'Please enter the information below to add a project.',
-      'ar': '',
+      'ar': 'الرجاء إدخال المعلومات أدناه لإضافة مشروع.',
     },
     'aku2zode': {
       'en': 'Showcase Project Name',
-      'ar': '',
+      'ar': 'عرض اسم المشروع',
     },
     'vnhsknjs': {
       'en': 'Description here...',
-      'ar': '',
+      'ar': 'الوصف هنا...',
     },
     'qzmxnlpo': {
       'en': 'URL of the project',
-      'ar': '',
+      'ar': 'عنوان URL للمشروع',
     },
     'h3711ctb': {
       'en': 'Clonable Link URL...',
-      'ar': '',
+      'ar': 'عنوان URL للرابط القابل للاستنساخ...',
     },
     '4xmr55ax': {
       'en': 'Create Showcase',
-      'ar': '',
+      'ar': 'إنشاء عرض',
     },
     '4ccaurip': {
       'en': 'Field is required',
-      'ar': '',
+      'ar': 'الحقل مطلوب',
     },
     '6jslzpq9': {
       'en': 'Please enter a real name',
-      'ar': '',
+      'ar': 'الرجاء إدخال الاسم الحقيقي',
     },
     'nnnc2yjl': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     'lvh78mib': {
       'en': 'Please enter a short desription',
-      'ar': '',
+      'ar': 'الرجاء إدخال وصف قصير',
     },
     '3ifxcowa': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     '13hkrxaj': {
       'en': 'We have to have a URL for the project.',
-      'ar': '',
+      'ar': 'يجب أن يكون لدينا عنوان URL للمشروع.',
     },
     '76q25y9h': {
       'en': 'Please enter a valid URL...',
-      'ar': '',
+      'ar': 'أدخل رابط صحيح من فضلك...',
     },
     'y0bjh8b1': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     '9rer9l8m': {
       'en': 'Field is required',
-      'ar': '',
+      'ar': 'الحقل مطلوب',
     },
     'jfyt3yyg': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
   },
   // Event
   {
     'tbbpfiop': {
       'en': 'Event Name ',
-      'ar': '',
+      'ar': 'اسم الحدث',
     },
   },
   // ConfirmDeleteFamily
   {
     'b9i6l4nb': {
       'en': 'Delete Family',
-      'ar': 'إزالة العضو',
+      'ar': 'حذف العائلة',
     },
     'x5w3r1st': {
       'en':
           'Are you sure you want to delete this family? You will not be able to undo this action.',
-      'ar': 'هل أنت متأكد أنك تريد إزالة فرد العائلة هذا؟',
+      'ar':
+          'هل أنت متأكد أنك تريد حذف هذه العائلة؟ لن تتمكن من التراجع عن هذا الإجراء.',
     },
     'j7lp4ydv': {
       'en': 'Cancel',
@@ -769,11 +774,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '59vg2zq7': {
       'en': 'Leave Family',
-      'ar': 'إزالة العضو',
+      'ar': 'اترك العائلة',
     },
     'c42cg8ir': {
       'en': 'Are you sure you want to leave this family?',
-      'ar': 'هل أنت متأكد أنك تريد إزالة فرد العائلة هذا؟',
+      'ar': 'هل أنت متأكد أنك تريد مغادرة هذه العائلة؟',
     },
     'y52lftsh': {
       'en': 'Cancel',
@@ -788,7 +793,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '9mr3s5kb': {
       'en': 'Edit Event Information',
-      'ar': '',
+      'ar': 'تحرير معلومات الحدث',
     },
     'zw3wr96m': {
       'en': '',
@@ -796,158 +801,154 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ui1g3t1d': {
       'en': 'Event Title',
-      'ar': '',
+      'ar': 'عنوان الحدث',
     },
     '3zs347lu': {
       'en': 'Location',
-      'ar': '',
+      'ar': 'موقع',
     },
     'e6qh90h0': {
       'en': 'Description here...',
-      'ar': '',
+      'ar': 'الوصف هنا...',
     },
     'jjgtziup': {
       'en': 'when do you like to get notified?',
-      'ar': '',
+      'ar': 'متى ترغب في الحصول على إشعار؟',
     },
     '470kl5e0': {
       'en': 'Edit',
-      'ar': '',
+      'ar': 'يحرر',
     },
     'lxr1tmkr': {
       'en': 'Field is required',
-      'ar': '',
+      'ar': 'الحقل مطلوب',
     },
     'qibcyf4s': {
       'en': 'Please enter a real name',
-      'ar': '',
+      'ar': 'الرجاء إدخال الاسم الحقيقي',
     },
     'e45enh51': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     '3gsxise9': {
       'en': 'Please enter a short desription',
-      'ar': '',
+      'ar': 'الرجاء إدخال وصف قصير',
     },
     'ucs66lhn': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     '6p2hc0wj': {
       'en': 'We have to have a URL for the project.',
-      'ar': '',
+      'ar': 'يجب أن يكون لدينا عنوان URL للمشروع.',
     },
     '9nk7r0or': {
       'en': 'Please enter a valid URL...',
-      'ar': '',
+      'ar': 'أدخل رابط صحيح من فضلك...',
     },
     'sh6u97bk': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     'osy6rly5': {
       'en': 'Field is required',
-      'ar': '',
+      'ar': 'الحقل مطلوب',
     },
     'cpeda4bp': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
   },
-  // addevent
+  // AddEventForm
   {
     'qsdkhdfm': {
       'en': 'Add Event',
-      'ar': '',
-    },
-    '8os1qv80': {
-      'en': 'Please enter the information below to add an event.',
-      'ar': '',
+      'ar': 'أضف حدثًا',
     },
     'w2mpzji7': {
       'en': 'Event Title',
-      'ar': '',
+      'ar': 'عنوان الحدث',
     },
     'lp0rlmo1': {
       'en': 'Location',
-      'ar': '',
+      'ar': 'موقع',
     },
-    '0dnuorpx': {
+    '6sgr7svi': {
       'en': '',
       'ar': '',
     },
     'nwnx2xr6': {
       'en': 'Description here...',
-      'ar': '',
+      'ar': 'الوصف هنا...',
     },
-    'uz4kklrd': {
+    'upd78bv9': {
       'en': 'Hello World',
-      'ar': '',
+      'ar': 'مرحبا بالعالم',
     },
-    '41pirgda': {
+    'xhvahadc': {
       'en': 'Before...',
-      'ar': '',
+      'ar': 'قبل...',
     },
-    '2mo6z7lo': {
+    'd9g8wnj1': {
       'en': 'Minutes',
-      'ar': '',
+      'ar': 'دقائق',
     },
-    '8vp11js9': {
+    '5fnl4ev5': {
       'en': 'Hours',
-      'ar': '',
+      'ar': 'ساعات',
     },
-    'nstszi9w': {
+    '3gcddrri': {
       'en': 'Min/hour',
-      'ar': '',
+      'ar': 'دقيقة/ساعة',
     },
-    'k9kwgpww': {
+    'ledy91s6': {
       'en': 'Search for an item...',
-      'ar': '',
+      'ar': 'البحث عن عنصر...',
     },
     '2a6dvxxr': {
       'en': 'Add',
-      'ar': '',
+      'ar': 'يضيف',
     },
     's0rq8eu8': {
       'en': 'Field is required',
-      'ar': '',
+      'ar': 'الحقل مطلوب',
     },
     'xbgwgwvg': {
       'en': 'Please enter a real name',
-      'ar': '',
+      'ar': 'الرجاء إدخال الاسم الحقيقي',
     },
     '6wr0nxnk': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     'jtkgxb35': {
       'en': 'Please enter a short desription',
-      'ar': '',
+      'ar': 'الرجاء إدخال وصف قصير',
     },
     'iuru8n28': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     '50gqk02a': {
       'en': 'We have to have a URL for the project.',
-      'ar': '',
+      'ar': 'يجب أن يكون لدينا عنوان URL للمشروع.',
     },
     'i98dbndc': {
       'en': 'Please enter a valid URL...',
-      'ar': '',
+      'ar': 'أدخل رابط صحيح من فضلك...',
     },
     'pjjmguin': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
     'ezpjnoau': {
       'en': 'Field is required',
-      'ar': '',
+      'ar': 'الحقل مطلوب',
     },
     '8490g3qk': {
       'en': 'Please choose an option from the dropdown',
-      'ar': '',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
   },
   // Miscellaneous

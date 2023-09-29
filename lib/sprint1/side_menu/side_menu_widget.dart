@@ -1,4 +1,5 @@
 import '/confiramtion_components/confirm_logout/confirm_logout_widget.dart';
+import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -284,6 +285,24 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                     ),
                   ),
                 ),
+              ),
+              FlutterFlowLanguageSelector(
+                width: 200.0,
+                backgroundColor: FlutterFlowTheme.of(context).tertiary,
+                borderColor: Colors.transparent,
+                dropdownIconColor: Colors.white,
+                borderRadius: 8.0,
+                textStyle: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 13.0,
+                ),
+                hideFlags: false,
+                flagSize: 24.0,
+                flagTextGap: 8.0,
+                currentLanguage: FFLocalizations.of(context).languageCode,
+                languages: FFLocalizations.languages(),
+                onChanged: (lang) => setAppLanguage(context, lang),
               ),
               Expanded(
                 child: Padding(

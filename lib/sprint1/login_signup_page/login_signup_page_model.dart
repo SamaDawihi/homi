@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/reset_password/reset_password_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'login_signup_page_widget.dart' show LoginSignupPageWidget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -16,7 +17,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class LoginSignupPageModel extends FlutterFlowModel {
+class LoginSignupPageModel extends FlutterFlowModel<LoginSignupPageWidget> {
   ///  Local state fields for this page.
 
   String? regNameErr = '';

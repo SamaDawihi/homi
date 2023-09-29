@@ -1,12 +1,14 @@
 import '/confiramtion_components/confirm_logout/confirm_logout_widget.dart';
+import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'side_menu_widget.dart' show SideMenuWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class SideMenuModel extends FlutterFlowModel {
+class SideMenuModel extends FlutterFlowModel<SideMenuWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

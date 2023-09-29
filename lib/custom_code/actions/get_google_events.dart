@@ -46,17 +46,14 @@ Future<List<EventStruct>> getGoogleEvents(
     if (eventsList.items != null) {
       for (final event in eventsList.items!) {
         DateTime? startD = event.start?.dateTime ?? event.start?.date;
-        DateTime? endD = event.end?.dateTime ?? event.end?.date;
         final eventStruct = EventStruct(
           createdBy: createdBy,
           familyId: familyId,
           title: event.summary ?? '',
           description: event.description ?? '',
           location: event.location ?? '',
-          startDate: DateTime(startD!.year, startD!.month, startD!.day),
-          endDate: DateTime(endD!.year, endD!.month, endD!.day),
+          startDate: DateTime(startD!.year, startD.month, startD.day),
           startTime: startD,
-          endTime: endD,
           isAllDay: event.start?.dateTime ==
               null, // Assuming it's an all-day event if there's no specific dateTime set
           isGoogleEvent: true,

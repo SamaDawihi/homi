@@ -90,10 +90,14 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                   StreamBuilder<List<MemberRecord>>(
                     stream: queryMemberRecord(
                       queryBuilder: (memberRecord) => memberRecord
-                          .where('memberId',
-                              isEqualTo: eventDisplayEventRecord.createdBy)
-                          .where('familyId',
-                              isEqualTo: eventDisplayEventRecord.familyId),
+                          .where(
+                            'memberId',
+                            isEqualTo: eventDisplayEventRecord.createdBy,
+                          )
+                          .where(
+                            'familyId',
+                            isEqualTo: eventDisplayEventRecord.familyId,
+                          ),
                       singleRecord: true,
                     ),
                     builder: (context, snapshot) {
@@ -172,26 +176,6 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                                       fontFamily: 'Source Sans Pro',
                                       fontSize: 11.0,
                                     ),
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            valueOrDefault<String>(
-                              dateTimeFormat(
-                                'd/M h:mm a',
-                                eventDisplayEventRecord.endDate,
-                                locale:
-                                    FFLocalizations.of(context).languageCode,
-                              ),
-                              'no End',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Source Sans Pro',
-                                  fontSize: 11.0,
-                                ),
                           ),
                         ),
                       ],

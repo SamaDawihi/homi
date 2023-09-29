@@ -4,6 +4,7 @@ import '/confiramtion_components/confirm_admin_change/confirm_admin_change_widge
 import '/confiramtion_components/confirm_remove_member/confirm_remove_member_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'family_member_container_widget.dart' show FamilyMemberContainerWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -11,7 +12,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class FamilyMemberContainerModel extends FlutterFlowModel {
+class FamilyMemberContainerModel
+    extends FlutterFlowModel<FamilyMemberContainerWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

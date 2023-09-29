@@ -237,45 +237,57 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                                 await queryInvitationRecordCount(
                               queryBuilder: (invitationRecord) =>
                                   invitationRecord
-                                      .where('invitedEmail',
-                                          isEqualTo: functions
-                                              .toLowerCaseFunction(_model
-                                                  .emailAddressController.text))
-                                      .where('familyId',
-                                          isEqualTo: widget.familyId)
-                                      .where('status', isEqualTo: 'Pending'),
+                                      .where(
+                                        'invitedEmail',
+                                        isEqualTo:
+                                            functions.toLowerCaseFunction(_model
+                                                .emailAddressController.text),
+                                      )
+                                      .where(
+                                        'familyId',
+                                        isEqualTo: widget.familyId,
+                                      )
+                                      .where(
+                                        'status',
+                                        isEqualTo: 'Pending',
+                                      ),
                             );
                             _shouldSetState = true;
                             if (_model.numberOfInvitations == 0) {
                               _model.noOfUsersWithTheSameEmail =
                                   await queryUsersRecordCount(
                                 queryBuilder: (usersRecord) =>
-                                    usersRecord.where('email',
-                                        isEqualTo:
-                                            functions.toLowerCaseFunction(_model
-                                                .emailAddressController.text)),
+                                    usersRecord.where(
+                                  'email',
+                                  isEqualTo: functions.toLowerCaseFunction(
+                                      _model.emailAddressController.text),
+                                ),
                               );
                               _shouldSetState = true;
                               if (_model.noOfUsersWithTheSameEmail != 0) {
                                 _model.theUserWithSameEmail =
                                     await queryUsersRecordOnce(
                                   queryBuilder: (usersRecord) =>
-                                      usersRecord.where('email',
-                                          isEqualTo: functions
-                                              .toLowerCaseFunction(_model
-                                                  .emailAddressController
-                                                  .text)),
+                                      usersRecord.where(
+                                    'email',
+                                    isEqualTo: functions.toLowerCaseFunction(
+                                        _model.emailAddressController.text),
+                                  ),
                                   singleRecord: true,
                                 ).then((s) => s.firstOrNull);
                                 _shouldSetState = true;
                                 _model.noOfUsersInFamilyWithSameEmail =
                                     await queryMemberRecordCount(
                                   queryBuilder: (memberRecord) => memberRecord
-                                      .where('memberId',
-                                          isEqualTo: _model
-                                              .theUserWithSameEmail?.reference)
-                                      .where('familyId',
-                                          isEqualTo: widget.familyId),
+                                      .where(
+                                        'memberId',
+                                        isEqualTo: _model
+                                            .theUserWithSameEmail?.reference,
+                                      )
+                                      .where(
+                                        'familyId',
+                                        isEqualTo: widget.familyId,
+                                      ),
                                 );
                                 _shouldSetState = true;
                                 if (_model.noOfUsersInFamilyWithSameEmail !=
