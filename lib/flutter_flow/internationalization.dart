@@ -211,7 +211,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     't405vb32': {
       'en': 'Family Profile',
-      'ar': 'الملف الشخصي للعائلة',
+      'ar': 'ملف  للعائلة',
     },
     'o09fvi6t': {
       'en': 'Home',

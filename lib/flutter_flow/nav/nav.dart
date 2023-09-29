@@ -154,9 +154,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CalendarCopy',
           path: '/calendarCopy',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'CalendarCopy')
-              : CalendarCopyWidget(),
+          builder: (context, params) => CalendarCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

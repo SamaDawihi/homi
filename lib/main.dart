@@ -203,7 +203,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Calendar': CalendarWidget(),
       'Lists': ListsWidget(),
       'Announcements': AnnouncementsWidget(),
-      'CalendarCopy': CalendarCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -259,16 +258,6 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             label: FFLocalizations.of(context).getText(
               'yzk7wcws' /* Home */,
-            ),
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.calendar_month,
-              size: 24.0,
-            ),
-            label: FFLocalizations.of(context).getText(
-              'md3se1k7' /* Home */,
             ),
             tooltip: '',
           )
