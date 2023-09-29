@@ -910,45 +910,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
       'ar': 'يضيف',
     },
-    's0rq8eu8': {
+    'kwvly8nk': {
       'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
+      'ar': '',
     },
-    'xbgwgwvg': {
-      'en': 'Please enter a real name',
-      'ar': 'الرجاء إدخال الاسم الحقيقي',
-    },
-    '6wr0nxnk': {
+    '7gsbi9ag': {
       'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
+      'ar': '',
     },
-    'jtkgxb35': {
-      'en': 'Please enter a short desription',
-      'ar': 'الرجاء إدخال وصف قصير',
-    },
-    'iuru8n28': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    '50gqk02a': {
-      'en': 'We have to have a URL for the project.',
-      'ar': 'يجب أن يكون لدينا عنوان URL للمشروع.',
-    },
-    'i98dbndc': {
-      'en': 'Please enter a valid URL...',
-      'ar': 'أدخل رابط صحيح من فضلك...',
-    },
-    'pjjmguin': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    'ezpjnoau': {
+    'wkyhbf6o': {
       'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
+      'ar': '',
     },
-    '8490g3qk': {
+    '1vuz7a6r': {
       'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
+      'ar': '',
+    },
+    'i370b2oz': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'ms4mc1rt': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '2nqech6z': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'a5mgtr39': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
     },
   },
   // Miscellaneous
