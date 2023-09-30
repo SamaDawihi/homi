@@ -778,77 +778,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // editEvent
-  {
-    '9mr3s5kb': {
-      'en': 'Edit Event Information',
-      'ar': 'تحرير معلومات الحدث',
-    },
-    'zw3wr96m': {
-      'en': '',
-      'ar': '',
-    },
-    'ui1g3t1d': {
-      'en': 'Event Title',
-      'ar': 'عنوان الحدث',
-    },
-    '3zs347lu': {
-      'en': 'Location',
-      'ar': 'موقع',
-    },
-    'e6qh90h0': {
-      'en': 'Description here...',
-      'ar': 'الوصف هنا...',
-    },
-    'jjgtziup': {
-      'en': 'when do you like to get notified?',
-      'ar': 'متى ترغب في الحصول على إشعار؟',
-    },
-    '470kl5e0': {
-      'en': 'Edit',
-      'ar': 'يحرر',
-    },
-    'lxr1tmkr': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'qibcyf4s': {
-      'en': 'Please enter a real name',
-      'ar': 'الرجاء إدخال الاسم الحقيقي',
-    },
-    'e45enh51': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    '3gsxise9': {
-      'en': 'Please enter a short desription',
-      'ar': 'الرجاء إدخال وصف قصير',
-    },
-    'ucs66lhn': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    '6p2hc0wj': {
-      'en': 'We have to have a URL for the project.',
-      'ar': 'يجب أن يكون لدينا عنوان URL للمشروع.',
-    },
-    '9nk7r0or': {
-      'en': 'Please enter a valid URL...',
-      'ar': 'أدخل رابط صحيح من فضلك...',
-    },
-    'sh6u97bk': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    'osy6rly5': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'cpeda4bp': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-  },
   // AddEventForm
   {
     'qsdkhdfm': {
@@ -928,6 +857,152 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'vm9qztyn': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+  },
+  // EditEventForm
+  {
+    'x0la2fp4': {
+      'en': 'Edit Event',
+      'ar': 'أضف حدثًا',
+    },
+    'hrmmv7ta': {
+      'en': 'Event Title',
+      'ar': 'عنوان الحدث',
+    },
+    'ui4ub2ms': {
+      'en': 'Location',
+      'ar': 'موقع',
+    },
+    'kamagkiw': {
+      'en': '',
+      'ar': '',
+    },
+    'zts4tytl': {
+      'en': 'Description here...',
+      'ar': 'الوصف هنا...',
+    },
+    'mcn3efqr': {
+      'en': 'Notify Before:',
+      'ar': 'مرحبا بالعالم',
+    },
+    'jv20klgl': {
+      'en': 'Before...',
+      'ar': 'قبل...',
+    },
+    'r9a3tbel': {
+      'en': 'Minutes',
+      'ar': 'دقائق',
+    },
+    'lo46c05e': {
+      'en': 'Hours',
+      'ar': 'ساعات',
+    },
+    'jz47akgx': {
+      'en': 'Min/hour',
+      'ar': 'دقيقة/ساعة',
+    },
+    'fgzkpvgw': {
+      'en': 'Search for an item...',
+      'ar': 'البحث عن عنصر...',
+    },
+    '3dmk3mr5': {
+      'en': 'Confirm Edit',
+      'ar': 'يضيف',
+    },
+    'hfg47b2m': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '7entxo79': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'x917lsrh': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'y0mf1wlg': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '4hfyvn2c': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'oo7p7u5w': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'gbw2vop4': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'j5o6010c': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+  },
+  // ViewEvent
+  {
+    'di8aml6m': {
+      'en': 'Location:',
+      'ar': '',
+    },
+    '4i3ffodf': {
+      'en': 'Date:',
+      'ar': '',
+    },
+    'chfkhv8h': {
+      'en': 'Time:',
+      'ar': '',
+    },
+    'amwwqfup': {
+      'en': 'Description:',
+      'ar': '',
+    },
+    '647q52db': {
+      'en': 'Notify before:',
+      'ar': '',
+    },
+    'jjoyrv2a': {
+      'en': 'Delete Event',
+      'ar': 'يضيف',
+    },
+    'lp63oaq8': {
+      'en': 'Edit Event',
+      'ar': 'يضيف',
+    },
+    'os35bew8': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '2b84a4ud': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '3rorr3kc': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'dk7ktix7': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'bq07kuew': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'w312k3ov': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '5v01bj2d': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '67yghsck': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },

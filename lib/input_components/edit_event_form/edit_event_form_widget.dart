@@ -17,19 +17,24 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_event_form_model.dart';
-export 'add_event_form_model.dart';
+import 'edit_event_form_model.dart';
+export 'edit_event_form_model.dart';
 
-class AddEventFormWidget extends StatefulWidget {
-  const AddEventFormWidget({Key? key}) : super(key: key);
+class EditEventFormWidget extends StatefulWidget {
+  const EditEventFormWidget({
+    Key? key,
+    required this.event,
+  }) : super(key: key);
+
+  final EventRecord? event;
 
   @override
-  _AddEventFormWidgetState createState() => _AddEventFormWidgetState();
+  _EditEventFormWidgetState createState() => _EditEventFormWidgetState();
 }
 
-class _AddEventFormWidgetState extends State<AddEventFormWidget>
+class _EditEventFormWidgetState extends State<EditEventFormWidget>
     with TickerProviderStateMixin {
-  late AddEventFormModel _model;
+  late EditEventFormModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation1': AnimationInfo(
@@ -69,7 +74,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddEventFormModel());
+    _model = createModel(context, () => EditEventFormModel());
 
     _model.titleController ??= TextEditingController();
     _model.locationController ??= TextEditingController();
@@ -156,32 +161,65 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'qsdkhdfm' /* Add Event */,
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            setState(() {
+                                              _model.titleController?.text =
+                                                  widget.event!.title;
+                                            });
+                                            setState(() {
+                                              _model.locationController?.text =
+                                                  widget.event!.location;
+                                            });
+                                            setState(() {
+                                              _model.descriptionController
+                                                      ?.text =
+                                                  widget.event!.description;
+                                            });
+                                            setState(() {
+                                              _model.textController4?.text =
+                                                  widget.event!.notifyBefore
+                                                      .toString();
+                                            });
+                                            setState(() {
+                                              _model.dropDownValueController
+                                                      ?.value =
+                                                  widget
+                                                      .event!.notifyBeforeUnit;
+                                            });
+                                          },
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 4.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'x0la2fp4' /* Edit Event */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineMedium,
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium,
                                               ),
-                                            ),
-                                            Divider(
-                                              height: 24.0,
-                                              thickness: 2.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                          ],
+                                              Divider(
+                                                height: 24.0,
+                                                thickness: 2.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                       FlutterFlowIconButton(
@@ -214,7 +252,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           .labelLarge,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'w2mpzji7' /* Event Title */,
+                                        'hrmmv7ta' /* Event Title */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge,
@@ -281,7 +319,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           .labelLarge,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'lp0rlmo1' /* Location */,
+                                        'ui4ub2ms' /* Location */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge,
@@ -519,7 +557,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           .labelLarge,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'nwnx2xr6' /* Description here... */,
+                                        'zts4tytl' /* Description here... */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge,
@@ -582,7 +620,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'upd78bv9' /* Hello World */,
+                                        'mcn3efqr' /* Notify Before: */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -610,7 +648,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'xhvahadc' /* Before... */,
+                                                  'jv20klgl' /* Before... */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -686,10 +724,10 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                               FormFieldController<String>(null),
                                           options: [
                                             FFLocalizations.of(context).getText(
-                                              'd9g8wnj1' /* Minutes */,
+                                              'r9a3tbel' /* Minutes */,
                                             ),
                                             FFLocalizations.of(context).getText(
-                                              '5fnl4ev5' /* Hours */,
+                                              'lo46c05e' /* Hours */,
                                             )
                                           ],
                                           onChanged: (val) => setState(
@@ -701,7 +739,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                   .bodyMedium,
                                           hintText: FFLocalizations.of(context)
                                               .getText(
-                                            '3gcddrri' /* Min/hour */,
+                                            'jz47akgx' /* Min/hour */,
                                           ),
                                           icon: Icon(
                                             Icons.keyboard_arrow_down_rounded,
@@ -793,23 +831,26 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                       isAllDay: false,
                                                     ),
                                                     eventRecordReference);
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Event Added Successfully!',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .success,
-                                              ),
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('Added'),
+                                                  content: Text(
+                                                      valueOrDefault<String>(
+                                                    'Event ${_model.addedEvent?.title}has been added Successfully',
+                                                    'Error',
+                                                  )),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
                                             );
                                             Navigator.pop(context);
 
@@ -817,7 +858,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            '2a6dvxxr' /* Add */,
+                                            '3dmk3mr5' /* Confirm Edit */,
                                           ),
                                           options: FFButtonOptions(
                                             height: 50.0,
