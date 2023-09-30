@@ -147,11 +147,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => TasksWidget(),
         ),
         FFRoute(
-          name: 'AuthPage',
-          path: '/authPage',
-          builder: (context, params) => AuthPageWidget(),
-        ),
-        FFRoute(
           name: 'CalendarCopy',
           path: '/calendarCopy',
           builder: (context, params) => CalendarCopyWidget(),

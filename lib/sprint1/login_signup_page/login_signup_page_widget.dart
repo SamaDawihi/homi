@@ -534,12 +534,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 milliseconds:
                                                                     2000),
                                                             () async {
-                                                              if (functions
-                                                                  .checkIfTextMatchRegExp(
+                                                              if (functions.checkIfTextMatchRegExp(
+                                                                  functions.trimAndCollapseSpaces(
                                                                       _model
                                                                           .emailAddressController
-                                                                          .text,
-                                                                      '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                          .text),
+                                                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
                                                                 setState(() {
                                                                   _model.regEmailErr =
                                                                       '';
@@ -556,12 +556,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           ),
                                                           onFieldSubmitted:
                                                               (_) async {
-                                                            if (functions
-                                                                .checkIfTextMatchRegExp(
+                                                            if (functions.checkIfTextMatchRegExp(
+                                                                functions.trimAndCollapseSpaces(
                                                                     _model
                                                                         .emailAddressController
-                                                                        .text,
-                                                                    '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                        .text),
+                                                                '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
                                                               setState(() {
                                                                 _model.regEmailErr =
                                                                     '';
@@ -1248,12 +1248,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               });
                                                             }
 
-                                                            if (functions
-                                                                .checkIfTextMatchRegExp(
+                                                            if (functions.checkIfTextMatchRegExp(
+                                                                functions.trimAndCollapseSpaces(
                                                                     _model
                                                                         .emailAddressController
-                                                                        .text,
-                                                                    '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                        .text),
+                                                                '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
                                                               setState(() {
                                                                 _model.regEmailErr =
                                                                     '';
@@ -1364,9 +1364,10 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   await authManager
                                                                       .createAccountWithEmail(
                                                                 context,
-                                                                _model
-                                                                    .emailAddressController
-                                                                    .text,
+                                                                functions.trimAndCollapseSpaces(
+                                                                    _model
+                                                                        .emailAddressController
+                                                                        .text),
                                                                 _model
                                                                     .passwordController
                                                                     .text,
@@ -1586,12 +1587,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                         Duration(
                                                             milliseconds: 2000),
                                                         () async {
-                                                          if (functions
-                                                              .checkIfTextMatchRegExp(
+                                                          if (functions.checkIfTextMatchRegExp(
+                                                              functions.trimAndCollapseSpaces(
                                                                   _model
                                                                       .loginEmailAddressController
-                                                                      .text,
-                                                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                      .text),
+                                                              '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
                                                             setState(() {
                                                               _model.loginEmailErr =
                                                                   '';
@@ -1608,12 +1609,13 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       ),
                                                       onFieldSubmitted:
                                                           (_) async {
-                                                        if (functions
-                                                            .checkIfTextMatchRegExp(
-                                                                _model
-                                                                    .loginEmailAddressController
-                                                                    .text,
-                                                                '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                        if (functions.checkIfTextMatchRegExp(
+                                                            functions
+                                                                .trimAndCollapseSpaces(
+                                                                    _model
+                                                                        .loginEmailAddressController
+                                                                        .text),
+                                                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
                                                           setState(() {
                                                             _model.loginEmailErr =
                                                                 '';
@@ -2021,12 +2023,12 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       },
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          if (functions
-                                                              .checkIfTextMatchRegExp(
+                                                          if (functions.checkIfTextMatchRegExp(
+                                                              functions.trimAndCollapseSpaces(
                                                                   _model
                                                                       .loginEmailAddressController
-                                                                      .text,
-                                                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                                      .text),
+                                                              '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
                                                             setState(() {
                                                               _model.loginEmailErr =
                                                                   '';
@@ -2072,9 +2074,10 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 await authManager
                                                                     .signInWithEmail(
                                                               context,
-                                                              _model
-                                                                  .loginEmailAddressController
-                                                                  .text,
+                                                              functions.trimAndCollapseSpaces(
+                                                                  _model
+                                                                      .loginEmailAddressController
+                                                                      .text),
                                                               _model
                                                                   .loginPasswordController
                                                                   .text,

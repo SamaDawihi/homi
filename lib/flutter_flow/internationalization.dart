@@ -302,17 +302,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
-  // AuthPage
-  {
-    'jhv5byc6': {
-      'en': 'AuthPage',
-      'ar': 'AuthPage',
-    },
-    'gj6hshgi': {
-      'en': 'Home',
-      'ar': 'الصفحة الرئيسية',
-    },
-  },
   // CalendarCopy
   {
     '35mpfj4p': {
@@ -910,35 +899,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
       'ar': 'يضيف',
     },
-    '1uzdil6j': {
+    'zsconjlh': {
       'en': 'Field is required',
       'ar': '',
     },
-    'z2r1sx61': {
+    'x41fk3mq': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    '4wkkq6qm': {
+    '2edtsnc3': {
       'en': 'Field is required',
       'ar': '',
     },
-    'ftmw08gp': {
+    '87fd2lrs': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'cdarpkzk': {
+    'b1k2ivs7': {
       'en': 'Field is required',
       'ar': '',
     },
-    '278akss4': {
+    'a3qlzx4f': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    '105f4s34': {
+    'j7cezyuq': {
       'en': 'Field is required',
       'ar': '',
     },
-    'fslli8gr': {
+    'vm9qztyn': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },

@@ -126,7 +126,6 @@ final parametersBuilderMap =
         },
       ),
   'Tasks': ParameterData.none(),
-  'AuthPage': ParameterData.none(),
   'CalendarCopy': ParameterData.none(),
 };
 
