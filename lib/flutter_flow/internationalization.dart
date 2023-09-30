@@ -946,23 +946,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ViewEvent
   {
-    'di8aml6m': {
+    'c1fwwvu2': {
       'en': 'Location:',
       'ar': '',
     },
-    '4i3ffodf': {
+    'fek30bv8': {
       'en': 'Date:',
       'ar': '',
     },
-    'chfkhv8h': {
+    'ad21wnw7': {
       'en': 'Time:',
       'ar': '',
     },
-    'amwwqfup': {
+    'icqwtl6a': {
       'en': 'Description:',
       'ar': '',
     },
-    '647q52db': {
+    '9apdv08i': {
       'en': 'Notify before:',
       'ar': '',
     },
@@ -1005,6 +1005,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '67yghsck': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
+    },
+  },
+  // ConfirmDeleteEvent
+  {
+    'r23g2h16': {
+      'en': 'Delete Event',
+      'ar': 'حذف العائلة',
+    },
+    's5vahqnt': {
+      'en': 'Are you sure you want to delete this event?',
+      'ar':
+          'هل أنت متأكد أنك تريد حذف هذه العائلة؟ لن تتمكن من التراجع عن هذا الإجراء.',
+    },
+    'd6yanmwu': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    'a4zu0coe': {
+      'en': 'OK',
+      'ar': 'نعم',
     },
   },
   // Miscellaneous

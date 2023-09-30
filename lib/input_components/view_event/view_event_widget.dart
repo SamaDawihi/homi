@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/confiramtion_components/confirm_delete_event/confirm_delete_event_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -189,7 +190,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'di8aml6m' /* Location: */,
+                                      'c1fwwvu2' /* Location: */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -235,7 +236,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '4i3ffodf' /* Date: */,
+                                                'fek30bv8' /* Date: */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -271,7 +272,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'chfkhv8h' /* Time: */,
+                                                'ad21wnw7' /* Time: */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -451,7 +452,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'amwwqfup' /* Description: */,
+                                      'icqwtl6a' /* Description: */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -488,7 +489,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '647q52db' /* Notify before: */,
+                                      '9apdv08i' /* Notify before: */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -602,41 +603,70 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 20.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'jjoyrv2a' /* Delete Event */,
-                                          ),
-                                          options: FFButtonOptions(
-                                            height: 50.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    32.0, 0.0, 32.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: Color(0xFF555EBE),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily:
-                                                          'Source Sans Pro',
-                                                      color: Colors.white,
+                                      Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 20.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await showAlignedDialog(
+                                                context: context,
+                                                isGlobal: true,
+                                                avoidOverflow: false,
+                                                targetAnchor:
+                                                    AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                followerAnchor:
+                                                    AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                builder: (dialogContext) {
+                                                  return Material(
+                                                    color: Colors.transparent,
+                                                    child:
+                                                        ConfirmDeleteEventWidget(
+                                                      event: widget
+                                                          .event!.reference,
                                                     ),
-                                            elevation: 2.0,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+                                            },
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              'jjoyrv2a' /* Delete Event */,
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(40.0),
+                                            options: FFButtonOptions(
+                                              height: 50.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      32.0, 0.0, 32.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF555EBE),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Source Sans Pro',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 2.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(40.0),
+                                            ),
                                           ),
                                         ),
                                       ),
