@@ -243,7 +243,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                           );
                         },
                         text: FFLocalizations.of(context).getText(
-                          '9bluqdu6' /* Button */,
+                          '9jd2wwny' /* Button */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,

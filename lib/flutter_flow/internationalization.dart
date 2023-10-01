@@ -260,7 +260,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Create a family',
       'ar': 'إنشاء عائلة',
     },
-    '9bluqdu6': {
+    '9jd2wwny': {
       'en': 'Button',
       'ar': '',
     },
