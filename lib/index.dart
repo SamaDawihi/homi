@@ -1,7 +1,6 @@
 // Export pages
 export '/sprint1/login_signup_page/login_signup_page_widget.dart'
     show LoginSignupPageWidget;
-export '/pages/init_page/init_page_widget.dart' show InitPageWidget;
 export '/sprint1/family_profile/family_profile_widget.dart'
     show FamilyProfileWidget;
 export '/pages/calendar/calendar_widget.dart' show CalendarWidget;
@@ -13,4 +12,3 @@ export '/sprint1/families_management/families_management_widget.dart'
 export '/sprint1/invitations_status/invitations_status_widget.dart'
     show InvitationsStatusWidget;
 export '/pages/tasks/tasks_widget.dart' show TasksWidget;
-export '/pages/calendar_copy/calendar_copy_widget.dart' show CalendarCopyWidget;

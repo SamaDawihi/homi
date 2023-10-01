@@ -21,6 +21,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class InviteByEmailModel extends FlutterFlowModel<InviteByEmailWidget> {
+  ///  Local state fields for this component.
+
+  int? iteration = 0;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for emailAddress widget.
@@ -34,8 +38,8 @@ class InviteByEmailModel extends FlutterFlowModel<InviteByEmailWidget> {
   UsersRecord? theUserWithSameEmail;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   int? noOfUsersInFamilyWithSameEmail;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  InvitationRecord? invitationId;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? userCount;
 
   /// Initialization and disposal methods.
 

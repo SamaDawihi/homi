@@ -190,7 +190,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'c1fwwvu2' /* Location: */,
+                                      'wuzirjew' /* Location: */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -236,7 +236,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'fek30bv8' /* Date: */,
+                                                'hocqoqb6' /* Date: */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -272,7 +272,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'ad21wnw7' /* Time: */,
+                                                '7n5l0pdc' /* Time: */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -452,7 +452,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'icqwtl6a' /* Description: */,
+                                      'xq9xtxj3' /* Description: */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -489,7 +489,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '9apdv08i' /* Notify before: */,
+                                      '2rna7b6m' /* Notify before: */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
@@ -650,7 +650,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                                       32.0, 0.0, 32.0, 0.0),
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF555EBE),
+                                              color: Color(0xFFDE1B27),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall

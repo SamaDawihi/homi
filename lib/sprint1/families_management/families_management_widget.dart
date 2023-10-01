@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -228,6 +229,40 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () async {
+                          triggerPushNotification(
+                            notificationTitle: 'try1',
+                            notificationText: 'tr1',
+                            notificationSound: 'default',
+                            userRefs: [currentUserReference!],
+                            initialPageName: 'FamiliesManagement',
+                            parameterData: {},
+                          );
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          '9bluqdu6' /* Button */,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    color: Colors.white,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ],

@@ -97,11 +97,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LoginSignupPageWidget(),
         ),
         FFRoute(
-          name: 'initPage',
-          path: '/initPage',
-          builder: (context, params) => InitPageWidget(),
-        ),
-        FFRoute(
           name: 'FamilyProfile',
           path: '/familyProfile',
           builder: (context, params) => params.isEmpty
@@ -145,11 +140,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Tasks',
           path: '/tasks',
           builder: (context, params) => TasksWidget(),
-        ),
-        FFRoute(
-          name: 'CalendarCopy',
-          path: '/calendarCopy',
-          builder: (context, params) => CalendarCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

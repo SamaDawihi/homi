@@ -180,13 +180,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
-  // initPage
-  {
-    'l88fquol': {
-      'en': 'Home',
-      'ar': 'الصفحة الرئيسية',
-    },
-  },
   // FamilyProfile
   {
     'g30gpykm': {
@@ -267,6 +260,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Create a family',
       'ar': 'إنشاء عائلة',
     },
+    '9bluqdu6': {
+      'en': 'Button',
+      'ar': '',
+    },
     '5dfbp8ya': {
       'en': 'My Families',
       'ar': 'عائلتي',
@@ -298,17 +295,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Tasks
   {
     'jo2qphs2': {
-      'en': 'Home',
-      'ar': 'الصفحة الرئيسية',
-    },
-  },
-  // CalendarCopy
-  {
-    '35mpfj4p': {
-      'en': 'Calendar',
-      'ar': 'التقويم',
-    },
-    'md3se1k7': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
     },
@@ -946,23 +932,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ViewEvent
   {
-    'c1fwwvu2': {
+    'wuzirjew': {
       'en': 'Location:',
       'ar': '',
     },
-    'fek30bv8': {
+    'hocqoqb6': {
       'en': 'Date:',
       'ar': '',
     },
-    'ad21wnw7': {
+    '7n5l0pdc': {
       'en': 'Time:',
       'ar': '',
     },
-    'icqwtl6a': {
+    'xq9xtxj3': {
       'en': 'Description:',
       'ar': '',
     },
-    '9apdv08i': {
+    '2rna7b6m': {
       'en': 'Notify before:',
       'ar': '',
     },

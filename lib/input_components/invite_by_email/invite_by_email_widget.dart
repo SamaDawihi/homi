@@ -351,26 +351,7 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                             return;
                           }
 
-                          var invitationRecordReference =
-                              InvitationRecord.collection.doc();
-                          await invitationRecordReference
-                              .set(createInvitationRecordData(
-                            invitedEmail: functions.toLowerCaseFunction(
-                                _model.emailAddressController.text),
-                            familyId: widget.familyId,
-                            status: 'Pending',
-                            createdTime: getCurrentTimestamp,
-                          ));
-                          _model.invitationId =
-                              InvitationRecord.getDocumentFromData(
-                                  createInvitationRecordData(
-                                    invitedEmail: functions.toLowerCaseFunction(
-                                        _model.emailAddressController.text),
-                                    familyId: widget.familyId,
-                                    status: 'Pending',
-                                    createdTime: getCurrentTimestamp,
-                                  ),
-                                  invitationRecordReference);
+                          _model.userCount = await queryUsersRecordCount();
                           _shouldSetState = true;
                           await showAlignedDialog(
                             context: context,
