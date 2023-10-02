@@ -31,6 +31,10 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   String? Function(BuildContext, String?)? locationControllerValidator;
   DateTime? datePicked1;
   DateTime? datePicked2;
+  // State field(s) for Switch widget.
+  bool? switchValue;
+  DateTime? datePicked3;
+  DateTime? datePicked4;
   // State field(s) for description widget.
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
@@ -42,6 +46,8 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   FormFieldController<String>? dropDownValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   EventRecord? addedEvent;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  EventRecord? addedEventWithTime;
 
   /// Initialization and disposal methods.
 

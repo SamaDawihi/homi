@@ -782,12 +782,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ar': '',
     },
+    'vhq0uc1j': {
+      'en': 'All Day Event',
+      'ar': '',
+    },
     'nwnx2xr6': {
       'en': 'Description here...',
       'ar': 'الوصف هنا...',
     },
     'upd78bv9': {
-      'en': 'Hello World',
+      'en': 'Notification Time',
       'ar': 'مرحبا بالعالم',
     },
     'xhvahadc': {
