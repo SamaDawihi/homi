@@ -9,6 +9,7 @@ import '/input_components/add_event_form/add_event_form_widget.dart';
 import '/list_view_items/event_display/event_display_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -393,6 +394,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                             ),
                           ),
                         ],
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 250.0,
+                        child: custom_widgets.TableCalendarWidget(
+                          width: double.infinity,
+                          height: 250.0,
+                        ),
                       ),
                     ],
                   ),
