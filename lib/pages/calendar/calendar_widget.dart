@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,7 +9,9 @@ import '/input_components/add_event_form/add_event_form_widget.dart';
 import '/list_view_items/event_display/event_display_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,6 +36,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CalendarModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.currentDate = getCurrentTimestamp;
+        _model.dateSelected = getCurrentTimestamp;
+      });
+    });
   }
 
   @override
@@ -367,40 +376,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           ),
                         ),
                       ),
-                      FlutterFlowCalendar(
-                        color: FlutterFlowTheme.of(context).primary,
-                        iconColor: FlutterFlowTheme.of(context).secondaryText,
-                        weekFormat: false,
-                        weekStartsMonday: false,
-                        initialDate: getCurrentTimestamp,
-                        rowHeight: 64.0,
-                        onChange: (DateTimeRange? newSelectedDate) async {
-                          _model.calendarSelectedDay = newSelectedDate;
-                          setState(() {
-                            _model.dateSelected =
-                                _model.calendarSelectedDay?.start;
-                          });
-                          setState(() {});
-                        },
-                        titleStyle: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: 'Open Sans',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              fontSize: 26.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                        dayOfWeekStyle: FlutterFlowTheme.of(context).labelLarge,
-                        dateStyle: FlutterFlowTheme.of(context).bodyMedium,
-                        selectedDateStyle:
-                            FlutterFlowTheme.of(context).titleSmall,
-                        inactiveDateStyle:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Source Sans Pro',
-                                  fontWeight: FontWeight.normal,
-                                ),
-                        locale: FFLocalizations.of(context).languageCode,
-                      ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -454,8 +429,10 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           final listViewEventRecord =
                               listViewEventRecordList[listViewIndex];
                           return Visibility(
-                            visible: (listViewEventRecord.startDate ==
-                                    _model.dateSelected) &&
+                            visible: functions.isDateInRange(
+                                    _model.dateSelected!,
+                                    listViewEventRecord.startDate!,
+                                    listViewEventRecord.endDate!) &&
                                 ((currentUserReference ==
                                         listViewEventRecord.createdBy) ||
                                     !(listViewEventRecord.isGoogleEvent &&

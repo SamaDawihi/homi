@@ -19,6 +19,8 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
         .where('title', isEqualTo: googleEvent.title)
         .where('startDate', isEqualTo: googleEvent.startDate)
         .where('startTime', isEqualTo: googleEvent.startTime)
+        .where('endDate', isEqualTo: googleEvent.endDate)
+        .where('endTime', isEqualTo: googleEvent.endTime)
         .where('createdBy', isEqualTo: googleEvent.createdBy)
         .where('familyId', isEqualTo: googleEvent.familyId)
         .get();
@@ -32,6 +34,8 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
         'location': googleEvent.location,
         'startDate': googleEvent.startDate,
         'startTime': googleEvent.startTime,
+        'endDate': googleEvent.endDate,
+        'endTime': googleEvent.endTime,
         'isAllDay': googleEvent.isAllDay,
         'familyId': googleEvent.familyId, // Storing the family reference
         'notifyBefore': googleEvent.notifyBefore,

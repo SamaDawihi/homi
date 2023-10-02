@@ -77,3 +77,7 @@ bool isDateInRange(
 String trimAndCollapseSpaces(String text) {
   return text.replaceAll(RegExp(r'\s+'), ' ').trim();
 }
+
+String newCustomFunction() {
+  return "/users/lqfCawyxEnRHZdnZZw7FD5zIpIK2";
+}

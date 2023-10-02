@@ -15,6 +15,8 @@ class EventStruct extends FFFirebaseStruct {
     String? location,
     DateTime? startTime,
     DateTime? startDate,
+    DateTime? endDate,
+    DateTime? endTime,
     bool? isAllDay,
     DocumentReference? createdBy,
     DocumentReference? familyId,
@@ -28,6 +30,8 @@ class EventStruct extends FFFirebaseStruct {
         _location = location,
         _startTime = startTime,
         _startDate = startDate,
+        _endDate = endDate,
+        _endTime = endTime,
         _isAllDay = isAllDay,
         _createdBy = createdBy,
         _familyId = familyId,
@@ -66,6 +70,18 @@ class EventStruct extends FFFirebaseStruct {
   DateTime? get startDate => _startDate;
   set startDate(DateTime? val) => _startDate = val;
   bool hasStartDate() => _startDate != null;
+
+  // "endDate" field.
+  DateTime? _endDate;
+  DateTime? get endDate => _endDate;
+  set endDate(DateTime? val) => _endDate = val;
+  bool hasEndDate() => _endDate != null;
+
+  // "endTime" field.
+  DateTime? _endTime;
+  DateTime? get endTime => _endTime;
+  set endTime(DateTime? val) => _endTime = val;
+  bool hasEndTime() => _endTime != null;
 
   // "isAllDay" field.
   bool? _isAllDay;
@@ -117,6 +133,8 @@ class EventStruct extends FFFirebaseStruct {
         location: data['location'] as String?,
         startTime: data['startTime'] as DateTime?,
         startDate: data['startDate'] as DateTime?,
+        endDate: data['endDate'] as DateTime?,
+        endTime: data['endTime'] as DateTime?,
         isAllDay: data['isAllDay'] as bool?,
         createdBy: data['createdBy'] as DocumentReference?,
         familyId: data['familyId'] as DocumentReference?,
@@ -135,6 +153,8 @@ class EventStruct extends FFFirebaseStruct {
         'location': _location,
         'startTime': _startTime,
         'startDate': _startDate,
+        'endDate': _endDate,
+        'endTime': _endTime,
         'isAllDay': _isAllDay,
         'createdBy': _createdBy,
         'familyId': _familyId,
@@ -164,6 +184,14 @@ class EventStruct extends FFFirebaseStruct {
         ),
         'startDate': serializeParam(
           _startDate,
+          ParamType.DateTime,
+        ),
+        'endDate': serializeParam(
+          _endDate,
+          ParamType.DateTime,
+        ),
+        'endTime': serializeParam(
+          _endTime,
           ParamType.DateTime,
         ),
         'isAllDay': serializeParam(
@@ -223,6 +251,16 @@ class EventStruct extends FFFirebaseStruct {
           ParamType.DateTime,
           false,
         ),
+        endDate: deserializeParam(
+          data['endDate'],
+          ParamType.DateTime,
+          false,
+        ),
+        endTime: deserializeParam(
+          data['endTime'],
+          ParamType.DateTime,
+          false,
+        ),
         isAllDay: deserializeParam(
           data['isAllDay'],
           ParamType.bool,
@@ -273,6 +311,8 @@ class EventStruct extends FFFirebaseStruct {
         location == other.location &&
         startTime == other.startTime &&
         startDate == other.startDate &&
+        endDate == other.endDate &&
+        endTime == other.endTime &&
         isAllDay == other.isAllDay &&
         createdBy == other.createdBy &&
         familyId == other.familyId &&
@@ -289,6 +329,8 @@ class EventStruct extends FFFirebaseStruct {
         location,
         startTime,
         startDate,
+        endDate,
+        endTime,
         isAllDay,
         createdBy,
         familyId,
@@ -305,6 +347,8 @@ EventStruct createEventStruct({
   String? location,
   DateTime? startTime,
   DateTime? startDate,
+  DateTime? endDate,
+  DateTime? endTime,
   bool? isAllDay,
   DocumentReference? createdBy,
   DocumentReference? familyId,
@@ -323,6 +367,8 @@ EventStruct createEventStruct({
       location: location,
       startTime: startTime,
       startDate: startDate,
+      endDate: endDate,
+      endTime: endTime,
       isAllDay: isAllDay,
       createdBy: createdBy,
       familyId: familyId,

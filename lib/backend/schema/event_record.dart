@@ -76,6 +76,16 @@ class EventRecord extends FirestoreRecord {
   bool get dontShareThisEvent => _dontShareThisEvent ?? false;
   bool hasDontShareThisEvent() => _dontShareThisEvent != null;
 
+  // "endDate" field.
+  DateTime? _endDate;
+  DateTime? get endDate => _endDate;
+  bool hasEndDate() => _endDate != null;
+
+  // "endTime" field.
+  DateTime? _endTime;
+  DateTime? get endTime => _endTime;
+  bool hasEndTime() => _endTime != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -89,6 +99,8 @@ class EventRecord extends FirestoreRecord {
     _isGoogleEvent = snapshotData['isGoogleEvent'] as bool?;
     _startDate = snapshotData['startDate'] as DateTime?;
     _dontShareThisEvent = snapshotData['dontShareThisEvent'] as bool?;
+    _endDate = snapshotData['endDate'] as DateTime?;
+    _endTime = snapshotData['endTime'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -137,6 +149,8 @@ Map<String, dynamic> createEventRecordData({
   bool? isGoogleEvent,
   DateTime? startDate,
   bool? dontShareThisEvent,
+  DateTime? endDate,
+  DateTime? endTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -152,6 +166,8 @@ Map<String, dynamic> createEventRecordData({
       'isGoogleEvent': isGoogleEvent,
       'startDate': startDate,
       'dontShareThisEvent': dontShareThisEvent,
+      'endDate': endDate,
+      'endTime': endTime,
     }.withoutNulls,
   );
 
@@ -174,7 +190,9 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e1?.notifyBeforeUnit == e2?.notifyBeforeUnit &&
         e1?.isGoogleEvent == e2?.isGoogleEvent &&
         e1?.startDate == e2?.startDate &&
-        e1?.dontShareThisEvent == e2?.dontShareThisEvent;
+        e1?.dontShareThisEvent == e2?.dontShareThisEvent &&
+        e1?.endDate == e2?.endDate &&
+        e1?.endTime == e2?.endTime;
   }
 
   @override
@@ -190,7 +208,9 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e?.notifyBeforeUnit,
         e?.isGoogleEvent,
         e?.startDate,
-        e?.dontShareThisEvent
+        e?.dontShareThisEvent,
+        e?.endDate,
+        e?.endTime
       ]);
 
   @override
