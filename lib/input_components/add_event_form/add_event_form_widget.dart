@@ -532,7 +532,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'vhq0uc1j' /* All Day Event */,
+                                                    '8n6uay47' /* All Day Event */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1073,7 +1073,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                       .showSnackBar(
                                                     SnackBar(
                                                       content: Text(
-                                                        'End Time can not be less than or equal Start Time',
+                                                        'End Time can not be less than or equal Start Time.',
                                                         style: TextStyle(
                                                           color: FlutterFlowTheme
                                                                   .of(context)

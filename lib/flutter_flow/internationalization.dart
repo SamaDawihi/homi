@@ -782,7 +782,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ar': '',
     },
-    'vhq0uc1j': {
+    '8n6uay47': {
       'en': 'All Day Event',
       'ar': '',
     },
@@ -851,101 +851,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // EditEventForm
-  {
-    'x0la2fp4': {
-      'en': 'Edit Event',
-      'ar': 'أضف حدثًا',
-    },
-    'hrmmv7ta': {
-      'en': 'Event Title',
-      'ar': 'عنوان الحدث',
-    },
-    'ui4ub2ms': {
-      'en': 'Location',
-      'ar': 'موقع',
-    },
-    'kamagkiw': {
-      'en': '',
-      'ar': '',
-    },
-    'zts4tytl': {
-      'en': 'Description here...',
-      'ar': 'الوصف هنا...',
-    },
-    'mcn3efqr': {
-      'en': 'Notify Before:',
-      'ar': 'مرحبا بالعالم',
-    },
-    'jv20klgl': {
-      'en': 'Before...',
-      'ar': 'قبل...',
-    },
-    'r9a3tbel': {
-      'en': 'Minutes',
-      'ar': 'دقائق',
-    },
-    'lo46c05e': {
-      'en': 'Hours',
-      'ar': 'ساعات',
-    },
-    'jz47akgx': {
-      'en': 'Min/hour',
-      'ar': 'دقيقة/ساعة',
-    },
-    'fgzkpvgw': {
-      'en': 'Search for an item...',
-      'ar': 'البحث عن عنصر...',
-    },
-    '3dmk3mr5': {
-      'en': 'Confirm Edit',
-      'ar': 'يضيف',
-    },
-    'hfg47b2m': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    '7entxo79': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'x917lsrh': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    'y0mf1wlg': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    '4hfyvn2c': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    'oo7p7u5w': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'gbw2vop4': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    'j5o6010c': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-  },
   // ViewEvent
   {
     'wuzirjew': {
       'en': 'Location:',
       'ar': '',
     },
+    '5r536hc5': {
+      'en': 'Start Date:',
+      'ar': '',
+    },
+    'hjbvg7x4': {
+      'en': 'End Date:',
+      'ar': '',
+    },
     'hocqoqb6': {
-      'en': 'Date:',
+      'en': 'Start Time:',
       'ar': '',
     },
     '7n5l0pdc': {
-      'en': 'Time:',
+      'en': 'End Time:',
       'ar': '',
     },
     'xq9xtxj3': {
@@ -1015,6 +940,93 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'a4zu0coe': {
       'en': 'OK',
       'ar': 'نعم',
+    },
+  },
+  // EditEventForm
+  {
+    'idmwi8nu': {
+      'en': 'Edit Event',
+      'ar': 'أضف حدثًا',
+    },
+    'owlpk0ts': {
+      'en': 'Event Title',
+      'ar': 'عنوان الحدث',
+    },
+    'spc15pjf': {
+      'en': 'Location',
+      'ar': 'موقع',
+    },
+    'fxibepzk': {
+      'en': '',
+      'ar': '',
+    },
+    'cnuenws8': {
+      'en': 'All Day Event',
+      'ar': '',
+    },
+    '3mz0d7t1': {
+      'en': 'Description here...',
+      'ar': 'الوصف هنا...',
+    },
+    'xb2gvglg': {
+      'en': 'Notification Time',
+      'ar': 'مرحبا بالعالم',
+    },
+    'vnxway6p': {
+      'en': 'Before...',
+      'ar': 'قبل...',
+    },
+    'imxn7eyw': {
+      'en': 'Minutes',
+      'ar': 'دقائق',
+    },
+    'lj7mdgz5': {
+      'en': 'Hours',
+      'ar': 'ساعات',
+    },
+    '1xs2a48b': {
+      'en': 'Min/hour',
+      'ar': 'دقيقة/ساعة',
+    },
+    '40mfd58u': {
+      'en': 'Search for an item...',
+      'ar': 'البحث عن عنصر...',
+    },
+    'lbzb0254': {
+      'en': 'Edit',
+      'ar': 'يضيف',
+    },
+    '103s2oa3': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'awihbny8': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'al9khev3': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'j5otfr30': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'rfrrtmjp': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'k3113rib': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'cqd86gwg': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '8ihz50xq': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
     },
   },
   // Miscellaneous

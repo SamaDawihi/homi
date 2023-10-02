@@ -24,6 +24,8 @@ class ViewEventModel extends FlutterFlowModel<ViewEventWidget> {
   DateTime? datePicked1;
   DateTime? datePicked2;
   DateTime? datePicked3;
+  DateTime? datePicked4;
+  DateTime? datePicked5;
 
   /// Initialization and disposal methods.
 
