@@ -1029,6 +1029,51 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // ConfirmAddingGoogleEvents
+  {
+    'xo14loky': {
+      'en':
+          'By adding these events to the family calendar only you can view them to share them with the rest of family member you have to share each of them individually.',
+      'ar':
+          'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
+    },
+    'ilima01z': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+  },
+  // NoGoogleEventsFound
+  {
+    'h89salka': {
+      'en': 'No Events Has Been Found',
+      'ar': 'تمت دعوة العضو بالفعل.',
+    },
+    'fvciq7rl': {
+      'en': 'Make sure that your google account has events.',
+      'ar':
+          'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
+    },
+    'n9zfpovu': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
+  // DoneAddingGoogleEvents
+  {
+    'yyczdsla': {
+      'en': 'Done Adding Google Events',
+      'ar': 'تمت دعوة العضو بالفعل.',
+    },
+    'ebsj0unj': {
+      'en': 'Events Added Only You Will Be Able To View Them.',
+      'ar':
+          'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
+    },
+    'gxzwqdq9': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
   // Miscellaneous
   {
     'y9xb58yl': {

@@ -1,13 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/confiramtion_components/email_not_supported/email_not_supported_widget.dart';
-import '/confiramtion_components/invite_sent_successfully/invite_sent_successfully_widget.dart';
-import '/confiramtion_components/member_already_invited/member_already_invited_widget.dart';
-import '/confiramtion_components/member_already_member/member_already_member_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/information_components/email_not_supported/email_not_supported_widget.dart';
+import '/information_components/invite_sent_successfully/invite_sent_successfully_widget.dart';
+import '/information_components/member_already_invited/member_already_invited_widget.dart';
+import '/information_components/member_already_member/member_already_member_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'invite_by_email_widget.dart' show InviteByEmailWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';

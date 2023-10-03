@@ -551,7 +551,7 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                                 ),
                                                 Switch.adaptive(
                                                   value: _model.switchValue ??=
-                                                      false,
+                                                      widget.event!.isAllDay,
                                                   onChanged: (newValue) async {
                                                     setState(() =>
                                                         _model.switchValue =
@@ -632,14 +632,16 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          Text(
-                                                            widget.event!
-                                                                .hasStartTime()
-                                                                .toString(),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
-                                                          ),
+                                                          if (!_model
+                                                              .switchValue!)
+                                                            Text(
+                                                              widget.event!
+                                                                  .hasStartTime()
+                                                                  .toString(),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium,
+                                                            ),
                                                           Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
@@ -707,14 +709,16 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        Text(
-                                                          widget.event!
-                                                              .hasEndTime()
-                                                              .toString(),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
-                                                        ),
+                                                        if (!_model
+                                                            .switchValue!)
+                                                          Text(
+                                                            widget.event!
+                                                                .hasEndTime()
+                                                                .toString(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
                                                         Padding(
                                                           padding:
                                                               EdgeInsetsDirectional

@@ -1,10 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/confiramtion_components/confirm_adding_google_events/confirm_adding_google_events_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/information_components/no_google_events_found/no_google_events_found_widget.dart';
 import '/input_components/add_event_form/add_event_form_widget.dart';
 import '/list_view_items/event_display/event_display_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
@@ -265,63 +267,59 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                     );
                                     _shouldSetState = true;
                                     if (_model.googleEvents?.length == 0) {
-                                      await showDialog(
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        enableDrag: false,
                                         context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('no events'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
+                                        builder: (context) {
+                                          return GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child:
+                                                  NoGoogleEventsFoundWidget(),
+                                            ),
                                           );
                                         },
-                                      );
+                                      ).then((value) => safeSetState(() {}));
+
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      await showDialog(
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        enableDrag: false,
                                         context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text(valueOrDefault<String>(
-                                              'there are ${_model.googleEvents?.length?.toString()} events',
-                                              'not 0',
-                                            )),
-                                            content: Text(_model
-                                                .googleEvents!.first.title),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
+                                        builder: (context) {
+                                          return GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child:
+                                                  ConfirmAddingGoogleEventsWidget(
+                                                events: _model.googleEvents!,
                                               ),
-                                            ],
+                                            ),
                                           );
                                         },
-                                      );
-                                      await actions.addGoogleEvents(
-                                        _model.googleEvents!.toList(),
-                                      );
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('Done adding'),
-                                            content: Text('done Adding'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
+                                      ).then((value) => safeSetState(() {}));
+
                                       if (_shouldSetState) setState(() {});
                                       return;
                                     }
