@@ -463,7 +463,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'hocqoqb6' /* Start Time: */,
+                                                'hocqoqb6' /* All Day? */,
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -479,27 +479,15 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                                   ),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 140.0,
-                                      height: 60.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
+                                                    5.0, 20.0, 0.0, 0.0),
                                             child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '7n5l0pdc' /* End Time: */,
+                                              valueOrDefault<String>(
+                                                widget.event?.isAllDay
+                                                    ?.toString(),
+                                                'False',
                                               ),
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -509,9 +497,9 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                                         'Source Sans Pro',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primary,
-                                                    fontSize: 18.0,
-                                                    fontWeight: FontWeight.bold,
+                                                        .primaryText,
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.w500,
                                                   ),
                                             ),
                                           ),
@@ -520,154 +508,236 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                     ),
                                   ].divide(SizedBox(width: 26.0)),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Container(
-                                      width: 152.0,
-                                      height: 35.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 0.0, 0.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                final _datePicked3Time =
-                                                    await showTimePicker(
-                                                  context: context,
-                                                  initialTime:
-                                                      TimeOfDay.fromDateTime(
-                                                          getCurrentTimestamp),
-                                                );
-                                                if (_datePicked3Time != null) {
-                                                  safeSetState(() {
-                                                    _model.datePicked3 =
-                                                        DateTime(
-                                                      getCurrentTimestamp.year,
-                                                      getCurrentTimestamp.month,
-                                                      getCurrentTimestamp.day,
-                                                      _datePicked3Time.hour,
-                                                      _datePicked3Time.minute,
-                                                    );
-                                                  });
-                                                }
-                                              },
-                                              child: Icon(
-                                                Icons.access_time,
-                                                color: Color(0xFF555EBE),
-                                                size: 28.0,
+                                if (widget.event?.isAllDay == false)
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        width: 130.0,
+                                        height: 60.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '6kvv1bx6' /* Start Time: */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          fontSize: 18.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    6.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              widget.event!.startTime!
-                                                  .toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Source Sans Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 14.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Container(
-                                      width: 136.0,
-                                      height: 37.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 0.0, 0.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                final _datePicked4Time =
-                                                    await showTimePicker(
-                                                  context: context,
-                                                  initialTime:
-                                                      TimeOfDay.fromDateTime(
-                                                          getCurrentTimestamp),
-                                                );
-                                                if (_datePicked4Time != null) {
-                                                  safeSetState(() {
-                                                    _model.datePicked4 =
-                                                        DateTime(
-                                                      getCurrentTimestamp.year,
-                                                      getCurrentTimestamp.month,
-                                                      getCurrentTimestamp.day,
-                                                      _datePicked4Time.hour,
-                                                      _datePicked4Time.minute,
-                                                    );
-                                                  });
-                                                }
-                                              },
-                                              child: Icon(
-                                                Icons.access_time,
-                                                color: Color(0xFF555EBE),
-                                                size: 28.0,
+                                      Container(
+                                        width: 140.0,
+                                        height: 60.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'mo7aqe05' /* End Time: */,
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          fontSize: 18.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    6.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              widget.event!.endTime!.toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Source Sans Pro',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        fontSize: 16.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ].divide(SizedBox(width: 26.0)),
+                                  ),
+                                if (widget.event?.isAllDay == false)
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        width: 152.0,
+                                        height: 35.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(2.0, 0.0, 0.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  final _datePicked3Time =
+                                                      await showTimePicker(
+                                                    context: context,
+                                                    initialTime:
+                                                        TimeOfDay.fromDateTime(
+                                                            getCurrentTimestamp),
+                                                  );
+                                                  if (_datePicked3Time !=
+                                                      null) {
+                                                    safeSetState(() {
+                                                      _model.datePicked3 =
+                                                          DateTime(
+                                                        getCurrentTimestamp
+                                                            .year,
+                                                        getCurrentTimestamp
+                                                            .month,
+                                                        getCurrentTimestamp.day,
+                                                        _datePicked3Time.hour,
+                                                        _datePicked3Time.minute,
+                                                      );
+                                                    });
+                                                  }
+                                                },
+                                                child: Icon(
+                                                  Icons.access_time,
+                                                  color: Color(0xFF555EBE),
+                                                  size: 28.0,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                widget.event!.startTime!
+                                                    .toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 14.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 136.0,
+                                        height: 37.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(2.0, 0.0, 0.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  final _datePicked4Time =
+                                                      await showTimePicker(
+                                                    context: context,
+                                                    initialTime:
+                                                        TimeOfDay.fromDateTime(
+                                                            getCurrentTimestamp),
+                                                  );
+                                                  if (_datePicked4Time !=
+                                                      null) {
+                                                    safeSetState(() {
+                                                      _model.datePicked4 =
+                                                          DateTime(
+                                                        getCurrentTimestamp
+                                                            .year,
+                                                        getCurrentTimestamp
+                                                            .month,
+                                                        getCurrentTimestamp.day,
+                                                        _datePicked4Time.hour,
+                                                        _datePicked4Time.minute,
+                                                      );
+                                                    });
+                                                  }
+                                                },
+                                                child: Icon(
+                                                  Icons.access_time,
+                                                  color: Color(0xFF555EBE),
+                                                  size: 28.0,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(6.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                widget.event!.endTime!
+                                                    .toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 16.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 Divider(
                                   thickness: 2.0,
                                   color: FlutterFlowTheme.of(context).alternate,

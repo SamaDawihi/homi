@@ -207,11 +207,6 @@ class _ConfirmAcceptInvitationWidgetState
                               color: _model.colorPicked,
                               createdTime: getCurrentTimestamp,
                             ));
-
-                        await widget.invitation!.reference
-                            .update(createInvitationRecordData(
-                          status: 'Accepted',
-                        ));
                         FFAppState().update(() {
                           FFAppState().familyId = widget.invitation?.familyId;
                         });
@@ -219,6 +214,11 @@ class _ConfirmAcceptInvitationWidgetState
                         context.goNamed('FamilyProfile');
 
                         Navigator.pop(context);
+
+                        await widget.invitation!.reference
+                            .update(createInvitationRecordData(
+                          status: 'Accepted',
+                        ));
                       },
                       text: FFLocalizations.of(context).getText(
                         '521dbf30' /* Accept */,

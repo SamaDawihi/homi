@@ -866,10 +866,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'hocqoqb6': {
+      'en': 'All Day?',
+      'ar': '',
+    },
+    '6kvv1bx6': {
       'en': 'Start Time:',
       'ar': '',
     },
-    '7n5l0pdc': {
+    'mo7aqe05': {
       'en': 'End Time:',
       'ar': '',
     },

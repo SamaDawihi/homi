@@ -1392,6 +1392,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                             .text,
                                                                     createdTime:
                                                                         getCurrentTimestamp,
+                                                                    isLoggedIn:
+                                                                        true,
                                                                   ));
 
                                                               _navigate = () =>
@@ -2023,6 +2025,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       },
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
+                                                          Function() _navigate =
+                                                              () {};
                                                           if (functions.checkIfTextMatchRegExp(
                                                               functions.trimAndCollapseSpaces(
                                                                   _model
@@ -2085,13 +2089,17 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             if (user == null) {
                                                               return;
                                                             }
+
+                                                            _navigate = () =>
+                                                                context.goNamedAuth(
+                                                                    'FamilyProfile',
+                                                                    context
+                                                                        .mounted);
                                                           } else {
                                                             return;
                                                           }
 
-                                                          context.goNamedAuth(
-                                                              'FamilyProfile',
-                                                              context.mounted);
+                                                          _navigate();
                                                         },
                                                         text:
                                                             FFLocalizations.of(

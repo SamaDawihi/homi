@@ -165,8 +165,7 @@ class _ConfirmDeleteEventWidgetState extends State<ConfirmDeleteEventWidget> {
                                 FlutterFlowTheme.of(context).success,
                           ),
                         );
-
-                        context.pushNamed('Calendar');
+                        setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         'a4zu0coe' /* OK */,
