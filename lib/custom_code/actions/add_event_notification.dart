@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'package:http/http.dart' as http;
+
 Future addEventNotification(
   String token,
   EventRecord eventRecord,
@@ -25,7 +27,7 @@ Future addEventNotification(
       body: jsonEncode(
         <String, dynamic>{
           'priority': 'high',
-          'data': <string, dynamic>{
+          'data': <String, dynamic>{
             "click_action": "FLUTTER_NOTIFICATION_CLICK",
             "status": 'done',
             "body": eventRecord.description,
