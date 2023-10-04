@@ -1049,6 +1049,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                 startDate: _model.datePicked1,
                                                 endDate: _model.datePicked2,
                                                 endTime: _model.datePicked2,
+                                                notificationSent: false,
                                               ));
                                               _model.addedEvent = EventRecord
                                                   .getDocumentFromData(
@@ -1084,6 +1085,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                             _model.datePicked2,
                                                         endTime:
                                                             _model.datePicked2,
+                                                        notificationSent: false,
                                                       ),
                                                       eventRecordReference1);
                                               _shouldSetState = true;
@@ -1141,6 +1143,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                 startDate: _model.datePicked1,
                                                 endDate: _model.datePicked2,
                                                 endTime: _model.datePicked4,
+                                                notificationSent: false,
                                               ));
                                               _model.addedEventWithTime =
                                                   EventRecord
@@ -1180,6 +1183,8 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                                 .datePicked2,
                                                             endTime: _model
                                                                 .datePicked4,
+                                                            notificationSent:
+                                                                false,
                                                           ),
                                                           eventRecordReference2);
                                               _shouldSetState = true;
