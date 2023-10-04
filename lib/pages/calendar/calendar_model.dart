@@ -13,6 +13,8 @@ import '/sprint1/side_menu/side_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'calendar_widget.dart' show CalendarWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -28,9 +30,22 @@ class CalendarModel extends FlutterFlowModel<CalendarWidget> {
 
   DateTime? currentDate;
 
+  List<EventRecord> importedEvents = [];
+  void addToImportedEvents(EventRecord item) => importedEvents.add(item);
+  void removeFromImportedEvents(EventRecord item) =>
+      importedEvents.remove(item);
+  void removeAtIndexFromImportedEvents(int index) =>
+      importedEvents.removeAt(index);
+  void insertAtIndexInImportedEvents(int index, EventRecord item) =>
+      importedEvents.insert(index, item);
+  void updateImportedEventsAtIndex(int index, Function(EventRecord) updateFn) =>
+      importedEvents[index] = updateFn(importedEvents[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Firestore Query - Query a collection] action in Calendar widget.
+  List<EventRecord>? events;
   Color? colorPicked;
   // Stores action output result for [Custom Action - getGoogleEvents] action in LinkGoogleIconButton widget.
   List<EventStruct>? googleEvents;

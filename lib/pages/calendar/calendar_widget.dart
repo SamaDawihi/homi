@@ -12,6 +12,8 @@ import '/list_view_items/event_display/event_display_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -44,6 +46,15 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       setState(() {
         _model.currentDate = getCurrentTimestamp;
         _model.dateSelected = getCurrentTimestamp;
+      });
+      _model.events = await queryEventRecordOnce(
+        queryBuilder: (eventRecord) => eventRecord.where(
+          'familyId',
+          isEqualTo: FFAppState().familyId,
+        ),
+      );
+      setState(() {
+        _model.importedEvents = _model.events!.toList().cast<EventRecord>();
       });
     });
   }
