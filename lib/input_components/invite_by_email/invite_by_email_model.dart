@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/information_components/email_not_supported/email_not_supported_widget.dart';
+import '/information_components/invite_email_sent_successfully/invite_email_sent_successfully_widget.dart';
 import '/information_components/invite_sent_successfully/invite_sent_successfully_widget.dart';
 import '/information_components/member_already_invited/member_already_invited_widget.dart';
 import '/information_components/member_already_member/member_already_member_widget.dart';
@@ -19,12 +20,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InviteByEmailModel extends FlutterFlowModel<InviteByEmailWidget> {
-  ///  Local state fields for this component.
-
-  int? iteration = 0;
-
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for emailAddress widget.
@@ -38,8 +36,8 @@ class InviteByEmailModel extends FlutterFlowModel<InviteByEmailWidget> {
   UsersRecord? theUserWithSameEmail;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   int? noOfUsersInFamilyWithSameEmail;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  int? userCount;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  InvitationRecord? invitationId;
 
   /// Initialization and disposal methods.
 

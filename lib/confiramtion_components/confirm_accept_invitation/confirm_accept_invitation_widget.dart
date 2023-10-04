@@ -158,14 +158,14 @@ class _ConfirmAcceptInvitationWidgetState
                           context: context,
                           builder: (alertDialogContext) {
                             return AlertDialog(
-                              title: Text('welcome to the family'),
+                              title: Text('Welcome to the family!'),
                               content: Text(
-                                  'choose the color that will represent you in this family'),
+                                  'Choose the color that will represent you in this family'),
                               actions: [
                                 TextButton(
                                   onPressed: () =>
                                       Navigator.pop(alertDialogContext),
-                                  child: Text('pick a color'),
+                                  child: Text('Pick a color'),
                                 ),
                               ],
                             );

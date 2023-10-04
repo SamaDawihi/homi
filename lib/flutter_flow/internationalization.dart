@@ -1074,6 +1074,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
+  // InviteEmailSentSuccessfully
+  {
+    'ip672t8f': {
+      'en': 'Invitation Sent Successfully',
+      'ar': 'تم إرسال الدعوة بنجاح',
+    },
+    'ld4bdvij': {
+      'en':
+          'The member you have tried to invite does not have a Homi account. Therefore, we have sent an invitation through their email!',
+      'ar': 'العضو الذي حاولت دعوته سوف يتلقى دعوتك',
+    },
+    'wi0woc47': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
   // Miscellaneous
   {
     'y9xb58yl': {
