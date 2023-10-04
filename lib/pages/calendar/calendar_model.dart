@@ -26,9 +26,9 @@ import 'package:provider/provider.dart';
 class CalendarModel extends FlutterFlowModel<CalendarWidget> {
   ///  Local state fields for this page.
 
-  DateTime? dateSelected;
+  DateTime? selectedDay;
 
-  DateTime? currentDate;
+  DateTime? focusDay;
 
   List<EventRecord> importedEvents = [];
   void addToImportedEvents(EventRecord item) => importedEvents.add(item);

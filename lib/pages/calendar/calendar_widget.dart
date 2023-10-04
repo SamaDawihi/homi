@@ -44,8 +44,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        _model.currentDate = getCurrentTimestamp;
-        _model.dateSelected = getCurrentTimestamp;
+        _model.focusDay = getCurrentTimestamp;
+        _model.selectedDay = getCurrentTimestamp;
       });
       _model.events = await queryEventRecordOnce(
         queryBuilder: (eventRecord) => eventRecord.where(
@@ -394,7 +394,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                             child: Text(
                               'This Day Event ${dateTimeFormat(
                                 'd/M h:mm a',
-                                _model.dateSelected,
+                                _model.selectedDay,
                                 locale:
                                     FFLocalizations.of(context).languageCode,
                               )}',
@@ -439,7 +439,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                               listViewEventRecordList[listViewIndex];
                           return Visibility(
                             visible: functions.isDateInRange(
-                                    _model.dateSelected!,
+                                    _model.selectedDay!,
                                     listViewEventRecord.startDate!,
                                     listViewEventRecord.endDate!) &&
                                 ((currentUserReference ==
