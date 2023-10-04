@@ -9,8 +9,10 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/invite_by_email/invite_by_email_widget.dart';
 import '/list_view_items/family_member_container/family_member_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'family_profile_widget.dart' show FamilyProfileWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -25,6 +27,8 @@ class FamilyProfileModel extends FlutterFlowModel<FamilyProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Custom Action - getFcmToken] action in FamilyProfile widget.
+  String? fcmToken;
   // Models for FamilyMemberContainer dynamic component.
   late FlutterFlowDynamicModels<FamilyMemberContainerModel>
       familyMemberContainerModels;

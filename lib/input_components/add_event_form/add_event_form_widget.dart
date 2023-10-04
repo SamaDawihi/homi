@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/push_notifications/push_notifications_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -1203,16 +1202,6 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .success,
                                               ),
-                                            );
-                                            triggerPushNotification(
-                                              notificationTitle:
-                                                  _model.titleController.text,
-                                              notificationText: _model
-                                                  .locationController.text,
-                                              notificationSound: 'default',
-                                              userRefs: [currentUserReference!],
-                                              initialPageName: 'Calendar',
-                                              parameterData: {},
                                             );
                                             Navigator.pop(context);
                                             if (_shouldSetState)

@@ -258,6 +258,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                     await currentUserReference!.update(createUsersRecordData(
                       isLoggedIn: false,
                     ));
+
+                    await currentUserReference!.update(createUsersRecordData(
+                      token: '\"\"',
+                    ));
                   },
                   child: Container(
                     width: double.infinity,

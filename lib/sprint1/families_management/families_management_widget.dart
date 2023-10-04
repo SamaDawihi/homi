@@ -12,7 +12,6 @@ import '/list_view_items/recieved_invitation_container/recieved_invitation_conta
 import '/sprint1/side_menu/side_menu_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -240,41 +239,6 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                             ),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                        ),
-                      ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          _model.event = await queryEventRecordOnce(
-                            singleRecord: true,
-                          ).then((s) => s.firstOrNull);
-                          await actions.addEventNotification(
-                            valueOrDefault(currentUserDocument?.token, ''),
-                            _model.event!,
-                          );
-
-                          setState(() {});
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          '9jd2wwny' /* Button */,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Source Sans Pro',
-                                    color: Colors.white,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ],

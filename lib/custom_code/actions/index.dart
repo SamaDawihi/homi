@@ -6,5 +6,3 @@ export 'get_google_events.dart' show getGoogleEvents;
 export 'add_google_events.dart' show addGoogleEvents;
 export 'to_event_struct.dart' show toEventStruct;
 export 'get_fcm_token.dart' show getFcmToken;
-export 'add_event_notification.dart' show addEventNotification;
-export 'send_notification.dart' show sendNotification;
