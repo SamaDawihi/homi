@@ -45,7 +45,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         _model.focusDay = getCurrentTimestamp;
-        _model.selectedDay = getCurrentTimestamp;
+      });
+      setState(() {
+        _model.selectedDay = _model.focusDay;
       });
       _model.events = await queryEventRecordOnce(
         queryBuilder: (eventRecord) => eventRecord.where(

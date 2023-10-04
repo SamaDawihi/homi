@@ -204,26 +204,12 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                         setState(() {
                           _model.loopIteration = 0;
                         });
-                        await widget.familyID!.delete();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Family deleted successfully!',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).success,
+                        _model.loggedInUserCount = await queryUsersRecordCount(
+                          queryBuilder: (usersRecord) => usersRecord.where(
+                            'isLoggedIn',
+                            isEqualTo: true,
                           ),
                         );
-                        FFAppState().update(() {
-                          FFAppState().familyId = null;
-                        });
-
-                        context.pushNamed('FamiliesManagement');
 
                         setState(() {});
                       },

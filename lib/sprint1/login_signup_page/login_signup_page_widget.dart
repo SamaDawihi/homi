@@ -7,6 +7,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/reset_password/reset_password_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -2025,6 +2027,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       },
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
+                                                          var _shouldSetState =
+                                                              false;
                                                           Function() _navigate =
                                                               () {};
                                                           if (functions.checkIfTextMatchRegExp(
@@ -2095,11 +2099,39 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                     'FamilyProfile',
                                                                     context
                                                                         .mounted);
+                                                            _model.user =
+                                                                await queryUsersRecordOnce(
+                                                              queryBuilder:
+                                                                  (usersRecord) =>
+                                                                      usersRecord
+                                                                          .where(
+                                                                'email',
+                                                                isEqualTo: _model
+                                                                    .loginEmailAddressController
+                                                                    .text,
+                                                              ),
+                                                              singleRecord:
+                                                                  true,
+                                                            ).then((s) => s
+                                                                    .firstOrNull);
+                                                            _shouldSetState =
+                                                                true;
+
+                                                            await _model
+                                                                .user!.reference
+                                                                .update(
+                                                                    createUsersRecordData(
+                                                              isLoggedIn: true,
+                                                            ));
                                                           } else {
+                                                            if (_shouldSetState)
+                                                              setState(() {});
                                                             return;
                                                           }
 
                                                           _navigate();
+                                                          if (_shouldSetState)
+                                                            setState(() {});
                                                         },
                                                         text:
                                                             FFLocalizations.of(

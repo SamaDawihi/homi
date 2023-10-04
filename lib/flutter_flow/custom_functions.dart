@@ -62,12 +62,20 @@ bool isDateInRange(
   DateTime endDate,
 ) {
   if (endDate == null) {
-    return startDate.isAtSameMomentAs(selectedDate);
+    return startDate.year == selectedDate.year &&
+        startDate.month == selectedDate.month &&
+        startDate.day == selectedDate.day;
   } else {
     DateTime currentDate = startDate;
     while (currentDate.isBefore(endDate) ||
-        currentDate.isAtSameMomentAs(endDate)) {
-      if (currentDate.isAtSameMomentAs(selectedDate)) return true;
+        (currentDate.year == endDate.year &&
+            currentDate.month == endDate.month &&
+            currentDate.day == endDate.day)) {
+      if (currentDate.year == selectedDate.year &&
+          currentDate.month == selectedDate.month &&
+          currentDate.day == selectedDate.day) {
+        return true;
+      }
       currentDate = currentDate.add(Duration(days: 1));
     }
   }
@@ -80,4 +88,8 @@ String trimAndCollapseSpaces(String text) {
 
 String newCustomFunction() {
   return "/users/lqfCawyxEnRHZdnZZw7FD5zIpIK2";
+}
+
+DateTime dateTimeToDateOnly(DateTime dateTime) {
+  return DateTime(dateTime.year, dateTime.month, dateTime.day);
 }

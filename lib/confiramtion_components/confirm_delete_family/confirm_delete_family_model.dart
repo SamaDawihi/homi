@@ -25,6 +25,8 @@ class ConfirmDeleteFamilyModel
   List<InvitationRecord>? invites;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<EventRecord>? events;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  int? loggedInUserCount;
 
   /// Initialization and disposal methods.
 

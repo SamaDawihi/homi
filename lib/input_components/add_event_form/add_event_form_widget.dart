@@ -409,8 +409,14 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                         Text(
                                                           valueOrDefault<
                                                               String>(
-                                                            _model.datePicked1
-                                                                ?.toString(),
+                                                            dateTimeFormat(
+                                                              'yMd',
+                                                              _model
+                                                                  .datePicked1,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
                                                             'Start Date',
                                                           ),
                                                           style: FlutterFlowTheme
@@ -480,8 +486,13 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                     children: [
                                                       Text(
                                                         valueOrDefault<String>(
-                                                          _model.datePicked2
-                                                              ?.toString(),
+                                                          dateTimeFormat(
+                                                            'yMd',
+                                                            _model.datePicked2,
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
+                                                          ),
                                                           'End Date',
                                                         ),
                                                         style:
@@ -625,8 +636,14 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                           Text(
                                                             valueOrDefault<
                                                                 String>(
-                                                              _model.datePicked3
-                                                                  ?.toString(),
+                                                              dateTimeFormat(
+                                                                'Hm',
+                                                                _model
+                                                                    .datePicked3,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              ),
                                                               'Start Time',
                                                             ),
                                                             style: FlutterFlowTheme
@@ -703,8 +720,14 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                         Text(
                                                           valueOrDefault<
                                                               String>(
-                                                            _model.datePicked4
-                                                                ?.toString(),
+                                                            dateTimeFormat(
+                                                              'Hm',
+                                                              _model
+                                                                  .datePicked4,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
                                                             'End Time',
                                                           ),
                                                           style: FlutterFlowTheme
