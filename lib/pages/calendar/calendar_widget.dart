@@ -53,9 +53,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           isEqualTo: FFAppState().familyId,
         ),
       );
-      setState(() {
-        _model.importedEvents = _model.events!.toList().cast<EventRecord>();
-      });
     });
   }
 

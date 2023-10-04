@@ -30,15 +30,15 @@ class CalendarModel extends FlutterFlowModel<CalendarWidget> {
 
   DateTime? currentDate;
 
-  List<EventRecord> importedEvents = [];
-  void addToImportedEvents(EventRecord item) => importedEvents.add(item);
-  void removeFromImportedEvents(EventRecord item) =>
+  List<EventStruct> importedEvents = [];
+  void addToImportedEvents(EventStruct item) => importedEvents.add(item);
+  void removeFromImportedEvents(EventStruct item) =>
       importedEvents.remove(item);
   void removeAtIndexFromImportedEvents(int index) =>
       importedEvents.removeAt(index);
-  void insertAtIndexInImportedEvents(int index, EventRecord item) =>
+  void insertAtIndexInImportedEvents(int index, EventStruct item) =>
       importedEvents.insert(index, item);
-  void updateImportedEventsAtIndex(int index, Function(EventRecord) updateFn) =>
+  void updateImportedEventsAtIndex(int index, Function(EventStruct) updateFn) =>
       importedEvents[index] = updateFn(importedEvents[index]);
 
   ///  State fields for stateful widgets in this page.
