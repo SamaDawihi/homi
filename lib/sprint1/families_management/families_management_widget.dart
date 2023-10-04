@@ -11,8 +11,10 @@ import '/list_view_items/emptyinvitations/emptyinvitations_widget.dart';
 import '/list_view_items/my_family_container/my_family_container_widget.dart';
 import '/list_view_items/recieved_invitation_container/recieved_invitation_container_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +38,15 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FamiliesManagementModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.fcmToken = await actions.getFcmToken();
+
+      await currentUserReference!.update(createUsersRecordData(
+        token: _model.fcmToken,
+      ));
+    });
   }
 
   @override
