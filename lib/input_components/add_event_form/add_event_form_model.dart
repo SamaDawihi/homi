@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'add_event_form_widget.dart' show AddEventFormWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -46,6 +47,8 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   FormFieldController<String>? dropDownValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   EventRecord? addedEvent;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  EventRecord? addedEventWithTimek;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   EventRecord? addedEventWithTime;
 

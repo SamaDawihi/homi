@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -1177,7 +1178,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                 endTime: _model.datePicked4,
                                                 notificationSent: false,
                                               ));
-                                              _model.addedEventWithTime =
+                                              _model.addedEventWithTimek =
                                                   EventRecord
                                                       .getDocumentFromData(
                                                           createEventRecordData(
@@ -1273,6 +1274,194 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             borderRadius:
                                                 BorderRadius.circular(40.0),
                                           ),
+                                        ),
+                                      ),
+                                      FFButtonWidget(
+                                        onPressed: () async {
+                                          var _shouldSetState = false;
+                                          if (functions.trimAndCollapseSpaces(
+                                                      _model.titleController
+                                                          .text) ==
+                                                  null ||
+                                              functions.trimAndCollapseSpaces(
+                                                      _model.titleController
+                                                          .text) ==
+                                                  '') {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'No Title',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            if ((_model.datePicked1! <=
+                                                    _model.datePicked2!) ||
+                                                (_model.datePicked2 == null)) {
+                                              var eventRecordReference =
+                                                  EventRecord.collection.doc();
+                                              await eventRecordReference
+                                                  .set(createEventRecordData(
+                                                title:
+                                                    _model.titleController.text,
+                                                description: _model
+                                                    .descriptionController.text,
+                                                createdBy: currentUserReference,
+                                                location: _model
+                                                    .locationController.text,
+                                                familyId: FFAppState().familyId,
+                                                notifyBefore: int.tryParse(
+                                                    _model
+                                                        .textController4.text),
+                                                notifyBeforeUnit:
+                                                    _model.dropDownValue,
+                                                isGoogleEvent: false,
+                                                dontShareThisEvent: false,
+                                                startTime: _model.datePicked3,
+                                                isAllDay: false,
+                                                startDate: _model.datePicked1,
+                                                endDate: _model.datePicked2,
+                                                endTime: _model.datePicked3,
+                                                notificationSent: false,
+                                              ));
+                                              _model.addedEventWithTime =
+                                                  EventRecord
+                                                      .getDocumentFromData(
+                                                          createEventRecordData(
+                                                            title: _model
+                                                                .titleController
+                                                                .text,
+                                                            description: _model
+                                                                .descriptionController
+                                                                .text,
+                                                            createdBy:
+                                                                currentUserReference,
+                                                            location: _model
+                                                                .locationController
+                                                                .text,
+                                                            familyId:
+                                                                FFAppState()
+                                                                    .familyId,
+                                                            notifyBefore: int
+                                                                .tryParse(_model
+                                                                    .textController4
+                                                                    .text),
+                                                            notifyBeforeUnit:
+                                                                _model
+                                                                    .dropDownValue,
+                                                            isGoogleEvent:
+                                                                false,
+                                                            dontShareThisEvent:
+                                                                false,
+                                                            startTime: _model
+                                                                .datePicked3,
+                                                            isAllDay: false,
+                                                            startDate: _model
+                                                                .datePicked1,
+                                                            endDate: _model
+                                                                .datePicked2,
+                                                            endTime: _model
+                                                                .datePicked3,
+                                                            notificationSent:
+                                                                false,
+                                                          ),
+                                                          eventRecordReference);
+                                              _shouldSetState = true;
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Success',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .success,
+                                                ),
+                                              );
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'end date bigger',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          }
+
+                                          if (_shouldSetState) setState(() {});
+                                        },
+                                        text:
+                                            FFLocalizations.of(context).getText(
+                                          '6i41v4at' /* Button */,
+                                        ),
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily:
+                                                        'Source Sans Pro',
+                                                    color: Colors.white,
+                                                  ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
                                     ],

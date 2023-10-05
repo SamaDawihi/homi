@@ -807,6 +807,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
       'ar': 'يضيف',
     },
+    '6i41v4at': {
+      'en': 'Button',
+      'ar': '',
+    },
     'zsconjlh': {
       'en': 'Field is required',
       'ar': '',
