@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/input_components/add_event_form/add_event_form_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -106,17 +107,44 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
                               },
                             ),
                           ),
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'pezqh1x2' /* Announcement */,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) {
+                                  return GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: AddEventFormWidget(),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
+                            },
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'pezqh1x2' /* Announcement */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Source Sans Pro',
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.w900,
-                                ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
