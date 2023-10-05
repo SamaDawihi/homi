@@ -795,8 +795,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Hours',
       'ar': 'ساعات',
     },
+    'iszth7vf': {
+      'en': 'Days',
+      'ar': '',
+    },
     '3gcddrri': {
-      'en': 'Min/hour',
+      'en': 'Min/hour/Day',
       'ar': 'دقيقة/ساعة',
     },
     'ledy91s6': {

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 Future addGoogleEvents(List<EventStruct> googleEvents) async {
+  // Add your function code here!
   final firestore = FirebaseFirestore.instance;
   final eventCollection = firestore.collection('Event');
 
@@ -27,22 +28,48 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
 
     // If there are no matching documents, add the event
     if (querySnapshot.docs.isEmpty) {
+      // Calculate the notification time by subtracting the reminder time and unit from startTime
+      DateTime startTime = googleEvent.startTime!;
+      Duration reminderDuration;
+
+      switch (googleEvent.notifyBeforeUnit) {
+        case 'Minutes':
+          reminderDuration = Duration(minutes: googleEvent.notifyBefore);
+          break;
+        case 'Hours':
+          reminderDuration = Duration(hours: googleEvent.notifyBefore);
+          break;
+        case 'Days':
+          reminderDuration = Duration(days: googleEvent.notifyBefore);
+          break;
+        default:
+          // Handle unsupported units or defaults to 0 duration
+          reminderDuration = Duration();
+      }
+
+      DateTime notificationTime = startTime.subtract(reminderDuration);
+
+      // Compare the notification time with the current time
+      DateTime currentTime = DateTime.now();
+      bool isNotificationSent = !notificationTime.isAfter(currentTime);
+
       Map<String, dynamic> eventData = {
         'title': googleEvent.title,
         'description': googleEvent.description,
-        'createdBy': googleEvent.createdBy, // Storing the user reference
+        'createdBy': googleEvent.createdBy,
         'location': googleEvent.location,
         'startDate': googleEvent.startDate,
         'startTime': googleEvent.startTime,
         'endDate': googleEvent.endDate,
         'endTime': googleEvent.endTime,
         'isAllDay': googleEvent.isAllDay,
-        'familyId': googleEvent.familyId, // Storing the family reference
+        'familyId': googleEvent.familyId,
         'notifyBefore': googleEvent.notifyBefore,
         'notifyBeforeUnit': googleEvent.notifyBeforeUnit,
         'isGoogleEvent': googleEvent.isGoogleEvent,
         'dontShareThisEvent': googleEvent.dontShareThisEvent,
-        'notificationSent': true
+        'notificationSent':
+            isNotificationSent, // Set notificationSent based on comparison
       };
       await eventCollection.add(eventData);
     } else {

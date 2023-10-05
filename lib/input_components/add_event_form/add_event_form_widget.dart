@@ -988,6 +988,9 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             ),
                                             FFLocalizations.of(context).getText(
                                               '5fnl4ev5' /* Hours */,
+                                            ),
+                                            FFLocalizations.of(context).getText(
+                                              'iszth7vf' /* Days */,
                                             )
                                           ],
                                           onChanged: (val) => setState(
@@ -999,7 +1002,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                   .bodyMedium,
                                           hintText: FFLocalizations.of(context)
                                               .getText(
-                                            '3gcddrri' /* Min/hour */,
+                                            '3gcddrri' /* Min/hour/Day */,
                                           ),
                                           icon: Icon(
                                             Icons.keyboard_arrow_down_rounded,

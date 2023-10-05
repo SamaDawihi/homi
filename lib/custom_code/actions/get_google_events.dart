@@ -35,7 +35,7 @@ Future<List<EventStruct>> getGoogleEvents(
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
         content: Text(
-            "Done Sign In ${_currentUser != null ? "not null ${_currentUser.email}" : "null"}")),
+            "Signed In ${_currentUser != null ? "not null ${_currentUser.email}" : "null"}")),
   );
 
   if (_currentUser != null) {
@@ -64,7 +64,7 @@ Future<List<EventStruct>> getGoogleEvents(
           // Below are guessed fields, please adjust as needed:
           notifyBefore:
               15, // Example: Notify 15 minutes before, adjust this as you see fit.
-          notifyBeforeUnit: 'minutes', // Just as an example.
+          notifyBeforeUnit: 'Minutes', // Just as an example.
         );
         events.add(eventStruct);
       }

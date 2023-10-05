@@ -12,10 +12,5 @@ import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future<String> getFcmToken() async {
-  // Add your function code here!
-  // String token = "Before";
-  // FirebaseMessaging.instance.getToken().then((value) {
-  //   token = value ?? "null";
-  // });
   return await FirebaseMessaging.instance.getToken() ?? "NULL";
 }
