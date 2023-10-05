@@ -41,7 +41,8 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
         'notifyBefore': googleEvent.notifyBefore,
         'notifyBeforeUnit': googleEvent.notifyBeforeUnit,
         'isGoogleEvent': googleEvent.isGoogleEvent,
-        'dontShareThisEvent': googleEvent.dontShareThisEvent
+        'dontShareThisEvent': googleEvent.dontShareThisEvent,
+        'notificationSent': true
       };
       await eventCollection.add(eventData);
     } else {
