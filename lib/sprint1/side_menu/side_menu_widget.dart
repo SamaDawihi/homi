@@ -246,14 +246,6 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                     await currentUserReference!.update(createUsersRecordData(
                       isLoggedIn: false,
                     ));
-
-                    await currentUserReference!.update({
-                      ...mapToFirestore(
-                        {
-                          'token': FieldValue.delete(),
-                        },
-                      ),
-                    });
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
