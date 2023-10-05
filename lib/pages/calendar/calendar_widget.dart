@@ -376,7 +376,9 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: AddEventFormWidget(),
+                                          child: AddEventFormWidget(
+                                            selectedDay: _model.selectedDay!,
+                                          ),
                                         ),
                                       );
                                     },

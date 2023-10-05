@@ -127,7 +127,9 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
                                         : FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: AddEventFormWidget(),
+                                      child: AddEventFormWidget(
+                                        selectedDay: getCurrentTimestamp,
+                                      ),
                                     ),
                                   );
                                 },

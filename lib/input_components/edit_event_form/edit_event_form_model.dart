@@ -31,10 +31,11 @@ class EditEventFormModel extends FlutterFlowModel<EditEventFormWidget> {
   String? Function(BuildContext, String?)? locationControllerValidator;
   DateTime? datePicked1;
   DateTime? datePicked2;
+  DateTime? datePicked3;
   // State field(s) for Switch widget.
   bool? switchValue;
-  DateTime? datePicked3;
   DateTime? datePicked4;
+  DateTime? datePicked5;
   // State field(s) for description widget.
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;

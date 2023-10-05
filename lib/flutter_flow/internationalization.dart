@@ -956,10 +956,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Location',
       'ar': 'موقع',
     },
-    'fxibepzk': {
-      'en': '',
-      'ar': '',
-    },
     'cnuenws8': {
       'en': 'All Day Event',
       'ar': '',
@@ -984,8 +980,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Hours',
       'ar': 'ساعات',
     },
+    'eb56idc3': {
+      'en': 'Days',
+      'ar': '',
+    },
     '1xs2a48b': {
-      'en': 'Min/hour',
+      'en': 'Min/hour/day',
       'ar': 'دقيقة/ساعة',
     },
     '40mfd58u': {

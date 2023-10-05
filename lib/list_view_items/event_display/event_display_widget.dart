@@ -130,7 +130,7 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                         width: 4.0,
                         height: 50.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: indicatorMemberRecord?.color,
                           borderRadius: BorderRadius.circular(0.0),
                         ),
                       );
@@ -160,13 +160,14 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Align(
                           alignment: AlignmentDirectional(0.00, 0.00),
                           child: Text(
                             valueOrDefault<String>(
                               dateTimeFormat(
-                                'd/M h:mm a',
+                                'yMd',
                                 eventDisplayEventRecord.startDate,
                                 locale:
                                     FFLocalizations.of(context).languageCode,
