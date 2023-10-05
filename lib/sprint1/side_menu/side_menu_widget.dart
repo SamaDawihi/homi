@@ -241,11 +241,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    Navigator.pop(context);
-
                     await currentUserReference!.update(createUsersRecordData(
                       isLoggedIn: false,
                     ));
+                    Navigator.pop(context);
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
