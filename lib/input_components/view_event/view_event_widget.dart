@@ -207,7 +207,10 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 5.0, 0.0, 0.0),
                                   child: Text(
-                                    widget.event!.location,
+                                    valueOrDefault<String>(
+                                      widget.event?.location,
+                                      ' No Location',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -350,8 +353,13 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     6.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              widget.event!.startDate!
-                                                  .toString(),
+                                              dateTimeFormat(
+                                                'yMd',
+                                                widget.event!.startDate!,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -423,7 +431,13 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     6.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              widget.event!.endDate!.toString(),
+                                              dateTimeFormat(
+                                                'yMd',
+                                                widget.event!.endDate!,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -646,8 +660,16 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(6.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                widget.event!.startTime!
-                                                    .toString(),
+                                                valueOrDefault<String>(
+                                                  dateTimeFormat(
+                                                    'jm',
+                                                    widget.event?.startTime,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
+                                                  ' No Time',
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -718,8 +740,16 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(6.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                widget.event!.endTime!
-                                                    .toString(),
+                                                valueOrDefault<String>(
+                                                  dateTimeFormat(
+                                                    'jm',
+                                                    widget.event?.endTime,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
+                                                  '  No Time',
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -764,7 +794,10 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       6.0, 5.0, 0.0, 10.0),
                                   child: Text(
-                                    widget.event!.description,
+                                    valueOrDefault<String>(
+                                      widget.event?.description,
+                                      ' No Description',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(

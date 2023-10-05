@@ -1034,7 +1034,7 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                               'lj7mdgz5' /* Hours */,
                                             ),
                                             FFLocalizations.of(context).getText(
-                                              'eb56idc3' /* Days */,
+                                              'z43owm8l' /* Days */,
                                             )
                                           ],
                                           onChanged: (val) async {

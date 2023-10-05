@@ -713,13 +713,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
   },
-  // Event
-  {
-    'tbbpfiop': {
-      'en': 'Event Name ',
-      'ar': 'اسم الحدث',
-    },
-  },
   // ConfirmDeleteFamily
   {
     'b9i6l4nb': {
@@ -980,7 +973,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Hours',
       'ar': 'ساعات',
     },
-    'eb56idc3': {
+    'z43owm8l': {
       'en': 'Days',
       'ar': '',
     },
