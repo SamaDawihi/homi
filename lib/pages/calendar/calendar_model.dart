@@ -18,10 +18,10 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
 
 class CalendarModel extends FlutterFlowModel<CalendarWidget> {
   ///  Local state fields for this page.
@@ -46,6 +46,7 @@ class CalendarModel extends FlutterFlowModel<CalendarWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Firestore Query - Query a collection] action in Calendar widget.
   List<EventRecord>? events;
+  Color? colorPicked;
   // Stores action output result for [Custom Action - getGoogleEvents] action in LinkGoogleIconButton widget.
   List<EventStruct>? googleEvents;
   // Models for EventDisplay dynamic component.

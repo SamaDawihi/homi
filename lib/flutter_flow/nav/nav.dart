@@ -105,13 +105,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Calendar',
           path: '/calendar',
-          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Calendar')
-              : CalendarWidget(
-                  familyRef: params.getParam('familyRef',
-                      ParamType.DocumentReference, false, ['Family']),
-                ),
+              : CalendarWidget(),
         ),
         FFRoute(
           name: 'Lists',

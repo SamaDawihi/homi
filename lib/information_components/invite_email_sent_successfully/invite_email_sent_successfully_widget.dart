@@ -80,7 +80,7 @@ class _InviteEmailSentSuccessfullyWidgetState
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'ip672t8f' /* Invitation Sent Successfully */,
+                        'ip672t8f' /* Invitation Sent. */,
                       ),
                       textAlign: TextAlign.start,
                       style:

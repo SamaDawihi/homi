@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -19,7 +20,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'invite_by_email_model.dart';
 export 'invite_by_email_model.dart';
 
@@ -370,19 +370,13 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                               },
                             ).then((value) => setState(() {}));
                           } else {
-                            await launchUrl(Uri(
-                                scheme: 'mailto',
-                                path: _model.emailAddressController.text,
-                                query: {
-                                  'subject':
-                                      'You have been invited to join a family in Homi!',
-                                  'body':
-                                      'Hello there! You have been invited by ${currentUserEmail} to join their family in Homi! Download the app now to join their family and start managing your familial activities!',
-                                }
-                                    .entries
-                                    .map((MapEntry<String, String> e) =>
-                                        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                                    .join('&')));
+                            await SendEmailCall.call(
+                              toEmail: _model.emailAddressController.text,
+                              subject:
+                                  'You have been invited to join a family in Homi!',
+                              content:
+                                  'Hello there! You have been invited by ${currentUserEmail} to join their family in Homi! Download the app now to join their family and start managing your familial activities!',
+                            );
                             await showAlignedDialog(
                               context: context,
                               isGlobal: true,

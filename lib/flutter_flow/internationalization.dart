@@ -795,7 +795,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Hours',
       'ar': 'ساعات',
     },
-    'ewe9uijj': {
+    'lbzqiy3m': {
       'en': 'Days',
       'ar': '',
     },
@@ -1078,7 +1078,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // InviteEmailSentSuccessfully
   {
     'ip672t8f': {
-      'en': 'Invitation Sent Successfully',
+      'en': 'Invitation Sent.',
       'ar': 'تم إرسال الدعوة بنجاح',
     },
     'ld4bdvij': {
@@ -1087,6 +1087,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'العضو الذي حاولت دعوته سوف يتلقى دعوتك',
     },
     'wi0woc47': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
+  // ChangeAdminToLeaveFamily
+  {
+    'dmfuc24x': {
+      'en': 'You are an admin.',
+      'ar': 'تمت دعوة العضو بالفعل.',
+    },
+    '1hq72vq2': {
+      'en':
+          'Please make another member an admin to be able to leave this family.',
+      'ar':
+          'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
+    },
+    'txhaugyu': {
+      'en': 'OK',
+      'ar': 'نعم',
+    },
+  },
+  // ConfirmLeaveLastMember
+  {
+    'o0jo7i2p': {
+      'en': 'You are the last member.',
+      'ar': 'حذف العائلة',
+    },
+    'c6cz1bx5': {
+      'en':
+          'If you leave, this family  and all its information will be deleted. Are you sure you want to leave?',
+      'ar':
+          'هل أنت متأكد أنك تريد حذف هذه العائلة؟ لن تتمكن من التراجع عن هذا الإجراء.',
+    },
+    'wxmv2yvx': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    'xg63hva4': {
       'en': 'OK',
       'ar': 'نعم',
     },

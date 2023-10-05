@@ -9,11 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'confirm_delete_family_model.dart';
-export 'confirm_delete_family_model.dart';
+import 'confirm_leave_last_member_model.dart';
+export 'confirm_leave_last_member_model.dart';
 
-class ConfirmDeleteFamilyWidget extends StatefulWidget {
-  const ConfirmDeleteFamilyWidget({
+class ConfirmLeaveLastMemberWidget extends StatefulWidget {
+  const ConfirmLeaveLastMemberWidget({
     Key? key,
     required this.familyID,
   }) : super(key: key);
@@ -21,12 +21,13 @@ class ConfirmDeleteFamilyWidget extends StatefulWidget {
   final DocumentReference? familyID;
 
   @override
-  _ConfirmDeleteFamilyWidgetState createState() =>
-      _ConfirmDeleteFamilyWidgetState();
+  _ConfirmLeaveLastMemberWidgetState createState() =>
+      _ConfirmLeaveLastMemberWidgetState();
 }
 
-class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
-  late ConfirmDeleteFamilyModel _model;
+class _ConfirmLeaveLastMemberWidgetState
+    extends State<ConfirmLeaveLastMemberWidget> {
+  late ConfirmLeaveLastMemberModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -37,7 +38,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ConfirmDeleteFamilyModel());
+    _model = createModel(context, () => ConfirmLeaveLastMemberModel());
   }
 
   @override
@@ -88,7 +89,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'b9i6l4nb' /* Delete Family */,
+                        'o0jo7i2p' /* You are the last member. */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -102,7 +103,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'x5w3r1st' /* Are you sure you want to delet... */,
+                          'c6cz1bx5' /* If you leave, this family  and... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -128,7 +129,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                           context.safePop();
                         },
                         text: FFLocalizations.of(context).getText(
-                          'j7lp4ydv' /* Cancel */,
+                          'wxmv2yvx' /* Cancel */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
@@ -229,7 +230,7 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                         setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        'fxzpg0fz' /* OK */,
+                        'xg63hva4' /* OK */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,
