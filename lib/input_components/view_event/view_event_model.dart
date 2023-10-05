@@ -9,6 +9,7 @@ import '/input_components/edit_event_form/edit_event_form_widget.dart';
 import 'dart:ui';
 import 'view_event_widget.dart' show ViewEventWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

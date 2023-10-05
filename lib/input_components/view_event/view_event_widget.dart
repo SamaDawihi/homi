@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/input_components/edit_event_form/edit_event_form_widget.dart';
 import 'dart:ui';
 import 'package:aligned_dialog/aligned_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -22,9 +23,11 @@ class ViewEventWidget extends StatefulWidget {
   const ViewEventWidget({
     Key? key,
     required this.event,
+    required this.eventRef,
   }) : super(key: key);
 
   final EventRecord? event;
+  final DocumentReference? eventRef;
 
   @override
   _ViewEventWidgetState createState() => _ViewEventWidgetState();

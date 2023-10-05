@@ -17,15 +17,20 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'calendar_model.dart';
 export 'calendar_model.dart';
 
 class CalendarWidget extends StatefulWidget {
-  const CalendarWidget({Key? key}) : super(key: key);
+  const CalendarWidget({
+    Key? key,
+    this.familyRef,
+  }) : super(key: key);
+
+  final DocumentReference? familyRef;
 
   @override
   _CalendarWidgetState createState() => _CalendarWidgetState();
@@ -43,6 +48,17 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (FFAppState().familyId == null) {
+        if (widget.familyRef != null) {
+          setState(() {
+            FFAppState().familyId = widget.familyRef;
+          });
+        } else {
+          context.pushNamed('FamiliesManagement');
+
+          return;
+        }
+      }
       setState(() {
         _model.focusDay = getCurrentTimestamp;
       });
@@ -150,70 +166,30 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                   fontWeight: FontWeight.w900,
                                 ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 6.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                while (true) {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('Color Already Picked'),
-                                        content: Text(
-                                            'The Color You Have Selected Is Already Picked Try Again.'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('OK'),
-                                          ),
-                                        ],
-                                      );
-                                    },
+                          Builder(
+                            builder: (context) => Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 6.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await Share.share(
+                                    'homi://homi.com${GoRouter.of(context).location}',
+                                    sharePositionOrigin:
+                                        getWidgetBoundingBox(context),
                                   );
-                                  final _colorPickedColor =
-                                      await showFFColorPicker(
-                                    context,
-                                    currentColor: _model.colorPicked ??=
-                                        FlutterFlowTheme.of(context).primary,
-                                    showRecentColors: true,
-                                    allowOpacity: true,
-                                    textColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    secondaryTextColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                    primaryButtonBackgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    primaryButtonTextColor: Colors.white,
-                                    primaryButtonBorderColor:
-                                        Colors.transparent,
-                                    displayAsBottomSheet:
-                                        isMobileWidth(context),
-                                  );
-
-                                  if (_colorPickedColor != null) {
-                                    safeSetState(() =>
-                                        _model.colorPicked = _colorPickedColor);
-                                  }
-                                }
-                              },
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/mainLogo.png',
-                                  width: 80.0,
-                                  height: 80.0,
-                                  fit: BoxFit.cover,
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/mainLogo.png',
+                                    width: 80.0,
+                                    height: 80.0,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),

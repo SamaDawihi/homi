@@ -207,6 +207,7 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                                   color: Colors.transparent,
                                   child: ViewEventWidget(
                                     event: eventDisplayEventRecord,
+                                    eventRef: widget.eventRef!,
                                   ),
                                 );
                               },

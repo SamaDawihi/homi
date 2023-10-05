@@ -990,7 +990,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                               '5fnl4ev5' /* Hours */,
                                             ),
                                             FFLocalizations.of(context).getText(
-                                              '7cwv82i0' /* Days */,
+                                              'ewe9uijj' /* Days */,
                                             )
                                           ],
                                           onChanged: (val) => setState(
