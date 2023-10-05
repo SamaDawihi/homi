@@ -277,6 +277,9 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyLarge,
+                                    maxLength: 20,
+                                    maxLengthEnforcement:
+                                        MaxLengthEnforcement.enforced,
                                     validator: _model.titleControllerValidator
                                         .asValidator(context),
                                   ),
@@ -344,6 +347,9 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyLarge,
+                                    maxLength: 50,
+                                    maxLengthEnforcement:
+                                        MaxLengthEnforcement.enforced,
                                     validator: _model
                                         .locationControllerValidator
                                         .asValidator(context),
@@ -860,6 +866,9 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                     style:
                                         FlutterFlowTheme.of(context).bodyLarge,
                                     maxLines: 5,
+                                    maxLength: 255,
+                                    maxLengthEnforcement:
+                                        MaxLengthEnforcement.enforced,
                                     validator: _model
                                         .descriptionControllerValidator
                                         .asValidator(context),
@@ -1435,7 +1444,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                         },
                                         text:
                                             FFLocalizations.of(context).getText(
-                                          '6i41v4at' /* Button */,
+                                          'gy5gfsfr' /* Button */,
                                         ),
                                         options: FFButtonOptions(
                                           height: 40.0,

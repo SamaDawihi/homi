@@ -242,6 +242,18 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   highlightColor: Colors.transparent,
                   onTap: () async {
                     Navigator.pop(context);
+
+                    await currentUserReference!.update(createUsersRecordData(
+                      isLoggedIn: false,
+                    ));
+
+                    await currentUserReference!.update({
+                      ...mapToFirestore(
+                        {
+                          'token': FieldValue.delete(),
+                        },
+                      ),
+                    });
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
@@ -254,14 +266,6 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                         );
                       },
                     ).then((value) => safeSetState(() {}));
-
-                    await currentUserReference!.update(createUsersRecordData(
-                      isLoggedIn: false,
-                    ));
-
-                    await currentUserReference!.update(createUsersRecordData(
-                      token: '\"\"',
-                    ));
                   },
                   child: Container(
                     width: double.infinity,
