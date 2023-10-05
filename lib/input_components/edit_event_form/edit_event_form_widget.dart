@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -221,6 +222,16 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                       0.0, 0.0, 0.0, 12.0),
                                   child: TextFormField(
                                     controller: _model.titleController,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.titleController',
+                                      Duration(milliseconds: 2000),
+                                      () async {
+                                        await widget.event!.reference
+                                            .update(createEventRecordData(
+                                          title: _model.titleController.text,
+                                        ));
+                                      },
+                                    ),
                                     onFieldSubmitted: (_) async {
                                       setState(() {
                                         _model.titleController?.text =
@@ -294,6 +305,17 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                       0.0, 0.0, 0.0, 12.0),
                                   child: TextFormField(
                                     controller: _model.locationController,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.locationController',
+                                      Duration(milliseconds: 2000),
+                                      () async {
+                                        await widget.event!.reference
+                                            .update(createEventRecordData(
+                                          location:
+                                              _model.locationController.text,
+                                        ));
+                                      },
+                                    ),
                                     onFieldSubmitted: (_) async {
                                       setState(() {
                                         _model.locationController?.text =
@@ -841,6 +863,17 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                       0.0, 12.0, 0.0, 12.0),
                                   child: TextFormField(
                                     controller: _model.descriptionController,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.descriptionController',
+                                      Duration(milliseconds: 2000),
+                                      () async {
+                                        await widget.event!.reference
+                                            .update(createEventRecordData(
+                                          description:
+                                              _model.descriptionController.text,
+                                        ));
+                                      },
+                                    ),
                                     onFieldSubmitted: (_) async {
                                       setState(() {
                                         _model.descriptionController?.text =
@@ -939,6 +972,20 @@ class _EditEventFormWidgetState extends State<EditEventFormWidget>
                                             child: TextFormField(
                                               controller:
                                                   _model.textController4,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                '_model.textController4',
+                                                Duration(milliseconds: 2000),
+                                                () async {
+                                                  await widget.event!.reference
+                                                      .update(
+                                                          createEventRecordData(
+                                                    notifyBefore: int.tryParse(
+                                                        _model.textController4
+                                                            .text),
+                                                  ));
+                                                },
+                                              ),
                                               onFieldSubmitted: (_) async {
                                                 setState(() {
                                                   _model.textController4?.text =

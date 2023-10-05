@@ -166,6 +166,7 @@ class _ConfirmDeleteEventWidgetState extends State<ConfirmDeleteEventWidget> {
                           ),
                         );
                         setState(() {});
+                        Navigator.pop(context);
                       },
                       text: FFLocalizations.of(context).getText(
                         'a4zu0coe' /* OK */,
