@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'add_event_form_widget.dart' show AddEventFormWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -43,7 +42,7 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
     if (!RegExp('^(?![\\s\\d!@#\$%^&*()_+{}\\[\\]:;<>,.?~\\\\-=|\\/]+\$).+')
         .hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        '3dmurxob' /* Title can not contain only whi... */,
+        'kod5xuao' /* Title can not contain only whi... */,
       );
     }
     return null;
@@ -54,13 +53,14 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   String? Function(BuildContext, String?)? locationControllerValidator;
   DateTime? datePicked1;
   DateTime? datePicked2;
-  // State field(s) for Switch widget.
-  bool? switchValue;
+  // State field(s) for AllDaySwitch widget.
+  bool? allDaySwitchValue;
   DateTime? datePicked3;
-  DateTime? datePicked4;
   // State field(s) for description widget.
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
+  // State field(s) for NotificationSwitch widget.
+  bool? notificationSwitchValue;
   // State field(s) for TextField widget.
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
@@ -85,11 +85,9 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  EventRecord? addedEvent;
+  EventRecord? notifyOnTimeEvent;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  EventRecord? addedEventWithTimek;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  EventRecord? addedEventWithTime;
+  EventRecord? notifyBeforeEvent;
 
   /// Initialization and disposal methods.
 

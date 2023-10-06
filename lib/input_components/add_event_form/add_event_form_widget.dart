@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -539,261 +538,134 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             ],
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  14.0, 8.0, 0.0, 8.0),
-                                          child: Container(
-                                            width: 270.0,
-                                            height: 50.0,
-                                            decoration: BoxDecoration(
-                                              color:
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '3ukfqrvb' /* All Day Event */,
+                                              ),
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '8n6uay47' /* All Day Event */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
                                                       .bodyMedium,
-                                                ),
-                                                Switch.adaptive(
-                                                  value: _model.switchValue ??=
-                                                      false,
-                                                  onChanged: (newValue) async {
-                                                    setState(() =>
-                                                        _model.switchValue =
-                                                            newValue!);
-                                                  },
-                                                  activeColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .success,
-                                                  activeTrackColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .accent1,
-                                                  inactiveTrackColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  inactiveThumbColor:
-                                                      Color(0xFF555EBE),
-                                                ),
-                                              ],
                                             ),
-                                          ),
-                                        ),
-                                        if (!_model.switchValue!)
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 8.0, 0.0, 8.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          14.0, 0.0, 14.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      final _datePicked3Time =
-                                                          await showTimePicker(
-                                                        context: context,
-                                                        initialTime: TimeOfDay
-                                                            .fromDateTime(
-                                                                getCurrentTimestamp),
+                                            Switch.adaptive(
+                                              value: _model
+                                                  .allDaySwitchValue ??= true,
+                                              onChanged: (newValue) async {
+                                                setState(() =>
+                                                    _model.allDaySwitchValue =
+                                                        newValue!);
+                                              },
+                                              activeColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .success,
+                                              activeTrackColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              inactiveTrackColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              inactiveThumbColor:
+                                                  Color(0xFF555EBE),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      14.0, 0.0, 14.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  final _datePicked3Time =
+                                                      await showTimePicker(
+                                                    context: context,
+                                                    initialTime:
+                                                        TimeOfDay.fromDateTime(
+                                                            getCurrentTimestamp),
+                                                  );
+                                                  if (_datePicked3Time !=
+                                                      null) {
+                                                    safeSetState(() {
+                                                      _model.datePicked3 =
+                                                          DateTime(
+                                                        getCurrentTimestamp
+                                                            .year,
+                                                        getCurrentTimestamp
+                                                            .month,
+                                                        getCurrentTimestamp.day,
+                                                        _datePicked3Time.hour,
+                                                        _datePicked3Time.minute,
                                                       );
-                                                      if (_datePicked3Time !=
-                                                          null) {
-                                                        safeSetState(() {
-                                                          _model.datePicked3 =
-                                                              DateTime(
-                                                            getCurrentTimestamp
-                                                                .year,
-                                                            getCurrentTimestamp
-                                                                .month,
-                                                            getCurrentTimestamp
-                                                                .day,
-                                                            _datePicked3Time
-                                                                .hour,
-                                                            _datePicked3Time
-                                                                .minute,
-                                                          );
-                                                        });
-                                                      }
-                                                    },
-                                                    child: Container(
-                                                      width: 130.0,
-                                                      height: 50.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                      ),
-                                                      child: Visibility(
-                                                        visible: _model
-                                                                .switchValue ??
-                                                            true,
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Text(
-                                                              valueOrDefault<
-                                                                  String>(
-                                                                dateTimeFormat(
-                                                                  'Hm',
-                                                                  _model
-                                                                      .datePicked3,
-                                                                  locale: FFLocalizations.of(
-                                                                          context)
-                                                                      .languageCode,
-                                                                ),
-                                                                'Start Time',
-                                                              ),
-                                                              style: FlutterFlowTheme
+                                                    });
+                                                  }
+                                                },
+                                                child: Container(
+                                                  width: 130.0,
+                                                  height: 50.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: Visibility(
+                                                    visible: !_model
+                                                        .allDaySwitchValue!,
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            dateTimeFormat(
+                                                              'jm',
+                                                              _model
+                                                                  .datePicked3,
+                                                              locale: FFLocalizations
                                                                       .of(context)
-                                                                  .bodyMedium,
+                                                                  .languageCode,
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          8.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Icon(
-                                                                Icons
-                                                                    .access_time,
-                                                                color: Color(
-                                                                    0xFF555EBE),
-                                                                size: 24.0,
-                                                              ),
-                                                            ),
-                                                          ],
+                                                            'Start Time',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
                                                         ),
-                                                      ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Icon(
+                                                            Icons.access_time,
+                                                            color: Color(
+                                                                0xFF555EBE),
+                                                            size: 24.0,
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                   ),
                                                 ),
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    final _datePicked4Time =
-                                                        await showTimePicker(
-                                                      context: context,
-                                                      initialTime: TimeOfDay
-                                                          .fromDateTime(
-                                                              getCurrentTimestamp),
-                                                    );
-                                                    if (_datePicked4Time !=
-                                                        null) {
-                                                      safeSetState(() {
-                                                        _model.datePicked4 =
-                                                            DateTime(
-                                                          getCurrentTimestamp
-                                                              .year,
-                                                          getCurrentTimestamp
-                                                              .month,
-                                                          getCurrentTimestamp
-                                                              .day,
-                                                          _datePicked4Time.hour,
-                                                          _datePicked4Time
-                                                              .minute,
-                                                        );
-                                                      });
-                                                    }
-                                                  },
-                                                  child: Container(
-                                                    width: 130.0,
-                                                    height: 50.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Visibility(
-                                                      visible:
-                                                          _model.switchValue ??
-                                                              true,
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              dateTimeFormat(
-                                                                'Hm',
-                                                                _model
-                                                                    .datePicked4,
-                                                                locale: FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode,
-                                                              ),
-                                                              'End Time',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium,
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        8.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Icon(
-                                                              Icons.access_time,
-                                                              color: Color(
-                                                                  0xFF555EBE),
-                                                              size: 24.0,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ].divide(SizedBox(width: 26.0)),
@@ -874,166 +746,214 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                         .asValidator(context),
                                   ),
                                 ),
-                                Column(
+                                Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'upd78bv9' /* Notification Time* */,
+                                        'xod6nrl1' /* Notify On Time Of Event */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Source Sans Pro',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            fontSize: 16.0,
-                                          ),
+                                          .bodyMedium,
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 22.0, 8.0, 0.0),
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.textController4,
-                                              autofocus: true,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'xhvahadc' /* Before... */,
-                                                ),
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              maxLength: 2,
-                                              maxLengthEnforcement:
-                                                  MaxLengthEnforcement.enforced,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              validator: _model
-                                                  .textController4Validator
-                                                  .asValidator(context),
-                                              inputFormatters: [
-                                                FilteringTextInputFormatter
-                                                    .allow(RegExp('[0-9]'))
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .dropDownValueController ??=
-                                              FormFieldController<String>(null),
-                                          options: [
-                                            FFLocalizations.of(context).getText(
-                                              'd9g8wnj1' /* Minutes */,
-                                            ),
-                                            FFLocalizations.of(context).getText(
-                                              '5fnl4ev5' /* Hours */,
-                                            ),
-                                            FFLocalizations.of(context).getText(
-                                              'lbzqiy3m' /* Days */,
-                                            )
-                                          ],
-                                          onChanged: (val) => setState(
-                                              () => _model.dropDownValue = val),
-                                          width: 145.0,
-                                          height: 50.0,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            '3gcddrri' /* Min/hour/Day */,
-                                          ),
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          elevation: 2.0,
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .alternate,
-                                          borderWidth: 2.0,
-                                          borderRadius: 8.0,
-                                          margin:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 4.0, 16.0, 4.0),
-                                          hidesUnderline: true,
-                                          isSearchable: false,
-                                          isMultiSelect: false,
-                                        ),
-                                      ],
+                                    Switch.adaptive(
+                                      value: _model.notificationSwitchValue ??=
+                                          true,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            _model.notificationSwitchValue =
+                                                newValue!);
+                                      },
+                                      activeColor:
+                                          FlutterFlowTheme.of(context).success,
+                                      activeTrackColor:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      inactiveTrackColor:
+                                          FlutterFlowTheme.of(context)
+                                              .alternate,
+                                      inactiveThumbColor: Color(0xFF555EBE),
                                     ),
                                   ],
                                 ),
+                                if (!_model.notificationSwitchValue!)
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'upd78bv9' /* Notification Time* */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Source Sans Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              fontSize: 16.0,
+                                            ),
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 22.0, 8.0, 0.0),
+                                              child: TextFormField(
+                                                controller:
+                                                    _model.textController4,
+                                                autofocus: true,
+                                                obscureText: false,
+                                                decoration: InputDecoration(
+                                                  labelText: FFLocalizations.of(
+                                                          context)
+                                                      .getText(
+                                                    'xhvahadc' /* Before... */,
+                                                  ),
+                                                  labelStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  hintStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium,
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      width: 2.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                                maxLength: 2,
+                                                maxLengthEnforcement:
+                                                    MaxLengthEnforcement
+                                                        .enforced,
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                validator: _model
+                                                    .textController4Validator
+                                                    .asValidator(context),
+                                                inputFormatters: [
+                                                  FilteringTextInputFormatter
+                                                      .allow(RegExp('[0-9]'))
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          FlutterFlowDropDown<String>(
+                                            controller: _model
+                                                    .dropDownValueController ??=
+                                                FormFieldController<String>(
+                                                    null),
+                                            options: [
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'd9g8wnj1' /* Minutes */,
+                                              ),
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '5fnl4ev5' /* Hours */,
+                                              ),
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'lbzqiy3m' /* Days */,
+                                              )
+                                            ],
+                                            onChanged: (val) => setState(() =>
+                                                _model.dropDownValue = val),
+                                            width: 145.0,
+                                            height: 50.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '3gcddrri' /* Min/hour/Day */,
+                                            ),
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2.0,
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            borderWidth: 2.0,
+                                            borderRadius: 8.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 4.0, 16.0, 4.0),
+                                            hidesUnderline: true,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
@@ -1047,46 +967,258 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                         child: FFButtonWidget(
                                           onPressed: () async {
                                             var _shouldSetState = false;
-                                            if (_model.datePicked1! >
-                                                _model.datePicked2!) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'End Date can not be before Start Date',
-                                                    style: TextStyle(
-                                                      color:
+                                            if (_model.titleController.text !=
+                                                    null &&
+                                                _model.titleController.text !=
+                                                    '') {
+                                              if (_model.datePicked1! <=
+                                                  _model.datePicked2!) {
+                                                if (_model
+                                                    .notificationSwitchValue!) {
+                                                  var eventRecordReference1 =
+                                                      EventRecord.collection
+                                                          .doc();
+                                                  await eventRecordReference1
+                                                      .set(
+                                                          createEventRecordData(
+                                                    title: _model
+                                                        .titleController.text,
+                                                    description: _model
+                                                        .descriptionController
+                                                        .text,
+                                                    createdBy:
+                                                        currentUserReference,
+                                                    location: _model
+                                                        .locationController
+                                                        .text,
+                                                    startTime:
+                                                        _model.datePicked3,
+                                                    isAllDay: _model
+                                                        .allDaySwitchValue,
+                                                    familyId:
+                                                        FFAppState().familyId,
+                                                    notifyBefore: 0,
+                                                    notifyBeforeUnit: 'Days',
+                                                    isGoogleEvent: false,
+                                                    startDate:
+                                                        _model.datePicked1,
+                                                    dontShareThisEvent: false,
+                                                    endDate: _model.datePicked2,
+                                                    notificationSent: false,
+                                                    notifyOnTime: true,
+                                                  ));
+                                                  _model.notifyOnTimeEvent =
+                                                      EventRecord.getDocumentFromData(
+                                                          createEventRecordData(
+                                                            title: _model
+                                                                .titleController
+                                                                .text,
+                                                            description: _model
+                                                                .descriptionController
+                                                                .text,
+                                                            createdBy:
+                                                                currentUserReference,
+                                                            location: _model
+                                                                .locationController
+                                                                .text,
+                                                            startTime: _model
+                                                                .datePicked3,
+                                                            isAllDay: _model
+                                                                .allDaySwitchValue,
+                                                            familyId:
+                                                                FFAppState()
+                                                                    .familyId,
+                                                            notifyBefore: 0,
+                                                            notifyBeforeUnit:
+                                                                'Days',
+                                                            isGoogleEvent:
+                                                                false,
+                                                            startDate: _model
+                                                                .datePicked1,
+                                                            dontShareThisEvent:
+                                                                false,
+                                                            endDate: _model
+                                                                .datePicked2,
+                                                            notificationSent:
+                                                                false,
+                                                            notifyOnTime: true,
+                                                          ),
+                                                          eventRecordReference1);
+                                                  _shouldSetState = true;
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'Event Added Successfully.',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .error,
+                                                              .success,
                                                     ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                ),
-                                              );
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                            if (_model.switchValue!) {
-                                              if (_model.formKey.currentState ==
-                                                      null ||
-                                                  !_model.formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
-                                              if (_model.dropDownValue ==
-                                                  null) {
+                                                  );
+
+                                                  context.goNamed('Calendar');
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                } else {
+                                                  if ((_model.textController4
+                                                                  .text !=
+                                                              null &&
+                                                          _model.textController4
+                                                                  .text !=
+                                                              '') &&
+                                                      (_model.dropDownValue !=
+                                                              null &&
+                                                          _model.dropDownValue !=
+                                                              '')) {
+                                                    var eventRecordReference2 =
+                                                        EventRecord.collection
+                                                            .doc();
+                                                    await eventRecordReference2
+                                                        .set(
+                                                            createEventRecordData(
+                                                      title: _model
+                                                          .titleController.text,
+                                                      description: _model
+                                                          .descriptionController
+                                                          .text,
+                                                      createdBy:
+                                                          currentUserReference,
+                                                      location: _model
+                                                          .locationController
+                                                          .text,
+                                                      startTime:
+                                                          _model.datePicked3,
+                                                      isAllDay: _model
+                                                          .allDaySwitchValue,
+                                                      familyId:
+                                                          FFAppState().familyId,
+                                                      notifyBefore:
+                                                          int.tryParse(_model
+                                                              .textController4
+                                                              .text),
+                                                      notifyBeforeUnit:
+                                                          _model.dropDownValue,
+                                                      isGoogleEvent: false,
+                                                      startDate:
+                                                          _model.datePicked1,
+                                                      dontShareThisEvent: false,
+                                                      endDate:
+                                                          _model.datePicked2,
+                                                      notificationSent: false,
+                                                      notifyOnTime: false,
+                                                    ));
+                                                    _model.notifyBeforeEvent =
+                                                        EventRecord.getDocumentFromData(
+                                                            createEventRecordData(
+                                                              title: _model
+                                                                  .titleController
+                                                                  .text,
+                                                              description: _model
+                                                                  .descriptionController
+                                                                  .text,
+                                                              createdBy:
+                                                                  currentUserReference,
+                                                              location: _model
+                                                                  .locationController
+                                                                  .text,
+                                                              startTime: _model
+                                                                  .datePicked3,
+                                                              isAllDay: _model
+                                                                  .allDaySwitchValue,
+                                                              familyId:
+                                                                  FFAppState()
+                                                                      .familyId,
+                                                              notifyBefore: int
+                                                                  .tryParse(_model
+                                                                      .textController4
+                                                                      .text),
+                                                              notifyBeforeUnit:
+                                                                  _model
+                                                                      .dropDownValue,
+                                                              isGoogleEvent:
+                                                                  false,
+                                                              startDate: _model
+                                                                  .datePicked1,
+                                                              dontShareThisEvent:
+                                                                  false,
+                                                              endDate: _model
+                                                                  .datePicked2,
+                                                              notificationSent:
+                                                                  false,
+                                                              notifyOnTime:
+                                                                  false,
+                                                            ),
+                                                            eventRecordReference2);
+                                                    _shouldSetState = true;
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Event Added Successfully.',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .success,
+                                                      ),
+                                                    );
+
+                                                    context.goNamed('Calendar');
+
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                    return;
+                                                  } else {
+                                                    ScaffoldMessenger.of(
+                                                            context)
+                                                        .showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          'Make Sure To Select Both Remainder Time And Unit.',
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                          ),
+                                                        ),
+                                                        duration: Duration(
+                                                            milliseconds: 4000),
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                      ),
+                                                    );
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                    return;
+                                                  }
+                                                }
+                                              } else {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'select notification\'s time unit.',
+                                                      'End Date can not be before Start Date',
                                                       style: TextStyle(
                                                         color:
                                                             FlutterFlowTheme.of(
@@ -1102,256 +1234,36 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                             .error,
                                                   ),
                                                 );
+                                                if (_shouldSetState)
+                                                  setState(() {});
                                                 return;
                                               }
-
-                                              var eventRecordReference1 =
-                                                  EventRecord.collection.doc();
-                                              await eventRecordReference1
-                                                  .set(createEventRecordData(
-                                                title:
-                                                    _model.titleController.text,
-                                                description: _model
-                                                    .descriptionController.text,
-                                                createdBy: currentUserReference,
-                                                location: _model
-                                                    .locationController.text,
-                                                familyId: FFAppState().familyId,
-                                                notifyBefore: int.tryParse(
-                                                    _model
-                                                        .textController4.text),
-                                                notifyBeforeUnit:
-                                                    _model.dropDownValue,
-                                                isGoogleEvent: false,
-                                                dontShareThisEvent: false,
-                                                startTime: _model.datePicked1,
-                                                isAllDay: false,
-                                                startDate: _model.datePicked1,
-                                                endDate: _model.datePicked2,
-                                                endTime: _model.datePicked2,
-                                                notificationSent: false,
-                                              ));
-                                              _model.addedEvent = EventRecord
-                                                  .getDocumentFromData(
-                                                      createEventRecordData(
-                                                        title: _model
-                                                            .titleController
-                                                            .text,
-                                                        description: _model
-                                                            .descriptionController
-                                                            .text,
-                                                        createdBy:
-                                                            currentUserReference,
-                                                        location: _model
-                                                            .locationController
-                                                            .text,
-                                                        familyId: FFAppState()
-                                                            .familyId,
-                                                        notifyBefore:
-                                                            int.tryParse(_model
-                                                                .textController4
-                                                                .text),
-                                                        notifyBeforeUnit: _model
-                                                            .dropDownValue,
-                                                        isGoogleEvent: false,
-                                                        dontShareThisEvent:
-                                                            false,
-                                                        startTime:
-                                                            _model.datePicked1,
-                                                        isAllDay: false,
-                                                        startDate:
-                                                            _model.datePicked1,
-                                                        endDate:
-                                                            _model.datePicked2,
-                                                        endTime:
-                                                            _model.datePicked2,
-                                                        notificationSent: false,
-                                                      ),
-                                                      eventRecordReference1);
-                                              _shouldSetState = true;
                                             } else {
-                                              if (_model.datePicked1 ==
-                                                  _model.datePicked2) {
-                                                if (_model.datePicked4! <=
-                                                    _model.datePicked3!) {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'End Time can not be less than or equal Start Time.',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .error,
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Enter The Title',
+                                                    style: TextStyle(
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondary,
-                                                    ),
-                                                  );
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                }
-                                                if (_model.formKey
-                                                            .currentState ==
-                                                        null ||
-                                                    !_model
-                                                        .formKey.currentState!
-                                                        .validate()) {
-                                                  return;
-                                                }
-                                                if (_model.dropDownValue ==
-                                                    null) {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'select notification\'s time unit.',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
                                                               .primaryText,
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
                                                     ),
-                                                  );
-                                                  return;
-                                                }
-                                              } else {
-                                                if (_model.formKey
-                                                            .currentState ==
-                                                        null ||
-                                                    !_model
-                                                        .formKey.currentState!
-                                                        .validate()) {
-                                                  return;
-                                                }
-                                                if (_model.dropDownValue ==
-                                                    null) {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'select notification\'s time unit.',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
-                                                    ),
-                                                  );
-                                                  return;
-                                                }
-                                              }
-
-                                              var eventRecordReference2 =
-                                                  EventRecord.collection.doc();
-                                              await eventRecordReference2
-                                                  .set(createEventRecordData(
-                                                title:
-                                                    _model.titleController.text,
-                                                description: _model
-                                                    .descriptionController.text,
-                                                createdBy: currentUserReference,
-                                                location: _model
-                                                    .locationController.text,
-                                                familyId: FFAppState().familyId,
-                                                notifyBefore: int.tryParse(
-                                                    _model
-                                                        .textController4.text),
-                                                notifyBeforeUnit:
-                                                    _model.dropDownValue,
-                                                isGoogleEvent: false,
-                                                dontShareThisEvent: false,
-                                                startTime: _model.datePicked3,
-                                                isAllDay: false,
-                                                startDate: _model.datePicked1,
-                                                endDate: _model.datePicked2,
-                                                endTime: _model.datePicked4,
-                                                notificationSent: false,
-                                              ));
-                                              _model.addedEventWithTimek =
-                                                  EventRecord
-                                                      .getDocumentFromData(
-                                                          createEventRecordData(
-                                                            title: _model
-                                                                .titleController
-                                                                .text,
-                                                            description: _model
-                                                                .descriptionController
-                                                                .text,
-                                                            createdBy:
-                                                                currentUserReference,
-                                                            location: _model
-                                                                .locationController
-                                                                .text,
-                                                            familyId:
-                                                                FFAppState()
-                                                                    .familyId,
-                                                            notifyBefore: int
-                                                                .tryParse(_model
-                                                                    .textController4
-                                                                    .text),
-                                                            notifyBeforeUnit:
-                                                                _model
-                                                                    .dropDownValue,
-                                                            isGoogleEvent:
-                                                                false,
-                                                            dontShareThisEvent:
-                                                                false,
-                                                            startTime: _model
-                                                                .datePicked3,
-                                                            isAllDay: false,
-                                                            startDate: _model
-                                                                .datePicked1,
-                                                            endDate: _model
-                                                                .datePicked2,
-                                                            endTime: _model
-                                                                .datePicked4,
-                                                            notificationSent:
-                                                                false,
-                                                          ),
-                                                          eventRecordReference2);
-                                              _shouldSetState = true;
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
                                             }
 
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'Event Added Successfully!',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .success,
-                                              ),
-                                            );
-                                            Navigator.pop(context);
                                             if (_shouldSetState)
                                               setState(() {});
                                           },
@@ -1384,194 +1296,6 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             borderRadius:
                                                 BorderRadius.circular(40.0),
                                           ),
-                                        ),
-                                      ),
-                                      FFButtonWidget(
-                                        onPressed: () async {
-                                          var _shouldSetState = false;
-                                          if (functions.trimAndCollapseSpaces(
-                                                      _model.titleController
-                                                          .text) ==
-                                                  null ||
-                                              functions.trimAndCollapseSpaces(
-                                                      _model.titleController
-                                                          .text) ==
-                                                  '') {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                content: Text(
-                                                  'No Title',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                  ),
-                                                ),
-                                                duration: Duration(
-                                                    milliseconds: 4000),
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                              ),
-                                            );
-                                            if (_shouldSetState)
-                                              setState(() {});
-                                            return;
-                                          } else {
-                                            if ((_model.datePicked1! <=
-                                                    _model.datePicked2!) ||
-                                                (_model.datePicked2 == null)) {
-                                              var eventRecordReference =
-                                                  EventRecord.collection.doc();
-                                              await eventRecordReference
-                                                  .set(createEventRecordData(
-                                                title:
-                                                    _model.titleController.text,
-                                                description: _model
-                                                    .descriptionController.text,
-                                                createdBy: currentUserReference,
-                                                location: _model
-                                                    .locationController.text,
-                                                familyId: FFAppState().familyId,
-                                                notifyBefore: int.tryParse(
-                                                    _model
-                                                        .textController4.text),
-                                                notifyBeforeUnit:
-                                                    _model.dropDownValue,
-                                                isGoogleEvent: false,
-                                                dontShareThisEvent: false,
-                                                startTime: _model.datePicked3,
-                                                isAllDay: false,
-                                                startDate: _model.datePicked1,
-                                                endDate: _model.datePicked2,
-                                                endTime: _model.datePicked3,
-                                                notificationSent: false,
-                                              ));
-                                              _model.addedEventWithTime =
-                                                  EventRecord
-                                                      .getDocumentFromData(
-                                                          createEventRecordData(
-                                                            title: _model
-                                                                .titleController
-                                                                .text,
-                                                            description: _model
-                                                                .descriptionController
-                                                                .text,
-                                                            createdBy:
-                                                                currentUserReference,
-                                                            location: _model
-                                                                .locationController
-                                                                .text,
-                                                            familyId:
-                                                                FFAppState()
-                                                                    .familyId,
-                                                            notifyBefore: int
-                                                                .tryParse(_model
-                                                                    .textController4
-                                                                    .text),
-                                                            notifyBeforeUnit:
-                                                                _model
-                                                                    .dropDownValue,
-                                                            isGoogleEvent:
-                                                                false,
-                                                            dontShareThisEvent:
-                                                                false,
-                                                            startTime: _model
-                                                                .datePicked3,
-                                                            isAllDay: false,
-                                                            startDate: _model
-                                                                .datePicked1,
-                                                            endDate: _model
-                                                                .datePicked2,
-                                                            endTime: _model
-                                                                .datePicked3,
-                                                            notificationSent:
-                                                                false,
-                                                          ),
-                                                          eventRecordReference);
-                                              _shouldSetState = true;
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'Success',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .success,
-                                                ),
-                                              );
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            } else {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'end date bigger',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .error,
-                                                ),
-                                              );
-                                              if (_shouldSetState)
-                                                setState(() {});
-                                              return;
-                                            }
-                                          }
-
-                                          if (_shouldSetState) setState(() {});
-                                        },
-                                        text:
-                                            FFLocalizations.of(context).getText(
-                                          'gy5gfsfr' /* Button */,
-                                        ),
-                                        options: FFButtonOptions(
-                                          height: 40.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily:
-                                                        'Source Sans Pro',
-                                                    color: Colors.white,
-                                                  ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
                                         ),
                                       ),
                                     ],

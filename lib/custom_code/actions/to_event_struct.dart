@@ -1,6 +1,7 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -19,7 +20,6 @@ EventStruct toEventStruct(EventRecord event) {
       startDate: event.startDate,
       endDate: event.endDate,
       startTime: event.startTime,
-      endTime: event.endTime,
       isAllDay: event.isAllDay,
       isGoogleEvent: event.isGoogleEvent,
       dontShareThisEvent: event.dontShareThisEvent,

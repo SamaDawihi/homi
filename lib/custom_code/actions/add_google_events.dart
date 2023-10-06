@@ -1,6 +1,7 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -21,7 +22,6 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
         .where('startDate', isEqualTo: googleEvent.startDate)
         .where('startTime', isEqualTo: googleEvent.startTime)
         .where('endDate', isEqualTo: googleEvent.endDate)
-        .where('endTime', isEqualTo: googleEvent.endTime)
         .where('createdBy', isEqualTo: googleEvent.createdBy)
         .where('familyId', isEqualTo: googleEvent.familyId)
         .get();
@@ -61,7 +61,6 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
         'startDate': googleEvent.startDate,
         'startTime': googleEvent.startTime,
         'endDate': googleEvent.endDate,
-        'endTime': googleEvent.endTime,
         'isAllDay': googleEvent.isAllDay,
         'familyId': googleEvent.familyId,
         'notifyBefore': googleEvent.notifyBefore,

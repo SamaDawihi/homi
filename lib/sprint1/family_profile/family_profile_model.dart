@@ -23,10 +23,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class FamilyProfileModel extends FlutterFlowModel<FamilyProfileWidget> {
-  ///  Local state fields for this page.
-
-  String familyName = '\"\"';
-
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

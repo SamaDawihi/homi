@@ -154,10 +154,15 @@ class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
                     FFButtonWidget(
                       onPressed: () async {
                         _model.member = await queryMemberRecordOnce(
-                          queryBuilder: (memberRecord) => memberRecord.where(
-                            'memberId',
-                            isEqualTo: currentUserReference,
-                          ),
+                          queryBuilder: (memberRecord) => memberRecord
+                              .where(
+                                'memberId',
+                                isEqualTo: currentUserReference,
+                              )
+                              .where(
+                                'familyId',
+                                isEqualTo: FFAppState().familyId,
+                              ),
                           singleRecord: true,
                         ).then((s) => s.firstOrNull);
 

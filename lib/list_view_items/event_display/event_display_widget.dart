@@ -2,8 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/input_components/view_event/view_event_widget.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -87,137 +85,109 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  StreamBuilder<List<MemberRecord>>(
-                    stream: queryMemberRecord(
-                      queryBuilder: (memberRecord) => memberRecord
-                          .where(
-                            'memberId',
-                            isEqualTo: eventDisplayEventRecord.createdBy,
-                          )
-                          .where(
-                            'familyId',
-                            isEqualTo: eventDisplayEventRecord.familyId,
-                          ),
-                      singleRecord: true,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 10.0,
-                            height: 10.0,
-                            child: SpinKitDualRing(
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 10.0,
+                  Align(
+                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    child: StreamBuilder<List<MemberRecord>>(
+                      stream: queryMemberRecord(
+                        queryBuilder: (memberRecord) => memberRecord
+                            .where(
+                              'memberId',
+                              isEqualTo: eventDisplayEventRecord.createdBy,
+                            )
+                            .where(
+                              'familyId',
+                              isEqualTo: eventDisplayEventRecord.familyId,
                             ),
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 10.0,
+                              height: 10.0,
+                              child: SpinKitDualRing(
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 10.0,
+                              ),
+                            ),
+                          );
+                        }
+                        List<MemberRecord> indicatorMemberRecordList =
+                            snapshot.data!;
+                        // Return an empty Container when the item does not exist.
+                        if (snapshot.data!.isEmpty) {
+                          return Container();
+                        }
+                        final indicatorMemberRecord =
+                            indicatorMemberRecordList.isNotEmpty
+                                ? indicatorMemberRecordList.first
+                                : null;
+                        return Container(
+                          width: 4.0,
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color: indicatorMemberRecord?.color,
+                            borderRadius: BorderRadius.circular(0.0),
                           ),
                         );
-                      }
-                      List<MemberRecord> indicatorMemberRecordList =
-                          snapshot.data!;
-                      // Return an empty Container when the item does not exist.
-                      if (snapshot.data!.isEmpty) {
-                        return Container();
-                      }
-                      final indicatorMemberRecord =
-                          indicatorMemberRecordList.isNotEmpty
-                              ? indicatorMemberRecordList.first
-                              : null;
-                      return Container(
-                        width: 4.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          color: indicatorMemberRecord?.color,
-                          borderRadius: BorderRadius.circular(0.0),
-                        ),
-                      );
-                    },
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            eventDisplayEventRecord.title,
-                            style: FlutterFlowTheme.of(context).bodyLarge,
-                          ),
-                        ),
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            eventDisplayEventRecord.description,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                      ],
+                      },
                     ),
                   ),
                   Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Text(
-                            valueOrDefault<String>(
-                              dateTimeFormat(
-                                'yMd',
-                                eventDisplayEventRecord.startDate,
-                                locale:
-                                    FFLocalizations.of(context).languageCode,
-                              ),
-                              'no start',
-                            ),
-                            style:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Source Sans Pro',
-                                      fontSize: 11.0,
-                                    ),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Text(
+                        eventDisplayEventRecord.title,
+                        style: FlutterFlowTheme.of(context).bodyLarge,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Text(
+                        valueOrDefault<String>(
+                          dateTimeFormat(
+                            'yMd',
+                            eventDisplayEventRecord.startDate,
+                            locale: FFLocalizations.of(context).languageCode,
                           ),
+                          'no start',
                         ),
-                      ],
+                        style: FlutterFlowTheme.of(context).bodyLarge.override(
+                              fontFamily: 'Source Sans Pro',
+                              fontSize: 11.0,
+                            ),
+                      ),
                     ),
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Builder(
-                        builder: (context) => InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await showAlignedDialog(
-                              context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
-                                  child: ViewEventWidget(
-                                    event: eventDisplayEventRecord,
-                                    eventRef: widget.eventRef!,
-                                  ),
-                                );
-                              },
-                            ).then((value) => setState(() {}));
-                          },
-                          child: Icon(
-                            Icons.arrow_forward,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(
+                            'EventDetails',
+                            queryParameters: {
+                              'eventRef': serializeParam(
+                                widget.eventRef,
+                                ParamType.DocumentReference,
+                              ),
+                            }.withoutNulls,
+                          );
+                        },
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24.0,
                         ),
                       ),
                       if ((eventDisplayEventRecord.createdBy ==

@@ -16,7 +16,6 @@ class EventStruct extends FFFirebaseStruct {
     DateTime? startTime,
     DateTime? startDate,
     DateTime? endDate,
-    DateTime? endTime,
     bool? isAllDay,
     DocumentReference? createdBy,
     DocumentReference? familyId,
@@ -24,6 +23,7 @@ class EventStruct extends FFFirebaseStruct {
     String? notifyBeforeUnit,
     bool? isGoogleEvent,
     bool? dontShareThisEvent,
+    bool? notifyOnTime,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _title = title,
         _description = description,
@@ -31,7 +31,6 @@ class EventStruct extends FFFirebaseStruct {
         _startTime = startTime,
         _startDate = startDate,
         _endDate = endDate,
-        _endTime = endTime,
         _isAllDay = isAllDay,
         _createdBy = createdBy,
         _familyId = familyId,
@@ -39,6 +38,7 @@ class EventStruct extends FFFirebaseStruct {
         _notifyBeforeUnit = notifyBeforeUnit,
         _isGoogleEvent = isGoogleEvent,
         _dontShareThisEvent = dontShareThisEvent,
+        _notifyOnTime = notifyOnTime,
         super(firestoreUtilData);
 
   // "title" field.
@@ -76,12 +76,6 @@ class EventStruct extends FFFirebaseStruct {
   DateTime? get endDate => _endDate;
   set endDate(DateTime? val) => _endDate = val;
   bool hasEndDate() => _endDate != null;
-
-  // "endTime" field.
-  DateTime? _endTime;
-  DateTime? get endTime => _endTime;
-  set endTime(DateTime? val) => _endTime = val;
-  bool hasEndTime() => _endTime != null;
 
   // "isAllDay" field.
   bool? _isAllDay;
@@ -127,6 +121,12 @@ class EventStruct extends FFFirebaseStruct {
   set dontShareThisEvent(bool? val) => _dontShareThisEvent = val;
   bool hasDontShareThisEvent() => _dontShareThisEvent != null;
 
+  // "notifyOnTime" field.
+  bool? _notifyOnTime;
+  bool get notifyOnTime => _notifyOnTime ?? false;
+  set notifyOnTime(bool? val) => _notifyOnTime = val;
+  bool hasNotifyOnTime() => _notifyOnTime != null;
+
   static EventStruct fromMap(Map<String, dynamic> data) => EventStruct(
         title: data['title'] as String?,
         description: data['description'] as String?,
@@ -134,7 +134,6 @@ class EventStruct extends FFFirebaseStruct {
         startTime: data['startTime'] as DateTime?,
         startDate: data['startDate'] as DateTime?,
         endDate: data['endDate'] as DateTime?,
-        endTime: data['endTime'] as DateTime?,
         isAllDay: data['isAllDay'] as bool?,
         createdBy: data['createdBy'] as DocumentReference?,
         familyId: data['familyId'] as DocumentReference?,
@@ -142,6 +141,7 @@ class EventStruct extends FFFirebaseStruct {
         notifyBeforeUnit: data['notifyBeforeUnit'] as String?,
         isGoogleEvent: data['isGoogleEvent'] as bool?,
         dontShareThisEvent: data['dontShareThisEvent'] as bool?,
+        notifyOnTime: data['notifyOnTime'] as bool?,
       );
 
   static EventStruct? maybeFromMap(dynamic data) =>
@@ -154,7 +154,6 @@ class EventStruct extends FFFirebaseStruct {
         'startTime': _startTime,
         'startDate': _startDate,
         'endDate': _endDate,
-        'endTime': _endTime,
         'isAllDay': _isAllDay,
         'createdBy': _createdBy,
         'familyId': _familyId,
@@ -162,6 +161,7 @@ class EventStruct extends FFFirebaseStruct {
         'notifyBeforeUnit': _notifyBeforeUnit,
         'isGoogleEvent': _isGoogleEvent,
         'dontShareThisEvent': _dontShareThisEvent,
+        'notifyOnTime': _notifyOnTime,
       }.withoutNulls;
 
   @override
@@ -190,10 +190,6 @@ class EventStruct extends FFFirebaseStruct {
           _endDate,
           ParamType.DateTime,
         ),
-        'endTime': serializeParam(
-          _endTime,
-          ParamType.DateTime,
-        ),
         'isAllDay': serializeParam(
           _isAllDay,
           ParamType.bool,
@@ -220,6 +216,10 @@ class EventStruct extends FFFirebaseStruct {
         ),
         'dontShareThisEvent': serializeParam(
           _dontShareThisEvent,
+          ParamType.bool,
+        ),
+        'notifyOnTime': serializeParam(
+          _notifyOnTime,
           ParamType.bool,
         ),
       }.withoutNulls;
@@ -253,11 +253,6 @@ class EventStruct extends FFFirebaseStruct {
         ),
         endDate: deserializeParam(
           data['endDate'],
-          ParamType.DateTime,
-          false,
-        ),
-        endTime: deserializeParam(
-          data['endTime'],
           ParamType.DateTime,
           false,
         ),
@@ -298,6 +293,11 @@ class EventStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        notifyOnTime: deserializeParam(
+          data['notifyOnTime'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -312,14 +312,14 @@ class EventStruct extends FFFirebaseStruct {
         startTime == other.startTime &&
         startDate == other.startDate &&
         endDate == other.endDate &&
-        endTime == other.endTime &&
         isAllDay == other.isAllDay &&
         createdBy == other.createdBy &&
         familyId == other.familyId &&
         notifyBefore == other.notifyBefore &&
         notifyBeforeUnit == other.notifyBeforeUnit &&
         isGoogleEvent == other.isGoogleEvent &&
-        dontShareThisEvent == other.dontShareThisEvent;
+        dontShareThisEvent == other.dontShareThisEvent &&
+        notifyOnTime == other.notifyOnTime;
   }
 
   @override
@@ -330,14 +330,14 @@ class EventStruct extends FFFirebaseStruct {
         startTime,
         startDate,
         endDate,
-        endTime,
         isAllDay,
         createdBy,
         familyId,
         notifyBefore,
         notifyBeforeUnit,
         isGoogleEvent,
-        dontShareThisEvent
+        dontShareThisEvent,
+        notifyOnTime
       ]);
 }
 
@@ -348,7 +348,6 @@ EventStruct createEventStruct({
   DateTime? startTime,
   DateTime? startDate,
   DateTime? endDate,
-  DateTime? endTime,
   bool? isAllDay,
   DocumentReference? createdBy,
   DocumentReference? familyId,
@@ -356,6 +355,7 @@ EventStruct createEventStruct({
   String? notifyBeforeUnit,
   bool? isGoogleEvent,
   bool? dontShareThisEvent,
+  bool? notifyOnTime,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -368,7 +368,6 @@ EventStruct createEventStruct({
       startTime: startTime,
       startDate: startDate,
       endDate: endDate,
-      endTime: endTime,
       isAllDay: isAllDay,
       createdBy: createdBy,
       familyId: familyId,
@@ -376,6 +375,7 @@ EventStruct createEventStruct({
       notifyBeforeUnit: notifyBeforeUnit,
       isGoogleEvent: isGoogleEvent,
       dontShareThisEvent: dontShareThisEvent,
+      notifyOnTime: notifyOnTime,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

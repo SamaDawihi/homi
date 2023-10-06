@@ -12,3 +12,4 @@ export '/sprint1/families_management/families_management_widget.dart'
 export '/sprint1/invitations_status/invitations_status_widget.dart'
     show InvitationsStatusWidget;
 export '/pages/tasks/tasks_widget.dart' show TasksWidget;
+export '/pages/event_details/event_details_widget.dart' show EventDetailsWidget;

@@ -81,15 +81,15 @@ class EventRecord extends FirestoreRecord {
   DateTime? get endDate => _endDate;
   bool hasEndDate() => _endDate != null;
 
-  // "endTime" field.
-  DateTime? _endTime;
-  DateTime? get endTime => _endTime;
-  bool hasEndTime() => _endTime != null;
-
   // "notificationSent" field.
   bool? _notificationSent;
   bool get notificationSent => _notificationSent ?? false;
   bool hasNotificationSent() => _notificationSent != null;
+
+  // "notifyOnTime" field.
+  bool? _notifyOnTime;
+  bool get notifyOnTime => _notifyOnTime ?? false;
+  bool hasNotifyOnTime() => _notifyOnTime != null;
 
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
@@ -105,8 +105,8 @@ class EventRecord extends FirestoreRecord {
     _startDate = snapshotData['startDate'] as DateTime?;
     _dontShareThisEvent = snapshotData['dontShareThisEvent'] as bool?;
     _endDate = snapshotData['endDate'] as DateTime?;
-    _endTime = snapshotData['endTime'] as DateTime?;
     _notificationSent = snapshotData['notificationSent'] as bool?;
+    _notifyOnTime = snapshotData['notifyOnTime'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -156,8 +156,8 @@ Map<String, dynamic> createEventRecordData({
   DateTime? startDate,
   bool? dontShareThisEvent,
   DateTime? endDate,
-  DateTime? endTime,
   bool? notificationSent,
+  bool? notifyOnTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -174,8 +174,8 @@ Map<String, dynamic> createEventRecordData({
       'startDate': startDate,
       'dontShareThisEvent': dontShareThisEvent,
       'endDate': endDate,
-      'endTime': endTime,
       'notificationSent': notificationSent,
+      'notifyOnTime': notifyOnTime,
     }.withoutNulls,
   );
 
@@ -200,8 +200,8 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e1?.startDate == e2?.startDate &&
         e1?.dontShareThisEvent == e2?.dontShareThisEvent &&
         e1?.endDate == e2?.endDate &&
-        e1?.endTime == e2?.endTime &&
-        e1?.notificationSent == e2?.notificationSent;
+        e1?.notificationSent == e2?.notificationSent &&
+        e1?.notifyOnTime == e2?.notifyOnTime;
   }
 
   @override
@@ -219,8 +219,8 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e?.startDate,
         e?.dontShareThisEvent,
         e?.endDate,
-        e?.endTime,
-        e?.notificationSent
+        e?.notificationSent,
+        e?.notifyOnTime
       ]);
 
   @override

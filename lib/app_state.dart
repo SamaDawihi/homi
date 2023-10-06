@@ -32,35 +32,6 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  List<MemberStruct> _currentFamilyMembers = [];
-  List<MemberStruct> get currentFamilyMembers => _currentFamilyMembers;
-  set currentFamilyMembers(List<MemberStruct> _value) {
-    _currentFamilyMembers = _value;
-  }
-
-  void addToCurrentFamilyMembers(MemberStruct _value) {
-    _currentFamilyMembers.add(_value);
-  }
-
-  void removeFromCurrentFamilyMembers(MemberStruct _value) {
-    _currentFamilyMembers.remove(_value);
-  }
-
-  void removeAtIndexFromCurrentFamilyMembers(int _index) {
-    _currentFamilyMembers.removeAt(_index);
-  }
-
-  void updateCurrentFamilyMembersAtIndex(
-    int _index,
-    MemberStruct Function(MemberStruct) updateFn,
-  ) {
-    _currentFamilyMembers[_index] = updateFn(_currentFamilyMembers[_index]);
-  }
-
-  void insertAtIndexInCurrentFamilyMembers(int _index, MemberStruct _value) {
-    _currentFamilyMembers.insert(_index, _value);
-  }
-
   DocumentReference? _familyId;
   DocumentReference? get familyId => _familyId;
   set familyId(DocumentReference? _value) {

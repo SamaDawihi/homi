@@ -1,6 +1,7 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -56,7 +57,6 @@ Future<List<EventStruct>> getGoogleEvents(
           startDate: DateTime(startD!.year, startD.month, startD.day),
           endDate: DateTime(endD!.year, endD.month, endD.day),
           startTime: startD,
-          endTime: endD,
           isAllDay: event.start?.dateTime ==
               null, // Assuming it's an all-day event if there's no specific dateTime set
           isGoogleEvent: true,

@@ -529,86 +529,22 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Container(
-                                        width: 130.0,
-                                        height: 60.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          '1fotyz6z' /* Start Time: */,
                                         ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 20.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '6kvv1bx6' /* Start Time: */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Source Sans Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: 18.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                              ),
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              fontFamily: 'Source Sans Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.bold,
                                             ),
-                                          ],
-                                        ),
                                       ),
-                                      Container(
-                                        width: 140.0,
-                                        height: 60.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 20.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'mo7aqe05' /* End Time: */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Source Sans Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: 18.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(width: 26.0)),
-                                  ),
-                                if (widget.event?.isAllDay == false)
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
                                       Container(
                                         width: 152.0,
                                         height: 35.0,
@@ -618,6 +554,8 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                         ),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -689,87 +627,7 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                           ],
                                         ),
                                       ),
-                                      Container(
-                                        width: 136.0,
-                                        height: 37.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(2.0, 0.0, 0.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  final _datePicked4Time =
-                                                      await showTimePicker(
-                                                    context: context,
-                                                    initialTime:
-                                                        TimeOfDay.fromDateTime(
-                                                            getCurrentTimestamp),
-                                                  );
-                                                  if (_datePicked4Time !=
-                                                      null) {
-                                                    safeSetState(() {
-                                                      _model.datePicked4 =
-                                                          DateTime(
-                                                        getCurrentTimestamp
-                                                            .year,
-                                                        getCurrentTimestamp
-                                                            .month,
-                                                        getCurrentTimestamp.day,
-                                                        _datePicked4Time.hour,
-                                                        _datePicked4Time.minute,
-                                                      );
-                                                    });
-                                                  }
-                                                },
-                                                child: Icon(
-                                                  Icons.access_time,
-                                                  color: Color(0xFF555EBE),
-                                                  size: 28.0,
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  dateTimeFormat(
-                                                    'jm',
-                                                    widget.event?.endTime,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  ),
-                                                  '  No Time',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Source Sans Pro',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: 16.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                                    ].divide(SizedBox(width: 26.0)),
                                   ),
                                 Divider(
                                   thickness: 2.0,
@@ -854,22 +712,22 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                final _datePicked5Time =
+                                                final _datePicked4Time =
                                                     await showTimePicker(
                                                   context: context,
                                                   initialTime:
                                                       TimeOfDay.fromDateTime(
                                                           getCurrentTimestamp),
                                                 );
-                                                if (_datePicked5Time != null) {
+                                                if (_datePicked4Time != null) {
                                                   safeSetState(() {
-                                                    _model.datePicked5 =
+                                                    _model.datePicked4 =
                                                         DateTime(
                                                       getCurrentTimestamp.year,
                                                       getCurrentTimestamp.month,
                                                       getCurrentTimestamp.day,
-                                                      _datePicked5Time.hour,
-                                                      _datePicked5Time.minute,
+                                                      _datePicked4Time.hour,
+                                                      _datePicked4Time.minute,
                                                     );
                                                   });
                                                 }

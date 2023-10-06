@@ -1,29 +1,25 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'confirm_delete_event_model.dart';
-export 'confirm_delete_event_model.dart';
+import 'family_has_been_deleted_model.dart';
+export 'family_has_been_deleted_model.dart';
 
-class ConfirmDeleteEventWidget extends StatefulWidget {
-  const ConfirmDeleteEventWidget({
-    Key? key,
-    required this.event,
-  }) : super(key: key);
-
-  final DocumentReference? event;
+class FamilyHasBeenDeletedWidget extends StatefulWidget {
+  const FamilyHasBeenDeletedWidget({Key? key}) : super(key: key);
 
   @override
-  _ConfirmDeleteEventWidgetState createState() =>
-      _ConfirmDeleteEventWidgetState();
+  _FamilyHasBeenDeletedWidgetState createState() =>
+      _FamilyHasBeenDeletedWidgetState();
 }
 
-class _ConfirmDeleteEventWidgetState extends State<ConfirmDeleteEventWidget> {
-  late ConfirmDeleteEventModel _model;
+class _FamilyHasBeenDeletedWidgetState
+    extends State<FamilyHasBeenDeletedWidget> {
+  late FamilyHasBeenDeletedModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -34,7 +30,7 @@ class _ConfirmDeleteEventWidgetState extends State<ConfirmDeleteEventWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ConfirmDeleteEventModel());
+    _model = createModel(context, () => FamilyHasBeenDeletedModel());
   }
 
   @override
@@ -85,7 +81,7 @@ class _ConfirmDeleteEventWidgetState extends State<ConfirmDeleteEventWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'r23g2h16' /* Delete Event */,
+                        'eqfzsfcf' /* This Family Has Been Deleted */,
                       ),
                       textAlign: TextAlign.start,
                       style:
@@ -99,7 +95,7 @@ class _ConfirmDeleteEventWidgetState extends State<ConfirmDeleteEventWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          's5vahqnt' /* Are you sure you want to delet... */,
+                          'qclq5vmq' /* Contact The Family Admin For M... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
@@ -117,59 +113,13 @@ class _ConfirmDeleteEventWidgetState extends State<ConfirmDeleteEventWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          Navigator.pop(context);
-                        },
-                        text: FFLocalizations.of(context).getText(
-                          'd6yanmwu' /* Cancel */,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          textStyle:
-                              FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Source Sans Pro',
-                                    color: Color(0xFF555EBE),
-                                  ),
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: Color(0xFF555EBE),
-                          ),
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
-                      ),
-                    ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await widget.event!.delete();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Event successfully deleted!',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                            ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).success,
-                          ),
-                        );
-
-                        context.goNamed('Calendar');
+                        await action_blocks
+                            .familyHasBeenDeletedNavigateToHome(context);
                       },
                       text: FFLocalizations.of(context).getText(
-                        'a4zu0coe' /* OK */,
+                        'rmt1z625' /* Back To Home */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

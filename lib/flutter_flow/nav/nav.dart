@@ -139,6 +139,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Tasks',
           path: '/tasks',
           builder: (context, params) => TasksWidget(),
+        ),
+        FFRoute(
+          name: 'EventDetails',
+          path: '/eventDetails',
+          builder: (context, params) => EventDetailsWidget(
+            eventRef: params.getParam(
+                'eventRef', ParamType.DocumentReference, false, ['Event']),
+            familyRef: params.getParam(
+                'familyRef', ParamType.DocumentReference, false, ['Family']),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

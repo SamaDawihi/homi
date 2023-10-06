@@ -295,6 +295,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
+  // EventDetails
+  {
+    'hxb3dou2': {
+      'en': 'Event Details',
+      'ar': 'حالة الدعوة',
+    },
+    'kl5bxlrg': {
+      'en': 'Location:',
+      'ar': '',
+    },
+    'n2awoucz': {
+      'en': 'Created By:',
+      'ar': '',
+    },
+    'b12rd52o': {
+      'en': 'Start Date:',
+      'ar': '',
+    },
+    '1amfqjkx': {
+      'en': 'End Date:',
+      'ar': '',
+    },
+    'c1ttzv4s': {
+      'en': 'All Day?',
+      'ar': '',
+    },
+    '0zm0p2xp': {
+      'en': 'Start Time:',
+      'ar': '',
+    },
+    's1t8wf0q': {
+      'en': 'Description:',
+      'ar': '',
+    },
+    'p2ig0zto': {
+      'en': 'Notify before:',
+      'ar': '',
+    },
+    'gdyxs1pp': {
+      'en': 'Delete Event',
+      'ar': 'يضيف',
+    },
+    'nq3wvj5i': {
+      'en': 'Edit Event',
+      'ar': 'يضيف',
+    },
+    '9o0kfql3': {
+      'en': 'Home',
+      'ar': 'الصفحة الرئيسية',
+    },
+  },
   // InviteByEmail
   {
     '48xbquf9': {
@@ -771,13 +822,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ar': '',
     },
-    '8n6uay47': {
+    '3ukfqrvb': {
       'en': 'All Day Event',
       'ar': '',
     },
     'nwnx2xr6': {
       'en': 'Description here...',
       'ar': 'الوصف هنا...',
+    },
+    'xod6nrl1': {
+      'en': 'Notify On Time Of Event',
+      'ar': '',
     },
     'upd78bv9': {
       'en': 'Notification Time*',
@@ -811,15 +866,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
       'ar': 'يضيف',
     },
-    'gy5gfsfr': {
-      'en': 'Button',
-      'ar': '',
-    },
     'zsconjlh': {
       'en': 'Title is required.',
       'ar': '',
     },
-    '3dmurxob': {
+    'kod5xuao': {
       'en':
           'Title can not contain only white spaces, only numbers, or only special characters.',
       'ar': '',
@@ -871,12 +922,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'All Day?',
       'ar': '',
     },
-    '6kvv1bx6': {
+    '1fotyz6z': {
       'en': 'Start Time:',
-      'ar': '',
-    },
-    'mo7aqe05': {
-      'en': 'End Time:',
       'ar': '',
     },
     'xq9xtxj3': {
@@ -962,13 +1009,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Location',
       'ar': 'موقع',
     },
-    'cnuenws8': {
+    'zlmwynf8': {
       'en': 'All Day Event',
       'ar': '',
     },
     '3mz0d7t1': {
       'en': 'Description here...',
       'ar': 'الوصف هنا...',
+    },
+    'qn5eg1uj': {
+      'en': 'Notify On Time Of Event',
+      'ar': '',
     },
     'xb2gvglg': {
       'en': 'Notification Time',
@@ -1132,6 +1183,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'xg63hva4': {
       'en': 'OK',
       'ar': 'نعم',
+    },
+  },
+  // FamilyHasBeenDeleted
+  {
+    'eqfzsfcf': {
+      'en': 'This Family Has Been Deleted',
+      'ar': 'اللون مستخدم بالفعل',
+    },
+    'qclq5vmq': {
+      'en': 'Contact The Family Admin For More Information',
+      'ar':
+          'اللون الذي حددته مستخدم بالفعل من قبل فرد آخر من العائلة، حدد فردًا آخر.',
+    },
+    'rmt1z625': {
+      'en': 'Back To Home',
+      'ar': 'إختر لون',
     },
   },
   // Miscellaneous
