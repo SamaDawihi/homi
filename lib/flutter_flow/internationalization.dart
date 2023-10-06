@@ -454,6 +454,110 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
+  // EventEdit
+  {
+    'yywc6jcb': {
+      'en': 'Edit Event',
+      'ar': 'حالة الدعوة',
+    },
+    'ix5shetm': {
+      'en': 'Event Title*',
+      'ar': 'عنوان الحدث',
+    },
+    'yzk7stxn': {
+      'en': 'Location',
+      'ar': 'موقع',
+    },
+    'egddtc79': {
+      'en': '',
+      'ar': '',
+    },
+    '92ynmofy': {
+      'en': 'All Day Event',
+      'ar': '',
+    },
+    'vm4w5w5m': {
+      'en': 'Description here...',
+      'ar': 'الوصف هنا...',
+    },
+    'wtpwjh7t': {
+      'en': 'Notify On Time Of Event',
+      'ar': '',
+    },
+    '9yp5vtc1': {
+      'en': 'Notification Time*',
+      'ar': 'مرحبا بالعالم',
+    },
+    'yg122c2d': {
+      'en': 'Before...',
+      'ar': 'قبل...',
+    },
+    'ngyvwwy9': {
+      'en': 'Minutes',
+      'ar': 'دقائق',
+    },
+    '5nk6im9w': {
+      'en': 'Hours',
+      'ar': 'ساعات',
+    },
+    'pmnqgu25': {
+      'en': 'Days',
+      'ar': '',
+    },
+    'g02kws35': {
+      'en': 'Min/hour/Day',
+      'ar': 'دقيقة/ساعة',
+    },
+    'h76zmi9i': {
+      'en': 'Search for an item...',
+      'ar': 'البحث عن عنصر...',
+    },
+    '0fr2vbr9': {
+      'en': 'Add',
+      'ar': 'يضيف',
+    },
+    'w2ggis78': {
+      'en': 'Title is required.',
+      'ar': '',
+    },
+    'i7ibfc1k': {
+      'en':
+          'Title can not contain only white spaces, only numbers, or only special characters.',
+      'ar': '',
+    },
+    'wtirbjwh': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'e5iv9yxy': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'n8b2ly46': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'obxm1gpx': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'o1ofk0ce': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    't6gp1yoz': {
+      'en': 'Notification time is required.',
+      'ar': '',
+    },
+    'lpf0htbj': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'z30xdtld': {
+      'en': 'Home',
+      'ar': 'الصفحة الرئيسية',
+    },
+  },
   // InviteByEmail
   {
     '48xbquf9': {

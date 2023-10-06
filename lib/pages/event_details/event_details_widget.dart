@@ -824,7 +824,23 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed('null');
+                                            context.pushNamed(
+                                              'EventEdit',
+                                              queryParameters: {
+                                                'selectedDate': serializeParam(
+                                                  _model.datePicked,
+                                                  ParamType.DateTime,
+                                                ),
+                                                'event': serializeParam(
+                                                  eventDetailsEventRecord,
+                                                  ParamType.Document,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'event':
+                                                    eventDetailsEventRecord,
+                                              },
+                                            );
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(

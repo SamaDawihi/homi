@@ -156,6 +156,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => EventAddWidget(
             selectedDate: params.getParam('selectedDate', ParamType.DateTime),
           ),
+        ),
+        FFRoute(
+          name: 'EventEdit',
+          path: '/eventEdit',
+          asyncParams: {
+            'event': getDoc(['Event'], EventRecord.fromSnapshot),
+          },
+          builder: (context, params) => EventEditWidget(
+            selectedDate: params.getParam('selectedDate', ParamType.DateTime),
+            event: params.getParam('event', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
