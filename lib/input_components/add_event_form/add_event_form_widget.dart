@@ -145,7 +145,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                       children: [
                         Form(
                           key: _model.formKey,
-                          autovalidateMode: AutovalidateMode.always,
+                          autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 14.0, 14.0, 14.0, 14.0),
@@ -226,7 +226,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           .labelLarge,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'w2mpzji7' /* Event Title */,
+                                        'w2mpzji7' /* Event Title* */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge,
@@ -880,7 +880,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'upd78bv9' /* Notification Time */,
+                                        'upd78bv9' /* Notification Time* */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -975,6 +975,10 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                               validator: _model
                                                   .textController4Validator
                                                   .asValidator(context),
+                                              inputFormatters: [
+                                                FilteringTextInputFormatter
+                                                    .allow(RegExp('[0-9]'))
+                                              ],
                                             ),
                                           ),
                                         ),
@@ -1070,6 +1074,37 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                               return;
                                             }
                                             if (_model.switchValue!) {
+                                              if (_model.formKey.currentState ==
+                                                      null ||
+                                                  !_model.formKey.currentState!
+                                                      .validate()) {
+                                                return;
+                                              }
+                                              if (_model.dropDownValue ==
+                                                  null) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'select notification\'s time unit.',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .error,
+                                                  ),
+                                                );
+                                                return;
+                                              }
+
                                               var eventRecordReference1 =
                                                   EventRecord.collection.doc();
                                               await eventRecordReference1
@@ -1160,6 +1195,69 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                   );
                                                   if (_shouldSetState)
                                                     setState(() {});
+                                                  return;
+                                                }
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
+                                                if (_model.dropDownValue ==
+                                                    null) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'select notification\'s time unit.',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                    ),
+                                                  );
+                                                  return;
+                                                }
+                                              } else {
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
+                                                  return;
+                                                }
+                                                if (_model.dropDownValue ==
+                                                    null) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'select notification\'s time unit.',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                    ),
+                                                  );
                                                   return;
                                                 }
                                               }

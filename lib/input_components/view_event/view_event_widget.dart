@@ -969,6 +969,8 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                                 },
                                               ).then(
                                                   (value) => setState(() {}));
+
+                                              Navigator.pop(context);
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(
@@ -1034,6 +1036,8 @@ class _ViewEventWidgetState extends State<ViewEventWidget>
                                                 },
                                               ).then(
                                                   (value) => setState(() {}));
+
+                                              Navigator.pop(context);
                                             },
                                             text: FFLocalizations.of(context)
                                                 .getText(

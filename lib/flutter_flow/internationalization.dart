@@ -760,7 +760,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أضف حدثًا',
     },
     'w2mpzji7': {
-      'en': 'Event Title',
+      'en': 'Event Title*',
       'ar': 'عنوان الحدث',
     },
     'lp0rlmo1': {
@@ -780,7 +780,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الوصف هنا...',
     },
     'upd78bv9': {
-      'en': 'Notification Time',
+      'en': 'Notification Time*',
       'ar': 'مرحبا بالعالم',
     },
     'xhvahadc': {
@@ -816,7 +816,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'zsconjlh': {
-      'en': 'Field is required',
+      'en': 'Title is required.',
+      'ar': '',
+    },
+    '3dmurxob': {
+      'en':
+          'Title can not contain only white spaces, only numbers, or only special characters.',
       'ar': '',
     },
     'x41fk3mq': {
@@ -840,7 +845,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'j7cezyuq': {
-      'en': 'Field is required',
+      'en': 'Notification time is required.',
       'ar': '',
     },
     'vm9qztyn': {

@@ -27,6 +27,28 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   // State field(s) for title widget.
   TextEditingController? titleController;
   String? Function(BuildContext, String?)? titleControllerValidator;
+  String? _titleControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'zsconjlh' /* Title is required. */,
+      );
+    }
+
+    if (val.length < 1) {
+      return 'Requires at least 1 characters.';
+    }
+    if (val.length > 20) {
+      return 'Maximum 20 characters allowed, currently ${val.length}.';
+    }
+    if (!RegExp('^(?![\\s\\d!@#\$%^&*()_+{}\\[\\]:;<>,.?~\\\\-=|\\/]+\$).+')
+        .hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        '3dmurxob' /* Title can not contain only whi... */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for location widget.
   TextEditingController? locationController;
   String? Function(BuildContext, String?)? locationControllerValidator;
@@ -42,6 +64,23 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
   // State field(s) for TextField widget.
   TextEditingController? textController4;
   String? Function(BuildContext, String?)? textController4Validator;
+  String? _textController4Validator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'j7cezyuq' /* Notification time is required. */,
+      );
+    }
+
+    if (val.length < 1) {
+      return 'Requires at least 1 characters.';
+    }
+    if (val.length > 2) {
+      return 'Maximum 2 characters allowed, currently ${val.length}.';
+    }
+
+    return null;
+  }
+
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -54,7 +93,10 @@ class AddEventFormModel extends FlutterFlowModel<AddEventFormWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    titleControllerValidator = _titleControllerValidator;
+    textController4Validator = _textController4Validator;
+  }
 
   void dispose() {
     titleController?.dispose();
