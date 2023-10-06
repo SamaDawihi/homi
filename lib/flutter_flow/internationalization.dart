@@ -217,6 +217,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Calendar',
       'ar': 'التقويم',
     },
+    '118lf1le': {
+      'en': 'Get Google Events',
+      'ar': '',
+    },
     '2adgmlg5': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -1199,6 +1203,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'rmt1z625': {
       'en': 'Back To Home',
       'ar': 'إختر لون',
+    },
+  },
+  // emptyEvents
+  {
+    '2fyocw01': {
+      'en': 'Seems that you don\'t have any events for the selected date',
+      'ar': 'يبدو أنه ليس لديك أي عائلة',
+    },
+    'g83mgxnn': {
+      'en': 'create a new family or join an existing one',
+      'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
     },
   },
   // Miscellaneous
