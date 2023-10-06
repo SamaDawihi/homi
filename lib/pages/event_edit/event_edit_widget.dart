@@ -46,8 +46,12 @@ class _EventEditWidgetState extends State<EventEditWidget> {
         TextEditingController(text: widget.event?.location);
     _model.descriptionController ??=
         TextEditingController(text: widget.event?.description);
-    _model.textController4 ??=
-        TextEditingController(text: widget.event?.notifyBefore?.toString());
+    _model.textController4 ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          _model.textController4?.text = FFLocalizations.of(context).getText(
+            'xb9rrfbx' /* 00 */,
+          );
+        }));
   }
 
   @override
