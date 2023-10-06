@@ -217,7 +217,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Calendar',
       'ar': 'التقويم',
     },
-    '118lf1le': {
+    'kxy5o10f': {
       'en': 'Get Google Events',
       'ar': '',
     },

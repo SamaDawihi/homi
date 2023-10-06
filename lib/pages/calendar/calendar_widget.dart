@@ -360,7 +360,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                           10.0, 6.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          '118lf1le' /* Get Google Events */,
+                                          'kxy5o10f' /* Get Google Events */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge

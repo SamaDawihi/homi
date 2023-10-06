@@ -43,8 +43,8 @@ class _EmptyEventsWidgetState extends State<EmptyEventsWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 12.0, 12.0),
       child: Container(
-        width: 160.0,
-        height: 100.0,
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(8.0),
