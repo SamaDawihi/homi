@@ -454,6 +454,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
+  // EventEdit
+  {
+    '28ca6kzn': {
+      'en': 'Edit Event',
+      'ar': 'حالة الدعوة',
+    },
+    'jgp7rmvc': {
+      'en': 'Home',
+      'ar': 'الصفحة الرئيسية',
+    },
+  },
   // InviteByEmail
   {
     '48xbquf9': {
