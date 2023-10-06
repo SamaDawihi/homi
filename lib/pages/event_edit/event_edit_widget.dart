@@ -436,46 +436,83 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                   width: 130.0,
                                                   height: 50.0,
                                                   decoration: BoxDecoration(),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        valueOrDefault<String>(
-                                                          dateTimeFormat(
-                                                            'yMd',
-                                                            widget
-                                                                .event?.endDate,
-                                                            locale: FFLocalizations
-                                                                    .of(context)
-                                                                .languageCode,
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      final _datePicked3Date =
+                                                          await showDatePicker(
+                                                        context: context,
+                                                        initialDate:
+                                                            getCurrentTimestamp,
+                                                        firstDate:
+                                                            getCurrentTimestamp,
+                                                        lastDate:
+                                                            DateTime(2050),
+                                                      );
+
+                                                      if (_datePicked3Date !=
+                                                          null) {
+                                                        safeSetState(() {
+                                                          _model.datePicked3 =
+                                                              DateTime(
+                                                            _datePicked3Date
+                                                                .year,
+                                                            _datePicked3Date
+                                                                .month,
+                                                            _datePicked3Date
+                                                                .day,
+                                                          );
+                                                        });
+                                                      }
+                                                    },
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            dateTimeFormat(
+                                                              'yMd',
+                                                              widget.event
+                                                                  ?.endDate,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
+                                                            'EndTime',
                                                           ),
-                                                          'EndTime',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Icon(
-                                                          Icons.date_range,
-                                                          color:
-                                                              Color(0xFF555EBE),
-                                                          size: 24.0,
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Icon(
+                                                            Icons.date_range,
+                                                            color: Color(
+                                                                0xFF555EBE),
+                                                            size: 24.0,
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -530,25 +567,25 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  final _datePicked3Time =
+                                                  final _datePicked4Time =
                                                       await showTimePicker(
                                                     context: context,
                                                     initialTime:
                                                         TimeOfDay.fromDateTime(
                                                             getCurrentTimestamp),
                                                   );
-                                                  if (_datePicked3Time !=
+                                                  if (_datePicked4Time !=
                                                       null) {
                                                     safeSetState(() {
-                                                      _model.datePicked3 =
+                                                      _model.datePicked4 =
                                                           DateTime(
                                                         getCurrentTimestamp
                                                             .year,
                                                         getCurrentTimestamp
                                                             .month,
                                                         getCurrentTimestamp.day,
-                                                        _datePicked3Time.hour,
-                                                        _datePicked3Time.minute,
+                                                        _datePicked4Time.hour,
+                                                        _datePicked4Time.minute,
                                                       );
                                                     });
                                                   }
@@ -558,8 +595,11 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                   height: 50.0,
                                                   decoration: BoxDecoration(),
                                                   child: Visibility(
-                                                    visible: !_model
-                                                        .allDaySwitchValue!,
+                                                    visible:
+                                                        !valueOrDefault<bool>(
+                                                      _model.allDaySwitchValue,
+                                                      true,
+                                                    ),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -906,30 +946,115 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            await widget.event!.reference
-                                                .update(createEventRecordData(
-                                              title:
-                                                  _model.titleController.text,
-                                              description: _model
-                                                  .descriptionController.text,
-                                              createdBy: currentUserReference,
-                                              location: _model
-                                                  .locationController.text,
-                                              startTime: _model.datePicked3,
-                                              isAllDay:
-                                                  _model.allDaySwitchValue,
-                                              familyId: FFAppState().familyId,
-                                              notifyBefore: int.tryParse(
-                                                  _model.textController4.text),
-                                              notifyBeforeUnit:
-                                                  _model.dropDownValue,
-                                              isGoogleEvent: false,
-                                              startDate: _model.datePicked1,
-                                              dontShareThisEvent: false,
-                                              endDate: _model.datePicked2,
-                                              notificationSent: false,
-                                              notifyOnTime: false,
-                                            ));
+                                            if (_model.titleController.text !=
+                                                    null &&
+                                                _model.titleController.text !=
+                                                    '') {
+                                              if (!_model
+                                                      .notificationSwitchValue! &&
+                                                  (_model.textController4
+                                                              .text !=
+                                                          null &&
+                                                      _model.textController4
+                                                              .text !=
+                                                          '')) {
+                                                await widget.event!.reference
+                                                    .update(
+                                                        createEventRecordData(
+                                                  title: _model
+                                                      .titleController.text,
+                                                  description: _model
+                                                      .descriptionController
+                                                      .text,
+                                                  createdBy:
+                                                      currentUserReference,
+                                                  location: _model
+                                                      .locationController.text,
+                                                  startTime: _model.datePicked4,
+                                                  isAllDay:
+                                                      _model.allDaySwitchValue,
+                                                  familyId:
+                                                      FFAppState().familyId,
+                                                  notifyBefore: int.tryParse(
+                                                      _model.textController4
+                                                          .text),
+                                                  notifyBeforeUnit:
+                                                      _model.dropDownValue,
+                                                  isGoogleEvent: false,
+                                                  startDate: _model.datePicked1,
+                                                  dontShareThisEvent: false,
+                                                  endDate: _model.datePicked2,
+                                                  notificationSent: false,
+                                                  notifyOnTime: _model
+                                                      .notificationSwitchValue,
+                                                ));
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Event Edited Successfully!',
+                                                      style: TextStyle(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .success,
+                                                  ),
+                                                );
+
+                                                context.pushNamed('Calendar');
+
+                                                return;
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Notify Before cannot be let empty .',
+                                                      style: TextStyle(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .error,
+                                                  ),
+                                                );
+                                                return;
+                                              }
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Please enter a title.',
+                                                    style: TextStyle(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              return;
+                                            }
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(

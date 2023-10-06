@@ -7,7 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'event_edit_widget.dart' show EventEditWidget;
+import 'event_add_copy_widget.dart' show EventAddCopyWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class EventEditModel extends FlutterFlowModel<EventEditWidget> {
+class EventAddCopyModel extends FlutterFlowModel<EventAddCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -29,10 +29,9 @@ class EventEditModel extends FlutterFlowModel<EventEditWidget> {
   String? Function(BuildContext, String?)? locationControllerValidator;
   DateTime? datePicked1;
   DateTime? datePicked2;
-  DateTime? datePicked3;
   // State field(s) for AllDaySwitch widget.
   bool? allDaySwitchValue;
-  DateTime? datePicked4;
+  DateTime? datePicked3;
   // State field(s) for description widget.
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
@@ -44,6 +43,10 @@ class EventEditModel extends FlutterFlowModel<EventEditWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  EventRecord? notifyOnTimeEvent;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  EventRecord? notifyBeforeEvent;
   // Model for BottomNavBar component.
   late BottomNavBarModel bottomNavBarModel;
 

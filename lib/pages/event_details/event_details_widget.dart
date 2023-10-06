@@ -623,7 +623,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                             thickness: 2.0,
                             color: FlutterFlowTheme.of(context).alternate,
                           ),
-                          if (eventDetailsEventRecord.notifyOnTime)
+                          if (!eventDetailsEventRecord.notifyOnTime)
                             Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,8 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -140,6 +144,54 @@ class _ListsWidgetState extends State<ListsWidget> {
               expandedTitleScale: 1.0,
             ),
             elevation: 0.0,
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: FFButtonWidget(
+            onPressed: () async {
+              _model.events = await queryEventRecordOnce(
+                queryBuilder: (eventRecord) => eventRecord.where(
+                  'createdBy',
+                  isEqualTo: currentUserReference,
+                ),
+              );
+
+              context.pushNamed(
+                'EventDetails',
+                queryParameters: {
+                  'eventRef': serializeParam(
+                    _model.events?.first?.reference,
+                    ParamType.DocumentReference,
+                  ),
+                  'familyRef': serializeParam(
+                    FFAppState().familyId,
+                    ParamType.DocumentReference,
+                  ),
+                }.withoutNulls,
+              );
+
+              setState(() {});
+            },
+            text: FFLocalizations.of(context).getText(
+              '28kwga5j' /* Event */,
+            ),
+            options: FFButtonOptions(
+              height: 40.0,
+              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              color: FlutterFlowTheme.of(context).primary,
+              textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                    fontFamily: 'Source Sans Pro',
+                    color: Colors.white,
+                  ),
+              elevation: 3.0,
+              borderSide: BorderSide(
+                color: Colors.transparent,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
           ),
         ),
       ),
