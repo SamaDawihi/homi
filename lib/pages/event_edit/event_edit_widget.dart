@@ -41,10 +41,13 @@ class _EventEditWidgetState extends State<EventEditWidget> {
     super.initState();
     _model = createModel(context, () => EventEditModel());
 
-    _model.titleController ??= TextEditingController();
-    _model.locationController ??= TextEditingController();
-    _model.descriptionController ??= TextEditingController();
-    _model.textController4 ??= TextEditingController();
+    _model.titleController ??= TextEditingController(text: widget.event?.title);
+    _model.locationController ??=
+        TextEditingController(text: widget.event?.location);
+    _model.descriptionController ??=
+        TextEditingController(text: widget.event?.description);
+    _model.textController4 ??=
+        TextEditingController(text: widget.event?.notifyBefore?.toString());
   }
 
   @override
@@ -496,8 +499,9 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                       .bodyMedium,
                                             ),
                                             Switch.adaptive(
-                                              value: _model
-                                                  .allDaySwitchValue ??= true,
+                                              value:
+                                                  _model.allDaySwitchValue ??=
+                                                      widget.event!.isAllDay,
                                               onChanged: (newValue) async {
                                                 setState(() =>
                                                     _model.allDaySwitchValue =
@@ -697,7 +701,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                     ),
                                     Switch.adaptive(
                                       value: _model.notificationSwitchValue ??=
-                                          true,
+                                          widget.event!.notifyOnTime,
                                       onChanged: (newValue) async {
                                         setState(() =>
                                             _model.notificationSwitchValue =
@@ -837,7 +841,9 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                             controller: _model
                                                     .dropDownValueController ??=
                                                 FormFieldController<String>(
-                                                    null),
+                                              _model.dropDownValue ??= widget
+                                                  .event?.notifyBeforeUnit,
+                                            ),
                                             options: [
                                               FFLocalizations.of(context)
                                                   .getText(
