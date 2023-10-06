@@ -149,6 +149,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             familyRef: params.getParam(
                 'familyRef', ParamType.DocumentReference, false, ['Family']),
           ),
+        ),
+        FFRoute(
+          name: 'EventAdd',
+          path: '/eventAdd',
+          builder: (context, params) => EventAddWidget(
+            selectedDate: params.getParam('selectedDate', ParamType.DateTime),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

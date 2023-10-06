@@ -1,96 +1,53 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
+import '/components/bottom_nav_bar/bottom_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_event_form_model.dart';
-export 'add_event_form_model.dart';
+import 'event_add_model.dart';
+export 'event_add_model.dart';
 
-class AddEventFormWidget extends StatefulWidget {
-  const AddEventFormWidget({
+class EventAddWidget extends StatefulWidget {
+  const EventAddWidget({
     Key? key,
-    required this.selectedDay,
+    required this.selectedDate,
   }) : super(key: key);
 
-  final DateTime? selectedDay;
+  final DateTime? selectedDate;
 
   @override
-  _AddEventFormWidgetState createState() => _AddEventFormWidgetState();
+  _EventAddWidgetState createState() => _EventAddWidgetState();
 }
 
-class _AddEventFormWidgetState extends State<AddEventFormWidget>
-    with TickerProviderStateMixin {
-  late AddEventFormModel _model;
+class _EventAddWidgetState extends State<EventAddWidget> {
+  late EventAddModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 250.ms),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 250.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 70.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
-
-  @override
-  void setState(VoidCallback callback) {
-    super.setState(callback);
-    _model.onUpdate();
-  }
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddEventFormModel());
+    _model = createModel(context, () => EventAddModel());
 
     _model.titleController ??= TextEditingController();
     _model.locationController ??= TextEditingController();
     _model.descriptionController ??= TextEditingController();
     _model.textController4 ??= TextEditingController();
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
   }
 
   @override
   void dispose() {
-    _model.maybeDispose();
+    _model.dispose();
 
     super.dispose();
   }
@@ -99,50 +56,101 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return BackdropFilter(
-      filter: ImageFilter.blur(
-        sigmaX: 5.0,
-        sigmaY: 4.0,
-      ),
-      child: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).accent4,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
-                child: Container(
-                  width: double.infinity,
-                  constraints: BoxConstraints(
-                    maxWidth: 670.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 3.0,
-                        color: Color(0x33000000),
-                        offset: Offset(0.0, 1.0),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(16.0),
-                    border: Border.all(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      width: 1.0,
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          automaticallyImplyLeading: false,
+          actions: [],
+          flexibleSpace: FlexibleSpaceBar(
+            title: Align(
+              alignment: AlignmentDirectional(0.00, -1.00),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0.00, -1.00),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 0.0, 0.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 1.0,
+                            buttonSize: 50.0,
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 25.0,
+                            ),
+                            onPressed: () async {
+                              context.pop();
+                            },
+                          ),
+                        ),
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'jzc3hql1' /* Add Event */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 6.0, 0.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/mainLogo.png',
+                              width: 80.0,
+                              height: 80.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Form(
+                ],
+              ),
+            ),
+            centerTitle: true,
+            expandedTitleScale: 1.0,
+          ),
+          elevation: 0.0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: Stack(
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        child: Form(
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
@@ -155,67 +163,6 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 4.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'qsdkhdfm' /* Add Event */,
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Open Sans',
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                              ),
-                                            ),
-                                            Divider(
-                                              height: 24.0,
-                                              thickness: 2.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      FlutterFlowIconButton(
-                                        borderColor: Colors.transparent,
-                                        borderRadius: 30.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 60.0,
-                                        icon: Icon(
-                                          Icons.close_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 30.0,
-                                        ),
-                                        onPressed: () async {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
                                   child: TextFormField(
                                     controller: _model.titleController,
                                     autofocus: true,
@@ -225,7 +172,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           .labelLarge,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'w2mpzji7' /* Event Title* */,
+                                        'tcv0ph2h' /* Event Title* */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge,
@@ -295,7 +242,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           .labelLarge,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'lp0rlmo1' /* Location */,
+                                        '1t1zas8h' /* Location */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge,
@@ -385,9 +332,8 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                         await showDatePicker(
                                                       context: context,
                                                       initialDate:
-                                                          widget.selectedDay!,
-                                                      firstDate:
-                                                          widget.selectedDay!,
+                                                          widget.selectedDate!,
+                                                      firstDate: DateTime(1900),
                                                       lastDate: DateTime(2050),
                                                     );
 
@@ -407,11 +353,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                   child: Container(
                                                     width: 130.0,
                                                     height: 50.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
+                                                    decoration: BoxDecoration(),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
@@ -467,9 +409,9 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                       await showDatePicker(
                                                     context: context,
                                                     initialDate:
-                                                        widget.selectedDay!,
+                                                        widget.selectedDate!,
                                                     firstDate:
-                                                        widget.selectedDay!,
+                                                        widget.selectedDate!,
                                                     lastDate: DateTime(2050),
                                                   );
 
@@ -488,11 +430,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                 child: Container(
                                                   width: 130.0,
                                                   height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
+                                                  decoration: BoxDecoration(),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -548,7 +486,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '3ukfqrvb' /* All Day Event */,
+                                                '2r97dlvu' /* All Day Event */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -611,11 +549,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                 child: Container(
                                                   width: 130.0,
                                                   height: 50.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
+                                                  decoration: BoxDecoration(),
                                                   child: Visibility(
                                                     visible: !_model
                                                         .allDaySwitchValue!,
@@ -686,7 +620,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           .labelLarge,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'nwnx2xr6' /* Description here... */,
+                                        '1nf8yb4f' /* Description here... */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelLarge,
@@ -753,7 +687,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'xod6nrl1' /* Notify On Time Of Event */,
+                                        'iv8wtubh' /* Notify On Time Of Event */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
@@ -785,7 +719,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'upd78bv9' /* Notification Time* */,
+                                          'c6dotpix' /* Notification Time* */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -814,7 +748,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                   labelText: FFLocalizations.of(
                                                           context)
                                                       .getText(
-                                                    'xhvahadc' /* Before... */,
+                                                    'zatc132l' /* Before... */,
                                                   ),
                                                   labelStyle:
                                                       FlutterFlowTheme.of(
@@ -904,15 +838,15 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             options: [
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'd9g8wnj1' /* Minutes */,
+                                                'kdmuju93' /* Minutes */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '5fnl4ev5' /* Hours */,
+                                                'x4ywtdyk' /* Hours */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'lbzqiy3m' /* Days */,
+                                                'nswtyse6' /* Days */,
                                               )
                                             ],
                                             onChanged: (val) => setState(() =>
@@ -925,7 +859,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                             hintText:
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                              '3gcddrri' /* Min/hour/Day */,
+                                              'pha4nnb8' /* Min/hour/Day */,
                                             ),
                                             icon: Icon(
                                               Icons.keyboard_arrow_down_rounded,
@@ -934,9 +868,6 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                       .secondaryText,
                                               size: 24.0,
                                             ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
                                             elevation: 2.0,
                                             borderColor:
                                                 FlutterFlowTheme.of(context)
@@ -1064,7 +995,6 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                               .success,
                                                     ),
                                                   );
-                                                  Navigator.pop(context);
 
                                                   context.goNamed('Calendar');
 
@@ -1182,7 +1112,6 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                                 .success,
                                                       ),
                                                     );
-                                                    Navigator.pop(context);
 
                                                     context.goNamed('Calendar');
 
@@ -1271,7 +1200,7 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            '2a6dvxxr' /* Add */,
+                                            '6lf89f1g' /* Add */,
                                           ),
                                           options: FFButtonOptions(
                                             height: 50.0,
@@ -1307,16 +1236,25 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ).animateOnPageLoad(
-                    animationsMap['containerOnPageLoadAnimation2']!),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.00, 1.00),
+                child: wrapWithModel(
+                  model: _model.bottomNavBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: BottomNavBarWidget(
+                    currentPage: 1,
+                  ),
+                ),
               ),
             ],
           ),
         ),
-      ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
+      ),
     );
   }
 }

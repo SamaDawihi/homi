@@ -217,7 +217,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Calendar',
       'ar': 'التقويم',
     },
-    'kxy5o10f': {
+    'vedzj002': {
       'en': 'Get Google Events',
       'ar': '',
     },
@@ -346,6 +346,110 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يضيف',
     },
     '9o0kfql3': {
+      'en': 'Home',
+      'ar': 'الصفحة الرئيسية',
+    },
+  },
+  // EventAdd
+  {
+    'jzc3hql1': {
+      'en': 'Add Event',
+      'ar': 'حالة الدعوة',
+    },
+    'tcv0ph2h': {
+      'en': 'Event Title*',
+      'ar': 'عنوان الحدث',
+    },
+    '1t1zas8h': {
+      'en': 'Location',
+      'ar': 'موقع',
+    },
+    'rkw1wryf': {
+      'en': '',
+      'ar': '',
+    },
+    '2r97dlvu': {
+      'en': 'All Day Event',
+      'ar': '',
+    },
+    '1nf8yb4f': {
+      'en': 'Description here...',
+      'ar': 'الوصف هنا...',
+    },
+    'iv8wtubh': {
+      'en': 'Notify On Time Of Event',
+      'ar': '',
+    },
+    'c6dotpix': {
+      'en': 'Notification Time*',
+      'ar': 'مرحبا بالعالم',
+    },
+    'zatc132l': {
+      'en': 'Before...',
+      'ar': 'قبل...',
+    },
+    'kdmuju93': {
+      'en': 'Minutes',
+      'ar': 'دقائق',
+    },
+    'x4ywtdyk': {
+      'en': 'Hours',
+      'ar': 'ساعات',
+    },
+    'nswtyse6': {
+      'en': 'Days',
+      'ar': '',
+    },
+    'pha4nnb8': {
+      'en': 'Min/hour/Day',
+      'ar': 'دقيقة/ساعة',
+    },
+    '803ti6nc': {
+      'en': 'Search for an item...',
+      'ar': 'البحث عن عنصر...',
+    },
+    '6lf89f1g': {
+      'en': 'Add',
+      'ar': 'يضيف',
+    },
+    '1osfotrw': {
+      'en': 'Title is required.',
+      'ar': '',
+    },
+    'm46xe6zv': {
+      'en':
+          'Title can not contain only white spaces, only numbers, or only special characters.',
+      'ar': '',
+    },
+    'vhet5li1': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '0pxsha3o': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'jpa6ql7w': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '1hd1oabu': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'tcuhnno2': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'ri0jttn7': {
+      'en': 'Notification time is required.',
+      'ar': '',
+    },
+    '60oxzw1i': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'xa9qerf6': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
     },
@@ -697,77 +801,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'يمكنك دعوة أحد أفراد عائلتك من خلال النقر على زر \"دعوة عضو\" في صفحة الملف الشخصي للعائلة...',
     },
   },
-  // FormPopUp
-  {
-    '7qr5ps8n': {
-      'en': 'Create Project',
-      'ar': 'إنشاء مشروع',
-    },
-    '87sy9gir': {
-      'en': 'Please enter the information below to add a project.',
-      'ar': 'الرجاء إدخال المعلومات أدناه لإضافة مشروع.',
-    },
-    'aku2zode': {
-      'en': 'Showcase Project Name',
-      'ar': 'عرض اسم المشروع',
-    },
-    'vnhsknjs': {
-      'en': 'Description here...',
-      'ar': 'الوصف هنا...',
-    },
-    'qzmxnlpo': {
-      'en': 'URL of the project',
-      'ar': 'عنوان URL للمشروع',
-    },
-    'h3711ctb': {
-      'en': 'Clonable Link URL...',
-      'ar': 'عنوان URL للرابط القابل للاستنساخ...',
-    },
-    '4xmr55ax': {
-      'en': 'Create Showcase',
-      'ar': 'إنشاء عرض',
-    },
-    '4ccaurip': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    '6jslzpq9': {
-      'en': 'Please enter a real name',
-      'ar': 'الرجاء إدخال الاسم الحقيقي',
-    },
-    'nnnc2yjl': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    'lvh78mib': {
-      'en': 'Please enter a short desription',
-      'ar': 'الرجاء إدخال وصف قصير',
-    },
-    '3ifxcowa': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    '13hkrxaj': {
-      'en': 'We have to have a URL for the project.',
-      'ar': 'يجب أن يكون لدينا عنوان URL للمشروع.',
-    },
-    '76q25y9h': {
-      'en': 'Please enter a valid URL...',
-      'ar': 'أدخل رابط صحيح من فضلك...',
-    },
-    'y0bjh8b1': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-    '9rer9l8m': {
-      'en': 'Field is required',
-      'ar': 'الحقل مطلوب',
-    },
-    'jfyt3yyg': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
-    },
-  },
   // ConfirmDeleteFamily
   {
     'b9i6l4nb': {
@@ -904,77 +937,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'vm9qztyn': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-  },
-  // ViewEvent
-  {
-    'wuzirjew': {
-      'en': 'Location:',
-      'ar': '',
-    },
-    '5r536hc5': {
-      'en': 'Start Date:',
-      'ar': '',
-    },
-    'hjbvg7x4': {
-      'en': 'End Date:',
-      'ar': '',
-    },
-    'hocqoqb6': {
-      'en': 'All Day?',
-      'ar': '',
-    },
-    '1fotyz6z': {
-      'en': 'Start Time:',
-      'ar': '',
-    },
-    'xq9xtxj3': {
-      'en': 'Description:',
-      'ar': '',
-    },
-    '2rna7b6m': {
-      'en': 'Notify before:',
-      'ar': '',
-    },
-    'jjoyrv2a': {
-      'en': 'Delete Event',
-      'ar': 'يضيف',
-    },
-    'lp63oaq8': {
-      'en': 'Edit Event',
-      'ar': 'يضيف',
-    },
-    'os35bew8': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    '2b84a4ud': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    '3rorr3kc': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    'dk7ktix7': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'bq07kuew': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    'w312k3ov': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    '5v01bj2d': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    '67yghsck': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },

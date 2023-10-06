@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/information_components/no_google_events_found/no_google_events_found_widget.dart';
-import '/input_components/add_event_form/add_event_form_widget.dart';
 import '/list_view_items/empty_events/empty_events_widget.dart';
 import '/list_view_items/event_display/event_display_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
@@ -360,7 +359,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                           10.0, 6.0, 0.0, 0.0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'kxy5o10f' /* Get Google Events */,
+                                          'vedzj002' /* Get Google Events */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
@@ -395,29 +394,15 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                 ),
                                 showLoadingIndicator: true,
                                 onPressed: () async {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    enableDrag: false,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: AddEventFormWidget(
-                                            selectedDay: _model.selectedDay!,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
+                                  context.pushNamed(
+                                    'EventAdd',
+                                    queryParameters: {
+                                      'selectedDate': serializeParam(
+                                        _model.selectedDay,
+                                        ParamType.DateTime,
+                                      ),
+                                    }.withoutNulls,
+                                  );
                                 },
                               ),
                             ],

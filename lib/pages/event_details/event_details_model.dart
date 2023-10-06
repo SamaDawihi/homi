@@ -21,9 +21,9 @@ class EventDetailsModel extends FlutterFlowModel<EventDetailsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  DateTime? datePicked;
   // Model for BottomNavBar component.
   late BottomNavBarModel bottomNavBarModel;
-  DateTime? datePicked;
 
   /// Initialization and disposal methods.
 
