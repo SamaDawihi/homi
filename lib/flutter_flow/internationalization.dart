@@ -513,7 +513,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'البحث عن عنصر...',
     },
     '0fr2vbr9': {
-      'en': 'Add',
+      'en': 'Edit',
       'ar': 'يضيف',
     },
     'w2ggis78': {

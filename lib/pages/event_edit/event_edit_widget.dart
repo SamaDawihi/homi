@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/bottom_nav_bar/bottom_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -366,13 +368,13 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                               String>(
                                                             dateTimeFormat(
                                                               'yMd',
-                                                              _model
-                                                                  .datePicked1,
+                                                              widget.event
+                                                                  ?.startDate,
                                                               locale: FFLocalizations
                                                                       .of(context)
                                                                   .languageCode,
                                                             ),
-                                                            'Start Date',
+                                                            'startDate',
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -442,12 +444,13 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                         valueOrDefault<String>(
                                                           dateTimeFormat(
                                                             'yMd',
-                                                            _model.datePicked2,
+                                                            widget
+                                                                .event?.endDate,
                                                             locale: FFLocalizations
                                                                     .of(context)
                                                                 .languageCode,
                                                           ),
-                                                          'End Date',
+                                                          'EndTime',
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -565,13 +568,13 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                               String>(
                                                             dateTimeFormat(
                                                               'jm',
-                                                              _model
-                                                                  .datePicked3,
+                                                              widget.event
+                                                                  ?.startTime,
                                                               locale: FFLocalizations
                                                                       .of(context)
                                                                   .languageCode,
                                                             ),
-                                                            'Start Time',
+                                                            'StartTime',
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -905,6 +908,38 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                   _model.datePicked2!) {
                                                 if (_model
                                                     .notificationSwitchValue!) {
+                                                  await widget.event!.reference
+                                                      .update(
+                                                          createEventRecordData(
+                                                    title: _model
+                                                        .titleController.text,
+                                                    description: _model
+                                                        .descriptionController
+                                                        .text,
+                                                    createdBy:
+                                                        currentUserReference,
+                                                    location: _model
+                                                        .locationController
+                                                        .text,
+                                                    startTime:
+                                                        _model.datePicked3,
+                                                    isAllDay: _model
+                                                        .allDaySwitchValue,
+                                                    familyId:
+                                                        FFAppState().familyId,
+                                                    notifyBefore: int.tryParse(
+                                                        _model.textController4
+                                                            .text),
+                                                    notifyBeforeUnit:
+                                                        _model.dropDownValue,
+                                                    isGoogleEvent: false,
+                                                    startDate:
+                                                        _model.datePicked1,
+                                                    dontShareThisEvent: false,
+                                                    endDate: _model.datePicked2,
+                                                    notificationSent: false,
+                                                    notifyOnTime: true,
+                                                  ));
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
                                                     SnackBar(
@@ -939,6 +974,41 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                               null &&
                                                           _model.dropDownValue !=
                                                               '')) {
+                                                    await widget
+                                                        .event!.reference
+                                                        .update(
+                                                            createEventRecordData(
+                                                      title: _model
+                                                          .titleController.text,
+                                                      description: _model
+                                                          .descriptionController
+                                                          .text,
+                                                      createdBy:
+                                                          currentUserReference,
+                                                      location: _model
+                                                          .locationController
+                                                          .text,
+                                                      startTime:
+                                                          _model.datePicked3,
+                                                      isAllDay: _model
+                                                          .allDaySwitchValue,
+                                                      familyId:
+                                                          FFAppState().familyId,
+                                                      notifyBefore:
+                                                          int.tryParse(_model
+                                                              .textController4
+                                                              .text),
+                                                      notifyBeforeUnit:
+                                                          _model.dropDownValue,
+                                                      isGoogleEvent: false,
+                                                      startDate:
+                                                          _model.datePicked1,
+                                                      dontShareThisEvent: false,
+                                                      endDate:
+                                                          _model.datePicked2,
+                                                      notificationSent: false,
+                                                      notifyOnTime: false,
+                                                    ));
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(
@@ -1036,7 +1106,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            '0fr2vbr9' /* Add */,
+                                            '0fr2vbr9' /* Edit */,
                                           ),
                                           options: FFButtonOptions(
                                             height: 50.0,
