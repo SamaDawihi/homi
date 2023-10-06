@@ -454,17 +454,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
-  // EventEdit
-  {
-    '28ca6kzn': {
-      'en': 'Edit Event',
-      'ar': 'حالة الدعوة',
-    },
-    'jgp7rmvc': {
-      'en': 'Home',
-      'ar': 'الصفحة الرئيسية',
-    },
-  },
   // InviteByEmail
   {
     '48xbquf9': {
@@ -1149,7 +1138,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'c6cz1bx5': {
       'en':
-          'If you leave, this family  and all its information will be deleted. Are you sure you want to leave?',
+          'If you leave, this family and all its information will be deleted. Are you sure you want to leave?',
       'ar':
           'هل أنت متأكد أنك تريد حذف هذه العائلة؟ لن تتمكن من التراجع عن هذا الإجراء.',
     },

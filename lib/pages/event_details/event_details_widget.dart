@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/input_components/edit_event_form/edit_event_form_widget.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -174,7 +173,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 65.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 65.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -820,82 +819,41 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                                 .createdBy) ||
                                         (currentUserReference ==
                                             rowFamilyRecord.adminId))
-                                      Builder(
-                                        builder: (context) => Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 4.0, 0.0),
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              await showAlignedDialog(
-                                                context: context,
-                                                isGlobal: true,
-                                                avoidOverflow: false,
-                                                targetAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
-                                                followerAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
-                                                builder: (dialogContext) {
-                                                  return Material(
-                                                    color: Colors.transparent,
-                                                    child: GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child:
-                                                          EditEventFormWidget(
-                                                        event:
-                                                            eventDetailsEventRecord,
-                                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 4.0, 0.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed('null');
+                                          },
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'nq3wvj5i' /* Edit Event */,
+                                          ),
+                                          options: FFButtonOptions(
+                                            height: 50.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    32.0, 0.0, 32.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: Color(0xFF555EBE),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Source Sans Pro',
+                                                      color: Colors.white,
                                                     ),
-                                                  );
-                                                },
-                                              ).then(
-                                                  (value) => setState(() {}));
-                                            },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'nq3wvj5i' /* Edit Event */,
+                                            elevation: 2.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
                                             ),
-                                            options: FFButtonOptions(
-                                              height: 50.0,
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      32.0, 0.0, 32.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: Color(0xFF555EBE),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Source Sans Pro',
-                                                        color: Colors.white,
-                                                      ),
-                                              elevation: 2.0,
-                                              borderSide: BorderSide(
-                                                color: Colors.transparent,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(40.0),
-                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(40.0),
                                           ),
                                         ),
                                       ),
@@ -924,7 +882,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                   text:
                                       eventDetailsEventRecord.dontShareThisEvent
                                           ? 'Share This Event'
-                                          : 'Cancel SHaring This Event',
+                                          : 'Cancel Sharing This Event',
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 50.0,

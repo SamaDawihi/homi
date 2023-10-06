@@ -103,7 +103,7 @@ class _ConfirmLeaveLastMemberWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'c6cz1bx5' /* If you leave, this family  and... */,
+                          'c6cz1bx5' /* If you leave, this family and ... */,
                         ),
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
