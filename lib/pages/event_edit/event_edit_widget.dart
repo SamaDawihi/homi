@@ -46,12 +46,8 @@ class _EventEditWidgetState extends State<EventEditWidget> {
         TextEditingController(text: widget.event?.location);
     _model.descriptionController ??=
         TextEditingController(text: widget.event?.description);
-    _model.textController4 ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          _model.textController4?.text = FFLocalizations.of(context).getText(
-            'xb9rrfbx' /* 00 */,
-          );
-        }));
+    _model.textController4 ??=
+        TextEditingController(text: widget.event?.notifyBefore?.toString());
   }
 
   @override
@@ -910,209 +906,30 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            if (_model.titleController.text !=
-                                                    null &&
-                                                _model.titleController.text !=
-                                                    '') {
-                                              if (_model.datePicked1! <=
-                                                  _model.datePicked2!) {
-                                                if (_model
-                                                    .notificationSwitchValue!) {
-                                                  await widget.event!.reference
-                                                      .update(
-                                                          createEventRecordData(
-                                                    title: _model
-                                                        .titleController.text,
-                                                    description: _model
-                                                        .descriptionController
-                                                        .text,
-                                                    createdBy:
-                                                        currentUserReference,
-                                                    location: _model
-                                                        .locationController
-                                                        .text,
-                                                    startTime:
-                                                        _model.datePicked3,
-                                                    isAllDay: _model
-                                                        .allDaySwitchValue,
-                                                    familyId:
-                                                        FFAppState().familyId,
-                                                    notifyBefore: int.tryParse(
-                                                        _model.textController4
-                                                            .text),
-                                                    notifyBeforeUnit:
-                                                        _model.dropDownValue,
-                                                    isGoogleEvent: false,
-                                                    startDate:
-                                                        _model.datePicked1,
-                                                    dontShareThisEvent: false,
-                                                    endDate: _model.datePicked2,
-                                                    notificationSent: false,
-                                                    notifyOnTime: true,
-                                                  ));
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'Event Added Successfully.',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .success,
-                                                    ),
-                                                  );
-
-                                                  context.goNamed('Calendar');
-
-                                                  return;
-                                                } else {
-                                                  if ((_model.textController4
-                                                                  .text !=
-                                                              null &&
-                                                          _model.textController4
-                                                                  .text !=
-                                                              '') &&
-                                                      (_model.dropDownValue !=
-                                                              null &&
-                                                          _model.dropDownValue !=
-                                                              '')) {
-                                                    await widget
-                                                        .event!.reference
-                                                        .update(
-                                                            createEventRecordData(
-                                                      title: _model
-                                                          .titleController.text,
-                                                      description: _model
-                                                          .descriptionController
-                                                          .text,
-                                                      createdBy:
-                                                          currentUserReference,
-                                                      location: _model
-                                                          .locationController
-                                                          .text,
-                                                      startTime:
-                                                          _model.datePicked3,
-                                                      isAllDay: _model
-                                                          .allDaySwitchValue,
-                                                      familyId:
-                                                          FFAppState().familyId,
-                                                      notifyBefore:
-                                                          int.tryParse(_model
-                                                              .textController4
-                                                              .text),
-                                                      notifyBeforeUnit:
-                                                          _model.dropDownValue,
-                                                      isGoogleEvent: false,
-                                                      startDate:
-                                                          _model.datePicked1,
-                                                      dontShareThisEvent: false,
-                                                      endDate:
-                                                          _model.datePicked2,
-                                                      notificationSent: false,
-                                                      notifyOnTime: false,
-                                                    ));
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      SnackBar(
-                                                        content: Text(
-                                                          'Event Added Successfully.',
-                                                          style: TextStyle(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
-                                                          ),
-                                                        ),
-                                                        duration: Duration(
-                                                            milliseconds: 4000),
-                                                        backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .success,
-                                                      ),
-                                                    );
-
-                                                    context.goNamed('Calendar');
-
-                                                    return;
-                                                  } else {
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      SnackBar(
-                                                        content: Text(
-                                                          'Make Sure To Select Both Remainder Time And Unit.',
-                                                          style: TextStyle(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
-                                                          ),
-                                                        ),
-                                                        duration: Duration(
-                                                            milliseconds: 4000),
-                                                        backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                      ),
-                                                    );
-                                                    return;
-                                                  }
-                                                }
-                                              } else {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'End Date can not be before Start Date',
-                                                      style: TextStyle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                                    ),
-                                                    duration: Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .error,
-                                                  ),
-                                                );
-                                                return;
-                                              }
-                                            } else {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'Enter The Title',
-                                                    style: TextStyle(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                    ),
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .error,
-                                                ),
-                                              );
-                                              return;
-                                            }
+                                            await widget.event!.reference
+                                                .update(createEventRecordData(
+                                              title:
+                                                  _model.titleController.text,
+                                              description: _model
+                                                  .descriptionController.text,
+                                              createdBy: currentUserReference,
+                                              location: _model
+                                                  .locationController.text,
+                                              startTime: _model.datePicked3,
+                                              isAllDay:
+                                                  _model.allDaySwitchValue,
+                                              familyId: FFAppState().familyId,
+                                              notifyBefore: int.tryParse(
+                                                  _model.textController4.text),
+                                              notifyBeforeUnit:
+                                                  _model.dropDownValue,
+                                              isGoogleEvent: false,
+                                              startDate: _model.datePicked1,
+                                              dontShareThisEvent: false,
+                                              endDate: _model.datePicked2,
+                                              notificationSent: false,
+                                              notifyOnTime: false,
+                                            ));
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
