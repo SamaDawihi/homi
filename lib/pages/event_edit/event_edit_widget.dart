@@ -706,7 +706,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    '9yp5vtc1' /* Notification Time* */,
+                                    '9yp5vtc1' /* Notification Time */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -724,7 +724,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'wtpwjh7t' /* Notify On Time Of Event */,
+                                        'wtpwjh7t' /* Notify Me On The Same Time Of ... */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,

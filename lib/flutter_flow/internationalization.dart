@@ -381,11 +381,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مرحبا بالعالم',
     },
     'iv8wtubh': {
-      'en': 'Notify Me On The Same  Time Of The Event',
+      'en': 'Notify Me On The Same Time Of The Event',
       'ar': '',
     },
     'zatc132l': {
-      'en': 'Before...',
+      'en': 'Before...*',
       'ar': 'قبل...',
     },
     'kdmuju93': {
@@ -477,11 +477,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الوصف هنا...',
     },
     '9yp5vtc1': {
-      'en': 'Notification Time*',
+      'en': 'Notification Time',
       'ar': 'مرحبا بالعالم',
     },
     'wtpwjh7t': {
-      'en': 'Notify On Time Of Event',
+      'en': 'Notify Me On The Same Time Of The Event',
       'ar': '',
     },
     'yg122c2d': {
