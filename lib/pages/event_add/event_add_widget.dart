@@ -366,7 +366,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                           valueOrDefault<
                                                               String>(
                                                             dateTimeFormat(
-                                                              'yMd',
+                                                              'd/M/y',
                                                               _model
                                                                   .datePicked1,
                                                               locale: FFLocalizations
@@ -441,7 +441,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       Text(
                                                         valueOrDefault<String>(
                                                           dateTimeFormat(
-                                                            'yMd',
+                                                            'd/M/y',
                                                             _model.datePicked2,
                                                             locale: FFLocalizations
                                                                     .of(context)
