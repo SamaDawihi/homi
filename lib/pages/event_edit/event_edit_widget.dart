@@ -923,9 +923,13 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            if (_model.titleController.text !=
+                                            if (functions.trimAndCollapseSpaces(
+                                                        _model.titleController
+                                                            .text) !=
                                                     null &&
-                                                _model.titleController.text !=
+                                                functions.trimAndCollapseSpaces(
+                                                        _model.titleController
+                                                            .text) !=
                                                     '') {
                                               if ((_model.startDate != null) &&
                                                   (_model.endDate != null)) {
@@ -941,17 +945,23 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                           .event!.reference
                                                           .update(
                                                               createEventRecordData(
-                                                        title: _model
-                                                            .titleController
-                                                            .text,
-                                                        description: _model
-                                                            .descriptionController
-                                                            .text,
+                                                        title: functions
+                                                            .trimAndCollapseSpaces(
+                                                                _model
+                                                                    .titleController
+                                                                    .text),
+                                                        description: functions
+                                                            .trimAndCollapseSpaces(
+                                                                _model
+                                                                    .descriptionController
+                                                                    .text),
                                                         createdBy:
                                                             currentUserReference,
-                                                        location: _model
-                                                            .locationController
-                                                            .text,
+                                                        location: functions
+                                                            .trimAndCollapseSpaces(
+                                                                _model
+                                                                    .locationController
+                                                                    .text),
                                                         startTime: !_model
                                                                 .allDaySwitchValue!
                                                             ? _model.startTime
@@ -961,11 +971,18 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                         familyId: FFAppState()
                                                             .familyId,
                                                         notifyBefore:
-                                                            int.tryParse(_model
-                                                                .textController4
-                                                                .text),
-                                                        notifyBeforeUnit: _model
-                                                            .dropDownValue,
+                                                            valueOrDefault<int>(
+                                                          int.tryParse(_model
+                                                              .textController4
+                                                              .text),
+                                                          0,
+                                                        ),
+                                                        notifyBeforeUnit:
+                                                            valueOrDefault<
+                                                                String>(
+                                                          _model.dropDownValue,
+                                                          'Days',
+                                                        ),
                                                         isGoogleEvent: false,
                                                         startDate:
                                                             _model.startDate,
@@ -1028,27 +1045,37 @@ class _EventEditWidgetState extends State<EventEditWidget> {
 
                                                       return;
                                                     } else {
-                                                      if (_model.textController4
-                                                                  .text !=
-                                                              null &&
-                                                          _model.textController4
-                                                                  .text !=
-                                                              '') {
+                                                      if ((_model.textController4
+                                                                      .text !=
+                                                                  null &&
+                                                              _model.textController4
+                                                                      .text !=
+                                                                  '') &&
+                                                          (_model.dropDownValue !=
+                                                                  null &&
+                                                              _model.dropDownValue !=
+                                                                  '')) {
                                                         await widget
                                                             .event!.reference
                                                             .update(
                                                                 createEventRecordData(
-                                                          title: _model
-                                                              .titleController
-                                                              .text,
-                                                          description: _model
-                                                              .descriptionController
-                                                              .text,
+                                                          title: functions
+                                                              .trimAndCollapseSpaces(
+                                                                  _model
+                                                                      .titleController
+                                                                      .text),
+                                                          description: functions
+                                                              .trimAndCollapseSpaces(
+                                                                  _model
+                                                                      .descriptionController
+                                                                      .text),
                                                           createdBy:
                                                               currentUserReference,
-                                                          location: _model
-                                                              .locationController
-                                                              .text,
+                                                          location: functions
+                                                              .trimAndCollapseSpaces(
+                                                                  _model
+                                                                      .locationController
+                                                                      .text),
                                                           startTime: !_model
                                                                   .allDaySwitchValue!
                                                               ? _model.startTime
@@ -1131,7 +1158,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                             .showSnackBar(
                                                           SnackBar(
                                                             content: Text(
-                                                              'Enter the Notify Before Value.',
+                                                              'Enter the Notify Before Value And Select The Unit.',
                                                               style: TextStyle(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)

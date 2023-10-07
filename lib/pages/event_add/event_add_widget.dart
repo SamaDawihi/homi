@@ -897,10 +897,13 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            var _shouldSetState = false;
-                                            if (_model.titleController.text !=
+                                            if (functions.trimAndCollapseSpaces(
+                                                        _model.titleController
+                                                            .text) !=
                                                     null &&
-                                                _model.titleController.text !=
+                                                functions.trimAndCollapseSpaces(
+                                                        _model.titleController
+                                                            .text) !=
                                                     '') {
                                               if ((_model.datePicked1 !=
                                                       null) &&
@@ -914,131 +917,76 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       : true) {
                                                     if (_model
                                                         .notificationSwitchValue!) {
-                                                      var eventRecordReference1 =
-                                                          EventRecord.collection
-                                                              .doc();
-                                                      await eventRecordReference1
+                                                      await EventRecord
+                                                          .collection
+                                                          .doc()
                                                           .set(
                                                               createEventRecordData(
-                                                        title: _model
-                                                            .titleController
-                                                            .text,
-                                                        description: _model
-                                                            .descriptionController
-                                                            .text,
-                                                        createdBy:
-                                                            currentUserReference,
-                                                        location: _model
-                                                            .locationController
-                                                            .text,
-                                                        startTime: _model
-                                                                .allDaySwitchValue!
-                                                            ? _model.datePicked1
-                                                            : _model
-                                                                .datePicked3,
-                                                        isAllDay: _model
-                                                            .allDaySwitchValue,
-                                                        familyId: FFAppState()
-                                                            .familyId,
-                                                        notifyBefore: 0,
-                                                        notifyBeforeUnit:
-                                                            'Days',
-                                                        isGoogleEvent: false,
-                                                        startDate:
-                                                            _model.datePicked1,
-                                                        dontShareThisEvent:
-                                                            false,
-                                                        endDate:
-                                                            _model.datePicked2,
-                                                        notificationSent: functions.addedEventIsInThePast(
-                                                            _model.datePicked1!,
-                                                            _model.allDaySwitchValue!
+                                                            title: functions
+                                                                .trimAndCollapseSpaces(
+                                                                    _model
+                                                                        .titleController
+                                                                        .text),
+                                                            description: functions
+                                                                .trimAndCollapseSpaces(
+                                                                    _model
+                                                                        .descriptionController
+                                                                        .text),
+                                                            createdBy:
+                                                                currentUserReference,
+                                                            location: functions
+                                                                .trimAndCollapseSpaces(
+                                                                    _model
+                                                                        .locationController
+                                                                        .text),
+                                                            startTime: _model
+                                                                    .allDaySwitchValue!
                                                                 ? _model
-                                                                    .datePicked1!
+                                                                    .datePicked1
                                                                 : _model
-                                                                    .datePicked3!,
-                                                            _model
-                                                                .allDaySwitchValue!),
-                                                        notifyOnTime: true,
-                                                        notificationTime: functions.calculateNotificationTime(
-                                                            _model
-                                                                .allDaySwitchValue!,
-                                                            _model
-                                                                .notificationSwitchValue!,
-                                                            _model.datePicked1!,
-                                                            _model.allDaySwitchValue!
-                                                                ? _model
-                                                                    .datePicked1!
-                                                                : _model
-                                                                    .datePicked3!,
-                                                            0,
-                                                            'Days'),
-                                                      ));
-                                                      _model.notifyOnTimeEvent =
-                                                          EventRecord.getDocumentFromData(
-                                                              createEventRecordData(
-                                                                title: _model
-                                                                    .titleController
-                                                                    .text,
-                                                                description: _model
-                                                                    .descriptionController
-                                                                    .text,
-                                                                createdBy:
-                                                                    currentUserReference,
-                                                                location: _model
-                                                                    .locationController
-                                                                    .text,
-                                                                startTime: _model
-                                                                        .allDaySwitchValue!
+                                                                    .datePicked3,
+                                                            isAllDay: _model
+                                                                .allDaySwitchValue,
+                                                            familyId:
+                                                                FFAppState()
+                                                                    .familyId,
+                                                            notifyBefore: 0,
+                                                            notifyBeforeUnit:
+                                                                'Days',
+                                                            isGoogleEvent:
+                                                                false,
+                                                            startDate: _model
+                                                                .datePicked1,
+                                                            dontShareThisEvent:
+                                                                false,
+                                                            endDate: _model
+                                                                .datePicked2,
+                                                            notificationSent: functions.addedEventIsInThePast(
+                                                                _model
+                                                                    .datePicked1!,
+                                                                _model.allDaySwitchValue!
                                                                     ? _model
-                                                                        .datePicked1
+                                                                        .datePicked1!
                                                                     : _model
-                                                                        .datePicked3,
-                                                                isAllDay: _model
-                                                                    .allDaySwitchValue,
-                                                                familyId:
-                                                                    FFAppState()
-                                                                        .familyId,
-                                                                notifyBefore: 0,
-                                                                notifyBeforeUnit:
-                                                                    'Days',
-                                                                isGoogleEvent:
-                                                                    false,
-                                                                startDate: _model
-                                                                    .datePicked1,
-                                                                dontShareThisEvent:
-                                                                    false,
-                                                                endDate: _model
-                                                                    .datePicked2,
-                                                                notificationSent: functions.addedEventIsInThePast(
-                                                                    _model
-                                                                        .datePicked1!,
-                                                                    _model.allDaySwitchValue!
-                                                                        ? _model
-                                                                            .datePicked1!
-                                                                        : _model
-                                                                            .datePicked3!,
-                                                                    _model
-                                                                        .allDaySwitchValue!),
-                                                                notifyOnTime:
-                                                                    true,
-                                                                notificationTime: functions.calculateNotificationTime(
-                                                                    _model
-                                                                        .allDaySwitchValue!,
-                                                                    _model
-                                                                        .notificationSwitchValue!,
-                                                                    _model
-                                                                        .datePicked1!,
-                                                                    _model.allDaySwitchValue!
-                                                                        ? _model
-                                                                            .datePicked1!
-                                                                        : _model
-                                                                            .datePicked3!,
-                                                                    0,
-                                                                    'Days'),
-                                                              ),
-                                                              eventRecordReference1);
-                                                      _shouldSetState = true;
+                                                                        .datePicked3!,
+                                                                _model
+                                                                    .allDaySwitchValue!),
+                                                            notifyOnTime: true,
+                                                            notificationTime: functions.calculateNotificationTime(
+                                                                _model
+                                                                    .allDaySwitchValue!,
+                                                                _model
+                                                                    .notificationSwitchValue!,
+                                                                _model
+                                                                    .datePicked1!,
+                                                                _model.allDaySwitchValue!
+                                                                    ? _model
+                                                                        .datePicked1!
+                                                                    : _model
+                                                                        .datePicked3!,
+                                                                0,
+                                                                'Days'),
+                                                          ));
                                                       ScaffoldMessenger.of(
                                                               context)
                                                           .showSnackBar(
@@ -1064,8 +1012,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       context
                                                           .goNamed('Calendar');
 
-                                                      if (_shouldSetState)
-                                                        setState(() {});
                                                       return;
                                                     } else {
                                                       if ((_model.textController4
@@ -1078,150 +1024,84 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                   null &&
                                                               _model.dropDownValue !=
                                                                   '')) {
-                                                        var eventRecordReference2 =
-                                                            EventRecord
-                                                                .collection
-                                                                .doc();
-                                                        await eventRecordReference2
+                                                        await EventRecord
+                                                            .collection
+                                                            .doc()
                                                             .set(
                                                                 createEventRecordData(
-                                                          title: _model
-                                                              .titleController
-                                                              .text,
-                                                          description: _model
-                                                              .descriptionController
-                                                              .text,
-                                                          createdBy:
-                                                              currentUserReference,
-                                                          location: _model
-                                                              .locationController
-                                                              .text,
-                                                          startTime: _model
-                                                                  .allDaySwitchValue!
-                                                              ? _model
-                                                                  .datePicked1
-                                                              : _model
-                                                                  .datePicked3,
-                                                          isAllDay: _model
-                                                              .allDaySwitchValue,
-                                                          familyId: FFAppState()
-                                                              .familyId,
-                                                          notifyBefore: int
-                                                              .tryParse(_model
-                                                                  .textController4
-                                                                  .text),
-                                                          notifyBeforeUnit:
-                                                              _model
-                                                                  .dropDownValue,
-                                                          isGoogleEvent: false,
-                                                          startDate: _model
-                                                              .datePicked1,
-                                                          dontShareThisEvent:
-                                                              false,
-                                                          endDate: _model
-                                                              .datePicked2,
-                                                          notificationSent: functions.addedEventIsInThePast(
-                                                              _model
-                                                                  .datePicked1!,
-                                                              _model.allDaySwitchValue!
-                                                                  ? _model
-                                                                      .datePicked1!
-                                                                  : _model
-                                                                      .datePicked3!,
-                                                              _model
-                                                                  .allDaySwitchValue!),
-                                                          notifyOnTime: false,
-                                                          notificationTime: functions.calculateNotificationTime(
-                                                              _model
-                                                                  .allDaySwitchValue!,
-                                                              _model
-                                                                  .notificationSwitchValue!,
-                                                              _model
-                                                                  .datePicked1!,
-                                                              _model.allDaySwitchValue!
-                                                                  ? _model
-                                                                      .datePicked1!
-                                                                  : _model
-                                                                      .datePicked3!,
-                                                              int.parse(_model
-                                                                  .textController4
-                                                                  .text),
-                                                              _model
-                                                                  .dropDownValue!),
-                                                        ));
-                                                        _model.notifyBeforeEvent =
-                                                            EventRecord.getDocumentFromData(
-                                                                createEventRecordData(
-                                                                  title: _model
-                                                                      .titleController
-                                                                      .text,
-                                                                  description:
+                                                              title: functions
+                                                                  .trimAndCollapseSpaces(
+                                                                      _model
+                                                                          .titleController
+                                                                          .text),
+                                                              description: functions
+                                                                  .trimAndCollapseSpaces(
                                                                       _model
                                                                           .descriptionController
-                                                                          .text,
-                                                                  createdBy:
-                                                                      currentUserReference,
-                                                                  location: _model
-                                                                      .locationController
-                                                                      .text,
-                                                                  startTime: _model
-                                                                          .allDaySwitchValue!
+                                                                          .text),
+                                                              createdBy:
+                                                                  currentUserReference,
+                                                              location: functions
+                                                                  .trimAndCollapseSpaces(
+                                                                      _model
+                                                                          .locationController
+                                                                          .text),
+                                                              startTime: _model
+                                                                      .allDaySwitchValue!
+                                                                  ? _model
+                                                                      .datePicked1
+                                                                  : _model
+                                                                      .datePicked3,
+                                                              isAllDay: _model
+                                                                  .allDaySwitchValue,
+                                                              familyId:
+                                                                  FFAppState()
+                                                                      .familyId,
+                                                              notifyBefore: int
+                                                                  .tryParse(_model
+                                                                      .textController4
+                                                                      .text),
+                                                              notifyBeforeUnit:
+                                                                  _model
+                                                                      .dropDownValue,
+                                                              isGoogleEvent:
+                                                                  false,
+                                                              startDate: _model
+                                                                  .datePicked1,
+                                                              dontShareThisEvent:
+                                                                  false,
+                                                              endDate: _model
+                                                                  .datePicked2,
+                                                              notificationSent: functions.addedEventIsInThePast(
+                                                                  _model
+                                                                      .datePicked1!,
+                                                                  _model.allDaySwitchValue!
                                                                       ? _model
-                                                                          .datePicked1
+                                                                          .datePicked1!
                                                                       : _model
-                                                                          .datePicked3,
-                                                                  isAllDay: _model
-                                                                      .allDaySwitchValue,
-                                                                  familyId:
-                                                                      FFAppState()
-                                                                          .familyId,
-                                                                  notifyBefore:
-                                                                      int.tryParse(_model
-                                                                          .textController4
-                                                                          .text),
-                                                                  notifyBeforeUnit:
-                                                                      _model
-                                                                          .dropDownValue,
-                                                                  isGoogleEvent:
-                                                                      false,
-                                                                  startDate: _model
-                                                                      .datePicked1,
-                                                                  dontShareThisEvent:
-                                                                      false,
-                                                                  endDate: _model
-                                                                      .datePicked2,
-                                                                  notificationSent: functions.addedEventIsInThePast(
-                                                                      _model
-                                                                          .datePicked1!,
-                                                                      _model.allDaySwitchValue!
-                                                                          ? _model
-                                                                              .datePicked1!
-                                                                          : _model
-                                                                              .datePicked3!,
-                                                                      _model
-                                                                          .allDaySwitchValue!),
-                                                                  notifyOnTime:
-                                                                      false,
-                                                                  notificationTime: functions.calculateNotificationTime(
-                                                                      _model
-                                                                          .allDaySwitchValue!,
-                                                                      _model
-                                                                          .notificationSwitchValue!,
-                                                                      _model
-                                                                          .datePicked1!,
-                                                                      _model.allDaySwitchValue!
-                                                                          ? _model
-                                                                              .datePicked1!
-                                                                          : _model
-                                                                              .datePicked3!,
-                                                                      int.parse(_model
-                                                                          .textController4
-                                                                          .text),
-                                                                      _model
-                                                                          .dropDownValue!),
-                                                                ),
-                                                                eventRecordReference2);
-                                                        _shouldSetState = true;
+                                                                          .datePicked3!,
+                                                                  _model
+                                                                      .allDaySwitchValue!),
+                                                              notifyOnTime:
+                                                                  false,
+                                                              notificationTime: functions.calculateNotificationTime(
+                                                                  _model
+                                                                      .allDaySwitchValue!,
+                                                                  _model
+                                                                      .notificationSwitchValue!,
+                                                                  _model
+                                                                      .datePicked1!,
+                                                                  _model.allDaySwitchValue!
+                                                                      ? _model
+                                                                          .datePicked1!
+                                                                      : _model
+                                                                          .datePicked3!,
+                                                                  int.parse(_model
+                                                                      .textController4
+                                                                      .text),
+                                                                  _model
+                                                                      .dropDownValue!),
+                                                            ));
                                                         ScaffoldMessenger.of(
                                                                 context)
                                                             .showSnackBar(
@@ -1247,8 +1127,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                         context.goNamed(
                                                             'Calendar');
 
-                                                        if (_shouldSetState)
-                                                          setState(() {});
                                                         return;
                                                       } else {
                                                         ScaffoldMessenger.of(
@@ -1272,8 +1150,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                     .error,
                                                           ),
                                                         );
-                                                        if (_shouldSetState)
-                                                          setState(() {});
                                                         return;
                                                       }
                                                     }
@@ -1298,8 +1174,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                 .error,
                                                       ),
                                                     );
-                                                    if (_shouldSetState)
-                                                      setState(() {});
                                                     return;
                                                   }
                                                 } else {
@@ -1322,8 +1196,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                               .error,
                                                     ),
                                                   );
-                                                  if (_shouldSetState)
-                                                    setState(() {});
                                                   return;
                                                 }
                                               } else {
@@ -1347,8 +1219,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                             .error,
                                                   ),
                                                 );
-                                                if (_shouldSetState)
-                                                  setState(() {});
                                                 return;
                                               }
                                             } else {
@@ -1372,13 +1242,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                           .error,
                                                 ),
                                               );
-                                              if (_shouldSetState)
-                                                setState(() {});
                                               return;
                                             }
-
-                                            if (_shouldSetState)
-                                              setState(() {});
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(

@@ -1188,8 +1188,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تمت دعوة العضو بالفعل.',
     },
     'ebsj0unj': {
-      'en':
-          'Events Added Only You Will Be Able To View Them.\nRefresh The Page',
+      'en': 'Events Added Only You Will Be Able To View Them.',
       'ar':
           'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
     },
