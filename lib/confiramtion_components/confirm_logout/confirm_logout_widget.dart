@@ -146,13 +146,10 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await currentUserReference!.update({
-                          ...mapToFirestore(
-                            {
-                              'token': FieldValue.delete(),
-                            },
-                          ),
-                        });
+                        await currentUserReference!
+                            .update(createUsersRecordData(
+                          token: 'Null',
+                        ));
                         GoRouter.of(context).prepareAuthEvent();
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();
