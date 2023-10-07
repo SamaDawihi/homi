@@ -20,8 +20,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -42,8 +40,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -64,8 +60,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -108,8 +102,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -130,8 +122,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -152,8 +142,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -174,8 +162,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -196,8 +182,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -218,8 +202,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
@@ -240,8 +222,6 @@ void main() async {
     final appState = FFAppState();
     await appState.initializePersistedState();
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
