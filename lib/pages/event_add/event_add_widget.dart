@@ -680,6 +680,19 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                         .asValidator(context),
                                   ),
                                 ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'c6dotpix' /* Notification Time* */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Source Sans Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        fontSize: 16.0,
+                                      ),
+                                ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -717,20 +730,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'c6dotpix' /* Notification Time* */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Source Sans Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 16.0,
-                                            ),
-                                      ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
