@@ -951,27 +951,29 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                             false,
                                                         endDate:
                                                             _model.datePicked2,
-                                                        notificationSent: functions
-                                                            .addedEventIsInThePast(
-                                                                _model
-                                                                    .datePicked1!,
-                                                                _model
+                                                        notificationSent: functions.addedEventIsInThePast(
+                                                            _model.datePicked1!,
+                                                            _model.allDaySwitchValue!
+                                                                ? _model
+                                                                    .datePicked1!
+                                                                : _model
                                                                     .datePicked3!,
-                                                                _model
-                                                                    .allDaySwitchValue!),
+                                                            _model
+                                                                .allDaySwitchValue!),
                                                         notifyOnTime: true,
-                                                        notificationTime: functions
-                                                            .calculateNotificationTime(
-                                                                _model
-                                                                    .allDaySwitchValue!,
-                                                                _model
-                                                                    .notificationSwitchValue!,
-                                                                _model
-                                                                    .datePicked1!,
-                                                                _model
+                                                        notificationTime: functions.calculateNotificationTime(
+                                                            _model
+                                                                .allDaySwitchValue!,
+                                                            _model
+                                                                .notificationSwitchValue!,
+                                                            _model.datePicked1!,
+                                                            _model.allDaySwitchValue!
+                                                                ? _model
+                                                                    .datePicked1!
+                                                                : _model
                                                                     .datePicked3!,
-                                                                0,
-                                                                'Days'),
+                                                            0,
+                                                            'Days'),
                                                       ));
                                                       _model.notifyOnTimeEvent =
                                                           EventRecord.getDocumentFromData(
@@ -1009,14 +1011,16 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                     false,
                                                                 endDate: _model
                                                                     .datePicked2,
-                                                                notificationSent:
-                                                                    functions.addedEventIsInThePast(
-                                                                        _model
-                                                                            .datePicked1!,
-                                                                        _model
+                                                                notificationSent: functions.addedEventIsInThePast(
+                                                                    _model
+                                                                        .datePicked1!,
+                                                                    _model.allDaySwitchValue!
+                                                                        ? _model
+                                                                            .datePicked1!
+                                                                        : _model
                                                                             .datePicked3!,
-                                                                        _model
-                                                                            .allDaySwitchValue!),
+                                                                    _model
+                                                                        .allDaySwitchValue!),
                                                                 notifyOnTime:
                                                                     true,
                                                                 notificationTime: functions.calculateNotificationTime(
@@ -1026,8 +1030,11 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                         .notificationSwitchValue!,
                                                                     _model
                                                                         .datePicked1!,
-                                                                    _model
-                                                                        .datePicked3!,
+                                                                    _model.allDaySwitchValue!
+                                                                        ? _model
+                                                                            .datePicked1!
+                                                                        : _model
+                                                                            .datePicked3!,
                                                                     0,
                                                                     'Days'),
                                                               ),
@@ -1114,14 +1121,16 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                               false,
                                                           endDate: _model
                                                               .datePicked2,
-                                                          notificationSent: functions
-                                                              .addedEventIsInThePast(
-                                                                  _model
-                                                                      .datePicked1!,
-                                                                  _model
+                                                          notificationSent: functions.addedEventIsInThePast(
+                                                              _model
+                                                                  .datePicked1!,
+                                                              _model.allDaySwitchValue!
+                                                                  ? _model
+                                                                      .datePicked1!
+                                                                  : _model
                                                                       .datePicked3!,
-                                                                  _model
-                                                                      .allDaySwitchValue!),
+                                                              _model
+                                                                  .allDaySwitchValue!),
                                                           notifyOnTime: false,
                                                           notificationTime: functions.calculateNotificationTime(
                                                               _model
@@ -1130,8 +1139,11 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                   .notificationSwitchValue!,
                                                               _model
                                                                   .datePicked1!,
-                                                              _model
-                                                                  .datePicked3!,
+                                                              _model.allDaySwitchValue!
+                                                                  ? _model
+                                                                      .datePicked1!
+                                                                  : _model
+                                                                      .datePicked3!,
                                                               int.parse(_model
                                                                   .textController4
                                                                   .text),
@@ -1182,8 +1194,11 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                   notificationSent: functions.addedEventIsInThePast(
                                                                       _model
                                                                           .datePicked1!,
-                                                                      _model
-                                                                          .datePicked3!,
+                                                                      _model.allDaySwitchValue!
+                                                                          ? _model
+                                                                              .datePicked1!
+                                                                          : _model
+                                                                              .datePicked3!,
                                                                       _model
                                                                           .allDaySwitchValue!),
                                                                   notifyOnTime:
@@ -1195,8 +1210,11 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                           .notificationSwitchValue!,
                                                                       _model
                                                                           .datePicked1!,
-                                                                      _model
-                                                                          .datePicked3!,
+                                                                      _model.allDaySwitchValue!
+                                                                          ? _model
+                                                                              .datePicked1!
+                                                                          : _model
+                                                                              .datePicked3!,
                                                                       int.parse(_model
                                                                           .textController4
                                                                           .text),
