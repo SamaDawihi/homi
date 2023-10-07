@@ -248,9 +248,9 @@ class _FamilyMemberContainerWidgetState
                                 ).then((value) => safeSetState(() {}));
                               },
                               child: Icon(
-                                Icons.delete_forever_sharp,
+                                Icons.person_remove,
                                 color: Color(0xFFDE1B27),
-                                size: 30.0,
+                                size: 26.0,
                               ),
                             ),
                         ],
