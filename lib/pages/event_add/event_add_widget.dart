@@ -411,8 +411,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                     context: context,
                                                     initialDate:
                                                         widget.selectedDate!,
-                                                    firstDate:
-                                                        widget.selectedDate!,
+                                                    firstDate: DateTime(1900),
                                                     lastDate: DateTime(2050),
                                                   );
 

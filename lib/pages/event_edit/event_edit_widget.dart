@@ -335,6 +335,148 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             14.0, 0.0, 14.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            final _datePicked1Date =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: _model.startDate!,
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime(2050),
+                                            );
+
+                                            if (_datePicked1Date != null) {
+                                              safeSetState(() {
+                                                _model.datePicked1 = DateTime(
+                                                  _datePicked1Date.year,
+                                                  _datePicked1Date.month,
+                                                  _datePicked1Date.day,
+                                                );
+                                              });
+                                            }
+                                            if (_model.datePicked1! >
+                                                _model.endDate!) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Start Date cannot be afterEnd Date ',
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent4,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
+                                              );
+                                              return;
+                                            } else {
+                                              setState(() {
+                                                _model.startDate =
+                                                    _model.datePicked1;
+                                              });
+                                              return;
+                                            }
+                                          },
+                                          child: Container(
+                                            width: 130.0,
+                                            height: 50.0,
+                                            decoration: BoxDecoration(),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  dateTimeFormat(
+                                                    'yMd',
+                                                    _model.startDate,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          8.0, 0.0, 0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.date_range,
+                                                    color: Color(0xFF555EBE),
+                                                    size: 24.0,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          final _datePicked2Date =
+                                              await showDatePicker(
+                                            context: context,
+                                            initialDate: _model.endDate!,
+                                            firstDate: DateTime(1900),
+                                            lastDate: DateTime(2050),
+                                          );
+
+                                          if (_datePicked2Date != null) {
+                                            safeSetState(() {
+                                              _model.datePicked2 = DateTime(
+                                                _datePicked2Date.year,
+                                                _datePicked2Date.month,
+                                                _datePicked2Date.day,
+                                              );
+                                            });
+                                          }
+                                          if (_model.startDate! >
+                                              _model.datePicked2!) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'End Date cannot be before Start Date.',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent4,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                              ),
+                                            );
+                                            return;
+                                          } else {
+                                            setState(() {
+                                              _model.endDate =
+                                                  _model.datePicked2;
+                                            });
+                                            return;
+                                          }
+                                        },
                                         child: Container(
                                           width: 130.0,
                                           height: 50.0,
@@ -347,7 +489,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                               Text(
                                                 dateTimeFormat(
                                                   'yMd',
-                                                  _model.startDate,
+                                                  _model.endDate,
                                                   locale: FFLocalizations.of(
                                                           context)
                                                       .languageCode,
@@ -360,170 +502,14 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    final _datePicked1Date =
-                                                        await showDatePicker(
-                                                      context: context,
-                                                      initialDate:
-                                                          _model.startDate!,
-                                                      firstDate: DateTime(1900),
-                                                      lastDate: DateTime(2050),
-                                                    );
-
-                                                    if (_datePicked1Date !=
-                                                        null) {
-                                                      safeSetState(() {
-                                                        _model.datePicked1 =
-                                                            DateTime(
-                                                          _datePicked1Date.year,
-                                                          _datePicked1Date
-                                                              .month,
-                                                          _datePicked1Date.day,
-                                                        );
-                                                      });
-                                                    }
-                                                    if (_model.datePicked1! >
-                                                        _model.endDate!) {
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                            'Start Date cannot be afterEnd Date ',
-                                                            style: TextStyle(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent4,
-                                                            ),
-                                                          ),
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                                  4000),
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .error,
-                                                        ),
-                                                      );
-                                                      return;
-                                                    } else {
-                                                      setState(() {
-                                                        _model.startDate =
-                                                            _model.datePicked1;
-                                                      });
-                                                      return;
-                                                    }
-                                                  },
-                                                  child: Icon(
-                                                    Icons.date_range,
-                                                    color: Color(0xFF555EBE),
-                                                    size: 24.0,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 130.0,
-                                        height: 50.0,
-                                        decoration: BoxDecoration(),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              dateTimeFormat(
-                                                'yMd',
-                                                _model.endDate,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 0.0, 0.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  final _datePicked2Date =
-                                                      await showDatePicker(
-                                                    context: context,
-                                                    initialDate:
-                                                        _model.endDate!,
-                                                    firstDate: DateTime(1900),
-                                                    lastDate: DateTime(2050),
-                                                  );
-
-                                                  if (_datePicked2Date !=
-                                                      null) {
-                                                    safeSetState(() {
-                                                      _model.datePicked2 =
-                                                          DateTime(
-                                                        _datePicked2Date.year,
-                                                        _datePicked2Date.month,
-                                                        _datePicked2Date.day,
-                                                      );
-                                                    });
-                                                  }
-                                                  if (_model.startDate! >
-                                                      _model.datePicked2!) {
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      SnackBar(
-                                                        content: Text(
-                                                          'End Date cannot be before Start Date.',
-                                                          style: TextStyle(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent4,
-                                                          ),
-                                                        ),
-                                                        duration: Duration(
-                                                            milliseconds: 4000),
-                                                        backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                      ),
-                                                    );
-                                                    return;
-                                                  } else {
-                                                    setState(() {
-                                                      _model.endDate =
-                                                          _model.datePicked2;
-                                                    });
-                                                    return;
-                                                  }
-                                                },
                                                 child: Icon(
                                                   Icons.date_range,
                                                   color: Color(0xFF555EBE),
                                                   size: 24.0,
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -566,84 +552,75 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             14.0, 0.0, 14.0, 0.0),
-                                        child: Container(
-                                          width: 130.0,
-                                          height: 50.0,
-                                          decoration: BoxDecoration(),
-                                          child: Visibility(
-                                            visible: !valueOrDefault<bool>(
-                                              _model.allDaySwitchValue,
-                                              true,
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  dateTimeFormat(
-                                                    'jm',
-                                                    _model.startTime,
-                                                    locale: FFLocalizations.of(
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            final _datePicked3Time =
+                                                await showTimePicker(
+                                              context: context,
+                                              initialTime:
+                                                  TimeOfDay.fromDateTime(
+                                                      _model.startTime!),
+                                            );
+                                            if (_datePicked3Time != null) {
+                                              safeSetState(() {
+                                                _model.datePicked3 = DateTime(
+                                                  _model.startTime!.year,
+                                                  _model.startTime!.month,
+                                                  _model.startTime!.day,
+                                                  _datePicked3Time.hour,
+                                                  _datePicked3Time.minute,
+                                                );
+                                              });
+                                            }
+                                            setState(() {
+                                              _model.startTime =
+                                                  _model.datePicked3;
+                                            });
+                                          },
+                                          child: Container(
+                                            width: 130.0,
+                                            height: 50.0,
+                                            decoration: BoxDecoration(),
+                                            child: Visibility(
+                                              visible: !valueOrDefault<bool>(
+                                                _model.allDaySwitchValue,
+                                                true,
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    dateTimeFormat(
+                                                      'jm',
+                                                      _model.startTime,
+                                                      locale:
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .languageCode,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
                                                             context)
-                                                        .languageCode,
+                                                        .bodyMedium,
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 0.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      final _datePicked3Time =
-                                                          await showTimePicker(
-                                                        context: context,
-                                                        initialTime: TimeOfDay
-                                                            .fromDateTime(_model
-                                                                .startTime!),
-                                                      );
-                                                      if (_datePicked3Time !=
-                                                          null) {
-                                                        safeSetState(() {
-                                                          _model.datePicked3 =
-                                                              DateTime(
-                                                            _model.startTime!
-                                                                .year,
-                                                            _model.startTime!
-                                                                .month,
-                                                            _model
-                                                                .startTime!.day,
-                                                            _datePicked3Time
-                                                                .hour,
-                                                            _datePicked3Time
-                                                                .minute,
-                                                          );
-                                                        });
-                                                      }
-                                                      setState(() {
-                                                        _model.startTime =
-                                                            _model.datePicked3;
-                                                      });
-                                                    },
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                0.0, 0.0),
                                                     child: Icon(
                                                       Icons.access_time,
                                                       color: Color(0xFF555EBE),
                                                       size: 24.0,
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -950,14 +927,12 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                     null &&
                                                 _model.titleController.text !=
                                                     '') {
-                                              if ((_model.datePicked1 !=
-                                                      null) &&
-                                                  (_model.datePicked2 !=
-                                                      null)) {
-                                                if (_model.datePicked1! <=
-                                                    _model.datePicked2!) {
+                                              if ((_model.startDate != null) &&
+                                                  (_model.endDate != null)) {
+                                                if (_model.startDate! <=
+                                                    _model.endDate!) {
                                                   if (!_model.allDaySwitchValue!
-                                                      ? (_model.datePicked3 !=
+                                                      ? (_model.startTime !=
                                                           null)
                                                       : true) {
                                                     if (_model
@@ -979,9 +954,8 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                             .text,
                                                         startTime: !_model
                                                                 .allDaySwitchValue!
-                                                            ? _model.datePicked3
-                                                            : _model
-                                                                .datePicked1,
+                                                            ? _model.startTime
+                                                            : _model.startDate,
                                                         isAllDay: _model
                                                             .allDaySwitchValue,
                                                         familyId: FFAppState()
@@ -1001,12 +975,12 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                         notificationSent: functions
                                                             .addedEventIsInThePast(
                                                                 _model
-                                                                    .datePicked1!,
+                                                                    .startDate!,
                                                                 !_model.allDaySwitchValue!
                                                                     ? _model
-                                                                        .datePicked3!
+                                                                        .startTime!
                                                                     : _model
-                                                                        .datePicked1!,
+                                                                        .startDate!,
                                                                 _model
                                                                     .allDaySwitchValue!),
                                                         notifyOnTime: true,
@@ -1015,12 +989,12 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                                 .allDaySwitchValue!,
                                                             _model
                                                                 .notificationSwitchValue!,
-                                                            _model.datePicked1!,
+                                                            _model.startDate!,
                                                             !_model.allDaySwitchValue!
                                                                 ? _model
-                                                                    .datePicked3!
+                                                                    .startTime!
                                                                 : _model
-                                                                    .datePicked1!,
+                                                                    .startDate!,
                                                             int.parse(_model
                                                                 .textController4
                                                                 .text),
@@ -1077,10 +1051,9 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                               .text,
                                                           startTime: !_model
                                                                   .allDaySwitchValue!
-                                                              ? _model
-                                                                  .datePicked3
+                                                              ? _model.startTime
                                                               : _model
-                                                                  .datePicked1,
+                                                                  .startDate,
                                                           isAllDay: _model
                                                               .allDaySwitchValue,
                                                           familyId: FFAppState()
@@ -1100,13 +1073,12 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                           endDate:
                                                               _model.endDate,
                                                           notificationSent: functions.addedEventIsInThePast(
-                                                              _model
-                                                                  .datePicked1!,
+                                                              _model.startDate!,
                                                               !_model.allDaySwitchValue!
                                                                   ? _model
-                                                                      .datePicked3!
+                                                                      .startTime!
                                                                   : _model
-                                                                      .datePicked1!,
+                                                                      .startDate!,
                                                               _model
                                                                   .allDaySwitchValue!),
                                                           notifyOnTime: false,
@@ -1115,13 +1087,12 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                                   .allDaySwitchValue!,
                                                               _model
                                                                   .notificationSwitchValue!,
-                                                              _model
-                                                                  .datePicked1!,
+                                                              _model.startDate!,
                                                               !_model.allDaySwitchValue!
                                                                   ? _model
-                                                                      .datePicked3!
+                                                                      .startTime!
                                                                   : _model
-                                                                      .datePicked1!,
+                                                                      .startDate!,
                                                               int.parse(_model
                                                                   .textController4
                                                                   .text),
