@@ -24,6 +24,7 @@ class EventStruct extends FFFirebaseStruct {
     bool? isGoogleEvent,
     bool? dontShareThisEvent,
     bool? notifyOnTime,
+    DateTime? notificationTime,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _title = title,
         _description = description,
@@ -39,6 +40,7 @@ class EventStruct extends FFFirebaseStruct {
         _isGoogleEvent = isGoogleEvent,
         _dontShareThisEvent = dontShareThisEvent,
         _notifyOnTime = notifyOnTime,
+        _notificationTime = notificationTime,
         super(firestoreUtilData);
 
   // "title" field.
@@ -127,6 +129,12 @@ class EventStruct extends FFFirebaseStruct {
   set notifyOnTime(bool? val) => _notifyOnTime = val;
   bool hasNotifyOnTime() => _notifyOnTime != null;
 
+  // "notificationTime" field.
+  DateTime? _notificationTime;
+  DateTime? get notificationTime => _notificationTime;
+  set notificationTime(DateTime? val) => _notificationTime = val;
+  bool hasNotificationTime() => _notificationTime != null;
+
   static EventStruct fromMap(Map<String, dynamic> data) => EventStruct(
         title: data['title'] as String?,
         description: data['description'] as String?,
@@ -142,6 +150,7 @@ class EventStruct extends FFFirebaseStruct {
         isGoogleEvent: data['isGoogleEvent'] as bool?,
         dontShareThisEvent: data['dontShareThisEvent'] as bool?,
         notifyOnTime: data['notifyOnTime'] as bool?,
+        notificationTime: data['notificationTime'] as DateTime?,
       );
 
   static EventStruct? maybeFromMap(dynamic data) =>
@@ -162,6 +171,7 @@ class EventStruct extends FFFirebaseStruct {
         'isGoogleEvent': _isGoogleEvent,
         'dontShareThisEvent': _dontShareThisEvent,
         'notifyOnTime': _notifyOnTime,
+        'notificationTime': _notificationTime,
       }.withoutNulls;
 
   @override
@@ -221,6 +231,10 @@ class EventStruct extends FFFirebaseStruct {
         'notifyOnTime': serializeParam(
           _notifyOnTime,
           ParamType.bool,
+        ),
+        'notificationTime': serializeParam(
+          _notificationTime,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -298,6 +312,11 @@ class EventStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        notificationTime: deserializeParam(
+          data['notificationTime'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -319,7 +338,8 @@ class EventStruct extends FFFirebaseStruct {
         notifyBeforeUnit == other.notifyBeforeUnit &&
         isGoogleEvent == other.isGoogleEvent &&
         dontShareThisEvent == other.dontShareThisEvent &&
-        notifyOnTime == other.notifyOnTime;
+        notifyOnTime == other.notifyOnTime &&
+        notificationTime == other.notificationTime;
   }
 
   @override
@@ -337,7 +357,8 @@ class EventStruct extends FFFirebaseStruct {
         notifyBeforeUnit,
         isGoogleEvent,
         dontShareThisEvent,
-        notifyOnTime
+        notifyOnTime,
+        notificationTime
       ]);
 }
 
@@ -356,6 +377,7 @@ EventStruct createEventStruct({
   bool? isGoogleEvent,
   bool? dontShareThisEvent,
   bool? notifyOnTime,
+  DateTime? notificationTime,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -376,6 +398,7 @@ EventStruct createEventStruct({
       isGoogleEvent: isGoogleEvent,
       dontShareThisEvent: dontShareThisEvent,
       notifyOnTime: notifyOnTime,
+      notificationTime: notificationTime,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

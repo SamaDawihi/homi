@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -63,15 +64,15 @@ class _EventAddWidgetState extends State<EventAddWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          automaticallyImplyLeading: false,
-          actions: [],
-          flexibleSpace: FlexibleSpaceBar(
-            title: Align(
-              alignment: AlignmentDirectional(0.00, -1.00),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100.0),
+          child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            automaticallyImplyLeading: false,
+            actions: [],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Column(
+                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -130,11 +131,11 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                   ),
                 ],
               ),
+              centerTitle: true,
+              expandedTitleScale: 1.0,
             ),
-            centerTitle: true,
-            expandedTitleScale: 1.0,
+            elevation: 0.0,
           ),
-          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -902,120 +903,18 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                     null &&
                                                 _model.titleController.text !=
                                                     '') {
-                                              if (_model.datePicked1! <=
-                                                  _model.datePicked2!) {
-                                                if (_model
-                                                    .notificationSwitchValue!) {
-                                                  var eventRecordReference1 =
-                                                      EventRecord.collection
-                                                          .doc();
-                                                  await eventRecordReference1
-                                                      .set(
-                                                          createEventRecordData(
-                                                    title: _model
-                                                        .titleController.text,
-                                                    description: _model
-                                                        .descriptionController
-                                                        .text,
-                                                    createdBy:
-                                                        currentUserReference,
-                                                    location: _model
-                                                        .locationController
-                                                        .text,
-                                                    startTime:
-                                                        _model.datePicked3,
-                                                    isAllDay: _model
-                                                        .allDaySwitchValue,
-                                                    familyId:
-                                                        FFAppState().familyId,
-                                                    notifyBefore: 0,
-                                                    notifyBeforeUnit: 'Days',
-                                                    isGoogleEvent: false,
-                                                    startDate:
-                                                        _model.datePicked1,
-                                                    dontShareThisEvent: false,
-                                                    endDate: _model.datePicked2,
-                                                    notificationSent: false,
-                                                    notifyOnTime: true,
-                                                  ));
-                                                  _model.notifyOnTimeEvent =
-                                                      EventRecord.getDocumentFromData(
-                                                          createEventRecordData(
-                                                            title: _model
-                                                                .titleController
-                                                                .text,
-                                                            description: _model
-                                                                .descriptionController
-                                                                .text,
-                                                            createdBy:
-                                                                currentUserReference,
-                                                            location: _model
-                                                                .locationController
-                                                                .text,
-                                                            startTime: _model
-                                                                .datePicked3,
-                                                            isAllDay: _model
-                                                                .allDaySwitchValue,
-                                                            familyId:
-                                                                FFAppState()
-                                                                    .familyId,
-                                                            notifyBefore: 0,
-                                                            notifyBeforeUnit:
-                                                                'Days',
-                                                            isGoogleEvent:
-                                                                false,
-                                                            startDate: _model
-                                                                .datePicked1,
-                                                            dontShareThisEvent:
-                                                                false,
-                                                            endDate: _model
-                                                                .datePicked2,
-                                                            notificationSent:
-                                                                false,
-                                                            notifyOnTime: true,
-                                                          ),
-                                                          eventRecordReference1);
-                                                  _shouldSetState = true;
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'Event Added Successfully.',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .success,
-                                                    ),
-                                                  );
-
-                                                  context.goNamed('Calendar');
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                } else {
-                                                  if ((_model.textController4
-                                                                  .text !=
-                                                              null &&
-                                                          _model.textController4
-                                                                  .text !=
-                                                              '') &&
-                                                      (_model.dropDownValue !=
-                                                              null &&
-                                                          _model.dropDownValue !=
-                                                              '')) {
-                                                    var eventRecordReference2 =
+                                              if ((_model.datePicked1 !=
+                                                      null) &&
+                                                  (_model.datePicked2 !=
+                                                      null)) {
+                                                if (_model.datePicked1! <=
+                                                    _model.datePicked2!) {
+                                                  if (_model
+                                                      .notificationSwitchValue!) {
+                                                    var eventRecordReference1 =
                                                         EventRecord.collection
                                                             .doc();
-                                                    await eventRecordReference2
+                                                    await eventRecordReference1
                                                         .set(
                                                             createEventRecordData(
                                                       title: _model
@@ -1034,22 +933,37 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                           .allDaySwitchValue,
                                                       familyId:
                                                           FFAppState().familyId,
-                                                      notifyBefore:
-                                                          int.tryParse(_model
-                                                              .textController4
-                                                              .text),
-                                                      notifyBeforeUnit:
-                                                          _model.dropDownValue,
+                                                      notifyBefore: 0,
+                                                      notifyBeforeUnit: 'Days',
                                                       isGoogleEvent: false,
                                                       startDate:
                                                           _model.datePicked1,
                                                       dontShareThisEvent: false,
                                                       endDate:
                                                           _model.datePicked2,
-                                                      notificationSent: false,
-                                                      notifyOnTime: false,
+                                                      notificationSent: functions
+                                                          .addedEventIsInThePast(
+                                                              _model
+                                                                  .datePicked1!,
+                                                              _model
+                                                                  .datePicked3!,
+                                                              _model
+                                                                  .allDaySwitchValue!),
+                                                      notifyOnTime: true,
+                                                      notificationTime: functions
+                                                          .calculateNotificationTime(
+                                                              _model
+                                                                  .allDaySwitchValue!,
+                                                              _model
+                                                                  .notificationSwitchValue!,
+                                                              _model
+                                                                  .datePicked1!,
+                                                              _model
+                                                                  .datePicked3!,
+                                                              0,
+                                                              'Days'),
                                                     ));
-                                                    _model.notifyBeforeEvent =
+                                                    _model.notifyOnTimeEvent =
                                                         EventRecord.getDocumentFromData(
                                                             createEventRecordData(
                                                               title: _model
@@ -1070,13 +984,9 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                               familyId:
                                                                   FFAppState()
                                                                       .familyId,
-                                                              notifyBefore: int
-                                                                  .tryParse(_model
-                                                                      .textController4
-                                                                      .text),
+                                                              notifyBefore: 0,
                                                               notifyBeforeUnit:
-                                                                  _model
-                                                                      .dropDownValue,
+                                                                  'Days',
                                                               isGoogleEvent:
                                                                   false,
                                                               startDate: _model
@@ -1086,11 +996,28 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                               endDate: _model
                                                                   .datePicked2,
                                                               notificationSent:
-                                                                  false,
+                                                                  functions.addedEventIsInThePast(
+                                                                      _model
+                                                                          .datePicked1!,
+                                                                      _model
+                                                                          .datePicked3!,
+                                                                      _model
+                                                                          .allDaySwitchValue!),
                                                               notifyOnTime:
-                                                                  false,
+                                                                  true,
+                                                              notificationTime: functions.calculateNotificationTime(
+                                                                  _model
+                                                                      .allDaySwitchValue!,
+                                                                  _model
+                                                                      .notificationSwitchValue!,
+                                                                  _model
+                                                                      .datePicked1!,
+                                                                  _model
+                                                                      .datePicked3!,
+                                                                  0,
+                                                                  'Days'),
                                                             ),
-                                                            eventRecordReference2);
+                                                            eventRecordReference1);
                                                     _shouldSetState = true;
                                                     ScaffoldMessenger.of(
                                                             context)
@@ -1119,37 +1046,222 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       setState(() {});
                                                     return;
                                                   } else {
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      SnackBar(
-                                                        content: Text(
-                                                          'Make Sure To Select Both Remainder Time And Unit.',
-                                                          style: TextStyle(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
+                                                    if ((_model.textController4
+                                                                    .text !=
+                                                                null &&
+                                                            _model.textController4
+                                                                    .text !=
+                                                                '') &&
+                                                        (_model.dropDownValue !=
+                                                                null &&
+                                                            _model.dropDownValue !=
+                                                                '')) {
+                                                      var eventRecordReference2 =
+                                                          EventRecord.collection
+                                                              .doc();
+                                                      await eventRecordReference2
+                                                          .set(
+                                                              createEventRecordData(
+                                                        title: _model
+                                                            .titleController
+                                                            .text,
+                                                        description: _model
+                                                            .descriptionController
+                                                            .text,
+                                                        createdBy:
+                                                            currentUserReference,
+                                                        location: _model
+                                                            .locationController
+                                                            .text,
+                                                        startTime:
+                                                            _model.datePicked3,
+                                                        isAllDay: _model
+                                                            .allDaySwitchValue,
+                                                        familyId: FFAppState()
+                                                            .familyId,
+                                                        notifyBefore:
+                                                            int.tryParse(_model
+                                                                .textController4
+                                                                .text),
+                                                        notifyBeforeUnit: _model
+                                                            .dropDownValue,
+                                                        isGoogleEvent: false,
+                                                        startDate:
+                                                            _model.datePicked1,
+                                                        dontShareThisEvent:
+                                                            false,
+                                                        endDate:
+                                                            _model.datePicked2,
+                                                        notificationSent: functions
+                                                            .addedEventIsInThePast(
+                                                                _model
+                                                                    .datePicked1!,
+                                                                _model
+                                                                    .datePicked3!,
+                                                                _model
+                                                                    .allDaySwitchValue!),
+                                                        notifyOnTime: false,
+                                                        notificationTime: functions.calculateNotificationTime(
+                                                            _model
+                                                                .allDaySwitchValue!,
+                                                            _model
+                                                                .notificationSwitchValue!,
+                                                            _model.datePicked1!,
+                                                            _model.datePicked3!,
+                                                            int.parse(_model
+                                                                .textController4
+                                                                .text),
+                                                            _model
+                                                                .dropDownValue!),
+                                                      ));
+                                                      _model.notifyBeforeEvent =
+                                                          EventRecord.getDocumentFromData(
+                                                              createEventRecordData(
+                                                                title: _model
+                                                                    .titleController
+                                                                    .text,
+                                                                description: _model
+                                                                    .descriptionController
+                                                                    .text,
+                                                                createdBy:
+                                                                    currentUserReference,
+                                                                location: _model
+                                                                    .locationController
+                                                                    .text,
+                                                                startTime: _model
+                                                                    .datePicked3,
+                                                                isAllDay: _model
+                                                                    .allDaySwitchValue,
+                                                                familyId:
+                                                                    FFAppState()
+                                                                        .familyId,
+                                                                notifyBefore: int
+                                                                    .tryParse(_model
+                                                                        .textController4
+                                                                        .text),
+                                                                notifyBeforeUnit:
+                                                                    _model
+                                                                        .dropDownValue,
+                                                                isGoogleEvent:
+                                                                    false,
+                                                                startDate: _model
+                                                                    .datePicked1,
+                                                                dontShareThisEvent:
+                                                                    false,
+                                                                endDate: _model
+                                                                    .datePicked2,
+                                                                notificationSent:
+                                                                    functions.addedEventIsInThePast(
+                                                                        _model
+                                                                            .datePicked1!,
+                                                                        _model
+                                                                            .datePicked3!,
+                                                                        _model
+                                                                            .allDaySwitchValue!),
+                                                                notifyOnTime:
+                                                                    false,
+                                                                notificationTime: functions.calculateNotificationTime(
+                                                                    _model
+                                                                        .allDaySwitchValue!,
+                                                                    _model
+                                                                        .notificationSwitchValue!,
+                                                                    _model
+                                                                        .datePicked1!,
+                                                                    _model
+                                                                        .datePicked3!,
+                                                                    int.parse(_model
+                                                                        .textController4
+                                                                        .text),
+                                                                    _model
+                                                                        .dropDownValue!),
+                                                              ),
+                                                              eventRecordReference2);
+                                                      _shouldSetState = true;
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'Event Added Successfully.',
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                            ),
                                                           ),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  4000),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .success,
                                                         ),
-                                                        duration: Duration(
-                                                            milliseconds: 4000),
-                                                        backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                      ),
-                                                    );
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                    return;
+                                                      );
+
+                                                      context
+                                                          .goNamed('Calendar');
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    } else {
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'Make Sure To Select Both Remainder Time And Unit.',
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                            ),
+                                                          ),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  4000),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .error,
+                                                        ),
+                                                      );
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
                                                   }
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'End Date can not be before Start Date',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                    ),
+                                                  );
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
                                                 }
                                               } else {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   SnackBar(
                                                     content: Text(
-                                                      'End Date can not be before Start Date',
+                                                      'Must Select Start And End Date',
                                                       style: TextStyle(
                                                         color:
                                                             FlutterFlowTheme.of(

@@ -93,3 +93,60 @@ String newCustomFunction() {
 DateTime dateTimeToDateOnly(DateTime dateTime) {
   return DateTime(dateTime.year, dateTime.month, dateTime.day);
 }
+
+DateTime calculateNotificationTime(
+  bool isAllDay,
+  bool notifyOnTime,
+  DateTime startDate,
+  DateTime startTime,
+  int notifyBefore,
+  String notifyBeforeUnit,
+) {
+  DateTime notificationTime = startDate;
+
+  if (!isAllDay) {
+    // Adjust for non-all-day events
+    notificationTime = DateTime(
+      startDate.year,
+      startDate.month,
+      startDate.day,
+      startTime.hour,
+      startTime.minute,
+    );
+  }
+
+  if (!notifyOnTime) {
+    // Adjust notification time based on notification before settings
+    if (notifyBeforeUnit == "Days") {
+      notificationTime =
+          notificationTime.subtract(Duration(days: notifyBefore));
+    } else if (notifyBeforeUnit == "Hours") {
+      notificationTime =
+          notificationTime.subtract(Duration(hours: notifyBefore));
+    } else if (notifyBeforeUnit == "Minutes") {
+      notificationTime =
+          notificationTime.subtract(Duration(minutes: notifyBefore));
+    }
+  }
+
+  return notificationTime;
+}
+
+bool addedEventIsInThePast(
+  DateTime startDate,
+  DateTime startTime,
+  bool isAllDay,
+) {
+  if (isAllDay)
+    return startDate.isBefore(DateTime.now());
+  else {
+    DateTime eventTime = DateTime(
+      startDate.year,
+      startDate.month,
+      startDate.day,
+      startTime.hour,
+      startTime.minute,
+    );
+    return eventTime.isBefore(DateTime.now());
+  }
+}

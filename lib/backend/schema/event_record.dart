@@ -91,6 +91,11 @@ class EventRecord extends FirestoreRecord {
   bool get notifyOnTime => _notifyOnTime ?? false;
   bool hasNotifyOnTime() => _notifyOnTime != null;
 
+  // "notificationTime" field.
+  DateTime? _notificationTime;
+  DateTime? get notificationTime => _notificationTime;
+  bool hasNotificationTime() => _notificationTime != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
@@ -107,6 +112,7 @@ class EventRecord extends FirestoreRecord {
     _endDate = snapshotData['endDate'] as DateTime?;
     _notificationSent = snapshotData['notificationSent'] as bool?;
     _notifyOnTime = snapshotData['notifyOnTime'] as bool?;
+    _notificationTime = snapshotData['notificationTime'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -158,6 +164,7 @@ Map<String, dynamic> createEventRecordData({
   DateTime? endDate,
   bool? notificationSent,
   bool? notifyOnTime,
+  DateTime? notificationTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -176,6 +183,7 @@ Map<String, dynamic> createEventRecordData({
       'endDate': endDate,
       'notificationSent': notificationSent,
       'notifyOnTime': notifyOnTime,
+      'notificationTime': notificationTime,
     }.withoutNulls,
   );
 
@@ -201,7 +209,8 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e1?.dontShareThisEvent == e2?.dontShareThisEvent &&
         e1?.endDate == e2?.endDate &&
         e1?.notificationSent == e2?.notificationSent &&
-        e1?.notifyOnTime == e2?.notifyOnTime;
+        e1?.notifyOnTime == e2?.notifyOnTime &&
+        e1?.notificationTime == e2?.notificationTime;
   }
 
   @override
@@ -220,7 +229,8 @@ class EventRecordDocumentEquality implements Equality<EventRecord> {
         e?.dontShareThisEvent,
         e?.endDate,
         e?.notificationSent,
-        e?.notifyOnTime
+        e?.notifyOnTime,
+        e?.notificationTime
       ]);
 
   @override
