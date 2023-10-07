@@ -21,7 +21,7 @@ void main() async {
     await appState.initializePersistedState();
 
     await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: 'rana@gmail.com', password: 'rana1234');
+        email: 'anoud@gmail.com', password: 'anoud1234');
     await tester.pumpWidget(ChangeNotifierProvider(
       create: (context) => appState,
       child: MyApp(),
