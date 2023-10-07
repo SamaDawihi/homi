@@ -124,7 +124,9 @@ class _DoneAddingGoogleEventsWidgetState
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              context.goNamed('Calendar');
+                              Navigator.pop(context);
+
+                              context.pushNamed('Calendar');
                             },
                             text: FFLocalizations.of(context).getText(
                               'gxzwqdq9' /* OK */,

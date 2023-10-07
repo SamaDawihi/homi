@@ -69,7 +69,7 @@ Future addGoogleEvents(List<EventStruct> googleEvents) async {
         'dontShareThisEvent': googleEvent.dontShareThisEvent,
         'notificationSent':
             isNotificationSent, // Set notificationSent based on comparison
-        'notificationTime': googleEvent.notificationTime,
+        'notificationTime': notificationTime,
       };
       await eventCollection.add(eventData);
     } else {
