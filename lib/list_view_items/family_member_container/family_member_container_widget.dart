@@ -248,6 +248,7 @@ class _FamilyMemberContainerWidgetState
                                 ).then((value) => safeSetState(() {}));
                               },
                               child: Icon(
+                                key: ValueKey('Icon_nl8s'),
                                 Icons.person_remove,
                                 color: Color(0xFFDE1B27),
                                 size: 26.0,

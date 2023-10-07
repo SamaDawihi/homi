@@ -525,6 +525,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 20.0),
                                       child: FFButtonWidget(
+                                        key: ValueKey('DeleteButton_7g29'),
                                         onPressed: () async {
                                           await showAlignedDialog(
                                             context: context,
@@ -648,6 +649,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 20.0),
                                                 child: FFButtonWidget(
+                                                  key: ValueKey(
+                                                      'LeaveFamilyButton_upt0'),
                                                   onPressed: () async {
                                                     var _shouldSetState = false;
                                                     if (currentUserReference ==

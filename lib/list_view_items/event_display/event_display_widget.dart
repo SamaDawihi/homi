@@ -202,6 +202,7 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                             );
                           },
                           child: Icon(
+                            key: ValueKey('Icon_drqh'),
                             Icons.arrow_forward,
                             color: FlutterFlowTheme.of(context).secondaryText,
                             size: 24.0,

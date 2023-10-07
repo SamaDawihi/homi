@@ -165,6 +165,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: TextFormField(
+                                    key: ValueKey('title_7gp0'),
                                     controller: _model.titleController,
                                     autofocus: true,
                                     obscureText: false,
@@ -388,6 +389,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                       0.0,
                                                                       0.0),
                                                           child: Icon(
+                                                            key: ValueKey(
+                                                                'Icon_pz05'),
                                                             Icons.date_range,
                                                             color: Color(
                                                                 0xFF555EBE),
@@ -463,6 +466,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                     0.0,
                                                                     0.0),
                                                         child: Icon(
+                                                          key: ValueKey(
+                                                              'Icon_p9ik'),
                                                           Icons.date_range,
                                                           color:
                                                               Color(0xFF555EBE),
@@ -706,6 +711,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                           .bodyMedium,
                                     ),
                                     Switch.adaptive(
+                                      key: ValueKey('NotificationSwitch_47gl'),
                                       value: _model.notificationSwitchValue ??=
                                           true,
                                       onChanged: (newValue) async {
@@ -739,6 +745,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                   .fromSTEB(
                                                       0.0, 22.0, 8.0, 0.0),
                                               child: TextFormField(
+                                                key: ValueKey('TextField_w8p1'),
                                                 controller:
                                                     _model.textController4,
                                                 autofocus: true,
@@ -830,6 +837,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                             ),
                                           ),
                                           FlutterFlowDropDown<String>(
+                                            key: ValueKey('DropDown_4o3e'),
                                             controller: _model
                                                     .dropDownValueController ??=
                                                 FormFieldController<String>(
@@ -861,6 +869,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                               'pha4nnb8' /* Min/hour/Day */,
                                             ),
                                             icon: Icon(
+                                              key: ValueKey('DropDown_4o3e'),
                                               Icons.keyboard_arrow_down_rounded,
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -895,6 +904,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
+                                          key: ValueKey('Button_nxg8'),
                                           onPressed: () async {
                                             if (functions.trimAndCollapseSpaces(
                                                         _model.titleController

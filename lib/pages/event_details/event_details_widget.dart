@@ -133,6 +133,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                 ),
                               ),
                               Text(
+                                key: ValueKey('Text_36gd'),
                                 FFLocalizations.of(context).getText(
                                   'hxb3dou2' /* Event Details */,
                                 ),
@@ -725,6 +726,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: FFButtonWidget(
+                                            key: ValueKey('Button_9e2t'),
                                             onPressed: () async {
                                               await showAlignedDialog(
                                                 context: context,
@@ -808,6 +810,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
+                                          key: ValueKey('Button_isxu'),
                                           onPressed: () async {
                                             context.pushNamed(
                                               'EventEdit',
