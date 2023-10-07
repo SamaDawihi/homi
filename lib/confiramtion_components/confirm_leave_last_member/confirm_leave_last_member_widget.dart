@@ -60,7 +60,7 @@ class _ConfirmLeaveLastMemberWidgetState
           width: MediaQuery.sizeOf(context).width * 1.0,
           height: 200.0,
           constraints: BoxConstraints(
-            maxWidth: 530.0,
+            maxWidth: 500.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -238,7 +238,7 @@ class _ConfirmLeaveLastMemberWidgetState
                             20.0, 0.0, 20.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF555EBE),
+                        color: FlutterFlowTheme.of(context).error,
                         textStyle: FlutterFlowTheme.of(context).titleSmall,
                         elevation: 0.0,
                         borderSide: BorderSide(

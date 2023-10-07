@@ -47,7 +47,7 @@ class CalendarModel extends FlutterFlowModel<CalendarWidget> {
   // Stores action output result for [Firestore Query - Query a collection] action in Calendar widget.
   List<EventRecord>? events;
   Color? colorPicked;
-  // Stores action output result for [Custom Action - getGoogleEvents] action in LinkGoogleIconButton widget.
+  // Stores action output result for [Custom Action - getGoogleEvents] action in Row widget.
   List<EventStruct>? googleEvents;
   // Models for EventDisplay dynamic component.
   late FlutterFlowDynamicModels<EventDisplayModel> eventDisplayModels;

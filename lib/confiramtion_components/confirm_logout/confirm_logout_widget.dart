@@ -171,7 +171,7 @@ class _ConfirmLogoutWidgetState extends State<ConfirmLogoutWidget> {
                             20.0, 0.0, 20.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF555EBE),
+                        color: FlutterFlowTheme.of(context).error,
                         textStyle: FlutterFlowTheme.of(context).titleSmall,
                         elevation: 0.0,
                         borderSide: BorderSide(
