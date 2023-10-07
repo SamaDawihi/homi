@@ -1002,8 +1002,11 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                             .addedEventIsInThePast(
                                                                 _model
                                                                     .datePicked1!,
-                                                                _model
-                                                                    .datePicked3!,
+                                                                !_model.allDaySwitchValue!
+                                                                    ? _model
+                                                                        .datePicked3!
+                                                                    : _model
+                                                                        .datePicked1!,
                                                                 _model
                                                                     .allDaySwitchValue!),
                                                         notifyOnTime: true,
@@ -1013,7 +1016,11 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                             _model
                                                                 .notificationSwitchValue!,
                                                             _model.datePicked1!,
-                                                            _model.datePicked3!,
+                                                            !_model.allDaySwitchValue!
+                                                                ? _model
+                                                                    .datePicked3!
+                                                                : _model
+                                                                    .datePicked1!,
                                                             int.parse(_model
                                                                 .textController4
                                                                 .text),
@@ -1092,14 +1099,16 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                               false,
                                                           endDate:
                                                               _model.endDate,
-                                                          notificationSent: functions
-                                                              .addedEventIsInThePast(
-                                                                  _model
+                                                          notificationSent: functions.addedEventIsInThePast(
+                                                              _model
+                                                                  .datePicked1!,
+                                                              !_model.allDaySwitchValue!
+                                                                  ? _model
+                                                                      .datePicked3!
+                                                                  : _model
                                                                       .datePicked1!,
-                                                                  _model
-                                                                      .datePicked3!,
-                                                                  _model
-                                                                      .allDaySwitchValue!),
+                                                              _model
+                                                                  .allDaySwitchValue!),
                                                           notifyOnTime: false,
                                                           notificationTime: functions.calculateNotificationTime(
                                                               _model
@@ -1108,8 +1117,11 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                                   .notificationSwitchValue!,
                                                               _model
                                                                   .datePicked1!,
-                                                              _model
-                                                                  .datePicked3!,
+                                                              !_model.allDaySwitchValue!
+                                                                  ? _model
+                                                                      .datePicked3!
+                                                                  : _model
+                                                                      .datePicked1!,
                                                               int.parse(_model
                                                                   .textController4
                                                                   .text),
