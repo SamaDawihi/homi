@@ -700,7 +700,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                   children: [
                                     Text(
                                       FFLocalizations.of(context).getText(
-                                        'iv8wtubh' /* Notify On Time Of Event */,
+                                        'iv8wtubh' /* Notify Me On The Same  Time Of... */,
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,

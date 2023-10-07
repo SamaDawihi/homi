@@ -381,7 +381,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مرحبا بالعالم',
     },
     'iv8wtubh': {
-      'en': 'Notify On Time Of Event',
+      'en': 'Notify Me On The Same  Time Of The Event',
       'ar': '',
     },
     'zatc132l': {
