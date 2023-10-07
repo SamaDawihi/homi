@@ -1274,7 +1274,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يبدو أنه ليس لديك أي عائلة',
     },
     'g83mgxnn': {
-      'en': 'create a new family or join an existing one',
+      'en': 'Create a new new orimport your event from Google.',
       'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
     },
   },

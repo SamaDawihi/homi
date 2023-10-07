@@ -74,7 +74,7 @@ class _EmptyEventsWidgetState extends State<EmptyEventsWidget> {
               ),
               Text(
                 FFLocalizations.of(context).getText(
-                  'g83mgxnn' /* create a new family or join an... */,
+                  'g83mgxnn' /* Create a new new orimport your... */,
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Source Sans Pro',
