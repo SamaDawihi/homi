@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -192,111 +191,119 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                   ),
                             ),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'kl5bxlrg' /* Location: */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Source Sans Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'n2awoucz' /* Created By: */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Source Sans Pro',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 5.0, 0.0, 0.0),
-                                  child: Text(
-                                    eventDetailsEventRecord.location,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Source Sans Pro',
-                                          fontSize: 16.0,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 5.0, 0.0, 0.0),
-                                  child: FutureBuilder<UsersRecord>(
-                                    future: UsersRecord.getDocumentOnce(
-                                        eventDetailsEventRecord.createdBy!),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 10.0,
-                                            height: 10.0,
-                                            child: SpinKitDualRing(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              size: 10.0,
-                                            ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 0.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'kl5bxlrg' /* Location: */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Source Sans Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                        );
-                                      }
-                                      final textUsersRecord = snapshot.data!;
-                                      return Text(
-                                        textUsersRecord.displayName,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Source Sans Pro',
-                                              fontSize: 16.0,
-                                            ),
-                                      );
-                                    },
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'n2awoucz' /* Created By: */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Source Sans Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 10.0),
+                                5.0, 0.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 0.0),
+                                    child: Text(
+                                      eventDetailsEventRecord.location,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Source Sans Pro',
+                                            fontSize: 16.0,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 0.0),
+                                    child: FutureBuilder<UsersRecord>(
+                                      future: UsersRecord.getDocumentOnce(
+                                          eventDetailsEventRecord.createdBy!),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 10.0,
+                                              height: 10.0,
+                                              child: SpinKitDualRing(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 10.0,
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        final textUsersRecord = snapshot.data!;
+                                        return Text(
+                                          textUsersRecord.displayName,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Source Sans Pro',
+                                                fontSize: 16.0,
+                                              ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 18.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -308,7 +315,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 20.0, 0.0, 0.0),
+                                            3.0, 20.0, 0.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'b12rd52o' /* Start Date: */,
@@ -360,7 +367,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
+                                0.0, 10.0, 10.0, 10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -411,35 +418,10 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             2.0, 0.0, 0.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            final _datePickedDate =
-                                                await showDatePicker(
-                                              context: context,
-                                              initialDate: getCurrentTimestamp,
-                                              firstDate: getCurrentTimestamp,
-                                              lastDate: DateTime(2050),
-                                            );
-
-                                            if (_datePickedDate != null) {
-                                              safeSetState(() {
-                                                _model.datePicked = DateTime(
-                                                  _datePickedDate.year,
-                                                  _datePickedDate.month,
-                                                  _datePickedDate.day,
-                                                );
-                                              });
-                                            }
-                                          },
-                                          child: Icon(
-                                            Icons.date_range,
-                                            color: Color(0xFF555EBE),
-                                            size: 28.0,
-                                          ),
+                                        child: Icon(
+                                          Icons.date_range,
+                                          color: Color(0xFF555EBE),
+                                          size: 28.0,
                                         ),
                                       ),
                                       Padding(
@@ -827,10 +809,6 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                             context.pushNamed(
                                               'EventEdit',
                                               queryParameters: {
-                                                'selectedDate': serializeParam(
-                                                  _model.datePicked,
-                                                  ParamType.DateTime,
-                                                ),
                                                 'event': serializeParam(
                                                   eventDetailsEventRecord,
                                                   ParamType.Document,

@@ -1174,7 +1174,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                   .showSnackBar(
                                                 SnackBar(
                                                   content: Text(
-                                                    'Enter The Title',
+                                                    'Enter The Title.',
                                                     style: TextStyle(
                                                       color:
                                                           FlutterFlowTheme.of(

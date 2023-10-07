@@ -15,5 +15,3 @@ export '/pages/tasks/tasks_widget.dart' show TasksWidget;
 export '/pages/event_details/event_details_widget.dart' show EventDetailsWidget;
 export '/pages/event_add/event_add_widget.dart' show EventAddWidget;
 export '/pages/event_edit/event_edit_widget.dart' show EventEditWidget;
-export '/pages/event_add_copy/event_add_copy_widget.dart'
-    show EventAddCopyWidget;

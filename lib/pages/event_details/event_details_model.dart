@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'event_details_widget.dart' show EventDetailsWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -20,7 +19,6 @@ class EventDetailsModel extends FlutterFlowModel<EventDetailsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  DateTime? datePicked;
   // Model for BottomNavBar component.
   late BottomNavBarModel bottomNavBarModel;
 

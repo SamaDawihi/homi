@@ -232,10 +232,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Lists',
       'ar': 'القوائم',
     },
-    '28kwga5j': {
-      'en': 'Event',
-      'ar': '',
-    },
     'cjn0szm1': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
@@ -554,122 +550,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'z30xdtld': {
-      'en': 'Home',
-      'ar': 'الصفحة الرئيسية',
-    },
-  },
-  // EventAddCopy
-  {
-    'lmvoi9el': {
-      'en': 'Add Event',
-      'ar': 'حالة الدعوة',
-    },
-    'b1mwdk2x': {
-      'en': 'Event Title*',
-      'ar': 'عنوان الحدث',
-    },
-    'w2iowoto': {
-      'en': 'Location',
-      'ar': 'موقع',
-    },
-    'zvugl1c3': {
-      'en': '',
-      'ar': '',
-    },
-    'pfmcog2z': {
-      'en': 'Start Date:',
-      'ar': '',
-    },
-    'm6qmlr2i': {
-      'en': 'End Date:',
-      'ar': '',
-    },
-    '0avorta2': {
-      'en': 'All Day Event',
-      'ar': '',
-    },
-    'xoz30vsy': {
-      'en': 'Start Time:',
-      'ar': '',
-    },
-    '9em9bb4v': {
-      'en': 'Description here...',
-      'ar': 'الوصف هنا...',
-    },
-    'rthirpsf': {
-      'en': 'Notify On Time Of Event',
-      'ar': '',
-    },
-    'g0v3wpra': {
-      'en': 'Notification Time*',
-      'ar': 'مرحبا بالعالم',
-    },
-    's1awmauz': {
-      'en': 'Before...',
-      'ar': 'قبل...',
-    },
-    'pgw5n245': {
-      'en': 'Minutes',
-      'ar': 'دقائق',
-    },
-    'mcgule6w': {
-      'en': 'Hours',
-      'ar': 'ساعات',
-    },
-    'ji7zl3tm': {
-      'en': 'Days',
-      'ar': '',
-    },
-    '33p4nbdq': {
-      'en': 'Min/hour/Day',
-      'ar': 'دقيقة/ساعة',
-    },
-    'uhhblyg7': {
-      'en': 'Search for an item...',
-      'ar': 'البحث عن عنصر...',
-    },
-    '27eabpl2': {
-      'en': 'Add',
-      'ar': 'يضيف',
-    },
-    'a7exclhk': {
-      'en': 'Title is required.',
-      'ar': '',
-    },
-    '639xxcvk': {
-      'en':
-          'Title can not contain only white spaces, only numbers, or only special characters.',
-      'ar': '',
-    },
-    'a4em10ms': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    '195eo0ga': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    'kd7nee3z': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    't9wtvaeq': {
-      'en': 'Field is required',
-      'ar': '',
-    },
-    'gviub7vz': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'dhr3jwrw': {
-      'en': 'Notification time is required.',
-      'ar': '',
-    },
-    '92uu3s09': {
-      'en': 'Please choose an option from the dropdown',
-      'ar': '',
-    },
-    'oopdzf2v': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
     },
