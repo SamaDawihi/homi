@@ -479,23 +479,26 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               final familyMembersListViewMemberRecord =
                                   familyMembersListViewMemberRecordList[
                                       familyMembersListViewIndex];
-                              return wrapWithModel(
-                                model:
-                                    _model.familyMemberContainerModels.getModel(
-                                  familyMembersListViewIndex.toString(),
-                                  familyMembersListViewIndex,
-                                ),
-                                updateCallback: () => setState(() {}),
-                                child: FamilyMemberContainerWidget(
-                                  key: Key(
-                                    'Key38e_${familyMembersListViewIndex.toString()}',
+                              return Container(
+                                key: ValueKey('FamilyMemberContainer_2l6r'),
+                                child: wrapWithModel(
+                                  model: _model.familyMemberContainerModels
+                                      .getModel(
+                                    familyMembersListViewIndex.toString(),
+                                    familyMembersListViewIndex,
                                   ),
-                                  memberId: familyMembersListViewMemberRecord
-                                      .memberId!,
-                                  familyId: familyMembersListViewMemberRecord
-                                      .familyId!,
-                                  color:
-                                      familyMembersListViewMemberRecord.color!,
+                                  updateCallback: () => setState(() {}),
+                                  child: FamilyMemberContainerWidget(
+                                    key: Key(
+                                      'Key38e_${familyMembersListViewIndex.toString()}',
+                                    ),
+                                    memberId: familyMembersListViewMemberRecord
+                                        .memberId!,
+                                    familyId: familyMembersListViewMemberRecord
+                                        .familyId!,
+                                    color: familyMembersListViewMemberRecord
+                                        .color!,
+                                  ),
                                 ),
                               );
                             },

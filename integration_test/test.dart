@@ -12,7 +12,176 @@ import 'package:firebase_auth/firebase_auth.dart';
 void main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('Google API Test', (WidgetTester tester) async {
+  testWidgets('Make Admin Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+
+    await tester.tap(find.descendant(
+      of: find.byKey(ValueKey('FamilyMemberContainer_2l6r')),
+      matching: find.byKey(ValueKey('Icon_pf0p')),
+    ));
+    await tester.pumpAndSettle(
+      Duration(milliseconds: 100),
+      EnginePhase.sendSemanticsUpdate,
+      Duration(milliseconds: 2000),
+    );
+    expect(find.text('ConfirmChangeAdmin'), findsOneWidget);
+  });
+
+  testWidgets('Remove Member Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('Leave Family', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('Delete Family Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('View Events in Calendar', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('Get Google Events Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('View Event Details Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('Add Event Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('Edit Event Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('Delete Event Test', (WidgetTester tester) async {
+    _overrideOnError();
+    await initFirebase();
+    await FirebaseAuth.instance.signOut();
+    FFAppState.reset();
+    final appState = FFAppState();
+    await appState.initializePersistedState();
+
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: 'anoud@gmail.com', password: 'anoud1234');
+    await tester.pumpWidget(ChangeNotifierProvider(
+      create: (context) => appState,
+      child: MyApp(),
+    ));
+  });
+
+  testWidgets('Send Notification Test', (WidgetTester tester) async {
     _overrideOnError();
     await initFirebase();
     await FirebaseAuth.instance.signOut();
