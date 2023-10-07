@@ -155,6 +155,7 @@ class _ConfirmAddingGoogleEventsWidgetState
                         await actions.addGoogleEvents(
                           widget.events!.toList(),
                         );
+                        Navigator.pop(context);
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
@@ -167,8 +168,6 @@ class _ConfirmAddingGoogleEventsWidgetState
                             );
                           },
                         ).then((value) => safeSetState(() {}));
-
-                        Navigator.pop(context);
                       },
                       text: 'Add Events To Family',
                       options: FFButtonOptions(
