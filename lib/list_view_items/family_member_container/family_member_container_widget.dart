@@ -216,7 +216,6 @@ class _FamilyMemberContainerWidgetState
                                 ).then((value) => safeSetState(() {}));
                               },
                               child: Icon(
-                                key: ValueKey('Icon_pf0p'),
                                 Icons.admin_panel_settings_rounded,
                                 color: Color(0xFF433EA3),
                                 size: 30.0,
@@ -248,7 +247,6 @@ class _FamilyMemberContainerWidgetState
                                 ).then((value) => safeSetState(() {}));
                               },
                               child: Icon(
-                                key: ValueKey('Icon_nl8s'),
                                 Icons.person_remove,
                                 color: Color(0xFFDE1B27),
                                 size: 26.0,

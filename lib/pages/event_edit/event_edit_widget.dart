@@ -124,7 +124,6 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                             ),
                           ),
                           Text(
-                            key: ValueKey('Text_ng7f'),
                             FFLocalizations.of(context).getText(
                               'yywc6jcb' /* Edit Event */,
                             ),
@@ -922,7 +921,6 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
-                                          key: ValueKey('Button_rqlt'),
                                           onPressed: () async {
                                             if (functions.trimAndCollapseSpaces(
                                                         _model.titleController

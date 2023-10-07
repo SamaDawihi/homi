@@ -139,7 +139,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                             ),
                           ),
                           Text(
-                            key: ValueKey('Text_mlr8'),
                             FFLocalizations.of(context).getText(
                               '7dmf86h5' /* Calendar */,
                             ),
@@ -332,8 +331,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                       alignment:
                                           AlignmentDirectional(0.00, 0.00),
                                       child: FlutterFlowIconButton(
-                                        key: ValueKey(
-                                            'LinkGoogleIconButton_y1l2'),
                                         borderColor:
                                             FlutterFlowTheme.of(context)
                                                 .primaryBackground,
@@ -348,8 +345,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                             FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                         icon: FaIcon(
-                                          key: ValueKey(
-                                              'LinkGoogleIconButton_y1l2'),
                                           FontAwesomeIcons.google,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -388,7 +383,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                 ),
                               ),
                               FlutterFlowIconButton(
-                                key: ValueKey('AddIconButton_k0mf'),
                                 borderColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
                                 borderRadius: 20.0,
@@ -401,7 +395,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                 hoverIconColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
                                 icon: Icon(
-                                  key: ValueKey('AddIconButton_k0mf'),
                                   Icons.add_outlined,
                                   color: FlutterFlowTheme.of(context).primary,
                                   size: 35.0,
@@ -491,20 +484,17 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   6.0, 0.0, 6.0, 10.0),
-                              child: Container(
-                                key: ValueKey('EventDisplay_bukj'),
-                                child: wrapWithModel(
-                                  model: _model.eventDisplayModels.getModel(
-                                    listViewIndex.toString(),
-                                    listViewIndex,
+                              child: wrapWithModel(
+                                model: _model.eventDisplayModels.getModel(
+                                  listViewIndex.toString(),
+                                  listViewIndex,
+                                ),
+                                updateCallback: () => setState(() {}),
+                                child: EventDisplayWidget(
+                                  key: Key(
+                                    'Keywpy_${listViewIndex.toString()}',
                                   ),
-                                  updateCallback: () => setState(() {}),
-                                  child: EventDisplayWidget(
-                                    key: Key(
-                                      'Keywpy_${listViewIndex.toString()}',
-                                    ),
-                                    eventRef: listViewEventRecord.reference,
-                                  ),
+                                  eventRef: listViewEventRecord.reference,
                                 ),
                               ),
                             ),

@@ -479,26 +479,23 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               final familyMembersListViewMemberRecord =
                                   familyMembersListViewMemberRecordList[
                                       familyMembersListViewIndex];
-                              return Container(
-                                key: ValueKey('FamilyMemberContainer_2l6r'),
-                                child: wrapWithModel(
-                                  model: _model.familyMemberContainerModels
-                                      .getModel(
-                                    familyMembersListViewIndex.toString(),
-                                    familyMembersListViewIndex,
+                              return wrapWithModel(
+                                model:
+                                    _model.familyMemberContainerModels.getModel(
+                                  familyMembersListViewIndex.toString(),
+                                  familyMembersListViewIndex,
+                                ),
+                                updateCallback: () => setState(() {}),
+                                child: FamilyMemberContainerWidget(
+                                  key: Key(
+                                    'Key38e_${familyMembersListViewIndex.toString()}',
                                   ),
-                                  updateCallback: () => setState(() {}),
-                                  child: FamilyMemberContainerWidget(
-                                    key: Key(
-                                      'Key38e_${familyMembersListViewIndex.toString()}',
-                                    ),
-                                    memberId: familyMembersListViewMemberRecord
-                                        .memberId!,
-                                    familyId: familyMembersListViewMemberRecord
-                                        .familyId!,
-                                    color: familyMembersListViewMemberRecord
-                                        .color!,
-                                  ),
+                                  memberId: familyMembersListViewMemberRecord
+                                      .memberId!,
+                                  familyId: familyMembersListViewMemberRecord
+                                      .familyId!,
+                                  color:
+                                      familyMembersListViewMemberRecord.color!,
                                 ),
                               );
                             },
@@ -525,7 +522,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 20.0),
                                       child: FFButtonWidget(
-                                        key: ValueKey('DeleteButton_7g29'),
                                         onPressed: () async {
                                           await showAlignedDialog(
                                             context: context,
@@ -649,8 +645,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 20.0),
                                                 child: FFButtonWidget(
-                                                  key: ValueKey(
-                                                      'LeaveFamilyButton_upt0'),
                                                   onPressed: () async {
                                                     var _shouldSetState = false;
                                                     if (currentUserReference ==
