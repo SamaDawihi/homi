@@ -909,7 +909,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       null)) {
                                                 if (_model.datePicked1! <=
                                                     _model.datePicked2!) {
-                                                  if (_model.allDaySwitchValue!
+                                                  if (!_model.allDaySwitchValue!
                                                       ? (_model.datePicked3 !=
                                                           null)
                                                       : true) {

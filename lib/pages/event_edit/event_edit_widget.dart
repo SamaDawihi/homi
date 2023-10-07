@@ -956,7 +956,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                       null)) {
                                                 if (_model.datePicked1! <=
                                                     _model.datePicked2!) {
-                                                  if (_model.allDaySwitchValue!
+                                                  if (!_model.allDaySwitchValue!
                                                       ? (_model.datePicked3 !=
                                                           null)
                                                       : true) {
@@ -977,7 +977,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                         location: _model
                                                             .locationController
                                                             .text,
-                                                        startTime: _model
+                                                        startTime: !_model
                                                                 .allDaySwitchValue!
                                                             ? _model.datePicked3
                                                             : _model
@@ -1068,7 +1068,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                           location: _model
                                                               .locationController
                                                               .text,
-                                                          startTime: _model
+                                                          startTime: !_model
                                                                   .allDaySwitchValue!
                                                               ? _model
                                                                   .datePicked3
