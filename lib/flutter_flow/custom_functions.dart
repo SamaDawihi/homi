@@ -128,6 +128,20 @@ DateTime calculateNotificationTime(
           notificationTime.subtract(Duration(minutes: notifyBefore));
     }
   }
+  if (notificationTime.isBefore(DateTime.now())) {
+    notificationTime = startDate;
+
+    if (!isAllDay) {
+      // Adjust for non-all-day events
+      notificationTime = DateTime(
+        startDate.year,
+        startDate.month,
+        startDate.day,
+        startTime.hour,
+        startTime.minute,
+      );
+    }
+  }
 
   return notificationTime;
 }

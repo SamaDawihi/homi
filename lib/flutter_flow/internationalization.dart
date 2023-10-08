@@ -480,11 +480,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Location',
       'ar': 'موقع',
     },
-    '3lriaurn': {
+    '93kdzkv6': {
       'en': 'Start Date',
       'ar': '',
     },
-    'v1w1xjd2': {
+    'j694h461': {
       'en': 'End Date',
       'ar': '',
     },
@@ -492,7 +492,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'All Day Event',
       'ar': '',
     },
-    'wljiyjm2': {
+    'dc4sr3ol': {
       'en': 'Start Time',
       'ar': '',
     },
@@ -989,7 +989,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'xo14loky': {
       'en':
-          'By adding these events to the family calendar only you can view them to share them with the rest of family member you have to share each  Event individually.',
+          'By adding these events to the family calendar only you can view them to share them with the rest of family member you have to share each of them individually.',
       'ar':
           'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
     },
@@ -1021,8 +1021,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تمت دعوة العضو بالفعل.',
     },
     'ebsj0unj': {
-      'en':
-          'The Added Google Events  Will Be Able Visible To  You Only. To Change The Visibility Press The Eye Icon.',
+      'en': 'Events Added Only You Will Be Able To View Them.',
       'ar':
           'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
     },
@@ -1110,17 +1109,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'g83mgxnn': {
       'en': 'Create a new new orimport your event from Google.',
       'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
-    },
-  },
-  // ConfirmShareGoogleEvent
-  {
-    '96jg5f8w': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-    },
-    '22ypn5p1': {
-      'en': 'YES',
-      'ar': 'نعم',
     },
   },
   // Miscellaneous
