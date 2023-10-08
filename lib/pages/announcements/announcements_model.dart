@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/input_components/add_event_form/add_event_form_widget.dart';
 import '/sprint1/side_menu/side_menu_widget.dart';
 import 'announcements_widget.dart' show AnnouncementsWidget;
 import 'package:flutter/material.dart';

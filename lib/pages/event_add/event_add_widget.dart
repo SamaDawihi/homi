@@ -762,7 +762,9 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                       inactiveTrackColor:
                                           FlutterFlowTheme.of(context)
                                               .alternate,
-                                      inactiveThumbColor: Color(0xFF555EBE),
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                     ),
                                   ],
                                 ),

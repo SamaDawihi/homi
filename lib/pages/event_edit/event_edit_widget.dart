@@ -399,13 +399,13 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  dateTimeFormat(
-                                                    'yMd',
+                                                  'Start Date: ${dateTimeFormat(
+                                                    'd/M/y',
                                                     _model.startDate,
                                                     locale: FFLocalizations.of(
                                                             context)
                                                         .languageCode,
-                                                  ),
+                                                  )}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
@@ -487,13 +487,13 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                dateTimeFormat(
-                                                  'yMd',
+                                                'End Date: ${dateTimeFormat(
+                                                  'd/M/y',
                                                   _model.endDate,
                                                   locale: FFLocalizations.of(
                                                           context)
                                                       .languageCode,
-                                                ),
+                                                )}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
@@ -547,7 +547,9 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                         inactiveTrackColor:
                                             FlutterFlowTheme.of(context)
                                                 .alternate,
-                                        inactiveThumbColor: Color(0xFF555EBE),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -596,14 +598,14 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    dateTimeFormat(
+                                                    'Start Time: ${dateTimeFormat(
                                                       'jm',
                                                       _model.startTime,
                                                       locale:
                                                           FFLocalizations.of(
                                                                   context)
                                                               .languageCode,
-                                                    ),
+                                                    )}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
@@ -738,13 +740,15 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                 newValue!);
                                       },
                                       activeColor:
-                                          FlutterFlowTheme.of(context).success,
+                                          FlutterFlowTheme.of(context).primary,
                                       activeTrackColor:
                                           FlutterFlowTheme.of(context).accent1,
                                       inactiveTrackColor:
                                           FlutterFlowTheme.of(context)
                                               .alternate,
-                                      inactiveThumbColor: Color(0xFF555EBE),
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                     ),
                                   ],
                                 ),
