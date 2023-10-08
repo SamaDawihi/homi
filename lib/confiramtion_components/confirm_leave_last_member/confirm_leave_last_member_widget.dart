@@ -60,7 +60,8 @@ class _ConfirmLeaveLastMemberWidgetState
           width: MediaQuery.sizeOf(context).width * 1.0,
           height: 200.0,
           constraints: BoxConstraints(
-            maxWidth: 500.0,
+            maxWidth: 530.0,
+            maxHeight: 220.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,

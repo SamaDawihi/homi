@@ -480,11 +480,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Location',
       'ar': 'موقع',
     },
-    '93kdzkv6': {
+    'mon9gry2': {
       'en': 'Start Date',
       'ar': '',
     },
-    'j694h461': {
+    'liffx9ee': {
       'en': 'End Date',
       'ar': '',
     },
@@ -492,7 +492,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'All Day Event',
       'ar': '',
     },
-    'dc4sr3ol': {
+    'yr3h7vkg': {
       'en': 'Start Time',
       'ar': '',
     },
@@ -1107,7 +1107,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يبدو أنه ليس لديك أي عائلة',
     },
     'g83mgxnn': {
-      'en': 'Create a new new orimport your event from Google.',
+      'en': 'Create a new new or import your event from Google.',
       'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
     },
   },

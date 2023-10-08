@@ -401,7 +401,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    '93kdzkv6' /* Start Date */,
+                                                    'mon9gry2' /* Start Date */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -521,7 +521,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'j694h461' /* End Date */,
+                                                  'liffx9ee' /* End Date */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -600,7 +600,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context)
-                                                .success,
+                                                .primary,
                                         activeTrackColor:
                                             FlutterFlowTheme.of(context)
                                                 .accent1,
@@ -656,7 +656,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                   Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'dc4sr3ol' /* Start Time */,
+                                                      'yr3h7vkg' /* Start Time */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -1092,22 +1092,32 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                                 _model
                                                                     .allDaySwitchValue!),
                                                         notifyOnTime: true,
-                                                        notificationTime: functions.calculateNotificationTime(
-                                                            _model
-                                                                .allDaySwitchValue!,
-                                                            _model
-                                                                .notificationSwitchValue!,
-                                                            _model.startDate!,
-                                                            !_model.allDaySwitchValue!
-                                                                ? _model
-                                                                    .startTime!
-                                                                : _model
+                                                        notificationTime: functions
+                                                            .calculateNotificationTime(
+                                                                _model
+                                                                    .allDaySwitchValue!,
+                                                                _model
+                                                                    .notificationSwitchValue!,
+                                                                _model
                                                                     .startDate!,
-                                                            int.parse(_model
-                                                                .textController4
-                                                                .text),
-                                                            _model
-                                                                .dropDownValue!),
+                                                                !_model.allDaySwitchValue!
+                                                                    ? _model
+                                                                        .startTime!
+                                                                    : _model
+                                                                        .startDate!,
+                                                                valueOrDefault<
+                                                                    int>(
+                                                                  int.tryParse(_model
+                                                                      .textController4
+                                                                      .text),
+                                                                  0,
+                                                                ),
+                                                                valueOrDefault<
+                                                                    String>(
+                                                                  _model
+                                                                      .dropDownValue,
+                                                                  'Minutes',
+                                                                )),
                                                       ));
                                                       ScaffoldMessenger.of(
                                                               context)
