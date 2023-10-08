@@ -401,7 +401,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'mon9gry2' /* Start Date */,
+                                                    'aaz0tz4c' /* Start Date */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -521,7 +521,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                               Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'liffx9ee' /* End Date */,
+                                                  '5s338iif' /* End Date */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -656,7 +656,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                   Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'yr3h7vkg' /* Start Time */,
+                                                      '3g57q6s6' /* Start Time */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)

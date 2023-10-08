@@ -480,11 +480,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Location',
       'ar': 'موقع',
     },
-    'mon9gry2': {
+    'aaz0tz4c': {
       'en': 'Start Date',
       'ar': '',
     },
-    'liffx9ee': {
+    '5s338iif': {
       'en': 'End Date',
       'ar': '',
     },
@@ -492,7 +492,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'All Day Event',
       'ar': '',
     },
-    'yr3h7vkg': {
+    '3g57q6s6': {
       'en': 'Start Time',
       'ar': '',
     },

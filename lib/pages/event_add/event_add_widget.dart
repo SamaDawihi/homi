@@ -335,7 +335,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                           }
                                         },
                                         child: Container(
-                                          width: 170.0,
+                                          width: 130.0,
                                           height: 50.0,
                                           decoration: BoxDecoration(),
                                           child: Column(
@@ -420,7 +420,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                           }
                                         },
                                         child: Container(
-                                          width: 170.0,
+                                          width: 130.0,
                                           height: 50.0,
                                           decoration: BoxDecoration(),
                                           child: Column(
@@ -521,7 +521,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 14.0, 0.0),
                                       child: Container(
-                                        width: 180.0,
+                                        width: 130.0,
                                         height: 50.0,
                                         decoration: BoxDecoration(),
                                         child: Visibility(
