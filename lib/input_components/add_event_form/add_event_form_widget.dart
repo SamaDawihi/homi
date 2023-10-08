@@ -572,7 +572,8 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
                                               inactiveThumbColor:
-                                                  Color(0xFF555EBE),
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -773,7 +774,9 @@ class _AddEventFormWidgetState extends State<AddEventFormWidget>
                                       inactiveTrackColor:
                                           FlutterFlowTheme.of(context)
                                               .alternate,
-                                      inactiveThumbColor: Color(0xFF555EBE),
+                                      inactiveThumbColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                     ),
                                   ],
                                 ),

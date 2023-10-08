@@ -536,7 +536,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .alternate,
                                               inactiveThumbColor:
-                                                  Color(0xFF555EBE),
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
