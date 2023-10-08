@@ -1,16 +1,18 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/confiramtion_components/confirm_share_google_event/confirm_share_google_event_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'event_display_widget.dart' show EventDisplayWidget;
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'confirm_share_google_event_widget.dart'
+    show ConfirmShareGoogleEventWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class EventDisplayModel extends FlutterFlowModel<EventDisplayWidget> {
+class ConfirmShareGoogleEventModel
+    extends FlutterFlowModel<ConfirmShareGoogleEventWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}

@@ -49,7 +49,7 @@ class _DoneAddingGoogleEventsWidgetState
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
-          height: 200.0,
+          height: 220.0,
           constraints: BoxConstraints(
             maxWidth: 530.0,
           ),
@@ -99,7 +99,7 @@ class _DoneAddingGoogleEventsWidgetState
                             EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
-                            'ebsj0unj' /* Events Added Only You Will Be ... */,
+                            'ebsj0unj' /* The Added Google Events  Will ... */,
                           ),
                           style:
                               FlutterFlowTheme.of(context).labelMedium.override(

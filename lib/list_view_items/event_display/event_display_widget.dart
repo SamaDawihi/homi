@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/confiramtion_components/confirm_share_google_event/confirm_share_google_event_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -168,7 +169,7 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                         child: Text(
                           valueOrDefault<String>(
                             dateTimeFormat(
-                              'yMd',
+                              'd/M/y',
                               eventDisplayEventRecord.startDate,
                               locale: FFLocalizations.of(context).languageCode,
                             ),
@@ -216,74 +217,23 @@ class _EventDisplayWidgetState extends State<EventDisplayWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              if (eventDisplayEventRecord.dontShareThisEvent) {
-                                var confirmDialogResponse =
-                                    await showDialog<bool>(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('Share Event'),
-                                              content: Text(
-                                                  'Do You Want To Share This Event?'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: Text('Cancel'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: Text('Confirm'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ) ??
-                                        false;
-
-                                await widget.eventRef!
-                                    .update(createEventRecordData(
-                                  dontShareThisEvent: false,
-                                ));
-                                return;
-                              } else {
-                                var confirmDialogResponse = await showDialog<
-                                        bool>(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title:
-                                              Text('Cancel Sharing The Event'),
-                                          content: Text(
-                                              'Do You Want To Cancel Sharing This Event?'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, false),
-                                              child: Text('Cancel'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, true),
-                                              child: Text('Confirm'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ) ??
-                                    false;
-
-                                await widget.eventRef!
-                                    .update(createEventRecordData(
-                                  dontShareThisEvent: true,
-                                ));
-                                return;
-                              }
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) {
+                                  return Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: ConfirmShareGoogleEventWidget(
+                                      dontShareThisEvent:
+                                          eventDisplayEventRecord
+                                              .dontShareThisEvent,
+                                      eventRed: widget.eventRef!,
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
                             },
                             child: Icon(
                               Icons.remove_red_eye,
