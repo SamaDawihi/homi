@@ -480,8 +480,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Location',
       'ar': 'موقع',
     },
+    'nqegrq9s': {
+      'en': 'Start Date',
+      'ar': '',
+    },
+    'o36b0705': {
+      'en': 'End Date',
+      'ar': '',
+    },
     '92ynmofy': {
       'en': 'All Day Event',
+      'ar': '',
+    },
+    'okk05csv': {
+      'en': 'Start Time',
       'ar': '',
     },
     'vm4w5w5m': {

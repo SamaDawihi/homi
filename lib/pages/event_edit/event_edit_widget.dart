@@ -393,32 +393,66 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                             width: 130.0,
                                             height: 50.0,
                                             decoration: BoxDecoration(),
-                                            child: Row(
+                                            child: Column(
                                               mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'Start Date: ${dateTimeFormat(
-                                                    'd/M/y',
-                                                    _model.startDate,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  )}',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'nqegrq9s' /* Start Date */,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Source Sans Pro',
+                                                        fontSize: 16.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 0.0, 0.0),
-                                                  child: Icon(
-                                                    Icons.date_range,
-                                                    color: Color(0xFF555EBE),
-                                                    size: 24.0,
-                                                  ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        dateTimeFormat(
+                                                          'd/M/y',
+                                                          _model.startDate,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        ),
+                                                        'Select Date',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        Icons.date_range,
+                                                        color:
+                                                            Color(0xFF555EBE),
+                                                        size: 24.0,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
@@ -481,32 +515,58 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                           width: 130.0,
                                           height: 50.0,
                                           decoration: BoxDecoration(),
-                                          child: Row(
+                                          child: Column(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                'End Date: ${dateTimeFormat(
-                                                  'd/M/y',
-                                                  _model.endDate,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                )}',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'o36b0705' /* End Date */,
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        8.0, 0.0, 0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.date_range,
-                                                  color: Color(0xFF555EBE),
-                                                  size: 24.0,
-                                                ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      dateTimeFormat(
+                                                        'd/M/y',
+                                                        _model.endDate,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      'Select Date',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Icon(
+                                                      Icons.date_range,
+                                                      color: Color(0xFF555EBE),
+                                                      size: 24.0,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -554,72 +614,100 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             14.0, 0.0, 14.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            final _datePicked3Time =
-                                                await showTimePicker(
-                                              context: context,
-                                              initialTime:
-                                                  TimeOfDay.fromDateTime(
-                                                      _model.startTime!),
-                                            );
-                                            if (_datePicked3Time != null) {
-                                              safeSetState(() {
-                                                _model.datePicked3 = DateTime(
-                                                  _model.startTime!.year,
-                                                  _model.startTime!.month,
-                                                  _model.startTime!.day,
-                                                  _datePicked3Time.hour,
-                                                  _datePicked3Time.minute,
+                                        child: Container(
+                                          width: 130.0,
+                                          height: 50.0,
+                                          decoration: BoxDecoration(),
+                                          child: Visibility(
+                                            visible: !valueOrDefault<bool>(
+                                              _model.allDaySwitchValue,
+                                              true,
+                                            ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                final _datePicked3Time =
+                                                    await showTimePicker(
+                                                  context: context,
+                                                  initialTime:
+                                                      TimeOfDay.fromDateTime(
+                                                          _model.startTime!),
                                                 );
-                                              });
-                                            }
-                                            setState(() {
-                                              _model.startTime =
-                                                  _model.datePicked3;
-                                            });
-                                          },
-                                          child: Container(
-                                            width: 130.0,
-                                            height: 50.0,
-                                            decoration: BoxDecoration(),
-                                            child: Visibility(
-                                              visible: !valueOrDefault<bool>(
-                                                _model.allDaySwitchValue,
-                                                true,
-                                              ),
-                                              child: Row(
+                                                if (_datePicked3Time != null) {
+                                                  safeSetState(() {
+                                                    _model.datePicked3 =
+                                                        DateTime(
+                                                      _model.startTime!.year,
+                                                      _model.startTime!.month,
+                                                      _model.startTime!.day,
+                                                      _datePicked3Time.hour,
+                                                      _datePicked3Time.minute,
+                                                    );
+                                                  });
+                                                }
+                                              },
+                                              child: Column(
                                                 mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'Start Time: ${dateTimeFormat(
-                                                      'jm',
-                                                      _model.startTime,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    )}',
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'okk05csv' /* Start Time */,
+                                                    ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Source Sans Pro',
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.access_time,
-                                                      color: Color(0xFF555EBE),
-                                                      size: 24.0,
-                                                    ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        valueOrDefault<String>(
+                                                          dateTimeFormat(
+                                                            'jm',
+                                                            _model.startTime,
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
+                                                          ),
+                                                          'Start Time',
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Icon(
+                                                          Icons.access_time,
+                                                          color:
+                                                              Color(0xFF555EBE),
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
