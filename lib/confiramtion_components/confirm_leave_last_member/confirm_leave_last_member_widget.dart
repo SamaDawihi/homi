@@ -57,8 +57,8 @@ class _ConfirmLeaveLastMemberWidgetState
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(
-          width: MediaQuery.sizeOf(context).width * 1.0,
-          height: 200.0,
+          width: MediaQuery.sizeOf(context).width * 0.8,
+          height: 220.0,
           constraints: BoxConstraints(
             maxWidth: 530.0,
             maxHeight: 220.0,
