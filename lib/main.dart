@@ -199,7 +199,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'FamilyProfile': FamilyProfileWidget(),
       'Calendar': CalendarWidget(),
-      'Lists': ListsWidget(),
+      'AllLists': AllListsWidget(),
       'Announcements': AnnouncementsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);

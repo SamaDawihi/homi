@@ -35,5 +35,19 @@ service cloud.firestore {
       allow write: if false;
       allow delete: if false;
     }
+
+    match /List/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /Item/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
   }
 }

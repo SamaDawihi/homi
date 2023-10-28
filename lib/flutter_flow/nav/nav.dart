@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
-import '../../auth/base_auth_user_provider.dart';
+import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
@@ -110,10 +110,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : CalendarWidget(),
         ),
         FFRoute(
-          name: 'Lists',
-          path: '/lists',
-          builder: (context, params) =>
-              params.isEmpty ? NavBarPage(initialPage: 'Lists') : ListsWidget(),
+          name: 'AllLists',
+          path: '/allLists',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'AllLists')
+              : AllListsWidget(),
         ),
         FFRoute(
           name: 'Announcements',
@@ -134,11 +135,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             familyId: params.getParam(
                 'familyId', ParamType.DocumentReference, false, ['Family']),
           ),
-        ),
-        FFRoute(
-          name: 'Tasks',
-          path: '/tasks',
-          builder: (context, params) => TasksWidget(),
         ),
         FFRoute(
           name: 'EventDetails',
@@ -165,6 +161,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           },
           builder: (context, params) => EventEditWidget(
             event: params.getParam('event', ParamType.Document),
+          ),
+        ),
+        FFRoute(
+          name: 'CreateList',
+          path: '/createList',
+          builder: (context, params) => CreateListWidget(
+            isShopping: params.getParam('isShopping', ParamType.bool),
+          ),
+        ),
+        FFRoute(
+          name: 'ListView',
+          path: '/listView',
+          builder: (context, params) => ListViewWidget(
+            listRef: params.getParam(
+                'listRef', ParamType.DocumentReference, false, ['List']),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

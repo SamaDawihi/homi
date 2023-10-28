@@ -226,11 +226,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
-  // Lists
+  // AllLists
   {
     'ukdoyt69': {
       'en': 'Lists',
       'ar': 'القوائم',
+    },
+    '4n5krc0e': {
+      'en': 'Shopping Lists',
+      'ar': '',
+    },
+    'fory4hmy': {
+      'en': 'Shopping Lists',
+      'ar': '',
+    },
+    'm4twvzo7': {
+      'en': 'To-Do Lists',
+      'ar': '',
+    },
+    'gm9ryqi8': {
+      'en': 'To-Do  Lists',
+      'ar': '',
     },
     'cjn0szm1': {
       'en': 'Home',
@@ -288,13 +304,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'حالة الدعوات السابقة:',
     },
     'u4fngcl6': {
-      'en': 'Home',
-      'ar': 'الصفحة الرئيسية',
-    },
-  },
-  // Tasks
-  {
-    'jo2qphs2': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
     },
@@ -578,6 +587,72 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الصفحة الرئيسية',
     },
   },
+  // CreateList
+  {
+    '6ah2um8m': {
+      'en': 'List Title*',
+      'ar': 'عنوان الحدث',
+    },
+    'xjp0brpw': {
+      'en': 'Description here...',
+      'ar': 'الوصف هنا...',
+    },
+    'zpovikzi': {
+      'en': 'Who is responsible?*',
+      'ar': 'مرحبا بالعالم',
+    },
+    'auvs4ref': {
+      'en': 'All family members are responsible',
+      'ar': '',
+    },
+    '77qo8vgy': {
+      'en': 'Create',
+      'ar': 'يضيف',
+    },
+    '18jily7q': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'guh1116p': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '50yfiij4': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'mx80mf7w': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    'p3420utz': {
+      'en': 'Home',
+      'ar': 'الصفحة الرئيسية',
+    },
+  },
+  // ListView
+  {
+    'ihgp0yb6': {
+      'en': 'Discription : ',
+      'ar': '',
+    },
+    'bm6vc8ew': {
+      'en': 'responsible members :',
+      'ar': '',
+    },
+    'pdsi38p8': {
+      'en': 'Check All',
+      'ar': '',
+    },
+    '8clw9wl3': {
+      'en': 'Clear All',
+      'ar': '',
+    },
+    'l46cpzmu': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // InviteByEmail
   {
     '48xbquf9': {
@@ -597,14 +672,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يدعو',
     },
   },
-  // MyFamilyContainer
+  // ListViewMyFamily
   {
     '4t0j9wzp': {
       'en': 'Enter',
       'ar': 'يدخل',
     },
   },
-  // emptyfamilies
+  // ListViewEmptyFamilies
   {
     'kkxfr7vw': {
       'en': 'seems that you don\'t have any family',
@@ -615,7 +690,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
     },
   },
-  // emptyinvitations
+  // ListViewEmptyInvitations
   {
     'drm1h3u0': {
       'en': 'seems that you don\'t have any invitation',
@@ -685,7 +760,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // InvitationStatus
+  // ListViewInvitationStatus
   {
     '7efvyyfn': {
       'en': '5 mins ago',
@@ -738,26 +813,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إعادة ضبط',
     },
   },
-  // FamilyName
-  {
-    'jss0gdih': {
-      'en': 'Write your family name...',
-      'ar': 'أكتب اسم عائلتك...',
-    },
-    'ea94emzo': {
-      'en': 'Label here...',
-      'ar': 'التسمية هنا...',
-    },
-    'o8jz3tqm': {
-      'en': 'Cancel',
-      'ar': 'يلغي',
-    },
-    'oljsbdla': {
-      'en': 'Create',
-      'ar': 'يخلق',
-    },
-  },
-  // InviteSentSuccessfully
+  // DialogInviteSentSuccessfully
   {
     'fom5m2cu': {
       'en': 'Invitation Sent Successfully',
@@ -772,7 +828,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // MemberAlreadyInvited
+  // DialogMemberAlreadyInvited
   {
     '1t8mr983': {
       'en': 'Member already invited.',
@@ -789,7 +845,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // EmailNotSupported
+  // DialogEmailNotSupported
   {
     '8parkzpd': {
       'en': 'Email Address is not valid',
@@ -806,7 +862,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'خلف',
     },
   },
-  // ForgetPasswordEmailSent
+  // DialogForgetPasswordEmailSent
   {
     'q2envq8n': {
       'en': 'Reset Email Sent Successfully!',
@@ -822,7 +878,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // EnterFamilyName
+  // InputComponentEnterFamilyName
   {
     '7wt8nq94': {
       'en': 'Enter a Family Name',
@@ -860,7 +916,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يرفض',
     },
   },
-  // MemberAlreadyMember
+  // DialogMemberInvitedAlreadyMember
   {
     'wrfqpvmo': {
       'en': 'Member is already in the Family',
@@ -876,7 +932,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // ColorAlreadyUsed
+  // DialogColorAlreadyUsed
   {
     '9lmrn5qn': {
       'en': 'Color Is Already Used',
@@ -998,7 +1054,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يلغي',
     },
   },
-  // NoGoogleEventsFound
+  // DialogNoGoogleEventsFound
   {
     'h89salka': {
       'en': 'No Events Has Been Found',
@@ -1014,7 +1070,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // DoneAddingGoogleEvents
+  // DialogDoneAddingGoogleEvents
   {
     'yyczdsla': {
       'en': 'Done Adding Google Events',
@@ -1030,7 +1086,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // InviteEmailSentSuccessfully
+  // DialogInviteEmailSentSuccessfully
   {
     'ip672t8f': {
       'en': 'Invitation Sent.',
@@ -1046,7 +1102,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // ChangeAdminToLeaveFamily
+  // DialogChangeAdminToLeaveFamily
   {
     'dmfuc24x': {
       'en': 'You are an admin.',
@@ -1084,7 +1140,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
-  // FamilyHasBeenDeleted
+  // DialogFamilyHasBeenDeleted
   {
     'eqfzsfcf': {
       'en': 'This Family Has Been Deleted',
@@ -1100,7 +1156,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إختر لون',
     },
   },
-  // emptyEvents
+  // ListViewEmptyEvents
   {
     '2fyocw01': {
       'en': 'Seems that you don\'t have any events for the selected date',
@@ -1109,6 +1165,68 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'g83mgxnn': {
       'en': 'Create a new new or import your event from Google.',
       'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
+    },
+  },
+  // ListViewItem
+  {
+    'p8jrrxp8': {
+      'en': 'ItemName',
+      'ar': '',
+    },
+    'e6c04i8e': {
+      'en': 'Done by Hala',
+      'ar': '',
+    },
+  },
+  // ListViewItemCopy
+  {
+    'vy2bf5g3': {
+      'en': 'ItemName',
+      'ar': '',
+    },
+    'cwjqcfqd': {
+      'en': 'Done by Hala',
+      'ar': '',
+    },
+  },
+  // InputComponentAddTask
+  {
+    'vdk5u8fw': {
+      'en': 'Add New Task',
+      'ar': 'تأكيد القبول',
+    },
+    'w32ci6nc': {
+      'en': 'Task name',
+      'ar': '',
+    },
+    '4trrlsb1': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    '79u5prtl': {
+      'en': 'Add',
+      'ar': 'يقبل',
+    },
+  },
+  // ConfirmDeleteList
+  {
+    's3oasfam': {
+      'en': 'Delete List',
+      'ar': 'حذف العائلة',
+    },
+    'gsrvx6y2': {
+      'en':
+          'Are you sure you want to delete this list? You will not be able to undo this action.',
+      'ar':
+          'هل أنت متأكد أنك تريد حذف هذه العائلة؟ لن تتمكن من التراجع عن هذا الإجراء.',
+    },
+    'qzomzscu': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    'c1aeqm6g': {
+      'en': 'OK',
+      'ar': 'نعم',
     },
   },
   // Miscellaneous

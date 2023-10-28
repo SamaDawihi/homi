@@ -15,6 +15,24 @@
       ]
     },
     {
+      "collectionGroup": "List",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isShoopingList",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "familyId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "name",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Member",
       "queryScope": "COLLECTION",
       "fields": [
