@@ -655,7 +655,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditList
   {
-    'k8mkoes2': {
+    'ge6flof9': {
       'en': 'Title',
       'ar': '',
     },

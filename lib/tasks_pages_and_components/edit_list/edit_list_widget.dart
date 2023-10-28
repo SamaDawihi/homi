@@ -199,7 +199,7 @@ class _EditListWidgetState extends State<EditListWidget> {
                                   decoration: InputDecoration(
                                     labelText:
                                         FFLocalizations.of(context).getText(
-                                      'k8mkoes2' /* Title */,
+                                      'ge6flof9' /* Title */,
                                     ),
                                     labelStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -412,9 +412,13 @@ class _EditListWidgetState extends State<EditListWidget> {
                                       ),
                                       Switch.adaptive(
                                         value: _model
-                                            .responsabilitySwitchValue ??= _model
-                                                .membersToBeAdded.length ==
-                                            _model.currentNumberOfFamilyMembers,
+                                                .responsabilitySwitchValue ??=
+                                            _model.membersToBeAdded.length ==
+                                                valueOrDefault<int>(
+                                                  _model
+                                                      .currentNumberOfFamilyMembers,
+                                                  1,
+                                                ),
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.responsabilitySwitchValue =
