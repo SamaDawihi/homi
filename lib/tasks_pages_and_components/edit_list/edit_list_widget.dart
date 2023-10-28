@@ -199,7 +199,7 @@ class _EditListWidgetState extends State<EditListWidget> {
                                   decoration: InputDecoration(
                                     labelText:
                                         FFLocalizations.of(context).getText(
-                                      'ge6flof9' /* Title */,
+                                      '997jap5f' /* Title */,
                                     ),
                                     labelStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
