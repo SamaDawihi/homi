@@ -184,7 +184,14 @@ class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
                               .listsThatContainMemebr![
                                   _model.removeMemberFromListIterations]
                               .reference
-                              .delete();
+                              .update({
+                            ...mapToFirestore(
+                              {
+                                'assignedTo': FieldValue.arrayRemove(
+                                    [_model.member?.reference]),
+                              },
+                            ),
+                          });
                           setState(() {
                             _model.removeMemberFromListIterations =
                                 _model.removeMemberFromListIterations + 1;

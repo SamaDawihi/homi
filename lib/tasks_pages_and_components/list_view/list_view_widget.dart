@@ -572,15 +572,15 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                 final listViewMemberRecord =
                                                     listViewMemberRecordList[
                                                         listViewIndex];
-                                                return Container(
-                                                  height: 20.0,
-                                                  decoration: BoxDecoration(),
-                                                  child: Visibility(
-                                                    visible: listViewListRecord
-                                                        .assignedTo
-                                                        .contains(
-                                                            listViewMemberRecord
-                                                                .reference),
+                                                return Visibility(
+                                                  visible: listViewListRecord
+                                                      .assignedTo
+                                                      .contains(
+                                                          listViewMemberRecord
+                                                              .reference),
+                                                  child: Container(
+                                                    height: 20.0,
+                                                    decoration: BoxDecoration(),
                                                     child: wrapWithModel(
                                                       model: _model
                                                           .componentResponsibleToMemberModels

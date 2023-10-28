@@ -655,7 +655,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditList
   {
-    'muw2nboo': {
+    'k8mkoes2': {
       'en': 'Title',
       'ar': '',
     },
@@ -676,7 +676,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'b3fimz7a': {
-      'en': 'Create',
+      'en': 'Edit',
       'ar': 'يضيف',
     },
     'dk5ao1io': {

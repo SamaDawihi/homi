@@ -220,7 +220,7 @@ class _ListComponentViewListWidgetState
                                                 listViewMemberRecord.reference),
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(1.00, 0.00),
+                                              AlignmentDirectional(-1.00, 0.00),
                                           child: wrapWithModel(
                                             model: _model
                                                 .componentAssainedToMemberModels

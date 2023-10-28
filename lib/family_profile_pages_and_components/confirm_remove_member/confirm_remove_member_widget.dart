@@ -170,7 +170,14 @@ class _ConfirmRemoveMemberWidgetState extends State<ConfirmRemoveMemberWidget> {
                             _model.listsContainsTheMember!.length) {
                           await _model.listsContainsTheMember![_model.iteration]
                               .reference
-                              .delete();
+                              .update({
+                            ...mapToFirestore(
+                              {
+                                'assignedTo':
+                                    FieldValue.arrayRemove([widget.memberRef]),
+                              },
+                            ),
+                          });
                           setState(() {
                             _model.iteration = _model.iteration + 1;
                           });

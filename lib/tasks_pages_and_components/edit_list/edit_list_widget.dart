@@ -199,7 +199,7 @@ class _EditListWidgetState extends State<EditListWidget> {
                                   decoration: InputDecoration(
                                     labelText:
                                         FFLocalizations.of(context).getText(
-                                      'muw2nboo' /* Title */,
+                                      'k8mkoes2' /* Title */,
                                     ),
                                     labelStyle:
                                         FlutterFlowTheme.of(context).labelLarge,
@@ -757,6 +757,18 @@ class _EditListWidgetState extends State<EditListWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
+                                      Text(
+                                        '${widget.listDoc?.assignedTo?.length?.toString()} - ${_model.currentNumberOfFamilyMembers.toString()}',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Source Sans Pro',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 4.0, 0.0),
@@ -867,7 +879,7 @@ class _EditListWidgetState extends State<EditListWidget> {
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
-                                            'b3fimz7a' /* Create */,
+                                            'b3fimz7a' /* Edit */,
                                           ),
                                           options: FFButtonOptions(
                                             height: 50.0,
