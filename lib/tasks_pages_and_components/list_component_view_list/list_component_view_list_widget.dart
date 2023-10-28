@@ -88,7 +88,15 @@ class _ListComponentViewListWidgetState
             },
             child: Container(
               width: MediaQuery.sizeOf(context).width * 0.95,
-              height: 90.0,
+              height: valueOrDefault<double>(
+                contentView2ListRecord.assignedTo.length < 5
+                    ? 90.0
+                    : valueOrDefault<double>(
+                        90.00 + (5 * contentView2ListRecord.assignedTo.length),
+                        90.0,
+                      ),
+                90.0,
+              ),
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 boxShadow: [
@@ -197,6 +205,7 @@ class _ListComponentViewListWidgetState
                                       snapshot.data!;
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
+                                    primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     itemCount: listViewMemberRecordList.length,
@@ -228,6 +237,7 @@ class _ListComponentViewListWidgetState
                                               ),
                                               memberRef: listViewMemberRecord
                                                   .reference,
+                                              right: false,
                                             ),
                                           ),
                                         ),
