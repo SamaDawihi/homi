@@ -632,25 +632,72 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ListView
   {
-    'ihgp0yb6': {
+    'wv8w2fhb': {
       'en': 'Discription : ',
       'ar': '',
     },
-    'bm6vc8ew': {
+    '38s7atkv': {
       'en': 'responsible members :',
       'ar': '',
     },
-    'pdsi38p8': {
+    '3pj5oycw': {
       'en': 'Check All',
       'ar': '',
     },
-    '8clw9wl3': {
+    '1frq1f14': {
       'en': 'Clear All',
       'ar': '',
     },
     'l46cpzmu': {
       'en': 'Home',
       'ar': '',
+    },
+  },
+  // EditList
+  {
+    'hvmg8xh8': {
+      'en': 'Title',
+      'ar': '',
+    },
+    'vdgsduyz': {
+      'en': 'List Title*',
+      'ar': 'عنوان الحدث',
+    },
+    '24252ns7': {
+      'en': 'Description here...',
+      'ar': 'الوصف هنا...',
+    },
+    's6xuqhjs': {
+      'en': 'Who is responsible?*',
+      'ar': 'مرحبا بالعالم',
+    },
+    'em8u0j73': {
+      'en': 'All family members are responsible',
+      'ar': '',
+    },
+    'b3fimz7a': {
+      'en': 'Create',
+      'ar': 'يضيف',
+    },
+    'dk5ao1io': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'vvnu06fn': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '6fy3hqhy': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '0arnbe6x': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+    '4ym2ud12': {
+      'en': 'Home',
+      'ar': 'الصفحة الرئيسية',
     },
   },
   // InviteByEmail

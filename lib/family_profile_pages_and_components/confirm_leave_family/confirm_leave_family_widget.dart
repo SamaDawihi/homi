@@ -166,6 +166,30 @@ class _ConfirmLeaveFamilyWidgetState extends State<ConfirmLeaveFamilyWidget> {
                               ),
                           singleRecord: true,
                         ).then((s) => s.firstOrNull);
+                        _model.listsThatContainMemebr =
+                            await queryListRecordOnce(
+                          queryBuilder: (listRecord) => listRecord
+                              .where(
+                                'familyId',
+                                isEqualTo: FFAppState().familyId,
+                              )
+                              .where(
+                                'assignedTo',
+                                arrayContains: _model.member?.reference,
+                              ),
+                        );
+                        while (_model.removeMemberFromListIterations <
+                            _model.listsThatContainMemebr!.length) {
+                          await _model
+                              .listsThatContainMemebr![
+                                  _model.removeMemberFromListIterations]
+                              .reference
+                              .delete();
+                          setState(() {
+                            _model.removeMemberFromListIterations =
+                                _model.removeMemberFromListIterations + 1;
+                          });
+                        }
 
                         context.goNamed('FamiliesManagement');
 

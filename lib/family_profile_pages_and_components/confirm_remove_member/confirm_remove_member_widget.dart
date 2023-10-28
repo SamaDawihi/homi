@@ -16,10 +16,10 @@ export 'confirm_remove_member_model.dart';
 class ConfirmRemoveMemberWidget extends StatefulWidget {
   const ConfirmRemoveMemberWidget({
     Key? key,
-    required this.memberID,
+    this.memberRef,
   }) : super(key: key);
 
-  final DocumentReference? memberID;
+  final DocumentReference? memberRef;
 
   @override
   _ConfirmRemoveMemberWidgetState createState() =>
@@ -154,14 +154,28 @@ class _ConfirmRemoveMemberWidgetState extends State<ConfirmRemoveMemberWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        _model.member = await queryMemberRecordOnce(
-                          queryBuilder: (memberRecord) => memberRecord.where(
-                            'memberId',
-                            isEqualTo: widget.memberID,
-                          ),
-                          singleRecord: true,
-                        ).then((s) => s.firstOrNull);
-                        await _model.member!.reference.delete();
+                        _model.listsContainsTheMember =
+                            await queryListRecordOnce(
+                          queryBuilder: (listRecord) => listRecord
+                              .where(
+                                'familyId',
+                                isEqualTo: FFAppState().familyId,
+                              )
+                              .where(
+                                'assignedTo',
+                                arrayContains: widget.memberRef,
+                              ),
+                        );
+                        while (_model.iteration <
+                            _model.listsContainsTheMember!.length) {
+                          await _model.listsContainsTheMember![_model.iteration]
+                              .reference
+                              .delete();
+                          setState(() {
+                            _model.iteration = _model.iteration + 1;
+                          });
+                        }
+                        await widget.memberRef!.delete();
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(

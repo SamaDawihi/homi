@@ -22,6 +22,10 @@ class ConfirmDeleteFamilyModel
 
   int? loopIteration3 = 0;
 
+  int deleteListsIteration = 0;
+
+  int deleteItemsIteration = 0;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
@@ -30,6 +34,10 @@ class ConfirmDeleteFamilyModel
   List<InvitationRecord>? invites;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<EventRecord>? events;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<ListRecord>? lists;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<ItemRecord>? listItems;
 
   /// Initialization and disposal methods.
 

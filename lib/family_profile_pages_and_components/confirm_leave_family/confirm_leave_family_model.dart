@@ -14,10 +14,16 @@ import 'package:provider/provider.dart';
 
 class ConfirmLeaveFamilyModel
     extends FlutterFlowModel<ConfirmLeaveFamilyWidget> {
+  ///  Local state fields for this component.
+
+  int removeMemberFromListIterations = 0;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   MemberRecord? member;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  List<ListRecord>? listsThatContainMemebr;
 
   /// Initialization and disposal methods.
 

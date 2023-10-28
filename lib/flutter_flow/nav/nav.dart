@@ -177,6 +177,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             listRef: params.getParam(
                 'listRef', ParamType.DocumentReference, false, ['List']),
           ),
+        ),
+        FFRoute(
+          name: 'EditList',
+          path: '/editList',
+          asyncParams: {
+            'listDoc': getDoc(['List'], ListRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditListWidget(
+            isShopping: params.getParam('isShopping', ParamType.bool),
+            listDoc: params.getParam('listDoc', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

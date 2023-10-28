@@ -87,140 +87,136 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
 
     context.watch<FFAppState>();
 
-    return StreamBuilder<FamilyRecord>(
-      stream: FamilyRecord.getDocument(FFAppState().familyId!),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Scaffold(
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100.0),
+          child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Center(
-              child: SizedBox(
-                width: 10.0,
-                height: 10.0,
-                child: SpinKitDualRing(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 10.0,
+            automaticallyImplyLeading: false,
+            actions: [],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Align(
+                alignment: AlignmentDirectional(0.00, -1.00),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, -1.00),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderColor: Colors.transparent,
+                                borderRadius: 30.0,
+                                borderWidth: 1.0,
+                                buttonSize: 50.0,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                icon: Icon(
+                                  Icons.menu,
+                                  color: Color(0xFF57636C),
+                                  size: 25.0,
+                                ),
+                                onPressed: () async {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    enableDrag: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: SideMenuWidget(),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  't405vb32' /* Family Profile */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Source Sans Pro',
+                                      fontSize: 24.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 6.0, 0.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/mainLogo.png',
+                                  width: 80.0,
+                                  height: 80.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+              centerTitle: true,
+              expandedTitleScale: 1.0,
             ),
-          );
-        }
-        final familyProfileFamilyRecord = snapshot.data!;
-        return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(100.0),
-              child: AppBar(
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                automaticallyImplyLeading: false,
-                actions: [],
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.00, -1.00),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 50.0,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                    icon: Icon(
-                                      Icons.menu,
-                                      color: Color(0xFF57636C),
-                                      size: 25.0,
-                                    ),
-                                    onPressed: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: SideMenuWidget(),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
-                                    },
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      't405vb32' /* Family Profile */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Source Sans Pro',
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 6.0, 0.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.asset(
-                                      'assets/images/mainLogo.png',
-                                      width: 80.0,
-                                      height: 80.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+            elevation: 0.0,
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: StreamBuilder<FamilyRecord>(
+            stream: FamilyRecord.getDocument(FFAppState().familyId!),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 10.0,
+                    height: 10.0,
+                    child: SpinKitDualRing(
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 10.0,
                     ),
                   ),
-                  centerTitle: true,
-                  expandedTitleScale: 1.0,
-                ),
-                elevation: 0.0,
-              ),
-            ),
-            body: SafeArea(
-              top: true,
-              child: SingleChildScrollView(
+                );
+              }
+              final columnFamilyRecord = snapshot.data!;
+              return SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -267,8 +263,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color:
-                                              familyProfileFamilyRecord.color!,
+                                          color: columnFamilyRecord.color!,
                                           width: 4.0,
                                         ),
                                       ),
@@ -289,7 +284,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       alignment:
                                           AlignmentDirectional(0.00, 0.00),
                                       child: Text(
-                                        familyProfileFamilyRecord.name,
+                                        columnFamilyRecord.name,
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .headlineLarge
@@ -308,7 +303,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               ),
                             ),
                           ),
-                          if (familyProfileFamilyRecord.adminId ==
+                          if (columnFamilyRecord.adminId ==
                               currentUserReference)
                             Icon(
                               Icons.edit,
@@ -327,7 +322,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              if (familyProfileFamilyRecord.adminId ==
+                              if (columnFamilyRecord.adminId ==
                                   currentUserReference)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -351,9 +346,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
                                               child: InviteByEmailWidget(
-                                                familyId:
-                                                    familyProfileFamilyRecord
-                                                        .reference,
+                                                familyId: FFAppState().familyId,
                                               ),
                                             ),
                                           );
@@ -389,7 +382,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                 ),
                             ],
                           ),
-                          if (familyProfileFamilyRecord.adminId ==
+                          if (columnFamilyRecord.adminId ==
                               currentUserReference)
                             Flexible(
                               child: Padding(
@@ -457,7 +450,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                           queryBuilder: (memberRecord) => memberRecord
                               .where(
                                 'familyId',
-                                isEqualTo: familyProfileFamilyRecord.reference,
+                                isEqualTo: FFAppState().familyId,
                               )
                               .orderBy('created_time', descending: true),
                         ),
@@ -500,12 +493,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                   key: Key(
                                     'Key38e_${familyMembersListViewIndex.toString()}',
                                   ),
-                                  memberId: familyMembersListViewMemberRecord
-                                      .memberId!,
-                                  familyId: familyMembersListViewMemberRecord
-                                      .familyId!,
-                                  color:
-                                      familyMembersListViewMemberRecord.color!,
+                                  memberDoc: familyMembersListViewMemberRecord,
                                 ),
                               );
                             },
@@ -525,7 +513,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                if (familyProfileFamilyRecord.adminId ==
+                                if (columnFamilyRecord.adminId ==
                                     currentUserReference)
                                   Builder(
                                     builder: (context) => Padding(
@@ -560,8 +548,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                   child:
                                                       ConfirmDeleteFamilyWidget(
                                                     familyID:
-                                                        familyProfileFamilyRecord
-                                                            .reference,
+                                                        FFAppState().familyId!,
                                                   ),
                                                 ),
                                               );
@@ -638,8 +625,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                   child:
                                                       ConfirmDeleteFamilyWidget(
                                                     familyID:
-                                                        familyProfileFamilyRecord
-                                                            .reference,
+                                                        FFAppState().familyId!,
                                                   ),
                                                 ),
                                               );
@@ -658,7 +644,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                   onPressed: () async {
                                                     var _shouldSetState = false;
                                                     if (currentUserReference ==
-                                                        familyProfileFamilyRecord
+                                                        columnFamilyRecord
                                                             .adminId) {
                                                       _model.memberCount =
                                                           await queryMemberRecordCount(
@@ -668,8 +654,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                                     .where(
                                                           'familyId',
                                                           isEqualTo:
-                                                              familyProfileFamilyRecord
-                                                                  .reference,
+                                                              FFAppState()
+                                                                  .familyId,
                                                         ),
                                                       );
                                                       _shouldSetState = true;
@@ -711,8 +697,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                                 child:
                                                                     ConfirmLeaveLastMemberWidget(
                                                                   familyID:
-                                                                      familyProfileFamilyRecord
-                                                                          .reference,
+                                                                      FFAppState()
+                                                                          .familyId!,
                                                                 ),
                                                               ),
                                                             );
@@ -807,8 +793,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                               child:
                                                                   ConfirmLeaveFamilyWidget(
                                                                 familyID:
-                                                                    familyProfileFamilyRecord
-                                                                        .reference,
+                                                                    FFAppState()
+                                                                        .familyId!,
                                                               ),
                                                             ),
                                                           );
@@ -875,11 +861,11 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                     ),
                   ],
                 ),
-              ),
-            ),
+              );
+            },
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

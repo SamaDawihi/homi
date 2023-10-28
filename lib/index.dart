@@ -23,3 +23,5 @@ export '/tasks_pages_and_components/create_list/create_list_widget.dart'
     show CreateListWidget;
 export '/tasks_pages_and_components/list_view/list_view_widget.dart'
     show ListViewWidget;
+export '/tasks_pages_and_components/edit_list/edit_list_widget.dart'
+    show EditListWidget;

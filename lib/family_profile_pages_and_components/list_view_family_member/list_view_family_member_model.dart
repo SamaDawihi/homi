@@ -5,7 +5,6 @@ import '/family_profile_pages_and_components/confirm_remove_member/confirm_remov
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'list_view_family_member_widget.dart' show ListViewFamilyMemberWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

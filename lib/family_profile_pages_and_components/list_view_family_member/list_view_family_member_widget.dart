@@ -4,7 +4,6 @@ import '/family_profile_pages_and_components/confirm_admin_change/confirm_admin_
 import '/family_profile_pages_and_components/confirm_remove_member/confirm_remove_member_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,15 +16,10 @@ export 'list_view_family_member_model.dart';
 class ListViewFamilyMemberWidget extends StatefulWidget {
   const ListViewFamilyMemberWidget({
     Key? key,
-    required this.memberId,
-    required this.familyId,
-    Color? color,
-  })  : this.color = color ?? const Color(0xFF555EBE),
-        super(key: key);
+    required this.memberDoc,
+  }) : super(key: key);
 
-  final DocumentReference? memberId;
-  final DocumentReference? familyId;
-  final Color color;
+  final MemberRecord? memberDoc;
 
   @override
   _ListViewFamilyMemberWidgetState createState() =>
@@ -62,7 +56,7 @@ class _ListViewFamilyMemberWidgetState
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 8.0),
       child: StreamBuilder<UsersRecord>(
-        stream: UsersRecord.getDocument(widget.memberId!),
+        stream: UsersRecord.getDocument(widget.memberDoc!.memberId!),
         builder: (context, snapshot) {
           // Customize what your widget looks like when it's loading.
           if (!snapshot.hasData) {
@@ -95,7 +89,7 @@ class _ListViewFamilyMemberWidgetState
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
               child: StreamBuilder<FamilyRecord>(
-                stream: FamilyRecord.getDocument(widget.familyId!),
+                stream: FamilyRecord.getDocument(widget.memberDoc!.familyId!),
                 builder: (context, snapshot) {
                   // Customize what your widget looks like when it's loading.
                   if (!snapshot.hasData) {
@@ -121,7 +115,10 @@ class _ListViewFamilyMemberWidgetState
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: widget.color,
+                            color: valueOrDefault<Color>(
+                              widget.memberDoc?.color,
+                              FlutterFlowTheme.of(context).primary,
+                            ),
                             width: 4.0,
                           ),
                         ),
@@ -208,7 +205,7 @@ class _ListViewFamilyMemberWidgetState
                                     return Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
                                       child: ConfirmAdminChangeWidget(
-                                        familyID: widget.familyId!,
+                                        familyID: widget.memberDoc!.familyId!,
                                         userID: familYMemberContainerUsersRecord
                                             .reference,
                                       ),
@@ -241,7 +238,7 @@ class _ListViewFamilyMemberWidgetState
                                     return Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
                                       child: ConfirmRemoveMemberWidget(
-                                        memberID: widget.memberId!,
+                                        memberRef: widget.memberDoc?.reference,
                                       ),
                                     );
                                   },

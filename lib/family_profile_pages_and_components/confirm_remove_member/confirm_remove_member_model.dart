@@ -14,10 +14,14 @@ import 'package:provider/provider.dart';
 
 class ConfirmRemoveMemberModel
     extends FlutterFlowModel<ConfirmRemoveMemberWidget> {
+  ///  Local state fields for this component.
+
+  int iteration = 0;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  MemberRecord? member;
+  List<ListRecord>? listsContainsTheMember;
 
   /// Initialization and disposal methods.
 

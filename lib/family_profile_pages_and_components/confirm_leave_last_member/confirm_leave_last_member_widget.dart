@@ -207,6 +207,47 @@ class _ConfirmLeaveLastMemberWidgetState
                         setState(() {
                           _model.loopIteration3 = 0;
                         });
+                        _model.lists = await queryListRecordOnce(
+                          queryBuilder: (listRecord) => listRecord.where(
+                            'familyId',
+                            isEqualTo: widget.familyID,
+                          ),
+                        );
+                        while (_model.deleetListsIterations <
+                            _model.lists!.length) {
+                          _model.listItems = await queryItemRecordOnce(
+                            queryBuilder: (itemRecord) => itemRecord.where(
+                              'belongTo',
+                              isEqualTo: _model
+                                  .lists?[_model.deleetListsIterations]
+                                  ?.reference,
+                            ),
+                          );
+                          while (_model.deleteItemsIteration <
+                              _model.listItems!.length) {
+                            await _model.listItems![_model.deleteItemsIteration]
+                                .reference
+                                .delete();
+                            setState(() {
+                              _model.deleteItemsIteration =
+                                  _model.deleteItemsIteration + 1;
+                            });
+                          }
+                          setState(() {
+                            _model.deleteItemsIteration = 0;
+                          });
+                          await _model
+                              .lists![_model.deleetListsIterations].reference
+                              .delete();
+                          setState(() {
+                            _model.deleetListsIterations =
+                                _model.deleetListsIterations + 1;
+                          });
+                        }
+                        setState(() {
+                          _model.deleetListsIterations =
+                              _model.deleetListsIterations + 1;
+                        });
 
                         context.goNamed('FamiliesManagement');
 
