@@ -389,9 +389,25 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  setState(() {
-                                                    _model.edit = true;
-                                                  });
+                                                  context.pushNamed(
+                                                    'EditList',
+                                                    queryParameters: {
+                                                      'isShopping':
+                                                          serializeParam(
+                                                        listViewListRecord
+                                                            .isShoopingList,
+                                                        ParamType.bool,
+                                                      ),
+                                                      'listDoc': serializeParam(
+                                                        listViewListRecord,
+                                                        ParamType.Document,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'listDoc':
+                                                          listViewListRecord,
+                                                    },
+                                                  );
                                                 },
                                                 child: Icon(
                                                   Icons.edit,
