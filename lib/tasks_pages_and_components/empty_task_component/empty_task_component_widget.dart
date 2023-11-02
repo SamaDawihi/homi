@@ -5,18 +5,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'empty_status_model.dart';
-export 'empty_status_model.dart';
+import 'empty_task_component_model.dart';
+export 'empty_task_component_model.dart';
 
-class EmptyStatusWidget extends StatefulWidget {
-  const EmptyStatusWidget({Key? key}) : super(key: key);
+class EmptyTaskComponentWidget extends StatefulWidget {
+  const EmptyTaskComponentWidget({Key? key}) : super(key: key);
 
   @override
-  _EmptyStatusWidgetState createState() => _EmptyStatusWidgetState();
+  _EmptyTaskComponentWidgetState createState() =>
+      _EmptyTaskComponentWidgetState();
 }
 
-class _EmptyStatusWidgetState extends State<EmptyStatusWidget> {
-  late EmptyStatusModel _model;
+class _EmptyTaskComponentWidgetState extends State<EmptyTaskComponentWidget> {
+  late EmptyTaskComponentModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -27,7 +28,7 @@ class _EmptyStatusWidgetState extends State<EmptyStatusWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EmptyStatusModel());
+    _model = createModel(context, () => EmptyTaskComponentModel());
   }
 
   @override
@@ -59,7 +60,7 @@ class _EmptyStatusWidgetState extends State<EmptyStatusWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
                 child: Icon(
-                  Icons.people,
+                  Icons.content_paste,
                   color: Color(0xFF8086CE),
                   size: 30.0,
                 ),
@@ -68,23 +69,19 @@ class _EmptyStatusWidgetState extends State<EmptyStatusWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    '4qyq0zn7' /* Seems that you haven't sent an... */,
+                    'kk0c9r7f' /* Seems that you don't have any ... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyLarge,
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
-                child: Text(
-                  FFLocalizations.of(context).getText(
-                    'rs82kstz' /* You can invite a member to you... */,
-                  ),
-                  textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Source Sans Pro',
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                      ),
+              Text(
+                FFLocalizations.of(context).getText(
+                  'r1x4j5x5' /* Add a new task to get started */,
                 ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Source Sans Pro',
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                    ),
               ),
             ],
           ),

@@ -71,15 +71,16 @@ class _ListViewEmptyFamiliesWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'kkxfr7vw' /* seems that you don't have any ... */,
+                    'kkxfr7vw' /* Seems that you don't have any ... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyLarge,
                 ),
               ),
               Text(
                 FFLocalizations.of(context).getText(
-                  'unepzpw3' /* create a new family or join an... */,
+                  'unepzpw3' /* Create a new family or join an... */,
                 ),
+                textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Source Sans Pro',
                       color: FlutterFlowTheme.of(context).secondaryText,

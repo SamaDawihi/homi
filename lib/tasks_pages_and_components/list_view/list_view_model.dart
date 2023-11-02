@@ -9,6 +9,7 @@ import '/tasks_pages_and_components/component_responsible_to_member/component_re
 import '/tasks_pages_and_components/confirm_delete_list/confirm_delete_list_widget.dart';
 import '/tasks_pages_and_components/input_component_add_task/input_component_add_task_widget.dart';
 import '/tasks_pages_and_components/list_view_item/list_view_item_widget.dart';
+import '/tasks_pages_and_components/no_members_message/no_members_message_widget.dart';
 import 'list_view_widget.dart' show ListViewWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,13 +18,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ListViewModel extends FlutterFlowModel<ListViewWidget> {
   ///  Local state fields for this page.
-
-  bool edit = false;
 
   bool viewMore = false;
 

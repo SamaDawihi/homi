@@ -245,7 +245,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'gm9ryqi8': {
-      'en': 'To-Do  Lists',
+      'en': 'To-Do Lists',
       'ar': '',
     },
     'cjn0szm1': {
@@ -633,11 +633,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ListView
   {
     'wv8w2fhb': {
-      'en': 'Discription : ',
+      'en': 'Description : ',
       'ar': '',
     },
     '38s7atkv': {
-      'en': 'responsible members :',
+      'en': 'Responsible Members :',
       'ar': '',
     },
     '3pj5oycw': {
@@ -655,7 +655,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditList
   {
-    '997jap5f': {
+    'ha62esrv': {
       'en': 'Title',
       'ar': '',
     },
@@ -729,18 +729,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ListViewEmptyFamilies
   {
     'kkxfr7vw': {
-      'en': 'seems that you don\'t have any family',
+      'en': 'Seems that you don\'t have any family',
       'ar': 'يبدو أنه ليس لديك أي عائلة',
     },
     'unepzpw3': {
-      'en': 'create a new family or join an existing one',
+      'en': 'Create a new family or join an existing one',
       'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
     },
   },
   // ListViewEmptyInvitations
   {
     'drm1h3u0': {
-      'en': 'seems that you don\'t have any invitation',
+      'en': 'Seems that you don\'t have any invitation',
       'ar': 'يبدو أنه ليس لديك أي دعوة',
     },
     '0nvpgu2z': {
@@ -1018,12 +1018,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // emptyStatus
   {
     '4qyq0zn7': {
-      'en': 'seems that you haven\'t sent any invitation',
+      'en': 'Seems that you haven\'t sent any invitation',
       'ar': 'يبدو أنك لم ترسل أي دعوة',
     },
     'rs82kstz': {
       'en':
-          'you can invite a member to your family by clicking \"invite a member\" button in the family profile page...',
+          'You can invite a member to your family by clicking \"invite a member\" button in the family profile page...',
       'ar':
           'يمكنك دعوة أحد أفراد عائلتك من خلال النقر على زر \"دعوة عضو\" في صفحة الملف الشخصي للعائلة...',
     },
@@ -1214,28 +1214,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
     },
   },
-  // ListViewItem
-  {
-    'p8jrrxp8': {
-      'en': 'ItemName',
-      'ar': '',
-    },
-    'e6c04i8e': {
-      'en': 'Done by Hala',
-      'ar': '',
-    },
-  },
-  // ListViewItemCopy
-  {
-    'vy2bf5g3': {
-      'en': 'ItemName',
-      'ar': '',
-    },
-    'cwjqcfqd': {
-      'en': 'Done by Hala',
-      'ar': '',
-    },
-  },
   // InputComponentAddTask
   {
     'vdk5u8fw': {
@@ -1274,6 +1252,54 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'c1aeqm6g': {
       'en': 'OK',
       'ar': 'نعم',
+    },
+  },
+  // EmptyListComponent
+  {
+    'vmsu80yu': {
+      'en': 'Seems that you don\'t have any lists',
+      'ar': 'يبدو أنه ليس لديك أي عائلة',
+    },
+    'a1hctaw8': {
+      'en': 'Create a new list to get started',
+      'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
+    },
+  },
+  // EmptyTaskComponent
+  {
+    'kk0c9r7f': {
+      'en': 'Seems that you don\'t have any tasks',
+      'ar': 'يبدو أنه ليس لديك أي عائلة',
+    },
+    'r1x4j5x5': {
+      'en': 'Add a new task to get started',
+      'ar': 'إنشاء عائلة جديدة أو الانضمام إلى عائلة موجودة',
+    },
+  },
+  // NoMembersMessage
+  {
+    'ectvpj4y': {
+      'en': 'There are no members.',
+      'ar': '',
+    },
+  },
+  // InputComponentEditTask
+  {
+    'ebdx4cpi': {
+      'en': 'Edit Task',
+      'ar': 'تأكيد القبول',
+    },
+    'nxdhueqr': {
+      'en': 'Task name',
+      'ar': '',
+    },
+    '5d6os4kr': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    'nmi5qrvo': {
+      'en': 'Edit',
+      'ar': 'يقبل',
     },
   },
   // Miscellaneous

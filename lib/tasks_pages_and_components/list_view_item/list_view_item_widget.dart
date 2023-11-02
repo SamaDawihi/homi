@@ -2,6 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/tasks_pages_and_components/input_component_edit_task/input_component_edit_task_widget.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -68,16 +70,17 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
         final containerItemRecord = snapshot.data!;
         return Container(
           width: MediaQuery.sizeOf(context).width * 0.9,
-          height: 70.0,
+          height: 73.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).primaryBackground,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -87,75 +90,48 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                        child: StreamBuilder<List<MemberRecord>>(
-                          stream: queryMemberRecord(
-                            queryBuilder: (memberRecord) => memberRecord
-                                .where(
-                                  'memberId',
-                                  isEqualTo: currentUserReference,
-                                )
-                                .where(
-                                  'familyId',
-                                  isEqualTo: FFAppState().familyId,
-                                ),
-                            singleRecord: true,
+                        child: Theme(
+                          data: ThemeData(
+                            checkboxTheme: CheckboxThemeData(
+                              visualDensity: VisualDensity.compact,
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                            unselectedWidgetColor:
+                                FlutterFlowTheme.of(context).secondaryText,
                           ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 10.0,
-                                  height: 10.0,
-                                  child: SpinKitDualRing(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 10.0,
+                          child: Checkbox(
+                            value: _model.checkboxValue ??=
+                                containerItemRecord.done
+                                    ? containerItemRecord.done
+                                    : false,
+                            onChanged: (newValue) async {
+                              setState(() => _model.checkboxValue = newValue!);
+                              if (newValue!) {
+                                await widget.itemRef!
+                                    .update(createItemRecordData(
+                                  done: true,
+                                  doneBy: currentUserReference,
+                                ));
+                              } else {
+                                await widget.itemRef!.update({
+                                  ...createItemRecordData(
+                                    done: false,
                                   ),
-                                ),
-                              );
-                            }
-                            List<MemberRecord> checkboxMemberRecordList =
-                                snapshot.data!;
-                            // Return an empty Container when the item does not exist.
-                            if (snapshot.data!.isEmpty) {
-                              return Container();
-                            }
-                            final checkboxMemberRecord =
-                                checkboxMemberRecordList.isNotEmpty
-                                    ? checkboxMemberRecordList.first
-                                    : null;
-                            return Theme(
-                              data: ThemeData(
-                                checkboxTheme: CheckboxThemeData(
-                                  visualDensity: VisualDensity.compact,
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
+                                  ...mapToFirestore(
+                                    {
+                                      'doneBy': FieldValue.delete(),
+                                    },
                                   ),
-                                ),
-                                unselectedWidgetColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                              ),
-                              child: Checkbox(
-                                value: _model.checkboxValue ??= false,
-                                onChanged: (newValue) async {
-                                  setState(
-                                      () => _model.checkboxValue = newValue!);
-                                  if (newValue!) {
-                                    await widget.itemRef!
-                                        .update(createItemRecordData(
-                                      done: true,
-                                      doneBy: checkboxMemberRecord?.reference,
-                                    ));
-                                  }
-                                },
-                                activeColor:
-                                    FlutterFlowTheme.of(context).primary,
-                                checkColor: FlutterFlowTheme.of(context).info,
-                              ),
-                            );
-                          },
+                                });
+                              }
+                            },
+                            activeColor: FlutterFlowTheme.of(context).primary,
+                            checkColor: FlutterFlowTheme.of(context).info,
+                          ),
                         ),
                       ),
                     ),
@@ -168,9 +144,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'p8jrrxp8' /* ItemName */,
-                              ),
+                              containerItemRecord.name,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -181,40 +155,106 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                                   ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 12.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'e6c04i8e' /* Done by Hala */,
+                          if (containerItemRecord.done)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 12.0, 0.0),
+                              child: StreamBuilder<UsersRecord>(
+                                stream: UsersRecord.getDocument(
+                                    containerItemRecord.doneBy!),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 10.0,
+                                        height: 10.0,
+                                        child: SpinKitDualRing(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 10.0,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final textUsersRecord = snapshot.data!;
+                                  return Text(
+                                    'Done by ${textUsersRecord.displayName}',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Source Sans Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 12.0,
+                                        ),
+                                  );
+                                },
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Source Sans Pro',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 12.0,
-                                  ),
                             ),
-                          ),
                         ],
+                      ),
+                    ),
+                    Builder(
+                      builder: (context) => Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            await showAlignedDialog(
+                              context: context,
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color: Colors.transparent,
+                                  child: InputComponentEditTaskWidget(
+                                    item: containerItemRecord,
+                                  ),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+                          },
+                          child: Icon(
+                            Icons.edit_sharp,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
+                          ),
+                        ),
                       ),
                     ),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 20.0, 0.0),
-                      child: Icon(
-                        Icons.remove_circle_outline_outlined,
-                        color: FlutterFlowTheme.of(context).error,
-                        size: 24.0,
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          await widget.itemRef!.delete();
+                          setState(() {});
+                        },
+                        child: Icon(
+                          Icons.remove_circle_outline_outlined,
+                          color: FlutterFlowTheme.of(context).error,
+                          size: 24.0,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
               SizedBox(
-                width: 300.0,
+                width: 330.0,
                 child: Divider(
                   thickness: 1.0,
                   color: Color(0xFFB0B8BD),

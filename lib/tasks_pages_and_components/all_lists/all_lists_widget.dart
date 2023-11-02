@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/tasks_pages_and_components/empty_list_component/empty_list_component_widget.dart';
 import '/tasks_pages_and_components/list_component_view_list/list_component_view_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -321,6 +322,15 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                         List<ListRecord>
                                             listViewListRecordList =
                                             snapshot.data!;
+                                        if (listViewListRecordList.isEmpty) {
+                                          return Center(
+                                            child: Container(
+                                              width: 500.0,
+                                              height: 200.0,
+                                              child: EmptyListComponentWidget(),
+                                            ),
+                                          );
+                                        }
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,
@@ -383,7 +393,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                'gm9ryqi8' /* To-Do  Lists */,
+                                                'gm9ryqi8' /* To-Do Lists */,
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -494,6 +504,15 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                         List<ListRecord>
                                             listViewListRecordList =
                                             snapshot.data!;
+                                        if (listViewListRecordList.isEmpty) {
+                                          return Center(
+                                            child: Container(
+                                              width: 500.0,
+                                              height: 200.0,
+                                              child: EmptyListComponentWidget(),
+                                            ),
+                                          );
+                                        }
                                         return ListView.builder(
                                           padding: EdgeInsets.zero,
                                           shrinkWrap: true,

@@ -70,7 +70,7 @@ class _ListViewEmptyInvitationsWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                 child: Text(
                   FFLocalizations.of(context).getText(
-                    'drm1h3u0' /* seems that you don't have any ... */,
+                    'drm1h3u0' /* Seems that you don't have any ... */,
                   ),
                   style: FlutterFlowTheme.of(context).bodyLarge,
                 ),

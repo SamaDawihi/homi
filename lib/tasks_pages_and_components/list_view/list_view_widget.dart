@@ -9,6 +9,7 @@ import '/tasks_pages_and_components/component_responsible_to_member/component_re
 import '/tasks_pages_and_components/confirm_delete_list/confirm_delete_list_widget.dart';
 import '/tasks_pages_and_components/input_component_add_task/input_component_add_task_widget.dart';
 import '/tasks_pages_and_components/list_view_item/list_view_item_widget.dart';
+import '/tasks_pages_and_components/no_members_message/no_members_message_widget.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'list_view_model.dart';
@@ -289,9 +291,10 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                                         context)
                                                                     .unfocus(),
                                                             child:
-                                                                ConfirmDeleteListWidget(
-                                                              belongTo: widget
-                                                                  .listRef,
+                                                                InputComponentAddTaskWidget(
+                                                              belongToRef:
+                                                                  widget
+                                                                      .listRef!,
                                                             ),
                                                           ),
                                                         );
@@ -300,12 +303,51 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                         setState(() {}));
                                                   },
                                                   child: Icon(
-                                                    Icons.delete_forever,
+                                                    Icons.add,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .error,
+                                                        .secondaryText,
                                                     size: 28.0,
                                                   ),
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 7.0, 0.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'EditList',
+                                                    queryParameters: {
+                                                      'isShopping':
+                                                          serializeParam(
+                                                        listViewListRecord
+                                                            .isShoopingList,
+                                                        ParamType.bool,
+                                                      ),
+                                                      'listDoc': serializeParam(
+                                                        listViewListRecord,
+                                                        ParamType.Document,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'listDoc':
+                                                          listViewListRecord,
+                                                    },
+                                                  );
+                                                },
+                                                child: FaIcon(
+                                                  FontAwesomeIcons.edit,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 24.0,
                                                 ),
                                               ),
                                             ),
@@ -358,10 +400,9 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                                         context)
                                                                     .unfocus(),
                                                             child:
-                                                                InputComponentAddTaskWidget(
-                                                              belongToRef:
-                                                                  widget
-                                                                      .listRef!,
+                                                                ConfirmDeleteListWidget(
+                                                              belongTo: widget
+                                                                  .listRef,
                                                             ),
                                                           ),
                                                         );
@@ -370,51 +411,12 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                         setState(() {}));
                                                   },
                                                   child: Icon(
-                                                    Icons.add,
+                                                    Icons.delete_forever,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryText,
+                                                        .error,
                                                     size: 28.0,
                                                   ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 7.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  context.pushNamed(
-                                                    'EditList',
-                                                    queryParameters: {
-                                                      'isShopping':
-                                                          serializeParam(
-                                                        listViewListRecord
-                                                            .isShoopingList,
-                                                        ParamType.bool,
-                                                      ),
-                                                      'listDoc': serializeParam(
-                                                        listViewListRecord,
-                                                        ParamType.Document,
-                                                      ),
-                                                    }.withoutNulls,
-                                                    extra: <String, dynamic>{
-                                                      'listDoc':
-                                                          listViewListRecord,
-                                                    },
-                                                  );
-                                                },
-                                                child: Icon(
-                                                  Icons.edit,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 24.0,
                                                 ),
                                               ),
                                             ),
@@ -491,7 +493,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                             15.0, 0.0, 0.0, 10.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            'wv8w2fhb' /* Discription :  */,
+                                            'wv8w2fhb' /* Description :  */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -510,7 +512,10 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Source Sans Pro',
-                                                fontSize: 18.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 16.0,
                                               ),
                                         ),
                                       ),
@@ -519,7 +524,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                             15.0, 0.0, 0.0, 15.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
-                                            '38s7atkv' /* responsible members : */,
+                                            '38s7atkv' /* Responsible Members : */,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -531,7 +536,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 0.0, 0.0, 0.0),
+                                            15.0, 0.0, 15.0, 0.0),
                                         child:
                                             StreamBuilder<List<MemberRecord>>(
                                           stream: queryMemberRecord(
@@ -560,6 +565,12 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                             List<MemberRecord>
                                                 listViewMemberRecordList =
                                                 snapshot.data!;
+                                            if (listViewMemberRecordList
+                                                .isEmpty) {
+                                              return Center(
+                                                child: NoMembersMessageWidget(),
+                                              );
+                                            }
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
                                               shrinkWrap: true,
@@ -700,73 +711,79 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                           if (_model.numberOfItms != 0)
                             Align(
                               alignment: AlignmentDirectional(0.00, 1.00),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      '3pj5oycw' /* Check All */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Source Sans Pro',
-                                            color: Colors.white,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    FFButtonWidget(
+                                      onPressed: () {
+                                        print('Button pressed ...');
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        '3pj5oycw' /* Check All */,
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                  FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      '1frq1f14' /* Clear All */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Source Sans Pro',
-                                            color: Colors.white,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                      options: FFButtonOptions(
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Source Sans Pro',
+                                              color: Colors.white,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
-                                  ),
-                                ],
+                                    FFButtonWidget(
+                                      onPressed: () {
+                                        print('Button pressed ...');
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        '1frq1f14' /* Clear All */,
+                                      ),
+                                      options: FFButtonOptions(
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Source Sans Pro',
+                                              color: Colors.white,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                         ],

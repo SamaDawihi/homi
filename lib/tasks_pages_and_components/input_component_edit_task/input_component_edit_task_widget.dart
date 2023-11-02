@@ -9,25 +9,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'input_component_add_task_model.dart';
-export 'input_component_add_task_model.dart';
+import 'input_component_edit_task_model.dart';
+export 'input_component_edit_task_model.dart';
 
-class InputComponentAddTaskWidget extends StatefulWidget {
-  const InputComponentAddTaskWidget({
+class InputComponentEditTaskWidget extends StatefulWidget {
+  const InputComponentEditTaskWidget({
     Key? key,
-    required this.belongToRef,
+    required this.item,
   }) : super(key: key);
 
-  final DocumentReference? belongToRef;
+  final ItemRecord? item;
 
   @override
-  _InputComponentAddTaskWidgetState createState() =>
-      _InputComponentAddTaskWidgetState();
+  _InputComponentEditTaskWidgetState createState() =>
+      _InputComponentEditTaskWidgetState();
 }
 
-class _InputComponentAddTaskWidgetState
-    extends State<InputComponentAddTaskWidget> {
-  late InputComponentAddTaskModel _model;
+class _InputComponentEditTaskWidgetState
+    extends State<InputComponentEditTaskWidget> {
+  late InputComponentEditTaskModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -38,9 +38,9 @@ class _InputComponentAddTaskWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => InputComponentAddTaskModel());
+    _model = createModel(context, () => InputComponentEditTaskModel());
 
-    _model.textController ??= TextEditingController();
+    _model.textController ??= TextEditingController(text: widget.item?.name);
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -95,7 +95,7 @@ class _InputComponentAddTaskWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Text(
                         FFLocalizations.of(context).getText(
-                          'vdk5u8fw' /* Add New Task */,
+                          'ebdx4cpi' /* Edit Task */,
                         ),
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context)
@@ -118,7 +118,7 @@ class _InputComponentAddTaskWidgetState
                   obscureText: false,
                   decoration: InputDecoration(
                     labelText: FFLocalizations.of(context).getText(
-                      'w32ci6nc' /* Task name */,
+                      'nxdhueqr' /* Task name */,
                     ),
                     labelStyle: FlutterFlowTheme.of(context).labelMedium,
                     hintStyle: FlutterFlowTheme.of(context).labelMedium,
@@ -170,7 +170,7 @@ class _InputComponentAddTaskWidgetState
                           Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(
-                          '4trrlsb1' /* Cancel */,
+                          '5d6os4kr' /* Cancel */,
                         ),
                         options: FFButtonOptions(
                           height: 40.0,
@@ -197,13 +197,10 @@ class _InputComponentAddTaskWidgetState
                       onPressed: () async {
                         if (_model.textController.text != null &&
                             _model.textController.text != '') {
-                          await ItemRecord.collection
-                              .doc()
-                              .set(createItemRecordData(
-                                name: _model.textController.text,
-                                done: false,
-                                belongTo: widget.belongToRef,
-                              ));
+                          await widget.item!.reference
+                              .update(createItemRecordData(
+                            name: _model.textController.text,
+                          ));
                           Navigator.pop(context);
                           return;
                         } else {
@@ -225,7 +222,7 @@ class _InputComponentAddTaskWidgetState
                         }
                       },
                       text: FFLocalizations.of(context).getText(
-                        '79u5prtl' /* Add */,
+                        'nmi5qrvo' /* Edit */,
                       ),
                       options: FFButtonOptions(
                         height: 40.0,

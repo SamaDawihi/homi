@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/tasks_pages_and_components/component_assained_to_member/component_assained_to_member_widget.dart';
+import '/tasks_pages_and_components/no_members_message/no_members_message_widget.dart';
 import 'list_component_view_list_widget.dart' show ListComponentViewListWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

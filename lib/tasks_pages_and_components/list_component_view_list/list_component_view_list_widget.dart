@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/tasks_pages_and_components/component_assained_to_member/component_assained_to_member_widget.dart';
+import '/tasks_pages_and_components/no_members_message/no_members_message_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -147,7 +148,10 @@ class _ListComponentViewListWidgetState
                               return Icon(
                                 Icons.checklist_sharp,
                                 color: valueOrDefault<Color>(
-                                  conditionalBuilderMemberRecord.color,
+                                  contentView2ListRecord.createdBy != null
+                                      ? conditionalBuilderMemberRecord.color
+                                      : FlutterFlowTheme.of(context)
+                                          .secondaryText,
                                   FlutterFlowTheme.of(context).primary,
                                 ),
                                 size: 24.0,
@@ -203,6 +207,9 @@ class _ListComponentViewListWidgetState
                                   }
                                   List<MemberRecord> listViewMemberRecordList =
                                       snapshot.data!;
+                                  if (listViewMemberRecordList.isEmpty) {
+                                    return NoMembersMessageWidget();
+                                  }
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     primary: false,

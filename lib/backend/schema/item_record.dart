@@ -26,21 +26,21 @@ class ItemRecord extends FirestoreRecord {
   bool get done => _done ?? false;
   bool hasDone() => _done != null;
 
-  // "doneBy" field.
-  DocumentReference? _doneBy;
-  DocumentReference? get doneBy => _doneBy;
-  bool hasDoneBy() => _doneBy != null;
-
   // "belongTo" field.
   DocumentReference? _belongTo;
   DocumentReference? get belongTo => _belongTo;
   bool hasBelongTo() => _belongTo != null;
 
+  // "doneBy" field.
+  DocumentReference? _doneBy;
+  DocumentReference? get doneBy => _doneBy;
+  bool hasDoneBy() => _doneBy != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _done = snapshotData['done'] as bool?;
-    _doneBy = snapshotData['doneBy'] as DocumentReference?;
     _belongTo = snapshotData['belongTo'] as DocumentReference?;
+    _doneBy = snapshotData['doneBy'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -79,15 +79,15 @@ class ItemRecord extends FirestoreRecord {
 Map<String, dynamic> createItemRecordData({
   String? name,
   bool? done,
-  DocumentReference? doneBy,
   DocumentReference? belongTo,
+  DocumentReference? doneBy,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'name': name,
       'done': done,
-      'doneBy': doneBy,
       'belongTo': belongTo,
+      'doneBy': doneBy,
     }.withoutNulls,
   );
 
@@ -101,13 +101,13 @@ class ItemRecordDocumentEquality implements Equality<ItemRecord> {
   bool equals(ItemRecord? e1, ItemRecord? e2) {
     return e1?.name == e2?.name &&
         e1?.done == e2?.done &&
-        e1?.doneBy == e2?.doneBy &&
-        e1?.belongTo == e2?.belongTo;
+        e1?.belongTo == e2?.belongTo &&
+        e1?.doneBy == e2?.doneBy;
   }
 
   @override
   int hash(ItemRecord? e) =>
-      const ListEquality().hash([e?.name, e?.done, e?.doneBy, e?.belongTo]);
+      const ListEquality().hash([e?.name, e?.done, e?.belongTo, e?.doneBy]);
 
   @override
   bool isValidKey(Object? o) => o is ItemRecord;
