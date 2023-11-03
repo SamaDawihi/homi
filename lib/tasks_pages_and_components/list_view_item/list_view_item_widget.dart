@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/tasks_pages_and_components/input_component_edit_task/input_component_edit_task_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -224,8 +225,8 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                             ).then((value) => setState(() {}));
                           },
                           child: Icon(
-                            Icons.edit_sharp,
-                            color: FlutterFlowTheme.of(context).secondaryText,
+                            Icons.edit,
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 24.0,
                           ),
                         ),
@@ -240,8 +241,30 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'The Item Has Been Deleted ',
+                                style: TextStyle(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor: Color(0x8A000000),
+                              action: SnackBarAction(
+                                label: 'Undo',
+                                textColor:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                onPressed: () async {
+                                  await actions.addItem(
+                                    containerItemRecord,
+                                  );
+                                },
+                              ),
+                            ),
+                          );
                           await widget.itemRef!.delete();
-                          setState(() {});
                         },
                         child: Icon(
                           Icons.remove_circle_outline_outlined,

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/tasks_pages_and_components/component_responsible_to_member/component_responsible_to_member_widget.dart';
 import '/tasks_pages_and_components/confirm_delete_list/confirm_delete_list_widget.dart';
+import '/tasks_pages_and_components/empty_task_component/empty_task_component_widget.dart';
 import '/tasks_pages_and_components/input_component_add_task/input_component_add_task_widget.dart';
 import '/tasks_pages_and_components/list_view_item/list_view_item_widget.dart';
 import '/tasks_pages_and_components/no_members_message/no_members_message_widget.dart';

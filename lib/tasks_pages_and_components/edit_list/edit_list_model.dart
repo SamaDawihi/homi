@@ -36,9 +36,9 @@ class EditListModel extends FlutterFlowModel<EditListWidget> {
 
   String? resMemberErr = '';
 
-  int loopIteration = 0;
-
   int currentNumberOfFamilyMembers = 1;
+
+  int loopIteration = 0;
 
   ///  State fields for stateful widgets in this page.
 
@@ -54,18 +54,12 @@ class EditListModel extends FlutterFlowModel<EditListWidget> {
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
-  // State field(s) for responsabilitySwitch widget.
-  bool? responsabilitySwitchValue;
-  // Stores action output result for [Firestore Query - Query a collection] action in responsabilitySwitch widget.
-  List<MemberRecord>? familyMembersDocs;
   // State field(s) for Checkbox widget.
 
   Map<MemberRecord, bool> checkboxValueMap = {};
   List<MemberRecord> get checkboxCheckedItems =>
       checkboxValueMap.entries.where((e) => e.value).map((e) => e.key).toList();
 
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  MemberRecord? createdByMember;
   // Model for BottomNavBar component.
   late BottomNavBarModel bottomNavBarModel;
 

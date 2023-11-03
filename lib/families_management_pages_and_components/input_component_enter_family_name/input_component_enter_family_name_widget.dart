@@ -70,6 +70,7 @@ class _InputComponentEnterFamilyNameWidgetState
 
     _model.familynameController ??= TextEditingController();
     _model.familynameFocusNode ??= FocusNode();
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -269,6 +270,40 @@ class _InputComponentEnterFamilyNameWidgetState
                                   createdTime: getCurrentTimestamp,
                                 ),
                                 memberRecordReference);
+
+                        var listRecordReference = ListRecord.collection.doc();
+                        await listRecordReference.set({
+                          ...createListRecordData(
+                            name: 'Tasks',
+                            description: 'Manage Family Tasks Here',
+                            createdBy: _model.createdFamilyAdmin?.reference,
+                            isShoopingList: false,
+                            familyId: _model.createdFamily?.reference,
+                          ),
+                          ...mapToFirestore(
+                            {
+                              'assignedTo': [
+                                _model.createdFamilyAdmin?.reference
+                              ],
+                            },
+                          ),
+                        });
+                        _model.defaultList = ListRecord.getDocumentFromData({
+                          ...createListRecordData(
+                            name: 'Tasks',
+                            description: 'Manage Family Tasks Here',
+                            createdBy: _model.createdFamilyAdmin?.reference,
+                            isShoopingList: false,
+                            familyId: _model.createdFamily?.reference,
+                          ),
+                          ...mapToFirestore(
+                            {
+                              'assignedTo': [
+                                _model.createdFamilyAdmin?.reference
+                              ],
+                            },
+                          ),
+                        }, listRecordReference);
                         FFAppState().update(() {
                           FFAppState().familyId =
                               _model.createdFamily?.reference;

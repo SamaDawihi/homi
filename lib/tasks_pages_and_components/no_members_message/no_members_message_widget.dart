@@ -43,7 +43,7 @@ class _NoMembersMessageWidgetState extends State<NoMembersMessageWidget> {
 
     return Text(
       FFLocalizations.of(context).getText(
-        'ectvpj4y' /* There are no members. */,
+        'ectvpj4y' /* There are no members assigned. */,
       ),
       textAlign: TextAlign.start,
       style: FlutterFlowTheme.of(context).labelMedium,

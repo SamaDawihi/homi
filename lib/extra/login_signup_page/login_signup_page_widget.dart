@@ -115,14 +115,19 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
     )..addListener(() => setState(() {}));
     _model.nameController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
+
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
+
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
     _model.reEnterController ??= TextEditingController();
     _model.reEnterFocusNode ??= FocusNode();
+
     _model.loginEmailAddressController ??= TextEditingController();
     _model.loginEmailAddressFocusNode ??= FocusNode();
+
     _model.loginPasswordController ??= TextEditingController();
     _model.loginPasswordFocusNode ??= FocusNode();
   }

@@ -42,10 +42,13 @@ class _EventAddWidgetState extends State<EventAddWidget> {
 
     _model.titleController ??= TextEditingController();
     _model.titleFocusNode ??= FocusNode();
+
     _model.locationController ??= TextEditingController();
     _model.locationFocusNode ??= FocusNode();
+
     _model.descriptionController ??= TextEditingController();
     _model.descriptionFocusNode ??= FocusNode();
+
     _model.textController4 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
   }

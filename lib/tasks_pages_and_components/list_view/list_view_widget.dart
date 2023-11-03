@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/tasks_pages_and_components/component_responsible_to_member/component_responsible_to_member_widget.dart';
 import '/tasks_pages_and_components/confirm_delete_list/confirm_delete_list_widget.dart';
+import '/tasks_pages_and_components/empty_task_component/empty_task_component_widget.dart';
 import '/tasks_pages_and_components/input_component_add_task/input_component_add_task_widget.dart';
 import '/tasks_pages_and_components/list_view_item/list_view_item_widget.dart';
 import '/tasks_pages_and_components/no_members_message/no_members_message_widget.dart';
@@ -306,7 +307,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                     Icons.add,
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryText,
+                                                        .primary,
                                                     size: 28.0,
                                                   ),
                                                 ),
@@ -346,7 +347,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                   FontAwesomeIcons.edit,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .primary,
                                                   size: 24.0,
                                                 ),
                                               ),
@@ -444,7 +445,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryText,
+                                                              .primary,
                                                       size: 28.0,
                                                     ),
                                                   );
@@ -503,22 +504,42 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                               ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 0.0, 0.0, 10.0),
-                                        child: Text(
-                                          listViewListRecord.description,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Source Sans Pro',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                fontSize: 16.0,
-                                              ),
+                                      if (listViewListRecord.description !=
+                                              null &&
+                                          listViewListRecord.description != '')
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 0.0, 10.0),
+                                          child: Text(
+                                            listViewListRecord.description,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Source Sans Pro',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 16.0,
+                                                ),
+                                          ),
                                         ),
-                                      ),
+                                      if (listViewListRecord.description ==
+                                              null ||
+                                          listViewListRecord.description == '')
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '1oo63y60' /* No descrition. */,
+                                            ),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium,
+                                          ),
+                                        ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             15.0, 0.0, 0.0, 15.0),
@@ -619,173 +640,124 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                           },
                                         ),
                                       ),
+                                      if (listViewListRecord
+                                              .assignedTo.length ==
+                                          0)
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              '10ujipip' /* There are no members assigned. */,
+                                            ),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium,
+                                          ),
+                                        ),
                                     ],
                                   ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    StreamBuilder<List<ItemRecord>>(
-                                      stream: queryItemRecord(
-                                        queryBuilder: (itemRecord) =>
-                                            itemRecord.where(
-                                          'belongTo',
-                                          isEqualTo:
-                                              listViewListRecord.reference,
-                                        ),
-                                      )..listen((snapshot) async {
-                                          List<ItemRecord>
-                                              listViewItemRecordList = snapshot;
-                                          if (_model.listViewPreviousSnapshot !=
-                                                  null &&
-                                              !const ListEquality(
-                                                      ItemRecordDocumentEquality())
-                                                  .equals(
-                                                      listViewItemRecordList,
-                                                      _model
-                                                          .listViewPreviousSnapshot)) {
-                                            setState(() {
-                                              _model.numberOfItms =
-                                                  listViewItemRecordList.length;
-                                            });
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 20.0, 0.0, 0.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      StreamBuilder<List<ItemRecord>>(
+                                        stream: queryItemRecord(
+                                          queryBuilder: (itemRecord) =>
+                                              itemRecord.where(
+                                            'belongTo',
+                                            isEqualTo:
+                                                listViewListRecord.reference,
+                                          ),
+                                        )..listen((snapshot) async {
+                                            List<ItemRecord>
+                                                listViewItemRecordList =
+                                                snapshot;
+                                            if (_model.listViewPreviousSnapshot !=
+                                                    null &&
+                                                !const ListEquality(
+                                                        ItemRecordDocumentEquality())
+                                                    .equals(
+                                                        listViewItemRecordList,
+                                                        _model
+                                                            .listViewPreviousSnapshot)) {
+                                              setState(() {
+                                                _model.numberOfItms =
+                                                    listViewItemRecordList
+                                                        .length;
+                                              });
 
-                                            setState(() {});
-                                          }
-                                          _model.listViewPreviousSnapshot =
-                                              snapshot;
-                                        }),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 10.0,
-                                              height: 10.0,
-                                              child: SpinKitDualRing(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 10.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ItemRecord>
-                                            listViewItemRecordList =
-                                            snapshot.data!;
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              listViewItemRecordList.length,
-                                          itemBuilder:
-                                              (context, listViewIndex) {
-                                            final listViewItemRecord =
-                                                listViewItemRecordList[
-                                                    listViewIndex];
-                                            return wrapWithModel(
-                                              model: _model.listViewItemModels
-                                                  .getModel(
-                                                listViewIndex.toString(),
-                                                listViewIndex,
-                                              ),
-                                              updateCallback: () =>
-                                                  setState(() {}),
-                                              child: ListViewItemWidget(
-                                                key: Key(
-                                                  'Key8p0_${listViewIndex.toString()}',
+                                              setState(() {});
+                                            }
+                                            _model.listViewPreviousSnapshot =
+                                                snapshot;
+                                          }),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 10.0,
+                                                height: 10.0,
+                                                child: SpinKitDualRing(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  size: 10.0,
                                                 ),
-                                                itemRef: listViewItemRecord
-                                                    .reference,
                                               ),
                                             );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ],
+                                          }
+                                          List<ItemRecord>
+                                              listViewItemRecordList =
+                                              snapshot.data!;
+                                          if (listViewItemRecordList.isEmpty) {
+                                            return Container(
+                                              width: 500.0,
+                                              height: 200.0,
+                                              child: EmptyTaskComponentWidget(),
+                                            );
+                                          }
+                                          return ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                listViewItemRecordList.length,
+                                            itemBuilder:
+                                                (context, listViewIndex) {
+                                              final listViewItemRecord =
+                                                  listViewItemRecordList[
+                                                      listViewIndex];
+                                              return wrapWithModel(
+                                                model: _model.listViewItemModels
+                                                    .getModel(
+                                                  listViewIndex.toString(),
+                                                  listViewIndex,
+                                                ),
+                                                updateCallback: () =>
+                                                    setState(() {}),
+                                                child: ListViewItemWidget(
+                                                  key: Key(
+                                                    'Key8p0_${listViewIndex.toString()}',
+                                                  ),
+                                                  itemRef: listViewItemRecord
+                                                      .reference,
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                          if (_model.numberOfItms != 0)
-                            Align(
-                              alignment: AlignmentDirectional(0.00, 1.00),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
-                                      },
-                                      text: FFLocalizations.of(context).getText(
-                                        '3pj5oycw' /* Check All */,
-                                      ),
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Source Sans Pro',
-                                              color: Colors.white,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                    FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
-                                      },
-                                      text: FFLocalizations.of(context).getText(
-                                        '1frq1f14' /* Clear All */,
-                                      ),
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Source Sans Pro',
-                                              color: Colors.white,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
                         ],
                       ),
                     ),

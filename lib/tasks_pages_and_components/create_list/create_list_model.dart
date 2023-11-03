@@ -55,10 +55,6 @@ class CreateListModel extends FlutterFlowModel<CreateListWidget> {
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionController;
   String? Function(BuildContext, String?)? descriptionControllerValidator;
-  // State field(s) for responsabilitySwitch widget.
-  bool? responsabilitySwitchValue;
-  // Stores action output result for [Firestore Query - Query a collection] action in responsabilitySwitch widget.
-  List<MemberRecord>? familyMembersDocs;
   // State field(s) for Checkbox widget.
 
   Map<MemberRecord, bool> checkboxValueMap = {};

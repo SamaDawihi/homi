@@ -70,6 +70,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
 
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||

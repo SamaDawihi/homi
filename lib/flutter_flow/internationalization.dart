@@ -601,10 +601,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Who is responsible?*',
       'ar': 'مرحبا بالعالم',
     },
-    'auvs4ref': {
-      'en': 'All family members are responsible',
-      'ar': '',
-    },
     '77qo8vgy': {
       'en': 'Create',
       'ar': 'يضيف',
@@ -636,16 +632,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Description : ',
       'ar': '',
     },
+    '1oo63y60': {
+      'en': 'No descrition.',
+      'ar': '',
+    },
     '38s7atkv': {
       'en': 'Responsible Members :',
       'ar': '',
     },
-    '3pj5oycw': {
-      'en': 'Check All',
-      'ar': '',
-    },
-    '1frq1f14': {
-      'en': 'Clear All',
+    '10ujipip': {
+      'en': 'There are no members assigned.',
       'ar': '',
     },
     'l46cpzmu': {
@@ -670,10 +666,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     's6xuqhjs': {
       'en': 'Who is responsible?*',
       'ar': 'مرحبا بالعالم',
-    },
-    'em8u0j73': {
-      'en': 'All family members are responsible',
-      'ar': '',
     },
     'b3fimz7a': {
       'en': 'Edit',
@@ -1232,6 +1224,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
       'ar': 'يقبل',
     },
+    'o44envyj': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    '6coz9c4s': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
   },
   // ConfirmDeleteList
   {
@@ -1279,7 +1279,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // NoMembersMessage
   {
     'ectvpj4y': {
-      'en': 'There are no members.',
+      'en': 'There are no members assigned.',
       'ar': '',
     },
   },
@@ -1300,6 +1300,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'nmi5qrvo': {
       'en': 'Edit',
       'ar': 'يقبل',
+    },
+    'keftdt0v': {
+      'en': 'Field is required',
+      'ar': '',
+    },
+    'lo7rlfj2': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': '',
     },
   },
   // Miscellaneous

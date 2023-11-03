@@ -40,6 +40,7 @@ class _CreateListWidgetState extends State<CreateListWidget> {
 
     _model.titleController ??= TextEditingController();
     _model.titleFocusNode ??= FocusNode();
+
     _model.descriptionController ??= TextEditingController();
     _model.descriptionFocusNode ??= FocusNode();
   }
@@ -361,361 +362,271 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'auvs4ref' /* All family members are respons... */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Source Sans Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                      ),
-                                      Switch.adaptive(
-                                        value:
-                                            _model.responsabilitySwitchValue ??=
-                                                false,
-                                        onChanged: (newValue) async {
-                                          setState(() =>
-                                              _model.responsabilitySwitchValue =
-                                                  newValue!);
-                                          if (newValue!) {
-                                            _model.familyMembersDocs =
-                                                await queryMemberRecordOnce(
-                                              queryBuilder: (memberRecord) =>
-                                                  memberRecord.where(
-                                                'familyId',
-                                                isEqualTo:
-                                                    FFAppState().familyId,
-                                              ),
-                                            );
-                                            while (_model.loopIteration <
-                                                _model.familyMembersDocs!
-                                                    .length) {
-                                              setState(() {
-                                                _model.addToMembers(_model
-                                                    .familyMembersDocs![
-                                                        _model.loopIteration]
-                                                    .reference);
-                                              });
-                                              setState(() {
-                                                _model.loopIteration =
-                                                    _model.loopIteration + 1;
-                                              });
-                                            }
-                                            setState(() {
-                                              _model.loopIteration = 0;
-                                            });
-
-                                            setState(() {});
-                                          } else {
-                                            setState(() {
-                                              _model.members = [];
-                                            });
-                                          }
-                                        },
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                        activeTrackColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent1,
-                                        inactiveTrackColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        inactiveThumbColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                      ),
-                                    ],
+                                StreamBuilder<List<MemberRecord>>(
+                                  stream: queryMemberRecord(
+                                    queryBuilder: (memberRecord) => memberRecord
+                                        .where(
+                                          'familyId',
+                                          isEqualTo: FFAppState().familyId,
+                                        )
+                                        .orderBy('created_time',
+                                            descending: true),
                                   ),
-                                ),
-                                if (!_model.responsabilitySwitchValue!)
-                                  StreamBuilder<List<MemberRecord>>(
-                                    stream: queryMemberRecord(
-                                      queryBuilder: (memberRecord) =>
-                                          memberRecord
-                                              .where(
-                                                'familyId',
-                                                isEqualTo:
-                                                    FFAppState().familyId,
-                                              )
-                                              .orderBy('created_time',
-                                                  descending: true),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 10.0,
-                                            height: 10.0,
-                                            child: SpinKitDualRing(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              size: 10.0,
-                                            ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 10.0,
+                                          height: 10.0,
+                                          child: SpinKitDualRing(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 10.0,
                                           ),
-                                        );
-                                      }
-                                      List<MemberRecord>
-                                          listViewMemberRecordList =
-                                          snapshot.data!;
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            listViewMemberRecordList.length,
-                                        itemBuilder: (context, listViewIndex) {
-                                          final listViewMemberRecord =
-                                              listViewMemberRecordList[
-                                                  listViewIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 4.0, 16.0, 8.0),
-                                            child: StreamBuilder<UsersRecord>(
-                                              stream: UsersRecord.getDocument(
-                                                  listViewMemberRecord
-                                                      .memberId!),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 10.0,
-                                                      height: 10.0,
-                                                      child: SpinKitDualRing(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 10.0,
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                final familYMemberContainerUsersRecord =
-                                                    snapshot.data!;
-                                                return Container(
-                                                  width: double.infinity,
-                                                  height: 60.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 4.0,
-                                                        color:
-                                                            Color(0x32000000),
-                                                        offset:
-                                                            Offset(0.0, 2.0),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 0.0,
-                                                                8.0, 0.0),
-                                                    child: StreamBuilder<
-                                                        FamilyRecord>(
-                                                      stream: FamilyRecord
-                                                          .getDocument(
-                                                              FFAppState()
-                                                                  .familyId!),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 10.0,
-                                                              height: 10.0,
-                                                              child:
-                                                                  SpinKitDualRing(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                size: 10.0,
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        final rowFamilyRecord =
-                                                            snapshot.data!;
-                                                        return Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Container(
-                                                              width: 40.0,
-                                                              height: 40.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                shape: BoxShape
-                                                                    .circle,
-                                                                border:
-                                                                    Border.all(
-                                                                  color:
-                                                                      listViewMemberRecord
-                                                                          .color!,
-                                                                  width: 4.0,
-                                                                ),
-                                                              ),
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            50.0),
-                                                                child:
-                                                                    Image.asset(
-                                                                  'assets/images/userIcon.jpeg',
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            12.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .min,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      familYMemberContainerUsersRecord
-                                                                          .displayName,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium,
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        familYMemberContainerUsersRecord
-                                                                            .email,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .labelMedium,
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Theme(
-                                                              data: ThemeData(
-                                                                checkboxTheme:
-                                                                    CheckboxThemeData(
-                                                                  visualDensity:
-                                                                      VisualDensity
-                                                                          .compact,
-                                                                  materialTapTargetSize:
-                                                                      MaterialTapTargetSize
-                                                                          .shrinkWrap,
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            4.0),
-                                                                  ),
-                                                                ),
-                                                                unselectedWidgetColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                              ),
-                                                              child: Checkbox(
-                                                                value: _model
-                                                                        .checkboxValueMap[
-                                                                    listViewMemberRecord] ??= false,
-                                                                onChanged:
-                                                                    (newValue) async {
-                                                                  setState(() =>
-                                                                      _model.checkboxValueMap[
-                                                                              listViewMemberRecord] =
-                                                                          newValue!);
-                                                                  if (newValue!) {
-                                                                    setState(
-                                                                        () {
-                                                                      _model.addToMembers(
-                                                                          listViewMemberRecord
-                                                                              .reference);
-                                                                    });
-                                                                  } else {
-                                                                    setState(
-                                                                        () {
-                                                                      _model.removeFromMembers(
-                                                                          listViewMemberRecord
-                                                                              .reference);
-                                                                    });
-                                                                  }
-                                                                },
-                                                                activeColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                checkColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
+                                        ),
+                                      );
+                                    }
+                                    List<MemberRecord>
+                                        listViewMemberRecordList =
+                                        snapshot.data!;
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          listViewMemberRecordList.length,
+                                      itemBuilder: (context, listViewIndex) {
+                                        final listViewMemberRecord =
+                                            listViewMemberRecordList[
+                                                listViewIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 4.0, 16.0, 8.0),
+                                          child: StreamBuilder<UsersRecord>(
+                                            stream: UsersRecord.getDocument(
+                                                listViewMemberRecord.memberId!),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 10.0,
+                                                    height: 10.0,
+                                                    child: SpinKitDualRing(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      size: 10.0,
                                                     ),
                                                   ),
                                                 );
-                                              },
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
+                                              }
+                                              final familYMemberContainerUsersRecord =
+                                                  snapshot.data!;
+                                              return Container(
+                                                width: double.infinity,
+                                                height: 60.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x32000000),
+                                                      offset: Offset(0.0, 2.0),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          8.0, 0.0, 8.0, 0.0),
+                                                  child: StreamBuilder<
+                                                      FamilyRecord>(
+                                                    stream: FamilyRecord
+                                                        .getDocument(
+                                                            FFAppState()
+                                                                .familyId!),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 10.0,
+                                                            height: 10.0,
+                                                            child:
+                                                                SpinKitDualRing(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 10.0,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      final rowFamilyRecord =
+                                                          snapshot.data!;
+                                                      return Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                            width: 40.0,
+                                                            height: 40.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              border:
+                                                                  Border.all(
+                                                                color:
+                                                                    listViewMemberRecord
+                                                                        .color!,
+                                                                width: 4.0,
+                                                              ),
+                                                            ),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          50.0),
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/images/userIcon.jpeg',
+                                                                width: 40.0,
+                                                                height: 40.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          12.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    familYMemberContainerUsersRecord
+                                                                        .displayName,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium,
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      familYMemberContainerUsersRecord
+                                                                          .email,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Theme(
+                                                            data: ThemeData(
+                                                              checkboxTheme:
+                                                                  CheckboxThemeData(
+                                                                visualDensity:
+                                                                    VisualDensity
+                                                                        .compact,
+                                                                materialTapTargetSize:
+                                                                    MaterialTapTargetSize
+                                                                        .shrinkWrap,
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              4.0),
+                                                                ),
+                                                              ),
+                                                              unselectedWidgetColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                            ),
+                                                            child: Checkbox(
+                                                              value: _model
+                                                                      .checkboxValueMap[
+                                                                  listViewMemberRecord] ??= false,
+                                                              onChanged:
+                                                                  (newValue) async {
+                                                                setState(() =>
+                                                                    _model.checkboxValueMap[
+                                                                            listViewMemberRecord] =
+                                                                        newValue!);
+                                                                if (newValue!) {
+                                                                  setState(() {
+                                                                    _model.addToMembers(
+                                                                        listViewMemberRecord
+                                                                            .reference);
+                                                                  });
+                                                                } else {
+                                                                  setState(() {
+                                                                    _model.removeFromMembers(
+                                                                        listViewMemberRecord
+                                                                            .reference);
+                                                                  });
+                                                                }
+                                                              },
+                                                              activeColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              checkColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
@@ -912,7 +823,7 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),
                   child: BottomNavBarWidget(
-                    currentPage: 1,
+                    currentPage: 2,
                   ),
                 ),
               ),

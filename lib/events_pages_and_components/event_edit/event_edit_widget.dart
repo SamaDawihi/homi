@@ -52,12 +52,15 @@ class _EventEditWidgetState extends State<EventEditWidget> {
 
     _model.titleController ??= TextEditingController(text: widget.event?.title);
     _model.titleFocusNode ??= FocusNode();
+
     _model.locationController ??=
         TextEditingController(text: widget.event?.location);
     _model.locationFocusNode ??= FocusNode();
+
     _model.descriptionController ??=
         TextEditingController(text: widget.event?.description);
     _model.descriptionFocusNode ??= FocusNode();
+
     _model.textController4 ??=
         TextEditingController(text: widget.event?.notifyBefore?.toString());
     _model.textFieldFocusNode ??= FocusNode();

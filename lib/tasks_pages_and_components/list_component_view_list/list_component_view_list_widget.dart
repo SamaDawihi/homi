@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,6 +6,7 @@ import '/tasks_pages_and_components/component_assained_to_member/component_assai
 import '/tasks_pages_and_components/no_members_message/no_members_message_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,6 +41,21 @@ class _ListComponentViewListWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ListComponentViewListModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.list = await ListRecord.getDocumentOnce(widget.listRef!);
+      _model.member =
+          await MemberRecord.getDocumentOnce(_model.list!.createdBy!);
+      if (_model.member?.color != null) {
+        setState(() {
+          _model.color = _model.member!.color!;
+        });
+        return;
+      } else {
+        return;
+      }
+    });
   }
 
   @override
@@ -115,50 +132,21 @@ class _ListComponentViewListWidgetState
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    StreamBuilder<MemberRecord>(
-                      stream: MemberRecord.getDocument(
-                          contentView2ListRecord.createdBy!),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 10.0,
-                              height: 10.0,
-                              child: SpinKitDualRing(
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 10.0,
-                              ),
-                            ),
+                    Builder(
+                      builder: (context) {
+                        if (contentView2ListRecord.isShoopingList) {
+                          return Icon(
+                            Icons.shopping_cart_outlined,
+                            color: _model.color,
+                            size: 24.0,
+                          );
+                        } else {
+                          return Icon(
+                            Icons.checklist_sharp,
+                            color: _model.color,
+                            size: 24.0,
                           );
                         }
-                        final conditionalBuilderMemberRecord = snapshot.data!;
-                        return Builder(
-                          builder: (context) {
-                            if (contentView2ListRecord.isShoopingList) {
-                              return Icon(
-                                Icons.shopping_cart_outlined,
-                                color: valueOrDefault<Color>(
-                                  conditionalBuilderMemberRecord.color,
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                                size: 24.0,
-                              );
-                            } else {
-                              return Icon(
-                                Icons.checklist_sharp,
-                                color: valueOrDefault<Color>(
-                                  contentView2ListRecord.createdBy != null
-                                      ? conditionalBuilderMemberRecord.color
-                                      : FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                                size: 24.0,
-                              );
-                            }
-                          },
-                        );
                       },
                     ),
                     Align(

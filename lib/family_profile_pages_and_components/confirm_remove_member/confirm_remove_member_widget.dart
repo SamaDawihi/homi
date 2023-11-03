@@ -171,9 +171,6 @@ class _ConfirmRemoveMemberWidgetState extends State<ConfirmRemoveMemberWidget> {
                           await _model.listsContainsTheMember![_model.iteration]
                               .reference
                               .update({
-                            ...createListRecordData(
-                              name: _model.iteration.toString(),
-                            ),
                             ...mapToFirestore(
                               {
                                 'assignedTo':
