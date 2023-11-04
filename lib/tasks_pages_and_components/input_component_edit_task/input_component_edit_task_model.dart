@@ -24,7 +24,7 @@ class InputComponentEditTaskModel
   String? _textControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'keftdt0v' /* Field is required */,
+        'zld3dmwd' /* Field is required */,
       );
     }
 

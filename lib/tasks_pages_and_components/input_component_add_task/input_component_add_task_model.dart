@@ -23,7 +23,7 @@ class InputComponentAddTaskModel
   String? _textControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
-        'o44envyj' /* Field is required */,
+        'cxa6xxm4' /* Field is required */,
       );
     }
 

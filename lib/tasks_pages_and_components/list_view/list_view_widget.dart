@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'list_view_model.dart';
@@ -343,8 +342,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                     },
                                                   );
                                                 },
-                                                child: FaIcon(
-                                                  FontAwesomeIcons.edit,
+                                                child: Icon(
+                                                  Icons.mode_edit_outlined,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primary,
@@ -412,7 +411,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                         setState(() {}));
                                                   },
                                                   child: Icon(
-                                                    Icons.delete_forever,
+                                                    Icons.delete_outline,
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .error,
@@ -533,7 +532,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                   15.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             FFLocalizations.of(context).getText(
-                                              '1oo63y60' /* No descrition. */,
+                                              '1oo63y60' /* No description. */,
                                             ),
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)

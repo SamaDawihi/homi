@@ -633,7 +633,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     '1oo63y60': {
-      'en': 'No descrition.',
+      'en': 'No description.',
       'ar': '',
     },
     '38s7atkv': {
@@ -1224,11 +1224,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add',
       'ar': 'يقبل',
     },
-    'o44envyj': {
+    'cxa6xxm4': {
       'en': 'Field is required',
       'ar': '',
     },
-    '6coz9c4s': {
+    'cg1daqpw': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
@@ -1301,11 +1301,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit',
       'ar': 'يقبل',
     },
-    'keftdt0v': {
+    'zld3dmwd': {
       'en': 'Field is required',
       'ar': '',
     },
-    'lo7rlfj2': {
+    'she3rpco': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },

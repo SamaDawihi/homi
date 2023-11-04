@@ -246,16 +246,16 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                               content: Text(
                                 'The Item Has Been Deleted ',
                                 style: TextStyle(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                 ),
                               ),
                               duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x8A000000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).alternate,
                               action: SnackBarAction(
                                 label: 'Undo',
-                                textColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                textColor: FlutterFlowTheme.of(context).primary,
                                 onPressed: () async {
                                   await actions.addItem(
                                     containerItemRecord,
