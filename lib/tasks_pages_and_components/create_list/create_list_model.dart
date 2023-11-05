@@ -41,16 +41,6 @@ class CreateListModel extends FlutterFlowModel<CreateListWidget> {
   FocusNode? titleFocusNode;
   TextEditingController? titleController;
   String? Function(BuildContext, String?)? titleControllerValidator;
-  String? _titleControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '18jily7q' /* Field is required */,
-      );
-    }
-
-    return null;
-  }
-
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionController;
@@ -71,7 +61,6 @@ class CreateListModel extends FlutterFlowModel<CreateListWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    titleControllerValidator = _titleControllerValidator;
     bottomNavBarModel = createModel(context, () => BottomNavBarModel());
   }
 

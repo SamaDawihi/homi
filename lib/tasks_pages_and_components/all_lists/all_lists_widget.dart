@@ -35,7 +35,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
     _model.tabBarController = TabController(
       vsync: this,
       length: 2,
-      initialIndex: 0,
+      initialIndex: 1,
     )..addListener(() => setState(() {}));
   }
 

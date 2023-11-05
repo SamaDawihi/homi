@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/extra/bottom_nav_bar/bottom_nav_bar_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,6 +18,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -35,10 +37,27 @@ class ListViewWidget extends StatefulWidget {
   _ListViewWidgetState createState() => _ListViewWidgetState();
 }
 
-class _ListViewWidgetState extends State<ListViewWidget> {
+class _ListViewWidgetState extends State<ListViewWidget>
+    with TickerProviderStateMixin {
   late ListViewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  var hasIconTriggered = false;
+  final animationsMap = {
+    'iconOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: false,
+      effects: [
+        RotateEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 500.ms,
+          begin: 0.0,
+          end: 0.5,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -64,6 +83,13 @@ class _ListViewWidgetState extends State<ListViewWidget> {
         _model.numberOfItms = _model.numberOfItems!;
       });
     });
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -420,62 +446,58 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Builder(
-                                              builder: (context) {
-                                                if (!_model.viewMore) {
-                                                  return InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        _model.viewMore =
-                                                            !_model.viewMore;
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                      Icons
-                                                          .expand_more_outlined,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      size: 28.0,
-                                                    ),
-                                                  );
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                if (_model.viewMore) {
+                                                  if (animationsMap[
+                                                          'iconOnActionTriggerAnimation'] !=
+                                                      null) {
+                                                    animationsMap[
+                                                            'iconOnActionTriggerAnimation']!
+                                                        .controller
+                                                        .reverse();
+                                                  }
                                                 } else {
-                                                  return InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        _model.viewMore =
-                                                            !_model.viewMore;
-                                                      });
-                                                    },
-                                                    child: Icon(
-                                                      Icons.keyboard_arrow_up,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 24.0,
-                                                    ),
-                                                  );
+                                                  if (animationsMap[
+                                                          'iconOnActionTriggerAnimation'] !=
+                                                      null) {
+                                                    setState(() =>
+                                                        hasIconTriggered =
+                                                            true);
+                                                    SchedulerBinding.instance
+                                                        .addPostFrameCallback(
+                                                            (_) async =>
+                                                                animationsMap[
+                                                                        'iconOnActionTriggerAnimation']!
+                                                                    .controller
+                                                                    .forward(
+                                                                        from:
+                                                                            0.0));
+                                                  }
                                                 }
+
+                                                setState(() {
+                                                  _model.viewMore =
+                                                      !_model.viewMore;
+                                                });
                                               },
-                                            ),
+                                              child: Icon(
+                                                Icons.expand_more_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 28.0,
+                                              ),
+                                            ).animateOnActionTrigger(
+                                                animationsMap[
+                                                    'iconOnActionTriggerAnimation']!,
+                                                hasBeenTriggered:
+                                                    hasIconTriggered),
                                           ],
                                         ),
                                       ),

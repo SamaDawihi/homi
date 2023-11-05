@@ -46,6 +46,11 @@ class ListRecord extends FirestoreRecord {
   DocumentReference? get familyId => _familyId;
   bool hasFamilyId() => _familyId != null;
 
+  // "createdTime" field.
+  DateTime? _createdTime;
+  DateTime? get createdTime => _createdTime;
+  bool hasCreatedTime() => _createdTime != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
@@ -53,6 +58,7 @@ class ListRecord extends FirestoreRecord {
     _assignedTo = getDataList(snapshotData['assignedTo']);
     _isShoopingList = snapshotData['isShoopingList'] as bool?;
     _familyId = snapshotData['familyId'] as DocumentReference?;
+    _createdTime = snapshotData['createdTime'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -94,6 +100,7 @@ Map<String, dynamic> createListRecordData({
   DocumentReference? createdBy,
   bool? isShoopingList,
   DocumentReference? familyId,
+  DateTime? createdTime,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -102,6 +109,7 @@ Map<String, dynamic> createListRecordData({
       'createdBy': createdBy,
       'isShoopingList': isShoopingList,
       'familyId': familyId,
+      'createdTime': createdTime,
     }.withoutNulls,
   );
 
@@ -119,7 +127,8 @@ class ListRecordDocumentEquality implements Equality<ListRecord> {
         e1?.createdBy == e2?.createdBy &&
         listEquality.equals(e1?.assignedTo, e2?.assignedTo) &&
         e1?.isShoopingList == e2?.isShoopingList &&
-        e1?.familyId == e2?.familyId;
+        e1?.familyId == e2?.familyId &&
+        e1?.createdTime == e2?.createdTime;
   }
 
   @override
@@ -129,7 +138,8 @@ class ListRecordDocumentEquality implements Equality<ListRecord> {
         e?.createdBy,
         e?.assignedTo,
         e?.isShoopingList,
-        e?.familyId
+        e?.familyId,
+        e?.createdTime
       ]);
 
   @override

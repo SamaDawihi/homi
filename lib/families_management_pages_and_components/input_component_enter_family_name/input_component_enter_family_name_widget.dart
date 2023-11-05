@@ -271,14 +271,52 @@ class _InputComponentEnterFamilyNameWidgetState
                                 ),
                                 memberRecordReference);
 
-                        var listRecordReference = ListRecord.collection.doc();
-                        await listRecordReference.set({
+                        var listRecordReference1 = ListRecord.collection.doc();
+                        await listRecordReference1.set({
                           ...createListRecordData(
-                            name: 'Tasks',
+                            name: 'Our To-Do List',
                             description: 'Manage Family Tasks Here',
                             createdBy: _model.createdFamilyAdmin?.reference,
                             isShoopingList: false,
                             familyId: _model.createdFamily?.reference,
+                            createdTime: getCurrentTimestamp,
+                          ),
+                          ...mapToFirestore(
+                            {
+                              'assignedTo': [
+                                _model.createdFamilyAdmin?.reference
+                              ],
+                            },
+                          ),
+                        });
+                        _model.defaultToDoList =
+                            ListRecord.getDocumentFromData({
+                          ...createListRecordData(
+                            name: 'Our To-Do List',
+                            description: 'Manage Family Tasks Here',
+                            createdBy: _model.createdFamilyAdmin?.reference,
+                            isShoopingList: false,
+                            familyId: _model.createdFamily?.reference,
+                            createdTime: getCurrentTimestamp,
+                          ),
+                          ...mapToFirestore(
+                            {
+                              'assignedTo': [
+                                _model.createdFamilyAdmin?.reference
+                              ],
+                            },
+                          ),
+                        }, listRecordReference1);
+
+                        var listRecordReference2 = ListRecord.collection.doc();
+                        await listRecordReference2.set({
+                          ...createListRecordData(
+                            name: 'Our Shopping List',
+                            description: 'Manage Family Needs Here',
+                            createdBy: _model.createdFamilyAdmin?.reference,
+                            isShoopingList: true,
+                            familyId: _model.createdFamily?.reference,
+                            createdTime: getCurrentTimestamp,
                           ),
                           ...mapToFirestore(
                             {
@@ -290,11 +328,12 @@ class _InputComponentEnterFamilyNameWidgetState
                         });
                         _model.defaultList = ListRecord.getDocumentFromData({
                           ...createListRecordData(
-                            name: 'Tasks',
-                            description: 'Manage Family Tasks Here',
+                            name: 'Our Shopping List',
+                            description: 'Manage Family Needs Here',
                             createdBy: _model.createdFamilyAdmin?.reference,
-                            isShoopingList: false,
+                            isShoopingList: true,
                             familyId: _model.createdFamily?.reference,
+                            createdTime: getCurrentTimestamp,
                           ),
                           ...mapToFirestore(
                             {
@@ -303,7 +342,7 @@ class _InputComponentEnterFamilyNameWidgetState
                               ],
                             },
                           ),
-                        }, listRecordReference);
+                        }, listRecordReference2);
                         FFAppState().update(() {
                           FFAppState().familyId =
                               _model.createdFamily?.reference;

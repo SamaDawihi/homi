@@ -28,6 +28,8 @@ class InputComponentEnterFamilyNameModel
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   MemberRecord? createdFamilyAdmin;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  ListRecord? defaultToDoList;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ListRecord? defaultList;
 
   /// Initialization and disposal methods.
