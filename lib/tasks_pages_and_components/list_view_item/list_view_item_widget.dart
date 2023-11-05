@@ -106,9 +106,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                           ),
                           child: Checkbox(
                             value: _model.checkboxValue ??=
-                                containerItemRecord.done
-                                    ? containerItemRecord.done
-                                    : false,
+                                containerItemRecord.done,
                             onChanged: (newValue) async {
                               setState(() => _model.checkboxValue = newValue!);
                               if (newValue!) {
@@ -244,10 +242,12 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'The Item Has Been Deleted ',
+                                'The Item \"${containerItemRecord.name}\" Has Been Deleted ',
                                 style: TextStyle(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.0,
                                 ),
                               ),
                               duration: Duration(milliseconds: 4000),
