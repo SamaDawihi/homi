@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -191,7 +192,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              'urgzx7zr' /* Label here... */,
+                              'pks4950l' /* Label here... */,
                             ),
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
@@ -405,7 +406,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               alignment: AlignmentDirectional(-1.00, 0.00),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  '7a2pdbz6' /* Attached Files */,
+                                  'xfb8xxtl' /* Attached Files */,
                                 ),
                                 style:
                                     FlutterFlowTheme.of(context).displaySmall,
@@ -518,14 +519,18 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
+                                      AutoSizeText(
                                         valueOrDefault<String>(
                                           functions.extractFileName(
-                                              filesIndex.toString()),
+                                              _model.uploadedFiles[filesIndex]),
                                           'File Name',
+                                        ).maybeHandleOverflow(
+                                          maxChars: 20,
+                                          replacement: '…',
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
+                                        minFontSize: 9.0,
                                       ),
                                       InkWell(
                                         splashColor: Colors.transparent,

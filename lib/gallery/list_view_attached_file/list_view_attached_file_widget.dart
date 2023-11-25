@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -55,10 +56,13 @@ class _ListViewAttachedFileWidgetState
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          AutoSizeText(
             valueOrDefault<String>(
               functions.extractFileName(widget.url!),
               'File Name',
+            ).maybeHandleOverflow(
+              maxChars: 15,
+              replacement: '…',
             ),
             style: FlutterFlowTheme.of(context).headlineSmall.override(
                   fontFamily: 'Open Sans',
@@ -66,6 +70,7 @@ class _ListViewAttachedFileWidgetState
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
+            minFontSize: 9.0,
           ),
           InkWell(
             splashColor: Colors.transparent,
