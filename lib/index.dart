@@ -29,3 +29,6 @@ export '/profile/profile/profile_widget.dart' show ProfileWidget;
 export '/announcement/add_anouncement/add_anouncement_widget.dart'
     show AddAnouncementWidget;
 export '/gallery/gallery/gallery_widget.dart' show GalleryWidget;
+export '/edit_gallery_item/edit_gallery_item_widget.dart'
+    show EditGalleryItemWidget;
+export '/gallery/dummy_data/dummy_data_widget.dart' show DummyDataWidget;

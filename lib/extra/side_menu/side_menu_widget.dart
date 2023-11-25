@@ -308,28 +308,37 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   ),
                 ),
               ),
-              FlutterFlowLanguageSelector(
-                width: 200.0,
-                backgroundColor: FlutterFlowTheme.of(context).tertiary,
-                borderColor: Colors.transparent,
-                dropdownIconColor: Colors.white,
-                borderRadius: 8.0,
-                textStyle: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 13.0,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                child: FlutterFlowLanguageSelector(
+                  width: 200.0,
+                  backgroundColor: FlutterFlowTheme.of(context).tertiary,
+                  borderColor: Colors.transparent,
+                  dropdownIconColor: Colors.white,
+                  borderRadius: 8.0,
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 13.0,
+                  ),
+                  hideFlags: false,
+                  flagSize: 24.0,
+                  flagTextGap: 8.0,
+                  currentLanguage: FFLocalizations.of(context).languageCode,
+                  languages: FFLocalizations.languages(),
+                  onChanged: (lang) => setAppLanguage(context, lang),
                 ),
-                hideFlags: false,
-                flagSize: 24.0,
-                flagTextGap: 8.0,
-                currentLanguage: FFLocalizations.of(context).languageCode,
-                languages: FFLocalizations.languages(),
-                onChanged: (lang) => setAppLanguage(context, lang),
               ),
-              wrapWithModel(
-                model: _model.darkLightSwitchSmallModel,
-                updateCallback: () => setState(() {}),
-                child: DarkLightSwitchSmallWidget(),
+              Align(
+                alignment: AlignmentDirectional(0.00, 0.00),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+                  child: wrapWithModel(
+                    model: _model.darkLightSwitchSmallModel,
+                    updateCallback: () => setState(() {}),
+                    child: DarkLightSwitchSmallWidget(),
+                  ),
+                ),
               ),
               Expanded(
                 child: Padding(

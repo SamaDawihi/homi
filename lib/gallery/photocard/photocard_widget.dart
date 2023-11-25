@@ -125,8 +125,8 @@ class _PhotocardWidgetState extends State<PhotocardWidget> {
               topLeft: Radius.circular(0.0),
               topRight: Radius.circular(0.0),
             ),
-            child: Image.network(
-              'https://images.unsplash.com/photo-1586281380426-f644f2dc6ada?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw4fHxpbmZvfGVufDB8fHx8MTY5OTk5MTg4M3ww&ixlib=rb-4.0.3&q=80&w=1080',
+            child: Image.asset(
+              'assets/images/1404343.jpg',
               width: double.infinity,
               height: 190.0,
               fit: BoxFit.cover,

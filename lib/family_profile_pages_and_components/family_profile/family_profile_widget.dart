@@ -1,16 +1,19 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/extra/family_loading/family_loading_widget.dart';
 import '/extra/side_menu/side_menu_widget.dart';
 import '/family_profile_pages_and_components/confirm_delete_family/confirm_delete_family_widget.dart';
 import '/family_profile_pages_and_components/confirm_leave_family/confirm_leave_family_widget.dart';
 import '/family_profile_pages_and_components/confirm_leave_last_member/confirm_leave_last_member_widget.dart';
 import '/family_profile_pages_and_components/dialog_change_admin_to_leave_family/dialog_change_admin_to_leave_family_widget.dart';
+import '/family_profile_pages_and_components/edit_family/edit_family_widget.dart';
 import '/family_profile_pages_and_components/list_view_family_member/list_view_family_member_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/invitations_pages_and_components/invite_by_email/invite_by_email_widget.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -62,8 +65,9 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
         await currentUserReference!.update(createUsersRecordData(
           token: _model.fcmToken,
         ));
-        return;
       }
+
+      await action_blocks.checkMemberExists(context);
     });
   }
 
@@ -205,14 +209,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
               // Customize what your widget looks like when it's loading.
               if (!snapshot.hasData) {
                 return Center(
-                  child: SizedBox(
-                    width: 10.0,
-                    height: 10.0,
-                    child: SpinKitDualRing(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 10.0,
-                    ),
-                  ),
+                  child: FamilyLoadingWidget(),
                 );
               }
               final columnFamilyRecord = snapshot.data!;
@@ -232,6 +229,20 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed('Gallery');
+                            },
+                            child: Icon(
+                              Icons.credit_card,
+                              color: Color(0xFF555EBE),
+                              size: 24.0,
+                            ),
+                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 12.0, 12.0),
@@ -269,158 +280,82 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       ),
                                       alignment:
                                           AlignmentDirectional(0.00, 0.00),
-                                      child: Stack(
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(50.0),
-                                            child: Image.network(
-                                              valueOrDefault<String>(
-                                                columnFamilyRecord.photoUrl,
-                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/6trprqqol39j/houseIcon.png',
-                                              ),
-                                              width: 90.0,
-                                              height: 90.0,
-                                              fit: BoxFit.cover,
-                                            ),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                        child: Image.network(
+                                          valueOrDefault<String>(
+                                            columnFamilyRecord.photoUrl,
+                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/6trprqqol39j/houseIcon.png',
                                           ),
-                                          if (_model.edit)
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.00, 0.00),
-                                              child: Container(
-                                                width: 90.0,
-                                                height: 90.0,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0x6E14181B),
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Container(
-                                                      width: 24.0,
-                                                      height: 24.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x80FFFFFF),
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.00, 0.00),
-                                                      child: Icon(
-                                                        Icons.edit_outlined,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 20.0,
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 24.0,
-                                                      height: 24.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x79FFFFFF),
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                        ),
-                                                      ),
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.00, 0.00),
-                                                      child: Icon(
-                                                        Icons
-                                                            .remove_circle_outline,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        size: 20.0,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                        ],
+                                          width: 90.0,
+                                          height: 90.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                     Align(
                                       alignment:
                                           AlignmentDirectional(0.00, 0.00),
-                                      child: Text(
-                                        columnFamilyRecord.name,
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineLarge
-                                            .override(
-                                              fontFamily: 'Open Sans',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 5.0, 0.0, 0.0),
+                                        child: Text(
+                                          columnFamilyRecord.name,
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineLarge
+                                              .override(
+                                                fontFamily: 'Open Sans',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
                                       ),
                                     ),
-                                    if (_model.edit)
-                                      Icon(
-                                        Icons.edit_outlined,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 20.0,
-                                      ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-                          if (columnFamilyRecord.adminId ==
-                              currentUserReference)
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                setState(() {
-                                  _model.edit = !_model.edit;
-                                });
-                              },
-                              child: Builder(
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
                                 builder: (context) {
-                                  if (!_model.edit) {
-                                    return Icon(
-                                      Icons.edit,
-                                      color: Color(0xFF555EBE),
-                                      size: 24.0,
-                                    );
-                                  } else {
-                                    return Icon(
-                                      Icons.done,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 24.0,
-                                    );
-                                  }
+                                  return GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: EditFamilyWidget(
+                                        initialColor: columnFamilyRecord.color,
+                                        initialName: columnFamilyRecord.name,
+                                      ),
+                                    ),
+                                  );
                                 },
-                              ),
+                              ).then((value) => safeSetState(() {}));
+                            },
+                            child: Icon(
+                              Icons.edit,
+                              color: Color(0xFF555EBE),
+                              size: 24.0,
                             ),
+                          ),
                         ],
                       ),
                     ),

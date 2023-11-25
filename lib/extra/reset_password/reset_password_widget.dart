@@ -68,8 +68,11 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
     super.initState();
     _model = createModel(context, () => ResetPasswordModel());
 
-    _model.emailAddressController ??= TextEditingController();
-    _model.emailAddressFocusNode ??= FocusNode();
+    _model.emailAddressController1 ??= TextEditingController();
+    _model.emailAddressFocusNode1 ??= FocusNode();
+
+    _model.emailAddressController2 ??= TextEditingController();
+    _model.emailAddressFocusNode2 ??= FocusNode();
 
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -148,6 +151,67 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                             color: FlutterFlowTheme.of(context).alternate,
                             borderRadius: BorderRadius.circular(4.0),
                           ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 16.0, 16.0, 0.0),
+                            child: TextFormField(
+                              controller: _model.emailAddressController1,
+                              focusNode: _model.emailAddressFocusNode1,
+                              autofocus: true,
+                              autofillHints: [AutofillHints.email],
+                              textCapitalization: TextCapitalization.sentences,
+                              textInputAction: TextInputAction.send,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).bodyLarge,
+                                hintText: FFLocalizations.of(context).getText(
+                                  'tic4iunl' /* Enter email */,
+                                ),
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).labelLarge,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 24.0, 20.0, 24.0),
+                              ),
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              keyboardType: TextInputType.emailAddress,
+                              cursorColor: FlutterFlowTheme.of(context).primary,
+                              validator: _model.emailAddressController1Validator
+                                  .asValidator(context),
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -176,8 +240,8 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                     child: TextFormField(
-                      controller: _model.emailAddressController,
-                      focusNode: _model.emailAddressFocusNode,
+                      controller: _model.emailAddressController2,
+                      focusNode: _model.emailAddressFocusNode2,
                       autofocus: true,
                       autofillHints: [AutofillHints.email],
                       textCapitalization: TextCapitalization.sentences,
@@ -226,7 +290,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                       style: FlutterFlowTheme.of(context).bodyMedium,
                       keyboardType: TextInputType.emailAddress,
                       cursorColor: FlutterFlowTheme.of(context).primary,
-                      validator: _model.emailAddressControllerValidator
+                      validator: _model.emailAddressController2Validator
                           .asValidator(context),
                     ),
                   ),
@@ -237,9 +301,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                       child: FFButtonWidget(
                         onPressed: () async {
                           if (functions.checkIfTextMatchRegExp(
-                              _model.emailAddressController.text,
+                              _model.emailAddressController2.text,
                               '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                            if (_model.emailAddressController.text.isEmpty) {
+                            if (_model.emailAddressController2.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -250,7 +314,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               return;
                             }
                             await authManager.resetPassword(
-                              email: _model.emailAddressController.text,
+                              email: _model.emailAddressController2.text,
                               context: context,
                             );
                             await showAlignedDialog(

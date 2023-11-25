@@ -20,17 +20,24 @@ class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressController;
-  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  FocusNode? emailAddressFocusNode1;
+  TextEditingController? emailAddressController1;
+  String? Function(BuildContext, String?)? emailAddressController1Validator;
+  // State field(s) for emailAddress widget.
+  FocusNode? emailAddressFocusNode2;
+  TextEditingController? emailAddressController2;
+  String? Function(BuildContext, String?)? emailAddressController2Validator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    emailAddressFocusNode?.dispose();
-    emailAddressController?.dispose();
+    emailAddressFocusNode1?.dispose();
+    emailAddressController1?.dispose();
+
+    emailAddressFocusNode2?.dispose();
+    emailAddressController2?.dispose();
   }
 
   /// Action blocks are added here.

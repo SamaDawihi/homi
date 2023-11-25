@@ -741,6 +741,56 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // editGalleryItem
+  {
+    'lqpm5d2n': {
+      'en': 'Edit Gallery Item',
+      'ar': 'حالة الدعوة',
+    },
+    'k5ux0666': {
+      'en': 'Item gallery Title',
+      'ar': '',
+    },
+    'bkrn6xnv': {
+      'en': 'Item Name',
+      'ar': '',
+    },
+    'rfqlvsbz': {
+      'en': 'Item gallery Image',
+      'ar': '',
+    },
+    '2vm8eqfq': {
+      'en': 'Save Changes',
+      'ar': '',
+    },
+    'a2xg7ikm': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // DummyData
+  {
+    'wp65uaq4': {
+      'en': 'Family Gallery',
+      'ar': 'إعلان',
+    },
+    '4ug0b7xh': {
+      'en': 'Boarding Pass',
+      'ar': '',
+    },
+    'y1oyx4v7': {
+      'en': 'Nora ID',
+      'ar': '',
+    },
+    'tnurh252': {
+      'en': 'Fahad ID',
+      'ar': '',
+    },
+    '9lfbapbx': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // InviteByEmail
   {
     '48xbquf9': {
@@ -884,6 +934,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ResetPassword
   {
+    'tic4iunl': {
+      'en': 'Enter email',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
     'nfyx73db': {
       'en': 'Reset Password',
       'ar': 'إعادة تعيين كلمة المرور',
@@ -1401,6 +1455,58 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '5e45p4up': {
       'en': 'Title',
       'ar': '',
+    },
+  },
+  // FamilyLoading
+  {
+    'iuoylfdk': {
+      'en': 'Family Is Loading',
+      'ar': 'إعادة تعيين كلمة المرور',
+    },
+    'bnwbcegp': {
+      'en':
+          'If the process takes an extended duration, it\'s possible that the family might have been deleted. Please reach out to the admin for further assistance and information.',
+      'ar': 'أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك',
+    },
+    'v97ywihd': {
+      'en': 'Home',
+      'ar': 'إعادة ضبط',
+    },
+  },
+  // DialogYouHaveBeenRemoved
+  {
+    '0fuynu28': {
+      'en': 'It seems you are no longer a memebr of this family.',
+      'ar': 'تمت دعوة العضو بالفعل.',
+    },
+    'fpd47f1e': {
+      'en':
+          'Check your connection or Contact the family admin if you thing there is any mistake.',
+      'ar':
+          'العضو الذي حاولت دعوته لديه بالفعل دعوة منك للانضمام إلى هذه العائلة.',
+    },
+    'f27kexoi': {
+      'en': 'Home',
+      'ar': 'نعم',
+    },
+  },
+  // EditFamily
+  {
+    'r4tkskw2': {
+      'en': 'New Family Name',
+      'ar': '',
+    },
+    'd420t5a7': {
+      'en': 'Enter email',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
+    '5t6boukz': {
+      'en': 'Change Color',
+      'ar': 'إعادة ضبط',
+    },
+    'eay0t43o': {
+      'en': 'Change Image',
+      'ar': 'إعادة ضبط',
     },
   },
   // Miscellaneous

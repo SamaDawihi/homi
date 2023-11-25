@@ -204,6 +204,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Gallery',
           path: '/gallery',
           builder: (context, params) => GalleryWidget(),
+        ),
+        FFRoute(
+          name: 'editGalleryItem',
+          path: '/editGalleryItem',
+          builder: (context, params) => EditGalleryItemWidget(),
+        ),
+        FFRoute(
+          name: 'DummyData',
+          path: '/dummyData',
+          builder: (context, params) => DummyDataWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
