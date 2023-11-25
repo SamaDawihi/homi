@@ -176,6 +176,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ListViewWidget(
             listRef: params.getParam(
                 'listRef', ParamType.DocumentReference, false, ['List']),
+            isShopping: params.getParam('isShopping', ParamType.bool),
           ),
         ),
         FFRoute(

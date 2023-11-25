@@ -763,6 +763,10 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                                                     _model.listRef?.reference,
                                                     ParamType.DocumentReference,
                                                   ),
+                                                  'isShopping': serializeParam(
+                                                    widget.isShopping,
+                                                    ParamType.bool,
+                                                  ),
                                                 }.withoutNulls,
                                               );
 

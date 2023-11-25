@@ -101,6 +101,10 @@ class _ListComponentViewListWidgetState
                     widget.listRef,
                     ParamType.DocumentReference,
                   ),
+                  'isShopping': serializeParam(
+                    contentView2ListRecord.isShoopingList,
+                    ParamType.bool,
+                  ),
                 }.withoutNulls,
               );
             },

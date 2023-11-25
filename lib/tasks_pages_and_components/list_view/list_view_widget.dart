@@ -29,9 +29,11 @@ class ListViewWidget extends StatefulWidget {
   const ListViewWidget({
     Key? key,
     required this.listRef,
+    required this.isShopping,
   }) : super(key: key);
 
   final DocumentReference? listRef;
+  final bool? isShopping;
 
   @override
   _ListViewWidgetState createState() => _ListViewWidgetState();
@@ -112,129 +114,125 @@ class _ListViewWidgetState extends State<ListViewWidget>
 
     context.watch<FFAppState>();
 
-    return StreamBuilder<ListRecord>(
-      stream: ListRecord.getDocument(widget.listRef!),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Scaffold(
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100.0),
+          child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Center(
-              child: SizedBox(
-                width: 10.0,
-                height: 10.0,
-                child: SpinKitDualRing(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 10.0,
-                ),
-              ),
-            ),
-          );
-        }
-        final listViewListRecord = snapshot.data!;
-        return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(100.0),
-              child: AppBar(
-                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                automaticallyImplyLeading: false,
-                actions: [],
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.00, -1.00),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 0.0, 0.0, 0.0),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 50.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  icon: Icon(
-                                    Icons.arrow_back_outlined,
-                                    color: Color(0xFF57636C),
-                                    size: 25.0,
-                                  ),
-                                  onPressed: () async {
-                                    context.pushNamed('AllLists');
-                                  },
-                                ),
-                              ),
-                              Text(
-                                valueOrDefault<String>(
-                                  listViewListRecord.isShoopingList
-                                      ? 'Shopping List'
-                                      : 'To-Do List',
-                                  'Shooping List',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Source Sans Pro',
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 6.0, 0.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/mainLogo.png',
-                                    width: 80.0,
-                                    height: 80.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  centerTitle: true,
-                  expandedTitleScale: 1.0,
-                ),
-                elevation: 0.0,
-              ),
-            ),
-            body: SafeArea(
-              top: true,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
-                    child: SingleChildScrollView(
-                      child: Column(
+            automaticallyImplyLeading: false,
+            actions: [],
+            flexibleSpace: FlexibleSpaceBar(
+              title: Align(
+                alignment: AlignmentDirectional(0.00, -1.00),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.00, -1.00),
+                      child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.00, -1.00),
-                            child: Column(
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              borderWidth: 1.0,
+                              buttonSize: 50.0,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              icon: Icon(
+                                Icons.arrow_back_outlined,
+                                color: Color(0xFF57636C),
+                                size: 25.0,
+                              ),
+                              onPressed: () async {
+                                context.pushNamed('AllLists');
+                              },
+                            ),
+                          ),
+                          Text(
+                            valueOrDefault<String>(
+                              widget.isShopping!
+                                  ? 'Shopping List'
+                                  : 'To-Do List',
+                              'Shooping List',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Source Sans Pro',
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 6.0, 0.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                'assets/images/mainLogo.png',
+                                width: 80.0,
+                                height: 80.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              centerTitle: true,
+              expandedTitleScale: 1.0,
+            ),
+            elevation: 0.0,
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: Stack(
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, -1.00),
+                        child: StreamBuilder<ListRecord>(
+                          stream: ListRecord.getDocument(widget.listRef!),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 10.0,
+                                  height: 10.0,
+                                  child: SpinKitDualRing(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 10.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            final columnListRecord = snapshot.data!;
+                            return Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
@@ -249,7 +247,7 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 0.0, 16.0),
                                         child: Text(
-                                          listViewListRecord.name,
+                                          columnListRecord.name,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
@@ -353,18 +351,18 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                                     queryParameters: {
                                                       'isShopping':
                                                           serializeParam(
-                                                        listViewListRecord
+                                                        columnListRecord
                                                             .isShoopingList,
                                                         ParamType.bool,
                                                       ),
                                                       'listDoc': serializeParam(
-                                                        listViewListRecord,
+                                                        columnListRecord,
                                                         ParamType.Document,
                                                       ),
                                                     }.withoutNulls,
                                                     extra: <String, dynamic>{
                                                       'listDoc':
-                                                          listViewListRecord,
+                                                          columnListRecord,
                                                     },
                                                   );
                                                 },
@@ -525,15 +523,15 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                               ),
                                         ),
                                       ),
-                                      if (listViewListRecord.description !=
+                                      if (columnListRecord.description !=
                                               null &&
-                                          listViewListRecord.description != '')
+                                          columnListRecord.description != '')
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 0.0, 10.0),
                                           child: Text(
-                                            listViewListRecord.description,
+                                            columnListRecord.description,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -545,9 +543,9 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                                 ),
                                           ),
                                         ),
-                                      if (listViewListRecord.description ==
+                                      if (columnListRecord.description ==
                                               null ||
-                                          listViewListRecord.description == '')
+                                          columnListRecord.description == '')
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -626,7 +624,7 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                                     listViewMemberRecordList[
                                                         listViewIndex];
                                                 return Visibility(
-                                                  visible: listViewListRecord
+                                                  visible: columnListRecord
                                                       .assignedTo
                                                       .contains(
                                                           listViewMemberRecord
@@ -661,8 +659,7 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                           },
                                         ),
                                       ),
-                                      if (listViewListRecord
-                                              .assignedTo.length ==
+                                      if (columnListRecord.assignedTo.length ==
                                           0)
                                         Padding(
                                           padding:
@@ -691,7 +688,7 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                               itemRecord.where(
                                             'belongTo',
                                             isEqualTo:
-                                                listViewListRecord.reference,
+                                                columnListRecord.reference,
                                           ),
                                         )..listen((snapshot) async {
                                             List<ItemRecord>
@@ -777,28 +774,28 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                   ),
                                 ),
                               ],
-                            ),
-                          ),
-                        ],
+                            );
+                          },
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
-                    child: wrapWithModel(
-                      model: _model.bottomNavBarModel,
-                      updateCallback: () => setState(() {}),
-                      child: BottomNavBarWidget(
-                        currentPage: 2,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+              Align(
+                alignment: AlignmentDirectional(0.00, 1.00),
+                child: wrapWithModel(
+                  model: _model.bottomNavBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: BottomNavBarWidget(
+                    currentPage: 2,
+                  ),
+                ),
+              ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

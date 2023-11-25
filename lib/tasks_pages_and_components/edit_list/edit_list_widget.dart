@@ -741,6 +741,10 @@ class _EditListWidgetState extends State<EditListWidget> {
                                                     widget.listDoc?.reference,
                                                     ParamType.DocumentReference,
                                                   ),
+                                                  'isShopping': serializeParam(
+                                                    widget.isShopping,
+                                                    ParamType.bool,
+                                                  ),
                                                 }.withoutNulls,
                                               );
 
