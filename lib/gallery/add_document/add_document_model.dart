@@ -19,8 +19,7 @@ import 'package:provider/provider.dart';
 class AddDocumentModel extends FlutterFlowModel<AddDocumentWidget> {
   ///  Local state fields for this page.
 
-  String uploadedImage =
-      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg';
+  String? uploadedImage;
 
   List<String> uploadedFiles = [];
   void addToUploadedFiles(String item) => uploadedFiles.add(item);

@@ -191,7 +191,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              'pcaw3f1k' /* Label here... */,
+                              'urgzx7zr' /* Label here... */,
                             ),
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
@@ -258,7 +258,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
-                                  _model.uploadedImage,
+                                  _model.uploadedImage!,
                                   width: double.infinity,
                                   height: 170.0,
                                   fit: BoxFit.cover,
@@ -283,8 +283,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     setState(() {
-                                      _model.uploadedImage =
-                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg';
+                                      _model.uploadedImage = null;
                                     });
                                   },
                                   child: Icon(
@@ -406,7 +405,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               alignment: AlignmentDirectional(-1.00, 0.00),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  '3iwyimgs' /* Attached Files */,
+                                  '7a2pdbz6' /* Attached Files */,
                                 ),
                                 style:
                                     FlutterFlowTheme.of(context).displaySmall,

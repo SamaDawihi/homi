@@ -740,7 +740,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Item gallery Title',
       'ar': '',
     },
-    'pcaw3f1k': {
+    'urgzx7zr': {
       'en': 'Label here...',
       'ar': '',
     },
@@ -748,7 +748,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Item gallery Image',
       'ar': '',
     },
-    '3iwyimgs': {
+    '7a2pdbz6': {
       'en': 'Attached Files',
       'ar': '',
     },
@@ -1433,7 +1433,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ListViewDocument
   {
-    '7q8xobun': {
+    'hjqmsu91': {
       'en': 'Attached Files',
       'ar': '',
     },
