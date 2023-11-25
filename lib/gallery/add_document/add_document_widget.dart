@@ -192,7 +192,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              'pks4950l' /* Label here... */,
+                              '9p7j9554' /* Label here... */,
                             ),
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
@@ -406,7 +406,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               alignment: AlignmentDirectional(-1.00, 0.00),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'xfb8xxtl' /* Attached Files */,
+                                  'kzvxwa1w' /* Attached Files */,
                                 ),
                                 style:
                                     FlutterFlowTheme.of(context).displaySmall,

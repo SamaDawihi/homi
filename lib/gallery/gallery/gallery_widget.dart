@@ -154,69 +154,73 @@ class _GalleryWidgetState extends State<GalleryWidget> {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 65.0),
-                        child: StreamBuilder<List<DocumentRecord>>(
-                          stream: queryDocumentRecord(
-                            queryBuilder: (documentRecord) => documentRecord
-                                .where(
-                                  'familyId',
-                                  isEqualTo: FFAppState().familyId,
-                                )
-                                .orderBy('createdAt', descending: true),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 10.0,
-                                  height: 10.0,
-                                  child: SpinKitDualRing(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 10.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<DocumentRecord> listViewDocumentRecordList =
-                                snapshot.data!;
-                            return ListView.separated(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: listViewDocumentRecordList.length,
-                              separatorBuilder: (_, __) =>
-                                  SizedBox(height: 20.0),
-                              itemBuilder: (context, listViewIndex) {
-                                final listViewDocumentRecord =
-                                    listViewDocumentRecordList[listViewIndex];
-                                return wrapWithModel(
-                                  model: _model.listViewDocumentModels.getModel(
-                                    listViewIndex.toString(),
-                                    listViewIndex,
-                                  ),
-                                  updateCallback: () => setState(() {}),
-                                  child: ListViewDocumentWidget(
-                                    key: Key(
-                                      'Key2r5_${listViewIndex.toString()}',
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 65.0),
+                          child: StreamBuilder<List<DocumentRecord>>(
+                            stream: queryDocumentRecord(
+                              queryBuilder: (documentRecord) => documentRecord
+                                  .where(
+                                    'familyId',
+                                    isEqualTo: FFAppState().familyId,
+                                  )
+                                  .orderBy('createdAt', descending: true),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 10.0,
+                                    height: 10.0,
+                                    child: SpinKitDualRing(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 10.0,
                                     ),
-                                    galleryDocument: listViewDocumentRecord,
                                   ),
                                 );
-                              },
-                            );
-                          },
+                              }
+                              List<DocumentRecord> listViewDocumentRecordList =
+                                  snapshot.data!;
+                              return ListView.separated(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: listViewDocumentRecordList.length,
+                                separatorBuilder: (_, __) =>
+                                    SizedBox(height: 20.0),
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewDocumentRecord =
+                                      listViewDocumentRecordList[listViewIndex];
+                                  return wrapWithModel(
+                                    model:
+                                        _model.listViewDocumentModels.getModel(
+                                      listViewIndex.toString(),
+                                      listViewIndex,
+                                    ),
+                                    updateCallback: () => setState(() {}),
+                                    child: ListViewDocumentWidget(
+                                      key: Key(
+                                        'Key2r5_${listViewIndex.toString()}',
+                                      ),
+                                      galleryDocument: listViewDocumentRecord,
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Align(
