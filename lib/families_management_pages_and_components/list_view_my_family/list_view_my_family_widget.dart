@@ -121,8 +121,12 @@ class _ListViewMyFamilyWidgetState extends State<ListViewMyFamilyWidget> {
                       ),
                     ),
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        FFAppState().update(() {
+                          FFAppState().familyId = widget.familyId;
+                        });
+
+                        context.goNamed('FamilyProfile');
                       },
                       text: FFLocalizations.of(context).getText(
                         '4t0j9wzp' /* Enter */,

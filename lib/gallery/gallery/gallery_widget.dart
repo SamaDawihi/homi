@@ -58,6 +58,18 @@ class _GalleryWidgetState extends State<GalleryWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            context.pushNamed('AddDocument');
+          },
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          elevation: 8.0,
+          child: Icon(
+            Icons.add,
+            color: FlutterFlowTheme.of(context).info,
+            size: 24.0,
+          ),
+        ),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
@@ -101,7 +113,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              '69anokm1' /* Add Document */,
+                              '69anokm1' /* Gallery */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
