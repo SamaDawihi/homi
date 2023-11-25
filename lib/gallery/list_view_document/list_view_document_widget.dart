@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/gallery/list_view_attached_file/list_view_attached_file_widget.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'list_view_document_model.dart';
 export 'list_view_document_model.dart';
@@ -148,21 +150,57 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
             thickness: 5.0,
             color: FlutterFlowTheme.of(context).alternate,
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
-              topLeft: Radius.circular(0.0),
-              topRight: Radius.circular(0.0),
-            ),
-            child: Image.network(
-              valueOrDefault<String>(
+          InkWell(
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () async {
+              await Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.fade,
+                  child: FlutterFlowExpandedImageView(
+                    image: Image.network(
+                      valueOrDefault<String>(
+                        widget.galleryDocument?.document,
+                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
+                      ),
+                      fit: BoxFit.contain,
+                    ),
+                    allowRotation: false,
+                    tag: valueOrDefault<String>(
+                      widget.galleryDocument?.document,
+                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
+                    ),
+                    useHeroAnimation: true,
+                  ),
+                ),
+              );
+            },
+            child: Hero(
+              tag: valueOrDefault<String>(
                 widget.galleryDocument?.document,
                 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
               ),
-              width: double.infinity,
-              height: 190.0,
-              fit: BoxFit.cover,
+              transitionOnUserGestures: true,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0),
+                  topLeft: Radius.circular(0.0),
+                  topRight: Radius.circular(0.0),
+                ),
+                child: Image.network(
+                  valueOrDefault<String>(
+                    widget.galleryDocument?.document,
+                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
+                  ),
+                  width: 350.0,
+                  height: 190.0,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
             ),
           ),
           Divider(
@@ -180,7 +218,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'twqc6rzc' /* Attached Files */,
+                      'kkz6bznf' /* Attached Files */,
                     ),
                     style: FlutterFlowTheme.of(context).displaySmall,
                   ),

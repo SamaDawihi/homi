@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'announcement_component_model.dart';
 export 'announcement_component_model.dart';
@@ -314,13 +316,40 @@ class _AnnouncementComponentWidgetState
                         ),
                         if (socialPost2AnnouncementRecord.image != null &&
                             socialPost2AnnouncementRecord.image != '')
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Image.network(
-                              socialPost2AnnouncementRecord.image,
-                              width: double.infinity,
-                              height: 230.0,
-                              fit: BoxFit.cover,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: FlutterFlowExpandedImageView(
+                                    image: Image.network(
+                                      socialPost2AnnouncementRecord.image,
+                                      fit: BoxFit.contain,
+                                    ),
+                                    allowRotation: false,
+                                    tag: socialPost2AnnouncementRecord.image,
+                                    useHeroAnimation: true,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Hero(
+                              tag: socialPost2AnnouncementRecord.image,
+                              transitionOnUserGestures: true,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: Image.network(
+                                  socialPost2AnnouncementRecord.image,
+                                  width: double.infinity,
+                                  height: 230.0,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
                             ),
                           ),
                       ],
