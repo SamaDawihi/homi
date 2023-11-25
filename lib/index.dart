@@ -28,7 +28,5 @@ export '/tasks_pages_and_components/edit_list/edit_list_widget.dart'
 export '/profile/profile/profile_widget.dart' show ProfileWidget;
 export '/announcement/add_anouncement/add_anouncement_widget.dart'
     show AddAnouncementWidget;
+export '/gallery/add_document/add_document_widget.dart' show AddDocumentWidget;
 export '/gallery/gallery/gallery_widget.dart' show GalleryWidget;
-export '/edit_gallery_item/edit_gallery_item_widget.dart'
-    show EditGalleryItemWidget;
-export '/gallery/dummy_data/dummy_data_widget.dart' show DummyDataWidget;

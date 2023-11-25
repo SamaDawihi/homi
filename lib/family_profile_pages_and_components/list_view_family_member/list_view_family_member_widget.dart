@@ -125,10 +125,11 @@ class _ListViewFamilyMemberWidgetState
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50.0),
                           child: Image.network(
-                            valueOrDefault<String>(
-                              familYMemberContainerUsersRecord.photoUrl,
-                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/c8w026lm2m0v/userIcon.jpeg',
-                            ),
+                            familYMemberContainerUsersRecord.photoUrl != null &&
+                                    familYMemberContainerUsersRecord.photoUrl !=
+                                        ''
+                                ? familYMemberContainerUsersRecord.photoUrl
+                                : 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/c8w026lm2m0v/userIcon.jpeg',
                             width: 40.0,
                             height: 40.0,
                             fit: BoxFit.cover,

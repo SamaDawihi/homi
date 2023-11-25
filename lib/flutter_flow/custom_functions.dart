@@ -164,3 +164,8 @@ bool addedEventIsInThePast(
     return eventTime.isBefore(DateTime.now());
   }
 }
+
+String extractFileName(String url) {
+  List<String> parts = url.split('/');
+  return parts.last;
+}

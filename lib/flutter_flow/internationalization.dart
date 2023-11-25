@@ -730,65 +730,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // Gallery
+  // AddDocument
   {
-    'pnn7r5ub': {
-      'en': 'Family Gallery',
-      'ar': 'إعلان',
-    },
-    'sx0ymdc1': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
-  // editGalleryItem
-  {
-    'lqpm5d2n': {
-      'en': 'Edit Gallery Item',
+    '9oaj5sfa': {
+      'en': 'Add Document',
       'ar': 'حالة الدعوة',
     },
-    '9gpq1f55': {
+    'd7hp5rox': {
       'en': 'Item gallery Title',
       'ar': '',
     },
-    'qv1yb16n': {
-      'en': 'Item Name',
+    'ofggb1s8': {
+      'en': 'Label here...',
       'ar': '',
     },
-    '9vveuu60': {
+    'cgdopig4': {
       'en': 'Item gallery Image',
       'ar': '',
     },
-    'b1asq7wb': {
+    '6y7fm0rv': {
+      'en': 'Attached Files',
+      'ar': '',
+    },
+    'jx8cs0m7': {
       'en': 'Save Changes',
       'ar': '',
     },
-    'fcdhtkn7': {
+    'xrg8q0gd': {
       'en': 'Home',
-      'ar': '',
+      'ar': 'الصفحة الرئيسية',
     },
   },
-  // DummyData
+  // Gallery
   {
-    'wp65uaq4': {
-      'en': 'Family Gallery',
-      'ar': 'إعلان',
+    '69anokm1': {
+      'en': 'Add Document',
+      'ar': 'حالة الدعوة',
     },
-    '4ug0b7xh': {
-      'en': 'Boarding Pass',
-      'ar': '',
-    },
-    'y1oyx4v7': {
-      'en': 'Nora ID',
-      'ar': '',
-    },
-    'tnurh252': {
-      'en': 'Fahad ID',
-      'ar': '',
-    },
-    '9lfbapbx': {
+    'q1vup2a1': {
       'en': 'Home',
-      'ar': '',
+      'ar': 'الصفحة الرئيسية',
     },
   },
   // InviteByEmail
@@ -1450,10 +1431,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // photocard
+  // ListViewDocument
   {
-    '5e45p4up': {
-      'en': 'Title',
+    'twqc6rzc': {
+      'en': 'Attached Files',
       'ar': '',
     },
   },

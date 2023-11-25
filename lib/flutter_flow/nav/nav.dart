@@ -201,19 +201,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AddAnouncementWidget(),
         ),
         FFRoute(
+          name: 'AddDocument',
+          path: '/addDocument',
+          builder: (context, params) => AddDocumentWidget(),
+        ),
+        FFRoute(
           name: 'Gallery',
           path: '/gallery',
           builder: (context, params) => GalleryWidget(),
-        ),
-        FFRoute(
-          name: 'editGalleryItem',
-          path: '/editGalleryItem',
-          builder: (context, params) => EditGalleryItemWidget(),
-        ),
-        FFRoute(
-          name: 'DummyData',
-          path: '/dummyData',
-          builder: (context, params) => DummyDataWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -26,11 +26,6 @@ class DocumentRecord extends FirestoreRecord {
   String get document => _document ?? '';
   bool hasDocument() => _document != null;
 
-  // "link" field.
-  String? _link;
-  String get link => _link ?? '';
-  bool hasLink() => _link != null;
-
   // "familyId" field.
   DocumentReference? _familyId;
   DocumentReference? get familyId => _familyId;
@@ -41,12 +36,23 @@ class DocumentRecord extends FirestoreRecord {
   DocumentReference? get createdBy => _createdBy;
   bool hasCreatedBy() => _createdBy != null;
 
+  // "createdAt" field.
+  DateTime? _createdAt;
+  DateTime? get createdAt => _createdAt;
+  bool hasCreatedAt() => _createdAt != null;
+
+  // "attachedFiles" field.
+  List<String>? _attachedFiles;
+  List<String> get attachedFiles => _attachedFiles ?? const [];
+  bool hasAttachedFiles() => _attachedFiles != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _document = snapshotData['document'] as String?;
-    _link = snapshotData['link'] as String?;
     _familyId = snapshotData['familyId'] as DocumentReference?;
     _createdBy = snapshotData['createdBy'] as DocumentReference?;
+    _createdAt = snapshotData['createdAt'] as DateTime?;
+    _attachedFiles = getDataList(snapshotData['attachedFiles']);
   }
 
   static CollectionReference get collection =>
@@ -86,17 +92,17 @@ class DocumentRecord extends FirestoreRecord {
 Map<String, dynamic> createDocumentRecordData({
   String? title,
   String? document,
-  String? link,
   DocumentReference? familyId,
   DocumentReference? createdBy,
+  DateTime? createdAt,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'title': title,
       'document': document,
-      'link': link,
       'familyId': familyId,
       'createdBy': createdBy,
+      'createdAt': createdAt,
     }.withoutNulls,
   );
 
@@ -108,16 +114,24 @@ class DocumentRecordDocumentEquality implements Equality<DocumentRecord> {
 
   @override
   bool equals(DocumentRecord? e1, DocumentRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.title == e2?.title &&
         e1?.document == e2?.document &&
-        e1?.link == e2?.link &&
         e1?.familyId == e2?.familyId &&
-        e1?.createdBy == e2?.createdBy;
+        e1?.createdBy == e2?.createdBy &&
+        e1?.createdAt == e2?.createdAt &&
+        listEquality.equals(e1?.attachedFiles, e2?.attachedFiles);
   }
 
   @override
-  int hash(DocumentRecord? e) => const ListEquality()
-      .hash([e?.title, e?.document, e?.link, e?.familyId, e?.createdBy]);
+  int hash(DocumentRecord? e) => const ListEquality().hash([
+        e?.title,
+        e?.document,
+        e?.familyId,
+        e?.createdBy,
+        e?.createdAt,
+        e?.attachedFiles
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is DocumentRecord;

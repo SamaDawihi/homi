@@ -329,15 +329,12 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                   onChanged: (lang) => setAppLanguage(context, lang),
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
-                  child: wrapWithModel(
-                    model: _model.darkLightSwitchSmallModel,
-                    updateCallback: () => setState(() {}),
-                    child: DarkLightSwitchSmallWidget(),
-                  ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                child: wrapWithModel(
+                  model: _model.darkLightSwitchSmallModel,
+                  updateCallback: () => setState(() {}),
+                  child: DarkLightSwitchSmallWidget(),
                 ),
               ),
               Expanded(

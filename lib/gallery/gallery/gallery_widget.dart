@@ -1,11 +1,11 @@
+import '/backend/backend.dart';
+import '/extra/bottom_nav_bar/bottom_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/gallery/photocard/photocard_widget.dart';
-import '/actions/actions.dart' as action_blocks;
+import '/gallery/list_view_document/list_view_document_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,11 +29,6 @@ class _GalleryWidgetState extends State<GalleryWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => GalleryModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await action_blocks.checkMemberExists(context);
-    });
   }
 
   @override
@@ -62,19 +57,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            print('FloatingActionButton pressed ...');
-          },
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          elevation: 8.0,
-          child: Icon(
-            Icons.add,
-            color: FlutterFlowTheme.of(context).info,
-            size: 24.0,
-          ),
-        ),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
@@ -112,13 +95,13 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                                 size: 25.0,
                               ),
                               onPressed: () async {
-                                context.safePop();
+                                context.pop();
                               },
                             ),
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'pnn7r5ub' /* Family Gallery */,
+                              '69anokm1' /* Add Document */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -155,35 +138,82 @@ class _GalleryWidgetState extends State<GalleryWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
+          child: Stack(
             children: [
-              Expanded(
-                child: Align(
-                  alignment: AlignmentDirectional(0.00, 0.00),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        wrapWithModel(
-                          model: _model.photocardModel1,
-                          updateCallback: () => setState(() {}),
-                          child: PhotocardWidget(),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 65.0),
+                        child: StreamBuilder<List<DocumentRecord>>(
+                          stream: queryDocumentRecord(
+                            queryBuilder: (documentRecord) => documentRecord
+                                .where(
+                                  'familyId',
+                                  isEqualTo: FFAppState().familyId,
+                                )
+                                .orderBy('createdAt', descending: true),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 10.0,
+                                  height: 10.0,
+                                  child: SpinKitDualRing(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 10.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            List<DocumentRecord> listViewDocumentRecordList =
+                                snapshot.data!;
+                            return ListView.separated(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: listViewDocumentRecordList.length,
+                              separatorBuilder: (_, __) =>
+                                  SizedBox(height: 20.0),
+                              itemBuilder: (context, listViewIndex) {
+                                final listViewDocumentRecord =
+                                    listViewDocumentRecordList[listViewIndex];
+                                return wrapWithModel(
+                                  model: _model.listViewDocumentModels.getModel(
+                                    listViewIndex.toString(),
+                                    listViewIndex,
+                                  ),
+                                  updateCallback: () => setState(() {}),
+                                  child: ListViewDocumentWidget(
+                                    key: Key(
+                                      'Key2r5_${listViewIndex.toString()}',
+                                    ),
+                                    galleryDocument: listViewDocumentRecord,
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
-                        wrapWithModel(
-                          model: _model.photocardModel2,
-                          updateCallback: () => setState(() {}),
-                          child: PhotocardWidget(),
-                        ),
-                        wrapWithModel(
-                          model: _model.photocardModel3,
-                          updateCallback: () => setState(() {}),
-                          child: PhotocardWidget(),
-                        ),
-                      ].divide(SizedBox(height: 20.0)),
+                      ),
                     ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.00, 1.00),
+                child: wrapWithModel(
+                  model: _model.bottomNavBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: BottomNavBarWidget(
+                    currentPage: 0,
                   ),
                 ),
               ),
