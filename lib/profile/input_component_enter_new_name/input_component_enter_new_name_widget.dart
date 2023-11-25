@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -12,21 +13,21 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'input_component_enter_family_name_model.dart';
-export 'input_component_enter_family_name_model.dart';
+import 'input_component_enter_new_name_model.dart';
+export 'input_component_enter_new_name_model.dart';
 
-class InputComponentEnterFamilyNameWidget extends StatefulWidget {
-  const InputComponentEnterFamilyNameWidget({Key? key}) : super(key: key);
+class InputComponentEnterNewNameWidget extends StatefulWidget {
+  const InputComponentEnterNewNameWidget({Key? key}) : super(key: key);
 
   @override
-  _InputComponentEnterFamilyNameWidgetState createState() =>
-      _InputComponentEnterFamilyNameWidgetState();
+  _InputComponentEnterNewNameWidgetState createState() =>
+      _InputComponentEnterNewNameWidgetState();
 }
 
-class _InputComponentEnterFamilyNameWidgetState
-    extends State<InputComponentEnterFamilyNameWidget>
+class _InputComponentEnterNewNameWidgetState
+    extends State<InputComponentEnterNewNameWidget>
     with TickerProviderStateMixin {
-  late InputComponentEnterFamilyNameModel _model;
+  late InputComponentEnterNewNameModel _model;
 
   final animationsMap = {
     'columnOnActionTriggerAnimation': AnimationInfo(
@@ -66,10 +67,10 @@ class _InputComponentEnterFamilyNameWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => InputComponentEnterFamilyNameModel());
+    _model = createModel(context, () => InputComponentEnterNewNameModel());
 
-    _model.familynameController ??= TextEditingController();
-    _model.familynameFocusNode ??= FocusNode();
+    _model.nameController ??= TextEditingController();
+    _model.nameFocusNode ??= FocusNode();
 
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -157,36 +158,26 @@ class _InputComponentEnterFamilyNameWidgetState
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '7wt8nq94' /* Enter a Family Name */,
+                        'b8q6jrgw' /* Enter The  New Name */,
                       ),
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'q689li65' /* Please enter a name for your f... */,
-                      ),
-                      style: FlutterFlowTheme.of(context).labelMedium,
-                    ),
-                  ),
-                  Padding(
-                    padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                     child: TextFormField(
-                      controller: _model.familynameController,
-                      focusNode: _model.familynameFocusNode,
+                      controller: _model.nameController,
+                      focusNode: _model.nameFocusNode,
                       autofocus: true,
-                      autofillHints: [AutofillHints.email],
-                      textCapitalization: TextCapitalization.sentences,
+                      autofillHints: [AutofillHints.name],
+                      textCapitalization: TextCapitalization.words,
                       textInputAction: TextInputAction.send,
                       obscureText: false,
                       decoration: InputDecoration(
                         labelStyle: FlutterFlowTheme.of(context).bodyLarge,
                         hintText: FFLocalizations.of(context).getText(
-                          '0ag0ttbi' /* Enter the family name */,
+                          'w6vmmd02' /* name */,
                         ),
                         hintStyle: FlutterFlowTheme.of(context).labelLarge,
                         enabledBorder: OutlineInputBorder(
@@ -224,11 +215,10 @@ class _InputComponentEnterFamilyNameWidgetState
                             24.0, 24.0, 20.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
-                      maxLength: 15,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.name,
                       cursorColor: FlutterFlowTheme.of(context).primary,
-                      validator: _model.familynameControllerValidator
-                          .asValidator(context),
+                      validator:
+                          _model.nameControllerValidator.asValidator(context),
                     ),
                   ),
                   Padding(
@@ -236,128 +226,24 @@ class _InputComponentEnterFamilyNameWidgetState
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        var familyRecordReference =
-                            FamilyRecord.collection.doc();
-                        await familyRecordReference.set(createFamilyRecordData(
-                          name: _model.familynameController.text,
-                          adminId: currentUserReference,
-                          color: FlutterFlowTheme.of(context).primary,
-                          createdTime: getCurrentTimestamp,
-                          photoUrl:
-                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/6trprqqol39j/houseIcon.png',
-                        ));
-                        _model.createdFamily = FamilyRecord.getDocumentFromData(
-                            createFamilyRecordData(
-                              name: _model.familynameController.text,
-                              adminId: currentUserReference,
-                              color: FlutterFlowTheme.of(context).primary,
-                              createdTime: getCurrentTimestamp,
-                              photoUrl:
-                                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/6trprqqol39j/houseIcon.png',
-                            ),
-                            familyRecordReference);
-
-                        var memberRecordReference =
-                            MemberRecord.collection.doc();
-                        await memberRecordReference.set(createMemberRecordData(
-                          memberId: currentUserReference,
-                          familyId: _model.createdFamily?.reference,
-                          color: FlutterFlowTheme.of(context).warning,
-                          createdTime: getCurrentTimestamp,
-                        ));
-                        _model.createdFamilyAdmin =
-                            MemberRecord.getDocumentFromData(
-                                createMemberRecordData(
-                                  memberId: currentUserReference,
-                                  familyId: _model.createdFamily?.reference,
-                                  color: FlutterFlowTheme.of(context).warning,
-                                  createdTime: getCurrentTimestamp,
-                                ),
-                                memberRecordReference);
-
-                        var listRecordReference1 = ListRecord.collection.doc();
-                        await listRecordReference1.set({
-                          ...createListRecordData(
-                            name: 'Our To-Do List',
-                            description: 'Manage Family Tasks Here',
-                            createdBy: _model.createdFamilyAdmin?.reference,
-                            isShoopingList: false,
-                            familyId: _model.createdFamily?.reference,
-                            createdTime: getCurrentTimestamp,
-                          ),
-                          ...mapToFirestore(
-                            {
-                              'assignedTo': [
-                                _model.createdFamilyAdmin?.reference
-                              ],
-                            },
-                          ),
-                        });
-                        _model.defaultToDoList =
-                            ListRecord.getDocumentFromData({
-                          ...createListRecordData(
-                            name: 'Our To-Do List',
-                            description: 'Manage Family Tasks Here',
-                            createdBy: _model.createdFamilyAdmin?.reference,
-                            isShoopingList: false,
-                            familyId: _model.createdFamily?.reference,
-                            createdTime: getCurrentTimestamp,
-                          ),
-                          ...mapToFirestore(
-                            {
-                              'assignedTo': [
-                                _model.createdFamilyAdmin?.reference
-                              ],
-                            },
-                          ),
-                        }, listRecordReference1);
-
-                        var listRecordReference2 = ListRecord.collection.doc();
-                        await listRecordReference2.set({
-                          ...createListRecordData(
-                            name: 'Our Shopping List',
-                            description: 'Manage Family Needs Here',
-                            createdBy: _model.createdFamilyAdmin?.reference,
-                            isShoopingList: true,
-                            familyId: _model.createdFamily?.reference,
-                            createdTime: getCurrentTimestamp,
-                          ),
-                          ...mapToFirestore(
-                            {
-                              'assignedTo': [
-                                _model.createdFamilyAdmin?.reference
-                              ],
-                            },
-                          ),
-                        });
-                        _model.defaultList = ListRecord.getDocumentFromData({
-                          ...createListRecordData(
-                            name: 'Our Shopping List',
-                            description: 'Manage Family Needs Here',
-                            createdBy: _model.createdFamilyAdmin?.reference,
-                            isShoopingList: true,
-                            familyId: _model.createdFamily?.reference,
-                            createdTime: getCurrentTimestamp,
-                          ),
-                          ...mapToFirestore(
-                            {
-                              'assignedTo': [
-                                _model.createdFamilyAdmin?.reference
-                              ],
-                            },
-                          ),
-                        }, listRecordReference2);
-                        FFAppState().update(() {
-                          FFAppState().familyId =
-                              _model.createdFamily?.reference;
-                        });
-
-                        context.goNamed('FamilyProfile');
-
-                        setState(() {});
+                        if (functions.trimAndCollapseSpaces(
+                                    _model.nameController.text) !=
+                                null &&
+                            functions.trimAndCollapseSpaces(
+                                    _model.nameController.text) !=
+                                '') {
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            displayName: functions.trimAndCollapseSpaces(
+                                _model.nameController.text),
+                          ));
+                          return;
+                        } else {
+                          return;
+                        }
                       },
                       text: FFLocalizations.of(context).getText(
-                        'ogbc1zm7' /* Create Family */,
+                        'yrsqjdx2' /* Update the name */,
                       ),
                       options: FFButtonOptions(
                         width: double.infinity,

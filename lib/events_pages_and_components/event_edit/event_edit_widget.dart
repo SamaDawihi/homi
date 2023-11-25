@@ -362,7 +362,8 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                             final _datePicked1Date =
                                                 await showDatePicker(
                                               context: context,
-                                              initialDate: _model.startDate!,
+                                              initialDate: (_model.startDate ??
+                                                  DateTime.now()),
                                               firstDate: DateTime(1900),
                                               lastDate: DateTime(2050),
                                             );
@@ -486,7 +487,8 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                           final _datePicked2Date =
                                               await showDatePicker(
                                             context: context,
-                                            initialDate: _model.endDate!,
+                                            initialDate: (_model.endDate ??
+                                                DateTime.now()),
                                             firstDate: DateTime(1900),
                                             lastDate: DateTime(2050),
                                           );
@@ -653,15 +655,22 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                                   context: context,
                                                   initialTime:
                                                       TimeOfDay.fromDateTime(
-                                                          _model.startTime!),
+                                                          (_model.startTime ??
+                                                              DateTime.now())),
                                                 );
                                                 if (_datePicked3Time != null) {
                                                   safeSetState(() {
                                                     _model.datePicked3 =
                                                         DateTime(
-                                                      _model.startTime!.year,
-                                                      _model.startTime!.month,
-                                                      _model.startTime!.day,
+                                                      (_model.startTime ??
+                                                              DateTime.now())
+                                                          .year,
+                                                      (_model.startTime ??
+                                                              DateTime.now())
+                                                          .month,
+                                                      (_model.startTime ??
+                                                              DateTime.now())
+                                                          .day,
                                                       _datePicked3Time.hour,
                                                       _datePicked3Time.minute,
                                                     );

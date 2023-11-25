@@ -609,7 +609,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Field is required',
       'ar': '',
     },
-    '8q2oz1u4': {
+    'wo9uv0fe': {
       'en': 'Only 12 Characters Allowed.',
       'ar': '',
     },
@@ -675,25 +675,70 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit',
       'ar': 'يضيف',
     },
-    'vak07xbe': {
+    'zkb3z6r9': {
       'en': 'Field is required',
       'ar': '',
     },
-    'htabkwzy': {
+    '4smomdk0': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
-    'djsu3yzc': {
+    '5pcccvh2': {
       'en': 'Field is required',
       'ar': '',
     },
-    'jt6fzpbl': {
+    'aynr6wv5': {
       'en': 'Please choose an option from the dropdown',
       'ar': '',
     },
     '4ym2ud12': {
       'en': 'Home',
       'ar': 'الصفحة الرئيسية',
+    },
+  },
+  // Profile
+  {
+    'awlnmr27': {
+      'en': 'Delete Account',
+      'ar': '',
+    },
+    'xmfddfme': {
+      'en': 'Profile',
+      'ar': 'إعلان',
+    },
+    'epk3hl4i': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // AddAnouncement
+  {
+    '9v1sltzw': {
+      'en': 'Send',
+      'ar': '',
+    },
+    'gn22egrf': {
+      'en': 'What\'s on you mind ?',
+      'ar': '',
+    },
+    'mynvvh3r': {
+      'en': 'New  Anouncement',
+      'ar': 'حالة الدعوة',
+    },
+    'be6bl8y0': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // Gallery
+  {
+    'pnn7r5ub': {
+      'en': 'Family Gallery',
+      'ar': 'إعلان',
+    },
+    'sx0ymdc1': {
+      'en': 'Home',
+      'ar': '',
     },
   },
   // InviteByEmail
@@ -1311,6 +1356,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'she3rpco': {
       'en': 'Please choose an option from the dropdown',
+      'ar': '',
+    },
+  },
+  // InputComponentEnterNewEmail
+  {
+    '0kuota2f': {
+      'en': 'Enter The  New Email',
+      'ar': 'أدخل اسم العائلة',
+    },
+    'hypj5w34': {
+      'en': 'Enter the family name',
+      'ar': 'أدخل اسم العائلة',
+    },
+    'vo59mw0u': {
+      'en': 'Update the email',
+      'ar': 'إنشاء عائلة',
+    },
+  },
+  // InputComponentEnterNewName
+  {
+    'b8q6jrgw': {
+      'en': 'Enter The  New Name',
+      'ar': 'أدخل اسم العائلة',
+    },
+    'w6vmmd02': {
+      'en': 'name',
+      'ar': 'أدخل اسم العائلة',
+    },
+    'yrsqjdx2': {
+      'en': 'Update the name',
+      'ar': 'إنشاء عائلة',
+    },
+  },
+  // AnnouncementComponent
+  {
+    '6f04v8rp': {
+      'en': ' • ',
+      'ar': '',
+    },
+  },
+  // photocard
+  {
+    '5e45p4up': {
+      'en': 'Title',
       'ar': '',
     },
   },

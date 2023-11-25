@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/extra/confirm_logout/confirm_logout_widget.dart';
+import '/extra/dark_light_switch_small/dark_light_switch_small_widget.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -202,34 +203,48 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.person_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 28.0,
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'ggt2kn8t' /* Profile */,
-                            ),
-                            style: FlutterFlowTheme.of(context).labelLarge,
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    setState(() {
+                      FFAppState().familyId = null;
+                    });
+
+                    context.goNamed('Profile');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.person_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 28.0,
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'ggt2kn8t' /* Profile */,
+                              ),
+                              style: FlutterFlowTheme.of(context).labelLarge,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -310,6 +325,11 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                 currentLanguage: FFLocalizations.of(context).languageCode,
                 languages: FFLocalizations.languages(),
                 onChanged: (lang) => setAppLanguage(context, lang),
+              ),
+              wrapWithModel(
+                model: _model.darkLightSwitchSmallModel,
+                updateCallback: () => setState(() {}),
+                child: DarkLightSwitchSmallWidget(),
               ),
               Expanded(
                 child: Padding(

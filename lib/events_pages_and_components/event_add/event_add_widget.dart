@@ -337,7 +337,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                           final _datePicked1Date =
                                               await showDatePicker(
                                             context: context,
-                                            initialDate: widget.selectedDate!,
+                                            initialDate: (widget.selectedDate ??
+                                                DateTime.now()),
                                             firstDate: DateTime(1900),
                                             lastDate: DateTime(2050),
                                           );
@@ -422,7 +423,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                           final _datePicked2Date =
                                               await showDatePicker(
                                             context: context,
-                                            initialDate: widget.selectedDate!,
+                                            initialDate: (widget.selectedDate ??
+                                                DateTime.now()),
                                             firstDate: DateTime(1900),
                                             lastDate: DateTime(2050),
                                           );

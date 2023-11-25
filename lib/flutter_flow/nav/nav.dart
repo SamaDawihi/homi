@@ -188,6 +188,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             isShopping: params.getParam('isShopping', ParamType.bool),
             listDoc: params.getParam('listDoc', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'Profile',
+          path: '/profile',
+          builder: (context, params) => ProfileWidget(),
+        ),
+        FFRoute(
+          name: 'AddAnouncement',
+          path: '/addAnouncement',
+          builder: (context, params) => AddAnouncementWidget(),
+        ),
+        FFRoute(
+          name: 'Gallery',
+          path: '/gallery',
+          builder: (context, params) => GalleryWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

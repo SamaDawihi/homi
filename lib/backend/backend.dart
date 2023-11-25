@@ -12,6 +12,8 @@ import 'schema/invitation_record.dart';
 import 'schema/event_record.dart';
 import 'schema/list_record.dart';
 import 'schema/item_record.dart';
+import 'schema/document_record.dart';
+import 'schema/announcement_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,6 +28,8 @@ export 'schema/invitation_record.dart';
 export 'schema/event_record.dart';
 export 'schema/list_record.dart';
 export 'schema/item_record.dart';
+export 'schema/document_record.dart';
+export 'schema/announcement_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -281,6 +285,80 @@ Future<List<ItemRecord>> queryItemRecordOnce({
     queryCollectionOnce(
       ItemRecord.collection,
       ItemRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query DocumentRecords (as a Stream and as a Future).
+Future<int> queryDocumentRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DocumentRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DocumentRecord>> queryDocumentRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DocumentRecord.collection,
+      DocumentRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DocumentRecord>> queryDocumentRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DocumentRecord.collection,
+      DocumentRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query AnnouncementRecords (as a Stream and as a Future).
+Future<int> queryAnnouncementRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AnnouncementRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AnnouncementRecord>> queryAnnouncementRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AnnouncementRecord.collection,
+      AnnouncementRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AnnouncementRecord>> queryAnnouncementRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AnnouncementRecord.collection,
+      AnnouncementRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

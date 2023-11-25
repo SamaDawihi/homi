@@ -124,8 +124,11 @@ class _ListViewFamilyMemberWidgetState
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(50.0),
-                          child: Image.asset(
-                            'assets/images/userIcon.jpeg',
+                          child: Image.network(
+                            valueOrDefault<String>(
+                              familYMemberContainerUsersRecord.photoUrl,
+                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/c8w026lm2m0v/userIcon.jpeg',
+                            ),
                             width: 40.0,
                             height: 40.0,
                             fit: BoxFit.cover,
@@ -246,7 +249,7 @@ class _ListViewFamilyMemberWidgetState
                               },
                               child: Icon(
                                 Icons.person_remove,
-                                color: Color(0xFFDE1B27),
+                                color: FlutterFlowTheme.of(context).error,
                                 size: 26.0,
                               ),
                             ),

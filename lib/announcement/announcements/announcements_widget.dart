@@ -1,3 +1,5 @@
+import '/announcement/announcement_component/announcement_component_widget.dart';
+import '/backend/backend.dart';
 import '/extra/side_menu/side_menu_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -57,6 +59,18 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            context.pushNamed('AddAnouncement');
+          },
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          elevation: 8.0,
+          child: Icon(
+            Icons.add,
+            color: FlutterFlowTheme.of(context).info,
+            size: 24.0,
+          ),
+        ),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
@@ -151,6 +165,65 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
               expandedTitleScale: 1.0,
             ),
             elevation: 0.0,
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: StreamBuilder<List<AnnouncementRecord>>(
+                  stream: queryAnnouncementRecord(
+                    queryBuilder: (announcementRecord) =>
+                        announcementRecord.where(
+                      'familyId',
+                      isEqualTo: FFAppState().familyId,
+                    ),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 10.0,
+                          height: 10.0,
+                          child: SpinKitDualRing(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 10.0,
+                          ),
+                        ),
+                      );
+                    }
+                    List<AnnouncementRecord> listViewAnnouncementRecordList =
+                        snapshot.data!;
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewAnnouncementRecordList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewAnnouncementRecord =
+                            listViewAnnouncementRecordList[listViewIndex];
+                        return wrapWithModel(
+                          model: _model.announcementComponentModels.getModel(
+                            listViewIndex.toString(),
+                            listViewIndex,
+                          ),
+                          updateCallback: () => setState(() {}),
+                          child: AnnouncementComponentWidget(
+                            key: Key(
+                              'Key50a_${listViewIndex.toString()}',
+                            ),
+                            announcementId:
+                                listViewAnnouncementRecord.reference,
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

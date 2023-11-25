@@ -53,7 +53,19 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
     context.watch<FFAppState>();
 
     return StreamBuilder<ItemRecord>(
-      stream: ItemRecord.getDocument(widget.itemRef!),
+      stream: ItemRecord.getDocument(widget.itemRef!)
+        ..listen((containerItemRecord) async {
+          if (_model.containerPreviousSnapshot != null &&
+              !ItemRecordDocumentEquality().equals(
+                  containerItemRecord, _model.containerPreviousSnapshot)) {
+            setState(() {
+              _model.done = containerItemRecord.done;
+            });
+
+            setState(() {});
+          }
+          _model.containerPreviousSnapshot = containerItemRecord;
+        }),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {

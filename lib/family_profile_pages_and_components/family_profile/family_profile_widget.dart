@@ -269,15 +269,95 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       ),
                                       alignment:
                                           AlignmentDirectional(0.00, 0.00),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                        child: Image.asset(
-                                          'assets/images/houseIcon.png',
-                                          width: 90.0,
-                                          height: 90.0,
-                                          fit: BoxFit.cover,
-                                        ),
+                                      child: Stack(
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(50.0),
+                                            child: Image.network(
+                                              valueOrDefault<String>(
+                                                columnFamilyRecord.photoUrl,
+                                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/6trprqqol39j/houseIcon.png',
+                                              ),
+                                              width: 90.0,
+                                              height: 90.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          if (_model.edit)
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.00, 0.00),
+                                              child: Container(
+                                                width: 90.0,
+                                                height: 90.0,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0x6E14181B),
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Container(
+                                                      width: 24.0,
+                                                      height: 24.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0x80FFFFFF),
+                                                        shape: BoxShape.circle,
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.00, 0.00),
+                                                      child: Icon(
+                                                        Icons.edit_outlined,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 20.0,
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 24.0,
+                                                      height: 24.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0x79FFFFFF),
+                                                        shape: BoxShape.circle,
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                      ),
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.00, 0.00),
+                                                      child: Icon(
+                                                        Icons
+                                                            .remove_circle_outline,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        size: 20.0,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                        ],
                                       ),
                                     ),
                                     Align(
@@ -298,6 +378,13 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                             ),
                                       ),
                                     ),
+                                    if (_model.edit)
+                                      Icon(
+                                        Icons.edit_outlined,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 20.0,
+                                      ),
                                   ],
                                 ),
                               ),
@@ -305,10 +392,34 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                           ),
                           if (columnFamilyRecord.adminId ==
                               currentUserReference)
-                            Icon(
-                              Icons.edit,
-                              color: Color(0xFF555EBE),
-                              size: 24.0,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setState(() {
+                                  _model.edit = !_model.edit;
+                                });
+                              },
+                              child: Builder(
+                                builder: (context) {
+                                  if (!_model.edit) {
+                                    return Icon(
+                                      Icons.edit,
+                                      color: Color(0xFF555EBE),
+                                      size: 24.0,
+                                    );
+                                  } else {
+                                    return Icon(
+                                      Icons.done,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 24.0,
+                                    );
+                                  }
+                                },
+                              ),
                             ),
                         ],
                       ),
@@ -567,7 +678,8 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFFDE1B27),
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
@@ -825,7 +937,9 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
-                                                    color: Color(0xFFDE1B27),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
