@@ -217,7 +217,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Calendar',
       'ar': 'التقويم',
     },
-    'vedzj002': {
+    'ya9nswq3': {
       'en': 'Get Google Events',
       'ar': '',
     },
@@ -740,7 +740,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Item gallery Title',
       'ar': '',
     },
-    '9lz0gnf0': {
+    'pcaw3f1k': {
       'en': 'Label here...',
       'ar': '',
     },
@@ -748,7 +748,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Item gallery Image',
       'ar': '',
     },
-    'f83njph3': {
+    '3iwyimgs': {
       'en': 'Attached Files',
       'ar': '',
     },
@@ -1433,7 +1433,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ListViewDocument
   {
-    'naervx1w': {
+    '7q8xobun': {
       'en': 'Attached Files',
       'ar': '',
     },

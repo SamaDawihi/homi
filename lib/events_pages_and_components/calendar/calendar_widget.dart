@@ -91,6 +91,26 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            context.pushNamed(
+              'EventAdd',
+              queryParameters: {
+                'selectedDate': serializeParam(
+                  _model.selectedDay,
+                  ParamType.DateTime,
+                ),
+              }.withoutNulls,
+            );
+          },
+          backgroundColor: FlutterFlowTheme.of(context).primary,
+          elevation: 8.0,
+          child: Icon(
+            Icons.add,
+            color: FlutterFlowTheme.of(context).info,
+            size: 24.0,
+          ),
+        ),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
@@ -253,16 +273,78 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.00, -1.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 0.0, 30.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              FlutterFlowIconButton(
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          var _shouldSetState = false;
+                          _model.googleEvents = await actions.getGoogleEvents(
+                            context,
+                            currentUserReference!,
+                            FFAppState().familyId!,
+                          );
+                          _shouldSetState = true;
+                          if (_model.googleEvents?.length == 0) {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () =>
+                                      _model.unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: DialogNoGoogleEventsFoundWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          } else {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () =>
+                                      _model.unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: ConfirmAddingGoogleEventsWidget(
+                                      events: _model.googleEvents!,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          }
+
+                          if (_shouldSetState) setState(() {});
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.00, 0.00),
+                              child: FlutterFlowIconButton(
                                 borderColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
                                 borderRadius: 20.0,
@@ -274,26 +356,38 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                     FlutterFlowTheme.of(context).tertiary,
                                 hoverIconColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                icon: Icon(
-                                  Icons.add_outlined,
+                                icon: FaIcon(
+                                  FontAwesomeIcons.google,
                                   color: FlutterFlowTheme.of(context).primary,
                                   size: 35.0,
                                 ),
                                 showLoadingIndicator: true,
-                                onPressed: () async {
-                                  context.pushNamed(
-                                    'EventAdd',
-                                    queryParameters: {
-                                      'selectedDate': serializeParam(
-                                        _model.selectedDay,
-                                        ParamType.DateTime,
-                                      ),
-                                    }.withoutNulls,
-                                  );
+                                onPressed: () {
+                                  print('LinkGoogleIconButton pressed ...');
                                 },
                               ),
-                            ],
-                          ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.00, 0.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 6.0, 0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'ya9nswq3' /* Get Google Events */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .override(
+                                        fontFamily: 'Source Sans Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Padding(
@@ -315,134 +409,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                                 )}',
                                 style:
                                     FlutterFlowTheme.of(context).headlineSmall,
-                              ),
-                            ),
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                var _shouldSetState = false;
-                                _model.googleEvents =
-                                    await actions.getGoogleEvents(
-                                  context,
-                                  currentUserReference!,
-                                  FFAppState().familyId!,
-                                );
-                                _shouldSetState = true;
-                                if (_model.googleEvents?.length == 0) {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    enableDrag: false,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child:
-                                              DialogNoGoogleEventsFoundWidget(),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                } else {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    enableDrag: false,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child:
-                                              ConfirmAddingGoogleEventsWidget(
-                                            events: _model.googleEvents!,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                }
-
-                                if (_shouldSetState) setState(() {});
-                              },
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      borderRadius: 20.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      hoverColor:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                      hoverIconColor:
-                                          FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                      icon: FaIcon(
-                                        FontAwesomeIcons.google,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 35.0,
-                                      ),
-                                      showLoadingIndicator: true,
-                                      onPressed: () {
-                                        print(
-                                            'LinkGoogleIconButton pressed ...');
-                                      },
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 6.0, 0.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'vedzj002' /* Get Google Events */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Source Sans Pro',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ],
