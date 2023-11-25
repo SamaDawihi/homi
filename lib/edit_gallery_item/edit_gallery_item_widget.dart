@@ -122,7 +122,7 @@ class _EditGalleryItemWidgetState extends State<EditGalleryItemWidget> {
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
-                            'k5ux0666' /* Item gallery Title */,
+                            '9gpq1f55' /* Item gallery Title */,
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
@@ -154,7 +154,7 @@ class _EditGalleryItemWidgetState extends State<EditGalleryItemWidget> {
                                     decoration: InputDecoration(
                                       labelText:
                                           FFLocalizations.of(context).getText(
-                                        'bkrn6xnv' /* Item Name */,
+                                        'qv1yb16n' /* Item Name */,
                                       ),
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
@@ -216,7 +216,7 @@ class _EditGalleryItemWidgetState extends State<EditGalleryItemWidget> {
                                   5.0, 0.0, 0.0, 30.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'rfqlvsbz' /* Item gallery Image */,
+                                  '9vveuu60' /* Item gallery Image */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -271,7 +271,7 @@ class _EditGalleryItemWidgetState extends State<EditGalleryItemWidget> {
                           print('Button pressed ...');
                         },
                         text: FFLocalizations.of(context).getText(
-                          '2vm8eqfq' /* Save Changes */,
+                          'b1asq7wb' /* Save Changes */,
                         ),
                         options: FFButtonOptions(
                           width: 270.0,

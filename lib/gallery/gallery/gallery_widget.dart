@@ -1,4 +1,3 @@
-import '/extra/side_menu/side_menu_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -107,31 +106,13 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                               icon: Icon(
-                                Icons.menu,
-                                color: Color(0xFF57636C),
+                                Icons.arrow_back,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
                                 size: 25.0,
                               ),
                               onPressed: () async {
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  enableDrag: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return GestureDetector(
-                                      onTap: () => _model
-                                              .unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: SideMenuWidget(),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
+                                context.safePop();
                               },
                             ),
                           ),

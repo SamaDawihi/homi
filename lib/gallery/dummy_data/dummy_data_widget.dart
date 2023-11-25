@@ -106,8 +106,9 @@ class _DummyDataWidgetState extends State<DummyDataWidget> {
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                               icon: Icon(
-                                Icons.menu,
-                                color: Color(0xFF57636C),
+                                Icons.arrow_back,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
                                 size: 25.0,
                               ),
                               onPressed: () async {

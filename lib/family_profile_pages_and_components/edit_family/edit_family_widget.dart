@@ -225,88 +225,87 @@ class _EditFamilyWidgetState extends State<EditFamilyWidget>
                             _model.nameControllerValidator.asValidator(context),
                       ),
                     ),
-                  if (!_model.editName)
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 16.0, 16.0, 16.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          if (_model.editName) {
-                            if (functions.trimAndCollapseSpaces(
-                                        _model.nameController.text) !=
-                                    null &&
-                                functions.trimAndCollapseSpaces(
-                                        _model.nameController.text) !=
-                                    '') {
-                              await FFAppState()
-                                  .familyId!
-                                  .update(createFamilyRecordData(
-                                    name: functions.trimAndCollapseSpaces(
-                                        _model.nameController.text),
-                                  ));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Name Updated Successfuly',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        if (_model.editName) {
+                          if (functions.trimAndCollapseSpaces(
+                                      _model.nameController.text) !=
+                                  null &&
+                              functions.trimAndCollapseSpaces(
+                                      _model.nameController.text) !=
+                                  '') {
+                            await FFAppState()
+                                .familyId!
+                                .update(createFamilyRecordData(
+                                  name: functions.trimAndCollapseSpaces(
+                                      _model.nameController.text),
+                                ));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Name Updated Successfuly',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).success,
                                 ),
-                              );
-                              Navigator.pop(context);
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Make sure to enter valid name',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).error,
-                                ),
-                              );
-                            }
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).success,
+                              ),
+                            );
+                            Navigator.pop(context);
                           } else {
-                            setState(() {
-                              _model.editName = true;
-                            });
-                          }
-                        },
-                        text: valueOrDefault<String>(
-                          _model.editName ? 'Submit' : 'Change Name',
-                          'Change Name',
-                        ),
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 50.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: Color(0xFF555EBE),
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Source Sans Pro',
-                                    color: Colors.white,
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Make sure to enter valid name',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
-                          elevation: 2.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).error,
+                              ),
+                            );
+                          }
+                        } else {
+                          setState(() {
+                            _model.editName = true;
+                          });
+                        }
+                      },
+                      text: valueOrDefault<String>(
+                        _model.editName ? 'Submit' : 'Change Name',
+                        'Change Name',
+                      ),
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 50.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF555EBE),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Source Sans Pro',
+                                  color: Colors.white,
+                                ),
+                        elevation: 2.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
                         ),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),

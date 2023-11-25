@@ -114,8 +114,11 @@ class _ListViewRecievedInvitationWidgetState
                         children: [
                           ClipRRect(
                             borderRadius: BorderRadius.circular(26.0),
-                            child: Image.asset(
-                              'assets/images/userIcon.jpeg',
+                            child: Image.network(
+                              valueOrDefault<String>(
+                                rowFamilyRecord.photoUrl,
+                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/6trprqqol39j/houseIcon.png',
+                              ),
                               width: 48.0,
                               height: 48.0,
                               fit: BoxFit.cover,

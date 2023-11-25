@@ -747,23 +747,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Edit Gallery Item',
       'ar': 'حالة الدعوة',
     },
-    'k5ux0666': {
+    '9gpq1f55': {
       'en': 'Item gallery Title',
       'ar': '',
     },
-    'bkrn6xnv': {
+    'qv1yb16n': {
       'en': 'Item Name',
       'ar': '',
     },
-    'rfqlvsbz': {
+    '9vveuu60': {
       'en': 'Item gallery Image',
       'ar': '',
     },
-    '2vm8eqfq': {
+    'b1asq7wb': {
       'en': 'Save Changes',
       'ar': '',
     },
-    'a2xg7ikm': {
+    'fcdhtkn7': {
       'en': 'Home',
       'ar': '',
     },
