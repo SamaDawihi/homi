@@ -68,22 +68,25 @@ class _ListViewAttachedFileWidgetState
                   fontFamily: 'Open Sans',
                   color: FlutterFlowTheme.of(context).primary,
                   fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
             minFontSize: 9.0,
           ),
-          InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              await launchURL(widget.url!);
-            },
-            child: Icon(
-              Icons.download_sharp,
-              color: FlutterFlowTheme.of(context).primary,
-              size: 24.0,
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 2.0, 0.0),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                await launchURL(widget.url!);
+              },
+              child: Icon(
+                Icons.download_sharp,
+                color: FlutterFlowTheme.of(context).primary,
+                size: 24.0,
+              ),
             ),
           ),
         ],

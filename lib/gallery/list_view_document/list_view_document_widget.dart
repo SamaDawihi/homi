@@ -59,6 +59,19 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
     super.initState();
     _model = createModel(context, () => ListViewDocumentModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.galleryDocument?.document == null ||
+          widget.galleryDocument?.document == '') {
+        setState(() {
+          _model.viewMore = true;
+        });
+        return;
+      } else {
+        return;
+      }
+    });
+
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -104,11 +117,14 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       valueOrDefault<String>(
                         widget.galleryDocument?.title,
                         'Title',
+                      ).maybeHandleOverflow(
+                        maxChars: 20,
+                        replacement: '…',
                       ),
                       style: FlutterFlowTheme.of(context).displaySmall.override(
                             fontFamily: 'Open Sans',
-                            fontSize: 26.0,
-                            fontWeight: FontWeight.normal,
+                            fontSize: 32.0,
+                            fontWeight: FontWeight.w600,
                           ),
                     ),
                   ),
@@ -190,7 +206,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
               widget.galleryDocument?.document != '')
             Divider(
               height: 5.0,
-              thickness: 5.0,
+              thickness: 1.0,
               color: FlutterFlowTheme.of(context).alternate,
             ),
           if (widget.galleryDocument!.attachedFiles.length > 0)
@@ -198,17 +214,48 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Align(
-                  alignment: AlignmentDirectional(-1.00, 0.00),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        '3ly8geug' /* Attached Files */,
+                Container(
+                  width: 200.0,
+                  height: 30.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              '3ly8geug' /* Attachments */,
+                            ),
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .displaySmall
+                                .override(
+                                  fontFamily: 'Open Sans',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.9,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ),
                       ),
-                      style: FlutterFlowTheme.of(context).displaySmall,
-                    ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
+                        child: Icon(
+                          Icons.attach_file,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 22.0,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(

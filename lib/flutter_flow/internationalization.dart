@@ -184,11 +184,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'g30gpykm': {
       'en': 'Invite a Member',
-      'ar': 'دعوة عضو',
+      'ar': 'إنشاء دعوة',
     },
     'n7mptuv2': {
       'en': 'Invitation Status',
-      'ar': 'حالة الدعوة',
+      'ar': 'حالة الدعوات',
     },
     '6ibsn7kw': {
       'en': 'My Family Members',
@@ -200,7 +200,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'eew001d9': {
       'en': 'Leave Family',
-      'ar': 'اترك العائلة',
+      'ar': 'مغادرة  العائلة',
     },
     't405vb32': {
       'en': 'Family Profile',
@@ -1408,7 +1408,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ListViewDocument
   {
     '3ly8geug': {
-      'en': 'Attached Files',
+      'en': 'Attachments',
       'ar': 'الملفات المرفقة',
     },
   },
