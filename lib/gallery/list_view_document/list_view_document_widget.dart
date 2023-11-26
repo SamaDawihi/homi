@@ -150,64 +150,66 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
             thickness: 5.0,
             color: FlutterFlowTheme.of(context).alternate,
           ),
-          InkWell(
-            splashColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () async {
-              await Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.fade,
-                  child: FlutterFlowExpandedImageView(
-                    image: Image.network(
-                      valueOrDefault<String>(
+          if (widget.galleryDocument?.hasDocument() ?? true)
+            InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: FlutterFlowExpandedImageView(
+                      image: Image.network(
+                        valueOrDefault<String>(
+                          widget.galleryDocument?.document,
+                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
+                        ),
+                        fit: BoxFit.contain,
+                      ),
+                      allowRotation: false,
+                      tag: valueOrDefault<String>(
                         widget.galleryDocument?.document,
                         'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
                       ),
-                      fit: BoxFit.contain,
+                      useHeroAnimation: true,
                     ),
-                    allowRotation: false,
-                    tag: valueOrDefault<String>(
+                  ),
+                );
+              },
+              child: Hero(
+                tag: valueOrDefault<String>(
+                  widget.galleryDocument?.document,
+                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
+                ),
+                transitionOnUserGestures: true,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
+                    topLeft: Radius.circular(0.0),
+                    topRight: Radius.circular(0.0),
+                  ),
+                  child: Image.network(
+                    valueOrDefault<String>(
                       widget.galleryDocument?.document,
                       'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
                     ),
-                    useHeroAnimation: true,
+                    width: 350.0,
+                    height: 190.0,
+                    fit: BoxFit.fitWidth,
                   ),
-                ),
-              );
-            },
-            child: Hero(
-              tag: valueOrDefault<String>(
-                widget.galleryDocument?.document,
-                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
-              ),
-              transitionOnUserGestures: true,
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0),
-                  topLeft: Radius.circular(0.0),
-                  topRight: Radius.circular(0.0),
-                ),
-                child: Image.network(
-                  valueOrDefault<String>(
-                    widget.galleryDocument?.document,
-                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
-                  ),
-                  width: 350.0,
-                  height: 190.0,
-                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
-          ),
-          Divider(
-            height: 5.0,
-            thickness: 5.0,
-            color: FlutterFlowTheme.of(context).alternate,
-          ),
+          if (widget.galleryDocument?.hasDocument() ?? true)
+            Divider(
+              height: 5.0,
+              thickness: 5.0,
+              color: FlutterFlowTheme.of(context).alternate,
+            ),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
