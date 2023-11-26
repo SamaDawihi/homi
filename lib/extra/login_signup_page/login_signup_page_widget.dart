@@ -1268,11 +1268,13 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                               Function()
                                                                   _navigate =
                                                                   () {};
-                                                              if (_model.nameController
-                                                                          .text ==
+                                                              if (functions.trimAndCollapseSpaces(_model
+                                                                          .nameController
+                                                                          .text) ==
                                                                       null ||
-                                                                  _model.nameController
-                                                                          .text ==
+                                                                  functions.trimAndCollapseSpaces(_model
+                                                                          .nameController
+                                                                          .text) ==
                                                                       '') {
                                                                 setState(() {
                                                                   _model.regNameErr =
