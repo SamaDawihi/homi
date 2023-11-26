@@ -123,8 +123,8 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       ),
                       style: FlutterFlowTheme.of(context).displaySmall.override(
                             fontFamily: 'Open Sans',
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
                           ),
                     ),
                   ),
@@ -214,46 +214,26 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 200.0,
-                  height: 30.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              '3ly8geug' /* Attachments */,
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          'b809n8hp' /* Attachement */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Source Sans Pro',
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w500,
                             ),
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .displaySmall
-                                .override(
-                                  fontFamily: 'Open Sans',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontSize: 26.0,
-                                  letterSpacing: 0.9,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
-                        ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
-                        child: Icon(
-                          Icons.attach_file,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 22.0,
-                        ),
+                      Icon(
+                        Icons.attach_file,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 24.0,
                       ),
                     ],
                   ),

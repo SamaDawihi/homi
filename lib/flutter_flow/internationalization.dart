@@ -1407,9 +1407,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ListViewDocument
   {
-    '3ly8geug': {
-      'en': 'Attachments',
-      'ar': 'الملفات المرفقة',
+    'b809n8hp': {
+      'en': 'Attachement',
+      'ar': '',
     },
   },
   // FamilyLoading
