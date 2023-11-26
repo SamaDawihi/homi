@@ -95,7 +95,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
       width: double.infinity,
       height: widget.galleryDocument?.document != null &&
               widget.galleryDocument?.document != ''
-          ? 350.0
+          ? (widget.galleryDocument!.attachedFiles.length > 0 ? 350.0 : 250.0)
           : 150.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -222,7 +222,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          'orupen91' /* Attachement */,
+                          'g5du4xjc' /* Attachement */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Source Sans Pro',
