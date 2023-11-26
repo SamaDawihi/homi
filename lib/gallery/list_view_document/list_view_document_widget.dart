@@ -218,7 +218,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'yl6tlfpe' /* Attached Files */,
+                      '3ly8geug' /* Attached Files */,
                     ),
                     style: FlutterFlowTheme.of(context).displaySmall,
                   ),

@@ -79,7 +79,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
-            backgroundColor: Color(0xFFF1F4F8),
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
             actions: [],
             flexibleSpace: FlexibleSpaceBar(

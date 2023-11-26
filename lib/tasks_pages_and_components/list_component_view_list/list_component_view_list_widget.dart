@@ -124,7 +124,7 @@ class _ListComponentViewListWidgetState
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 0.0,
-                    color: Color(0xFFE0E3E7),
+                    color: FlutterFlowTheme.of(context).alternate,
                     offset: Offset(0.0, 1.0),
                   )
                 ],

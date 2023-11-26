@@ -9,7 +9,12 @@ import 'empty_task_component_model.dart';
 export 'empty_task_component_model.dart';
 
 class EmptyTaskComponentWidget extends StatefulWidget {
-  const EmptyTaskComponentWidget({Key? key}) : super(key: key);
+  const EmptyTaskComponentWidget({
+    Key? key,
+    required this.isShooping,
+  }) : super(key: key);
+
+  final bool? isShooping;
 
   @override
   _EmptyTaskComponentWidgetState createState() =>
@@ -68,9 +73,7 @@ class _EmptyTaskComponentWidgetState extends State<EmptyTaskComponentWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    'kk0c9r7f' /* Seems that you don't have any ... */,
-                  ),
+                  'Seems that you don\'t have any ${widget.isShooping! ? 'items.' : 'tasks'}',
                   style: FlutterFlowTheme.of(context).bodyLarge,
                 ),
               ),

@@ -93,7 +93,7 @@ class _FamilyLoadingWidgetState extends State<FamilyLoadingWidget>
                   padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
-                      'iuoylfdk' /* Family Is Loading */,
+                      'iuoylfdk' /* Family Is Loading... */,
                     ),
                     style: FlutterFlowTheme.of(context).headlineLarge,
                   ).animateOnPageLoad(

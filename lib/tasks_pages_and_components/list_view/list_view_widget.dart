@@ -319,6 +319,8 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                                               belongToRef:
                                                                   widget
                                                                       .listRef!,
+                                                              isShooping: widget
+                                                                  .isShopping!,
                                                             ),
                                                           ),
                                                         );
@@ -736,7 +738,9 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                             return Container(
                                               width: 500.0,
                                               height: 200.0,
-                                              child: EmptyTaskComponentWidget(),
+                                              child: EmptyTaskComponentWidget(
+                                                isShooping: widget.isShopping!,
+                                              ),
                                             );
                                           }
                                           return ListView.builder(
@@ -764,6 +768,8 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                                   ),
                                                   itemRef: listViewItemRecord
                                                       .reference,
+                                                  isShooping:
+                                                      widget.isShopping!,
                                                 ),
                                               );
                                             },

@@ -72,7 +72,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                     Icons.groups_2,
                     color: widget.currentPage == 0
                         ? FlutterFlowTheme.of(context).primary
-                        : Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).secondaryText,
                     size: 24.0,
                   ),
                   onPressed: () async {

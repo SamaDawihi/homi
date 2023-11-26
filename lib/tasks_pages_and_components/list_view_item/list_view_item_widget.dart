@@ -18,9 +18,11 @@ class ListViewItemWidget extends StatefulWidget {
   const ListViewItemWidget({
     Key? key,
     required this.itemRef,
+    required this.isShooping,
   }) : super(key: key);
 
   final DocumentReference? itemRef;
+  final bool? isShooping;
 
   @override
   _ListViewItemWidgetState createState() => _ListViewItemWidgetState();
@@ -229,6 +231,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                                   color: Colors.transparent,
                                   child: InputComponentEditTaskWidget(
                                     item: containerItemRecord,
+                                    isShooping: widget.isShooping!,
                                   ),
                                 );
                               },
@@ -254,7 +257,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'The Item \"${containerItemRecord.name}\" Has Been Deleted ',
+                                'The ${widget.isShooping! ? 'Item' : 'Task'} \"${containerItemRecord.name}\" Has Been Deleted ',
                                 style: TextStyle(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,

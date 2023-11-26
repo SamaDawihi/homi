@@ -16,9 +16,11 @@ class InputComponentAddTaskWidget extends StatefulWidget {
   const InputComponentAddTaskWidget({
     Key? key,
     required this.belongToRef,
+    required this.isShooping,
   }) : super(key: key);
 
   final DocumentReference? belongToRef;
+  final bool? isShooping;
 
   @override
   _InputComponentAddTaskWidgetState createState() =>
@@ -98,9 +100,7 @@ class _InputComponentAddTaskWidgetState
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'vdk5u8fw' /* Add New Task */,
-                          ),
+                          'Add New ${widget.isShooping! ? 'Item' : 'Task'}',
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
@@ -122,9 +122,7 @@ class _InputComponentAddTaskWidgetState
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
-                      labelText: FFLocalizations.of(context).getText(
-                        'w32ci6nc' /* Task name */,
-                      ),
+                      labelText: '${widget.isShooping! ? 'Item' : 'Task'} name',
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
                       hintStyle: FlutterFlowTheme.of(context).labelMedium,
                       enabledBorder: UnderlineInputBorder(

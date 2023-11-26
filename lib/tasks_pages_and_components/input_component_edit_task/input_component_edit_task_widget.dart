@@ -16,9 +16,11 @@ class InputComponentEditTaskWidget extends StatefulWidget {
   const InputComponentEditTaskWidget({
     Key? key,
     required this.item,
+    required this.isShooping,
   }) : super(key: key);
 
   final ItemRecord? item;
+  final bool? isShooping;
 
   @override
   _InputComponentEditTaskWidgetState createState() =>
@@ -98,9 +100,7 @@ class _InputComponentEditTaskWidgetState
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'ebdx4cpi' /* Edit Task */,
-                          ),
+                          'Edit ${widget.isShooping! ? 'Item' : 'Task'}',
                           textAlign: TextAlign.start,
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
@@ -122,9 +122,7 @@ class _InputComponentEditTaskWidgetState
                     autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
-                      labelText: FFLocalizations.of(context).getText(
-                        'nxdhueqr' /* Task name */,
-                      ),
+                      labelText: '${widget.isShooping! ? 'Item' : 'Task'} name',
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
                       hintStyle: FlutterFlowTheme.of(context).labelMedium,
                       enabledBorder: UnderlineInputBorder(
