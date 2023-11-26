@@ -79,8 +79,11 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
     context.watch<FFAppState>();
 
     return Container(
-      width: 412.0,
-      height: 350.0,
+      width: double.infinity,
+      height: widget.galleryDocument?.document != null &&
+              widget.galleryDocument?.document != ''
+          ? 350.0
+          : 150.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -137,7 +140,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
           ),
           Divider(
             height: 5.0,
-            thickness: 5.0,
+            thickness: 1.0,
             color: FlutterFlowTheme.of(context).alternate,
           ),
           if (widget.galleryDocument?.document != null &&
@@ -190,64 +193,66 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
               thickness: 5.0,
               color: FlutterFlowTheme.of(context).alternate,
             ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Align(
-                alignment: AlignmentDirectional(-1.00, 0.00),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                  child: Text(
-                    FFLocalizations.of(context).getText(
-                      '3ly8geug' /* Attached Files */,
+          if (widget.galleryDocument!.attachedFiles.length > 0)
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(-1.00, 0.00),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        '3ly8geug' /* Attached Files */,
+                      ),
+                      style: FlutterFlowTheme.of(context).displaySmall,
                     ),
-                    style: FlutterFlowTheme.of(context).displaySmall,
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    if (_model.viewMore) {
-                      if (animationsMap['iconOnActionTriggerAnimation'] !=
-                          null) {
-                        animationsMap['iconOnActionTriggerAnimation']!
-                            .controller
-                            .reverse();
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      if (_model.viewMore) {
+                        if (animationsMap['iconOnActionTriggerAnimation'] !=
+                            null) {
+                          animationsMap['iconOnActionTriggerAnimation']!
+                              .controller
+                              .reverse();
+                        }
+                      } else {
+                        if (animationsMap['iconOnActionTriggerAnimation'] !=
+                            null) {
+                          setState(() => hasIconTriggered = true);
+                          SchedulerBinding.instance.addPostFrameCallback(
+                              (_) async =>
+                                  animationsMap['iconOnActionTriggerAnimation']!
+                                      .controller
+                                      .forward(from: 0.0));
+                        }
                       }
-                    } else {
-                      if (animationsMap['iconOnActionTriggerAnimation'] !=
-                          null) {
-                        setState(() => hasIconTriggered = true);
-                        SchedulerBinding.instance.addPostFrameCallback(
-                            (_) async =>
-                                animationsMap['iconOnActionTriggerAnimation']!
-                                    .controller
-                                    .forward(from: 0.0));
-                      }
-                    }
 
-                    setState(() {
-                      _model.viewMore = !_model.viewMore;
-                    });
-                  },
-                  child: Icon(
-                    Icons.expand_more_outlined,
-                    color: FlutterFlowTheme.of(context).primary,
-                    size: 28.0,
-                  ),
-                ).animateOnActionTrigger(
-                    animationsMap['iconOnActionTriggerAnimation']!,
-                    hasBeenTriggered: hasIconTriggered),
-              ),
-            ],
-          ),
+                      setState(() {
+                        _model.viewMore = !_model.viewMore;
+                      });
+                    },
+                    child: Icon(
+                      Icons.expand_more_outlined,
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 28.0,
+                    ),
+                  ).animateOnActionTrigger(
+                      animationsMap['iconOnActionTriggerAnimation']!,
+                      hasBeenTriggered: hasIconTriggered),
+                ),
+              ],
+            ),
           if (_model.viewMore)
             Expanded(
               child: Builder(
