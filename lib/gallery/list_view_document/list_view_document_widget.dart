@@ -94,18 +94,20 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 50.0, 0.0),
-                  child: Text(
-                    valueOrDefault<String>(
-                      widget.galleryDocument?.title,
-                      'Title',
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Text(
+                      valueOrDefault<String>(
+                        widget.galleryDocument?.title,
+                        'Title',
+                      ),
+                      style: FlutterFlowTheme.of(context).displaySmall.override(
+                            fontFamily: 'Open Sans',
+                            fontSize: 26.0,
+                            fontWeight: FontWeight.normal,
+                          ),
                     ),
-                    style: FlutterFlowTheme.of(context).displaySmall.override(
-                          fontFamily: 'Open Sans',
-                          fontSize: 26.0,
-                          fontWeight: FontWeight.normal,
-                        ),
                   ),
                 ),
                 Padding(
@@ -115,29 +117,17 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                         child: Icon(
                           Icons.edit_outlined,
                           color: FlutterFlowTheme.of(context).primary,
                           size: 24.0,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                        child: Icon(
-                          Icons.delete_forever,
-                          color: FlutterFlowTheme.of(context).error,
-                          size: 24.0,
-                        ),
+                      Icon(
+                        Icons.delete_forever,
+                        color: FlutterFlowTheme.of(context).error,
+                        size: 24.0,
                       ),
                     ],
                   ),
@@ -150,7 +140,8 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
             thickness: 5.0,
             color: FlutterFlowTheme.of(context).alternate,
           ),
-          if (widget.galleryDocument?.hasDocument() ?? true)
+          if (widget.galleryDocument?.document != null &&
+              widget.galleryDocument?.document != '')
             InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
@@ -204,7 +195,8 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                 ),
               ),
             ),
-          if (widget.galleryDocument?.hasDocument() ?? true)
+          if (widget.galleryDocument?.document != null &&
+              widget.galleryDocument?.document != '')
             Divider(
               height: 5.0,
               thickness: 5.0,

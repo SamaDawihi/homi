@@ -249,7 +249,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'قوائم المهام',
     },
     'cjn0szm1': {
-      'en': 'Home',
+      'en': 'Lists',
       'ar': 'الرئيسية',
     },
   },
@@ -1371,11 +1371,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // InputComponentEnterNewEmail
   {
     '0kuota2f': {
-      'en': 'Enter The  New Email',
+      'en': 'Enter your new email',
       'ar': 'أدخل البريد الإلكتروني الجديد',
     },
     'hypj5w34': {
-      'en': 'Enter the family name',
+      'en': 'Enter your new email\n',
       'ar': 'أدخل اسم العائلة',
     },
     'vo59mw0u': {
@@ -1386,11 +1386,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // InputComponentEnterNewName
   {
     'b8q6jrgw': {
-      'en': 'Enter The  New Name',
+      'en': 'Enter your new name',
       'ar': 'أدخل الاسم الجديد',
     },
     'w6vmmd02': {
-      'en': 'name',
+      'en': 'Enter your name',
       'ar': 'اسم',
     },
     'yrsqjdx2': {

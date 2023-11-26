@@ -156,7 +156,7 @@ class _InputComponentEnterNewEmailWidgetState
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        '0kuota2f' /* Enter The  New Email */,
+                        '0kuota2f' /* Enter your new email */,
                       ),
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
@@ -175,7 +175,9 @@ class _InputComponentEnterNewEmailWidgetState
                       decoration: InputDecoration(
                         labelStyle: FlutterFlowTheme.of(context).bodyLarge,
                         hintText: FFLocalizations.of(context).getText(
-                          'hypj5w34' /* Enter the family name */,
+                          'hypj5w34' /* Enter your new email
+ */
+                          ,
                         ),
                         hintStyle: FlutterFlowTheme.of(context).labelLarge,
                         enabledBorder: OutlineInputBorder(

@@ -397,6 +397,9 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           autofillHints: [
                                                             AutofillHints.email
                                                           ],
+                                                          textInputAction:
+                                                              TextInputAction
+                                                                  .next,
                                                           obscureText: false,
                                                           decoration:
                                                               InputDecoration(
@@ -496,7 +499,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   .enforced,
                                                           keyboardType:
                                                               TextInputType
-                                                                  .emailAddress,
+                                                                  .name,
                                                           validator: _model
                                                               .nameControllerValidator
                                                               .asValidator(
@@ -609,6 +612,9 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                             textCapitalization:
                                                                 TextCapitalization
                                                                     .none,
+                                                            textInputAction:
+                                                                TextInputAction
+                                                                    .next,
                                                             obscureText: false,
                                                             decoration:
                                                                 InputDecoration(

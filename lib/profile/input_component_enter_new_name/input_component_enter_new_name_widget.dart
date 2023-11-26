@@ -158,7 +158,7 @@ class _InputComponentEnterNewNameWidgetState
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'b8q6jrgw' /* Enter The  New Name */,
+                        'b8q6jrgw' /* Enter your new name */,
                       ),
                       style: FlutterFlowTheme.of(context).headlineSmall,
                     ),
@@ -177,7 +177,7 @@ class _InputComponentEnterNewNameWidgetState
                       decoration: InputDecoration(
                         labelStyle: FlutterFlowTheme.of(context).bodyLarge,
                         hintText: FFLocalizations.of(context).getText(
-                          'w6vmmd02' /* name */,
+                          'w6vmmd02' /* Enter your name */,
                         ),
                         hintStyle: FlutterFlowTheme.of(context).labelLarge,
                         enabledBorder: OutlineInputBorder(
@@ -215,6 +215,8 @@ class _InputComponentEnterNewNameWidgetState
                             24.0, 24.0, 20.0, 24.0),
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium,
+                      maxLength: 20,
+                      maxLengthEnforcement: MaxLengthEnforcement.enforced,
                       keyboardType: TextInputType.name,
                       cursorColor: FlutterFlowTheme.of(context).primary,
                       validator:

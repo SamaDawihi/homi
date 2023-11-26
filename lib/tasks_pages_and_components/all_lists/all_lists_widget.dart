@@ -98,7 +98,8 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                   .primaryBackground,
                               icon: Icon(
                                 Icons.menu,
-                                color: Color(0xFF57636C),
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
                                 size: 25.0,
                               ),
                               onPressed: () async {
