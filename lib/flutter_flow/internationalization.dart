@@ -204,7 +204,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     't405vb32': {
       'en': 'Family Profile',
-      'ar': 'الملف الشخصي للعائلة',
+      'ar': 'ملف العائلة',
     },
     'o09fvi6t': {
       'en': 'Home',
@@ -605,7 +605,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '77qo8vgy': {
       'en': 'Create',
-      'ar': 'يخلق',
+      'ar': 'أضف',
     },
     '18jily7q': {
       'en': 'Field is required',
@@ -629,7 +629,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'p3420utz': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // ListView
@@ -675,7 +675,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'b3fimz7a': {
       'en': 'Edit',
-      'ar': 'يحرر',
+      'ar': 'عدل',
     },
     'zkb3z6r9': {
       'en': 'Field is required',
@@ -1171,7 +1171,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ilima01z': {
       'en': 'Cancel',
-      'ar': 'يلغي',
+      'ar': 'إلغاء',
     },
   },
   // DialogNoGoogleEventsFound
@@ -1186,7 +1186,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n9zfpovu': {
       'en': 'OK',
-      'ar': 'نعم',
+      'ar': 'حسنا',
     },
   },
   // DialogDoneAddingGoogleEvents

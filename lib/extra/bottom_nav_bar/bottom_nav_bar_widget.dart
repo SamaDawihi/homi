@@ -88,7 +88,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                     Icons.calendar_month,
                     color: widget.currentPage == 1
                         ? FlutterFlowTheme.of(context).primary
-                        : Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).secondaryText,
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -104,7 +104,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                     Icons.checklist_sharp,
                     color: widget.currentPage == 2
                         ? FlutterFlowTheme.of(context).primary
-                        : Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).secondaryText,
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -120,7 +120,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                     FontAwesomeIcons.bullhorn,
                     color: widget.currentPage == 3
                         ? FlutterFlowTheme.of(context).primary
-                        : Color(0x8A000000),
+                        : FlutterFlowTheme.of(context).secondaryText,
                     size: 24.0,
                   ),
                   onPressed: () async {
