@@ -416,74 +416,75 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                       ),
                     ],
                   ),
-                  StreamBuilder<List<EventRecord>>(
-                    stream: queryEventRecord(
-                      queryBuilder: (eventRecord) => eventRecord.where(
-                        'familyId',
-                        isEqualTo: FFAppState().familyId,
+                  if (_model.selectedDay != null)
+                    StreamBuilder<List<EventRecord>>(
+                      stream: queryEventRecord(
+                        queryBuilder: (eventRecord) => eventRecord.where(
+                          'familyId',
+                          isEqualTo: FFAppState().familyId,
+                        ),
                       ),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 10.0,
-                            height: 10.0,
-                            child: SpinKitDualRing(
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 10.0,
-                            ),
-                          ),
-                        );
-                      }
-                      List<EventRecord> listViewEventRecordList =
-                          snapshot.data!;
-                      if (listViewEventRecordList.isEmpty) {
-                        return ListViewEmptyEventsWidget();
-                      }
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        primary: false,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: listViewEventRecordList.length,
-                        itemBuilder: (context, listViewIndex) {
-                          final listViewEventRecord =
-                              listViewEventRecordList[listViewIndex];
-                          return Visibility(
-                            visible: functions.isDateInRange(
-                                    _model.selectedDay!,
-                                    listViewEventRecord.startDate!,
-                                    listViewEventRecord.endDate!) &&
-                                ((currentUserReference ==
-                                        listViewEventRecord.createdBy) ||
-                                    !(listViewEventRecord.isGoogleEvent &&
-                                        listViewEventRecord
-                                            .dontShareThisEvent)),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  6.0, 0.0, 6.0, 10.0),
-                              child: wrapWithModel(
-                                model:
-                                    _model.listViewEventDisplayModels.getModel(
-                                  listViewIndex.toString(),
-                                  listViewIndex,
-                                ),
-                                updateCallback: () => setState(() {}),
-                                child: ListViewEventDisplayWidget(
-                                  key: Key(
-                                    'Keywpy_${listViewIndex.toString()}',
-                                  ),
-                                  eventRef: listViewEventRecord.reference,
-                                ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 10.0,
+                              height: 10.0,
+                              child: SpinKitDualRing(
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 10.0,
                               ),
                             ),
                           );
-                        },
-                      );
-                    },
-                  ),
+                        }
+                        List<EventRecord> listViewEventRecordList =
+                            snapshot.data!;
+                        if (listViewEventRecordList.isEmpty) {
+                          return ListViewEmptyEventsWidget();
+                        }
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          primary: false,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: listViewEventRecordList.length,
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewEventRecord =
+                                listViewEventRecordList[listViewIndex];
+                            return Visibility(
+                              visible: functions.isDateInRange(
+                                      _model.selectedDay!,
+                                      listViewEventRecord.startDate!,
+                                      listViewEventRecord.endDate!) &&
+                                  ((currentUserReference ==
+                                          listViewEventRecord.createdBy) ||
+                                      !(listViewEventRecord.isGoogleEvent &&
+                                          listViewEventRecord
+                                              .dontShareThisEvent)),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    6.0, 0.0, 6.0, 10.0),
+                                child: wrapWithModel(
+                                  model: _model.listViewEventDisplayModels
+                                      .getModel(
+                                    listViewIndex.toString(),
+                                    listViewIndex,
+                                  ),
+                                  updateCallback: () => setState(() {}),
+                                  child: ListViewEventDisplayWidget(
+                                    key: Key(
+                                      'Keywpy_${listViewIndex.toString()}',
+                                    ),
+                                    eventRef: listViewEventRecord.reference,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
                 ],
               ),
             ),
