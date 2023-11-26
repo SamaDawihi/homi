@@ -202,8 +202,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                 ),
               ),
             ),
-          if (widget.galleryDocument?.document != null &&
-              widget.galleryDocument?.document != '')
+          if (widget.galleryDocument!.attachedFiles.length > 0)
             Divider(
               height: 5.0,
               thickness: 1.0,
@@ -217,12 +216,12 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          '6xdliosh' /* Attachement */,
+                          'bo6icgp5' /* Attachement */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Source Sans Pro',
