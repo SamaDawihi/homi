@@ -123,7 +123,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       ),
                       style: FlutterFlowTheme.of(context).displaySmall.override(
                             fontFamily: 'Open Sans',
-                            fontSize: 32.0,
+                            fontSize: 30.0,
                             fontWeight: FontWeight.w600,
                           ),
                     ),
@@ -239,7 +239,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                                   fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  fontSize: 18.0,
+                                  fontSize: 26.0,
                                   letterSpacing: 0.9,
                                   fontWeight: FontWeight.w500,
                                 ),
