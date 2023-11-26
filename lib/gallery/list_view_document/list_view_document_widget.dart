@@ -222,7 +222,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          'g5du4xjc' /* Attachement */,
+                          '6xdliosh' /* Attachement */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Source Sans Pro',
