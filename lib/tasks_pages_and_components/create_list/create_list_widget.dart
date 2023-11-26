@@ -436,7 +436,10 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                                                   boxShadow: [
                                                     BoxShadow(
                                                       blurRadius: 4.0,
-                                                      color: Color(0x32000000),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .alternate,
                                                       offset: Offset(0.0, 2.0),
                                                     )
                                                   ],

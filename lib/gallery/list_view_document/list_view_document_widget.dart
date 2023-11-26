@@ -154,27 +154,18 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                     type: PageTransitionType.fade,
                     child: FlutterFlowExpandedImageView(
                       image: Image.network(
-                        valueOrDefault<String>(
-                          widget.galleryDocument?.document,
-                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
-                        ),
+                        widget.galleryDocument!.document,
                         fit: BoxFit.contain,
                       ),
                       allowRotation: false,
-                      tag: valueOrDefault<String>(
-                        widget.galleryDocument?.document,
-                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
-                      ),
+                      tag: widget.galleryDocument!.document,
                       useHeroAnimation: true,
                     ),
                   ),
                 );
               },
               child: Hero(
-                tag: valueOrDefault<String>(
-                  widget.galleryDocument?.document,
-                  'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
-                ),
+                tag: widget.galleryDocument!.document,
                 transitionOnUserGestures: true,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -184,10 +175,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                     topRight: Radius.circular(0.0),
                   ),
                   child: Image.network(
-                    valueOrDefault<String>(
-                      widget.galleryDocument?.document,
-                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/x8xvvj4gph2e/1404343.jpg',
-                    ),
+                    widget.galleryDocument!.document,
                     width: 350.0,
                     height: 190.0,
                     fit: BoxFit.fitWidth,

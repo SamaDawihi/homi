@@ -711,13 +711,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // AddAnouncement
   {
-    '9v1sltzw': {
-      'en': 'Send',
-      'ar': 'يرسل',
-    },
     'gn22egrf': {
       'en': 'What\'s on you mind ?',
       'ar': 'ماذا يدور في ذهنك ؟',
+    },
+    'pocenu8a': {
+      'en': 'Send',
+      'ar': 'أضف',
     },
     'mynvvh3r': {
       'en': 'New  Anouncement',
