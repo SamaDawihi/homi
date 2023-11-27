@@ -197,7 +197,6 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                                   snapshot.data!;
                               return ListView.separated(
                                 padding: EdgeInsets.zero,
-                                primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewDocumentRecordList.length,

@@ -336,7 +336,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
-                    primary: false,
+                    shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemCount: listViewAttachmentRecordList.length,
                     itemBuilder: (context, listViewIndex) {

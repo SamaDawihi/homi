@@ -603,6 +603,9 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                         _model.indexToBeEdited = 0;
                                         _model.showEdit = false;
                                       });
+                                      setState(() {
+                                        _model.textController2?.clear();
+                                      });
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -811,7 +814,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                     });
                                   }
 
-                                  context.pushNamed('Gallery');
+                                  context.goNamed('Gallery');
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
