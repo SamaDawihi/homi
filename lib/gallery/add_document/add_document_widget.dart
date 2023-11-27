@@ -39,9 +39,15 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textController2 ??= TextEditingController(
-        text: _model.indexToBeEdited < _model.name.length
-            ? _model.name[_model.indexToBeEdited]
-            : 'invalid index');
+        text: valueOrDefault<String>(
+      _model.indexToBeEdited < _model.name.length
+          ? valueOrDefault<String>(
+              _model.numberOfUploads.toString(),
+              '0',
+            )
+          : 'invalid index',
+      'default',
+    ));
     _model.textFieldFocusNode2 ??= FocusNode();
   }
 
@@ -203,7 +209,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              '0k4p5jdg' /* Document Title */,
+                              'dtr69att' /* Document Title */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
@@ -495,6 +501,8 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                         _model.uploadedFileUrl2);
                                     _model.addToName(
                                         'File ${_model.name.length.toString()}');
+                                    _model.numberOfUploads =
+                                        _model.numberOfUploads + 1;
                                   });
                                 },
                                 child: Icon(
@@ -531,7 +539,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           .labelMedium,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        '37dgd2oz' /* File name */,
+                                        '3fefvudj' /* File name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
@@ -741,6 +749,8 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                                     filesIndex);
                                                 _model.showEdit = false;
                                                 _model.indexToBeEdited = 0;
+                                                _model.numberOfUploads =
+                                                    _model.numberOfUploads + -1;
                                               });
                                             },
                                             child: Icon(

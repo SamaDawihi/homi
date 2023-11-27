@@ -160,7 +160,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          'tt8rn1v3' /* Documents */,
+                          'maagsnwu' /* Documents */,
                         ),
                         style: FlutterFlowTheme.of(context).headlineLarge,
                       ),
