@@ -107,7 +107,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                                 size: 25.0,
                               ),
                               onPressed: () async {
-                                context.pop();
+                                context.goNamed('FamilyProfile');
                               },
                             ),
                           ),
@@ -191,6 +191,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                                   snapshot.data!;
                               return ListView.separated(
                                 padding: EdgeInsets.zero,
+                                primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewDocumentRecordList.length,

@@ -1,9 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/gallery/list_view_attached_file/list_view_attached_file_widget.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -64,11 +67,22 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
       if (widget.galleryDocument?.document == null ||
           widget.galleryDocument?.document == '') {
         setState(() {
-          _model.viewMore = true;
+          _model.height = _model.height + 200;
         });
-        return;
       } else {
-        return;
+        setState(() {
+          _model.viewMore = true;
+          _model.height = _model.height + 200;
+        });
+      }
+
+      _model.attachments = await queryAttachmentRecordOnce(
+        parent: widget.galleryDocument?.reference,
+      );
+      if (_model.attachments!.length > 0) {
+        setState(() {
+          _model.height = _model.height + 30;
+        });
       }
     });
 
@@ -93,10 +107,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
 
     return Container(
       width: double.infinity,
-      height: widget.galleryDocument?.document != null &&
-              widget.galleryDocument?.document != ''
-          ? (widget.galleryDocument!.attachedFiles.length > 0 ? 350.0 : 250.0)
-          : 150.0,
+      height: _model.height.toDouble(),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -202,13 +213,14 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                 ),
               ),
             ),
-          if (widget.galleryDocument!.attachedFiles.length > 0)
+          if (widget.galleryDocument?.document != null &&
+              widget.galleryDocument?.document != '')
             Divider(
               height: 5.0,
               thickness: 1.0,
               color: FlutterFlowTheme.of(context).alternate,
             ),
-          if (widget.galleryDocument!.attachedFiles.length > 0)
+          if (_model.attachments!.length > 0)
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -221,7 +233,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          'bo6icgp5' /* Attachement */,
+                          'ckauo0qx' /* Attachement */,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Source Sans Pro',
@@ -271,6 +283,13 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       setState(() {
                         _model.viewMore = !_model.viewMore;
                       });
+                      setState(() {
+                        _model.height = _model.height +
+                            valueOrDefault<int>(
+                              _model.viewMore ? 15 : -15,
+                              0,
+                            );
+                      });
                     },
                     child: Icon(
                       Icons.expand_more_outlined,
@@ -285,31 +304,48 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
             ),
           if (_model.viewMore)
             Expanded(
-              child: Builder(
-                builder: (context) {
-                  final atachedFiles =
-                      widget.galleryDocument?.attachedFiles?.toList() ?? [];
+              child: StreamBuilder<List<AttachmentRecord>>(
+                stream: queryAttachmentRecord(
+                  parent: widget.galleryDocument?.reference,
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 10.0,
+                        height: 10.0,
+                        child: SpinKitDualRing(
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 10.0,
+                        ),
+                      ),
+                    );
+                  }
+                  List<AttachmentRecord> listViewAttachmentRecordList =
+                      snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: atachedFiles.length,
-                    itemBuilder: (context, atachedFilesIndex) {
-                      final atachedFilesItem = atachedFiles[atachedFilesIndex];
+                    itemCount: listViewAttachmentRecordList.length,
+                    itemBuilder: (context, listViewIndex) {
+                      final listViewAttachmentRecord =
+                          listViewAttachmentRecordList[listViewIndex];
                       return Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: wrapWithModel(
                           model: _model.listViewAttachedFileModels.getModel(
-                            atachedFilesIndex.toString(),
-                            atachedFilesIndex,
+                            listViewIndex.toString(),
+                            listViewIndex,
                           ),
                           updateCallback: () => setState(() {}),
                           child: ListViewAttachedFileWidget(
                             key: Key(
-                              'Keycam_${atachedFilesIndex.toString()}',
+                              'Keycam_${listViewIndex.toString()}',
                             ),
-                            url: atachedFilesItem,
+                            attachment: listViewAttachmentRecord,
                           ),
                         ),
                       );

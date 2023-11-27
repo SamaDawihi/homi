@@ -1,6 +1,6 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,10 +13,10 @@ export 'list_view_attached_file_model.dart';
 class ListViewAttachedFileWidget extends StatefulWidget {
   const ListViewAttachedFileWidget({
     Key? key,
-    required this.url,
+    required this.attachment,
   }) : super(key: key);
 
-  final String? url;
+  final AttachmentRecord? attachment;
 
   @override
   _ListViewAttachedFileWidgetState createState() =>
@@ -58,7 +58,7 @@ class _ListViewAttachedFileWidgetState
         children: [
           AutoSizeText(
             valueOrDefault<String>(
-              functions.extractFileName(widget.url!),
+              widget.attachment?.name,
               'File Name',
             ).maybeHandleOverflow(
               maxChars: 15,
@@ -80,7 +80,7 @@ class _ListViewAttachedFileWidgetState
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
-                await launchURL(widget.url!);
+                await launchURL(widget.attachment!.url);
               },
               child: Icon(
                 Icons.download_sharp,

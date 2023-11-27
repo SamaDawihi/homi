@@ -14,6 +14,7 @@ import 'schema/list_record.dart';
 import 'schema/item_record.dart';
 import 'schema/document_record.dart';
 import 'schema/announcement_record.dart';
+import 'schema/attachment_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,6 +31,7 @@ export 'schema/list_record.dart';
 export 'schema/item_record.dart';
 export 'schema/document_record.dart';
 export 'schema/announcement_record.dart';
+export 'schema/attachment_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -359,6 +361,46 @@ Future<List<AnnouncementRecord>> queryAnnouncementRecordOnce({
     queryCollectionOnce(
       AnnouncementRecord.collection,
       AnnouncementRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query AttachmentRecords (as a Stream and as a Future).
+Future<int> queryAttachmentRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AttachmentRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AttachmentRecord>> queryAttachmentRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AttachmentRecord.collection(parent),
+      AttachmentRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AttachmentRecord>> queryAttachmentRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AttachmentRecord.collection(parent),
+      AttachmentRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

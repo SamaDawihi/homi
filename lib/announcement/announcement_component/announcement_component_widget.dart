@@ -130,7 +130,10 @@ class _AnnouncementComponentWidgetState
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.network(
-                                    rowUsersRecord.photoUrl,
+                                    valueOrDefault<String>(
+                                      rowUsersRecord.photoUrl,
+                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/c8w026lm2m0v/userIcon.jpeg',
+                                    ),
                                     fit: BoxFit.cover,
                                   ),
                                 ),

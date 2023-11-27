@@ -700,6 +700,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Profile
   {
+    'f2hs8215': {
+      'en': 'Edit Profile',
+      'ar': '',
+    },
     'xmfddfme': {
       'en': 'Profile',
       'ar': 'حساب تعريفي',
@@ -1407,7 +1411,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ListViewDocument
   {
-    'bo6icgp5': {
+    'ckauo0qx': {
       'en': 'Attachement',
       'ar': '',
     },
@@ -1462,6 +1466,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'eay0t43o': {
       'en': 'Change Image',
       'ar': 'تغيير الصورة',
+    },
+  },
+  // EditProfile
+  {
+    '625lydhs': {
+      'en': 'Enter New Name',
+      'ar': 'اسم العائلة الجديد',
+    },
+    'uar91v6s': {
+      'en': '',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
+    'vr5dvvmy': {
+      'en': 'Enter New Email',
+      'ar': 'اسم العائلة الجديد',
+    },
+    'egac8at3': {
+      'en': '',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
+    '4mxn9r5u': {
+      'en': 'Save',
+      'ar': '',
     },
   },
   // Miscellaneous

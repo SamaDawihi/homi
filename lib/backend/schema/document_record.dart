@@ -41,18 +41,12 @@ class DocumentRecord extends FirestoreRecord {
   DateTime? get createdAt => _createdAt;
   bool hasCreatedAt() => _createdAt != null;
 
-  // "attachedFiles" field.
-  List<String>? _attachedFiles;
-  List<String> get attachedFiles => _attachedFiles ?? const [];
-  bool hasAttachedFiles() => _attachedFiles != null;
-
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _document = snapshotData['document'] as String?;
     _familyId = snapshotData['familyId'] as DocumentReference?;
     _createdBy = snapshotData['createdBy'] as DocumentReference?;
     _createdAt = snapshotData['createdAt'] as DateTime?;
-    _attachedFiles = getDataList(snapshotData['attachedFiles']);
   }
 
   static CollectionReference get collection =>
@@ -114,24 +108,16 @@ class DocumentRecordDocumentEquality implements Equality<DocumentRecord> {
 
   @override
   bool equals(DocumentRecord? e1, DocumentRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.title == e2?.title &&
         e1?.document == e2?.document &&
         e1?.familyId == e2?.familyId &&
         e1?.createdBy == e2?.createdBy &&
-        e1?.createdAt == e2?.createdAt &&
-        listEquality.equals(e1?.attachedFiles, e2?.attachedFiles);
+        e1?.createdAt == e2?.createdAt;
   }
 
   @override
-  int hash(DocumentRecord? e) => const ListEquality().hash([
-        e?.title,
-        e?.document,
-        e?.familyId,
-        e?.createdBy,
-        e?.createdAt,
-        e?.attachedFiles
-      ]);
+  int hash(DocumentRecord? e) => const ListEquality()
+      .hash([e?.title, e?.document, e?.familyId, e?.createdBy, e?.createdAt]);
 
   @override
   bool isValidKey(Object? o) => o is DocumentRecord;

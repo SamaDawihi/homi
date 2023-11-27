@@ -245,6 +245,40 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                         setState(() {
                           _model.deleteListsIteration = 0;
                         });
+                        _model.announcements =
+                            await queryAnnouncementRecordOnce(
+                          queryBuilder: (announcementRecord) =>
+                              announcementRecord.where(
+                            'familyId',
+                            isEqualTo: widget.familyID,
+                          ),
+                        );
+                        while (_model.loopAnnouncement <
+                            _model.announcements!.length) {
+                          await _model
+                              .announcements![_model.loopAnnouncement].reference
+                              .delete();
+                          setState(() {
+                            _model.loopAnnouncement =
+                                _model.loopAnnouncement + 1;
+                          });
+                        }
+                        _model.documents = await queryDocumentRecordOnce(
+                          queryBuilder: (documentRecord) =>
+                              documentRecord.where(
+                            'familyId',
+                            isEqualTo: widget.familyID,
+                          ),
+                        );
+                        while (
+                            _model.loopDocuments < _model.documents!.length) {
+                          await _model
+                              .documents![_model.loopDocuments].reference
+                              .delete();
+                          setState(() {
+                            _model.loopDocuments = _model.loopDocuments + 1;
+                          });
+                        }
 
                         context.goNamed('FamiliesManagement');
 

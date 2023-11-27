@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -520,11 +519,11 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       AutoSizeText(
-                                        valueOrDefault<String>(
-                                          functions.extractFileName(
-                                              _model.uploadedFiles[filesIndex]),
-                                          'File Name',
-                                        ).maybeHandleOverflow(
+                                        'File ${valueOrDefault<String>(
+                                          filesIndex.toString(),
+                                          '0',
+                                        )}'
+                                            .maybeHandleOverflow(
                                           maxChars: 20,
                                           replacement: '…',
                                         ),
@@ -568,34 +567,35 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             onPressed: () async {
                               var documentRecordReference =
                                   DocumentRecord.collection.doc();
-                              await documentRecordReference.set({
-                                ...createDocumentRecordData(
-                                  title: _model.textController.text,
-                                  document: _model.uploadedImage,
-                                  familyId: FFAppState().familyId,
-                                  createdBy: currentUserReference,
-                                  createdAt: getCurrentTimestamp,
-                                ),
-                                ...mapToFirestore(
-                                  {
-                                    'attachedFiles': _model.uploadedFiles,
-                                  },
-                                ),
-                              });
-                              _model.doc = DocumentRecord.getDocumentFromData({
-                                ...createDocumentRecordData(
-                                  title: _model.textController.text,
-                                  document: _model.uploadedImage,
-                                  familyId: FFAppState().familyId,
-                                  createdBy: currentUserReference,
-                                  createdAt: getCurrentTimestamp,
-                                ),
-                                ...mapToFirestore(
-                                  {
-                                    'attachedFiles': _model.uploadedFiles,
-                                  },
-                                ),
-                              }, documentRecordReference);
+                              await documentRecordReference
+                                  .set(createDocumentRecordData(
+                                title: _model.textController.text,
+                                document: _model.uploadedImage,
+                                familyId: FFAppState().familyId,
+                                createdBy: currentUserReference,
+                                createdAt: getCurrentTimestamp,
+                              ));
+                              _model.doc = DocumentRecord.getDocumentFromData(
+                                  createDocumentRecordData(
+                                    title: _model.textController.text,
+                                    document: _model.uploadedImage,
+                                    familyId: FFAppState().familyId,
+                                    createdBy: currentUserReference,
+                                    createdAt: getCurrentTimestamp,
+                                  ),
+                                  documentRecordReference);
+                              while (
+                                  _model.loop < _model.uploadedFiles.length) {
+                                await AttachmentRecord.createDoc(
+                                        _model.doc!.reference)
+                                    .set(createAttachmentRecordData(
+                                  name: 'File ${_model.loop.toString()}',
+                                  url: _model.uploadedFiles[_model.loop],
+                                ));
+                                setState(() {
+                                  _model.loop = _model.loop + 1;
+                                });
+                              }
 
                               context.pushNamed('Gallery');
 
