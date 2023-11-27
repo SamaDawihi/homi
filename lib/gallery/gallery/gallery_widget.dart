@@ -160,7 +160,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          'aiqizrp0' /* Documents */,
+                          'rbjsyrvp' /* Documents */,
                         ),
                         style: FlutterFlowTheme.of(context).headlineLarge,
                       ),
@@ -206,21 +206,25 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewDocumentRecord =
                                       listViewDocumentRecordList[listViewIndex];
-                                  return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        4.0, 8.0, 4.0, 8.0),
-                                    child: wrapWithModel(
-                                      model: _model.listViewDocumentModels
-                                          .getModel(
-                                        listViewIndex.toString(),
-                                        listViewIndex,
-                                      ),
-                                      updateCallback: () => setState(() {}),
-                                      child: ListViewDocumentWidget(
-                                        key: Key(
-                                          'Key2r5_${listViewIndex.toString()}',
+                                  return Opacity(
+                                    opacity: 0.0,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 8.0, 4.0, 8.0),
+                                      child: wrapWithModel(
+                                        model: _model.listViewDocumentModels
+                                            .getModel(
+                                          listViewIndex.toString(),
+                                          listViewIndex,
                                         ),
-                                        galleryDocument: listViewDocumentRecord,
+                                        updateCallback: () => setState(() {}),
+                                        child: ListViewDocumentWidget(
+                                          key: Key(
+                                            'Key2r5_${listViewIndex.toString()}',
+                                          ),
+                                          galleryDocument:
+                                              listViewDocumentRecord,
+                                        ),
                                       ),
                                     ),
                                   );

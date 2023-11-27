@@ -192,6 +192,11 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       image: Image.network(
                         widget.galleryDocument!.document,
                         fit: BoxFit.contain,
+                        errorBuilder: (context, error, stackTrace) =>
+                            Image.asset(
+                          'assets/images/error_image.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
                       allowRotation: false,
                       tag: widget.galleryDocument!.document,
@@ -215,6 +220,12 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                     width: 350.0,
                     height: 190.0,
                     fit: BoxFit.fitWidth,
+                    errorBuilder: (context, error, stackTrace) => Image.asset(
+                      'assets/images/error_image.png',
+                      width: 350.0,
+                      height: 190.0,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
                 ),
               ),
@@ -325,6 +336,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
+                    primary: false,
                     scrollDirection: Axis.vertical,
                     itemCount: listViewAttachmentRecordList.length,
                     itemBuilder: (context, listViewIndex) {
