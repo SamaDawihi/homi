@@ -39,7 +39,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textController2 ??= TextEditingController(
-        text: _model.indexToBeEdited < _model.name.length
+        text: _model.indexToBeEdited <= _model.name.length
             ? _model.name[_model.indexToBeEdited]
             : 'invalid index');
     _model.textFieldFocusNode2 ??= FocusNode();
@@ -203,7 +203,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              'h0m2ssa3' /* Document Title */,
+                              'gi8bea92' /* Document Title */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
@@ -533,7 +533,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           .labelMedium,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'od7gp4v6' /* File name */,
+                                        'sgy753br' /* File name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
