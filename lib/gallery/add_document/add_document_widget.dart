@@ -38,16 +38,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController(
-        text: valueOrDefault<String>(
-      _model.indexToBeEdited < _model.numberOfUploads
-          ? valueOrDefault<String>(
-              _model.numberOfUploads.toString(),
-              '0',
-            )
-          : 'invalid index',
-      'default',
-    ));
+    _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
   }
 
@@ -209,7 +200,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              'kpukhpvl' /* Document Title */,
+                              'kf2kq3u2' /* Document Title */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
@@ -539,7 +530,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           .labelMedium,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'dzn650pf' /* File name */,
+                                        'fq18ldh5' /* File name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
