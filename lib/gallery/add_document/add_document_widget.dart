@@ -40,7 +40,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
 
     _model.textController2 ??= TextEditingController(
         text: valueOrDefault<String>(
-      _model.indexToBeEdited < _model.name.length
+      _model.indexToBeEdited < _model.numberOfUploads
           ? valueOrDefault<String>(
               _model.numberOfUploads.toString(),
               '0',
@@ -209,7 +209,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              'dtr69att' /* Document Title */,
+                              'kpukhpvl' /* Document Title */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
@@ -539,7 +539,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           .labelMedium,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        '3fefvudj' /* File name */,
+                                        'dzn650pf' /* File name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
