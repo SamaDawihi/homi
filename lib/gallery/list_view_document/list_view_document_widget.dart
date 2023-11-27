@@ -112,8 +112,9 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
         height: widget.galleryDocument?.document != null &&
                 widget.galleryDocument?.document != ''
             ? ((_model.attachment.length != null) &&
-                    (_model.attachment.length > 0)
-                ? 330.0
+                    (_model.attachment.length > 0) &&
+                    _model.viewMore
+                ? 350.0
                 : 250.0)
             : 120.0,
         decoration: BoxDecoration(
