@@ -73,6 +73,10 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
       _model.attachments = await queryAttachmentRecordOnce(
         parent: widget.galleryDocument?.reference,
       );
+      setState(() {
+        _model.attachment =
+            _model.attachments!.toList().cast<AttachmentRecord>();
+      });
     });
 
     setupAnimations(

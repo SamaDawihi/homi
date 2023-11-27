@@ -203,7 +203,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              '5alro1fk' /* Document Title */,
+                              '5drd76c2' /* Document Title */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
@@ -533,7 +533,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           .labelMedium,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'suzndjma' /* File name */,
+                                        'x59oinjo' /* File name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,

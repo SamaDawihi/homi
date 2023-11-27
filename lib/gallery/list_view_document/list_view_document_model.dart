@@ -22,6 +22,16 @@ class ListViewDocumentModel extends FlutterFlowModel<ListViewDocumentWidget> {
 
   bool viewMore = false;
 
+  List<AttachmentRecord> attachment = [];
+  void addToAttachment(AttachmentRecord item) => attachment.add(item);
+  void removeFromAttachment(AttachmentRecord item) => attachment.remove(item);
+  void removeAtIndexFromAttachment(int index) => attachment.removeAt(index);
+  void insertAtIndexInAttachment(int index, AttachmentRecord item) =>
+      attachment.insert(index, item);
+  void updateAttachmentAtIndex(
+          int index, Function(AttachmentRecord) updateFn) =>
+      attachment[index] = updateFn(attachment[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Firestore Query - Query a collection] action in ListViewDocument widget.
