@@ -102,8 +102,8 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
       width: double.infinity,
       height: widget.galleryDocument?.document != null &&
               widget.galleryDocument?.document != ''
-          ? (_model.attachments!.length > 0 ? 250.0 : 210.0)
-          : 60.0,
+          ? (_model.attachment.length > 0 ? 300.0 : 250.0)
+          : 90.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
