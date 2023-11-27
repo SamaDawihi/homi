@@ -746,7 +746,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Document Title',
       'ar': 'التسمية هنا...',
     },
-    'gi8bea92': {
+    't5qovt0j': {
       'en': 'Document Title',
       'ar': '',
     },
@@ -758,7 +758,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Attached Files',
       'ar': 'الملفات المرفقة',
     },
-    'sgy753br': {
+    'fahdlq3m': {
       'en': 'File name',
       'ar': '',
     },
@@ -777,7 +777,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Gallery',
       'ar': 'صالة عرض',
     },
-    'ppw68yv3': {
+    'gxmdyms2': {
       'en': 'Documents',
       'ar': '',
     },

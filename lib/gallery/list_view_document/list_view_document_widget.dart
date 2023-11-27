@@ -102,8 +102,8 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
       width: double.infinity,
       height: widget.galleryDocument?.document != null &&
               widget.galleryDocument?.document != ''
-          ? (_model.attachment.length > 0 ? 300.0 : 250.0)
-          : 90.0,
+          ? (_model.attachment.length > 0 ? 350.0 : 250.0)
+          : 110.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -315,7 +315,6 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       snapshot.data!;
                   return ListView.builder(
                     padding: EdgeInsets.zero,
-                    shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemCount: listViewAttachmentRecordList.length,
                     itemBuilder: (context, listViewIndex) {
