@@ -39,7 +39,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textController2 ??= TextEditingController(
-        text: _model.indexToBeEdited <= _model.name.length
+        text: _model.indexToBeEdited < _model.name.length
             ? _model.name[_model.indexToBeEdited]
             : 'invalid index');
     _model.textFieldFocusNode2 ??= FocusNode();
@@ -203,7 +203,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              '54ysuuyl' /* Document Title */,
+                              '0k4p5jdg' /* Document Title */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
@@ -414,9 +414,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             Align(
                               alignment: AlignmentDirectional(-1.00, 0.00),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '0b1ytslj' /* Attached Files */,
-                                ),
+                                'Attached Files ${_model.name.length.toString()}',
                                 style:
                                     FlutterFlowTheme.of(context).displaySmall,
                               ),
@@ -533,7 +531,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           .labelMedium,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'afen17cw' /* File name */,
+                                        '37dgd2oz' /* File name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
