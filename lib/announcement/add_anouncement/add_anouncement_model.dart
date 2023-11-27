@@ -22,6 +22,8 @@ class AddAnouncementModel extends FlutterFlowModel<AddAnouncementWidget> {
 
   String? uploadedImgae;
 
+  String msgerr = '';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

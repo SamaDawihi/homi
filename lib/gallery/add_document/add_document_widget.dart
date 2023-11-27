@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,14 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
     super.initState();
     _model = createModel(context, () => AddDocumentModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
+    _model.textController2 ??= TextEditingController(
+        text: _model.indexToBeEdited < _model.name.length
+            ? _model.name[_model.indexToBeEdited]
+            : 'invalid index');
+    _model.textFieldFocusNode2 ??= FocusNode();
   }
 
   @override
@@ -170,7 +177,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               20.0, 0.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'd7hp5rox' /* Item gallery Title */,
+                              'd7hp5rox' /* Document Title* */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -185,16 +192,19 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 10.0, 10.0, 10.0),
                         child: TextFormField(
-                          controller: _model.textController,
-                          focusNode: _model.textFieldFocusNode,
+                          controller: _model.textController1,
+                          focusNode: _model.textFieldFocusNode1,
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              '95dq19pa' /* Label here... */,
+                              '95dq19pa' /* Document Title */,
                             ),
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
+                            hintText: FFLocalizations.of(context).getText(
+                              '5alro1fk' /* Document Title */,
+                            ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -226,7 +236,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
-                          validator: _model.textControllerValidator
+                          validator: _model.textController1Validator
                               .asValidator(context),
                         ),
                       ),
@@ -237,7 +247,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               5.0, 0.0, 0.0, 30.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'cgdopig4' /* Item gallery Image */,
+                              'cgdopig4' /* Document Image */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -485,6 +495,8 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                   setState(() {
                                     _model.addToUploadedFiles(
                                         _model.uploadedFileUrl2);
+                                    _model.addToName(
+                                        'File ${_model.name.length.toString()}');
                                   });
                                 },
                                 child: Icon(
@@ -497,6 +509,167 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                           ],
                         ),
                       ),
+                      if (_model.showEdit)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 5.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 0.0, 0.0),
+                                  child: TextFormField(
+                                    controller: _model.textController2,
+                                    focusNode: _model.textFieldFocusNode2,
+                                    autofocus: true,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          'Change File ${_model.indexToBeEdited.toString()} Name',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'suzndjma' /* File name */,
+                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    validator: _model.textController2Validator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  if (functions.trimAndCollapseSpaces(
+                                              _model.textController2.text) !=
+                                          null &&
+                                      functions.trimAndCollapseSpaces(
+                                              _model.textController2.text) !=
+                                          '') {
+                                    if (!_model.name.contains(
+                                        functions.trimAndCollapseSpaces(
+                                            _model.textController2.text))) {
+                                      setState(() {
+                                        _model.updateNameAtIndex(
+                                          _model.indexToBeEdited,
+                                          (_) =>
+                                              functions.trimAndCollapseSpaces(
+                                                  _model.textController2.text),
+                                        );
+                                        _model.indexToBeEdited = 0;
+                                        _model.showEdit = false;
+                                      });
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'File Name Updated Successfully',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .success,
+                                        ),
+                                      );
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'File Name Must Not Be Unique',
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                        ),
+                                      );
+                                    }
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'File Name Must Not Be Empty',
+                                          style: TextStyle(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context).error,
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Icon(
+                                  Icons.done_outlined,
+                                  color: FlutterFlowTheme.of(context).success,
+                                  size: 24.0,
+                                ),
+                              ),
+                            ].divide(SizedBox(width: 5.0)),
+                          ),
+                        ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 16.0),
@@ -519,10 +692,10 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       AutoSizeText(
-                                        'File ${valueOrDefault<String>(
-                                          filesIndex.toString(),
-                                          '0',
-                                        )}'
+                                        _model.name[valueOrDefault<int>(
+                                          filesIndex,
+                                          0,
+                                        )]
                                             .maybeHandleOverflow(
                                           maxChars: 20,
                                           replacement: '…',
@@ -531,24 +704,56 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                             .bodyMedium,
                                         minFontSize: 9.0,
                                       ),
-                                      InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          setState(() {
-                                            _model
-                                                .removeAtIndexFromUploadedFiles(
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                _model.indexToBeEdited =
+                                                    filesIndex;
+                                                _model.showEdit = true;
+                                              });
+                                            },
+                                            child: Icon(
+                                              Icons.edit_outlined,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              setState(() {
+                                                _model
+                                                    .removeAtIndexFromUploadedFiles(
+                                                        filesIndex);
+                                                _model.removeAtIndexFromName(
                                                     filesIndex);
-                                          });
-                                        },
-                                        child: Icon(
-                                          Icons.remove_circle_outline,
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          size: 24.0,
-                                        ),
+                                                _model.showEdit = false;
+                                                _model.indexToBeEdited = 0;
+                                              });
+                                            },
+                                            child: Icon(
+                                              Icons.remove_circle_outline,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ].divide(SizedBox(width: 5.0)),
                                       ),
                                     ],
                                   ),
@@ -565,39 +770,81 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               0.0, 20.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              var documentRecordReference =
-                                  DocumentRecord.collection.doc();
-                              await documentRecordReference
-                                  .set(createDocumentRecordData(
-                                title: _model.textController.text,
-                                document: _model.uploadedImage,
-                                familyId: FFAppState().familyId,
-                                createdBy: currentUserReference,
-                                createdAt: getCurrentTimestamp,
-                              ));
-                              _model.doc = DocumentRecord.getDocumentFromData(
-                                  createDocumentRecordData(
-                                    title: _model.textController.text,
+                              if (functions.trimAndCollapseSpaces(
+                                          _model.textController1.text) !=
+                                      null &&
+                                  functions.trimAndCollapseSpaces(
+                                          _model.textController1.text) !=
+                                      '') {
+                                if ((_model.uploadedImage != null &&
+                                        _model.uploadedImage != '') ||
+                                    (_model.uploadedFiles.length > 0)) {
+                                  var documentRecordReference =
+                                      DocumentRecord.collection.doc();
+                                  await documentRecordReference
+                                      .set(createDocumentRecordData(
+                                    title: _model.textController1.text,
                                     document: _model.uploadedImage,
                                     familyId: FFAppState().familyId,
                                     createdBy: currentUserReference,
                                     createdAt: getCurrentTimestamp,
-                                  ),
-                                  documentRecordReference);
-                              while (
-                                  _model.loop < _model.uploadedFiles.length) {
-                                await AttachmentRecord.createDoc(
-                                        _model.doc!.reference)
-                                    .set(createAttachmentRecordData(
-                                  name: 'File ${_model.loop.toString()}',
-                                  url: _model.uploadedFiles[_model.loop],
-                                ));
-                                setState(() {
-                                  _model.loop = _model.loop + 1;
-                                });
-                              }
+                                  ));
+                                  _model.doc =
+                                      DocumentRecord.getDocumentFromData(
+                                          createDocumentRecordData(
+                                            title: _model.textController1.text,
+                                            document: _model.uploadedImage,
+                                            familyId: FFAppState().familyId,
+                                            createdBy: currentUserReference,
+                                            createdAt: getCurrentTimestamp,
+                                          ),
+                                          documentRecordReference);
+                                  while (_model.loop <
+                                      _model.uploadedFiles.length) {
+                                    await AttachmentRecord.createDoc(
+                                            _model.doc!.reference)
+                                        .set(createAttachmentRecordData(
+                                      name: _model.name[_model.loop],
+                                      url: _model.uploadedFiles[_model.loop],
+                                    ));
+                                    setState(() {
+                                      _model.loop = _model.loop + 1;
+                                    });
+                                  }
 
-                              context.pushNamed('Gallery');
+                                  context.pushNamed('Gallery');
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Must At least Upload an image or Attach a file',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                }
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Document Title Must Not Be Empty',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).error,
+                                  ),
+                                );
+                              }
 
                               setState(() {});
                             },

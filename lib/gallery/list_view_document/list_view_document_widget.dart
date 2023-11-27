@@ -67,23 +67,12 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
       if (widget.galleryDocument?.document == null ||
           widget.galleryDocument?.document == '') {
         setState(() {
-          _model.height = _model.height + 200;
-        });
-      } else {
-        setState(() {
           _model.viewMore = true;
-          _model.height = _model.height + 200;
         });
       }
-
       _model.attachments = await queryAttachmentRecordOnce(
         parent: widget.galleryDocument?.reference,
       );
-      if (_model.attachments!.length > 0) {
-        setState(() {
-          _model.height = _model.height + 30;
-        });
-      }
     });
 
     setupAnimations(
@@ -107,7 +96,10 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
 
     return Container(
       width: double.infinity,
-      height: _model.height.toDouble(),
+      height: widget.galleryDocument?.document != null &&
+              widget.galleryDocument?.document != ''
+          ? (_model.attachments!.length > 0 ? 250.0 : 210.0)
+          : 60.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -282,13 +274,6 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
 
                       setState(() {
                         _model.viewMore = !_model.viewMore;
-                      });
-                      setState(() {
-                        _model.height = _model.height +
-                            valueOrDefault<int>(
-                              _model.viewMore ? 15 : -15,
-                              0,
-                            );
                       });
                     },
                     child: Icon(

@@ -22,8 +22,6 @@ class ListViewDocumentModel extends FlutterFlowModel<ListViewDocumentWidget> {
 
   bool viewMore = false;
 
-  int height = 50;
-
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Firestore Query - Query a collection] action in ListViewDocument widget.

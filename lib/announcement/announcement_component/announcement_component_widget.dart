@@ -135,6 +135,12 @@ class _AnnouncementComponentWidgetState
                                       'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/c8w026lm2m0v/userIcon.jpeg',
                                     ),
                                     fit: BoxFit.cover,
+                                    errorBuilder:
+                                        (context, error, stackTrace) =>
+                                            Image.asset(
+                                      'assets/images/error_image.png',
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -333,6 +339,12 @@ class _AnnouncementComponentWidgetState
                                     image: Image.network(
                                       socialPost2AnnouncementRecord.image,
                                       fit: BoxFit.contain,
+                                      errorBuilder:
+                                          (context, error, stackTrace) =>
+                                              Image.asset(
+                                        'assets/images/error_image.png',
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                     allowRotation: false,
                                     tag: socialPost2AnnouncementRecord.image,
@@ -351,6 +363,13 @@ class _AnnouncementComponentWidgetState
                                   width: double.infinity,
                                   height: 230.0,
                                   fit: BoxFit.fitWidth,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      Image.asset(
+                                    'assets/images/error_image.png',
+                                    width: double.infinity,
+                                    height: 230.0,
+                                    fit: BoxFit.fitWidth,
+                                  ),
                                 ),
                               ),
                             ),

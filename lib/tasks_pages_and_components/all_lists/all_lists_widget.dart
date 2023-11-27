@@ -6,7 +6,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/tasks_pages_and_components/empty_list_component/empty_list_component_widget.dart';
 import '/tasks_pages_and_components/list_component_view_list/list_component_view_list_widget.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,6 +33,11 @@ class _AllListsWidgetState extends State<AllListsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => AllListsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkMemberExists(context);
+    });
 
     _model.tabBarController = TabController(
       vsync: this,

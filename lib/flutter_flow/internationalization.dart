@@ -739,20 +739,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إضافة مستند',
     },
     'd7hp5rox': {
-      'en': 'Item gallery Title',
+      'en': 'Document Title*',
       'ar': 'عنوان معرض العناصر',
     },
     '95dq19pa': {
-      'en': 'Label here...',
+      'en': 'Document Title',
       'ar': 'التسمية هنا...',
     },
+    '5alro1fk': {
+      'en': 'Document Title',
+      'ar': '',
+    },
     'cgdopig4': {
-      'en': 'Item gallery Image',
+      'en': 'Document Image',
       'ar': 'صورة معرض العناصر',
     },
     '0b1ytslj': {
       'en': 'Attached Files',
       'ar': 'الملفات المرفقة',
+    },
+    'suzndjma': {
+      'en': 'File name',
+      'ar': '',
     },
     'jx8cs0m7': {
       'en': 'Save Changes',
@@ -768,6 +776,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '69anokm1': {
       'en': 'Gallery',
       'ar': 'صالة عرض',
+    },
+    'zzh0nyg1': {
+      'en': 'Documents',
+      'ar': '',
     },
     'q1vup2a1': {
       'en': 'Home',
@@ -1489,6 +1501,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '4mxn9r5u': {
       'en': 'Save',
       'ar': '',
+    },
+  },
+  // InputComponentEditFileName
+  {
+    '1yfbr1kf': {
+      'en': 'Change File name',
+      'ar': 'تأكيد القبول',
+    },
+    '3fhxnz8j': {
+      'en': 'File name',
+      'ar': '',
+    },
+    'v6ad9zx4': {
+      'en': 'Cancel',
+      'ar': 'يلغي',
+    },
+    '09phbt6f': {
+      'en': 'Add',
+      'ar': 'يضيف',
+    },
+    'gx7952uk': {
+      'en': 'Field is required',
+      'ar': 'الحقل مطلوب',
+    },
+    '9qonytjg': {
+      'en': 'Please choose an option from the dropdown',
+      'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
   },
   // Miscellaneous
