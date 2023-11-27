@@ -746,7 +746,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Document Title',
       'ar': 'التسمية هنا...',
     },
-    'kf2kq3u2': {
+    'vib111os': {
       'en': 'Document Title',
       'ar': '',
     },
@@ -754,7 +754,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Document Image',
       'ar': 'صورة معرض العناصر',
     },
-    'fq18ldh5': {
+    'ahgb0ukl': {
       'en': 'File name',
       'ar': '',
     },
@@ -773,7 +773,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Gallery',
       'ar': 'صالة عرض',
     },
-    'xktnmq9b': {
+    'aiqizrp0': {
       'en': 'Documents',
       'ar': '',
     },

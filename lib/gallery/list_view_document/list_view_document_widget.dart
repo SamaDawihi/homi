@@ -66,6 +66,13 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (widget.galleryDocument?.document == null ||
           widget.galleryDocument?.document == '') {
+        if (animationsMap['iconOnActionTriggerAnimation'] != null) {
+          setState(() => hasIconTriggered = true);
+          SchedulerBinding.instance.addPostFrameCallback((_) async =>
+              animationsMap['iconOnActionTriggerAnimation']!
+                  .controller
+                  .forward(from: 0.0));
+        }
         setState(() {
           _model.viewMore = true;
         });
@@ -104,9 +111,9 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
               widget.galleryDocument?.document != ''
           ? ((_model.attachment.length != null) &&
                   (_model.attachment.length > 0)
-              ? 350.0
+              ? 330.0
               : 250.0)
-          : 110.0,
+          : 120.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
