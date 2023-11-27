@@ -105,259 +105,274 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
-      width: double.infinity,
-      height: 350.0,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(4.0, 8.0, 4.0, 4.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Expanded(
-                  child: Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Text(
-                      valueOrDefault<String>(
-                        widget.galleryDocument?.title,
-                        'Title',
-                      ).maybeHandleOverflow(
-                        maxChars: 20,
-                        replacement: '…',
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
+      child: Container(
+        width: double.infinity,
+        height: widget.galleryDocument?.document != null &&
+                widget.galleryDocument?.document != ''
+            ? ((_model.attachment.length != null) &&
+                    (_model.attachment.length > 0)
+                ? 330.0
+                : 250.0)
+            : 120.0,
+        decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).secondaryBackground,
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(4.0, 8.0, 4.0, 4.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 0.00),
+                      child: Text(
+                        valueOrDefault<String>(
+                          widget.galleryDocument?.title,
+                          'Title',
+                        ).maybeHandleOverflow(
+                          maxChars: 20,
+                          replacement: '…',
+                        ),
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  fontFamily: 'Open Sans',
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
-                      style: FlutterFlowTheme.of(context).displaySmall.override(
-                            fontFamily: 'Open Sans',
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.bold,
-                          ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                        child: Icon(
-                          Icons.edit_outlined,
-                          color: FlutterFlowTheme.of(context).primary,
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: Icon(
+                            Icons.edit_outlined,
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 24.0,
+                          ),
+                        ),
+                        Icon(
+                          Icons.delete_forever,
+                          color: FlutterFlowTheme.of(context).error,
                           size: 24.0,
                         ),
-                      ),
-                      Icon(
-                        Icons.delete_forever,
-                        color: FlutterFlowTheme.of(context).error,
-                        size: 24.0,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Divider(
-            height: 5.0,
-            thickness: 1.0,
-            color: FlutterFlowTheme.of(context).alternate,
-          ),
-          if (widget.galleryDocument?.document != null &&
-              widget.galleryDocument?.document != '')
-            InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                await Navigator.push(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.fade,
-                    child: FlutterFlowExpandedImageView(
-                      image: Image.network(
-                        widget.galleryDocument!.document,
-                        fit: BoxFit.contain,
-                        errorBuilder: (context, error, stackTrace) =>
-                            Image.asset(
-                          'assets/images/error_image.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      allowRotation: false,
-                      tag: widget.galleryDocument!.document,
-                      useHeroAnimation: true,
+                      ],
                     ),
                   ),
-                );
-              },
-              child: Hero(
-                tag: widget.galleryDocument!.document,
-                transitionOnUserGestures: true,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10.0),
-                    bottomRight: Radius.circular(10.0),
-                    topLeft: Radius.circular(0.0),
-                    topRight: Radius.circular(0.0),
-                  ),
-                  child: Image.network(
-                    widget.galleryDocument!.document,
-                    width: 350.0,
-                    height: 190.0,
-                    fit: BoxFit.fitWidth,
-                    errorBuilder: (context, error, stackTrace) => Image.asset(
-                      'assets/images/error_image.png',
-                      width: 350.0,
-                      height: 190.0,
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                ),
+                ],
               ),
             ),
-          if (widget.galleryDocument?.document != null &&
-              widget.galleryDocument?.document != '')
             Divider(
               height: 5.0,
               thickness: 1.0,
               color: FlutterFlowTheme.of(context).alternate,
             ),
-          if (_model.attachments!.length > 0)
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'ckauo0qx' /* Attachement */,
+            if (widget.galleryDocument?.document != null &&
+                widget.galleryDocument?.document != '')
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: FlutterFlowExpandedImageView(
+                        image: Image.network(
+                          widget.galleryDocument!.document,
+                          fit: BoxFit.contain,
+                          errorBuilder: (context, error, stackTrace) =>
+                              Image.asset(
+                            'assets/images/error_image.png',
+                            fit: BoxFit.contain,
+                          ),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Source Sans Pro',
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                        allowRotation: false,
+                        tag: widget.galleryDocument!.document,
+                        useHeroAnimation: true,
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(7.0, 0.0, 0.0, 0.0),
-                        child: Icon(
-                          Icons.attach_file,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
-                        ),
+                    ),
+                  );
+                },
+                child: Hero(
+                  tag: widget.galleryDocument!.document,
+                  transitionOnUserGestures: true,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10.0),
+                      bottomRight: Radius.circular(10.0),
+                      topLeft: Radius.circular(0.0),
+                      topRight: Radius.circular(0.0),
+                    ),
+                    child: Image.network(
+                      widget.galleryDocument!.document,
+                      width: 350.0,
+                      height: 190.0,
+                      fit: BoxFit.fitWidth,
+                      errorBuilder: (context, error, stackTrace) => Image.asset(
+                        'assets/images/error_image.png',
+                        width: 350.0,
+                        height: 190.0,
+                        fit: BoxFit.fitWidth,
                       ),
-                    ],
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      if (_model.viewMore) {
-                        if (animationsMap['iconOnActionTriggerAnimation'] !=
-                            null) {
-                          animationsMap['iconOnActionTriggerAnimation']!
-                              .controller
-                              .reverse();
-                        }
-                      } else {
-                        if (animationsMap['iconOnActionTriggerAnimation'] !=
-                            null) {
-                          setState(() => hasIconTriggered = true);
-                          SchedulerBinding.instance.addPostFrameCallback(
-                              (_) async =>
-                                  animationsMap['iconOnActionTriggerAnimation']!
-                                      .controller
-                                      .forward(from: 0.0));
-                        }
-                      }
-
-                      setState(() {
-                        _model.viewMore = !_model.viewMore;
-                      });
-                    },
-                    child: Icon(
-                      Icons.expand_more_outlined,
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 28.0,
-                    ),
-                  ).animateOnActionTrigger(
-                      animationsMap['iconOnActionTriggerAnimation']!,
-                      hasBeenTriggered: hasIconTriggered),
-                ),
-              ],
-            ),
-          if (_model.viewMore)
-            Expanded(
-              child: StreamBuilder<List<AttachmentRecord>>(
-                stream: queryAttachmentRecord(
-                  parent: widget.galleryDocument?.reference,
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 10.0,
-                        height: 10.0,
-                        child: SpinKitDualRing(
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 10.0,
-                        ),
-                      ),
-                    );
-                  }
-                  List<AttachmentRecord> listViewAttachmentRecordList =
-                      snapshot.data!;
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: listViewAttachmentRecordList.length,
-                    itemBuilder: (context, listViewIndex) {
-                      final listViewAttachmentRecord =
-                          listViewAttachmentRecordList[listViewIndex];
-                      return Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: wrapWithModel(
-                          model: _model.listViewAttachedFileModels.getModel(
-                            listViewIndex.toString(),
-                            listViewIndex,
+              ),
+            if (widget.galleryDocument?.document != null &&
+                widget.galleryDocument?.document != '')
+              Divider(
+                height: 5.0,
+                thickness: 1.0,
+                color: FlutterFlowTheme.of(context).alternate,
+              ),
+            if (_model.attachments!.length > 0)
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'ckauo0qx' /* Attachement */,
                           ),
-                          updateCallback: () => setState(() {}),
-                          child: ListViewAttachedFileWidget(
-                            key: Key(
-                              'Keycam_${listViewIndex.toString()}',
-                            ),
-                            attachment: listViewAttachmentRecord,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              7.0, 0.0, 0.0, 0.0),
+                          child: Icon(
+                            Icons.attach_file,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        if (_model.viewMore) {
+                          if (animationsMap['iconOnActionTriggerAnimation'] !=
+                              null) {
+                            animationsMap['iconOnActionTriggerAnimation']!
+                                .controller
+                                .reverse();
+                          }
+                        } else {
+                          if (animationsMap['iconOnActionTriggerAnimation'] !=
+                              null) {
+                            setState(() => hasIconTriggered = true);
+                            SchedulerBinding.instance.addPostFrameCallback(
+                                (_) async => animationsMap[
+                                        'iconOnActionTriggerAnimation']!
+                                    .controller
+                                    .forward(from: 0.0));
+                          }
+                        }
+
+                        setState(() {
+                          _model.viewMore = !_model.viewMore;
+                        });
+                      },
+                      child: Icon(
+                        Icons.expand_more_outlined,
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 28.0,
+                      ),
+                    ).animateOnActionTrigger(
+                        animationsMap['iconOnActionTriggerAnimation']!,
+                        hasBeenTriggered: hasIconTriggered),
+                  ),
+                ],
+              ),
+            if (_model.viewMore)
+              Expanded(
+                child: StreamBuilder<List<AttachmentRecord>>(
+                  stream: queryAttachmentRecord(
+                    parent: widget.galleryDocument?.reference,
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 10.0,
+                          height: 10.0,
+                          child: SpinKitDualRing(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 10.0,
                           ),
                         ),
                       );
-                    },
-                  );
-                },
+                    }
+                    List<AttachmentRecord> listViewAttachmentRecordList =
+                        snapshot.data!;
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewAttachmentRecordList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewAttachmentRecord =
+                            listViewAttachmentRecordList[listViewIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.listViewAttachedFileModels.getModel(
+                              listViewIndex.toString(),
+                              listViewIndex,
+                            ),
+                            updateCallback: () => setState(() {}),
+                            child: ListViewAttachedFileWidget(
+                              key: Key(
+                                'Keycam_${listViewIndex.toString()}',
+                              ),
+                              attachment: listViewAttachmentRecord,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }

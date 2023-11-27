@@ -205,25 +205,21 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewDocumentRecord =
                                       listViewDocumentRecordList[listViewIndex];
-                                  return Opacity(
-                                    opacity: 0.0,
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          4.0, 8.0, 4.0, 8.0),
-                                      child: wrapWithModel(
-                                        model: _model.listViewDocumentModels
-                                            .getModel(
-                                          listViewIndex.toString(),
-                                          listViewIndex,
+                                  return Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        4.0, 8.0, 4.0, 8.0),
+                                    child: wrapWithModel(
+                                      model: _model.listViewDocumentModels
+                                          .getModel(
+                                        listViewIndex.toString(),
+                                        listViewIndex,
+                                      ),
+                                      updateCallback: () => setState(() {}),
+                                      child: ListViewDocumentWidget(
+                                        key: Key(
+                                          'Key2r5_${listViewIndex.toString()}',
                                         ),
-                                        updateCallback: () => setState(() {}),
-                                        child: ListViewDocumentWidget(
-                                          key: Key(
-                                            'Key2r5_${listViewIndex.toString()}',
-                                          ),
-                                          galleryDocument:
-                                              listViewDocumentRecord,
-                                        ),
+                                        galleryDocument: listViewDocumentRecord,
                                       ),
                                     ),
                                   );
