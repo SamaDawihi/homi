@@ -462,6 +462,12 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                 );
                                 setState(() {});
 
+                                await currentUserReference!
+                                    .update(createUsersRecordData(
+                                  email: functions.toLowerCaseFunction(
+                                      functions.trimAndCollapseSpaces(
+                                          _model.emailController.text)),
+                                ));
                                 Navigator.pop(context);
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
