@@ -212,6 +212,8 @@ class _ListViewFamilyMemberWidgetState
                                         familyID: widget.memberDoc!.familyId!,
                                         userID: familYMemberContainerUsersRecord
                                             .reference,
+                                        name: familYMemberContainerUsersRecord
+                                            .displayName,
                                       ),
                                     );
                                   },

@@ -17,10 +17,12 @@ class ConfirmAdminChangeWidget extends StatefulWidget {
     Key? key,
     required this.familyID,
     required this.userID,
+    required this.name,
   }) : super(key: key);
 
   final DocumentReference? familyID;
   final DocumentReference? userID;
+  final String? name;
 
   @override
   _ConfirmAdminChangeWidgetState createState() =>
@@ -103,9 +105,7 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'wrtrso1u' /* Are you sure you want to pass ... */,
-                        ),
+                        'Are you sure you want to pass admin role to ${widget.name}?',
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   fontFamily: 'Source Sans Pro',

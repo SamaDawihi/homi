@@ -938,10 +938,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Make Admin',
       'ar': 'جعل المشرف',
     },
-    'wrtrso1u': {
-      'en': 'Are you sure you want to pass admin role to this family member?',
-      'ar': 'هل أنت متأكد أنك تريد تمرير دور المشرف إلى فرد العائلة هذا؟',
-    },
     'hoq483dp': {
       'en': 'Cancel',
       'ar': 'يلغي',

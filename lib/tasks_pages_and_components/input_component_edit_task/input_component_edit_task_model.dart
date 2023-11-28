@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'input_component_edit_task_widget.dart'
     show InputComponentEditTaskWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
