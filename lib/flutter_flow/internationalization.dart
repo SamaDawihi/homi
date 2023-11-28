@@ -716,7 +716,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // AddAnouncement
   {
     'gn22egrf': {
-      'en': 'What\'s on you mind ?',
+      'en': 'What\'s on you mind?',
       'ar': 'ماذا يدور في ذهنك ؟',
     },
     'pocenu8a': {
@@ -778,6 +778,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'q1vup2a1': {
+      'en': 'Home',
+      'ar': 'بيت',
+    },
+  },
+  // EditAnouncement
+  {
+    'tqczsrcq': {
+      'en': 'What\'s on you mind ?',
+      'ar': 'ماذا يدور في ذهنك ؟',
+    },
+    'k29emq8t': {
+      'en': 'Update',
+      'ar': 'أضف',
+    },
+    'wb7mzu1l': {
+      'en': 'New  Anouncement',
+      'ar': 'إعلان جديد',
+    },
+    'u2ewpblm': {
       'en': 'Home',
       'ar': 'بيت',
     },

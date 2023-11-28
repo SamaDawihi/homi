@@ -15,27 +15,35 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_anouncement_model.dart';
-export 'add_anouncement_model.dart';
+import 'edit_anouncement_model.dart';
+export 'edit_anouncement_model.dart';
 
-class AddAnouncementWidget extends StatefulWidget {
-  const AddAnouncementWidget({Key? key}) : super(key: key);
+class EditAnouncementWidget extends StatefulWidget {
+  const EditAnouncementWidget({
+    Key? key,
+    required this.anouncementDoc,
+    required this.anouncementRef,
+  }) : super(key: key);
+
+  final AnnouncementRecord? anouncementDoc;
+  final DocumentReference? anouncementRef;
 
   @override
-  _AddAnouncementWidgetState createState() => _AddAnouncementWidgetState();
+  _EditAnouncementWidgetState createState() => _EditAnouncementWidgetState();
 }
 
-class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
-  late AddAnouncementModel _model;
+class _EditAnouncementWidgetState extends State<EditAnouncementWidget> {
+  late EditAnouncementModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddAnouncementModel());
+    _model = createModel(context, () => EditAnouncementModel());
 
-    _model.textController ??= TextEditingController();
+    _model.textController ??=
+        TextEditingController(text: widget.anouncementDoc?.message);
     _model.textFieldFocusNode ??= FocusNode();
   }
 
@@ -109,7 +117,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'mynvvh3r' /* New  Anouncement */,
+                              'wb7mzu1l' /* New  Anouncement */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -260,7 +268,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   hintText: FFLocalizations.of(context).getText(
-                                    'gn22egrf' /* What's on you mind? */,
+                                    'tqczsrcq' /* What's on you mind ? */,
                                   ),
                                   hintStyle:
                                       FlutterFlowTheme.of(context).labelLarge,
@@ -332,7 +340,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.network(
-                                        _model.uploadedImgae!,
+                                        widget.anouncementDoc!.image,
                                         width: double.infinity,
                                         height: 170.0,
                                         fit: BoxFit.cover,
@@ -495,30 +503,20 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                                               '') {
                                         if (_model.uploadedFileUrl != null &&
                                             _model.uploadedFileUrl != '') {
-                                          await AnnouncementRecord.collection
-                                              .doc()
-                                              .set(createAnnouncementRecordData(
-                                                message: functions
-                                                    .trimAndCollapseSpaces(
-                                                        _model.textController
-                                                            .text),
-                                                image: _model.uploadedFileUrl,
-                                                createdBy: currentUserReference,
-                                                createdAt: getCurrentTimestamp,
-                                                familyId: FFAppState().familyId,
-                                              ));
+                                          await widget.anouncementRef!.update(
+                                              createAnnouncementRecordData(
+                                            message:
+                                                functions.trimAndCollapseSpaces(
+                                                    _model.textController.text),
+                                            image: _model.uploadedFileUrl,
+                                          ));
                                         } else {
-                                          await AnnouncementRecord.collection
-                                              .doc()
-                                              .set(createAnnouncementRecordData(
-                                                message: functions
-                                                    .trimAndCollapseSpaces(
-                                                        _model.textController
-                                                            .text),
-                                                createdBy: currentUserReference,
-                                                createdAt: getCurrentTimestamp,
-                                                familyId: FFAppState().familyId,
-                                              ));
+                                          await widget.anouncementRef!.update(
+                                              createAnnouncementRecordData(
+                                            message:
+                                                functions.trimAndCollapseSpaces(
+                                                    _model.textController.text),
+                                          ));
                                         }
 
                                         context.goNamed('Announcements');
@@ -527,7 +525,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                                             .showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                              'Announcement sent succefully',
+                                              'Announcement updated succefully',
                                               style: TextStyle(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -564,7 +562,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                                       }
                                     },
                                     text: FFLocalizations.of(context).getText(
-                                      'pocenu8a' /* Send */,
+                                      'k29emq8t' /* Update */,
                                     ),
                                     options: FFButtonOptions(
                                       height: 50.0,

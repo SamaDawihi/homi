@@ -18,6 +18,10 @@ import 'package:provider/provider.dart';
 
 class InputComponentEnterNewNameModel
     extends FlutterFlowModel<InputComponentEnterNewNameWidget> {
+  ///  Local state fields for this component.
+
+  String? nameErr = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for name widget.

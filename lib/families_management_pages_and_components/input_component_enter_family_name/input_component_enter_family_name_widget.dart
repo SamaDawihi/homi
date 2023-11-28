@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -231,11 +232,41 @@ class _InputComponentEnterFamilyNameWidgetState
                           .asValidator(context),
                     ),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Text(
+                      _model.familyNameErr!,
+                      textAlign: TextAlign.start,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Source Sans Pro',
+                            color: FlutterFlowTheme.of(context).error,
+                          ),
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        var _shouldSetState = false;
+                        if (functions.trimAndCollapseSpaces(
+                                    _model.familynameController.text) !=
+                                null &&
+                            functions.trimAndCollapseSpaces(
+                                    _model.familynameController.text) !=
+                                '') {
+                          setState(() {
+                            _model.familyNameErr = '';
+                          });
+                        } else {
+                          setState(() {
+                            _model.familyNameErr =
+                                'Family name field cannot be empty.';
+                          });
+                          if (_shouldSetState) setState(() {});
+                          return;
+                        }
+
                         var familyRecordReference =
                             FamilyRecord.collection.doc();
                         await familyRecordReference.set(createFamilyRecordData(
@@ -256,6 +287,7 @@ class _InputComponentEnterFamilyNameWidgetState
                                   'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/homi-00t22e/assets/6trprqqol39j/houseIcon.png',
                             ),
                             familyRecordReference);
+                        _shouldSetState = true;
 
                         var memberRecordReference =
                             MemberRecord.collection.doc();
@@ -274,6 +306,7 @@ class _InputComponentEnterFamilyNameWidgetState
                                   createdTime: getCurrentTimestamp,
                                 ),
                                 memberRecordReference);
+                        _shouldSetState = true;
 
                         var listRecordReference1 = ListRecord.collection.doc();
                         await listRecordReference1.set({
@@ -311,6 +344,7 @@ class _InputComponentEnterFamilyNameWidgetState
                             },
                           ),
                         }, listRecordReference1);
+                        _shouldSetState = true;
 
                         var listRecordReference2 = ListRecord.collection.doc();
                         await listRecordReference2.set({
@@ -347,6 +381,7 @@ class _InputComponentEnterFamilyNameWidgetState
                             },
                           ),
                         }, listRecordReference2);
+                        _shouldSetState = true;
                         FFAppState().update(() {
                           FFAppState().familyId =
                               _model.createdFamily?.reference;
@@ -354,7 +389,7 @@ class _InputComponentEnterFamilyNameWidgetState
 
                         context.goNamed('FamilyProfile');
 
-                        setState(() {});
+                        if (_shouldSetState) setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         'ogbc1zm7' /* Create Family */,

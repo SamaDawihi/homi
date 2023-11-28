@@ -223,6 +223,17 @@ class _InputComponentEnterNewNameWidgetState
                           _model.nameControllerValidator.asValidator(context),
                     ),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Text(
+                      _model.nameErr!,
+                      textAlign: TextAlign.center,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Source Sans Pro',
+                            color: FlutterFlowTheme.of(context).error,
+                          ),
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
@@ -234,13 +245,21 @@ class _InputComponentEnterNewNameWidgetState
                             functions.trimAndCollapseSpaces(
                                     _model.nameController.text) !=
                                 '') {
+                          setState(() {
+                            _model.nameErr = '';
+                          });
+
                           await currentUserReference!
                               .update(createUsersRecordData(
                             displayName: functions.trimAndCollapseSpaces(
                                 _model.nameController.text),
                           ));
+                          context.safePop();
                           return;
                         } else {
+                          setState(() {
+                            _model.nameErr = 'Name field cannot be empty';
+                          });
                           return;
                         }
                       },

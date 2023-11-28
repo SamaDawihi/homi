@@ -1,8 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -210,6 +213,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               24.0, 24.0, 20.0, 24.0),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
+                        maxLength: 20,
+                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
                         keyboardType: TextInputType.emailAddress,
                         cursorColor: FlutterFlowTheme.of(context).primary,
                         validator:
@@ -219,7 +224,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
                     child: TextFormField(
                       controller: _model.emailController,
                       focusNode: _model.emailFocusNode,
@@ -277,12 +282,74 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                           _model.emailControllerValidator.asValidator(context),
                     ),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                      child: Text(
+                        _model.editErr!,
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Source Sans Pro',
+                              color: FlutterFlowTheme.of(context).error,
+                            ),
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        if ((functions.trimAndCollapseSpaces(
+                                        _model.nameController.text) !=
+                                    null &&
+                                functions.trimAndCollapseSpaces(
+                                        _model.nameController.text) !=
+                                    '') &&
+                            (functions.trimAndCollapseSpaces(
+                                        _model.emailController.text) !=
+                                    null &&
+                                functions.trimAndCollapseSpaces(
+                                        _model.emailController.text) !=
+                                    '')) {
+                          setState(() {
+                            _model.editErr = '';
+                          });
+                          if (functions
+                              .trimAndCollapseSpaces(
+                                  _model.emailController.text)
+                              .isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Email required!',
+                                ),
+                              ),
+                            );
+                            return;
+                          }
+
+                          await authManager.updateEmail(
+                            email: functions.trimAndCollapseSpaces(
+                                _model.emailController.text),
+                            context: context,
+                          );
+                          setState(() {});
+
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            displayName: _model.nameController.text,
+                          ));
+                          Navigator.pop(context);
+                          return;
+                        } else {
+                          setState(() {
+                            _model.editErr = 'Fields cannot be emoty';
+                          });
+                          return;
+                        }
                       },
                       text: FFLocalizations.of(context).getText(
                         '4mxn9r5u' /* Save */,

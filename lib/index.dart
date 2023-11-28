@@ -30,3 +30,5 @@ export '/announcement/add_anouncement/add_anouncement_widget.dart'
     show AddAnouncementWidget;
 export '/gallery/add_document/add_document_widget.dart' show AddDocumentWidget;
 export '/gallery/gallery/gallery_widget.dart' show GalleryWidget;
+export '/announcement/edit_anouncement/edit_anouncement_widget.dart'
+    show EditAnouncementWidget;

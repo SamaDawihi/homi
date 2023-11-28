@@ -221,9 +221,23 @@ class _InputComponentEnterNewEmailWidgetState
                           _model.emailControllerValidator.asValidator(context),
                     ),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                      child: Text(
+                        _model.emailErr,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Source Sans Pro',
+                              color: FlutterFlowTheme.of(context).error,
+                            ),
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 44.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 44.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         if (functions.trimAndCollapseSpaces(
@@ -232,6 +246,9 @@ class _InputComponentEnterNewEmailWidgetState
                             functions.trimAndCollapseSpaces(
                                     _model.emailController.text) !=
                                 '') {
+                          setState(() {
+                            _model.emailErr = '';
+                          });
                           if (functions
                               .trimAndCollapseSpaces(
                                   _model.emailController.text)
@@ -255,6 +272,9 @@ class _InputComponentEnterNewEmailWidgetState
 
                           return;
                         } else {
+                          setState(() {
+                            _model.emailErr = 'Email field cannot be empty';
+                          });
                           return;
                         }
                       },

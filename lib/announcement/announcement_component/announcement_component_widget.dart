@@ -235,11 +235,38 @@ class _AnnouncementComponentWidgetState
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 8.0, 8.0, 8.0),
-                                        child: Icon(
-                                          Icons.edit_outlined,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 24.0,
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'EditAnouncement',
+                                              queryParameters: {
+                                                'anouncementDoc':
+                                                    serializeParam(
+                                                  socialPost2AnnouncementRecord,
+                                                  ParamType.Document,
+                                                ),
+                                                'anouncementRef':
+                                                    serializeParam(
+                                                  widget.announcementId,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                'anouncementDoc':
+                                                    socialPost2AnnouncementRecord,
+                                              },
+                                            );
+                                          },
+                                          child: Icon(
+                                            Icons.edit_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 24.0,
+                                          ),
                                         ),
                                       ),
                                     ),

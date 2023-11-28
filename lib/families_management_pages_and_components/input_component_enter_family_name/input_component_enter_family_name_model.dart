@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'input_component_enter_family_name_widget.dart'
     show InputComponentEnterFamilyNameWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,6 +18,10 @@ import 'package:provider/provider.dart';
 
 class InputComponentEnterFamilyNameModel
     extends FlutterFlowModel<InputComponentEnterFamilyNameWidget> {
+  ///  Local state fields for this component.
+
+  String? familyNameErr = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Familyname widget.

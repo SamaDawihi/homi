@@ -16,6 +16,10 @@ import 'package:provider/provider.dart';
 
 class InputComponentEnterNewEmailModel
     extends FlutterFlowModel<InputComponentEnterNewEmailWidget> {
+  ///  Local state fields for this component.
+
+  String emailErr = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for email widget.

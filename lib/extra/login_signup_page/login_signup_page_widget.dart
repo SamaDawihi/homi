@@ -7,8 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -1627,54 +1625,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           .loginEmailAddressController,
                                                       focusNode: _model
                                                           .loginEmailAddressFocusNode,
-                                                      onChanged: (_) =>
-                                                          EasyDebounce.debounce(
-                                                        '_model.loginEmailAddressController',
-                                                        Duration(
-                                                            milliseconds: 2000),
-                                                        () async {
-                                                          if (functions.checkIfTextMatchRegExp(
-                                                              functions.trimAndCollapseSpaces(
-                                                                  _model
-                                                                      .loginEmailAddressController
-                                                                      .text),
-                                                              '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                                                            setState(() {
-                                                              _model.loginEmailErr =
-                                                                  '';
-                                                            });
-                                                            return;
-                                                          } else {
-                                                            setState(() {
-                                                              _model.loginEmailErr =
-                                                                  'The Email Format Must Be XX@XXX.XX';
-                                                            });
-                                                            return;
-                                                          }
-                                                        },
-                                                      ),
-                                                      onFieldSubmitted:
-                                                          (_) async {
-                                                        if (functions.checkIfTextMatchRegExp(
-                                                            functions
-                                                                .trimAndCollapseSpaces(
-                                                                    _model
-                                                                        .loginEmailAddressController
-                                                                        .text),
-                                                            '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                                                          setState(() {
-                                                            _model.loginEmailErr =
-                                                                '';
-                                                          });
-                                                          return;
-                                                        } else {
-                                                          setState(() {
-                                                            _model.loginEmailErr =
-                                                                'The Email Format Must Be XXX@XXX.XX';
-                                                          });
-                                                          return;
-                                                        }
-                                                      },
                                                       autofocus: true,
                                                       autofillHints: [
                                                         AutofillHints.email
@@ -1803,57 +1753,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                           .loginPasswordController,
                                                       focusNode: _model
                                                           .loginPasswordFocusNode,
-                                                      onChanged: (_) =>
-                                                          EasyDebounce.debounce(
-                                                        '_model.loginPasswordController',
-                                                        Duration(
-                                                            milliseconds: 2000),
-                                                        () async {
-                                                          if (functions.checkPasswordLength(
-                                                                  _model
-                                                                      .loginPasswordController
-                                                                      .text) &&
-                                                              functions.checkPasswordString(
-                                                                  _model
-                                                                      .loginPasswordController
-                                                                      .text)!) {
-                                                            setState(() {
-                                                              _model.loginPasswordErr =
-                                                                  '';
-                                                            });
-                                                            return;
-                                                          } else {
-                                                            setState(() {
-                                                              _model.loginPasswordErr =
-                                                                  'The Password Length Must Be 6  Characters Or More And Contains Both Letters And Numbers.';
-                                                            });
-                                                            return;
-                                                          }
-                                                        },
-                                                      ),
-                                                      onFieldSubmitted:
-                                                          (_) async {
-                                                        if (functions.checkPasswordLength(
-                                                                _model
-                                                                    .loginPasswordController
-                                                                    .text) &&
-                                                            functions.checkPasswordString(
-                                                                _model
-                                                                    .loginPasswordController
-                                                                    .text)!) {
-                                                          setState(() {
-                                                            _model.loginPasswordErr =
-                                                                '';
-                                                          });
-                                                          return;
-                                                        } else {
-                                                          setState(() {
-                                                            _model.loginPasswordErr =
-                                                                'The Password Length Must Be 6  Characters Or More and contains both letters and numbers.';
-                                                          });
-                                                          return;
-                                                        }
-                                                      },
                                                       autofocus: true,
                                                       autofillHints: [
                                                         AutofillHints.password
@@ -2071,54 +1970,69 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       },
                                                       child: FFButtonWidget(
                                                         onPressed: () async {
-                                                          var _shouldSetState =
-                                                              false;
                                                           Function() _navigate =
                                                               () {};
-                                                          if (functions.checkIfTextMatchRegExp(
-                                                              functions.trimAndCollapseSpaces(
-                                                                  _model
-                                                                      .loginEmailAddressController
-                                                                      .text),
-                                                              '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
-                                                            setState(() {
-                                                              _model.loginEmailErr =
-                                                                  '';
-                                                            });
-                                                          } else {
-                                                            setState(() {
-                                                              _model.loginEmailErr =
-                                                                  'The Email Format Must Be XXX@XXX.XX';
-                                                            });
-                                                          }
-
-                                                          if (functions.checkPasswordLength(
-                                                                  _model
-                                                                      .loginPasswordController
-                                                                      .text) &&
-                                                              functions.checkPasswordString(
-                                                                  _model
-                                                                      .loginPasswordController
-                                                                      .text)!) {
-                                                            setState(() {
-                                                              _model.loginPasswordErr =
-                                                                  '';
-                                                            });
-                                                          } else {
-                                                            setState(() {
-                                                              _model.loginPasswordErr =
-                                                                  'Password length must be 6 character or more And Contain Both Letters And Numbers.';
-                                                            });
-                                                          }
-
-                                                          if ((_model.loginEmailErr ==
-                                                                      null ||
-                                                                  _model.loginEmailErr ==
+                                                          if ((functions.trimAndCollapseSpaces(_model
+                                                                          .loginEmailAddressController
+                                                                          .text) !=
+                                                                      null &&
+                                                                  functions.trimAndCollapseSpaces(_model
+                                                                          .loginEmailAddressController
+                                                                          .text) !=
                                                                       '') &&
-                                                              (_model.loginPasswordErr ==
-                                                                      null ||
-                                                                  _model.loginPasswordErr ==
+                                                              (functions.trimAndCollapseSpaces(_model
+                                                                          .loginPasswordController
+                                                                          .text) !=
+                                                                      null &&
+                                                                  functions.trimAndCollapseSpaces(_model
+                                                                          .loginPasswordController
+                                                                          .text) !=
                                                                       '')) {
+                                                            setState(() {
+                                                              _model.loginEmailErr =
+                                                                  '';
+                                                            });
+                                                            setState(() {
+                                                              _model.loginPasswordErr =
+                                                                  '';
+                                                            });
+                                                            if (functions.checkIfTextMatchRegExp(
+                                                                functions.trimAndCollapseSpaces(
+                                                                    _model
+                                                                        .loginEmailAddressController
+                                                                        .text),
+                                                                '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                                                              setState(() {
+                                                                _model.loginErr =
+                                                                    '';
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginErr =
+                                                                    'Invalid email address';
+                                                              });
+                                                              return;
+                                                            }
+
+                                                            if (functions.checkPasswordLength(
+                                                                    _model
+                                                                        .loginPasswordController
+                                                                        .text) &&
+                                                                functions.checkPasswordString(_model
+                                                                    .loginPasswordController
+                                                                    .text)!) {
+                                                              setState(() {
+                                                                _model.loginErr =
+                                                                    '';
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginErr =
+                                                                    'Invalid login attempt';
+                                                              });
+                                                              return;
+                                                            }
+
                                                             GoRouter.of(context)
                                                                 .prepareAuthEvent();
 
@@ -2143,39 +2057,49 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                     'FamilyProfile',
                                                                     context
                                                                         .mounted);
-                                                            _model.user =
-                                                                await queryUsersRecordOnce(
-                                                              queryBuilder:
-                                                                  (usersRecord) =>
-                                                                      usersRecord
-                                                                          .where(
-                                                                'email',
-                                                                isEqualTo: _model
-                                                                    .loginEmailAddressController
-                                                                    .text,
-                                                              ),
-                                                              singleRecord:
-                                                                  true,
-                                                            ).then((s) => s
-                                                                    .firstOrNull);
-                                                            _shouldSetState =
-                                                                true;
-
-                                                            await _model
-                                                                .user!.reference
-                                                                .update(
-                                                                    createUsersRecordData(
-                                                              isLoggedIn: true,
-                                                            ));
                                                           } else {
-                                                            if (_shouldSetState)
-                                                              setState(() {});
+                                                            if (functions.trimAndCollapseSpaces(_model
+                                                                        .loginPasswordController
+                                                                        .text) !=
+                                                                    null &&
+                                                                functions.trimAndCollapseSpaces(_model
+                                                                        .loginPasswordController
+                                                                        .text) !=
+                                                                    '') {
+                                                              setState(() {
+                                                                _model.loginPasswordErr =
+                                                                    '';
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginPasswordErr =
+                                                                    'Password field cannot be empty';
+                                                              });
+                                                            }
+
+                                                            if (functions.trimAndCollapseSpaces(_model
+                                                                        .loginEmailAddressController
+                                                                        .text) !=
+                                                                    null &&
+                                                                functions.trimAndCollapseSpaces(_model
+                                                                        .loginEmailAddressController
+                                                                        .text) !=
+                                                                    '') {
+                                                              setState(() {
+                                                                _model.loginEmailErr =
+                                                                    '';
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                _model.loginEmailErr =
+                                                                    'Email field cannot be empty.';
+                                                              });
+                                                            }
+
                                                             return;
                                                           }
 
                                                           _navigate();
-                                                          if (_shouldSetState)
-                                                            setState(() {});
                                                         },
                                                         text:
                                                             FFLocalizations.of(

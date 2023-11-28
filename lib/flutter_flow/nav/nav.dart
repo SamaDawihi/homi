@@ -209,6 +209,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Gallery',
           path: '/gallery',
           builder: (context, params) => GalleryWidget(),
+        ),
+        FFRoute(
+          name: 'EditAnouncement',
+          path: '/editAnouncement',
+          asyncParams: {
+            'anouncementDoc':
+                getDoc(['Announcement'], AnnouncementRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditAnouncementWidget(
+            anouncementDoc:
+                params.getParam('anouncementDoc', ParamType.Document),
+            anouncementRef: params.getParam('anouncementRef',
+                ParamType.DocumentReference, false, ['Announcement']),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

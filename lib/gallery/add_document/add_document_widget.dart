@@ -772,6 +772,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               0.0, 20.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              var _shouldSetState = false;
                               if (functions.trimAndCollapseSpaces(
                                           _model.textController1.text) !=
                                       null &&
@@ -801,6 +802,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                             createdAt: getCurrentTimestamp,
                                           ),
                                           documentRecordReference);
+                                  _shouldSetState = true;
                                   while (_model.loop <
                                       _model.uploadedFiles.length) {
                                     await AttachmentRecord.createDoc(
@@ -830,6 +832,8 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           FlutterFlowTheme.of(context).error,
                                     ),
                                   );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -846,9 +850,11 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                         FlutterFlowTheme.of(context).error,
                                   ),
                                 );
+                                if (_shouldSetState) setState(() {});
+                                return;
                               }
 
-                              setState(() {});
+                              if (_shouldSetState) setState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
                               'jx8cs0m7' /* Save Changes */,
