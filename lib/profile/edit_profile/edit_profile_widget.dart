@@ -1,12 +1,15 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -95,7 +98,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(1.00, -1.00),
+      alignment: AlignmentDirectional(0.00, 1.00),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -122,8 +125,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -157,27 +159,198 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                       ),
                     ],
                   ),
+                  if (_model.editName)
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => TextFormField(
+                          controller: _model.nameController,
+                          focusNode: _model.nameFocusNode,
+                          autofocus: true,
+                          autofillHints: [AutofillHints.email],
+                          textCapitalization: TextCapitalization.words,
+                          textInputAction: TextInputAction.send,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: FFLocalizations.of(context).getText(
+                              'csug7le5' /* New Name */,
+                            ),
+                            labelStyle: FlutterFlowTheme.of(context).bodyLarge,
+                            hintText: FFLocalizations.of(context).getText(
+                              'f2fyja8d' /* Enter email */,
+                            ),
+                            hintStyle: FlutterFlowTheme.of(context).labelLarge,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 24.0, 20.0, 24.0),
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          keyboardType: TextInputType.name,
+                          cursorColor: FlutterFlowTheme.of(context).primary,
+                          validator: _model.nameControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                  if (_model.editName &&
+                      (_model.nameErr != null && _model.nameErr != ''))
+                    Align(
+                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 5.0),
+                        child: Text(
+                          _model.nameErr!,
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                  ),
+                        ),
+                      ),
+                    ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
-                    child: AuthUserStreamWidget(
-                      builder: (context) => TextFormField(
-                        controller: _model.nameController,
-                        focusNode: _model.nameFocusNode,
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        if (_model.editName) {
+                          if (functions.trimAndCollapseSpaces(
+                                      _model.nameController.text) !=
+                                  null &&
+                              functions.trimAndCollapseSpaces(
+                                      _model.nameController.text) !=
+                                  '') {
+                            await currentUserReference!
+                                .update(createUsersRecordData(
+                              displayName: functions.trimAndCollapseSpaces(
+                                  _model.nameController.text),
+                            ));
+                            Navigator.pop(context);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Name Updated Successfuly',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).success,
+                              ),
+                            );
+                          } else {
+                            setState(() {
+                              _model.nameErr = 'Make sure to enter valid name';
+                            });
+                          }
+                        } else {
+                          setState(() {
+                            _model.editName = true;
+                            _model.editEmail = false;
+                          });
+                        }
+                      },
+                      text: valueOrDefault<String>(
+                        _model.editName ? 'Submit' : 'Change Name',
+                        'Change Name',
+                      ),
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 50.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF555EBE),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Source Sans Pro',
+                                  color: Colors.white,
+                                ),
+                        elevation: 2.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                    ),
+                  ),
+                  if (_model.editEmail)
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                      child: TextFormField(
+                        controller: _model.emailController,
+                        focusNode: _model.emailFocusNode,
+                        onChanged: (_) => EasyDebounce.debounce(
+                          '_model.emailController',
+                          Duration(milliseconds: 2000),
+                          () async {
+                            if (functions.checkIfTextMatchRegExp(
+                                functions.trimAndCollapseSpaces(
+                                    _model.emailController.text),
+                                '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                              setState(() {
+                                _model.emailErr = null;
+                              });
+                              return;
+                            } else {
+                              setState(() {
+                                _model.emailErr = 'Invalid Email Format';
+                              });
+                              return;
+                            }
+                          },
+                        ),
                         autofocus: true,
-                        autofillHints: [AutofillHints.name],
-                        textCapitalization: TextCapitalization.sentences,
+                        autofillHints: [AutofillHints.email],
+                        textCapitalization: TextCapitalization.none,
                         textInputAction: TextInputAction.send,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            '625lydhs' /* Enter New Name */,
+                            'i74lkbfo' /* New Email */,
                           ),
-                          labelStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Source Sans Pro',
-                                    fontSize: 16.0,
-                                  ),
+                          labelStyle: FlutterFlowTheme.of(context).bodyLarge,
+                          hintText: FFLocalizations.of(context).getText(
+                            'vf7rt6sk' /* Enter email */,
+                          ),
                           hintStyle: FlutterFlowTheme.of(context).labelLarge,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -214,183 +387,268 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               24.0, 24.0, 20.0, 24.0),
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium,
-                        maxLength: 20,
-                        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                        keyboardType: TextInputType.emailAddress,
                         cursorColor: FlutterFlowTheme.of(context).primary,
-                        validator:
-                            _model.nameControllerValidator.asValidator(context),
+                        validator: _model.emailControllerValidator
+                            .asValidator(context),
                       ),
                     ),
-                  ),
+                  if (_model.editEmail &&
+                      (_model.emailErr != null && _model.emailErr != ''))
+                    Align(
+                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 5.0),
+                        child: Text(
+                          _model.emailErr!,
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                  ),
+                        ),
+                      ),
+                    ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
-                    child: TextFormField(
-                      controller: _model.emailController,
-                      focusNode: _model.emailFocusNode,
-                      autofocus: true,
-                      autofillHints: [AutofillHints.email],
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.send,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: FFLocalizations.of(context).getText(
-                          'vr5dvvmy' /* Enter New Email */,
-                        ),
-                        hintStyle: FlutterFlowTheme.of(context).labelLarge,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        filled: true,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 20.0, 24.0),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Source Sans Pro',
-                            fontSize: 16.0,
-                          ),
-                      keyboardType: TextInputType.emailAddress,
-                      cursorColor: FlutterFlowTheme.of(context).primary,
-                      validator:
-                          _model.emailControllerValidator.asValidator(context),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                      child: Text(
-                        _model.editErr!,
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Source Sans Pro',
-                              color: FlutterFlowTheme.of(context).error,
-                            ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        var _shouldSetState = false;
-                        if ((functions.trimAndCollapseSpaces(
-                                        _model.nameController.text) !=
-                                    null &&
-                                functions.trimAndCollapseSpaces(
-                                        _model.nameController.text) !=
-                                    '') &&
-                            (functions.trimAndCollapseSpaces(
-                                        _model.emailController.text) !=
-                                    null &&
-                                functions.trimAndCollapseSpaces(
-                                        _model.emailController.text) !=
-                                    '')) {
-                          setState(() {
-                            _model.editErr = '';
-                          });
-                          _model.emailExists = await actions.isEmailUnique(
-                            _model.emailController.text,
-                          );
-                          _shouldSetState = true;
-                          if (_model.emailExists!) {
-                            if (functions
-                                .trimAndCollapseSpaces(
-                                    _model.emailController.text)
-                                .isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Email required!',
-                                  ),
-                                ),
+                        if (_model.editEmail) {
+                          if ((functions.trimAndCollapseSpaces(
+                                          _model.emailController.text) !=
+                                      null &&
+                                  functions.trimAndCollapseSpaces(
+                                          _model.emailController.text) !=
+                                      '') &&
+                              functions.checkIfTextMatchRegExp(
+                                  functions.trimAndCollapseSpaces(
+                                      _model.emailController.text),
+                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                            if (functions.toLowerCaseFunction(
+                                    functions.trimAndCollapseSpaces(
+                                        _model.emailController.text)) !=
+                                functions.toLowerCaseFunction(functions
+                                    .trimAndCollapseSpaces(currentUserEmail))) {
+                              _model.isEmailUnique =
+                                  await actions.isEmailUnique(
+                                functions.toLowerCaseFunction(
+                                    functions.trimAndCollapseSpaces(
+                                        _model.emailController.text)),
                               );
-                              return;
+                              if (_model.isEmailUnique!) {
+                                setState(() {
+                                  _model.previousEmail = functions
+                                      .toLowerCaseFunction(currentUserEmail);
+                                });
+                                if (functions
+                                    .trimAndCollapseSpaces(
+                                        _model.emailController.text)
+                                    .isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Email required!',
+                                      ),
+                                    ),
+                                  );
+                                  return;
+                                }
+
+                                await authManager.updateEmail(
+                                  email: functions.trimAndCollapseSpaces(
+                                      _model.emailController.text),
+                                  context: context,
+                                );
+                                setState(() {});
+
+                                if (functions.toLowerCaseFunction(
+                                        functions.trimAndCollapseSpaces(
+                                            _model.emailController.text)) ==
+                                    functions.toLowerCaseFunction(
+                                        functions.trimAndCollapseSpaces(
+                                            currentUserEmail))) {
+                                  Navigator.pop(context);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Email Updated Successfuly',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).success,
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.pop(context);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Email Update Faild Try signing in again.',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                }
+                              } else {
+                                setState(() {
+                                  _model.emailErr =
+                                      'This email is linked to another account.';
+                                });
+                              }
+                            } else {
+                              setState(() {
+                                _model.emailErr =
+                                    'The new email is the same as previous one.';
+                              });
                             }
-
-                            await authManager.updateEmail(
-                              email: functions.trimAndCollapseSpaces(
-                                  _model.emailController.text),
-                              context: context,
-                            );
-                            setState(() {});
-
-                            await currentUserReference!
-                                .update(createUsersRecordData(
-                              displayName: _model.nameController.text,
-                              email: _model.emailController.text,
-                            ));
-                            Navigator.pop(context);
-                            if (_shouldSetState) setState(() {});
-                            return;
                           } else {
                             setState(() {
-                              _model.editErr = 'email is already exist';
+                              _model.emailErr = 'invalid email format.';
                             });
-                            if (_shouldSetState) setState(() {});
-                            return;
                           }
                         } else {
                           setState(() {
-                            _model.editErr = 'Fields cannot be emoty';
+                            _model.editName = false;
+                            _model.editEmail = true;
                           });
-                          if (_shouldSetState) setState(() {});
-                          return;
                         }
 
-                        if (_shouldSetState) setState(() {});
+                        setState(() {});
                       },
-                      text: FFLocalizations.of(context).getText(
-                        '4mxn9r5u' /* Save */,
+                      text: valueOrDefault<String>(
+                        _model.editEmail ? 'Submit' : 'Change Email',
+                        'Change Name',
                       ),
                       options: FFButtonOptions(
-                        width: 150.0,
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
+                        width: double.infinity,
+                        height: 50.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
+                        color: Color(0xFF555EBE),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Source Sans Pro',
                                   color: Colors.white,
                                 ),
-                        elevation: 3.0,
+                        elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          allowPhoto: true,
+                        );
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
+                          setState(() => _model.isDataUploading = true);
+                          var selectedUploadedFiles = <FFUploadedFile>[];
+
+                          var downloadUrls = <String>[];
+                          try {
+                            selectedUploadedFiles = selectedMedia
+                                .map((m) => FFUploadedFile(
+                                      name: m.storagePath.split('/').last,
+                                      bytes: m.bytes,
+                                      height: m.dimensions?.height,
+                                      width: m.dimensions?.width,
+                                      blurHash: m.blurHash,
+                                    ))
+                                .toList();
+
+                            downloadUrls = (await Future.wait(
+                              selectedMedia.map(
+                                (m) async =>
+                                    await uploadData(m.storagePath, m.bytes),
+                              ),
+                            ))
+                                .where((u) => u != null)
+                                .map((u) => u!)
+                                .toList();
+                          } finally {
+                            _model.isDataUploading = false;
+                          }
+                          if (selectedUploadedFiles.length ==
+                                  selectedMedia.length &&
+                              downloadUrls.length == selectedMedia.length) {
+                            setState(() {
+                              _model.uploadedLocalFile =
+                                  selectedUploadedFiles.first;
+                              _model.uploadedFileUrl = downloadUrls.first;
+                            });
+                          } else {
+                            setState(() {});
+                            return;
+                          }
+                        }
+
+                        await currentUserReference!
+                            .update(createUsersRecordData(
+                          photoUrl: _model.uploadedFileUrl,
+                        ));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Image Updated Successfully',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).success,
+                          ),
+                        );
+                        Navigator.pop(context);
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        'obu0yv4y' /* Change Image */,
+                      ),
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 50.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF555EBE),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Source Sans Pro',
+                                  color: Colors.white,
+                                ),
+                        elevation: 2.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
                   ),

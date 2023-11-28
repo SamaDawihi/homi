@@ -1430,36 +1430,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يرجى اختيار خيار من القائمة المنسدلة',
     },
   },
-  // InputComponentEnterNewEmail
-  {
-    '0kuota2f': {
-      'en': 'Enter your new email',
-      'ar': 'أدخل بريدك الإلكتروني الجديد',
-    },
-    'hypj5w34': {
-      'en': 'Enter your new email\n',
-      'ar': 'أدخل بريدك الإلكتروني الجديد',
-    },
-    'vo59mw0u': {
-      'en': 'Update the email',
-      'ar': 'قم بتحديث البريد الإلكتروني',
-    },
-  },
-  // InputComponentEnterNewName
-  {
-    'b8q6jrgw': {
-      'en': 'Enter your new name',
-      'ar': 'أدخل اسمك الجديد',
-    },
-    'w6vmmd02': {
-      'en': 'Enter your name',
-      'ar': 'أدخل أسمك',
-    },
-    'yrsqjdx2': {
-      'en': 'Update the name',
-      'ar': 'قم بتحديث الاسم',
-    },
-  },
   // AnnouncementComponent
   {
     '6f04v8rp': {
@@ -1526,29 +1496,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تغيير الصورة',
     },
   },
-  // EditProfile
-  {
-    '625lydhs': {
-      'en': 'Enter New Name',
-      'ar': 'أدخل الاسم الجديد',
-    },
-    'uar91v6s': {
-      'en': '',
-      'ar': 'أدخل البريد الإلكتروني',
-    },
-    'vr5dvvmy': {
-      'en': 'Enter New Email',
-      'ar': 'أدخل البريد الإلكتروني الجديد',
-    },
-    'egac8at3': {
-      'en': '',
-      'ar': 'أدخل البريد الإلكتروني',
-    },
-    '4mxn9r5u': {
-      'en': 'Save',
-      'ar': 'يحفظ',
-    },
-  },
   // ListLoading
   {
     'm3mq0zb1': {
@@ -1566,26 +1513,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'انتقل إلى كافة القوائم',
     },
   },
-  // newEdit
-  {
-    'acu1s08j': {
-      'en': 'Enter New Name',
-      'ar': 'أدخل الاسم الجديد',
-    },
-    'iwpjar4h': {
-      'en': '',
-      'ar': 'أدخل البريد الإلكتروني',
-    },
-    '99e7g7db': {
-      'en': 'Change Photo',
-      'ar': 'غير الصوره',
-    },
-    'y3ug3km7': {
-      'en': 'Save',
-      'ar': 'يحفظ',
-    },
-  },
-  // NewEditProfile
+  // EditProfile
   {
     'csug7le5': {
       'en': 'New Name',
