@@ -61,7 +61,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
               !ItemRecordDocumentEquality().equals(
                   containerItemRecord, _model.containerPreviousSnapshot)) {
             setState(() {
-              _model.done = containerItemRecord.done;
+              _model.checkboxValue = containerItemRecord.done;
             });
 
             setState(() {});
@@ -119,8 +119,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                                 FlutterFlowTheme.of(context).secondaryText,
                           ),
                           child: Checkbox(
-                            value: _model.checkboxValue ??=
-                                containerItemRecord.done,
+                            value: _model.checkboxValue ??= _model.done,
                             onChanged: (newValue) async {
                               setState(() => _model.checkboxValue = newValue!);
                               if (newValue!) {
