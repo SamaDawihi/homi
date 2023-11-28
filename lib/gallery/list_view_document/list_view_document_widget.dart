@@ -165,10 +165,44 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               8.0, 0.0, 8.0, 0.0),
-                          child: Icon(
-                            Icons.edit_outlined,
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 24.0,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'EditDocument',
+                                queryParameters: {
+                                  'document': serializeParam(
+                                    widget.galleryDocument,
+                                    ParamType.Document,
+                                  ),
+                                  'files': serializeParam(
+                                    _model.attachment
+                                        .map((e) => e.url)
+                                        .toList(),
+                                    ParamType.String,
+                                    true,
+                                  ),
+                                  'names': serializeParam(
+                                    _model.attachment
+                                        .map((e) => e.name)
+                                        .toList(),
+                                    ParamType.String,
+                                    true,
+                                  ),
+                                }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  'document': widget.galleryDocument,
+                                },
+                              );
+                            },
+                            child: Icon(
+                              Icons.edit_outlined,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 24.0,
+                            ),
                           ),
                         ),
                         Icon(

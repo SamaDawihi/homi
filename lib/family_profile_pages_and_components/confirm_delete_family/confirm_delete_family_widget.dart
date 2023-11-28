@@ -154,6 +154,8 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        context.goNamed('FamiliesManagement');
+
                         _model.members = await queryMemberRecordOnce(
                           queryBuilder: (memberRecord) => memberRecord.where(
                             'familyId',
@@ -279,9 +281,6 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                             _model.loopDocuments = _model.loopDocuments + 1;
                           });
                         }
-
-                        context.goNamed('FamiliesManagement');
-
                         await widget.familyID!.delete();
                         setState(() {
                           FFAppState().familyId = null;

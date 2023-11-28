@@ -223,6 +223,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             anouncementRef: params.getParam('anouncementRef',
                 ParamType.DocumentReference, false, ['Announcement']),
           ),
+        ),
+        FFRoute(
+          name: 'EditDocument',
+          path: '/editDocument',
+          asyncParams: {
+            'document': getDoc(['Document'], DocumentRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditDocumentWidget(
+            document: params.getParam('document', ParamType.Document),
+            files: params.getParam<String>('files', ParamType.String, true),
+            names: params.getParam<String>('names', ParamType.String, true),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

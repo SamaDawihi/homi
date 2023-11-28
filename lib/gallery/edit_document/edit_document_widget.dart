@@ -11,31 +11,56 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'add_document_model.dart';
-export 'add_document_model.dart';
+import 'edit_document_model.dart';
+export 'edit_document_model.dart';
 
-class AddDocumentWidget extends StatefulWidget {
-  const AddDocumentWidget({Key? key}) : super(key: key);
+class EditDocumentWidget extends StatefulWidget {
+  const EditDocumentWidget({
+    Key? key,
+    required this.document,
+    required this.files,
+    required this.names,
+  }) : super(key: key);
+
+  final DocumentRecord? document;
+  final List<String>? files;
+  final List<String>? names;
 
   @override
-  _AddDocumentWidgetState createState() => _AddDocumentWidgetState();
+  _EditDocumentWidgetState createState() => _EditDocumentWidgetState();
 }
 
-class _AddDocumentWidgetState extends State<AddDocumentWidget> {
-  late AddDocumentModel _model;
+class _EditDocumentWidgetState extends State<EditDocumentWidget> {
+  late EditDocumentModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddDocumentModel());
+    _model = createModel(context, () => EditDocumentModel());
 
-    _model.textController1 ??= TextEditingController();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.document?.document != null &&
+          widget.document?.document != '') {
+        setState(() {
+          _model.uploadedImage = widget.document?.document;
+        });
+      }
+      setState(() {
+        _model.uploadedFiles = widget.files!.toList().cast<String>();
+        _model.name = widget.names!.toList().cast<String>();
+      });
+    });
+
+    _model.textController1 ??=
+        TextEditingController(text: widget.document?.title);
     _model.textFieldFocusNode1 ??= FocusNode();
 
     _model.textController2 ??= TextEditingController();
@@ -112,7 +137,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              '9oaj5sfa' /* Add Document */,
+                              'jpzt8hhh' /* Edit Document */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -174,7 +199,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               20.0, 0.0, 0.0, 0.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'd7hp5rox' /* Document Title* */,
+                              'wkxsw4lp' /* Document Title* */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -195,12 +220,12 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                           obscureText: false,
                           decoration: InputDecoration(
                             labelText: FFLocalizations.of(context).getText(
-                              '95dq19pa' /* Document Title */,
+                              'kzcds2vv' /* Document Title */,
                             ),
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
                             hintText: FFLocalizations.of(context).getText(
-                              '453ls6hq' /* Document Title */,
+                              '739d7w9a' /* Document Title */,
                             ),
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: UnderlineInputBorder(
@@ -244,7 +269,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               5.0, 0.0, 0.0, 30.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
-                              'cgdopig4' /* Document Image */,
+                              'mk2rf5r6' /* Document Image */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -412,7 +437,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               alignment: AlignmentDirectional(-1.00, 0.00),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  '0b1ytslj' /* Attached Files */,
+                                  'jv5tqt0c' /* Attached Files */,
                                 ),
                                 style:
                                     FlutterFlowTheme.of(context).displaySmall,
@@ -532,7 +557,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                           .labelMedium,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        '24b31i34' /* File name */,
+                                        'bqt6vqd8' /* File name */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium,
@@ -859,7 +884,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                               if (_shouldSetState) setState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
-                              'jx8cs0m7' /* Add */,
+                              'jh3lbjpl' /* Edit */,
                             ),
                             options: FFButtonOptions(
                               width: 270.0,

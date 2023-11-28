@@ -754,12 +754,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Document Image',
       'ar': 'صورة معرض العناصر',
     },
+    '0b1ytslj': {
+      'en': 'Attached Files',
+      'ar': 'الملفات المرفقة',
+    },
     '24b31i34': {
       'en': 'File name',
       'ar': '',
     },
     'jx8cs0m7': {
-      'en': 'Save Changes',
+      'en': 'Add',
       'ar': 'حفظ التغييرات',
     },
     'xrg8q0gd': {
@@ -797,6 +801,45 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'إعلان جديد',
     },
     'u2ewpblm': {
+      'en': 'Home',
+      'ar': 'بيت',
+    },
+  },
+  // EditDocument
+  {
+    'jpzt8hhh': {
+      'en': 'Edit Document',
+      'ar': 'إضافة مستند',
+    },
+    'wkxsw4lp': {
+      'en': 'Document Title*',
+      'ar': 'عنوان معرض العناصر',
+    },
+    'kzcds2vv': {
+      'en': 'Document Title',
+      'ar': 'التسمية هنا...',
+    },
+    '739d7w9a': {
+      'en': 'Document Title',
+      'ar': '',
+    },
+    'mk2rf5r6': {
+      'en': 'Document Image',
+      'ar': 'صورة معرض العناصر',
+    },
+    'jv5tqt0c': {
+      'en': 'Attached Files',
+      'ar': 'الملفات المرفقة',
+    },
+    'bqt6vqd8': {
+      'en': 'File name',
+      'ar': '',
+    },
+    'jh3lbjpl': {
+      'en': 'Edit',
+      'ar': 'حفظ التغييرات',
+    },
+    '17txvdpy': {
       'en': 'Home',
       'ar': 'بيت',
     },
