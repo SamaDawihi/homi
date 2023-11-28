@@ -433,25 +433,50 @@ class _EditFamilyWidgetState extends State<EditFamilyWidget>
                           }
                         }
 
-                        await FFAppState()
-                            .familyId!
-                            .update(createFamilyRecordData(
-                              photoUrl: _model.uploadedFileUrl,
-                            ));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Image Updated Successfully',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
+                        if (_model.uploadedFileUrl != null &&
+                            _model.uploadedFileUrl != '') {
+                          await FFAppState()
+                              .familyId!
+                              .update(createFamilyRecordData(
+                                photoUrl: _model.uploadedFileUrl,
+                              ));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Image Updated Successfully',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
                               ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).success,
                             ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).success,
-                          ),
-                        );
-                        Navigator.pop(context);
+                          );
+                          Navigator.pop(context);
+                        } else {
+                          await FFAppState()
+                              .familyId!
+                              .update(createFamilyRecordData(
+                                photoUrl: _model.uploadedFileUrl,
+                              ));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Image Updated Successfully',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).success,
+                            ),
+                          );
+                          Navigator.pop(context);
+                        }
                       },
                       text: FFLocalizations.of(context).getText(
                         'eay0t43o' /* Change Image */,
