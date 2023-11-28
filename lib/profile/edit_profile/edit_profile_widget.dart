@@ -608,24 +608,30 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                           }
                         }
 
-                        await currentUserReference!
-                            .update(createUsersRecordData(
-                          photoUrl: _model.uploadedFileUrl,
-                        ));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Image Updated Successfully',
-                              style: TextStyle(
-                                color: FlutterFlowTheme.of(context).primaryText,
+                        if (_model.uploadedFileUrl != null &&
+                            _model.uploadedFileUrl != '') {
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            photoUrl: _model.uploadedFileUrl,
+                          ));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Image Updated Successfully',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
                               ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).success,
                             ),
-                            duration: Duration(milliseconds: 4000),
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).success,
-                          ),
-                        );
-                        Navigator.pop(context);
+                          );
+                          Navigator.pop(context);
+                        } else {
+                          return;
+                        }
                       },
                       text: FFLocalizations.of(context).getText(
                         'obu0yv4y' /* Change Image */,
