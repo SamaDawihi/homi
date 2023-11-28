@@ -24,14 +24,17 @@ Future addDocument(
       'document': document.document,
       'familyId': document.familyId,
     });
-
+    print("document title ${document.title}");
     // Get the reference to the newly created document
     final documentId = documentReference.id;
 
     // Check if attachments is not null before processing
     if (attachments != null) {
+      print("Attachements isnt null");
+      print("Attachements number is ${attachments.length}");
       // Add each attachment to the Attachment subcollection of the document
       for (final attachment in attachments) {
+        print("Attachements name is ${attachment.name}");
         await DocumentRecord.collection
             .doc(documentId)
             .collection('attachments')
