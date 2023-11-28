@@ -439,6 +439,10 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                         _model.emailController.text)),
                               );
                               if (_model.isEmailUnique!) {
+                                setState(() {
+                                  _model.previousEmail = functions
+                                      .toLowerCaseFunction(currentUserEmail);
+                                });
                                 if (functions
                                     .trimAndCollapseSpaces(
                                         _model.emailController.text)
@@ -460,27 +464,44 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                 );
                                 setState(() {});
 
-                                await currentUserReference!
-                                    .update(createUsersRecordData(
-                                  email: functions.toLowerCaseFunction(
-                                      functions.trimAndCollapseSpaces(
-                                          _model.emailController.text)),
-                                ));
-                                Navigator.pop(context);
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Email Updated Successfuly',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                if (functions.toLowerCaseFunction(
+                                        functions.trimAndCollapseSpaces(
+                                            _model.emailController.text)) ==
+                                    functions.toLowerCaseFunction(
+                                        functions.trimAndCollapseSpaces(
+                                            currentUserEmail))) {
+                                  Navigator.pop(context);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Email Updated Successfuly',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
                                       ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).success,
                                     ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).success,
-                                  ),
-                                );
+                                  );
+                                } else {
+                                  Navigator.pop(context);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Email Update Faild Try signing in again.',
+                                        style: TextStyle(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context).error,
+                                    ),
+                                  );
+                                }
                               } else {
                                 setState(() {
                                   _model.emailErr =

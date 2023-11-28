@@ -30,6 +30,8 @@ class NewEditProfileModel extends FlutterFlowModel<NewEditProfileWidget> {
 
   String? emailErr;
 
+  String previousEmail = ' ';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Name widget.
