@@ -19,10 +19,12 @@ class ListViewItemWidget extends StatefulWidget {
     Key? key,
     required this.itemRef,
     required this.isShooping,
+    required this.done,
   }) : super(key: key);
 
   final DocumentReference? itemRef;
   final bool? isShooping;
+  final bool? done;
 
   @override
   _ListViewItemWidgetState createState() => _ListViewItemWidgetState();
@@ -119,7 +121,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                                 FlutterFlowTheme.of(context).secondaryText,
                           ),
                           child: Checkbox(
-                            value: _model.checkboxValue ??= _model.done,
+                            value: _model.checkboxValue ??= widget.done!,
                             onChanged: (newValue) async {
                               setState(() => _model.checkboxValue = newValue!);
                               if (newValue!) {

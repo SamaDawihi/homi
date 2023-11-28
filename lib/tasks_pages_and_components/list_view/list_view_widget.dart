@@ -764,6 +764,7 @@ class _ListViewWidgetState extends State<ListViewWidget>
                                                       .reference,
                                                   isShooping:
                                                       widget.isShopping!,
+                                                  done: listViewItemRecord.done,
                                                 ),
                                               );
                                             },
