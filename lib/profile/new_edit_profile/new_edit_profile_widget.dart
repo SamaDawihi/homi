@@ -440,9 +440,8 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                               );
                               if (_model.isEmailUnique!) {
                                 if (functions
-                                    .toLowerCaseFunction(
-                                        functions.trimAndCollapseSpaces(
-                                            _model.emailController.text))
+                                    .trimAndCollapseSpaces(
+                                        _model.emailController.text)
                                     .isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
@@ -455,9 +454,8 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                 }
 
                                 await authManager.updateEmail(
-                                  email: functions.toLowerCaseFunction(
-                                      functions.trimAndCollapseSpaces(
-                                          _model.emailController.text)),
+                                  email: functions.trimAndCollapseSpaces(
+                                      _model.emailController.text),
                                   context: context,
                                 );
                                 setState(() {});
