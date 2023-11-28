@@ -177,7 +177,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '71liwcl9': {
       'en': 'Home',
-      'ar': 'الرئيسية',
+      'ar': 'بيت',
     },
   },
   // FamilyProfile
@@ -215,7 +215,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '7dmf86h5': {
       'en': 'Calendar',
-      'ar': 'تقويم',
+      'ar': 'التقويم',
     },
     'ya9nswq3': {
       'en': 'Get Google Events',
@@ -250,7 +250,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cjn0szm1': {
       'en': 'Lists',
-      'ar': 'الرئيسية',
+      'ar': 'القوائم',
     },
   },
   // Announcements
@@ -297,7 +297,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'fpijkt8v': {
       'en': 'Invitation Status',
-      'ar': 'حالة الدعوات',
+      'ar': 'حالة الدعوة',
     },
     'fv3muwjj': {
       'en': 'Previous invitations status:',
@@ -473,7 +473,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'xa9qerf6': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // EventEdit
@@ -586,7 +586,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'z30xdtld': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // CreateList
@@ -640,7 +640,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1oo63y60': {
       'en': 'No description.',
-      'ar': 'بدون وصف.',
+      'ar': 'لا يوجد وصف.',
     },
     '38s7atkv': {
       'en': 'Responsible Members :',
@@ -652,7 +652,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'l46cpzmu': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // EditList
@@ -695,25 +695,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4ym2ud12': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // Profile
   {
     'xmfddfme': {
       'en': 'Profile',
-      'ar': 'حساب تعريفي',
+      'ar': 'الحساب الشخصي',
     },
     'epk3hl4i': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // AddAnouncement
   {
     'gn22egrf': {
       'en': 'What\'s on you mind?',
-      'ar': 'ماذا يدور في ذهنك ؟',
+      'ar': 'ماذا يدور في ذهنك؟',
     },
     'pocenu8a': {
       'en': 'Send',
@@ -725,7 +725,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'be6bl8y0': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // AddDocument
@@ -736,19 +736,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'd7hp5rox': {
       'en': 'Document Title*',
-      'ar': 'عنوان معرض العناصر',
+      'ar': 'عنوان الوثيقة*',
     },
     '95dq19pa': {
       'en': 'Document Title',
-      'ar': 'التسمية هنا...',
+      'ar': 'عنوان الوثيقة',
     },
     '453ls6hq': {
       'en': 'Document Title',
-      'ar': '',
+      'ar': 'عنوان الوثيقة',
     },
     'cgdopig4': {
       'en': 'Document Image',
-      'ar': 'صورة معرض العناصر',
+      'ar': 'صورة الوثيقة',
     },
     '0b1ytslj': {
       'en': 'Attached Files',
@@ -756,30 +756,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '24b31i34': {
       'en': 'File name',
-      'ar': '',
+      'ar': 'اسم الملف',
     },
     'jx8cs0m7': {
       'en': 'Add',
-      'ar': 'حفظ التغييرات',
+      'ar': 'يضيف',
     },
     'xrg8q0gd': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // Gallery
   {
     '69anokm1': {
       'en': 'Gallery',
-      'ar': 'صالة عرض',
-    },
-    'rbjsyrvp': {
-      'en': 'Documents',
-      'ar': '',
+      'ar': 'المستندات',
     },
     'q1vup2a1': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // EditAnouncement
@@ -794,34 +790,34 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'wb7mzu1l': {
       'en': 'Edit  Anouncement',
-      'ar': 'إعلان جديد',
+      'ar': 'تحرير إعلان',
     },
     'u2ewpblm': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // EditDocument
   {
     'jpzt8hhh': {
       'en': 'Edit Document',
-      'ar': 'إضافة مستند',
+      'ar': 'تحرير المستند',
     },
     'wkxsw4lp': {
       'en': 'Document Title*',
-      'ar': 'عنوان معرض العناصر',
+      'ar': 'عنوان الوثيقة*',
     },
     'kzcds2vv': {
       'en': 'Document Title',
-      'ar': 'التسمية هنا...',
+      'ar': 'عنوان الوثيقة',
     },
     '739d7w9a': {
       'en': 'Document Title',
-      'ar': '',
+      'ar': 'عنوان الوثيقة',
     },
     'mk2rf5r6': {
       'en': 'Document Image',
-      'ar': 'صورة معرض العناصر',
+      'ar': 'صورة الوثيقة',
     },
     'jv5tqt0c': {
       'en': 'Attached Files',
@@ -829,15 +825,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bqt6vqd8': {
       'en': 'File name',
-      'ar': '',
+      'ar': 'اسم الملف',
     },
     'jh3lbjpl': {
       'en': 'Edit',
-      'ar': 'حفظ التغييرات',
+      'ar': 'يحرر',
     },
     '17txvdpy': {
       'en': 'Home',
-      'ar': 'بيت',
+      'ar': 'الرئيسية',
     },
   },
   // InviteByEmail
@@ -962,11 +958,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pon754uj': {
       'en': 'Search',
-      'ar': 'البحث',
+      'ar': 'يبحث',
     },
     'gm9au358': {
       'en': 'Home',
-      'ar': 'الرئيسية',
+      'ar': 'بيت',
     },
     'ggt2kn8t': {
       'en': 'Profile',
@@ -974,7 +970,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'cospxlxu': {
       'en': 'Log out',
-      'ar': 'تسجيل الخروج',
+      'ar': 'تسجيل خروج',
     },
   },
   // ResetPassword
@@ -1394,7 +1390,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'vmsu80yu': {
       'en': 'Seems that you don\'t have any lists',
-      'ar': 'يبدو أنه ليس لديك أية قوائم',
+      'ar': 'يبدو أنه ليس لديك أي قوائم',
     },
     'a1hctaw8': {
       'en': 'Create a new list to get started',
@@ -1438,11 +1434,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '0kuota2f': {
       'en': 'Enter your new email',
-      'ar': 'أدخل البريد الإلكتروني الجديد',
+      'ar': 'أدخل بريدك الإلكتروني الجديد',
     },
     'hypj5w34': {
       'en': 'Enter your new email\n',
-      'ar': 'أدخل اسم العائلة',
+      'ar': 'أدخل بريدك الإلكتروني الجديد',
     },
     'vo59mw0u': {
       'en': 'Update the email',
@@ -1453,11 +1449,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'b8q6jrgw': {
       'en': 'Enter your new name',
-      'ar': 'أدخل الاسم الجديد',
+      'ar': 'أدخل اسمك الجديد',
     },
     'w6vmmd02': {
       'en': 'Enter your name',
-      'ar': 'اسم',
+      'ar': 'أدخل أسمك',
     },
     'yrsqjdx2': {
       'en': 'Update the name',
@@ -1475,7 +1471,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'ckauo0qx': {
       'en': 'Attachement',
-      'ar': '',
+      'ar': 'المرفقات',
     },
   },
   // FamilyLoading
@@ -1534,7 +1530,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '625lydhs': {
       'en': 'Enter New Name',
-      'ar': 'اسم العائلة الجديد',
+      'ar': 'أدخل الاسم الجديد',
     },
     'uar91v6s': {
       'en': '',
@@ -1542,7 +1538,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vr5dvvmy': {
       'en': 'Enter New Email',
-      'ar': 'اسم العائلة الجديد',
+      'ar': 'أدخل البريد الإلكتروني الجديد',
     },
     'egac8at3': {
       'en': '',
@@ -1550,31 +1546,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4mxn9r5u': {
       'en': 'Save',
-      'ar': '',
+      'ar': 'يحفظ',
     },
   },
   // ListLoading
   {
     'm3mq0zb1': {
       'en': 'List Is Loading...',
-      'ar': 'جاري تحميل العائلة...',
+      'ar': 'جارٍ تحميل القائمة...',
     },
     '62nhhcpz': {
       'en':
           'If the process takes an extended duration, it\'s possible that the list might have been deleted.',
       'ar':
-          'إذا استغرقت العملية مدة طويلة، فمن المحتمل أن تكون العائلة قد تم حذفها. يرجى التواصل مع المشرف للحصول على مزيد من المساعدة والمعلومات.',
+          'إذا استغرقت العملية مدة طويلة، فمن المحتمل أن تكون القائمة قد تم حذفها.',
     },
     'y3uatp6c': {
       'en': 'Go to All Lists',
-      'ar': 'بيت',
+      'ar': 'انتقل إلى كافة القوائم',
     },
   },
   // newEdit
   {
     'acu1s08j': {
       'en': 'Enter New Name',
-      'ar': 'اسم العائلة الجديد',
+      'ar': 'أدخل الاسم الجديد',
     },
     'iwpjar4h': {
       'en': '',
@@ -1582,18 +1578,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '99e7g7db': {
       'en': 'Change Photo',
-      'ar': '',
+      'ar': 'غير الصوره',
     },
     'y3ug3km7': {
       'en': 'Save',
-      'ar': '',
+      'ar': 'يحفظ',
     },
   },
   // NewEditProfile
   {
     'csug7le5': {
       'en': 'New Name',
-      'ar': 'اسم العائلة الجديد',
+      'ar': 'اسم جديد',
     },
     'f2fyja8d': {
       'en': 'Enter email',
@@ -1601,7 +1597,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'i74lkbfo': {
       'en': 'New Email',
-      'ar': 'اسم العائلة الجديد',
+      'ar': 'بريد إلكتروني جديد',
     },
     'vf7rt6sk': {
       'en': 'Enter email',

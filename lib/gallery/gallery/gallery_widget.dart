@@ -158,12 +158,6 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'rbjsyrvp' /* Documents */,
-                        ),
-                        style: FlutterFlowTheme.of(context).headlineLarge,
-                      ),
                       Align(
                         alignment: AlignmentDirectional(0.00, 0.00),
                         child: StreamBuilder<List<DocumentRecord>>(
