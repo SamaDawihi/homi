@@ -1,10 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,19 +15,19 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'edit_profile_model.dart';
-export 'edit_profile_model.dart';
+import 'new_edit_model.dart';
+export 'new_edit_model.dart';
 
-class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({Key? key}) : super(key: key);
+class NewEditWidget extends StatefulWidget {
+  const NewEditWidget({Key? key}) : super(key: key);
 
   @override
-  _EditProfileWidgetState createState() => _EditProfileWidgetState();
+  _NewEditWidgetState createState() => _NewEditWidgetState();
 }
 
-class _EditProfileWidgetState extends State<EditProfileWidget>
+class _NewEditWidgetState extends State<NewEditWidget>
     with TickerProviderStateMixin {
-  late EditProfileModel _model;
+  late NewEditModel _model;
 
   final animationsMap = {
     'columnOnActionTriggerAnimation': AnimationInfo(
@@ -66,14 +67,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditProfileModel());
+    _model = createModel(context, () => NewEditModel());
 
     _model.nameController ??=
         TextEditingController(text: currentUserDisplayName);
     _model.nameFocusNode ??= FocusNode();
-
-    _model.emailController ??= TextEditingController(text: currentUserEmail);
-    _model.emailFocusNode ??= FocusNode();
 
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -158,8 +156,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                     ],
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
                     child: AuthUserStreamWidget(
                       builder: (context) => TextFormField(
                         controller: _model.nameController,
@@ -171,7 +168,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: FFLocalizations.of(context).getText(
-                            '625lydhs' /* Enter New Name */,
+                            'acu1s08j' /* Enter New Name */,
                           ),
                           labelStyle:
                               FlutterFlowTheme.of(context).bodyMedium.override(
@@ -224,62 +221,81 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 5.0),
-                    child: TextFormField(
-                      controller: _model.emailController,
-                      focusNode: _model.emailFocusNode,
-                      autofocus: true,
-                      autofillHints: [AutofillHints.email],
-                      textCapitalization: TextCapitalization.sentences,
-                      textInputAction: TextInputAction.send,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: FFLocalizations.of(context).getText(
-                          'vr5dvvmy' /* Enter New Email */,
-                        ),
-                        hintStyle: FlutterFlowTheme.of(context).labelLarge,
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        filled: true,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 24.0, 20.0, 24.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          allowPhoto: true,
+                        );
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
+                          setState(() => _model.isDataUploading = true);
+                          var selectedUploadedFiles = <FFUploadedFile>[];
+
+                          var downloadUrls = <String>[];
+                          try {
+                            selectedUploadedFiles = selectedMedia
+                                .map((m) => FFUploadedFile(
+                                      name: m.storagePath.split('/').last,
+                                      bytes: m.bytes,
+                                      height: m.dimensions?.height,
+                                      width: m.dimensions?.width,
+                                      blurHash: m.blurHash,
+                                    ))
+                                .toList();
+
+                            downloadUrls = (await Future.wait(
+                              selectedMedia.map(
+                                (m) async =>
+                                    await uploadData(m.storagePath, m.bytes),
+                              ),
+                            ))
+                                .where((u) => u != null)
+                                .map((u) => u!)
+                                .toList();
+                          } finally {
+                            _model.isDataUploading = false;
+                          }
+                          if (selectedUploadedFiles.length ==
+                                  selectedMedia.length &&
+                              downloadUrls.length == selectedMedia.length) {
+                            setState(() {
+                              _model.uploadedLocalFile =
+                                  selectedUploadedFiles.first;
+                              _model.uploadedFileUrl = downloadUrls.first;
+                            });
+                          } else {
+                            setState(() {});
+                            return;
+                          }
+                        }
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        '99e7g7db' /* Change Photo */,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Source Sans Pro',
-                            fontSize: 16.0,
-                          ),
-                      keyboardType: TextInputType.emailAddress,
-                      cursorColor: FlutterFlowTheme.of(context).primary,
-                      validator:
-                          _model.emailControllerValidator.asValidator(context),
+                      options: FFButtonOptions(
+                        width: 150.0,
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Source Sans Pro',
+                                  color: Colors.white,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
                   Align(
@@ -302,75 +318,37 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        var _shouldSetState = false;
-                        if ((functions.trimAndCollapseSpaces(
-                                        _model.nameController.text) !=
-                                    null &&
-                                functions.trimAndCollapseSpaces(
-                                        _model.nameController.text) !=
-                                    '') &&
-                            (functions.trimAndCollapseSpaces(
-                                        _model.emailController.text) !=
-                                    null &&
-                                functions.trimAndCollapseSpaces(
-                                        _model.emailController.text) !=
-                                    '')) {
+                        if (functions.trimAndCollapseSpaces(
+                                    _model.nameController.text) !=
+                                null &&
+                            functions.trimAndCollapseSpaces(
+                                    _model.nameController.text) !=
+                                '') {
                           setState(() {
                             _model.editErr = '';
                           });
-                          _model.emailExists = await actions.isEmailUnique(
-                            _model.emailController.text,
-                          );
-                          _shouldSetState = true;
-                          if (_model.emailExists!) {
-                            if (functions
-                                .trimAndCollapseSpaces(
-                                    _model.emailController.text)
-                                .isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Email required!',
-                                  ),
-                                ),
-                              );
-                              return;
-                            }
 
-                            await authManager.updateEmail(
-                              email: functions.trimAndCollapseSpaces(
-                                  _model.emailController.text),
-                              context: context,
-                            );
-                            setState(() {});
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            displayName: functions.trimAndCollapseSpaces(
+                                _model.nameController.text),
+                          ));
 
-                            await currentUserReference!
-                                .update(createUsersRecordData(
-                              displayName: _model.nameController.text,
-                              email: _model.emailController.text,
-                            ));
-                            Navigator.pop(context);
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          } else {
-                            setState(() {
-                              _model.editErr = 'email is already exist';
-                            });
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
+                          await currentUserReference!
+                              .update(createUsersRecordData(
+                            photoUrl: _model.uploadedFileUrl,
+                          ));
+                          context.safePop();
+                          return;
                         } else {
                           setState(() {
-                            _model.editErr = 'Fields cannot be emoty';
+                            _model.editErr = 'name cannot be empty';
                           });
-                          if (_shouldSetState) setState(() {});
                           return;
                         }
-
-                        if (_shouldSetState) setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        '4mxn9r5u' /* Save */,
+                        'y3ug3km7' /* Save */,
                       ),
                       options: FFButtonOptions(
                         width: 150.0,

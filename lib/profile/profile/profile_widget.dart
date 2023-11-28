@@ -1,18 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/extra/side_menu/side_menu_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
-import '/profile/edit_profile/edit_profile_widget.dart';
-import '/profile/input_component_enter_new_email/input_component_enter_new_email_widget.dart';
-import '/profile/input_component_enter_new_name/input_component_enter_new_name_widget.dart';
+import '/profile/new_edit_profile/new_edit_profile_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -37,7 +32,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
-    'containerOnPageLoadAnimation1': AnimationInfo(
+    'containerOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         VisibilityEffect(duration: 1.ms),
@@ -57,7 +52,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
         ),
       ],
     ),
-    'dividerOnPageLoadAnimation': AnimationInfo(
+    'dividerOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         VisibilityEffect(duration: 1.ms),
@@ -77,7 +72,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
         ),
       ],
     ),
-    'textOnPageLoadAnimation': AnimationInfo(
+    'textOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         VisibilityEffect(duration: 1.ms),
@@ -97,7 +92,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
         ),
       ],
     ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
+    'dividerOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         VisibilityEffect(duration: 1.ms),
@@ -112,7 +107,27 @@ class _ProfileWidgetState extends State<ProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 60.0),
+          begin: Offset(0.0, 20.0),
+          end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'textOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0.0, 20.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -295,7 +310,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           ),
                         ),
                       ).animateOnPageLoad(
-                          animationsMap['containerOnPageLoadAnimation1']!),
+                          animationsMap['containerOnPageLoadAnimation']!),
                     ),
                     Padding(
                       padding:
@@ -306,69 +321,23 @@ class _ProfileWidgetState extends State<ProfileWidget>
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          final selectedMedia =
-                              await selectMediaWithSourceBottomSheet(
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
                             context: context,
-                            allowPhoto: true,
-                          );
-                          if (selectedMedia != null &&
-                              selectedMedia.every((m) =>
-                                  validateFileFormat(m.storagePath, context))) {
-                            setState(() => _model.isDataUploading = true);
-                            var selectedUploadedFiles = <FFUploadedFile>[];
-
-                            var downloadUrls = <String>[];
-                            try {
-                              showUploadMessage(
-                                context,
-                                'Uploading file...',
-                                showLoading: true,
-                              );
-                              selectedUploadedFiles = selectedMedia
-                                  .map((m) => FFUploadedFile(
-                                        name: m.storagePath.split('/').last,
-                                        bytes: m.bytes,
-                                        height: m.dimensions?.height,
-                                        width: m.dimensions?.width,
-                                        blurHash: m.blurHash,
-                                      ))
-                                  .toList();
-
-                              downloadUrls = (await Future.wait(
-                                selectedMedia.map(
-                                  (m) async =>
-                                      await uploadData(m.storagePath, m.bytes),
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: NewEditProfileWidget(),
                                 ),
-                              ))
-                                  .where((u) => u != null)
-                                  .map((u) => u!)
-                                  .toList();
-                            } finally {
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              _model.isDataUploading = false;
-                            }
-                            if (selectedUploadedFiles.length ==
-                                    selectedMedia.length &&
-                                downloadUrls.length == selectedMedia.length) {
-                              setState(() {
-                                _model.uploadedLocalFile =
-                                    selectedUploadedFiles.first;
-                                _model.uploadedFileUrl = downloadUrls.first;
-                              });
-                              showUploadMessage(context, 'Success!');
-                            } else {
-                              setState(() {});
-                              showUploadMessage(
-                                  context, 'Failed to upload data');
-                              return;
-                            }
-                          }
-
-                          await currentUserReference!
-                              .update(createUsersRecordData(
-                            photoUrl: _model.uploadedFileUrl,
-                          ));
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
                         },
                         child: Icon(
                           Icons.edit_outlined,
@@ -386,168 +355,40 @@ class _ProfileWidgetState extends State<ProfileWidget>
                 indent: 24.0,
                 endIndent: 24.0,
                 color: FlutterFlowTheme.of(context).alternate,
-              ).animateOnPageLoad(animationsMap['dividerOnPageLoadAnimation']!),
-              AuthUserStreamWidget(
-                builder: (context) => Text(
-                  currentUserDisplayName,
-                  style: FlutterFlowTheme.of(context).displayMedium,
-                ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation']!),
+              ).animateOnPageLoad(
+                  animationsMap['dividerOnPageLoadAnimation1']!),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AuthUserStreamWidget(
+                    builder: (context) => Text(
+                      currentUserDisplayName.maybeHandleOverflow(
+                        maxChars: 20,
+                        replacement: '…',
+                      ),
+                      style: FlutterFlowTheme.of(context).displayMedium,
+                    ).animateOnPageLoad(
+                        animationsMap['textOnPageLoadAnimation1']!),
+                  ),
+                ],
               ),
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    enableDrag: false,
-                    context: context,
-                    builder: (context) {
-                      return GestureDetector(
-                        onTap: () => _model.unfocusNode.canRequestFocus
-                            ? FocusScope.of(context)
-                                .requestFocus(_model.unfocusNode)
-                            : FocusScope.of(context).unfocus(),
-                        child: Padding(
-                          padding: MediaQuery.viewInsetsOf(context),
-                          child: InputComponentEnterNewNameWidget(),
-                        ),
-                      );
-                    },
-                  ).then((value) => safeSetState(() {}));
-                },
-                child: Icon(
-                  Icons.edit_outlined,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(
-                      color: FlutterFlowTheme.of(context).alternate,
-                      width: 2.0,
+              Divider(
+                height: 44.0,
+                thickness: 1.0,
+                indent: 24.0,
+                endIndent: 24.0,
+                color: FlutterFlowTheme.of(context).alternate,
+              ).animateOnPageLoad(
+                  animationsMap['dividerOnPageLoadAnimation2']!),
+              AutoSizeText(
+                currentUserEmail,
+                style: FlutterFlowTheme.of(context).headlineLarge.override(
+                      fontFamily: 'Open Sans',
+                      fontSize: 28.0,
                     ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 0.0, 0.0),
-                              child: Icon(
-                                Icons.alternate_email_sharp,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                currentUserEmail,
-                                style: FlutterFlowTheme.of(context).bodyLarge,
-                              ),
-                            ),
-                          ],
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              enableDrag: false,
-                              context: context,
-                              builder: (context) {
-                                return GestureDetector(
-                                  onTap: () =>
-                                      _model.unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                  child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: InputComponentEnterNewEmailWidget(),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-                          },
-                          child: Icon(
-                            Icons.edit_outlined,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 24.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ).animateOnPageLoad(
-                    animationsMap['containerOnPageLoadAnimation2']!),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      enableDrag: false,
-                      context: context,
-                      builder: (context) {
-                        return GestureDetector(
-                          onTap: () => _model.unfocusNode.canRequestFocus
-                              ? FocusScope.of(context)
-                                  .requestFocus(_model.unfocusNode)
-                              : FocusScope.of(context).unfocus(),
-                          child: Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: EditProfileWidget(),
-                          ),
-                        );
-                      },
-                    ).then((value) => safeSetState(() {}));
-                  },
-                  text: FFLocalizations.of(context).getText(
-                    'f2hs8215' /* Edit Profile */,
-                  ),
-                  options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Source Sans Pro',
-                          color: Colors.white,
-                        ),
-                    elevation: 3.0,
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-              ),
+                minFontSize: 20.0,
+              ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation2']!),
             ],
           ),
         ),

@@ -700,10 +700,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Profile
   {
-    'f2hs8215': {
-      'en': 'Edit Profile',
-      'ar': '',
-    },
     'xmfddfme': {
       'en': 'Profile',
       'ar': 'حساب تعريفي',
@@ -1572,6 +1568,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'y3uatp6c': {
       'en': 'Go to All Lists',
       'ar': 'بيت',
+    },
+  },
+  // newEdit
+  {
+    'acu1s08j': {
+      'en': 'Enter New Name',
+      'ar': 'اسم العائلة الجديد',
+    },
+    'iwpjar4h': {
+      'en': '',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
+    '99e7g7db': {
+      'en': 'Change Photo',
+      'ar': '',
+    },
+    'y3ug3km7': {
+      'en': 'Save',
+      'ar': '',
+    },
+  },
+  // NewEditProfile
+  {
+    'csug7le5': {
+      'en': 'New Name',
+      'ar': 'اسم العائلة الجديد',
+    },
+    'f2fyja8d': {
+      'en': 'Enter email',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
+    'i74lkbfo': {
+      'en': 'New Email',
+      'ar': 'اسم العائلة الجديد',
+    },
+    'vf7rt6sk': {
+      'en': 'Enter email',
+      'ar': 'أدخل البريد الإلكتروني',
+    },
+    'obu0yv4y': {
+      'en': 'Change Image',
+      'ar': 'تغيير الصورة',
     },
   },
   // Miscellaneous
