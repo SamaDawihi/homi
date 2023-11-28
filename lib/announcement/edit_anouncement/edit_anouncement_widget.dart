@@ -11,6 +11,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -41,6 +42,16 @@ class _EditAnouncementWidgetState extends State<EditAnouncementWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditAnouncementModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.anouncementDoc?.image != null &&
+          widget.anouncementDoc?.image != '') {
+        setState(() {
+          _model.uploadedImgae = widget.anouncementDoc?.image;
+        });
+      }
+    });
 
     _model.textController ??=
         TextEditingController(text: widget.anouncementDoc?.message);
@@ -117,7 +128,7 @@ class _EditAnouncementWidgetState extends State<EditAnouncementWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'wb7mzu1l' /* New  Anouncement */,
+                              'wb7mzu1l' /* Edit  Anouncement */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -511,12 +522,18 @@ class _EditAnouncementWidgetState extends State<EditAnouncementWidget> {
                                             image: _model.uploadedFileUrl,
                                           ));
                                         } else {
-                                          await widget.anouncementRef!.update(
-                                              createAnnouncementRecordData(
-                                            message:
-                                                functions.trimAndCollapseSpaces(
-                                                    _model.textController.text),
-                                          ));
+                                          await widget.anouncementRef!.update({
+                                            ...createAnnouncementRecordData(
+                                              message: functions
+                                                  .trimAndCollapseSpaces(_model
+                                                      .textController.text),
+                                            ),
+                                            ...mapToFirestore(
+                                              {
+                                                'image': FieldValue.delete(),
+                                              },
+                                            ),
+                                          });
                                         }
 
                                         context.goNamed('Announcements');

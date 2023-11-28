@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/extra/bottom_nav_bar/bottom_nav_bar_widget.dart';
@@ -10,7 +9,6 @@ import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'edit_document_widget.dart' show EditDocumentWidget;
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -72,8 +70,6 @@ class EditDocumentModel extends FlutterFlowModel<EditDocumentWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  DocumentRecord? doc;
 
   /// Initialization and disposal methods.
 

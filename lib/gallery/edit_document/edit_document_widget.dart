@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/extra/bottom_nav_bar/bottom_nav_bar_widget.dart';
@@ -9,7 +8,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -799,7 +797,6 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                               0.0, 20.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              var _shouldSetState = false;
                               if (functions.trimAndCollapseSpaces(
                                           _model.textController1.text) !=
                                       null &&
@@ -809,35 +806,8 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                                 if ((_model.uploadedImage != null &&
                                         _model.uploadedImage != '') ||
                                     (_model.uploadedFiles.length > 0)) {
-                                  var documentRecordReference =
-                                      DocumentRecord.collection.doc();
-                                  await documentRecordReference
-                                      .set(createDocumentRecordData(
-                                    title: _model.textController1.text,
-                                    document: _model.uploadedImage,
-                                    familyId: FFAppState().familyId,
-                                    createdBy: currentUserReference,
-                                    createdAt: getCurrentTimestamp,
-                                  ));
-                                  _model.doc =
-                                      DocumentRecord.getDocumentFromData(
-                                          createDocumentRecordData(
-                                            title: _model.textController1.text,
-                                            document: _model.uploadedImage,
-                                            familyId: FFAppState().familyId,
-                                            createdBy: currentUserReference,
-                                            createdAt: getCurrentTimestamp,
-                                          ),
-                                          documentRecordReference);
-                                  _shouldSetState = true;
                                   while (_model.loop <
                                       _model.uploadedFiles.length) {
-                                    await AttachmentRecord.createDoc(
-                                            _model.doc!.reference)
-                                        .set(createAttachmentRecordData(
-                                      name: _model.name[_model.loop],
-                                      url: _model.uploadedFiles[_model.loop],
-                                    ));
                                     setState(() {
                                       _model.loop = _model.loop + 1;
                                     });
@@ -859,7 +829,6 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                                           FlutterFlowTheme.of(context).error,
                                     ),
                                   );
-                                  if (_shouldSetState) setState(() {});
                                   return;
                                 }
                               } else {
@@ -877,11 +846,8 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                                         FlutterFlowTheme.of(context).error,
                                   ),
                                 );
-                                if (_shouldSetState) setState(() {});
                                 return;
                               }
-
-                              if (_shouldSetState) setState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
                               'jh3lbjpl' /* Edit */,

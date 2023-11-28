@@ -797,7 +797,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'أضف',
     },
     'wb7mzu1l': {
-      'en': 'New  Anouncement',
+      'en': 'Edit  Anouncement',
       'ar': 'إعلان جديد',
     },
     'u2ewpblm': {

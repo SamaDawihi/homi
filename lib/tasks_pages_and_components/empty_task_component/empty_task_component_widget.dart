@@ -73,7 +73,7 @@ class _EmptyTaskComponentWidgetState extends State<EmptyTaskComponentWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 2.0),
                 child: Text(
-                  'Seems that you don\'t have any ${widget.isShooping! ? 'items.' : 'tasks'}',
+                  'Seems that you don\'t have any ${widget.isShooping! ? 'items.' : 'tasks.'}',
                   style: FlutterFlowTheme.of(context).bodyLarge,
                 ),
               ),

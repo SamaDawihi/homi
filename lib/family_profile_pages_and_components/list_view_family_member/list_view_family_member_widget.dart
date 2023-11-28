@@ -4,9 +4,11 @@ import '/family_profile_pages_and_components/confirm_admin_change/confirm_admin_
 import '/family_profile_pages_and_components/confirm_remove_member/confirm_remove_member_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -190,6 +192,68 @@ class _ListViewFamilyMemberWidgetState
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
+                          if (currentUserReference ==
+                              widget.memberDoc?.memberId)
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                final _colorPickedColor =
+                                    await showFFColorPicker(
+                                  context,
+                                  currentColor: _model.colorPicked ??=
+                                      valueOrDefault<Color>(
+                                    widget.memberDoc?.color,
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                  showRecentColors: true,
+                                  allowOpacity: true,
+                                  textColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  secondaryTextColor:
+                                      FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                  backgroundColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  primaryButtonBackgroundColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  primaryButtonTextColor: Colors.white,
+                                  primaryButtonBorderColor: Colors.transparent,
+                                  displayAsBottomSheet: isMobileWidth(context),
+                                );
+
+                                if (_colorPickedColor != null) {
+                                  safeSetState(() =>
+                                      _model.colorPicked = _colorPickedColor);
+                                }
+
+                                await widget.memberDoc!.reference
+                                    .update(createMemberRecordData(
+                                  color: _model.colorPicked,
+                                ));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Color Updated Successfully',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).success,
+                                  ),
+                                );
+                              },
+                              child: Icon(
+                                Icons.color_lens_outlined,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 24.0,
+                              ),
+                            ),
                           if ((rowFamilyRecord.adminId ==
                                   currentUserReference) &&
                               (rowFamilyRecord.adminId !=
