@@ -1557,6 +1557,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // ListLoading
+  {
+    'm3mq0zb1': {
+      'en': 'List Is Loading...',
+      'ar': 'جاري تحميل العائلة...',
+    },
+    '62nhhcpz': {
+      'en':
+          'If the process takes an extended duration, it\'s possible that the list might have been deleted.',
+      'ar':
+          'إذا استغرقت العملية مدة طويلة، فمن المحتمل أن تكون العائلة قد تم حذفها. يرجى التواصل مع المشرف للحصول على مزيد من المساعدة والمعلومات.',
+    },
+    'y3uatp6c': {
+      'en': 'Go to All Lists',
+      'ar': 'بيت',
+    },
+  },
   // Miscellaneous
   {
     'cbigx2f8': {
