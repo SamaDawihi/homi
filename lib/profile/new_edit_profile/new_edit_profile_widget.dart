@@ -9,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -222,6 +223,24 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                         ),
                       ),
                     ),
+                  if (_model.editName &&
+                      (_model.nameErr != null && _model.nameErr != ''))
+                    Align(
+                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 5.0),
+                        child: Text(
+                          _model.nameErr!,
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                  ),
+                        ),
+                      ),
+                    ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
@@ -255,20 +274,9 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                               ),
                             );
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Make sure to enter valid name',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).error,
-                              ),
-                            );
+                            setState(() {
+                              _model.nameErr = 'Make sure to enter valid name';
+                            });
                           }
                         } else {
                           setState(() {
@@ -310,6 +318,26 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                       child: TextFormField(
                         controller: _model.emailController,
                         focusNode: _model.emailFocusNode,
+                        onChanged: (_) => EasyDebounce.debounce(
+                          '_model.emailController',
+                          Duration(milliseconds: 2000),
+                          () async {
+                            if (functions.checkIfTextMatchRegExp(
+                                functions.trimAndCollapseSpaces(
+                                    _model.emailController.text),
+                                '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
+                              setState(() {
+                                _model.emailErr = null;
+                              });
+                              return;
+                            } else {
+                              setState(() {
+                                _model.emailErr = 'Invalid Email Format';
+                              });
+                              return;
+                            }
+                          },
+                        ),
                         autofocus: true,
                         autofillHints: [AutofillHints.email],
                         textCapitalization: TextCapitalization.none,
@@ -365,18 +393,40 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                             .asValidator(context),
                       ),
                     ),
+                  if (_model.editEmail &&
+                      (_model.emailErr != null && _model.emailErr != ''))
+                    Align(
+                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 5.0),
+                        child: Text(
+                          _model.emailErr!,
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Source Sans Pro',
+                                    color: FlutterFlowTheme.of(context).error,
+                                  ),
+                        ),
+                      ),
+                    ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         if (_model.editEmail) {
-                          if (functions.trimAndCollapseSpaces(
-                                      _model.emailController.text) !=
-                                  null &&
-                              functions.trimAndCollapseSpaces(
-                                      _model.emailController.text) !=
-                                  '') {
+                          if ((functions.trimAndCollapseSpaces(
+                                          _model.emailController.text) !=
+                                      null &&
+                                  functions.trimAndCollapseSpaces(
+                                          _model.emailController.text) !=
+                                      '') &&
+                              functions.checkIfTextMatchRegExp(
+                                  functions.trimAndCollapseSpaces(
+                                      _model.emailController.text),
+                                  '^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$')) {
                             if (functions.toLowerCaseFunction(
                                     functions.trimAndCollapseSpaces(
                                         _model.emailController.text)) !=
@@ -389,7 +439,11 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                         _model.emailController.text)),
                               );
                               if (_model.isEmailUnique!) {
-                                if (_model.emailController.text.isEmpty) {
+                                if (functions
+                                    .toLowerCaseFunction(
+                                        functions.trimAndCollapseSpaces(
+                                            _model.emailController.text))
+                                    .isEmpty) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -401,7 +455,9 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                 }
 
                                 await authManager.updateEmail(
-                                  email: _model.emailController.text,
+                                  email: functions.toLowerCaseFunction(
+                                      functions.trimAndCollapseSpaces(
+                                          _model.emailController.text)),
                                   context: context,
                                 );
                                 setState(() {});
@@ -410,7 +466,7 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'Name Updated Successfuly',
+                                      'Email Updated Successfuly',
                                       style: TextStyle(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -422,52 +478,21 @@ class _NewEditProfileWidgetState extends State<NewEditProfileWidget>
                                   ),
                                 );
                               } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'This email is linked to another account.',
-                                      style: TextStyle(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).error,
-                                  ),
-                                );
+                                setState(() {
+                                  _model.emailErr =
+                                      'This email is linked to another account.';
+                                });
                               }
                             } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'The  new email is the same as previous one.',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).error,
-                                ),
-                              );
+                              setState(() {
+                                _model.emailErr =
+                                    'The new email is the same as previous one.';
+                              });
                             }
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Make sure to enter valid name',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).error,
-                              ),
-                            );
+                            setState(() {
+                              _model.emailErr = 'invalid email format.';
+                            });
                           }
                         } else {
                           setState(() {

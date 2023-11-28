@@ -10,6 +10,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'new_edit_profile_widget.dart' show NewEditProfileWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,10 @@ class NewEditProfileModel extends FlutterFlowModel<NewEditProfileWidget> {
   bool editName = false;
 
   bool editEmail = false;
+
+  String? nameErr;
+
+  String? emailErr;
 
   ///  State fields for stateful widgets in this component.
 
