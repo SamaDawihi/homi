@@ -37,7 +37,7 @@ Future addDocument(
         print("Attachements name is ${attachment.name}");
         await DocumentRecord.collection
             .doc(documentId)
-            .collection('attachments')
+            .collection('Attachment')
             .add({
           'name': attachment.name,
           'url': attachment.url,
