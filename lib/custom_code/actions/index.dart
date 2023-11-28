@@ -8,3 +8,4 @@ export 'to_event_struct.dart' show toEventStruct;
 export 'get_fcm_token.dart' show getFcmToken;
 export 'add_item.dart' show addItem;
 export 'add_announcement.dart' show addAnnouncement;
+export 'add_document.dart' show addDocument;

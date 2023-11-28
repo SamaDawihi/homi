@@ -270,6 +270,21 @@ class _InputComponentEnterNewEmailWidgetState
                           );
                           setState(() {});
 
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'updated',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).success,
+                            ),
+                          );
+                          Navigator.pop(context);
                           return;
                         } else {
                           setState(() {

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/profile/input_component_enter_new_email/input_component_enter_new_email_widget.dart';
 import '/profile/new_edit_profile/new_edit_profile_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:auto_size_text/auto_size_text.dart';
@@ -389,6 +390,39 @@ class _ProfileWidgetState extends State<ProfileWidget>
                     ),
                 minFontSize: 20.0,
               ).animateOnPageLoad(animationsMap['textOnPageLoadAnimation2']!),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 0.0, 0.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return GestureDetector(
+                          onTap: () => _model.unfocusNode.canRequestFocus
+                              ? FocusScope.of(context)
+                                  .requestFocus(_model.unfocusNode)
+                              : FocusScope.of(context).unfocus(),
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: InputComponentEnterNewEmailWidget(),
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
+                  },
+                  child: Icon(
+                    Icons.edit_outlined,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 24.0,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

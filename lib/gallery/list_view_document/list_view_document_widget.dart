@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/gallery/list_view_attached_file/list_view_attached_file_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -205,10 +206,46 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                             ),
                           ),
                         ),
-                        Icon(
-                          Icons.delete_forever,
-                          color: FlutterFlowTheme.of(context).error,
-                          size: 24.0,
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  ' The Document Has Been Deleted ',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                                action: SnackBarAction(
+                                  label: 'Undo',
+                                  textColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  onPressed: () async {
+                                    await actions.addDocument(
+                                      widget.galleryDocument!,
+                                      _model.attachment.toList(),
+                                    );
+                                  },
+                                ),
+                              ),
+                            );
+                            await widget.galleryDocument!.reference.delete();
+                          },
+                          child: Icon(
+                            Icons.delete_forever,
+                            color: FlutterFlowTheme.of(context).error,
+                            size: 24.0,
+                          ),
                         ),
                       ],
                     ),
