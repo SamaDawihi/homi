@@ -18,6 +18,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class EventAddModel extends FlutterFlowModel<EventAddWidget> {
+  ///  Local state fields for this page.
+
+  String titleErr = '';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

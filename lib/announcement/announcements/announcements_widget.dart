@@ -1,4 +1,5 @@
 import '/announcement/announcement_component/announcement_component_widget.dart';
+import '/announcement/empty_announcement/empty_announcement_widget.dart';
 import '/backend/backend.dart';
 import '/extra/side_menu/side_menu_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -205,6 +206,9 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
                     }
                     List<AnnouncementRecord> listViewAnnouncementRecordList =
                         snapshot.data!;
+                    if (listViewAnnouncementRecordList.isEmpty) {
+                      return EmptyAnnouncementWidget();
+                    }
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,

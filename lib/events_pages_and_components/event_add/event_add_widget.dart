@@ -248,6 +248,11 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                         .asValidator(context),
                                   ),
                                 ),
+                                Text(
+                                  _model.titleErr,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),

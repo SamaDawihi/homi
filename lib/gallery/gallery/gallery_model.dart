@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/gallery/empty_document/empty_document_widget.dart';
 import '/gallery/list_view_document/list_view_document_widget.dart';
 import 'gallery_widget.dart' show GalleryWidget;
 import 'package:flutter/material.dart';

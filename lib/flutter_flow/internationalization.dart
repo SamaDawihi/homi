@@ -1540,6 +1540,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تغيير الصورة',
     },
   },
+  // emptyAnnouncement
+  {
+    'f47idcbr': {
+      'en': 'Seems that you haven\'t sent any invitation',
+      'ar': 'يبدو أنك لم ترسل أي دعوة',
+    },
+    'rbmgcwd4': {
+      'en':
+          'You can invite a member to your family by clicking \"invite a member\" button in the family profile page...',
+      'ar':
+          'يمكنك دعوة أحد أفراد عائلتك من خلال النقر على زر \"دعوة عضو\" في صفحة الملف الشخصي للعائلة...',
+    },
+  },
+  // emptyDocument
+  {
+    'zj33bsrp': {
+      'en': 'Seems that you haven\'t sent any documents',
+      'ar': 'يبدو أنك لم ترسل أي دعوة',
+    },
+    'o9g7o1tt': {
+      'en':
+          'You can invite a member to your family by clicking \"invite a member\" button in the family profile page...',
+      'ar':
+          'يمكنك دعوة أحد أفراد عائلتك من خلال النقر على زر \"دعوة عضو\" في صفحة الملف الشخصي للعائلة...',
+    },
+  },
   // Miscellaneous
   {
     'cbigx2f8': {
