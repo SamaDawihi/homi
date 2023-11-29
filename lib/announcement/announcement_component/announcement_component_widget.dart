@@ -366,15 +366,21 @@ class _AnnouncementComponentWidgetState
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 4.0, 4.0, 12.0),
-                            child: Text(
-                              functions.trimAndCollapseSpaces(
-                                  socialPost2AnnouncementRecord.message),
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context).labelMedium,
-                            ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 4.0, 12.0),
+                                child: Text(
+                                  functions.trimAndCollapseSpaces(
+                                      socialPost2AnnouncementRecord.message),
+                                  textAlign: TextAlign.start,
+                                  style:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                ),
+                              ),
+                            ],
                           ),
                           if (socialPost2AnnouncementRecord.image != null &&
                               socialPost2AnnouncementRecord.image != '')
