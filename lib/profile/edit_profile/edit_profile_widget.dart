@@ -490,7 +490,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        'Email Update Faild Try signing in again.',
+                                        'sorry we can\'t update your email, log in again then try to update it.',
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
@@ -498,14 +498,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       ),
                                       duration: Duration(milliseconds: 4000),
                                       backgroundColor:
-                                          FlutterFlowTheme.of(context).error,
+                                          FlutterFlowTheme.of(context).warning,
                                     ),
                                   );
                                 }
                               } else {
                                 setState(() {
-                                  _model.emailErr =
-                                      'This email is linked to another account.';
+                                  _model.emailErr = 'Email is already exist';
                                 });
                               }
                             } else {

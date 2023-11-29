@@ -534,7 +534,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .error,
-                                                                  fontSize: 9.0,
+                                                                  fontSize:
+                                                                      12.0,
                                                                 ),
                                                           ),
                                                         ),
@@ -734,7 +735,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .error,
-                                                                fontSize: 9.0,
+                                                                fontSize: 12.0,
                                                               ),
                                                         ),
                                                       ),
@@ -959,7 +960,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .error,
-                                                                  fontSize: 9.0,
+                                                                  fontSize:
+                                                                      12.0,
                                                                 ),
                                                           ),
                                                         ),
@@ -982,7 +984,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
-                                                                fontSize: 10.0,
+                                                                fontSize: 12.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
@@ -1019,7 +1021,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                           context)
                                                                       .secondaryText,
                                                                   fontSize:
-                                                                      10.0,
+                                                                      12.0,
                                                                 ),
                                                           ),
                                                         ),
@@ -1242,7 +1244,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .error,
-                                                                  fontSize: 9.0,
+                                                                  fontSize:
+                                                                      12.0,
                                                                 ),
                                                           ),
                                                         ),
