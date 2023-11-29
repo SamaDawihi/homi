@@ -1,5 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/extra/bottom_nav_bar/bottom_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'event_add_widget.dart' show EventAddWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,6 +18,10 @@ class EventAddModel extends FlutterFlowModel<EventAddWidget> {
   ///  Local state fields for this page.
 
   String titleErr = '';
+
+  String dateErr = '';
+
+  String notifErr = '';
 
   ///  State fields for stateful widgets in this page.
 

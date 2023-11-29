@@ -372,6 +372,7 @@ class _AnnouncementComponentWidgetState
                             child: Text(
                               functions.trimAndCollapseSpaces(
                                   socialPost2AnnouncementRecord.message),
+                              textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                           ),

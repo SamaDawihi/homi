@@ -1,5 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/extra/bottom_nav_bar/bottom_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -8,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -177,81 +174,84 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: TextFormField(
-                                    controller: _model.titleController,
-                                    focusNode: _model.titleFocusNode,
-                                    autofocus: true,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelLarge,
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'tcv0ph2h' /* Event Title* */,
+                                TextFormField(
+                                  controller: _model.titleController,
+                                  focusNode: _model.titleFocusNode,
+                                  autofocus: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelStyle:
+                                        FlutterFlowTheme.of(context).labelLarge,
+                                    hintText:
+                                        FFLocalizations.of(context).getText(
+                                      'tcv0ph2h' /* Event Title* */,
+                                    ),
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).labelLarge,
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
                                       ),
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelLarge,
-                                      enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      errorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
-                                      ),
-                                      focusedErrorBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(4.0),
-                                          topRight: Radius.circular(4.0),
-                                        ),
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(4.0),
+                                        topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyLarge,
-                                    maxLength: 20,
-                                    maxLengthEnforcement:
-                                        MaxLengthEnforcement.enforced,
-                                    validator: _model.titleControllerValidator
-                                        .asValidator(context),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(4.0),
+                                        topRight: Radius.circular(4.0),
+                                      ),
+                                    ),
+                                    errorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(4.0),
+                                        topRight: Radius.circular(4.0),
+                                      ),
+                                    ),
+                                    focusedErrorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(4.0),
+                                        topRight: Radius.circular(4.0),
+                                      ),
+                                    ),
                                   ),
+                                  style: FlutterFlowTheme.of(context).bodyLarge,
+                                  maxLength: 20,
+                                  maxLengthEnforcement:
+                                      MaxLengthEnforcement.enforced,
+                                  validator: _model.titleControllerValidator
+                                      .asValidator(context),
                                 ),
-                                Text(
-                                  _model.titleErr,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                Align(
+                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  child: Text(
+                                    _model.titleErr,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Source Sans Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                        ),
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -644,6 +644,23 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                     ),
                                   ],
                                 ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 0.0),
+                                    child: Text(
+                                      _model.dateErr,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Source Sans Pro',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                          ),
+                                    ),
+                                  ),
+                                ),
                                 Divider(
                                   thickness: 2.0,
                                   color: FlutterFlowTheme.of(context).alternate,
@@ -960,6 +977,19 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                         ),
                                     ],
                                   ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  child: Text(
+                                    _model.notifErr,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Source Sans Pro',
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                        ),
+                                  ),
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
@@ -986,249 +1016,11 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       null)) {
                                                 if (_model.datePicked1! <=
                                                     _model.datePicked2!) {
-                                                  if (!_model.allDaySwitchValue!
+                                                  if (!(!_model
+                                                          .allDaySwitchValue!
                                                       ? (_model.datePicked3 !=
                                                           null)
-                                                      : true) {
-                                                    if (_model
-                                                        .notificationSwitchValue!) {
-                                                      await EventRecord
-                                                          .collection
-                                                          .doc()
-                                                          .set(
-                                                              createEventRecordData(
-                                                            title: functions
-                                                                .trimAndCollapseSpaces(
-                                                                    _model
-                                                                        .titleController
-                                                                        .text),
-                                                            description: functions
-                                                                .trimAndCollapseSpaces(
-                                                                    _model
-                                                                        .descriptionController
-                                                                        .text),
-                                                            createdBy:
-                                                                currentUserReference,
-                                                            location: functions
-                                                                .trimAndCollapseSpaces(
-                                                                    _model
-                                                                        .locationController
-                                                                        .text),
-                                                            startTime: _model
-                                                                    .allDaySwitchValue!
-                                                                ? _model
-                                                                    .datePicked1
-                                                                : _model
-                                                                    .datePicked3,
-                                                            isAllDay: _model
-                                                                .allDaySwitchValue,
-                                                            familyId:
-                                                                FFAppState()
-                                                                    .familyId,
-                                                            notifyBefore: 0,
-                                                            notifyBeforeUnit:
-                                                                'Days',
-                                                            isGoogleEvent:
-                                                                false,
-                                                            startDate: _model
-                                                                .datePicked1,
-                                                            dontShareThisEvent:
-                                                                false,
-                                                            endDate: _model
-                                                                .datePicked2,
-                                                            notificationSent: functions.addedEventIsInThePast(
-                                                                _model
-                                                                    .datePicked1!,
-                                                                _model.allDaySwitchValue!
-                                                                    ? _model
-                                                                        .datePicked1!
-                                                                    : _model
-                                                                        .datePicked3!,
-                                                                _model
-                                                                    .allDaySwitchValue!),
-                                                            notifyOnTime: true,
-                                                            notificationTime: functions.calculateNotificationTime(
-                                                                _model
-                                                                    .allDaySwitchValue!,
-                                                                _model
-                                                                    .notificationSwitchValue!,
-                                                                _model
-                                                                    .datePicked1!,
-                                                                _model.allDaySwitchValue!
-                                                                    ? _model
-                                                                        .datePicked1!
-                                                                    : _model
-                                                                        .datePicked3!,
-                                                                0,
-                                                                'Days'),
-                                                          ));
-                                                      ScaffoldMessenger.of(
-                                                              context)
-                                                          .showSnackBar(
-                                                        SnackBar(
-                                                          content: Text(
-                                                            'Event Added Successfully.',
-                                                            style: TextStyle(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                            ),
-                                                          ),
-                                                          duration: Duration(
-                                                              milliseconds:
-                                                                  4000),
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .success,
-                                                        ),
-                                                      );
-
-                                                      context
-                                                          .goNamed('Calendar');
-
-                                                      return;
-                                                    } else {
-                                                      if ((_model.textController4
-                                                                      .text !=
-                                                                  null &&
-                                                              _model.textController4
-                                                                      .text !=
-                                                                  '') &&
-                                                          (_model.dropDownValue !=
-                                                                  null &&
-                                                              _model.dropDownValue !=
-                                                                  '')) {
-                                                        await EventRecord
-                                                            .collection
-                                                            .doc()
-                                                            .set(
-                                                                createEventRecordData(
-                                                              title: functions
-                                                                  .trimAndCollapseSpaces(
-                                                                      _model
-                                                                          .titleController
-                                                                          .text),
-                                                              description: functions
-                                                                  .trimAndCollapseSpaces(
-                                                                      _model
-                                                                          .descriptionController
-                                                                          .text),
-                                                              createdBy:
-                                                                  currentUserReference,
-                                                              location: functions
-                                                                  .trimAndCollapseSpaces(
-                                                                      _model
-                                                                          .locationController
-                                                                          .text),
-                                                              startTime: _model
-                                                                      .allDaySwitchValue!
-                                                                  ? _model
-                                                                      .datePicked1
-                                                                  : _model
-                                                                      .datePicked3,
-                                                              isAllDay: _model
-                                                                  .allDaySwitchValue,
-                                                              familyId:
-                                                                  FFAppState()
-                                                                      .familyId,
-                                                              notifyBefore: int
-                                                                  .tryParse(_model
-                                                                      .textController4
-                                                                      .text),
-                                                              notifyBeforeUnit:
-                                                                  _model
-                                                                      .dropDownValue,
-                                                              isGoogleEvent:
-                                                                  false,
-                                                              startDate: _model
-                                                                  .datePicked1,
-                                                              dontShareThisEvent:
-                                                                  false,
-                                                              endDate: _model
-                                                                  .datePicked2,
-                                                              notificationSent: functions.addedEventIsInThePast(
-                                                                  _model
-                                                                      .datePicked1!,
-                                                                  _model.allDaySwitchValue!
-                                                                      ? _model
-                                                                          .datePicked1!
-                                                                      : _model
-                                                                          .datePicked3!,
-                                                                  _model
-                                                                      .allDaySwitchValue!),
-                                                              notifyOnTime:
-                                                                  false,
-                                                              notificationTime: functions.calculateNotificationTime(
-                                                                  _model
-                                                                      .allDaySwitchValue!,
-                                                                  _model
-                                                                      .notificationSwitchValue!,
-                                                                  _model
-                                                                      .datePicked1!,
-                                                                  _model.allDaySwitchValue!
-                                                                      ? _model
-                                                                          .datePicked1!
-                                                                      : _model
-                                                                          .datePicked3!,
-                                                                  int.parse(_model
-                                                                      .textController4
-                                                                      .text),
-                                                                  _model
-                                                                      .dropDownValue!),
-                                                            ));
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Event Added Successfully.',
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .success,
-                                                          ),
-                                                        );
-
-                                                        context.goNamed(
-                                                            'Calendar');
-
-                                                        return;
-                                                      } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              'Make Sure To Select Both Remainder Time And Unit.',
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                              ),
-                                                            ),
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                          ),
-                                                        );
-                                                        return;
-                                                      }
-                                                    }
-                                                  } else {
+                                                      : true)) {
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(
