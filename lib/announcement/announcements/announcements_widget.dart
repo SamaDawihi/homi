@@ -182,11 +182,12 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
               Expanded(
                 child: StreamBuilder<List<AnnouncementRecord>>(
                   stream: queryAnnouncementRecord(
-                    queryBuilder: (announcementRecord) =>
-                        announcementRecord.where(
-                      'familyId',
-                      isEqualTo: FFAppState().familyId,
-                    ),
+                    queryBuilder: (announcementRecord) => announcementRecord
+                        .where(
+                          'familyId',
+                          isEqualTo: FFAppState().familyId,
+                        )
+                        .orderBy('createdAt', descending: true),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.

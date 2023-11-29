@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +58,7 @@ class _AnnouncementComponentWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10.0, 20.0, 10.0, 20.0),
+      padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
       child: StreamBuilder<AnnouncementRecord>(
         stream: AnnouncementRecord.getDocument(widget.announcementId!),
         builder: (context, snapshot) {
@@ -93,7 +95,7 @@ class _AnnouncementComponentWidgetState
             child: Container(
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                borderRadius: BorderRadius.circular(30.0),
+                borderRadius: BorderRadius.circular(8.0),
               ),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
@@ -158,10 +160,16 @@ class _AnnouncementComponentWidgetState
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
+                                        AutoSizeText(
                                           rowUsersRecord.displayName,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyLarge,
+                                              .bodyLarge
+                                              .override(
+                                                fontFamily: 'Source Sans Pro',
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                          minFontSize: 14.0,
                                         ),
                                         StreamBuilder<FamilyRecord>(
                                           stream: FamilyRecord.getDocument(
@@ -362,7 +370,8 @@ class _AnnouncementComponentWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 4.0, 12.0),
                             child: Text(
-                              socialPost2AnnouncementRecord.message,
+                              functions.trimAndCollapseSpaces(
+                                  socialPost2AnnouncementRecord.message),
                               style: FlutterFlowTheme.of(context).labelMedium,
                             ),
                           ),

@@ -33,6 +33,20 @@
       ]
     },
     {
+      "collectionGroup": "Announcement",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "familyId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "createdAt",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Member",
       "queryScope": "COLLECTION",
       "fields": [
