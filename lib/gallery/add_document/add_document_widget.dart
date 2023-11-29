@@ -181,6 +181,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                 .override(
                                   fontFamily: 'Source Sans Pro',
                                   fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
                                 ),
                           ),
                         ),
@@ -197,8 +198,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             labelText: FFLocalizations.of(context).getText(
                               '95dq19pa' /* Document Title */,
                             ),
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelStyle: FlutterFlowTheme.of(context).bodyMedium,
                             hintText: FFLocalizations.of(context).getText(
                               '453ls6hq' /* Document Title */,
                             ),
@@ -233,6 +233,8 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
+                          maxLength: 20,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
                           validator: _model.textController1Validator
                               .asValidator(context),
                         ),
@@ -241,7 +243,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                         alignment: AlignmentDirectional(-1.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 0.0, 0.0, 30.0),
+                              20.0, 0.0, 0.0, 30.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'cgdopig4' /* Document Image */,
@@ -251,6 +253,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                 .override(
                                   fontFamily: 'Source Sans Pro',
                                   fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
                                 ),
                           ),
                         ),
@@ -401,25 +404,34 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             ],
                           ),
                         ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 16.0, 16.0, 16.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   '0b1ytslj' /* Attached Files */,
                                 ),
-                                style:
-                                    FlutterFlowTheme.of(context).displaySmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .displaySmall
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 20.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -505,8 +517,8 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       if (_model.showEdit)
                         Padding(

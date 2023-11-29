@@ -773,6 +773,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Gallery',
       'ar': 'المستندات',
     },
+    'u3t71gce': {
+      'en': 'Add Document ',
+      'ar': '',
+    },
     'q1vup2a1': {
       'en': 'Home',
       'ar': 'الرئيسية',
@@ -1440,7 +1444,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // ListViewDocument
   {
     'ckauo0qx': {
-      'en': 'Attachement',
+      'en': 'Attachements',
       'ar': 'المرفقات',
     },
   },

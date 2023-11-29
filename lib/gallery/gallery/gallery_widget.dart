@@ -58,18 +58,6 @@ class _GalleryWidgetState extends State<GalleryWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            context.pushNamed('AddDocument');
-          },
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          elevation: 8.0,
-          child: Icon(
-            Icons.add,
-            color: FlutterFlowTheme.of(context).info,
-            size: 24.0,
-          ),
-        ),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
@@ -150,90 +138,140 @@ class _GalleryWidgetState extends State<GalleryWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Stack(
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: StreamBuilder<List<DocumentRecord>>(
-                          stream: queryDocumentRecord(
-                            queryBuilder: (documentRecord) => documentRecord
-                                .where(
-                                  'familyId',
-                                  isEqualTo: FFAppState().familyId,
-                                )
-                                .orderBy('createdAt', descending: true),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 10.0,
-                                  height: 10.0,
-                                  child: SpinKitDualRing(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 65.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'u3t71gce' /* Add Document  */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Source Sans Pro',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 20.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('AddDocument');
+                                  },
+                                  child: Icon(
+                                    Icons.add,
                                     color: FlutterFlowTheme.of(context).primary,
-                                    size: 10.0,
+                                    size: 30.0,
                                   ),
                                 ),
-                              );
-                            }
-                            List<DocumentRecord> listViewDocumentRecordList =
-                                snapshot.data!;
-                            return ListView.separated(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: listViewDocumentRecordList.length,
-                              separatorBuilder: (_, __) =>
-                                  SizedBox(height: 20.0),
-                              itemBuilder: (context, listViewIndex) {
-                                final listViewDocumentRecord =
-                                    listViewDocumentRecordList[listViewIndex];
-                                return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 8.0, 4.0, 8.0),
-                                  child: wrapWithModel(
-                                    model:
-                                        _model.listViewDocumentModels.getModel(
-                                      listViewIndex.toString(),
-                                      listViewIndex,
-                                    ),
-                                    updateCallback: () => setState(() {}),
-                                    child: ListViewDocumentWidget(
-                                      key: Key(
-                                        'Key2r5_${listViewIndex.toString()}',
-                                      ),
-                                      galleryDocument: listViewDocumentRecord,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.00, 0.00),
+                          child: StreamBuilder<List<DocumentRecord>>(
+                            stream: queryDocumentRecord(
+                              queryBuilder: (documentRecord) => documentRecord
+                                  .where(
+                                    'familyId',
+                                    isEqualTo: FFAppState().familyId,
+                                  )
+                                  .orderBy('createdAt', descending: true),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 10.0,
+                                    height: 10.0,
+                                    child: SpinKitDualRing(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 10.0,
                                     ),
                                   ),
                                 );
-                              },
-                            );
-                          },
+                              }
+                              List<DocumentRecord> listViewDocumentRecordList =
+                                  snapshot.data!;
+                              return ListView.separated(
+                                padding: EdgeInsets.zero,
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: listViewDocumentRecordList.length,
+                                separatorBuilder: (_, __) =>
+                                    SizedBox(height: 20.0),
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewDocumentRecord =
+                                      listViewDocumentRecordList[listViewIndex];
+                                  return Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 8.0, 10.0, 8.0),
+                                    child: wrapWithModel(
+                                      model: _model.listViewDocumentModels
+                                          .getModel(
+                                        listViewIndex.toString(),
+                                        listViewIndex,
+                                      ),
+                                      updateCallback: () => setState(() {}),
+                                      child: ListViewDocumentWidget(
+                                        key: Key(
+                                          'Key2r5_${listViewIndex.toString()}',
+                                        ),
+                                        galleryDocument: listViewDocumentRecord,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
-                child: wrapWithModel(
-                  model: _model.bottomNavBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: BottomNavBarWidget(
-                    currentPage: 0,
+                Align(
+                  alignment: AlignmentDirectional(0.00, 1.00),
+                  child: wrapWithModel(
+                    model: _model.bottomNavBarModel,
+                    updateCallback: () => setState(() {}),
+                    child: BottomNavBarWidget(
+                      currentPage: 0,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -152,7 +152,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                             FlutterFlowTheme.of(context).displaySmall.override(
                                   fontFamily: 'Open Sans',
                                   fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w600,
                                 ),
                       ),
                     ),
@@ -333,22 +333,22 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                       children: [
                         Text(
                           FFLocalizations.of(context).getText(
-                            'ckauo0qx' /* Attachement */,
+                            'ckauo0qx' /* Attachements */,
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Source Sans Pro',
-                                    fontSize: 24.0,
+                                    fontSize: 20.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              7.0, 0.0, 0.0, 0.0),
+                              5.0, 0.0, 0.0, 0.0),
                           child: Icon(
                             Icons.attach_file,
                             color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24.0,
+                            size: 22.0,
                           ),
                         ),
                       ],

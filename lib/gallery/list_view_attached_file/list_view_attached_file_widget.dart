@@ -85,7 +85,7 @@ class _ListViewAttachedFileWidgetState
               child: Icon(
                 Icons.download_sharp,
                 color: FlutterFlowTheme.of(context).primary,
-                size: 24.0,
+                size: 22.0,
               ),
             ),
           ),

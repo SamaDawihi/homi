@@ -207,6 +207,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                                 .override(
                                   fontFamily: 'Source Sans Pro',
                                   fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
                                 ),
                           ),
                         ),
@@ -259,6 +260,8 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
+                          maxLength: 20,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
                           validator: _model.textController1Validator
                               .asValidator(context),
                         ),
@@ -267,7 +270,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                         alignment: AlignmentDirectional(-1.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 0.0, 0.0, 30.0),
+                              20.0, 0.0, 0.0, 30.0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'mk2rf5r6' /* Document Image */,
@@ -277,6 +280,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                                 .override(
                                   fontFamily: 'Source Sans Pro',
                                   fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
                                 ),
                           ),
                         ),
@@ -427,25 +431,34 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                             ],
                           ),
                         ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 16.0, 16.0, 16.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
                                   'jv5tqt0c' /* Attached Files */,
                                 ),
-                                style:
-                                    FlutterFlowTheme.of(context).displaySmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .displaySmall
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 20.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -531,8 +544,8 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                                 ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       if (_model.showEdit)
                         Padding(
