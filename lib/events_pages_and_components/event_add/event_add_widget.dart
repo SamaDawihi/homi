@@ -1005,6 +1005,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
+                                            var _shouldSetState = false;
                                             if (functions.trimAndCollapseSpaces(
                                                         _model.titleController
                                                             .text) !=
@@ -1023,56 +1024,130 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       ? (_model.datePicked3 !=
                                                           null)
                                                       : true) {
-                                                    await EventRecord.collection
-                                                        .doc()
+                                                    var eventRecordReference =
+                                                        EventRecord.collection
+                                                            .doc();
+                                                    await eventRecordReference
                                                         .set(
                                                             createEventRecordData(
-                                                          title: functions
-                                                              .trimAndCollapseSpaces(
-                                                                  _model
-                                                                      .titleController
-                                                                      .text),
-                                                          description: functions
-                                                              .trimAndCollapseSpaces(
-                                                                  _model
-                                                                      .descriptionController
-                                                                      .text),
-                                                          createdBy:
-                                                              currentUserReference,
-                                                          location: functions
-                                                              .trimAndCollapseSpaces(
-                                                                  _model
-                                                                      .locationController
-                                                                      .text),
-                                                          startTime: _model
-                                                              .datePicked1,
-                                                          isAllDay: _model
-                                                              .allDaySwitchValue,
-                                                          familyId: FFAppState()
-                                                              .familyId,
-                                                          notifyBefore: functions
-                                                              .calculateNotificationTime(
-                                                                  _model
-                                                                      .allDaySwitchValue!,
-                                                                  _model
-                                                                      .notificationSwitchValue!,
-                                                                  _model
+                                                      title: functions
+                                                          .trimAndCollapseSpaces(
+                                                              _model
+                                                                  .titleController
+                                                                  .text),
+                                                      description: functions
+                                                          .trimAndCollapseSpaces(
+                                                              _model
+                                                                  .descriptionController
+                                                                  .text),
+                                                      createdBy:
+                                                          currentUserReference,
+                                                      location: functions
+                                                          .trimAndCollapseSpaces(
+                                                              _model
+                                                                  .locationController
+                                                                  .text),
+                                                      startTime:
+                                                          _model.datePicked1,
+                                                      isAllDay: _model
+                                                          .allDaySwitchValue,
+                                                      familyId:
+                                                          FFAppState().familyId,
+                                                      notifyBefore: functions
+                                                          .calculateNotificationTime(
+                                                              _model
+                                                                  .allDaySwitchValue!,
+                                                              _model
+                                                                  .notificationSwitchValue!,
+                                                              _model
+                                                                  .datePicked1!,
+                                                              _model.datePicked3 !=
+                                                                      null
+                                                                  ? _model
+                                                                      .datePicked3!
+                                                                  : _model
                                                                       .datePicked1!,
-                                                                  _model.datePicked3 !=
-                                                                          null
-                                                                      ? _model
-                                                                          .datePicked3!
-                                                                      : _model
+                                                              _model.notificationSwitchValue!
+                                                                  ? int.parse(_model
+                                                                      .textController4
+                                                                      .text)
+                                                                  : 0,
+                                                              _model
+                                                                  .dropDownValue!)
+                                                          .secondsSinceEpoch,
+                                                    ));
+                                                    _model.addedevent = EventRecord
+                                                        .getDocumentFromData(
+                                                            createEventRecordData(
+                                                              title: functions
+                                                                  .trimAndCollapseSpaces(
+                                                                      _model
+                                                                          .titleController
+                                                                          .text),
+                                                              description: functions
+                                                                  .trimAndCollapseSpaces(
+                                                                      _model
+                                                                          .descriptionController
+                                                                          .text),
+                                                              createdBy:
+                                                                  currentUserReference,
+                                                              location: functions
+                                                                  .trimAndCollapseSpaces(
+                                                                      _model
+                                                                          .locationController
+                                                                          .text),
+                                                              startTime: _model
+                                                                  .datePicked1,
+                                                              isAllDay: _model
+                                                                  .allDaySwitchValue,
+                                                              familyId:
+                                                                  FFAppState()
+                                                                      .familyId,
+                                                              notifyBefore: functions
+                                                                  .calculateNotificationTime(
+                                                                      _model
+                                                                          .allDaySwitchValue!,
+                                                                      _model
+                                                                          .notificationSwitchValue!,
+                                                                      _model
                                                                           .datePicked1!,
-                                                                  _model.notificationSwitchValue!
-                                                                      ? int.parse(_model
-                                                                          .textController4
-                                                                          .text)
-                                                                      : 0,
-                                                                  _model
-                                                                      .dropDownValue!)
-                                                              .secondsSinceEpoch,
-                                                        ));
+                                                                      _model.datePicked3 !=
+                                                                              null
+                                                                          ? _model
+                                                                              .datePicked3!
+                                                                          : _model
+                                                                              .datePicked1!,
+                                                                      _model.notificationSwitchValue!
+                                                                          ? int.parse(_model
+                                                                              .textController4
+                                                                              .text)
+                                                                          : 0,
+                                                                      _model
+                                                                          .dropDownValue!)
+                                                                  .secondsSinceEpoch,
+                                                            ),
+                                                            eventRecordReference);
+                                                    _shouldSetState = true;
+
+                                                    context.goNamed(
+                                                      'EventDetails',
+                                                      queryParameters: {
+                                                        'eventRef':
+                                                            serializeParam(
+                                                          _model.addedevent
+                                                              ?.reference,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                        'familyRef':
+                                                            serializeParam(
+                                                          _model.addedevent
+                                                              ?.familyId,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
                                                   } else {
                                                     ScaffoldMessenger.of(
                                                             context)
@@ -1094,6 +1169,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                                 .error,
                                                       ),
                                                     );
+                                                    if (_shouldSetState)
+                                                      setState(() {});
                                                     return;
                                                   }
                                                 } else {
@@ -1116,6 +1193,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                               .error,
                                                     ),
                                                   );
+                                                  if (_shouldSetState)
+                                                    setState(() {});
                                                   return;
                                                 }
                                               } else {
@@ -1139,6 +1218,8 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                             .error,
                                                   ),
                                                 );
+                                                if (_shouldSetState)
+                                                  setState(() {});
                                                 return;
                                               }
                                             } else {
@@ -1162,8 +1243,13 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                           .error,
                                                 ),
                                               );
+                                              if (_shouldSetState)
+                                                setState(() {});
                                               return;
                                             }
+
+                                            if (_shouldSetState)
+                                              setState(() {});
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(

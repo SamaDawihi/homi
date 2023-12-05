@@ -56,6 +56,8 @@ class EventAddModel extends FlutterFlowModel<EventAddWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  EventRecord? addedevent;
   // Model for BottomNavBar component.
   late BottomNavBarModel bottomNavBarModel;
 
