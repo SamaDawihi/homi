@@ -1543,7 +1543,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // emptyAnnouncement
   {
     'f47idcbr': {
-      'en': 'Seems that you haven\'t sent any invitation',
+      'en': 'Seems that you haven\'t sent any announcements',
       'ar': 'يبدو أنك لم ترسل أي دعوة',
     },
     'rbmgcwd4': {
@@ -1556,7 +1556,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // emptyDocument
   {
     'zj33bsrp': {
-      'en': 'Seems that you haven\'t sent any documents',
+      'en': 'Seems that you haven\'t sent any documents.',
       'ar': 'يبدو أنك لم ترسل أي دعوة',
     },
     'o9g7o1tt': {

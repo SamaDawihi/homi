@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/extra/bottom_nav_bar/bottom_nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -6,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -1016,11 +1019,61 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                                       null)) {
                                                 if (_model.datePicked1! <=
                                                     _model.datePicked2!) {
-                                                  if (!(!_model
-                                                          .allDaySwitchValue!
+                                                  if (!_model.allDaySwitchValue!
                                                       ? (_model.datePicked3 !=
                                                           null)
-                                                      : true)) {
+                                                      : true) {
+                                                    await EventRecord.collection
+                                                        .doc()
+                                                        .set(
+                                                            createEventRecordData(
+                                                          title: functions
+                                                              .trimAndCollapseSpaces(
+                                                                  _model
+                                                                      .titleController
+                                                                      .text),
+                                                          description: functions
+                                                              .trimAndCollapseSpaces(
+                                                                  _model
+                                                                      .descriptionController
+                                                                      .text),
+                                                          createdBy:
+                                                              currentUserReference,
+                                                          location: functions
+                                                              .trimAndCollapseSpaces(
+                                                                  _model
+                                                                      .locationController
+                                                                      .text),
+                                                          startTime: _model
+                                                              .datePicked1,
+                                                          isAllDay: _model
+                                                              .allDaySwitchValue,
+                                                          familyId: FFAppState()
+                                                              .familyId,
+                                                          notifyBefore: functions
+                                                              .calculateNotificationTime(
+                                                                  _model
+                                                                      .allDaySwitchValue!,
+                                                                  _model
+                                                                      .notificationSwitchValue!,
+                                                                  _model
+                                                                      .datePicked1!,
+                                                                  _model.datePicked3 !=
+                                                                          null
+                                                                      ? _model
+                                                                          .datePicked3!
+                                                                      : _model
+                                                                          .datePicked1!,
+                                                                  _model.notificationSwitchValue!
+                                                                      ? int.parse(_model
+                                                                          .textController4
+                                                                          .text)
+                                                                      : 0,
+                                                                  _model
+                                                                      .dropDownValue!)
+                                                              .secondsSinceEpoch,
+                                                        ));
+                                                  } else {
                                                     ScaffoldMessenger.of(
                                                             context)
                                                         .showSnackBar(
