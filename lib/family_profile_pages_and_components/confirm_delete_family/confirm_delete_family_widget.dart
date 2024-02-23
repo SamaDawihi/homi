@@ -161,15 +161,18 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                             isEqualTo: widget.familyID,
                           ),
                         );
-                        while (_model.loopIteration < _model.members!.length) {
-                          await _model.members![_model.loopIteration].reference
+                        while (_model.deleteMemberIterations <
+                            _model.members!.length) {
+                          await _model
+                              .members![_model.deleteMemberIterations].reference
                               .delete();
                           setState(() {
-                            _model.loopIteration = _model.loopIteration + 1;
+                            _model.deleteMemberIterations =
+                                _model.deleteMemberIterations + 1;
                           });
                         }
                         setState(() {
-                          _model.loopIteration = 0;
+                          _model.deleteMemberIterations = 0;
                         });
                         _model.invites = await queryInvitationRecordOnce(
                           queryBuilder: (invitationRecord) =>
@@ -178,17 +181,18 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                             isEqualTo: widget.familyID,
                           ),
                         );
-                        while (
-                            _model.loopIteration2! < _model.invites!.length) {
+                        while (_model.deleteInvitesIteration <
+                            _model.invites!.length) {
                           await _model
-                              .invites![_model.loopIteration2!].reference
+                              .invites![_model.deleteInvitesIteration].reference
                               .delete();
                           setState(() {
-                            _model.loopIteration2 = _model.loopIteration2! + 1;
+                            _model.deleteInvitesIteration =
+                                _model.deleteInvitesIteration + 1;
                           });
                         }
                         setState(() {
-                          _model.loopIteration2 = 0;
+                          _model.deleteInvitesIteration = 0;
                         });
                         _model.events = await queryEventRecordOnce(
                           queryBuilder: (eventRecord) => eventRecord.where(
@@ -196,15 +200,18 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                             isEqualTo: widget.familyID,
                           ),
                         );
-                        while (_model.loopIteration3! < _model.events!.length) {
-                          await _model.events![_model.loopIteration3!].reference
+                        while (_model.deleteEventsIteraion <
+                            _model.events!.length) {
+                          await _model
+                              .events![_model.deleteEventsIteraion].reference
                               .delete();
                           setState(() {
-                            _model.loopIteration3 = _model.loopIteration3! + 1;
+                            _model.deleteEventsIteraion =
+                                _model.deleteEventsIteraion + 1;
                           });
                         }
                         setState(() {
-                          _model.loopIteration3 = 0;
+                          _model.deleteEventsIteraion = 0;
                         });
                         _model.lists = await queryListRecordOnce(
                           queryBuilder: (listRecord) => listRecord.where(
@@ -254,14 +261,16 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                             isEqualTo: widget.familyID,
                           ),
                         );
-                        while (_model.loopAnnouncement <
+                        while (_model.deleteAnnouncementIteration <
                             _model.announcements!.length) {
                           await _model
-                              .announcements![_model.loopAnnouncement].reference
+                              .announcements![
+                                  _model.deleteAnnouncementIteration]
+                              .reference
                               .delete();
                           setState(() {
-                            _model.loopAnnouncement =
-                                _model.loopAnnouncement + 1;
+                            _model.deleteAnnouncementIteration =
+                                _model.deleteAnnouncementIteration + 1;
                           });
                         }
                         _model.documents = await queryDocumentRecordOnce(
@@ -271,13 +280,15 @@ class _ConfirmDeleteFamilyWidgetState extends State<ConfirmDeleteFamilyWidget> {
                             isEqualTo: widget.familyID,
                           ),
                         );
-                        while (
-                            _model.loopDocuments < _model.documents!.length) {
+                        while (_model.deleteDocumentsIteration <
+                            _model.documents!.length) {
                           await _model
-                              .documents![_model.loopDocuments].reference
+                              .documents![_model.deleteDocumentsIteration]
+                              .reference
                               .delete();
                           setState(() {
-                            _model.loopDocuments = _model.loopDocuments + 1;
+                            _model.deleteDocumentsIteration =
+                                _model.deleteDocumentsIteration + 1;
                           });
                         }
                         await widget.familyID!.delete();

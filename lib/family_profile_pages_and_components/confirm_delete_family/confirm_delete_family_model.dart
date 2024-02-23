@@ -15,19 +15,19 @@ class ConfirmDeleteFamilyModel
     extends FlutterFlowModel<ConfirmDeleteFamilyWidget> {
   ///  Local state fields for this component.
 
-  int loopIteration = 0;
+  int deleteMemberIterations = 0;
 
-  int? loopIteration2 = 0;
+  int deleteInvitesIteration = 0;
 
-  int? loopIteration3 = 0;
+  int deleteEventsIteraion = 0;
 
   int deleteListsIteration = 0;
 
   int deleteItemsIteration = 0;
 
-  int loopAnnouncement = 0;
+  int deleteAnnouncementIteration = 0;
 
-  int loopDocuments = 0;
+  int deleteDocumentsIteration = 0;
 
   ///  State fields for stateful widgets in this component.
 
