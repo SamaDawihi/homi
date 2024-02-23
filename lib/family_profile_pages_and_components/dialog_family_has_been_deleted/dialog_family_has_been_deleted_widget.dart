@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,10 +10,10 @@ import 'dialog_family_has_been_deleted_model.dart';
 export 'dialog_family_has_been_deleted_model.dart';
 
 class DialogFamilyHasBeenDeletedWidget extends StatefulWidget {
-  const DialogFamilyHasBeenDeletedWidget({Key? key}) : super(key: key);
+  const DialogFamilyHasBeenDeletedWidget({super.key});
 
   @override
-  _DialogFamilyHasBeenDeletedWidgetState createState() =>
+  State<DialogFamilyHasBeenDeletedWidget> createState() =>
       _DialogFamilyHasBeenDeletedWidgetState();
 }
 
@@ -46,7 +45,7 @@ class _DialogFamilyHasBeenDeletedWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(

@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,19 +11,18 @@ export 'list_view_select_responsibe_member_model.dart';
 
 class ListViewSelectResponsibeMemberWidget extends StatefulWidget {
   const ListViewSelectResponsibeMemberWidget({
-    Key? key,
+    super.key,
     required this.memberId,
     required this.familyId,
     Color? color,
-  })  : this.color = color ?? const Color(0xFF555EBE),
-        super(key: key);
+  }) : this.color = color ?? const Color(0xFF555EBE);
 
   final DocumentReference? memberId;
   final DocumentReference? familyId;
   final Color color;
 
   @override
-  _ListViewSelectResponsibeMemberWidgetState createState() =>
+  State<ListViewSelectResponsibeMemberWidget> createState() =>
       _ListViewSelectResponsibeMemberWidgetState();
 }
 

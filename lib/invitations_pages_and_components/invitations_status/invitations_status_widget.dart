@@ -8,7 +8,6 @@ import '/invitations_pages_and_components/empty_status/empty_status_widget.dart'
 import '/invitations_pages_and_components/list_view_invitation_status/list_view_invitation_status_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,14 +16,14 @@ export 'invitations_status_model.dart';
 
 class InvitationsStatusWidget extends StatefulWidget {
   const InvitationsStatusWidget({
-    Key? key,
+    super.key,
     this.familyId,
-  }) : super(key: key);
+  });
 
   final DocumentReference? familyId;
 
   @override
-  _InvitationsStatusWidgetState createState() =>
+  State<InvitationsStatusWidget> createState() =>
       _InvitationsStatusWidgetState();
 }
 
@@ -48,15 +47,6 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -74,14 +64,14 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,7 +147,7 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-1.00, -1.00),
+                        alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 5.0, 0.0, 0.0),
@@ -258,7 +248,7 @@ class _InvitationsStatusWidgetState extends State<InvitationsStatusWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),

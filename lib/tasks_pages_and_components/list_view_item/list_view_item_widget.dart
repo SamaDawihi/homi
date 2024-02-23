@@ -4,10 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/tasks_pages_and_components/input_component_edit_task/input_component_edit_task_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,18 +14,18 @@ export 'list_view_item_model.dart';
 
 class ListViewItemWidget extends StatefulWidget {
   const ListViewItemWidget({
-    Key? key,
+    super.key,
     required this.itemRef,
     required this.isShooping,
     required this.done,
-  }) : super(key: key);
+  });
 
   final DocumentReference? itemRef;
   final bool? isShooping;
   final bool? done;
 
   @override
-  _ListViewItemWidgetState createState() => _ListViewItemWidgetState();
+  State<ListViewItemWidget> createState() => _ListViewItemWidgetState();
 }
 
 class _ListViewItemWidgetState extends State<ListViewItemWidget> {
@@ -103,7 +101,7 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(1.00, 0.00),
+                      alignment: AlignmentDirectional(1.0, 0.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
@@ -219,17 +217,15 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            await showAlignedDialog(
+                            await showDialog(
                               context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
                               builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
+                                return Dialog(
+                                  elevation: 0,
+                                  insetPadding: EdgeInsets.zero,
+                                  backgroundColor: Colors.transparent,
+                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
                                   child: InputComponentEditTaskWidget(
                                     item: containerItemRecord,
                                     isShooping: widget.isShooping!,

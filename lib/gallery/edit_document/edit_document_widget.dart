@@ -22,18 +22,18 @@ export 'edit_document_model.dart';
 
 class EditDocumentWidget extends StatefulWidget {
   const EditDocumentWidget({
-    Key? key,
+    super.key,
     required this.document,
     required this.files,
     required this.names,
-  }) : super(key: key);
+  });
 
   final DocumentRecord? document;
   final List<String>? files;
   final List<String>? names;
 
   @override
-  _EditDocumentWidgetState createState() => _EditDocumentWidgetState();
+  State<EditDocumentWidget> createState() => _EditDocumentWidgetState();
 }
 
 class _EditDocumentWidgetState extends State<EditDocumentWidget> {
@@ -77,15 +77,6 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -103,14 +94,14 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -178,7 +169,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),
@@ -194,7 +185,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
@@ -213,8 +204,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 10.0, 10.0, 10.0),
+                        padding: EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.textController1,
                           focusNode: _model.textFieldFocusNode1,
@@ -267,7 +257,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 30.0),
@@ -436,7 +426,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
@@ -455,7 +445,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 20.0, 0.0),

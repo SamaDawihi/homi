@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'dialog_no_google_events_found_model.dart';
 export 'dialog_no_google_events_found_model.dart';
 
 class DialogNoGoogleEventsFoundWidget extends StatefulWidget {
-  const DialogNoGoogleEventsFoundWidget({Key? key}) : super(key: key);
+  const DialogNoGoogleEventsFoundWidget({super.key});
 
   @override
-  _DialogNoGoogleEventsFoundWidgetState createState() =>
+  State<DialogNoGoogleEventsFoundWidget> createState() =>
       _DialogNoGoogleEventsFoundWidgetState();
 }
 
@@ -45,7 +44,7 @@ class _DialogNoGoogleEventsFoundWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(
@@ -70,7 +69,7 @@ class _DialogNoGoogleEventsFoundWidgetState
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+            padding: EdgeInsets.all(10.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -114,7 +113,7 @@ class _DialogNoGoogleEventsFoundWidgetState
                 ),
                 Expanded(
                   child: Align(
-                    alignment: AlignmentDirectional(1.00, 1.00),
+                    alignment: AlignmentDirectional(1.0, 1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),

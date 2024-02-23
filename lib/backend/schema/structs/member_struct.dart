@@ -53,7 +53,7 @@ class MemberStruct extends FFFirebaseStruct {
       );
 
   static MemberStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? MemberStruct.fromMap(data) : null;
+      data is Map ? MemberStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'memberId': _memberId,

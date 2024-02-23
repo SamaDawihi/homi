@@ -6,10 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/invitations_pages_and_components/dialog_email_not_supported/dialog_email_not_supported_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,10 +16,10 @@ import 'reset_password_model.dart';
 export 'reset_password_model.dart';
 
 class ResetPasswordWidget extends StatefulWidget {
-  const ResetPasswordWidget({Key? key}) : super(key: key);
+  const ResetPasswordWidget({super.key});
 
   @override
-  _ResetPasswordWidgetState createState() => _ResetPasswordWidgetState();
+  State<ResetPasswordWidget> createState() => _ResetPasswordWidgetState();
 }
 
 class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
@@ -94,7 +92,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(1.00, -1.00),
+      alignment: AlignmentDirectional(1.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -317,17 +315,15 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               email: _model.emailAddressController2.text,
                               context: context,
                             );
-                            await showAlignedDialog(
+                            await showDialog(
                               context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
                               builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
+                                return Dialog(
+                                  elevation: 0,
+                                  insetPadding: EdgeInsets.zero,
+                                  backgroundColor: Colors.transparent,
+                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
                                   child: DialogForgetPasswordEmailSentWidget(),
                                 );
                               },
@@ -335,17 +331,15 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
 
                             return;
                           } else {
-                            await showAlignedDialog(
+                            await showDialog(
                               context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
                               builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
+                                return Dialog(
+                                  elevation: 0,
+                                  insetPadding: EdgeInsets.zero,
+                                  backgroundColor: Colors.transparent,
+                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
                                   child: DialogEmailNotSupportedWidget(),
                                 );
                               },

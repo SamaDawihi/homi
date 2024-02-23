@@ -10,7 +10,6 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,10 +18,10 @@ import 'profile_model.dart';
 export 'profile_model.dart';
 
 class ProfileWidget extends StatefulWidget {
-  const ProfileWidget({Key? key}) : super(key: key);
+  const ProfileWidget({super.key});
 
   @override
-  _ProfileWidgetState createState() => _ProfileWidgetState();
+  State<ProfileWidget> createState() => _ProfileWidgetState();
 }
 
 class _ProfileWidgetState extends State<ProfileWidget>
@@ -149,15 +148,6 @@ class _ProfileWidgetState extends State<ProfileWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -175,14 +165,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -289,8 +279,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              2.0, 2.0, 2.0, 2.0),
+                          padding: EdgeInsets.all(2.0),
                           child: AuthUserStreamWidget(
                             builder: (context) => ClipRRect(
                               borderRadius: BorderRadius.circular(60.0),

@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/gallery/empty_document/empty_document_widget.dart';
 import '/gallery/list_view_document/list_view_document_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,10 +14,10 @@ import 'gallery_model.dart';
 export 'gallery_model.dart';
 
 class GalleryWidget extends StatefulWidget {
-  const GalleryWidget({Key? key}) : super(key: key);
+  const GalleryWidget({super.key});
 
   @override
-  _GalleryWidgetState createState() => _GalleryWidgetState();
+  State<GalleryWidget> createState() => _GalleryWidgetState();
 }
 
 class _GalleryWidgetState extends State<GalleryWidget> {
@@ -41,15 +40,6 @@ class _GalleryWidgetState extends State<GalleryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -67,14 +57,14 @@ class _GalleryWidgetState extends State<GalleryWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -196,7 +186,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: StreamBuilder<List<DocumentRecord>>(
                             stream: queryDocumentRecord(
                               queryBuilder: (documentRecord) => documentRecord
@@ -265,7 +255,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: wrapWithModel(
                     model: _model.bottomNavBarModel,
                     updateCallback: () => setState(() {}),

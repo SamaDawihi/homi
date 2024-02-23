@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,10 +8,10 @@ import 'list_view_empty_events_model.dart';
 export 'list_view_empty_events_model.dart';
 
 class ListViewEmptyEventsWidget extends StatefulWidget {
-  const ListViewEmptyEventsWidget({Key? key}) : super(key: key);
+  const ListViewEmptyEventsWidget({super.key});
 
   @override
-  _ListViewEmptyEventsWidgetState createState() =>
+  State<ListViewEmptyEventsWidget> createState() =>
       _ListViewEmptyEventsWidgetState();
 }
 
@@ -52,7 +51,7 @@ class _ListViewEmptyEventsWidgetState extends State<ListViewEmptyEventsWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+          padding: EdgeInsets.all(12.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

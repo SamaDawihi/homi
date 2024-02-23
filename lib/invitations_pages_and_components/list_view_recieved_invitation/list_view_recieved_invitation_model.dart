@@ -8,7 +8,6 @@ import 'list_view_recieved_invitation_widget.dart'
     show ListViewRecievedInvitationWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +16,10 @@ class ListViewRecievedInvitationModel
     extends FlutterFlowModel<ListViewRecievedInvitationWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

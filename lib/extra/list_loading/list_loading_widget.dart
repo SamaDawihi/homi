@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,10 +12,10 @@ import 'list_loading_model.dart';
 export 'list_loading_model.dart';
 
 class ListLoadingWidget extends StatefulWidget {
-  const ListLoadingWidget({Key? key}) : super(key: key);
+  const ListLoadingWidget({super.key});
 
   @override
-  _ListLoadingWidgetState createState() => _ListLoadingWidgetState();
+  State<ListLoadingWidget> createState() => _ListLoadingWidgetState();
 }
 
 class _ListLoadingWidgetState extends State<ListLoadingWidget>
@@ -88,9 +87,9 @@ class _ListLoadingWidgetState extends State<ListLoadingWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                  padding: EdgeInsets.all(6.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'm3mq0zb1' /* List Is Loading... */,

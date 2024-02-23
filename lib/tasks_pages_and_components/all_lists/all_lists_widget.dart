@@ -9,7 +9,6 @@ import '/tasks_pages_and_components/list_component_view_list/list_component_view
 import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +16,10 @@ import 'all_lists_model.dart';
 export 'all_lists_model.dart';
 
 class AllListsWidget extends StatefulWidget {
-  const AllListsWidget({Key? key}) : super(key: key);
+  const AllListsWidget({super.key});
 
   @override
-  _AllListsWidgetState createState() => _AllListsWidgetState();
+  State<AllListsWidget> createState() => _AllListsWidgetState();
 }
 
 class _AllListsWidgetState extends State<AllListsWidget>
@@ -55,15 +54,6 @@ class _AllListsWidgetState extends State<AllListsWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -81,14 +71,14 @@ class _AllListsWidgetState extends State<AllListsWidget>
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -187,8 +177,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                         labelStyle: FlutterFlowTheme.of(context).titleMedium,
                         unselectedLabelStyle: TextStyle(),
                         indicatorColor: FlutterFlowTheme.of(context).primary,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
+                        padding: EdgeInsets.all(4.0),
                         tabs: [
                           Tab(
                             text: FFLocalizations.of(context).getText(
@@ -202,6 +191,9 @@ class _AllListsWidgetState extends State<AllListsWidget>
                           ),
                         ],
                         controller: _model.tabBarController,
+                        onTap: (i) async {
+                          [() async {}, () async {}][i]();
+                        },
                       ),
                     ),
                     Expanded(
@@ -209,7 +201,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                         controller: _model.tabBarController,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, -1.00),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -223,8 +215,8 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
-                                          alignment: AlignmentDirectional(
-                                              -1.00, -1.00),
+                                          alignment:
+                                              AlignmentDirectional(-1.0, -1.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -257,9 +249,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                                 MainAxisAlignment.end,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        2.0, 2.0, 2.0, 2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: InkWell(
                                                   splashColor:
                                                       Colors.transparent,
@@ -297,8 +287,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 20.0),
+                                    padding: EdgeInsets.all(20.0),
                                     child: StreamBuilder<List<ListRecord>>(
                                       stream: queryListRecord(
                                         queryBuilder: (listRecord) => listRecord
@@ -378,7 +367,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.00, -1.00),
+                            alignment: AlignmentDirectional(0.0, -1.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -392,8 +381,8 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Align(
-                                          alignment: AlignmentDirectional(
-                                              -1.00, -1.00),
+                                          alignment:
+                                              AlignmentDirectional(-1.0, -1.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -426,9 +415,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                                 MainAxisAlignment.end,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        2.0, 2.0, 2.0, 2.0),
+                                                padding: EdgeInsets.all(2.0),
                                                 child: InkWell(
                                                   splashColor:
                                                       Colors.transparent,
@@ -466,8 +453,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 20.0),
+                                    padding: EdgeInsets.all(20.0),
                                     child: StreamBuilder<List<ListRecord>>(
                                       stream: queryListRecord(
                                         queryBuilder: (listRecord) => listRecord

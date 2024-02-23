@@ -65,10 +65,12 @@ class EditListModel extends FlutterFlowModel<EditListWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     bottomNavBarModel = createModel(context, () => BottomNavBarModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     titleFocusNode?.dispose();

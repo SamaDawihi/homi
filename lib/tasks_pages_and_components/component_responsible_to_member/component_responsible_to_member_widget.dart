@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +11,14 @@ export 'component_responsible_to_member_model.dart';
 
 class ComponentResponsibleToMemberWidget extends StatefulWidget {
   const ComponentResponsibleToMemberWidget({
-    Key? key,
+    super.key,
     required this.memberRef,
-  }) : super(key: key);
+  });
 
   final DocumentReference? memberRef;
 
   @override
-  _ComponentResponsibleToMemberWidgetState createState() =>
+  State<ComponentResponsibleToMemberWidget> createState() =>
       _ComponentResponsibleToMemberWidgetState();
 }
 

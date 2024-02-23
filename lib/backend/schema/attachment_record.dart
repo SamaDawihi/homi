@@ -38,8 +38,8 @@ class AttachmentRecord extends FirestoreRecord {
           ? parent.collection('Attachment')
           : FirebaseFirestore.instance.collectionGroup('Attachment');
 
-  static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('Attachment').doc();
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('Attachment').doc(id);
 
   static Stream<AttachmentRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => AttachmentRecord.fromSnapshot(s));

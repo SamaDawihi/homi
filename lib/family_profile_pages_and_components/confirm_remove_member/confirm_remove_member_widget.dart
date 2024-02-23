@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,14 +14,14 @@ export 'confirm_remove_member_model.dart';
 
 class ConfirmRemoveMemberWidget extends StatefulWidget {
   const ConfirmRemoveMemberWidget({
-    Key? key,
+    super.key,
     this.memberRef,
-  }) : super(key: key);
+  });
 
   final DocumentReference? memberRef;
 
   @override
-  _ConfirmRemoveMemberWidgetState createState() =>
+  State<ConfirmRemoveMemberWidget> createState() =>
       _ConfirmRemoveMemberWidgetState();
 }
 
@@ -53,7 +52,7 @@ class _ConfirmRemoveMemberWidgetState extends State<ConfirmRemoveMemberWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(

@@ -12,7 +12,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,10 +20,10 @@ import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
 class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({Key? key}) : super(key: key);
+  const EditProfileWidget({super.key});
 
   @override
-  _EditProfileWidgetState createState() => _EditProfileWidgetState();
+  State<EditProfileWidget> createState() => _EditProfileWidgetState();
 }
 
 class _EditProfileWidgetState extends State<EditProfileWidget>
@@ -98,7 +97,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 1.00),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -226,7 +225,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                   if (_model.editName &&
                       (_model.nameErr != null && _model.nameErr != ''))
                     Align(
-                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 5.0),
@@ -242,8 +241,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                       ),
                     ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         if (_model.editName) {
@@ -396,7 +394,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                   if (_model.editEmail &&
                       (_model.emailErr != null && _model.emailErr != ''))
                     Align(
-                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 0.0, 5.0),
@@ -412,8 +410,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                       ),
                     ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         if (_model.editEmail) {
@@ -554,8 +551,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         final selectedMedia =

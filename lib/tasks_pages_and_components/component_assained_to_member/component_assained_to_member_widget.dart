@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,17 +11,16 @@ export 'component_assained_to_member_model.dart';
 
 class ComponentAssainedToMemberWidget extends StatefulWidget {
   const ComponentAssainedToMemberWidget({
-    Key? key,
+    super.key,
     required this.memberRef,
     bool? right,
-  })  : this.right = right ?? true,
-        super(key: key);
+  }) : this.right = right ?? true;
 
   final DocumentReference? memberRef;
   final bool right;
 
   @override
-  _ComponentAssainedToMemberWidgetState createState() =>
+  State<ComponentAssainedToMemberWidget> createState() =>
       _ComponentAssainedToMemberWidgetState();
 }
 
@@ -54,7 +52,7 @@ class _ComponentAssainedToMemberWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(1.00, 0.00),
+      alignment: AlignmentDirectional(1.0, 0.0),
       child: StreamBuilder<MemberRecord>(
         stream: MemberRecord.getDocument(widget.memberRef!),
         builder: (context, snapshot) {

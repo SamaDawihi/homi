@@ -10,7 +10,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
@@ -21,18 +20,17 @@ export 'edit_family_model.dart';
 
 class EditFamilyWidget extends StatefulWidget {
   const EditFamilyWidget({
-    Key? key,
+    super.key,
     Color? initialColor,
     String? initialName,
   })  : this.initialColor = initialColor ?? const Color(0xD19B97E6),
-        this.initialName = initialName ?? 'name',
-        super(key: key);
+        this.initialName = initialName ?? 'name';
 
   final Color initialColor;
   final String initialName;
 
   @override
-  _EditFamilyWidgetState createState() => _EditFamilyWidgetState();
+  State<EditFamilyWidget> createState() => _EditFamilyWidgetState();
 }
 
 class _EditFamilyWidgetState extends State<EditFamilyWidget>
@@ -102,7 +100,7 @@ class _EditFamilyWidgetState extends State<EditFamilyWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(1.00, -1.00),
+      alignment: AlignmentDirectional(1.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -226,8 +224,7 @@ class _EditFamilyWidgetState extends State<EditFamilyWidget>
                       ),
                     ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         if (_model.editName) {
@@ -307,8 +304,7 @@ class _EditFamilyWidgetState extends State<EditFamilyWidget>
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         final _colorPickedColor = await showFFColorPicker(
@@ -380,8 +376,7 @@ class _EditFamilyWidgetState extends State<EditFamilyWidget>
                     ),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         final selectedMedia =

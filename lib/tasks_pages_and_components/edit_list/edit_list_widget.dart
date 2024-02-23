@@ -19,16 +19,16 @@ export 'edit_list_model.dart';
 
 class EditListWidget extends StatefulWidget {
   const EditListWidget({
-    Key? key,
+    super.key,
     required this.isShopping,
     required this.listDoc,
-  }) : super(key: key);
+  });
 
   final bool? isShopping;
   final ListRecord? listDoc;
 
   @override
-  _EditListWidgetState createState() => _EditListWidgetState();
+  State<EditListWidget> createState() => _EditListWidgetState();
 }
 
 class _EditListWidgetState extends State<EditListWidget> {
@@ -76,15 +76,6 @@ class _EditListWidgetState extends State<EditListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -107,7 +98,7 @@ class _EditListWidgetState extends State<EditListWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,8 +177,7 @@ class _EditListWidgetState extends State<EditListWidget> {
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                14.0, 14.0, 14.0, 14.0),
+                            padding: EdgeInsets.all(14.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -830,7 +820,7 @@ class _EditListWidgetState extends State<EditListWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),

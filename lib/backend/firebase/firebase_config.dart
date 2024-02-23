@@ -10,7 +10,8 @@ Future initFirebase() async {
             projectId: "homi-pro",
             storageBucket: "homi-pro.appspot.com",
             messagingSenderId: "584197013310",
-            appId: "1:584197013310:web:78e178ba9f21663d05b66f"));
+            appId: "1:584197013310:web:78e178ba9f21663d05b66f",
+            measurementId: "G-2XWH3RL4LM"));
   } else {
     await Firebase.initializeApp();
   }

@@ -7,7 +7,6 @@ import 'confirm_accept_invitation_widget.dart'
     show ConfirmAcceptInvitationWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,8 +20,10 @@ class ConfirmAcceptInvitationModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

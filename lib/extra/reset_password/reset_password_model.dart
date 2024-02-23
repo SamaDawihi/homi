@@ -7,10 +7,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/invitations_pages_and_components/dialog_email_not_supported/dialog_email_not_supported_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'reset_password_widget.dart' show ResetPasswordWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,8 +28,10 @@ class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     emailAddressFocusNode1?.dispose();
     emailAddressController1?.dispose();

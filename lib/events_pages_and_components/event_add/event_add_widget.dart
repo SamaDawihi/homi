@@ -20,14 +20,14 @@ export 'event_add_model.dart';
 
 class EventAddWidget extends StatefulWidget {
   const EventAddWidget({
-    Key? key,
+    super.key,
     required this.selectedDate,
-  }) : super(key: key);
+  });
 
   final DateTime? selectedDate;
 
   @override
-  _EventAddWidgetState createState() => _EventAddWidgetState();
+  State<EventAddWidget> createState() => _EventAddWidgetState();
 }
 
 class _EventAddWidgetState extends State<EventAddWidget> {
@@ -62,15 +62,6 @@ class _EventAddWidgetState extends State<EventAddWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -93,7 +84,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -171,8 +162,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                14.0, 14.0, 14.0, 14.0),
+                            padding: EdgeInsets.all(14.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -244,7 +234,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                       .asValidator(context),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     _model.titleErr,
                                     style: FlutterFlowTheme.of(context)
@@ -648,7 +638,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                   ],
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
@@ -749,7 +739,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.00, 0.00),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             'c6dotpix' /* Notification Time* */,
@@ -981,7 +971,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                                     ],
                                   ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Text(
                                     _model.notifErr,
                                     style: FlutterFlowTheme.of(context)
@@ -1295,7 +1285,7 @@ class _EventAddWidgetState extends State<EventAddWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),

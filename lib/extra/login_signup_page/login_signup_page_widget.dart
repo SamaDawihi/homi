@@ -19,10 +19,10 @@ import 'login_signup_page_model.dart';
 export 'login_signup_page_model.dart';
 
 class LoginSignupPageWidget extends StatefulWidget {
-  const LoginSignupPageWidget({Key? key}) : super(key: key);
+  const LoginSignupPageWidget({super.key});
 
   @override
-  _LoginSignupPageWidgetState createState() => _LoginSignupPageWidgetState();
+  State<LoginSignupPageWidget> createState() => _LoginSignupPageWidgetState();
 }
 
 class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
@@ -139,15 +139,6 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -162,7 +153,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, -0.91),
+                alignment: AlignmentDirectional(0.0, -0.91),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(32.0, 0.0, 32.0, 0.0),
                   child: Container(
@@ -172,7 +163,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                       color: FlutterFlowTheme.of(context).primaryBackground,
                       borderRadius: BorderRadius.circular(16.0),
                     ),
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -206,7 +197,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 120.0, 0.0, 0.0),
                   child: SingleChildScrollView(
@@ -215,8 +206,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 12.0, 12.0, 12.0),
+                          padding: EdgeInsets.all(12.0),
                           child: Container(
                             width: double.infinity,
                             height: MediaQuery.sizeOf(context).width >= 768.0
@@ -280,6 +270,9 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                         ),
                                       ],
                                       controller: _model.tabBarController,
+                                      onTap: (i) async {
+                                        [() async {}, () async {}][i]();
+                                      },
                                     ),
                                   ),
                                   Expanded(
@@ -290,7 +283,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                           children: [
                                             Align(
                                               alignment: AlignmentDirectional(
-                                                  0.00, -1.46),
+                                                  0.0, -1.46),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -481,12 +474,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                             contentPadding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        24.0,
-                                                                        24.0,
-                                                                        24.0,
-                                                                        24.0),
+                                                                EdgeInsets.all(
+                                                                    24.0),
                                                           ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -696,11 +685,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .of(context)
                                                                   .secondaryBackground,
                                                               contentPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          24.0,
-                                                                          24.0,
-                                                                          24.0,
+                                                                  EdgeInsets
+                                                                      .all(
                                                                           24.0),
                                                             ),
                                                             style: FlutterFlowTheme
@@ -895,11 +881,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .of(context)
                                                                   .secondaryBackground,
                                                               contentPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          24.0,
-                                                                          24.0,
-                                                                          24.0,
+                                                                  EdgeInsets
+                                                                      .all(
                                                                           24.0),
                                                               suffixIcon:
                                                                   InkWell(
@@ -968,7 +951,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                -1.00, 0.00),
+                                                                -1.0, 0.0),
                                                         child: Text(
                                                           FFLocalizations.of(
                                                                   context)
@@ -994,7 +977,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                -1.00, 0.00),
+                                                                -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1179,11 +1162,8 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                                       .of(context)
                                                                   .secondaryBackground,
                                                               contentPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          24.0,
-                                                                          24.0,
-                                                                          24.0,
+                                                                  EdgeInsets
+                                                                      .all(
                                                                           24.0),
                                                               suffixIcon:
                                                                   InkWell(
@@ -1252,7 +1232,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                -0.03, 0.90),
+                                                                -0.03, 0.9),
                                                         child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1529,7 +1509,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                0.00, 0.00),
+                                                                0.0, 0.0),
                                                         child: Padding(
                                                           padding:
                                                               EdgeInsetsDirectional
@@ -1568,7 +1548,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.00, -1.00),
+                                              AlignmentDirectional(0.0, -1.0),
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -1896,7 +1876,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.00, 0.00),
+                                                          0.0, 0.0),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -1927,7 +1907,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.00, 0.00),
+                                                          0.0, 0.0),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
@@ -2159,7 +2139,7 @@ class _LoginSignupPageWidgetState extends State<LoginSignupPageWidget>
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
-                                                          0.00, 0.00),
+                                                          0.0, 0.0),
                                                   child: Padding(
                                                     padding:
                                                         EdgeInsetsDirectional

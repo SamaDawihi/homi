@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,10 +12,10 @@ import 'family_loading_model.dart';
 export 'family_loading_model.dart';
 
 class FamilyLoadingWidget extends StatefulWidget {
-  const FamilyLoadingWidget({Key? key}) : super(key: key);
+  const FamilyLoadingWidget({super.key});
 
   @override
-  _FamilyLoadingWidgetState createState() => _FamilyLoadingWidgetState();
+  State<FamilyLoadingWidget> createState() => _FamilyLoadingWidgetState();
 }
 
 class _FamilyLoadingWidgetState extends State<FamilyLoadingWidget>
@@ -88,9 +87,9 @@ class _FamilyLoadingWidgetState extends State<FamilyLoadingWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(6.0, 6.0, 6.0, 6.0),
+                  padding: EdgeInsets.all(6.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'iuoylfdk' /* Family Is Loading... */,

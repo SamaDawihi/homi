@@ -15,12 +15,10 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/invitations_pages_and_components/invite_by_email/invite_by_email_widget.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -28,10 +26,10 @@ import 'family_profile_model.dart';
 export 'family_profile_model.dart';
 
 class FamilyProfileWidget extends StatefulWidget {
-  const FamilyProfileWidget({Key? key}) : super(key: key);
+  const FamilyProfileWidget({super.key});
 
   @override
-  _FamilyProfileWidgetState createState() => _FamilyProfileWidgetState();
+  State<FamilyProfileWidget> createState() => _FamilyProfileWidgetState();
 }
 
 class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
@@ -80,15 +78,6 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -106,7 +95,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -114,7 +103,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, -1.00),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -262,8 +251,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 12.0, 12.0, 12.0),
+                                padding: EdgeInsets.all(12.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -278,8 +266,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                           width: 4.0,
                                         ),
                                       ),
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(50.0),
@@ -295,8 +282,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment:
-                                          AlignmentDirectional(0.00, 0.00),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 0.0),
@@ -360,7 +346,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -476,7 +462,7 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
@@ -548,12 +534,12 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -567,21 +553,18 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                           0.0, 0.0, 0.0, 20.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          await showAlignedDialog(
+                                          await showDialog(
                                             context: context,
-                                            isGlobal: true,
-                                            avoidOverflow: false,
-                                            targetAnchor: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            followerAnchor:
-                                                AlignmentDirectional(0.0, 0.0)
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
-                                            builder: (dialogContext) {
-                                              return Material(
-                                                color: Colors.transparent,
                                                 child: GestureDetector(
                                                   onTap: () => _model
                                                           .unfocusNode
@@ -645,21 +628,18 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          await showAlignedDialog(
+                                          await showDialog(
                                             context: context,
-                                            isGlobal: true,
-                                            avoidOverflow: false,
-                                            targetAnchor: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            followerAnchor:
-                                                AlignmentDirectional(0.0, 0.0)
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
                                                     .resolve(Directionality.of(
                                                         context)),
-                                            builder: (dialogContext) {
-                                              return Material(
-                                                color: Colors.transparent,
                                                 child: GestureDetector(
                                                   onTap: () => _model
                                                           .unfocusNode
@@ -708,27 +688,23 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                       _shouldSetState = true;
                                                       if (_model.memberCount ==
                                                           1) {
-                                                        await showAlignedDialog(
+                                                        await showDialog(
                                                           context: context,
-                                                          isGlobal: true,
-                                                          avoidOverflow: false,
-                                                          targetAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          followerAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
                                                           builder:
                                                               (dialogContext) {
-                                                            return Material(
-                                                              color: Colors
-                                                                  .transparent,
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
                                                               child:
                                                                   GestureDetector(
                                                                 onTap: () => _model
@@ -757,27 +733,23 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                           setState(() {});
                                                         return;
                                                       } else {
-                                                        await showAlignedDialog(
+                                                        await showDialog(
                                                           context: context,
-                                                          isGlobal: true,
-                                                          avoidOverflow: false,
-                                                          targetAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          followerAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
                                                           builder:
                                                               (dialogContext) {
-                                                            return Material(
-                                                              color: Colors
-                                                                  .transparent,
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
                                                               child:
                                                                   GestureDetector(
                                                                 onTap: () => _model
@@ -803,27 +775,22 @@ class _FamilyProfileWidgetState extends State<FamilyProfileWidget> {
                                                         return;
                                                       }
                                                     } else {
-                                                      await showAlignedDialog(
+                                                      await showDialog(
                                                         context: context,
-                                                        isGlobal: true,
-                                                        avoidOverflow: false,
-                                                        targetAnchor:
-                                                            AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                        followerAnchor:
-                                                            AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
                                                         builder:
                                                             (dialogContext) {
-                                                          return Material(
-                                                            color: Colors
-                                                                .transparent,
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
                                                             child:
                                                                 GestureDetector(
                                                               onTap: () => _model

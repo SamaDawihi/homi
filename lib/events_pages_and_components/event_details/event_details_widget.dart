@@ -6,11 +6,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -19,16 +17,16 @@ export 'event_details_model.dart';
 
 class EventDetailsWidget extends StatefulWidget {
   const EventDetailsWidget({
-    Key? key,
+    super.key,
     required this.eventRef,
     this.familyRef,
-  }) : super(key: key);
+  });
 
   final DocumentReference? eventRef;
   final DocumentReference? familyRef;
 
   @override
-  _EventDetailsWidgetState createState() => _EventDetailsWidgetState();
+  State<EventDetailsWidget> createState() => _EventDetailsWidgetState();
 }
 
 class _EventDetailsWidgetState extends State<EventDetailsWidget> {
@@ -63,15 +61,6 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return StreamBuilder<EventRecord>(
@@ -109,14 +98,14 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                 actions: [],
                 flexibleSpace: FlexibleSpaceBar(
                   title: Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, -1.00),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -736,25 +725,21 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                                   0.0, 0.0, 20.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
-                                              await showAlignedDialog(
+                                              await showDialog(
                                                 context: context,
-                                                isGlobal: true,
-                                                avoidOverflow: false,
-                                                targetAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
-                                                followerAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
                                                 builder: (dialogContext) {
-                                                  return Material(
-                                                    color: Colors.transparent,
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
                                                     child: GestureDetector(
                                                       onTap: () => _model
                                                               .unfocusNode
@@ -873,7 +858,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                                   eventDetailsEventRecord.createdBy) &&
                               eventDetailsEventRecord.isGoogleEvent)
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 10.0, 20.0, 0.0),
@@ -919,7 +904,7 @@ class _EventDetailsWidgetState extends State<EventDetailsWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: wrapWithModel(
                       model: _model.bottomNavBarModel,
                       updateCallback: () => setState(() {}),

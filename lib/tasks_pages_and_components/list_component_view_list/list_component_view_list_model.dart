@@ -8,7 +8,6 @@ import 'list_component_view_list_widget.dart' show ListComponentViewListWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +16,7 @@ class ListComponentViewListModel
     extends FlutterFlowModel<ListComponentViewListWidget> {
   ///  Local state fields for this component.
 
-  Color color = const Color(0xFF787878);
+  Color color = Color(0xFF787878);
 
   ///  State fields for stateful widgets in this component.
 
@@ -31,11 +30,13 @@ class ListComponentViewListModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     componentAssainedToMemberModels =
         FlutterFlowDynamicModels(() => ComponentAssainedToMemberModel());
   }
 
+  @override
   void dispose() {
     componentAssainedToMemberModels.dispose();
   }

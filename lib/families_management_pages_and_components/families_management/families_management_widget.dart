@@ -14,7 +14,6 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -22,10 +21,10 @@ import 'families_management_model.dart';
 export 'families_management_model.dart';
 
 class FamiliesManagementWidget extends StatefulWidget {
-  const FamiliesManagementWidget({Key? key}) : super(key: key);
+  const FamiliesManagementWidget({super.key});
 
   @override
-  _FamiliesManagementWidgetState createState() =>
+  State<FamiliesManagementWidget> createState() =>
       _FamiliesManagementWidgetState();
 }
 
@@ -58,15 +57,6 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -84,14 +74,14 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,7 +193,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 1.00),
+                        alignment: AlignmentDirectional(-1.0, 1.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             await showModalBottomSheet(

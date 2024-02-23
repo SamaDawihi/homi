@@ -8,7 +8,6 @@ import '/gallery/empty_document/empty_document_widget.dart';
 import '/gallery/list_view_document/list_view_document_widget.dart';
 import 'gallery_widget.dart' show GalleryWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -24,12 +23,14 @@ class GalleryModel extends FlutterFlowModel<GalleryWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     listViewDocumentModels =
         FlutterFlowDynamicModels(() => ListViewDocumentModel());
     bottomNavBarModel = createModel(context, () => BottomNavBarModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     listViewDocumentModels.dispose();

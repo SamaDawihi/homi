@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +11,14 @@ export 'list_view_invitation_status_model.dart';
 
 class ListViewInvitationStatusWidget extends StatefulWidget {
   const ListViewInvitationStatusWidget({
-    Key? key,
+    super.key,
     required this.inviteid,
-  }) : super(key: key);
+  });
 
   final DocumentReference? inviteid;
 
   @override
-  _ListViewInvitationStatusWidgetState createState() =>
+  State<ListViewInvitationStatusWidget> createState() =>
       _ListViewInvitationStatusWidgetState();
 }
 
@@ -51,7 +50,7 @@ class _ListViewInvitationStatusWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+      padding: EdgeInsets.all(10.0),
       child: StreamBuilder<InvitationRecord>(
         stream: InvitationRecord.getDocument(widget.inviteid!),
         builder: (context, snapshot) {
@@ -140,7 +139,7 @@ class _ListViewInvitationStatusWidgetState
                     Expanded(
                       flex: 3,
                       child: Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'wlgsxsq7' /* Head of Design */,
@@ -176,7 +175,7 @@ class _ListViewInvitationStatusWidgetState
                             ),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 4.0),

@@ -78,10 +78,12 @@ class EditDocumentModel extends FlutterFlowModel<EditDocumentWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     bottomNavBarModel = createModel(context, () => BottomNavBarModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     bottomNavBarModel.dispose();

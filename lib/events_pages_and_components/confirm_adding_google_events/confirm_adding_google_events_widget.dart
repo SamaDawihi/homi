@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -14,14 +13,14 @@ export 'confirm_adding_google_events_model.dart';
 
 class ConfirmAddingGoogleEventsWidget extends StatefulWidget {
   const ConfirmAddingGoogleEventsWidget({
-    Key? key,
+    super.key,
     required this.events,
-  }) : super(key: key);
+  });
 
   final List<EventStruct>? events;
 
   @override
-  _ConfirmAddingGoogleEventsWidgetState createState() =>
+  State<ConfirmAddingGoogleEventsWidget> createState() =>
       _ConfirmAddingGoogleEventsWidgetState();
 }
 
@@ -53,7 +52,7 @@ class _ConfirmAddingGoogleEventsWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(

@@ -154,7 +154,7 @@ class EventStruct extends FFFirebaseStruct {
       );
 
   static EventStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? EventStruct.fromMap(data) : null;
+      data is Map ? EventStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'title': _title,

@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -13,14 +12,14 @@ export 'list_view_event_display_model.dart';
 
 class ListViewEventDisplayWidget extends StatefulWidget {
   const ListViewEventDisplayWidget({
-    Key? key,
+    super.key,
     required this.eventRef,
-  }) : super(key: key);
+  });
 
   final DocumentReference? eventRef;
 
   @override
-  _ListViewEventDisplayWidgetState createState() =>
+  State<ListViewEventDisplayWidget> createState() =>
       _ListViewEventDisplayWidgetState();
 }
 
@@ -52,7 +51,7 @@ class _ListViewEventDisplayWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 1.0),
+      padding: EdgeInsets.all(1.0),
       child: StreamBuilder<EventRecord>(
         stream: EventRecord.getDocument(widget.eventRef!),
         builder: (context, snapshot) {
@@ -101,13 +100,13 @@ class _ListViewEventDisplayWidgetState
                 shape: BoxShape.rectangle,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: StreamBuilder<List<MemberRecord>>(
                         stream: queryMemberRecord(
                           queryBuilder: (memberRecord) => memberRecord
@@ -158,7 +157,7 @@ class _ListViewEventDisplayWidgetState
                     ),
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           eventDisplayEventRecord.title,
                           style: FlutterFlowTheme.of(context).bodyLarge,
@@ -167,7 +166,7 @@ class _ListViewEventDisplayWidgetState
                     ),
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           valueOrDefault<String>(
                             dateTimeFormat(

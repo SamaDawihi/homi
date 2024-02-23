@@ -11,7 +11,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -19,10 +18,10 @@ import 'add_anouncement_model.dart';
 export 'add_anouncement_model.dart';
 
 class AddAnouncementWidget extends StatefulWidget {
-  const AddAnouncementWidget({Key? key}) : super(key: key);
+  const AddAnouncementWidget({super.key});
 
   @override
-  _AddAnouncementWidgetState createState() => _AddAnouncementWidgetState();
+  State<AddAnouncementWidget> createState() => _AddAnouncementWidgetState();
 }
 
 class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
@@ -48,15 +47,6 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -74,14 +64,14 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,8 +176,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                                     borderRadius: BorderRadius.circular(50.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        2.0, 2.0, 2.0, 2.0),
+                                    padding: EdgeInsets.all(2.0),
                                     child: AuthUserStreamWidget(
                                       builder: (context) => Container(
                                         width: 40.0,
@@ -325,7 +314,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                             Stack(
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
@@ -476,8 +465,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                               ),
                             ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 10.0),
+                            padding: EdgeInsets.all(10.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -599,7 +587,7 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),

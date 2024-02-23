@@ -5,7 +5,6 @@ import '/backend/schema/structs/index.dart';
 import '/extra/dialog_you_have_been_removed/dialog_you_have_been_removed_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -33,18 +32,16 @@ Future checkMemberExists(BuildContext context) async {
         ),
   );
   if (number == 0) {
-    await showAlignedDialog(
+    await showDialog(
       barrierDismissible: false,
       context: context,
-      isGlobal: true,
-      avoidOverflow: false,
-      targetAnchor:
-          AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-      followerAnchor:
-          AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
       builder: (dialogContext) {
-        return Material(
-          color: Colors.transparent,
+        return Dialog(
+          elevation: 0,
+          insetPadding: EdgeInsets.zero,
+          backgroundColor: Colors.transparent,
+          alignment: AlignmentDirectional(0.0, 0.0)
+              .resolve(Directionality.of(context)),
           child: DialogYouHaveBeenRemovedWidget(),
         );
       },

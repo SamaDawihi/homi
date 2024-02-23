@@ -10,7 +10,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,14 +20,14 @@ export 'list_view_document_model.dart';
 
 class ListViewDocumentWidget extends StatefulWidget {
   const ListViewDocumentWidget({
-    Key? key,
+    super.key,
     required this.galleryDocument,
-  }) : super(key: key);
+  });
 
   final DocumentRecord? galleryDocument;
 
   @override
-  _ListViewDocumentWidgetState createState() => _ListViewDocumentWidgetState();
+  State<ListViewDocumentWidget> createState() => _ListViewDocumentWidgetState();
 }
 
 class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
@@ -139,7 +138,7 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
                 children: [
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         valueOrDefault<String>(
                           widget.galleryDocument?.title,

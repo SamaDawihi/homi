@@ -6,7 +6,6 @@ import '/invitations_pages_and_components/confirm_accept_invitation/confirm_acce
 import '/invitations_pages_and_components/confirm_reject_invitation/confirm_reject_invitation_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,14 +14,14 @@ export 'list_view_recieved_invitation_model.dart';
 
 class ListViewRecievedInvitationWidget extends StatefulWidget {
   const ListViewRecievedInvitationWidget({
-    Key? key,
+    super.key,
     required this.invitationId,
-  }) : super(key: key);
+  });
 
   final DocumentReference? invitationId;
 
   @override
-  _ListViewRecievedInvitationWidgetState createState() =>
+  State<ListViewRecievedInvitationWidget> createState() =>
       _ListViewRecievedInvitationWidgetState();
 }
 

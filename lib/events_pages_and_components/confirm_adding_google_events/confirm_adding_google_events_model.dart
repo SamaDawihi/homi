@@ -7,7 +7,6 @@ import '/custom_code/actions/index.dart' as actions;
 import 'confirm_adding_google_events_widget.dart'
     show ConfirmAddingGoogleEventsWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,8 +15,10 @@ class ConfirmAddingGoogleEventsModel
     extends FlutterFlowModel<ConfirmAddingGoogleEventsWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

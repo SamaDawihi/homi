@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,10 +8,10 @@ import 'list_view_empty_invitations_model.dart';
 export 'list_view_empty_invitations_model.dart';
 
 class ListViewEmptyInvitationsWidget extends StatefulWidget {
-  const ListViewEmptyInvitationsWidget({Key? key}) : super(key: key);
+  const ListViewEmptyInvitationsWidget({super.key});
 
   @override
-  _ListViewEmptyInvitationsWidgetState createState() =>
+  State<ListViewEmptyInvitationsWidget> createState() =>
       _ListViewEmptyInvitationsWidgetState();
 }
 
@@ -53,7 +52,7 @@ class _ListViewEmptyInvitationsWidgetState
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+          padding: EdgeInsets.all(12.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

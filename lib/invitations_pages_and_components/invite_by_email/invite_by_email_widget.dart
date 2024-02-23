@@ -11,12 +11,10 @@ import '/invitations_pages_and_components/dialog_invite_sent_successfully/dialog
 import '/invitations_pages_and_components/dialog_member_already_invited/dialog_member_already_invited_widget.dart';
 import '/invitations_pages_and_components/dialog_member_invited_already_member/dialog_member_invited_already_member_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,14 +24,14 @@ export 'invite_by_email_model.dart';
 
 class InviteByEmailWidget extends StatefulWidget {
   const InviteByEmailWidget({
-    Key? key,
+    super.key,
     this.familyId,
-  }) : super(key: key);
+  });
 
   final DocumentReference? familyId;
 
   @override
-  _InviteByEmailWidgetState createState() => _InviteByEmailWidgetState();
+  State<InviteByEmailWidget> createState() => _InviteByEmailWidgetState();
 }
 
 class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
@@ -90,7 +88,7 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(1.00, -1.00),
+      alignment: AlignmentDirectional(1.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -318,17 +316,15 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                                 }
                               }
                             } else {
-                              await showAlignedDialog(
+                              await showDialog(
                                 context: context,
-                                isGlobal: true,
-                                avoidOverflow: false,
-                                targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                    .resolve(Directionality.of(context)),
-                                followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                    .resolve(Directionality.of(context)),
                                 builder: (dialogContext) {
-                                  return Material(
-                                    color: Colors.transparent,
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
                                     child: DialogMemberAlreadyInvitedWidget(),
                                   );
                                 },
@@ -338,17 +334,15 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                               return;
                             }
                           } else {
-                            await showAlignedDialog(
+                            await showDialog(
                               context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
                               builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
+                                return Dialog(
+                                  elevation: 0,
+                                  insetPadding: EdgeInsets.zero,
+                                  backgroundColor: Colors.transparent,
+                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
                                   child: DialogEmailNotSupportedWidget(),
                                 );
                               },
@@ -359,17 +353,15 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                           }
 
                           if (_model.theUserWithSameEmail != null) {
-                            await showAlignedDialog(
+                            await showDialog(
                               context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
                               builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
+                                return Dialog(
+                                  elevation: 0,
+                                  insetPadding: EdgeInsets.zero,
+                                  backgroundColor: Colors.transparent,
+                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
                                   child: DialogInviteSentSuccessfullyWidget(),
                                 );
                               },
@@ -382,17 +374,15 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
                               content:
                                   'Hello there! You have been invited by ${currentUserEmail} to join their family in Homi! Download the app now to join their family and start managing your familial activities!',
                             );
-                            await showAlignedDialog(
+                            await showDialog(
                               context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
                               builder: (dialogContext) {
-                                return Material(
-                                  color: Colors.transparent,
+                                return Dialog(
+                                  elevation: 0,
+                                  insetPadding: EdgeInsets.zero,
+                                  backgroundColor: Colors.transparent,
+                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
                                   child:
                                       DialogInviteEmailSentSuccessfullyWidget(),
                                 );

@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,10 +17,10 @@ import 'announcements_model.dart';
 export 'announcements_model.dart';
 
 class AnnouncementsWidget extends StatefulWidget {
-  const AnnouncementsWidget({Key? key}) : super(key: key);
+  const AnnouncementsWidget({super.key});
 
   @override
-  _AnnouncementsWidgetState createState() => _AnnouncementsWidgetState();
+  State<AnnouncementsWidget> createState() => _AnnouncementsWidgetState();
 }
 
 class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
@@ -49,15 +48,6 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -87,14 +77,14 @@ class _AnnouncementsWidgetState extends State<AnnouncementsWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

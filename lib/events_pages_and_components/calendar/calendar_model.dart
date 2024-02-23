@@ -18,7 +18,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -57,11 +56,13 @@ class CalendarModel extends FlutterFlowModel<CalendarWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     listViewEventDisplayModels =
         FlutterFlowDynamicModels(() => ListViewEventDisplayModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     listViewEventDisplayModels.dispose();

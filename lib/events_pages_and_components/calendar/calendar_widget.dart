@@ -17,7 +17,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,10 +26,10 @@ import 'calendar_model.dart';
 export 'calendar_model.dart';
 
 class CalendarWidget extends StatefulWidget {
-  const CalendarWidget({Key? key}) : super(key: key);
+  const CalendarWidget({super.key});
 
   @override
-  _CalendarWidgetState createState() => _CalendarWidgetState();
+  State<CalendarWidget> createState() => _CalendarWidgetState();
 }
 
 class _CalendarWidgetState extends State<CalendarWidget> {
@@ -73,15 +72,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -119,14 +109,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -265,7 +255,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -343,7 +333,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowIconButton(
                                 borderColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
@@ -368,7 +358,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 6.0, 0.0, 0.0),

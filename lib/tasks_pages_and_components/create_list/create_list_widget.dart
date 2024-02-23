@@ -18,14 +18,14 @@ export 'create_list_model.dart';
 
 class CreateListWidget extends StatefulWidget {
   const CreateListWidget({
-    Key? key,
+    super.key,
     required this.isShopping,
-  }) : super(key: key);
+  });
 
   final bool? isShopping;
 
   @override
-  _CreateListWidgetState createState() => _CreateListWidgetState();
+  State<CreateListWidget> createState() => _CreateListWidgetState();
 }
 
 class _CreateListWidgetState extends State<CreateListWidget> {
@@ -54,15 +54,6 @@ class _CreateListWidgetState extends State<CreateListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -85,7 +76,7 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,8 +155,7 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                14.0, 14.0, 14.0, 14.0),
+                            padding: EdgeInsets.all(14.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -860,7 +850,7 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),

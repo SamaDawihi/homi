@@ -62,7 +62,7 @@ class FamilyStruct extends FFFirebaseStruct {
       );
 
   static FamilyStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? FamilyStruct.fromMap(data) : null;
+      data is Map ? FamilyStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

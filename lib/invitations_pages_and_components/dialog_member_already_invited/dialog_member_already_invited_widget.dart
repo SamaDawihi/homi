@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'dialog_member_already_invited_model.dart';
 export 'dialog_member_already_invited_model.dart';
 
 class DialogMemberAlreadyInvitedWidget extends StatefulWidget {
-  const DialogMemberAlreadyInvitedWidget({Key? key}) : super(key: key);
+  const DialogMemberAlreadyInvitedWidget({super.key});
 
   @override
-  _DialogMemberAlreadyInvitedWidgetState createState() =>
+  State<DialogMemberAlreadyInvitedWidget> createState() =>
       _DialogMemberAlreadyInvitedWidgetState();
 }
 
@@ -45,7 +44,7 @@ class _DialogMemberAlreadyInvitedWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(

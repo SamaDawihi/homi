@@ -21,14 +21,14 @@ export 'event_edit_model.dart';
 
 class EventEditWidget extends StatefulWidget {
   const EventEditWidget({
-    Key? key,
+    super.key,
     required this.event,
-  }) : super(key: key);
+  });
 
   final EventRecord? event;
 
   @override
-  _EventEditWidgetState createState() => _EventEditWidgetState();
+  State<EventEditWidget> createState() => _EventEditWidgetState();
 }
 
 class _EventEditWidgetState extends State<EventEditWidget> {
@@ -75,15 +75,6 @@ class _EventEditWidgetState extends State<EventEditWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -101,14 +92,14 @@ class _EventEditWidgetState extends State<EventEditWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,8 +185,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                14.0, 14.0, 14.0, 14.0),
+                            padding: EdgeInsets.all(14.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -595,6 +585,10 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                     ],
                                   ),
                                 ),
+                                Divider(
+                                  thickness: 2.0,
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
@@ -745,10 +739,6 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                     ],
                                   ),
                                 ),
-                                Divider(
-                                  thickness: 2.0,
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 12.0),
@@ -829,7 +819,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(-1.00, 0.00),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           FFLocalizations.of(context).getText(
                                             '9yp5vtc1' /* Notification Time */,
@@ -1474,7 +1464,7 @@ class _EventEditWidgetState extends State<EventEditWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),

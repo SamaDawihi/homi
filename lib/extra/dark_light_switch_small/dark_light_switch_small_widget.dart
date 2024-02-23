@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,10 +11,10 @@ import 'dark_light_switch_small_model.dart';
 export 'dark_light_switch_small_model.dart';
 
 class DarkLightSwitchSmallWidget extends StatefulWidget {
-  const DarkLightSwitchSmallWidget({Key? key}) : super(key: key);
+  const DarkLightSwitchSmallWidget({super.key});
 
   @override
-  _DarkLightSwitchSmallWidgetState createState() =>
+  State<DarkLightSwitchSmallWidget> createState() =>
       _DarkLightSwitchSmallWidgetState();
 }
 
@@ -105,12 +104,12 @@ class _DarkLightSwitchSmallWidgetState extends State<DarkLightSwitchSmallWidget>
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
+            padding: EdgeInsets.all(2.0),
             child: Stack(
               alignment: AlignmentDirectional(0.0, 0.0),
               children: [
                 Align(
-                  alignment: AlignmentDirectional(-0.90, 0.00),
+                  alignment: AlignmentDirectional(-0.9, 0.0),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
                     child: Icon(
@@ -121,7 +120,7 @@ class _DarkLightSwitchSmallWidgetState extends State<DarkLightSwitchSmallWidget>
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.00, 0.00),
+                  alignment: AlignmentDirectional(1.0, 0.0),
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 6.0, 0.0),
                     child: Icon(
@@ -132,7 +131,7 @@ class _DarkLightSwitchSmallWidgetState extends State<DarkLightSwitchSmallWidget>
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(1.00, 0.00),
+                  alignment: AlignmentDirectional(1.0, 0.0),
                   child: Container(
                     width: 36.0,
                     height: 36.0,

@@ -8,7 +8,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,10 +16,10 @@ import 'input_component_enter_family_name_model.dart';
 export 'input_component_enter_family_name_model.dart';
 
 class InputComponentEnterFamilyNameWidget extends StatefulWidget {
-  const InputComponentEnterFamilyNameWidget({Key? key}) : super(key: key);
+  const InputComponentEnterFamilyNameWidget({super.key});
 
   @override
-  _InputComponentEnterFamilyNameWidgetState createState() =>
+  State<InputComponentEnterFamilyNameWidget> createState() =>
       _InputComponentEnterFamilyNameWidgetState();
 }
 
@@ -92,7 +91,7 @@ class _InputComponentEnterFamilyNameWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(1.00, -1.00),
+      alignment: AlignmentDirectional(1.0, -1.0),
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -233,7 +232,7 @@ class _InputComponentEnterFamilyNameWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       _model.familyNameErr!,
                       textAlign: TextAlign.start,

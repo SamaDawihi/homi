@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,14 +11,14 @@ export 'bottom_nav_bar_model.dart';
 
 class BottomNavBarWidget extends StatefulWidget {
   const BottomNavBarWidget({
-    Key? key,
+    super.key,
     required this.currentPage,
-  }) : super(key: key);
+  });
 
   final int? currentPage;
 
   @override
-  _BottomNavBarWidgetState createState() => _BottomNavBarWidgetState();
+  State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
 }
 
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
@@ -57,7 +56,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       child: Stack(
         children: [
           Align(
-            alignment: AlignmentDirectional(0.00, 1.00),
+            alignment: AlignmentDirectional(0.0, 1.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

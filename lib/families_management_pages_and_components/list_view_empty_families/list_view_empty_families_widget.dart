@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,10 +9,10 @@ import 'list_view_empty_families_model.dart';
 export 'list_view_empty_families_model.dart';
 
 class ListViewEmptyFamiliesWidget extends StatefulWidget {
-  const ListViewEmptyFamiliesWidget({Key? key}) : super(key: key);
+  const ListViewEmptyFamiliesWidget({super.key});
 
   @override
-  _ListViewEmptyFamiliesWidgetState createState() =>
+  State<ListViewEmptyFamiliesWidget> createState() =>
       _ListViewEmptyFamiliesWidgetState();
 }
 
@@ -54,7 +53,7 @@ class _ListViewEmptyFamiliesWidgetState
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+          padding: EdgeInsets.all(12.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

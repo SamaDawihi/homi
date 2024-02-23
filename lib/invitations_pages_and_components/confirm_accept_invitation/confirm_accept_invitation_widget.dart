@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,14 +14,14 @@ export 'confirm_accept_invitation_model.dart';
 
 class ConfirmAcceptInvitationWidget extends StatefulWidget {
   const ConfirmAcceptInvitationWidget({
-    Key? key,
+    super.key,
     required this.invitation,
-  }) : super(key: key);
+  });
 
   final InvitationRecord? invitation;
 
   @override
-  _ConfirmAcceptInvitationWidgetState createState() =>
+  State<ConfirmAcceptInvitationWidget> createState() =>
       _ConfirmAcceptInvitationWidgetState();
 }
 
@@ -54,7 +53,7 @@ class _ConfirmAcceptInvitationWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(

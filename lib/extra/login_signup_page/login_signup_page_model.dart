@@ -78,12 +78,14 @@ class LoginSignupPageModel extends FlutterFlowModel<LoginSignupPageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     passwordVisibility = false;
     reEnterVisibility = false;
     loginPasswordVisibility = false;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();

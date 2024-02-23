@@ -19,10 +19,10 @@ import 'add_document_model.dart';
 export 'add_document_model.dart';
 
 class AddDocumentWidget extends StatefulWidget {
-  const AddDocumentWidget({Key? key}) : super(key: key);
+  const AddDocumentWidget({super.key});
 
   @override
-  _AddDocumentWidgetState createState() => _AddDocumentWidgetState();
+  State<AddDocumentWidget> createState() => _AddDocumentWidgetState();
 }
 
 class _AddDocumentWidgetState extends State<AddDocumentWidget> {
@@ -51,15 +51,6 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -77,14 +68,14 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
               title: Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,7 +143,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.bottomNavBarModel,
                   updateCallback: () => setState(() {}),
@@ -168,7 +159,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 0.0),
@@ -187,8 +178,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 10.0, 10.0, 10.0),
+                        padding: EdgeInsets.all(10.0),
                         child: TextFormField(
                           controller: _model.textController1,
                           focusNode: _model.textFieldFocusNode1,
@@ -240,7 +230,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-1.00, 0.00),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 30.0),
@@ -409,7 +399,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 0.0, 0.0, 0.0),
@@ -428,7 +418,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 20.0, 0.0),

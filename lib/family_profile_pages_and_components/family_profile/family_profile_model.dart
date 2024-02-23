@@ -16,12 +16,10 @@ import '/invitations_pages_and_components/invite_by_email/invite_by_email_widget
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'family_profile_widget.dart' show FamilyProfileWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -44,11 +42,13 @@ class FamilyProfileModel extends FlutterFlowModel<FamilyProfileWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     listViewFamilyMemberModels =
         FlutterFlowDynamicModels(() => ListViewFamilyMemberModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     listViewFamilyMemberModels.dispose();

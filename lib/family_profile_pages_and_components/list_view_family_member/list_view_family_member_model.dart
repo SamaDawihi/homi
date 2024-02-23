@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'list_view_family_member_widget.dart' show ListViewFamilyMemberWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutterflow_colorpicker/flutterflow_colorpicker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,8 +21,10 @@ class ListViewFamilyMemberModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

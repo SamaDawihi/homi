@@ -5,7 +5,6 @@ import 'list_view_invitation_status_widget.dart'
     show ListViewInvitationStatusWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +13,10 @@ class ListViewInvitationStatusModel
     extends FlutterFlowModel<ListViewInvitationStatusWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

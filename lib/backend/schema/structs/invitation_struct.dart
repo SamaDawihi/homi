@@ -53,8 +53,9 @@ class InvitationStruct extends FFFirebaseStruct {
         createdTime: data['created_time'] as DateTime?,
       );
 
-  static InvitationStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? InvitationStruct.fromMap(data) : null;
+  static InvitationStruct? maybeFromMap(dynamic data) => data is Map
+      ? InvitationStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'invitedEmail': _invitedEmail,

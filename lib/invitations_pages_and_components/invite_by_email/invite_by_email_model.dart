@@ -12,12 +12,10 @@ import '/invitations_pages_and_components/dialog_member_already_invited/dialog_m
 import '/invitations_pages_and_components/dialog_member_invited_already_member/dialog_member_invited_already_member_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'invite_by_email_widget.dart' show InviteByEmailWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -43,8 +41,10 @@ class InviteByEmailModel extends FlutterFlowModel<InviteByEmailWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     emailAddressFocusNode?.dispose();
     emailAddressController?.dispose();

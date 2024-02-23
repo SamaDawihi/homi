@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,10 +9,10 @@ import 'dialog_forget_password_email_sent_model.dart';
 export 'dialog_forget_password_email_sent_model.dart';
 
 class DialogForgetPasswordEmailSentWidget extends StatefulWidget {
-  const DialogForgetPasswordEmailSentWidget({Key? key}) : super(key: key);
+  const DialogForgetPasswordEmailSentWidget({super.key});
 
   @override
-  _DialogForgetPasswordEmailSentWidgetState createState() =>
+  State<DialogForgetPasswordEmailSentWidget> createState() =>
       _DialogForgetPasswordEmailSentWidgetState();
 }
 
@@ -45,7 +44,7 @@ class _DialogForgetPasswordEmailSentWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 0.00),
+      alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
         child: Container(

@@ -9,7 +9,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -19,14 +18,14 @@ export 'announcement_component_model.dart';
 
 class AnnouncementComponentWidget extends StatefulWidget {
   const AnnouncementComponentWidget({
-    Key? key,
+    super.key,
     required this.announcementId,
-  }) : super(key: key);
+  });
 
   final DocumentReference? announcementId;
 
   @override
-  _AnnouncementComponentWidgetState createState() =>
+  State<AnnouncementComponentWidget> createState() =>
       _AnnouncementComponentWidgetState();
 }
 
@@ -58,7 +57,7 @@ class _AnnouncementComponentWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+      padding: EdgeInsets.all(10.0),
       child: StreamBuilder<AnnouncementRecord>(
         stream: AnnouncementRecord.getDocument(widget.announcementId!),
         builder: (context, snapshot) {
@@ -98,7 +97,7 @@ class _AnnouncementComponentWidgetState
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
+                padding: EdgeInsets.all(4.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -247,11 +246,9 @@ class _AnnouncementComponentWidgetState
                                     children: [
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(1.00, 0.00),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 8.0, 8.0, 8.0),
+                                          padding: EdgeInsets.all(8.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -290,11 +287,9 @@ class _AnnouncementComponentWidgetState
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(1.00, 0.00),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 8.0, 8.0, 8.0),
+                                          padding: EdgeInsets.all(8.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,

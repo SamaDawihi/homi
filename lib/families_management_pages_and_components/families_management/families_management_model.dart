@@ -15,7 +15,6 @@ import 'families_management_widget.dart' show FamiliesManagementWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +38,7 @@ class FamiliesManagementModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     listViewMyFamilyModels =
         FlutterFlowDynamicModels(() => ListViewMyFamilyModel());
@@ -46,6 +46,7 @@ class FamiliesManagementModel
         FlutterFlowDynamicModels(() => ListViewRecievedInvitationModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     listViewMyFamilyModels.dispose();

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "584197013310-cpqggh6ur67iitnlm4jfhc01b103m1uq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dev.homi",
+            "certificate_hash": "6de12169addb62a7541fa48f0843515a20349e2e"
+          }
+        },
+        {
           "client_id": "584197013310-nj6s6qm2kjnoob6i985l39rc0oid8a5k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -9,10 +8,10 @@ import 'empty_document_model.dart';
 export 'empty_document_model.dart';
 
 class EmptyDocumentWidget extends StatefulWidget {
-  const EmptyDocumentWidget({Key? key}) : super(key: key);
+  const EmptyDocumentWidget({super.key});
 
   @override
-  _EmptyDocumentWidgetState createState() => _EmptyDocumentWidgetState();
+  State<EmptyDocumentWidget> createState() => _EmptyDocumentWidgetState();
 }
 
 class _EmptyDocumentWidgetState extends State<EmptyDocumentWidget> {
@@ -51,7 +50,7 @@ class _EmptyDocumentWidgetState extends State<EmptyDocumentWidget> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+          padding: EdgeInsets.all(12.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -7,7 +7,6 @@ import '/tasks_pages_and_components/no_members_message/no_members_message_widget
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,14 +15,14 @@ export 'list_component_view_list_model.dart';
 
 class ListComponentViewListWidget extends StatefulWidget {
   const ListComponentViewListWidget({
-    Key? key,
+    super.key,
     required this.listRef,
-  }) : super(key: key);
+  });
 
   final DocumentReference? listRef;
 
   @override
-  _ListComponentViewListWidgetState createState() =>
+  State<ListComponentViewListWidget> createState() =>
       _ListComponentViewListWidgetState();
 }
 
@@ -70,7 +69,7 @@ class _ListComponentViewListWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(1.0, 1.0, 1.0, 1.0),
+      padding: EdgeInsets.all(1.0),
       child: StreamBuilder<ListRecord>(
         stream: ListRecord.getDocument(widget.listRef!),
         builder: (context, snapshot) {
@@ -132,7 +131,7 @@ class _ListComponentViewListWidgetState
                 shape: BoxShape.rectangle,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -154,7 +153,7 @@ class _ListComponentViewListWidgetState
                       },
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-1.00, 0.00),
+                      alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
@@ -219,7 +218,7 @@ class _ListComponentViewListWidgetState
                                                 listViewMemberRecord.reference),
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(-1.00, 0.00),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: wrapWithModel(
                                             model: _model
                                                 .componentAssainedToMemberModels
