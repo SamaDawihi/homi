@@ -182,23 +182,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // FamilyProfile
   {
-    'g30gpykm': {
-      'en': 'Invite a Member',
-      'ar': 'إنشاء دعوة',
-    },
     'n7mptuv2': {
       'en': 'Invitation Status',
       'ar': 'حالة الدعوات',
+    },
+    'v6urmenc': {
+      'en': 'Invite a Member',
+      'ar': 'إنشاء دعوة',
     },
     '6ibsn7kw': {
       'en': 'My Family Members',
       'ar': 'أفراد أسرتي',
     },
-    'uy8eb4xa': {
+    'iaqi1qdr': {
       'en': 'Delete Family',
       'ar': 'حذف العائلة',
     },
-    'eew001d9': {
+    'ix33rfl9': {
       'en': 'Leave Family',
       'ar': 'مغادرة  العائلة',
     },
