@@ -109,7 +109,7 @@ class _EditAnouncementWidgetState extends State<EditAnouncementWidget> {
                                 Icons.arrow_back,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 25.0,
+                                size: 30.0,
                               ),
                               onPressed: () async {
                                 context.pop();

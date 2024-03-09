@@ -83,7 +83,7 @@ class _GalleryWidgetState extends State<GalleryWidget> {
                                 Icons.arrow_back,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 25.0,
+                                size: 30.0,
                               ),
                               onPressed: () async {
                                 context.goNamed('FamilyProfile');

@@ -47,8 +47,6 @@ class _ComponentResponsibleToMemberWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<MemberRecord>(
       stream: MemberRecord.getDocument(widget.memberRef!),
       builder: (context, snapshot) {

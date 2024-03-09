@@ -85,8 +85,6 @@ class _InviteByEmailWidgetState extends State<InviteByEmailWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
       alignment: AlignmentDirectional(1.0, -1.0),
       child: Column(

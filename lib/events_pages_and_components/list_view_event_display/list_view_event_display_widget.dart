@@ -48,8 +48,6 @@ class _ListViewEventDisplayWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsets.all(1.0),
       child: StreamBuilder<EventRecord>(

@@ -132,6 +132,7 @@ class _MyAppState extends State<MyApp> {
           minThumbLength: 10.0,
           crossAxisMargin: 3.0,
         ),
+        useMaterial3: false,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -165,6 +166,7 @@ class _MyAppState extends State<MyApp> {
           minThumbLength: 10.0,
           crossAxisMargin: 3.0,
         ),
+        useMaterial3: false,
       ),
       themeMode: _themeMode,
       routerConfig: _router,

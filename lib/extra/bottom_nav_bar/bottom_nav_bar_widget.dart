@@ -45,8 +45,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       width: double.infinity,
       height: 60.0,

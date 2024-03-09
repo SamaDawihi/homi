@@ -38,8 +38,6 @@ class _NoMembersMessageWidgetState extends State<NoMembersMessageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Text(
       FFLocalizations.of(context).getText(
         'ectvpj4y' /* There are no members assigned. */,

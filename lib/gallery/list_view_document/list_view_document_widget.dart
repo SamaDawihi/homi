@@ -103,8 +103,6 @@ class _ListViewDocumentWidgetState extends State<ListViewDocumentWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: Container(

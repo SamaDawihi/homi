@@ -49,8 +49,6 @@ class _ComponentAssainedToMemberWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
       alignment: AlignmentDirectional(1.0, 0.0),
       child: StreamBuilder<MemberRecord>(

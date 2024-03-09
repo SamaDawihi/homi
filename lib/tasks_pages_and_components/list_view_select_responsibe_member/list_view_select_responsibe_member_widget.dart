@@ -51,8 +51,6 @@ class _ListViewSelectResponsibeMemberWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 8.0),
       child: StreamBuilder<UsersRecord>(

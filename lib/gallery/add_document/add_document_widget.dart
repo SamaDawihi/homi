@@ -94,7 +94,7 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                                 Icons.arrow_back,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 25.0,
+                                size: 30.0,
                               ),
                               onPressed: () async {
                                 context.pop();
@@ -252,16 +252,27 @@ class _AddDocumentWidgetState extends State<AddDocumentWidget> {
                           _model.uploadedImage != '')
                         Stack(
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.network(
-                                  _model.uploadedImage!,
-                                  width: double.infinity,
-                                  height: 170.0,
-                                  fit: BoxFit.cover,
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.network(
+                                    _model.uploadedImage!,
+                                    width: 350.0,
+                                    height: 200.0,
+                                    fit: BoxFit.cover,
+                                    errorBuilder:
+                                        (context, error, stackTrace) =>
+                                            Image.asset(
+                                      'assets/images/error_image.png',
+                                      width: 350.0,
+                                      height: 200.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

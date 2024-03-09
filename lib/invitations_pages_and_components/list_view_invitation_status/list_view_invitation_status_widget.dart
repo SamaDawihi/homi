@@ -47,8 +47,6 @@ class _ListViewInvitationStatusWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: StreamBuilder<InvitationRecord>(

@@ -77,8 +77,6 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -120,7 +118,7 @@ class _EditDocumentWidgetState extends State<EditDocumentWidget> {
                                 Icons.arrow_back,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 25.0,
+                                size: 30.0,
                               ),
                               onPressed: () async {
                                 context.pop();

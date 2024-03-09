@@ -97,7 +97,7 @@ class _AllListsWidgetState extends State<AllListsWidget>
                                 Icons.menu,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
-                                size: 25.0,
+                                size: 30.0,
                               ),
                               onPressed: () async {
                                 await showModalBottomSheet(

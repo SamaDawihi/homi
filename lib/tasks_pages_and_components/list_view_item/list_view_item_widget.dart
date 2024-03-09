@@ -52,8 +52,6 @@ class _ListViewItemWidgetState extends State<ListViewItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<ItemRecord>(
       stream: ItemRecord.getDocument(widget.itemRef!)
         ..listen((containerItemRecord) async {

@@ -44,8 +44,6 @@ class _EmptyTaskComponentWidgetState extends State<EmptyTaskComponentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 12.0, 12.0),
       child: Container(

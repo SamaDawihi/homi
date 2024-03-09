@@ -94,7 +94,7 @@ class _CreateListWidgetState extends State<CreateListWidget> {
                             icon: Icon(
                               Icons.arrow_back,
                               color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 25.0,
+                              size: 30.0,
                             ),
                             onPressed: () async {
                               context.pop();

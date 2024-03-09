@@ -52,8 +52,6 @@ class _ConfirmAdminChangeWidgetState extends State<ConfirmAdminChangeWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
       alignment: AlignmentDirectional(0.0, 0.0),
       child: Padding(

@@ -144,7 +144,7 @@ class _ListViewWidgetState extends State<ListViewWidget>
                               icon: Icon(
                                 Icons.arrow_back_outlined,
                                 color: Color(0xFF57636C),
-                                size: 25.0,
+                                size: 30.0,
                               ),
                               onPressed: () async {
                                 context.pushNamed('AllLists');

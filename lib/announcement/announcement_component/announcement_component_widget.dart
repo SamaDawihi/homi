@@ -54,8 +54,6 @@ class _AnnouncementComponentWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: StreamBuilder<AnnouncementRecord>(
@@ -193,9 +191,8 @@ class _AnnouncementComponentWidgetState
                                             final richTextFamilyRecord =
                                                 snapshot.data!;
                                             return RichText(
-                                              textScaleFactor:
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor,
+                                              textScaler: MediaQuery.of(context)
+                                                  .textScaler,
                                               text: TextSpan(
                                                 children: [
                                                   TextSpan(

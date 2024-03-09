@@ -57,8 +57,6 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -99,7 +97,7 @@ class _FamiliesManagementWidgetState extends State<FamiliesManagementWidget> {
                               icon: Icon(
                                 Icons.menu,
                                 color: Color(0xFF57636C),
-                                size: 25.0,
+                                size: 30.0,
                               ),
                               onPressed: () async {
                                 await showModalBottomSheet(
