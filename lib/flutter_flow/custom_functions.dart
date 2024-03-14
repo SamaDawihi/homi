@@ -117,16 +117,8 @@ DateTime calculateNotificationTime(
 
   if (!notifyOnTime) {
     // Adjust notification time based on notification before settings
-    if (notifyBeforeUnit == "Days") {
-      notificationTime =
-          notificationTime.subtract(Duration(days: notifyBefore));
-    } else if (notifyBeforeUnit == "Hours") {
-      notificationTime =
-          notificationTime.subtract(Duration(hours: notifyBefore));
-    } else if (notifyBeforeUnit == "Minutes") {
-      notificationTime =
-          notificationTime.subtract(Duration(minutes: notifyBefore));
-    }
+    notificationTime = adjustNotificationTime(
+        notificationTime, notifyBefore, notifyBeforeUnit);
   }
   if (notificationTime.isBefore(DateTime.now())) {
     notificationTime = startDate;
@@ -168,4 +160,21 @@ bool addedEventIsInThePast(
 String extractFileName(String url) {
   List<String> parts = url.split('/');
   return parts.last;
+}
+
+DateTime adjustNotificationTime(
+  DateTime notificationTime,
+  int notifyBefore,
+  String notifyBeforeUnit,
+) {
+  switch (notifyBeforeUnit) {
+    case "Days":
+      return notificationTime.subtract(Duration(days: notifyBefore));
+    case "Hours":
+      return notificationTime.subtract(Duration(hours: notifyBefore));
+    case "Minutes":
+      return notificationTime.subtract(Duration(minutes: notifyBefore));
+    default:
+      return notificationTime;
+  }
 }

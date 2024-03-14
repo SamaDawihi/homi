@@ -387,6 +387,8 @@ class _AddAnouncementWidgetState extends State<AddAnouncementWidget> {
                                         final selectedMedia =
                                             await selectMediaWithSourceBottomSheet(
                                           context: context,
+                                          maxWidth: 400.00,
+                                          maxHeight: 170.00,
                                           allowPhoto: true,
                                         );
                                         if (selectedMedia != null &&
